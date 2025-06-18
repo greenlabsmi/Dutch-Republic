@@ -15,7 +15,34 @@
       color: #333;
       padding-bottom: 100px;
     }
-
+nav {
+  background: #00bfa5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+nav li {
+  margin: 0 15px;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+nav a:hover {
+  text-decoration: underline;
+}
     header, section, footer {
       padding: 20px;
       margin: 20px;
@@ -128,7 +155,15 @@
   </style>
 </head>
 <body>
-
+<nav>
+  <ul>
+    <li><a href="#top">Home</a></li>
+    <li><a href="#deals">Deals</a></li>
+    <li><a href="#dutch-touch">Dutch Touch</a></li>
+    <li><a href="#loyalty">Loyalty</a></li>
+    <li><a href="#about">About Us</a></li>
+  </ul>
+</nav>
   <header>
     <h1>🌙 Nightcap Set</h1>
     <p>End your day on a high note with our sleep-friendly strains and edibles.</p>
