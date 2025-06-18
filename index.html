@@ -1,58 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Labs</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Green Labs</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    #chatbot-launcher {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #00bfa5;
+        color: white;
+        padding: 12px 18px;
+        border-radius: 30px;
+        cursor: pointer;
+        font-weight: bold;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        z-index: 1000;
+        transition: background-color 0.3s;
+    }
+    #chatbot-launcher:hover {
+        background-color: #009688;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>🌙 Nightcap Set</h1>
-        <p>End your day on a high note with our sleep-friendly strains and edibles.</p>
-        <a href="#chatbot">Start Chatting</a>
-    </header>
 
-    <section id="dutch-touch">
-        <h2>Dutch Touch Genetics</h2>
-        <p>Award-winning flower grown with purpose. Explore strains like Mr. Clean, Lilac Diesel, and Lemon Wookie.</p>
-    </section>
+  <header>
+    <h1>🌙 Nightcap Set</h1>
+    <p>End your day on a high note with our sleep-friendly strains and edibles.</p>
+    <a href="#chatbot">Start Chatting</a>
+  </header>
 
-    <section id="gift">
-        <h2>🎁 First-Time Customer Gift</h2>
-        <p>Get a free 1/8th or edible with your first $30+ purchase (tax included). Ask your budtender for details!</p>
-    </section>
+  <section id="dutch-touch">
+    <h2>Dutch Touch Genetics</h2>
+    <p>Award-winning flower grown with purpose. Explore strains like Mr. Clean, Lilac Diesel, and Lemon Wookie.</p>
+  </section>
 
-    <footer>
-        <p>📍 10701 Madison St, Luna Pier, MI 48157 | (734) 800-0024</p>
-        <p>Follow us: 
-            <a href="https://www.instagram.com/greenlabsmi" target="_blank">Instagram</a> | 
-            <a href="https://www.facebook.com/greenlabsmi" target="_blank">Facebook</a>
-        </p>
-    </footer>
+  <section id="gift">
+    <h2>🎁 First-Time Customer Gift</h2>
+    <p>Get a free 1/8th or edible with your first $30+ purchase (tax included). Ask your budtender for details!</p>
+  </section>
 
-    <script src="scripts.js"></script>
-<section style="background:#eaffea;padding:60px 20px;text-align:center;">
-  <div style="max-width:600px;margin:0 auto;">
-    <div style="font-size:3em;">🌿</div>
-    <h2 style="color:#006400;margin-top:0.5em;">Join the Green Labs Loyalty Club</h2>
-    <p style="font-size:1.1em;color:#333;">
-      Earn <strong>5% back</strong> every time you shop.  
-      Get early access to deals, free gifts, and exclusive drops.  
-      Sign up for texts or emails and start saving today.
+  <footer>
+    <p>📍 10701 Madison St, Luna Pier, MI 48157 | (734) 800-0024</p>
+    <p>Follow us:
+      <a href="https://www.instagram.com/greenlabsmi" target="_blank">Instagram</a> |
+      <a href="https://www.facebook.com/greenlabsmi" target="_blank">Facebook</a>
     </p>
-    <button onclick="openChat()" style="background:#32cd32;color:#fff;padding:12px 24px;font-size:1em;border:none;border-radius:5px;cursor:pointer;">
-      Join Now
-    </button>
-  </div>
-</section>
-<div id="chatbot-launcher" onclick="openChatbot()">
+  </footer>
+
+  <div id="chatbot-launcher" onclick="openChatbot()">
     💬 Need help? Chat with our AI Budtender
-</div>
-<script>
-  function openChatbot() {
-    alert("Chatbot coming soon!");
-  }
-</script>
+  </div>
+
+  <script>
+    function openChatbot() {
+      alert("Chatbot coming soon!");
+    }
+  </script>
+
+  <script src="scripts.js"></script>
 </body>
 </html>
