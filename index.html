@@ -65,18 +65,6 @@
       font-size: 1.1em;
     }
 
-    .strain {
-      margin-bottom: 16px;
-    }
-
-    .strain h3 {
-      margin: 0 0 4px 0;
-    }
-
-    .strain p {
-      margin: 0;
-    }
-
     .award {
       color: #d4af37;
       font-weight: bold;
@@ -114,6 +102,28 @@
     .strain-card p {
       margin: 4px 0;
       font-size: 0.95em;
+    }
+
+    #loyalty {
+      text-align: center;
+      background-color: #f0fff4;
+      border: 2px dashed #00bfa5;
+    }
+
+    #loyalty button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #00bfa5;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #loyalty button:hover {
+      background-color: #009688;
     }
   </style>
 </head>
@@ -179,6 +189,12 @@
     <p>Get a free 1/8th or edible with your first $30+ purchase (tax included). Ask your budtender for details!</p>
   </section>
 
+  <section id="loyalty">
+    <h2>💚 Join Our Loyalty Program</h2>
+    <p>Earn 5% back in points with every purchase, unlock exclusive deals, and get early access to drops and promos.</p>
+    <button onclick="showLoyalty()">Join Now</button>
+  </section>
+
   <section id="about">
     <h2>👋 About Green Labs</h2>
     <p>Green Labs is proud to serve the Luna Pier community with kindness, quality, and transparency. Our dispensary was built with care and a deep love for cannabis culture, community, and education.</p>
@@ -201,6 +217,10 @@
   <script>
     function openChatbot() {
       alert("Chatbot coming soon!");
+    }
+
+    function showLoyalty() {
+      alert("Loyalty sign-up coming soon! Stay tuned.");
     }
   </script>
 
