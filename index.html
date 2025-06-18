@@ -1,27 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Green Labs</title>
-  <link rel="stylesheet" href="style.css">
+
   <style>
-    #chatbot-launcher {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background-color: #00bfa5;
-        color: white;
-        padding: 12px 18px;
-        border-radius: 30px;
-        cursor: pointer;
-        font-weight: bold;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        z-index: 1000;
-        transition: background-color 0.3s;
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+      color: #333;
     }
+
+    header, section, footer {
+      padding: 20px;
+      margin: 20px;
+      background: #fff;
+      border-radius: 8px;
+    }
+
+    header {
+      background-color: #e0f7fa;
+      text-align: center;
+    }
+
+    a {
+      color: #00796b;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    #chatbot-launcher {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #00bfa5;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      transition: background-color 0.3s;
+    }
+
     #chatbot-launcher:hover {
-        background-color: #009688;
+      background-color: #009688;
+    }
+
+    #deals {
+      background-color: #f9f9f9;
+    }
+
+    .deal-item {
+      margin-bottom: 12px;
+      font-size: 1.1em;
     }
   </style>
 </head>
@@ -32,6 +72,15 @@
     <p>End your day on a high note with our sleep-friendly strains and edibles.</p>
     <a href="#chatbot">Start Chatting</a>
   </header>
+
+  <section id="deals">
+    <h2>🔥 Today’s Deals</h2>
+    <div class="deal-item">🍬 3 for $20 Gummies – Mix & Match</div>
+    <div class="deal-item">💨 BOGO 1/2 Off Disposables</div>
+    <div class="deal-item">🌿 $60 Half Oz (select strains)</div>
+    <div class="deal-item">🔥 $25 Wax & Shatter Specials</div>
+    <div class="deal-item">🎁 Double Loyalty Points (all purchases today)</div>
+  </section>
 
   <section id="dutch-touch">
     <h2>Dutch Touch Genetics</h2>
@@ -61,6 +110,5 @@
     }
   </script>
 
-  <script src="scripts.js"></script>
 </body>
 </html>
