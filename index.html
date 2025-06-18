@@ -13,7 +13,7 @@
       line-height: 1.6;
       background-color: #f4f4f4;
       color: #333;
-      padding-bottom: 100px; /* Prevents floating chatbot from covering footer */
+      padding-bottom: 100px;
     }
 
     header, section, footer {
@@ -64,6 +64,23 @@
       margin-bottom: 12px;
       font-size: 1.1em;
     }
+
+    .strain {
+      margin-bottom: 16px;
+    }
+
+    .strain h3 {
+      margin: 0 0 4px 0;
+    }
+
+    .strain p {
+      margin: 0;
+    }
+
+    .award {
+      color: #d4af37;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -88,6 +105,31 @@
     <p>Award-winning flower grown with purpose. Explore strains like Mr. Clean, Lilac Diesel, and Lemon Wookie.</p>
   </section>
 
+  <section id="meet-the-strains">
+    <h2>🌿 Meet the Strains</h2>
+
+    <div class="strain">
+      <h3>Mr. Clean <span class="award">🏆</span></h3>
+      <p><strong>Aroma:</strong> Citrus, lemon zest, pine</p>
+      <p><strong>Effects:</strong> Uplifting, mentally clear, great for daytime</p>
+      <p><strong>Key Terpenes:</strong> Limonene, Pinene</p>
+    </div>
+
+    <div class="strain">
+      <h3>Lilac Diesel</h3>
+      <p><strong>Aroma:</strong> Floral, lavender, fuel</p>
+      <p><strong>Effects:</strong> Balanced and creative, good social strain</p>
+      <p><strong>Key Terpenes:</strong> Linalool, Caryophyllene</p>
+    </div>
+
+    <div class="strain">
+      <h3>Lemon Wookie</h3>
+      <p><strong>Aroma:</strong> Funky lemon, cookie dough</p>
+      <p><strong>Effects:</strong> Relaxing, hybrid feel, mood-enhancing</p>
+      <p><strong>Key Terpenes:</strong> Myrcene, Limonene</p>
+    </div>
+  </section>
+
   <section id="gift">
     <h2>🎁 First-Time Customer Gift</h2>
     <p>Get a free 1/8th or edible with your first $30+ purchase (tax included). Ask your budtender for details!</p>
@@ -109,4 +151,7 @@
     function openChatbot() {
       alert("Chatbot coming soon!");
     }
-  </script
+  </script>
+
+</body>
+</html>
