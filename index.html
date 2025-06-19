@@ -2,166 +2,166 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Green Labs</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      background-color: #f4f4f4;
+      background: #f0f4f8;
       color: #333;
-      padding-top: 70px;
-      padding-bottom: 150px;
+      padding-top: 60px;
+      padding-bottom: 140px;
     }
-
     nav {
       background: #00bfa5;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      padding: 10px 0;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       z-index: 1000;
     }
-
     nav ul {
-      list-style: none;
       display: flex;
       justify-content: center;
+      list-style: none;
       margin: 0;
-      padding: 0;
+      padding: 10px 0;
     }
-
     nav li {
-      margin: 0 15px;
+      margin: 0 20px;
     }
-
     nav a {
-      color: white;
+      color: #fff;
       text-decoration: none;
       font-weight: bold;
     }
-
-    section {
-      max-width: 700px;
-      margin: 30px auto;
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
+    nav a:hover {
+      text-decoration: underline;
     }
-
+    section {
+      background: white;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 800px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
     h2 {
       margin-top: 0;
     }
-
-    .deal-item, .strain-card {
-      margin-top: 10px;
-      padding: 10px;
-      background: #f9f9f9;
-      border-radius: 6px;
-    }
-
     footer {
-      max-width: 700px;
-      margin: 20px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 8px;
-      font-size: 14px;
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.9em;
     }
-
-    .floating-buttons {
+    .floating-button {
       position: fixed;
+      right: 20px;
       bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      z-index: 1000;
-    }
-
-    .chatbot-button,
-    .top-button {
       background: #00bfa5;
       color: white;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 30px;
-      font-size: 14px;
-      cursor: pointer;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+      text-decoration: none;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
-
-    .chatbot-button:hover,
-    .top-button:hover {
-      background: #009e8f;
+    .chatbot-button {
+      position: fixed;
+      left: 20px;
+      bottom: 20px;
+      background: #673ab7;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .image-block img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 10px;
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <ul>
-      <li><a href="#nightcap">Home</a></li>
-      <li><a href="#deals">Deals</a></li>
-      <li><a href="#dutch-touch">Dutch Touch</a></li>
-      <li><a href="#loyalty">Loyalty</a></li>
-      <li><a href="#about">About Us</a></li>
-    </ul>
-  </nav>
+<nav>
+  <ul>
+    <li><a href="#nightcap">Home</a></li>
+    <li><a href="#deals">Deals</a></li>
+    <li><a href="#dutch-touch">Dutch Touch</a></li>
+    <li><a href="#brands">Brands</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+</nav>
 
-  <header id="nightcap">
-    <section>
-      <h2>🌙 Nightcap Set</h2>
-      <p>End your day on a high note with our sleep-friendly strains and edibles.</p>
-    </section>
-  </header>
-
-  <section id="deals">
-    <h2>🔥 Today’s Deals</h2>
-    <div class="deal-item">🍇 3 for $20 Gummies</div>
-    <div class="deal-item">🌬️ BOGO 1/2 Off Disposables</div>
-  </section>
-
-  <section id="dutch-touch">
-    <h2>Dutch Touch Genetics</h2>
-    <p>Award-winning flower grown with purpose. Explore strains like Mr. Clean, Lilac Diesel, and Lemon Wookie.</p>
-    <h3>🖼️ Featured Strains</h3>
-    <div class="strain-card">
-      <strong>Mr. Clean 🏆</strong><br>
-      <strong>Aroma:</strong> Lemon, Pine<br>
-      <strong>Effects:</strong> Uplifting, Focused<br>
-      <strong>Terpenes:</strong> Limonene, Pinene
-    </div>
-  </section>
-
-  <section id="loyalty">
-    <h2>🎁 First-Time Customer Gift</h2>
-    <p>Get a free 1/8th or edible with your first $30+ purchase (tax included). Ask your budtender for details!</p>
-    <h3>💰 Loyalty Program</h3>
-    <p>Earn 5% back in points on every purchase. Points can be redeemed for discounts or bonus items in-store!</p>
-  </section>
-
-  <section id="about">
-    <h2>About Us</h2>
-    <p>We’re not just a store—we’re a destination. Home to <strong>Dutch Touch Genetics</strong>, our award-winning in-house brand, we focus on terpene-forward cannabis and tailored recommendations for sleep, stress, energy, and more.</p>
-    <p>We’re committed to uplifting our local area through events, park cleanups, and partnerships that give back to the community. Whether it’s your first visit or you’re a loyal local—we’re here to help you find the right experience, every time.</p>
-  </section>
-
-  <footer>
-    <p>📍 10701 Madison St, Luna Pier, MI 48157 | <a href="tel:7348000024">(734) 800-0024</a></p>
-    <p>Follow us: <a href="https://www.instagram.com/greenlabsmi" target="_blank">Instagram</a> | <a href="https://www.facebook.com/greenlabsmi" target="_blank">Facebook</a></p>
-  </footer>
-
-  <div class="floating-buttons">
-    <button class="top-button" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">🔝 Back to Top</button>
-    <button class="chatbot-button">💬 Need help? Chat with our AI Budtender</button>
+<section id="nightcap">
+  <h2>🌙 Nightcap Set</h2>
+  <p>End your day on a high note with relaxing strains and edibles perfect for winding down.</p>
+  <div class="image-block">
+    <img src="https://via.placeholder.com/800x400?text=Nightcap+Promo" alt="Nightcap Bundle" />
   </div>
+</section>
+
+<section id="deals">
+  <h2>🔥 Today’s Deals</h2>
+  <p>Flash sales and bundle deals updated daily to help you save.</p>
+</section>
+
+<section id="dutch-touch">
+  <h2>🏆 Dutch Touch Genetics</h2>
+  <p>Award-winning in-house flower like Mr. Clean and Lilac Diesel grown with care and purpose.</p>
+  <div class="image-block">
+    <img src="https://via.placeholder.com/800x400?text=Dutch+Touch+Strain" alt="Dutch Touch Flower" />
+  </div>
+</section>
+
+<section id="brands">
+  <h2>💼 Featured Brands</h2>
+  <ul>
+    <li>Dutch Touch Genetics</li>
+    <li>Wyld Edibles</li>
+    <li>Redbud Roots</li>
+    <li>Camino Gummies</li>
+  </ul>
+</section>
+
+<section id="newsletter">
+  <h2>📫 Join Our Newsletter</h2>
+  <p>Get exclusive deals and product drops sent straight to your inbox.</p>
+</section>
+
+<section id="loyalty">
+  <h2>🎁 Loyalty Program</h2>
+  <p>Earn 5% back in points on every purchase. Use points for discounts or exclusive offers. Ask about bonus point days!</p>
+</section>
+
+<section id="about">
+  <h2>📍 About Us</h2>
+  <p>We’re proud to serve Luna Pier with premium cannabis and passionate local involvement. Visit us or shop online today.</p>
+</section>
+
+<section id="map">
+  <h2>📍 Find Us</h2>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2934.3193127434517!2d-83.44587752339347!3d41.80969747124632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883b4642e0329015%3A0xa61e89417b71b9c!2sGreen%20Labs%20Provisions!5e0!3m2!1sen!2sus!4v1718734175410!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+<footer>
+  <p>© 2025 Green Labs – 10701 Madison St, Luna Pier, MI</p>
+</footer>
+
+<a href="#nightcap" class="floating-button">🔝 Back to Top</a>
+<a href="#" class="chatbot-button">💬 Chat with Budtender</a>
 
 </body>
 </html>
