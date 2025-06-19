@@ -2,15 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Green Labs – Homepage</title>
   <style>
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #f8f8f8;
+      margin: 0;
+      background-color: #f6f6f6;
     }
 
+    /* Navigation */
     nav {
       background-color: #1E2E1E;
       padding: 14px 20px;
@@ -23,31 +24,33 @@
     }
 
     nav a {
-      color: #ffffff;
-      margin: 0 12px;
+      color: white;
       text-decoration: none;
+      margin: 0 12px;
+      font-weight: bold;
     }
 
     nav a:hover {
       text-decoration: underline;
     }
 
-    nav strong {
-      color: #8ef55f;
+    nav .logo {
+      color: #9DF169;
+      font-size: 20px;
+      font-weight: bold;
     }
 
-    /* Carousel Banner */
+    /* Carousel */
     #banner-carousel {
       position: relative;
       max-width: 100%;
       overflow: hidden;
-      border-radius: 12px;
     }
 
     .banner-track {
       display: flex;
-      width: 400%;
       transition: transform 0.5s ease-in-out;
+      width: 400%;
     }
 
     .banner-slide {
@@ -57,9 +60,8 @@
 
     .banner-slide img {
       width: 100%;
-      height: auto;
-      max-height: 260px;
-      object-fit: cover;
+      height: 100%;
+      object-fit: contain;
       border-radius: 12px;
       background-color: #000;
     }
@@ -85,181 +87,155 @@
 
     @media (max-width: 600px) {
       .banner-slide img {
-        max-height: 180px;
+        height: 180px;
       }
     }
 
-    /* Hero Section */
+    /* Hero Box */
     .hero {
-      background-color: #244322;
-      color: white;
-      padding: 32px 16px;
+      background-color: #204020;
+      padding: 32px;
       text-align: center;
-      border-radius: 16px;
+      color: white;
       margin: 16px;
+      border-radius: 20px;
     }
 
     .hero h2 {
-      font-size: 22px;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      font-size: 16px;
-      margin-bottom: 20px;
+      font-size: 24px;
     }
 
     .hero button {
-      padding: 10px 20px;
-      background-color: #c6ff99;
+      margin-top: 14px;
+      background-color: #ccff99;
+      color: #002200;
+      padding: 12px 20px;
+      font-weight: bold;
       border: none;
-      border-radius: 8px;
-      font-size: 16px;
+      border-radius: 12px;
       cursor: pointer;
     }
 
-    /* Daily Deals */
-    .deal-box {
-      background-color: white;
-      margin: 16px;
-      padding: 20px;
+    .hero button:hover {
+      background-color: #bdf286;
+    }
+
+    /* Deals */
+    .deal-card {
+      background: white;
       border-radius: 16px;
+      padding: 20px;
+      margin: 16px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    /* About Section */
-    .about {
-      margin: 16px;
-      padding: 16px;
-      background-color: #eef1ec;
-      border-radius: 12px;
-    }
-
-    /* Map Embed */
-    .map-container {
-      margin: 16px;
-      border-radius: 12px;
-      overflow: hidden;
     }
 
     /* Footer */
     footer {
-      background-color: #1E2E1E;
-      color: white;
-      padding: 20px;
       text-align: center;
+      font-size: 14px;
+      padding: 24px 8px;
+      color: #555;
     }
 
-    footer a {
-      color: #a0ff85;
-      margin: 0 10px;
-      text-decoration: none;
+    iframe {
+      border: none;
+      width: 100%;
+      height: 200px;
+      border-radius: 12px;
+      margin-top: 12px;
     }
   </style>
 </head>
-<body>
 
+<body>
   <!-- Navbar -->
   <nav>
-    <div><strong>Green Labs</strong></div>
+    <div class="logo">Green Labs</div>
     <div>
-      <a href="#deals">Deals</a>
-      <a href="#about">About</a>
-      <a href="#dutch">Dutch Touch</a>
-      <a href="#faq">FAQ</a>
-      <a href="#chat">Chat</a>
+      <a href="#">Deals</a>
+      <a href="#">About</a>
+      <a href="#">Dutch Touch</a>
+      <a href="#">FAQ</a>
+      <a href="#">Chat</a>
     </div>
   </nav>
 
-  <!-- Banner Carousel -->
-  <div id="banner-carousel">
-    <div class="banner-track" id="banner-track">
-      <div class="banner-slide"><img src="banner-doubledutchcookies.jpg" alt="Double Dutch Cookies"></div>
-      <div class="banner-slide"><img src="banner-bestingrass.jpg" alt="Best in Grass"></div>
-      <div class="banner-slide"><img src="banner-dutchbreath.jpg" alt="Dutch Breath"></div>
-      <div class="banner-slide"><img src="banner-10k.jpg" alt="New Strain 10K"></div>
+  <!-- Carousel -->
+  <section id="banner-carousel">
+    <div class="banner-track" id="carouselTrack">
+      <div class="banner-slide">
+        <img src="https://raw.githubusercontent.com/greenlabsmi/Green-labs-site/main/assets/banner-doubledutchcookies.jpg" alt="Double Dutch Cookies">
+      </div>
+      <div class="banner-slide">
+        <img src="https://raw.githubusercontent.com/greenlabsmi/Green-labs-site/main/assets/banner-dutchbreath.jpg" alt="Dutch Breath">
+      </div>
+      <div class="banner-slide">
+        <img src="https://raw.githubusercontent.com/greenlabsmi/Green-labs-site/main/assets/banner-10k.jpg" alt="Dutch Touch 10K">
+      </div>
+      <div class="banner-slide">
+        <img src="https://raw.githubusercontent.com/greenlabsmi/Green-labs-site/main/assets/banner-bestingrass.jpg" alt="Best In Grass">
+      </div>
     </div>
-  </div>
-  <div class="carousel-dots" id="carousel-dots"></div>
-
-  <!-- Hero / AI Budtender Prompt -->
-  <section class="hero" id="deals">
-    <h2>🔥 Today’s Deals at Green Labs</h2>
-    <p>Award-winning flower, edibles, and RSO — now with AI-powered shopping support.</p>
-    <button onclick="window.location='#chat'">💬 Open AI Budtender</button>
+    <div class="carousel-dots">
+      <span class="carousel-dot active" onclick="goToSlide(0)"></span>
+      <span class="carousel-dot" onclick="goToSlide(1)"></span>
+      <span class="carousel-dot" onclick="goToSlide(2)"></span>
+      <span class="carousel-dot" onclick="goToSlide(3)"></span>
+    </div>
   </section>
 
-  <!-- Daily Deals Example -->
-  <div class="deal-box">
+  <!-- Hero Section -->
+  <div class="hero">
+    <h2>🔥 Today’s Deals at Green Labs</h2>
+    <p>Award-winning flower, edibles, and RSO — now with AI-powered shopping support.</p>
+    <button>💬 Open AI Budtender</button>
+  </div>
+
+  <!-- Deal Card -->
+  <div class="deal-card">
     <h3>3 for $20</h3>
     <p>200mg Dutch Touch RSO Gummies</p>
     <p>🍒 Berry Burst • 💥 Crunch • 🍇 Crunch Grape</p>
   </div>
 
-  <!-- About Us -->
-  <div class="about" id="about">
-    <h3>About Green Labs 🌱</h3>
-    <p>Located in Luna Pier, Michigan, Green Labs is proud to serve the community with kindness, quality, and care. We support local beach cleanups, park renovations, and charitable events. Stop in and experience our award-winning Dutch Touch Genetics brand today!</p>
-  </div>
-
-  <!-- Google Map -->
-  <div class="map-container">
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3031.625948515982!2d-83.4425!3d41.806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883b2f914df5e0e1%3A0xa34c7eac83e0a3b5!2sGreen%20Labs%20Provisions!5e0!3m2!1sen!2sus!4v1718210400000"
-      width="100%"
-      height="250"
-      style="border:0;"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-    ></iframe>
-  </div>
-
-  <!-- Footer -->
+  <!-- Footer & Map -->
   <footer>
-    <p>10701 Madison St, Luna Pier, MI 48157 • (734) 800-0024</p>
-    <p>
-      <a href="https://www.instagram.com/greenlabsmi" target="_blank">Instagram</a> |
-      <a href="https://www.facebook.com/greenlabsmi" target="_blank">Facebook</a>
-    </p>
+    <p>10701 Madison St, Luna Pier, MI 48157</p>
+    <p>(734) 800-0024</p>
+    <a href="https://www.instagram.com/greenlabsmi" target="_blank">Instagram</a> • 
+    <a href="https://www.facebook.com/greenlabsmi" target="_blank">Facebook</a>
+    <iframe src="https://www.google.com/maps?q=10701+Madison+St,+Luna+Pier,+MI&output=embed"></iframe>
   </footer>
 
   <!-- Carousel Script -->
   <script>
-    const track = document.getElementById('banner-track');
-    const dotsContainer = document.getElementById('carousel-dots');
-    const slides = document.querySelectorAll('.banner-slide');
-    let index = 0;
-    let interval;
+    let currentSlide = 0;
+    const totalSlides = 4;
+    const track = document.getElementById("carouselTrack");
+    const dots = document.querySelectorAll(".carousel-dot");
 
-    slides.forEach((_, i) => {
-      const dot = document.createElement('span');
-      dot.classList.add('carousel-dot');
-      if (i === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => {
-        index = i;
-        updateCarousel();
-      });
-      dotsContainer.appendChild(dot);
-    });
-
-    function updateCarousel() {
-      track.style.transform = `translateX(-${index * 100}%)`;
-      document.querySelectorAll('.carousel-dot').forEach((dot, i) =>
-        dot.classList.toggle('active', i === index)
-      );
+    function goToSlide(slide) {
+      currentSlide = slide;
+      const offset = slide * -100;
+      track.style.transform = `translateX(${offset}%)`;
+      dots.forEach(dot => dot.classList.remove("active"));
+      dots[slide].classList.add("active");
     }
 
     function autoSlide() {
-      index = (index + 1) % slides.length;
-      updateCarousel();
+      currentSlide = (currentSlide + 1) % totalSlides;
+      goToSlide(currentSlide);
     }
 
-    interval = setInterval(autoSlide, 4000);
+    let slideInterval = setInterval(autoSlide, 5000);
 
-    track.addEventListener('mouseover', () => clearInterval(interval));
-    track.addEventListener('mouseleave', () => interval = setInterval(autoSlide, 4000));
+    document.getElementById("banner-carousel").addEventListener("mouseenter", () => {
+      clearInterval(slideInterval);
+    });
+
+    document.getElementById("banner-carousel").addEventListener("mouseleave", () => {
+      slideInterval = setInterval(autoSlide, 5000);
+    });
   </script>
-
 </body>
 </html>
