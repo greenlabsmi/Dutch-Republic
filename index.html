@@ -91,6 +91,36 @@
       border: none;
       border-radius: 10px;
     }
+    .button-container {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 999;
+}
+
+.button-container a {
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  color: white;
+  width: 250px;
+  text-align: center;
+}
+
+.chatbot-button {
+  background: #673ab7;
+}
+
+.floating-button {
+  background: #00bfa5;
+}
   </style>
 </head>
 <body>
@@ -162,6 +192,15 @@
 
 <a href="#nightcap" class="floating-button">🔝 Back to Top</a>
 <a href="#" class="chatbot-button">💬 Chat with Budtender</a>
-
+<!-- Button Container (Chat + Back to Top) -->
+<div class="button-container">
+  <a href="#" class="chatbot-button">💬 Chat with Budtender</a>
+  <a href="#nightcap" class="floating-button">🔝 Back to Top</a>
+</div>
+  <!-- Button Container (Chat + Back to Top) -->
+<div class="button-container">
+  <a href="#" class="chatbot-button">💬 Chat with Budtender</a>
+  <a href="#nightcap" class="floating-button">🔝 Back to Top</a>
+</div>
 </body>
 </html>
