@@ -3,34 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Green Labs - Homepage</title>
+  <title>Green Labs – Homepage</title>
   <style>
-    /* Carousel Banner */
-    #banner-carousel {
-      position: relative;
-      max-width: 100%;
-      overflow: hidden;
-    }
-
-    .banner-track {
-      display: flex;
-      width: 400%;
-      transition: transform 0.5s ease-in-out;
-    }
-
-    .banner-slide {
-      flex: 0 0 100%;
-      scroll-snap-align: center;
-      text-align: center;
-    }
-
-    .banner-slide img {
-  width: 100%;
-  height: auto;
-  max-height: 240px;
-  object-fit: contain;
-  background-color: #000; /* Optional: adds black bars behind wide images */
-
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      color: #000;
     }
 
     /* Navigation */
@@ -45,277 +24,213 @@
       z-index: 1000;
     }
 
-    nav h1 {
-      color: #B3E283;
-      font-size: 18px;
-      margin: 0;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 16px;
-      font-size: 14px;
-    }
-
-    /* Hero Section */
-    .hero-banner {
-      background: linear-gradient(to right, #1E2E1E, #3F5843);
-      color: white;
-      text-align: center;
-      padding: 30px 20px 25px;
-    }
-
-    .hero-banner h2 {
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-
-    .hero-banner p {
-      font-size: 16px;
-      margin: 0 auto 15px;
-      max-width: 340px;
-    }
-
-    .hero-banner a.button {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 12px 22px;
-      background: #B3E283;
-      color: #1E2E1E;
-      border-radius: 8px;
+    nav .logo {
       font-weight: bold;
-      text-decoration: none;
-      font-size: 16px;
+      font-size: 1.5rem;
+      color: #A4D65E;
     }
 
-    /* Deal Tiles */
-    .deal-tiles {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-      padding: 24px 20px;
-    }
-
-    .deal-tile {
-      background: #ffffff;
-      padding: 16px;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-    }
-
-    .deal-tile h3 {
-      font-size: 17px;
-      margin-bottom: 6px;
-      color: #222;
-    }
-
-    .deal-tile p {
-      font-size: 15px;
-      margin: 0;
-      color: #444;
-    }
-
-    .deal-tile span {
-      font-size: 13px;
-      color: #6C757D;
-      display: block;
-      margin-top: 5px;
-    }
-
-    .section {
-      padding: 30px 20px;
-      background: #ffffff;
-    }
-
-    .section h2 {
-      font-size: 20px;
-      margin-bottom: 10px;
-      text-align: center;
-    }
-
-    .section p, .faq-item {
-      font-size: 15px;
-      color: #444;
-      margin-bottom: 10px;
-    }
-
-    .faq-item strong {
-      display: block;
-      margin-top: 10px;
-    }
-
-    footer {
-      background: #1E2E1E;
+    nav .links a {
       color: white;
-      text-align: center;
-      padding: 30px 20px;
-    }
-
-    footer a {
-      color: #B3E283;
       text-decoration: none;
+      margin-left: 20px;
+      font-size: 1rem;
     }
 
-    .fixed-chat-cta {
+    /* Carousel Container */
+    #banner-carousel {
+      position: relative;
+      overflow: hidden;
+      max-width: 100%;
+      border-radius: 12px;
+      margin: 0 auto;
+    }
+
+    .banner-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 400%;
+    }
+
+    .banner-slide {
+      flex: 0 0 100%;
+      text-align: center;
+    }
+
+    .banner-slide img {
+      width: 100%;
+      height: auto;
+      max-height: 240px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    @media (max-width: 600px) {
+      .banner-slide img {
+        max-height: 180px;
+      }
+    }
+
+    /* Dot Indicators */
+    .carousel-dots {
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    .carousel-dot {
+      height: 10px;
+      width: 10px;
+      margin: 0 4px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .carousel-dot.active {
+      background-color: #333;
+    }
+
+    /* Deals Section */
+    .deals-section {
+      text-align: center;
+      background: #224422;
+      color: white;
+      padding: 40px 20px;
+      border-radius: 12px;
+      margin: 20px;
+    }
+
+    .deals-section h2 {
+      font-size: 1.8rem;
+    }
+
+    .open-chat {
+      background-color: #C4F084;
+      color: black;
+      padding: 14px 24px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    .deal-box {
+      margin: 20px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      font-size: 1rem;
+    }
+
+    .chat-bubble {
       position: fixed;
       bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
-      background: #1E2E1E;
+      background-color: #1E2E1E;
       color: white;
-      padding: 14px 26px;
+      padding: 12px 20px;
       border-radius: 40px;
       font-weight: bold;
-      font-size: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      z-index: 999;
-      text-align: center;
-    }
-
-    .fixed-chat-cta:hover {
-      background: #2b3d2b;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       cursor: pointer;
-    }
-
-    @media (min-width: 600px) {
-      .deal-tiles {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      nav h1 {
-        font-size: 20px;
-      }
-
-      nav a {
-        font-size: 15px;
-      }
     }
   </style>
 </head>
+
 <body>
-
-<!-- Auto-Rotating Carousel -->
-<div id="banner-carousel">
-  <div class="banner-track" id="bannerTrack">
-    <div class="banner-slide">
-      <a href="/deals#doubledutchcookies">
-        <img src="images/banner-doubledutchcookies.jpg" alt="Double Dutch Cookies">
-      </a>
-    </div>
-    <div class="banner-slide">
-      <a href="/deals#dutchbreath">
-        <img src="images/banner-dutchbreath.jpg" alt="Dutch Breath">
-      </a>
-    </div>
-    <div class="banner-slide">
-      <a href="/deals#10k">
-        <img src="images/banner-10k.jpg" alt="Dutch Touch 10K">
-      </a>
-    </div>
-    <div class="banner-slide">
-      <a href="/deals#bestingrass">
-        <img src="images/banner-bestingrass.jpg" alt="Best in Grass">
-      </a>
+  <!-- Carousel -->
+  <div id="banner-carousel">
+    <div class="banner-track">
+      <div class="banner-slide"><img src="images/banner-doubledutchcookies.jpg" alt="Double Dutch Cookies" /></div>
+      <div class="banner-slide"><img src="images/banner-dutchbreath.jpg" alt="Dutch Breath" /></div>
+      <div class="banner-slide"><img src="images/banner-10k.jpg" alt="Dutch Touch 10K" /></div>
+      <div class="banner-slide"><img src="images/banner-bestingrass.jpg" alt="Best in Grass" /></div>
     </div>
   </div>
-</div>
 
-<!-- Navigation -->
-<nav>
-  <h1>Green Labs</h1>
-  <div>
-    <a href="#deals">Deals</a>
-    <a href="#about">About</a>
-    <a href="#dutch">Dutch Touch</a>
-    <a href="#faq">FAQ</a>
-    <a href="#chatbot">Chat</a>
+  <!-- Dot Controls -->
+  <div class="carousel-dots">
+    <span class="carousel-dot active" onclick="goToSlide(0)"></span>
+    <span class="carousel-dot" onclick="goToSlide(1)"></span>
+    <span class="carousel-dot" onclick="goToSlide(2)"></span>
+    <span class="carousel-dot" onclick="goToSlide(3)"></span>
   </div>
-</nav>
 
-<!-- Hero -->
-<section class="hero-banner">
-  <h2>🔥 Today’s Deals at Green Labs</h2>
-  <p>Award-winning flower, edibles, and RSO — now with AI-powered shopping support.</p>
-  <a class="button" href="#chatbot">💬 Open AI Budtender</a>
-</section>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">Green Labs</div>
+    <div class="links">
+      <a href="#">Deals</a>
+      <a href="#">About</a>
+      <a href="#">Dutch Touch</a>
+      <a href="#">FAQ</a>
+      <a href="#">Chat</a>
+    </div>
+  </nav>
 
-<!-- Deal Tiles -->
-<section id="deals" class="deal-tiles">
-  <div class="deal-tile">
-    <h3>3 for $20</h3>
-    <p>200mg Dutch Touch RSO Gummies</p>
-    <span>🍒 Berry Burst • 💥 Crunch</span>
+  <!-- Deals Section -->
+  <div class="deals-section">
+    <h2>🔥 Today’s Deals at Green Labs</h2>
+    <p>Award-winning flower, edibles, and RSO — now with AI-powered shopping support.</p>
+    <button class="open-chat">💬 Open AI Budtender</button>
   </div>
-  <div class="deal-tile">
-    <h3>Save $25</h3>
-    <p>Lilac Diesel • $125/Oz</p>
-    <span>🏆 Cup-Winning Strain</span>
+
+  <!-- Deal Example -->
+  <div class="deal-box">
+    <strong>3 for $20</strong><br/>
+    200mg Dutch Touch RSO Gummies<br/>
+    🍒 Berry Burst • 💥 Crunch
   </div>
-  <div class="deal-tile">
-    <h3>6 for $40</h3>
-    <p>1.2g Liquid Diamond Pre-Rolls</p>
-    <span>⚡ Potent & Smooth</span>
-  </div>
-  <div class="deal-tile">
-    <h3>New Customer Gift</h3>
-    <p>Free 1/8 or Edible with $30+ order</p>
-    <span>🎁 Ask AI Budtender in Chat</span>
-  </div>
-</section>
 
-<!-- About -->
-<section id="about" class="section">
-  <h2>About Green Labs 🌿</h2>
-  <p>We’re proud to be Luna Pier’s local cannabis destination, supporting the community with beach cleanups, park renovations, and award-winning products from Dutch Touch Genetics.</p>
-</section>
+  <!-- Chat Bubble -->
+  <div class="chat-bubble">💬 Chat with Your AI Budtender</div>
 
-<!-- Dutch Touch -->
-<section id="dutch" class="section">
-  <h2>Dutch Touch Genetics</h2>
-  <p>🌟 Our in-house brand, winner of the High Times and Best in Grass competitions.</p>
-  <p>🏆 Mr. Clean — 1st Place Medical Sativa<br>
-     🥈 Lilac Diesel — 2nd Place<br>
-     🥇 Death By Funk — Best in Grass Rosin</p>
-  <p>Explore terpene-driven effects and custom strain profiles in-store and online soon.</p>
-</section>
+  <!-- Carousel Script -->
+  <script>
+    let currentSlide = 0;
+    const track = document.querySelector('.banner-track');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const slides = document.querySelectorAll('.banner-slide');
+    let interval;
 
-<!-- FAQ -->
-<section id="faq" class="section">
-  <h2>Cannabis Education 💡</h2>
-  <div class="faq-item"><strong>What is RSO?</strong> Full-spectrum extract known for deep relaxation and long-lasting effects. Ideal for sleep, pain, or high tolerance users.</div>
-  <div class="faq-item"><strong>What is TAC?</strong> Total Active Cannabinoids — the full amount of THC, CBD, and other active compounds in your product.</div>
-  <div class="faq-item"><strong>Does THC percentage matter?</strong> Not really! Terpenes and cannabinoid synergy drive the experience more than a % number. Ask our AI budtender to shop by mood instead.</div>
-</section>
+    function goToSlide(index) {
+      currentSlide = index;
+      const offset = -index * 100;
+      track.style.transform = `translateX(${offset}%)`;
+      updateDots();
+    }
 
-<!-- Footer -->
-<footer>
-  <p>📍 10701 Madison St, Luna Pier, MI 48157</p>
-  <p>📞 (734) 800-0024</p>
-  <p>📱 Follow us:
-    <a href="https://www.instagram.com/greenlabsmi" target="_blank">Instagram</a> |
-    <a href="https://www.facebook.com/greenlabsmi" target="_blank">Facebook</a>
-  </p>
-</footer>
+    function updateDots() {
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[currentSlide].classList.add('active');
+    }
 
-<!-- Floating Chat CTA -->
-<div class="fixed-chat-cta">
-  💬 Chat with Your AI Budtender
-</div>
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      goToSlide(currentSlide);
+    }
 
-<!-- Auto-Rotation Script -->
-<script>
-  let bannerIndex = 0;
-  const bannerTrack = document.getElementById('bannerTrack');
-  const totalSlides = bannerTrack.children.length;
+    function startAutoSlide() {
+      interval = setInterval(nextSlide, 5000);
+    }
 
-  function rotateBanner() {
-    bannerIndex = (bannerIndex + 1) % totalSlides;
-    bannerTrack.style.transform = `translateX(-${bannerIndex * 100}%)`;
-  }
+    function stopAutoSlide() {
+      clearInterval(interval);
+    }
 
-  setInterval(rotateBanner, 5000); // every 5 seconds
-</script>
+    // Start rotation and support touch/pause
+    startAutoSlide();
 
+    const carousel = document.getElementById('banner-carousel');
+    carousel.addEventListener('mouseover', stopAutoSlide);
+    carousel.addEventListener('mouseout', startAutoSlide);
+    carousel.addEventListener('touchstart', stopAutoSlide);
+    carousel.addEventListener('touchend', startAutoSlide);
+  </script>
 </body>
 </html>
