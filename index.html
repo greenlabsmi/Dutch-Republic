@@ -5,28 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Green Labs - Homepage</title>
   <style>
+    /* Banner Carousel */
     #banner-carousel {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  gap: 12px;
-  padding: 10px;
-}
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 12px;
+      padding: 10px;
+    }
 
-#banner-carousel a {
-  flex: 0 0 auto;
-  scroll-snap-align: center;
-  text-align: center;
-}
+    #banner-carousel a {
+      flex: 0 0 auto;
+      scroll-snap-align: center;
+      text-align: center;
+    }
 
-.banner-img {
-  height: auto;
-  width: 100%;
-  max-width: 1290px;
-  border-radius: 8px;
-  object-fit: cover;
-}
+    .banner-img {
+      height: auto;
+      width: 100%;
+      max-width: 1290px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
 
+    /* Navigation */
     nav {
       background-color: #1E2E1E;
       padding: 14px 20px;
@@ -51,45 +53,7 @@
       font-size: 14px;
     }
 
-    .carousel {
-      position: relative;
-      max-width: 100%;
-      overflow: hidden;
-    }
-
-    .slides {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-      width: 400%;
-    }
-
-    .slide {
-      min-width: 100%;
-      box-sizing: border-box;
-    }
-
-    .slide img {
-      width: 100%;
-      display: block;
-    }
-
-    .carousel-buttons {
-      position: absolute;
-      width: 100%;
-      top: 50%;
-      display: flex;
-      justify-content: space-between;
-      transform: translateY(-50%);
-    }
-
-    .carousel-buttons button {
-      background-color: rgba(0, 0, 0, 0.5);
-      color: white;
-      border: none;
-      padding: 10px;
-      cursor: pointer;
-    }
-
+    /* Hero */
     .hero-banner {
       background: linear-gradient(to right, #1E2E1E, #3F5843);
       color: white;
@@ -120,6 +84,7 @@
       font-size: 16px;
     }
 
+    /* Deal Tiles */
     .deal-tiles {
       display: grid;
       grid-template-columns: 1fr;
@@ -153,6 +118,7 @@
       margin-top: 5px;
     }
 
+    /* Section Content */
     .section {
       padding: 30px 20px;
       background: #ffffff;
@@ -175,6 +141,7 @@
       margin-top: 10px;
     }
 
+    /* Footer */
     footer {
       background: #1E2E1E;
       color: white;
@@ -187,6 +154,7 @@
       text-decoration: none;
     }
 
+    /* Floating Chat CTA */
     .fixed-chat-cta {
       position: fixed;
       bottom: 20px;
@@ -224,6 +192,20 @@
   </style>
 </head>
 <body>
+
+<!-- Navigation -->
+<nav>
+  <h1>Green Labs</h1>
+  <div>
+    <a href="#deals">Deals</a>
+    <a href="#about">About</a>
+    <a href="#dutch">Dutch Touch</a>
+    <a href="#faq">FAQ</a>
+    <a href="#chatbot">Chat</a>
+  </div>
+</nav>
+
+<!-- Banner Carousel -->
 <div id="banner-carousel">
   <a href="/deals#doubledutchcookies">
     <img src="images/banner-doubledutchcookies.jpg" alt="Double Dutch Cookies" class="banner-img">
@@ -238,31 +220,6 @@
     <img src="images/banner-bestingrass.jpg" alt="Best in Grass Submissions" class="banner-img">
   </a>
 </div>
-<!-- Navigation -->
-<nav>
-  <h1>Green Labs</h1>
-  <div>
-    <a href="#deals">Deals</a>
-    <a href="#about">About</a>
-    <a href="#dutch">Dutch Touch</a>
-    <a href="#faq">FAQ</a>
-    <a href="#chatbot">Chat</a>
-  </div>
-</nav>
-
-<!-- Carousel -->
-<section class="carousel">
-  <div class="slides" id="slides">
-    <div class="slide"><img src="DoubleDutchCookies_Banner.png" alt="Double Dutch Cookies"></div>
-    <div class="slide"><img src="DutchBreath_Banner.png" alt="Dutch Breath"></div>
-    <div class="slide"><img src="DutchTouch_10K_Banner.png" alt="Dutch Touch 10K"></div>
-    <div class="slide"><img src="BestInGrass_2025_Banner.png" alt="Best in Grass 2025"></div>
-  </div>
-  <div class="carousel-buttons">
-    <button onclick="prevSlide()">❮</button>
-    <button onclick="nextSlide()">❯</button>
-  </div>
-</section>
 
 <!-- Hero -->
 <section class="hero-banner">
@@ -270,6 +227,7 @@
   <p>Award-winning flower, edibles, and RSO — now with AI-powered shopping support.</p>
   <a class="button" href="#chatbot">💬 Open AI Budtender</a>
 </section>
+
 <!-- Deal Tiles -->
 <section id="deals" class="deal-tiles">
   <div class="deal-tile">
@@ -332,27 +290,6 @@
 <div class="fixed-chat-cta">
   💬 Chat with Your AI Budtender
 </div>
-
-<script>
-  let currentIndex = 0;
-  const slides = document.getElementById("slides");
-
-  function showSlide(index) {
-    slides.style.transform = "translateX(" + (-index * 100) + "%)";
-  }
-
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % 4;
-    showSlide(currentIndex);
-  }
-
-  function prevSlide() {
-    currentIndex = (currentIndex - 1 + 4) % 4;
-    showSlide(currentIndex);
-  }
-
-  setInterval(nextSlide, 5000); // Auto-advance every 5 seconds
-</script>
 
 </body>
 </html>
