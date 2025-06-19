@@ -2,54 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Green Labs – Homepage</title>
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #fff;
-      color: #000;
+      font-family: sans-serif;
+      background-color: #f5f5f5;
     }
 
-    /* Navigation */
-    nav {
-      background-color: #1E2E1E;
-      padding: 14px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    nav .logo {
-      font-weight: bold;
-      font-size: 1.5rem;
-      color: #A4D65E;
-    }
-
-    nav .links a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
-      font-size: 1rem;
-    }
-
-    /* Carousel Container */
+    /* Carousel Banner */
     #banner-carousel {
       position: relative;
-      overflow: hidden;
       max-width: 100%;
-      border-radius: 12px;
-      margin: 0 auto;
+      overflow: hidden;
     }
 
     .banner-track {
       display: flex;
-      transition: transform 0.5s ease-in-out;
       width: 400%;
+      transition: transform 0.5s ease-in-out;
     }
 
     .banner-slide {
@@ -57,19 +29,20 @@
       text-align: center;
     }
 
-   .banner-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 12px;
-  background-color: #000;
-}
+    .banner-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      background-color: #000;
+      max-height: 260px;
+    }
 
-@media (max-width: 600px) {
-  .banner-slide img {
-    height: 180px;
-
-}
+    @media (max-width: 600px) {
+      .banner-slide img {
+        max-height: 180px;
+      }
+    }
 
     /* Dot Indicators */
     .carousel-dots {
@@ -91,146 +64,144 @@
       background-color: #333;
     }
 
-    /* Deals Section */
-    .deals-section {
-      text-align: center;
-      background: #224422;
-      color: white;
-      padding: 40px 20px;
-      border-radius: 12px;
-      margin: 20px;
-    }
-
-    .deals-section h2 {
-      font-size: 1.8rem;
-    }
-
-    .open-chat {
-      background-color: #C4F084;
-      color: black;
-      padding: 14px 24px;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      margin-top: 20px;
-      cursor: pointer;
-    }
-
-    .deal-box {
-      margin: 20px;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      font-size: 1rem;
-    }
-
-    .chat-bubble {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
+    /* Navigation */
+    nav {
       background-color: #1E2E1E;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
       color: white;
-      padding: 12px 20px;
-      border-radius: 40px;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    .nav-left {
       font-weight: bold;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      color: #A1FF8A;
+    }
+
+    .hero {
+      background: #214321;
+      padding: 20px;
+      text-align: center;
+      color: white;
+      border-radius: 18px;
+      margin: 20px;
+    }
+
+    .hero button {
+      background: #c4ff99;
+      padding: 12px 18px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      margin-top: 12px;
       cursor: pointer;
     }
   </style>
 </head>
-
 <body>
+
   <!-- Carousel -->
   <div id="banner-carousel">
     <div class="banner-track">
-      <div class="banner-slide"><img src="images/banner-doubledutchcookies.jpg" alt="Double Dutch Cookies" /></div>
-      <div class="banner-slide"><img src="images/banner-dutchbreath.jpg" alt="Dutch Breath" /></div>
-      <div class="banner-slide"><img src="images/banner-10k.jpg" alt="Dutch Touch 10K" /></div>
-      <div class="banner-slide"><img src="images/banner-bestingrass.jpg" alt="Best in Grass" /></div>
+      <div class="banner-slide"><img src="banner-doubledutchcookies.jpg" alt="Double Dutch Cookies" /></div>
+      <div class="banner-slide"><img src="banner-bestingrass.jpg" alt="Best in Grass" /></div>
+      <div class="banner-slide"><img src="banner-dutchbreath.jpg" alt="Dutch Breath" /></div>
+      <div class="banner-slide"><img src="banner-10k.jpg" alt="10K" /></div>
     </div>
   </div>
-
-  <!-- Dot Controls -->
   <div class="carousel-dots">
-    <span class="carousel-dot active" onclick="goToSlide(0)"></span>
-    <span class="carousel-dot" onclick="goToSlide(1)"></span>
-    <span class="carousel-dot" onclick="goToSlide(2)"></span>
-    <span class="carousel-dot" onclick="goToSlide(3)"></span>
+    <span class="carousel-dot active"></span>
+    <span class="carousel-dot"></span>
+    <span class="carousel-dot"></span>
+    <span class="carousel-dot"></span>
   </div>
 
   <!-- Navigation -->
   <nav>
-    <div class="logo">Green Labs</div>
-    <div class="links">
-      <a href="#">Deals</a>
-      <a href="#">About</a>
-      <a href="#">Dutch Touch</a>
-      <a href="#">FAQ</a>
-      <a href="#">Chat</a>
+    <div class="nav-left">Green Labs</div>
+    <div>
+      <a href="#deals">Deals</a>
+      <a href="#about">About</a>
+      <a href="#dutch-touch">Dutch Touch</a>
+      <a href="#faq">FAQ</a>
+      <a href="#chat">Chat</a>
     </div>
   </nav>
 
-  <!-- Deals Section -->
-  <div class="deals-section">
+  <!-- Hero Section -->
+  <div class="hero">
     <h2>🔥 Today’s Deals at Green Labs</h2>
     <p>Award-winning flower, edibles, and RSO — now with AI-powered shopping support.</p>
-    <button class="open-chat">💬 Open AI Budtender</button>
+    <button onclick="window.location='#chat'">💬 Open AI Budtender</button>
   </div>
 
-  <!-- Deal Example -->
-  <div class="deal-box">
-    <strong>3 for $20</strong><br/>
-    200mg Dutch Touch RSO Gummies<br/>
-    🍒 Berry Burst • 💥 Crunch
-  </div>
-
-  <!-- Chat Bubble -->
-  <div class="chat-bubble">💬 Chat with Your AI Budtender</div>
-
-  <!-- Carousel Script -->
   <script>
-    let currentSlide = 0;
     const track = document.querySelector('.banner-track');
     const dots = document.querySelectorAll('.carousel-dot');
-    const slides = document.querySelectorAll('.banner-slide');
+    let index = 0;
     let interval;
 
-    function goToSlide(index) {
-      currentSlide = index;
-      const offset = -index * 100;
-      track.style.transform = `translateX(${offset}%)`;
-      updateDots();
-    }
-
-    function updateDots() {
+    function updateCarousel() {
+      track.style.transform = `translateX(-${index * 100}%)`;
       dots.forEach(dot => dot.classList.remove('active'));
-      dots[currentSlide].classList.add('active');
+      dots[index].classList.add('active');
     }
 
-    function nextSlide() {
-      currentSlide = (currentSlide + 1) % slides.length;
-      goToSlide(currentSlide);
+    function goToSlide(i) {
+      index = i;
+      updateCarousel();
+      resetInterval();
     }
 
-    function startAutoSlide() {
-      interval = setInterval(nextSlide, 5000);
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => goToSlide(i));
+    });
+
+    function startInterval() {
+      interval = setInterval(() => {
+        index = (index + 1) % dots.length;
+        updateCarousel();
+      }, 5000);
     }
 
-    function stopAutoSlide() {
+    function resetInterval() {
       clearInterval(interval);
+      startInterval();
     }
 
-    // Start rotation and support touch/pause
-    startAutoSlide();
+    // Pause on hover
+    document.querySelector('#banner-carousel').addEventListener('mouseenter', () => clearInterval(interval));
+    document.querySelector('#banner-carousel').addEventListener('mouseleave', () => startInterval());
 
-    const carousel = document.getElementById('banner-carousel');
-    carousel.addEventListener('mouseover', stopAutoSlide);
-    carousel.addEventListener('mouseout', startAutoSlide);
-    carousel.addEventListener('touchstart', stopAutoSlide);
-    carousel.addEventListener('touchend', startAutoSlide);
+    // Swipe support
+    let startX = 0;
+    track.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    });
+
+    track.addEventListener('touchend', (e) => {
+      const endX = e.changedTouches[0].clientX;
+      if (startX - endX > 50) {
+        index = (index + 1) % dots.length;
+      } else if (endX - startX > 50) {
+        index = (index - 1 + dots.length) % dots.length;
+      }
+      updateCarousel();
+      resetInterval();
+    });
+
+    updateCarousel();
+    startInterval();
   </script>
+
 </body>
 </html>
