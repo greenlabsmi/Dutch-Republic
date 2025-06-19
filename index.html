@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Green Labs - Homepage</title>
   <style>
-    /* Banner Carousel */
+    /* Carousel Styling */
     #banner-carousel {
       display: flex;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       gap: 12px;
       padding: 10px;
+      background: #f7f7f7;
     }
 
     #banner-carousel a {
@@ -28,7 +29,7 @@
       object-fit: cover;
     }
 
-    /* Navigation */
+    /* Nav Bar */
     nav {
       background-color: #1E2E1E;
       padding: 14px 20px;
@@ -53,7 +54,7 @@
       font-size: 14px;
     }
 
-    /* Hero */
+    /* Hero Banner */
     .hero-banner {
       background: linear-gradient(to right, #1E2E1E, #3F5843);
       color: white;
@@ -84,7 +85,7 @@
       font-size: 16px;
     }
 
-    /* Deal Tiles */
+    /* Deals Section */
     .deal-tiles {
       display: grid;
       grid-template-columns: 1fr;
@@ -118,7 +119,7 @@
       margin-top: 5px;
     }
 
-    /* Section Content */
+    /* Section Styling */
     .section {
       padding: 30px 20px;
       background: #ffffff;
@@ -154,7 +155,7 @@
       text-decoration: none;
     }
 
-    /* Floating Chat CTA */
+    /* Floating CTA */
     .fixed-chat-cta {
       position: fixed;
       bottom: 20px;
@@ -176,6 +177,7 @@
       cursor: pointer;
     }
 
+    /* Responsive Grid */
     @media (min-width: 600px) {
       .deal-tiles {
         grid-template-columns: 1fr 1fr;
@@ -193,6 +195,22 @@
 </head>
 <body>
 
+<!-- Image Carousel -->
+<div id="banner-carousel">
+  <a href="/deals#doubledutchcookies">
+    <img src="images/banner-doubledutchcookies.jpg.jpg" alt="Double Dutch Cookies" class="banner-img">
+  </a>
+  <a href="/deals#dutchbreath">
+    <img src="images/banner-dutchbreath.jpg.jpg" alt="Dutch Breath" class="banner-img">
+  </a>
+  <a href="/deals#10k">
+    <img src="images/banner-10k.jpg.jpg" alt="Dutch Touch 10K Strain" class="banner-img">
+  </a>
+  <a href="/deals#bestingrass">
+    <img src="images/banner-bestingrass.jpg.jpg" alt="Best in Grass Submissions" class="banner-img">
+  </a>
+</div>
+
 <!-- Navigation -->
 <nav>
   <h1>Green Labs</h1>
@@ -205,23 +223,7 @@
   </div>
 </nav>
 
-<!-- Banner Carousel -->
-<div id="banner-carousel">
-  <a href="/deals#doubledutchcookies">
-    <img src="images/banner-doubledutchcookies.jpg" alt="Double Dutch Cookies" class="banner-img">
-  </a>
-  <a href="/deals#dutchbreath">
-    <img src="images/banner-dutchbreath.jpg" alt="Dutch Breath" class="banner-img">
-  </a>
-  <a href="/deals#10k">
-    <img src="images/banner-10k.jpg" alt="Dutch Touch 10K" class="banner-img">
-  </a>
-  <a href="/deals#bestingrass">
-    <img src="images/banner-bestingrass.jpg" alt="Best in Grass Submissions" class="banner-img">
-  </a>
-</div>
-
-<!-- Hero -->
+<!-- Hero Banner -->
 <section class="hero-banner">
   <h2>🔥 Today’s Deals at Green Labs</h2>
   <p>Award-winning flower, edibles, and RSO — now with AI-powered shopping support.</p>
@@ -268,7 +270,7 @@
   <p>Explore terpene-driven effects and custom strain profiles in-store and online soon.</p>
 </section>
 
-<!-- FAQs -->
+<!-- FAQ -->
 <section id="faq" class="section">
   <h2>Cannabis Education 💡</h2>
   <div class="faq-item"><strong>What is RSO?</strong> Full-spectrum extract known for deep relaxation and long-lasting effects. Ideal for sleep, pain, or high tolerance users.</div>
