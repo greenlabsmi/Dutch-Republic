@@ -5,6 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Green Labs - Homepage</title>
   <style>
+    #banner-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 12px;
+  padding: 10px;
+}
+
+#banner-carousel a {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+}
+
+.banner-img {
+  height: auto;
+  width: 100%;
+  max-width: 1290px;
+  border-radius: 8px;
+  object-fit: cover;
+}
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -209,7 +229,20 @@
   </style>
 </head>
 <body>
-
+<div id="banner-carousel" class="carousel">
+  <a href="https://greenlabsmi.com/shop?utm_source=banner&utm_medium=site&utm_campaign=double_dutch_cookies" target="_blank">
+    <img src="images/banner-doubledutchcookies.jpg" alt="Double Dutch Cookies" class="banner-img" />
+  </a>
+  <a href="https://greenlabsmi.com/shop?utm_source=banner&utm_medium=site&utm_campaign=dutch_breath" target="_blank">
+    <img src="images/banner-dutchbreath.jpg" alt="Dutch Breath" class="banner-img" />
+  </a>
+  <a href="https://greenlabsmi.com/shop?utm_source=banner&utm_medium=site&utm_campaign=10k_strain" target="_blank">
+    <img src="images/banner-10k.jpg" alt="Dutch Touch 10K Strain" class="banner-img" />
+  </a>
+  <a href="https://greenlabsmi.com/shop?utm_source=banner&utm_medium=site&utm_campaign=best_in_grass" target="_blank">
+    <img src="images/banner-bestingrass.jpg" alt="Best in Grass Submissions" class="banner-img" />
+  </a>
+</div>
 <!-- Navigation -->
 <nav>
   <h1>Green Labs</h1>
