@@ -36,6 +36,35 @@
       font-size: 14px;
     }
 
+    .carousel {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .slides {
+      display: flex;
+      animation: slide 20s infinite;
+      width: 400%;
+    }
+
+    .slides img {
+      width: 100%;
+      height: auto;
+    }
+
+    @keyframes slide {
+      0% { transform: translateX(0); }
+      20% { transform: translateX(0); }
+      25% { transform: translateX(-100%); }
+      45% { transform: translateX(-100%); }
+      50% { transform: translateX(-200%); }
+      70% { transform: translateX(-200%); }
+      75% { transform: translateX(-300%); }
+      95% { transform: translateX(-300%); }
+      100% { transform: translateX(0); }
+    }
+
     .hero-banner {
       background: linear-gradient(to right, #1E2E1E, #3F5843);
       color: white;
@@ -188,6 +217,16 @@
     </div>
   </nav>
 
+  <!-- Promo Carousel -->
+  <section class="carousel">
+    <div class="slides">
+      <img src="https://via.placeholder.com/1000x300?text=🔥+Today%27s+Deals+-+Click+to+View" alt="Today's Deals">
+      <img src="https://via.placeholder.com/1000x300?text=🎁+First-Time+Gift+Offer+With+Purchase" alt="Gift Offer">
+      <img src="https://via.placeholder.com/1000x300?text=🧬+Dutch+Touch+Genetics+Spotlight" alt="Dutch Touch">
+      <img src="https://via.placeholder.com/1000x300?text=🌙+Nightcap+Bundle+-+End+Your+Day+Right" alt="Nightcap Bundle">
+    </div>
+  </section>
+
   <!-- Hero -->
   <section class="hero-banner">
     <h2>🔥 Today’s Deals at Green Labs</h2>
@@ -252,6 +291,7 @@
       <a href="https://www.facebook.com/greenlabsmi" target="_blank">Facebook</a>
     </p>
   </footer>
+
   <!-- Floating Chat CTA -->
   <div class="fixed-chat-cta">
     💬 Chat with Your AI Budtender
