@@ -13,194 +13,161 @@
       padding-top: 60px;
       padding-bottom: 140px;
     }
+
     nav {
       background: #00bfa5;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       z-index: 1000;
     }
+
     nav ul {
+      list-style: none;
       display: flex;
       justify-content: center;
-      list-style: none;
       margin: 0;
       padding: 10px 0;
+      flex-wrap: wrap;
     }
+
     nav li {
-      margin: 0 20px;
+      margin: 0 15px;
     }
+
     nav a {
-      color: #fff;
+      color: white;
       text-decoration: none;
       font-weight: bold;
+      font-size: 16px;
     }
-    nav a:hover {
-      text-decoration: underline;
-    }
+
     section {
-      background: white;
-      margin: 20px auto;
-      padding: 20px;
-      border-radius: 12px;
       max-width: 800px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      margin: 30px auto;
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     }
-    h2 {
+
+    section h2 {
       margin-top: 0;
+      font-size: 22px;
     }
+
+    .featured-image {
+      display: block;
+      width: 100%;
+      max-width: 400px;
+      margin: 20px auto;
+      border-radius: 10px;
+      background: #ddd;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .button-container {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      z-index: 999;
+      width: calc(100% - 40px);
+      max-width: 320px;
+    }
+
+    .button-container a {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      color: white;
+      text-align: center;
+      width: 100%;
+    }
+
+    .chatbot-button {
+      background: #673ab7;
+    }
+
+    .floating-button {
+      background: #00bfa5;
+    }
+
     footer {
       text-align: center;
+      font-size: 14px;
+      color: #666;
       margin-top: 40px;
-      font-size: 0.9em;
     }
-    .floating-button {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      background: #00bfa5;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 25px;
-      font-weight: bold;
+
+    footer a {
+      color: #00bfa5;
       text-decoration: none;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
-    .chatbot-button {
-      position: fixed;
-      left: 20px;
-      bottom: 20px;
-      background: #673ab7;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 25px;
-      font-weight: bold;
-      text-decoration: none;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
-    .image-block img {
-      max-width: 100%;
-      border-radius: 10px;
-      margin-top: 10px;
-    }
-    iframe {
-      width: 100%;
-      height: 300px;
-      border: none;
-      border-radius: 10px;
-    }
-    .button-container {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  z-index: 999;
-}
-
-.button-container a {
-  padding: 12px 20px;
-  border-radius: 25px;
-  font-weight: bold;
-  text-decoration: none;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  color: white;
-  width: 250px;
-  text-align: center;
-}
-
-.chatbot-button {
-  background: #673ab7;
-}
-
-.floating-button {
-  background: #00bfa5;
-}
   </style>
 </head>
 <body>
 
-<nav>
-  <ul>
-    <li><a href="#nightcap">Home</a></li>
-    <li><a href="#deals">Deals</a></li>
-    <li><a href="#dutch-touch">Dutch Touch</a></li>
-    <li><a href="#brands">Brands</a></li>
-    <li><a href="#about">About</a></li>
-  </ul>
-</nav>
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#deals">Deals</a></li>
+      <li><a href="#dutch-touch">Dutch Touch</a></li>
+      <li><a href="#brands">Brands</a></li>
+      <li><a href="#about">About Us</a></li>
+    </ul>
+  </nav>
 
-<section id="nightcap">
-  <h2>🌙 Nightcap Set</h2>
-  <p>End your day on a high note with relaxing strains and edibles perfect for winding down.</p>
-  <div class="image-block">
-    <img src="https://via.placeholder.com/800x400?text=Nightcap+Promo" alt="Nightcap Bundle" />
+  <section id="home">
+    <h2>🌙 Nightcap Set</h2>
+    <p>End your day on a high note with relaxing strains and edibles perfect for winding down.</p>
+    <img class="featured-image" src="https://via.placeholder.com/400x180?text=Nightcap+Set" alt="Nightcap Set"/>
+  </section>
+
+  <section id="deals">
+    <h2>🔥 Today’s Deals</h2>
+    <p>Flash sales and bundle deals updated daily to help you save.</p>
+    <img class="featured-image" src="https://via.placeholder.com/400x180?text=Deals" alt="Deals"/>
+  </section>
+
+  <section id="dutch-touch">
+    <h2>🏆 Dutch Touch Genetics</h2>
+    <p>Award-winning in-house flower like Mr. Clean and Lilac Diesel grown with care and purpose.</p>
+    <img class="featured-image" src="https://via.placeholder.com/400x180?text=Dutch+Touch" alt="Dutch Touch"/>
+  </section>
+
+  <section id="brands">
+    <h2>🧪 Featured Brands</h2>
+    <p>We carry the best: Dutch Touch Genetics, MKX, Choice, and more. Quality-first, always.</p>
+    <img class="featured-image" src="https://via.placeholder.com/400x180?text=Brands" alt="Brands"/>
+  </section>
+
+  <section id="about">
+    <h2>📍 About Us</h2>
+    <p>Green Labs is your local destination for premium cannabis. We're committed to terpene education, community events, and unforgettable customer service.</p>
+    <p><strong>Location:</strong> 10701 Madison St, Luna Pier, MI 48157<br/>
+    <strong>Phone:</strong> <a href="tel:7348000024">(734) 800-0024</a></p>
+    <p>Follow us: <a href="https://www.instagram.com/greenlabsmi" target="_blank">Instagram</a> | <a href="https://www.facebook.com/greenlabsmi" target="_blank">Facebook</a></p>
+  </section>
+
+  <div class="button-container">
+    <a href="#chatbot" class="chatbot-button">💬 Chat with Budtender</a>
+    <a href="#top" class="floating-button">⬆️ Back to Top</a>
   </div>
-</section>
 
-<section id="deals">
-  <h2>🔥 Today’s Deals</h2>
-  <p>Flash sales and bundle deals updated daily to help you save.</p>
-</section>
+  <footer>
+    <p>&copy; 2025 Green Labs. All rights reserved.</p>
+  </footer>
 
-<section id="dutch-touch">
-  <h2>🏆 Dutch Touch Genetics</h2>
-  <p>Award-winning in-house flower like Mr. Clean and Lilac Diesel grown with care and purpose.</p>
-  <div class="image-block">
-    <img src="https://via.placeholder.com/800x400?text=Dutch+Touch+Strain" alt="Dutch Touch Flower" />
-  </div>
-</section>
-
-<section id="brands">
-  <h2>💼 Featured Brands</h2>
-  <ul>
-    <li>Dutch Touch Genetics</li>
-    <li>Wyld Edibles</li>
-    <li>Redbud Roots</li>
-    <li>Camino Gummies</li>
-  </ul>
-</section>
-
-<section id="newsletter">
-  <h2>📫 Join Our Newsletter</h2>
-  <p>Get exclusive deals and product drops sent straight to your inbox.</p>
-</section>
-
-<section id="loyalty">
-  <h2>🎁 Loyalty Program</h2>
-  <p>Earn 5% back in points on every purchase. Use points for discounts or exclusive offers. Ask about bonus point days!</p>
-</section>
-
-<section id="about">
-  <h2>📍 About Us</h2>
-  <p>We’re proud to serve Luna Pier with premium cannabis and passionate local involvement. Visit us or shop online today.</p>
-</section>
-
-<section id="map">
-  <h2>📍 Find Us</h2>
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2934.3193127434517!2d-83.44587752339347!3d41.80969747124632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883b4642e0329015%3A0xa61e89417b71b9c!2sGreen%20Labs%20Provisions!5e0!3m2!1sen!2sus!4v1718734175410!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-</section>
-
-<footer>
-  <p>© 2025 Green Labs – 10701 Madison St, Luna Pier, MI</p>
-</footer>
-
-<a href="#nightcap" class="floating-button">🔝 Back to Top</a>
-<a href="#" class="chatbot-button">💬 Chat with Budtender</a>
-<!-- Button Container (Chat + Back to Top) -->
-<div class="button-container">
-  <a href="#" class="chatbot-button">💬 Chat with Budtender</a>
-  <a href="#nightcap" class="floating-button">🔝 Back to Top</a>
-</div>
-  <!-- Button Container (Chat + Back to Top) -->
-<div class="button-container">
-  <a href="#" class="chatbot-button">💬 Chat with Budtender</a>
-  <a href="#nightcap" class="floating-button">🔝 Back to Top</a>
-</div>
 </body>
 </html>
