@@ -9,7 +9,31 @@
       font-family: Arial, sans-serif;
       margin: 0;
       background-color: #f0f4f1;
-      padding-bottom: 100px;
+      padding-bottom: 120px;
+    }
+
+    nav {
+      background-color: #1E2E1E;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav h1 {
+      color: #B3E283;
+      font-size: 18px;
+      margin: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 16px;
+      font-size: 14px;
     }
 
     .hero-banner {
@@ -19,7 +43,7 @@
       padding: 30px 20px 25px;
     }
 
-    .hero-banner h1 {
+    .hero-banner h2 {
       font-size: 24px;
       margin-bottom: 10px;
     }
@@ -30,7 +54,7 @@
       max-width: 340px;
     }
 
-    .hero-banner a {
+    .hero-banner a.button {
       display: inline-block;
       margin-top: 15px;
       padding: 12px 22px;
@@ -75,20 +99,26 @@
       margin-top: 5px;
     }
 
-    .about-section {
+    .section {
       padding: 30px 20px;
       background: #ffffff;
+    }
+
+    .section h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
       text-align: center;
     }
 
-    .about-section h2 {
-      font-size: 20px;
+    .section p, .faq-item {
+      font-size: 15px;
+      color: #444;
       margin-bottom: 10px;
     }
 
-    .about-section p {
-      font-size: 15px;
-      color: #444;
+    .faq-item strong {
+      display: block;
+      margin-top: 10px;
     }
 
     footer {
@@ -133,38 +163,55 @@
       .deal-tiles {
         grid-template-columns: 1fr 1fr;
       }
+
+      nav h1 {
+        font-size: 20px;
+      }
+
+      nav a {
+        font-size: 15px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- HERO -->
+  <!-- Navigation -->
+  <nav>
+    <h1>Green Labs</h1>
+    <div>
+      <a href="#deals">Deals</a>
+      <a href="#about">About</a>
+      <a href="#dutch">Dutch Touch</a>
+      <a href="#faq">FAQ</a>
+      <a href="#chatbot">Chat</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
   <section class="hero-banner">
-    <h1>🔥 Today’s Deals at Green Labs</h1>
+    <h2>🔥 Today’s Deals at Green Labs</h2>
     <p>Award-winning flower, edibles, and RSO — now with AI-powered shopping support.</p>
-    <a href="#chatbot">💬 Open AI Budtender</a>
+    <a class="button" href="#chatbot">💬 Open AI Budtender</a>
   </section>
 
-  <!-- DEALS -->
-  <section class="deal-tiles">
+  <!-- Deal Tiles -->
+  <section id="deals" class="deal-tiles">
     <div class="deal-tile">
       <h3>3 for $20</h3>
       <p>200mg Dutch Touch RSO Gummies</p>
       <span>🍒 Berry Burst • 💥 Crunch</span>
     </div>
-
     <div class="deal-tile">
       <h3>Save $25</h3>
       <p>Lilac Diesel • $125/Oz</p>
       <span>🏆 Cup-Winning Strain</span>
     </div>
-
     <div class="deal-tile">
       <h3>6 for $40</h3>
       <p>1.2g Liquid Diamond Pre-Rolls</p>
       <span>⚡ Potent & Smooth</span>
     </div>
-
     <div class="deal-tile">
       <h3>New Customer Gift</h3>
       <p>Free 1/8 or Edible with $30+ order</p>
@@ -172,23 +219,40 @@
     </div>
   </section>
 
-  <!-- ABOUT US -->
-  <section class="about-section">
+  <!-- About Us -->
+  <section id="about" class="section">
     <h2>About Green Labs 🌿</h2>
     <p>We’re proud to be Luna Pier’s local cannabis destination, supporting the community with beach cleanups, park renovations, and award-winning products from Dutch Touch Genetics.</p>
   </section>
 
-  <!-- FOOTER -->
+  <!-- Dutch Touch -->
+  <section id="dutch" class="section">
+    <h2>Dutch Touch Genetics</h2>
+    <p>🌟 Our in-house brand, winner of the High Times and Best in Grass competitions.</p>
+    <p>🏆 Mr. Clean — 1st Place Medical Sativa<br>
+       🥈 Lilac Diesel — 2nd Place<br>
+       🥇 Death By Funk — Best in Grass Rosin</p>
+    <p>Explore terpene-driven effects and custom strain profiles in-store and online soon.</p>
+  </section>
+
+  <!-- FAQs -->
+  <section id="faq" class="section">
+    <h2>Cannabis Education 💡</h2>
+    <div class="faq-item"><strong>What is RSO?</strong> Full-spectrum extract known for deep relaxation and long-lasting effects. Ideal for sleep, pain, or high tolerance users.</div>
+    <div class="faq-item"><strong>What is TAC?</strong> Total Active Cannabinoids — the full amount of THC, CBD, and other active compounds in your product.</div>
+    <div class="faq-item"><strong>Does THC percentage matter?</strong> Not really! Terpenes and cannabinoid synergy drive the experience more than a % number. Ask our AI budtender to shop by mood instead.</div>
+  </section>
+
+  <!-- Footer -->
   <footer>
     <p>📍 10701 Madison St, Luna Pier, MI 48157</p>
     <p>📞 (734) 800-0024</p>
-    <p>📱 Follow us: 
-      <a href="https://www.instagram.com/greenlabsmi" target="_blank">Instagram</a> | 
+    <p>📱 Follow us:
+      <a href="https://www.instagram.com/greenlabsmi" target="_blank">Instagram</a> |
       <a href="https://www.facebook.com/greenlabsmi" target="_blank">Facebook</a>
     </p>
   </footer>
-
-  <!-- CHATBOT CTA -->
+  <!-- Floating Chat CTA -->
   <div class="fixed-chat-cta">
     💬 Chat with Your AI Budtender
   </div>
