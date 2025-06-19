@@ -5,20 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Green Labs - Homepage</title>
   <style>
-    /* Carousel Styling */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f3;
+    }
+
     #banner-carousel {
       display: flex;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       gap: 12px;
       padding: 10px;
-      background: #f7f7f7;
+      background: #fff;
     }
 
     #banner-carousel a {
       flex: 0 0 auto;
       scroll-snap-align: center;
-      text-align: center;
     }
 
     .banner-img {
@@ -29,7 +33,6 @@
       object-fit: cover;
     }
 
-    /* Nav Bar */
     nav {
       background-color: #1E2E1E;
       padding: 14px 20px;
@@ -54,7 +57,6 @@
       font-size: 14px;
     }
 
-    /* Hero Banner */
     .hero-banner {
       background: linear-gradient(to right, #1E2E1E, #3F5843);
       color: white;
@@ -85,7 +87,6 @@
       font-size: 16px;
     }
 
-    /* Deals Section */
     .deal-tiles {
       display: grid;
       grid-template-columns: 1fr;
@@ -119,7 +120,6 @@
       margin-top: 5px;
     }
 
-    /* Section Styling */
     .section {
       padding: 30px 20px;
       background: #ffffff;
@@ -142,7 +142,6 @@
       margin-top: 10px;
     }
 
-    /* Footer */
     footer {
       background: #1E2E1E;
       color: white;
@@ -155,7 +154,6 @@
       text-decoration: none;
     }
 
-    /* Floating CTA */
     .fixed-chat-cta {
       position: fixed;
       bottom: 20px;
@@ -177,7 +175,6 @@
       cursor: pointer;
     }
 
-    /* Responsive Grid */
     @media (min-width: 600px) {
       .deal-tiles {
         grid-template-columns: 1fr 1fr;
@@ -195,23 +192,23 @@
 </head>
 <body>
 
-<!-- Image Carousel -->
+<!-- ✅ Carousel ABOVE navbar -->
 <div id="banner-carousel">
   <a href="/deals#doubledutchcookies">
-    <img src="images/banner-doubledutchcookies.jpg.jpg" alt="Double Dutch Cookies" class="banner-img">
+    <img src="images/banner-doubledutchcookies.jpg" alt="Double Dutch Cookies" class="banner-img">
   </a>
   <a href="/deals#dutchbreath">
-    <img src="images/banner-dutchbreath.jpg.jpg" alt="Dutch Breath" class="banner-img">
+    <img src="images/banner-dutchbreath.jpg" alt="Dutch Breath" class="banner-img">
   </a>
   <a href="/deals#10k">
-    <img src="images/banner-10k.jpg.jpg" alt="Dutch Touch 10K Strain" class="banner-img">
+    <img src="images/banner-10k.jpg" alt="Dutch Touch 10K" class="banner-img">
   </a>
   <a href="/deals#bestingrass">
-    <img src="images/banner-bestingrass.jpg.jpg" alt="Best in Grass Submissions" class="banner-img">
+    <img src="images/banner-bestingrass.jpg" alt="Best in Grass Submissions" class="banner-img">
   </a>
 </div>
 
-<!-- Navigation -->
+<!-- ✅ Navigation -->
 <nav>
   <h1>Green Labs</h1>
   <div>
@@ -223,14 +220,14 @@
   </div>
 </nav>
 
-<!-- Hero Banner -->
+<!-- ✅ Hero Banner -->
 <section class="hero-banner">
   <h2>🔥 Today’s Deals at Green Labs</h2>
   <p>Award-winning flower, edibles, and RSO — now with AI-powered shopping support.</p>
   <a class="button" href="#chatbot">💬 Open AI Budtender</a>
 </section>
 
-<!-- Deal Tiles -->
+<!-- ✅ Deal Tiles -->
 <section id="deals" class="deal-tiles">
   <div class="deal-tile">
     <h3>3 for $20</h3>
@@ -254,13 +251,13 @@
   </div>
 </section>
 
-<!-- About Us -->
+<!-- ✅ About -->
 <section id="about" class="section">
   <h2>About Green Labs 🌿</h2>
   <p>We’re proud to be Luna Pier’s local cannabis destination, supporting the community with beach cleanups, park renovations, and award-winning products from Dutch Touch Genetics.</p>
 </section>
 
-<!-- Dutch Touch -->
+<!-- ✅ Dutch Touch -->
 <section id="dutch" class="section">
   <h2>Dutch Touch Genetics</h2>
   <p>🌟 Our in-house brand, winner of the High Times and Best in Grass competitions.</p>
@@ -270,7 +267,7 @@
   <p>Explore terpene-driven effects and custom strain profiles in-store and online soon.</p>
 </section>
 
-<!-- FAQ -->
+<!-- ✅ FAQs -->
 <section id="faq" class="section">
   <h2>Cannabis Education 💡</h2>
   <div class="faq-item"><strong>What is RSO?</strong> Full-spectrum extract known for deep relaxation and long-lasting effects. Ideal for sleep, pain, or high tolerance users.</div>
@@ -278,7 +275,7 @@
   <div class="faq-item"><strong>Does THC percentage matter?</strong> Not really! Terpenes and cannabinoid synergy drive the experience more than a % number. Ask our AI budtender to shop by mood instead.</div>
 </section>
 
-<!-- Footer -->
+<!-- ✅ Footer -->
 <footer>
   <p>📍 10701 Madison St, Luna Pier, MI 48157</p>
   <p>📞 (734) 800-0024</p>
@@ -288,7 +285,7 @@
   </p>
 </footer>
 
-<!-- Floating Chat CTA -->
+<!-- ✅ Floating CTA -->
 <div class="fixed-chat-cta">
   💬 Chat with Your AI Budtender
 </div>
