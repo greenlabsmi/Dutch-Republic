@@ -18,6 +18,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -26,7 +27,7 @@
     nav a {
       color: white;
       text-decoration: none;
-      margin: 0 12px;
+      margin: 8px 12px;
       font-weight: bold;
     }
 
@@ -60,11 +61,9 @@
 
     .banner-slide img {
       width: 100%;
-      height: auto;
-      max-height: 300px;
-      object-fit: cover;
-      border-radius: 12px;
-      display: block;
+      max-height: 240px;
+      object-fit: contain;
+      background-color: #000;
     }
 
     .carousel-dots {
@@ -165,16 +164,16 @@
   <section id="banner-carousel">
     <div class="banner-track" id="carouselTrack">
       <div class="banner-slide">
-        <img src="https://raw.githubusercontent.com/greenlabsmi/Green-labs-site/main/images/banner-doubledutchcookies.jpg" alt="Double Dutch Cookies">
+        <img src="https://via.placeholder.com/1200x675.png?text=Double+Dutch+Cookies" alt="Double Dutch Cookies">
       </div>
       <div class="banner-slide">
-        <img src="https://raw.githubusercontent.com/greenlabsmi/Green-labs-site/main/images/banner-dutchbreath.jpg" alt="Dutch Breath">
+        <img src="https://via.placeholder.com/1200x675.png?text=Dutch+Breath" alt="Dutch Breath">
       </div>
       <div class="banner-slide">
-        <img src="https://raw.githubusercontent.com/greenlabsmi/Green-labs-site/main/images/banner-10k.jpg" alt="Dutch Touch 10K">
+        <img src="https://via.placeholder.com/1200x675.png?text=10K+Exclusive" alt="10K Exclusive">
       </div>
       <div class="banner-slide">
-        <img src="https://raw.githubusercontent.com/greenlabsmi/Green-labs-site/main/images/banner-bestingrass.jpg" alt="Best In Grass">
+        <img src="https://via.placeholder.com/1200x675.png?text=Best+In+Grass" alt="Best in Grass">
       </div>
     </div>
     <div class="carousel-dots">
@@ -202,7 +201,7 @@
   <!-- Footer & Map -->
   <footer>
     <p>10701 Madison St, Luna Pier, MI 48157</p>
-    <p>(734) 800-0024</p>
+    <p><a href="tel:+17348000024">(734) 800-0024</a></p>
     <a href="https://www.instagram.com/greenlabsmi" target="_blank">Instagram</a> • 
     <a href="https://www.facebook.com/greenlabsmi" target="_blank">Facebook</a>
     <iframe src="https://www.google.com/maps?q=10701+Madison+St,+Luna+Pier,+MI&output=embed"></iframe>
