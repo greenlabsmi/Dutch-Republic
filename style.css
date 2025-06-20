@@ -5,23 +5,37 @@ body {
   margin: 0;
   padding: 0;
 }
-nav {
-  background: #153d1d;
-  color: white;
-  padding: 15px;
+.main-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #e8f5e9; /* soft green */
+  color: #1b5e20; /* dark green text */
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 15px 30px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
-nav .nav-links a {
-  color: white;
-  margin-left: 20px;
-  text-decoration: none;
-}
-.logo {
-  font-weight: bold;
+
+.brand-name {
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
   font-size: 1.2em;
-  color: #99ff99;
+  letter-spacing: 2px;
+  color: #1b5e20;
+}
+
+.nav-links a {
+  color: #1b5e20;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 1em;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #43a047; /* slightly brighter green */
 }
 .static-banners {
   display: flex;
