@@ -1,0 +1,70 @@
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f7f7f7;
+  margin: 0;
+  padding: 0;
+}
+nav {
+  background: #153d1d;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav .nav-links a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+}
+.logo {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #99ff99;
+}
+.static-banners {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+.static-banners img {
+  width: 100%;
+  max-width: 400px;
+  margin: 10px;
+  border-radius: 10px;
+}
+.hero {
+  background: #285c30;
+  color: white;
+  padding: 30px;
+  text-align: center;
+}
+.hero button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #ccffcc;
+  border: none;
+  font-weight: bold;
+  border-radius: 5px;
+}
+.deal-card {
+  background: white;
+  margin: 20px auto;
+  max-width: 90%;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+footer {
+  background: #eee;
+  text-align: center;
+  padding: 20px;
+}
+footer iframe {
+  width: 90%;
+  height: 250px;
+  border: none;
+  margin-top: 10px;
+}
