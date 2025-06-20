@@ -1,0 +1,97 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #f6f6f6;
+}
+nav {
+  background-color: #1E2E1E;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 12px;
+  font-weight: bold;
+}
+nav a:hover {
+  text-decoration: underline;
+}
+nav .logo {
+  color: #9DF169;
+  font-size: 20px;
+  font-weight: bold;
+}
+#banner-carousel {
+  overflow: hidden;
+}
+.banner-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 400%;
+}
+.banner-slide {
+  flex: 0 0 100%;
+  text-align: center;
+}
+.banner-slide img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.carousel-dots {
+  text-align: center;
+  margin-top: 8px;
+}
+.carousel-dot {
+  height: 10px;
+  width: 10px;
+  margin: 0 4px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+}
+.carousel-dot.active {
+  background-color: #333;
+}
+.hero {
+  background-color: #204020;
+  padding: 32px;
+  text-align: center;
+  color: white;
+  margin: 16px;
+  border-radius: 20px;
+}
+.hero button {
+  margin-top: 14px;
+  background-color: #ccff99;
+  color: #002200;
+  padding: 12px 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.deal-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  margin: 16px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+footer {
+  text-align: center;
+  font-size: 14px;
+  padding: 24px 8px;
+  color: #555;
+}
+iframe {
+  border: none;
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  margin-top: 12px;
+}
