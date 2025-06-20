@@ -68,3 +68,50 @@ footer iframe {
   border: none;
   margin-top: 10px;
 }
+/* Carousel */
+#banner-carousel {
+  overflow: hidden;
+  position: relative;
+  max-width: 100%;
+  margin: 20px auto;
+}
+
+.banner-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 400%; /* 4 slides */
+}
+
+.banner-slide {
+  flex: 0 0 100%;
+  max-height: 220px;
+}
+
+.banner-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Carousel Dots */
+.carousel-dots {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.carousel-dot {
+  height: 10px;
+  width: 10px;
+  margin: 0 6px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-dot.active {
+  background-color: #555;
+}
