@@ -9,19 +9,34 @@
     html {
       scroll-behavior: smooth;
     }
+    .floating-chat {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #1b5e20;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+    .floating-chat:hover {
+      background-color: #43a047;
+    }
   </style>
 </head>
 <body>
 
   <!-- Navbar -->
   <nav class="main-nav" aria-label="Main Navigation">
-    <div class="brand-name">GREEN LABS</div>
     <div class="nav-links">
       <a href="#deals">Deals</a>
-      <a href="#about">About</a>
+      <a href="#about">About Us</a>
       <a href="#dutch">Dutch Touch</a>
-      <a href="#faq">FAQ</a>
-      <a href="#chat">Chat</a>
+      <a href="https://leafly.com/dispensary-info/green-labs-provisions" target="_blank">Order Now</a>
     </div>
   </nav>
 
@@ -71,7 +86,7 @@
       </div>
     </section>
 
-    <!-- About Us Section -->
+    <!-- About Us Section (Includes FAQ Content) -->
     <section class="about-us" id="about">
       <h2>🌱 About Green Labs</h2>
       <p>
@@ -82,20 +97,15 @@
         We’re also the home of <strong>Dutch Touch Genetics</strong>, our award-winning in-house brand recognized across Michigan 
         for top-tier flower, RSO, and full-spectrum products.
       </p>
-    </section>
-
-    <!-- FAQ Placeholder -->
-    <section id="faq">
-      <h2>❓ FAQ</h2>
-      <p>Coming soon! Answers to all your cannabis questions.</p>
-    </section>
-
-    <!-- Chat Placeholder -->
-    <section id="chat">
-      <h2>💬 Chat with Us</h2>
-      <p>Use the AI Budtender button above to get started.</p>
+      <p>
+        Have questions about cannabis? Our team is here to help with info on strains, effects, terpenes, product types, and more. 
+        Stop in, call us, or try the AI Budtender below!
+      </p>
     </section>
   </main>
+
+  <!-- Floating Chat Button -->
+  <button class="floating-chat" onclick="openChat()">💬 Chat with AI Budtender</button>
 
   <!-- Footer -->
   <footer>
