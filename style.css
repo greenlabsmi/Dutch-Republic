@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Arial, sans-serif;
   background: #f7f7f7;
@@ -9,8 +13,8 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: #e8f5e9; /* soft green */
-  color: #1b5e20; /* dark green text */
+  background-color: #e8f5e9;
+  color: #1b5e20;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,7 +32,7 @@ body {
   text-decoration: none;
   font-size: 1em;
   transition: color 0.2s ease;
-  cursor: pointer; /* added */
+  cursor: pointer;
 }
 
 .nav-links a:hover {
@@ -41,6 +45,7 @@ body {
   justify-content: center;
   padding: 20px;
 }
+
 .static-banners img {
   width: 100%;
   max-width: 400px;
@@ -54,6 +59,7 @@ body {
   padding: 30px;
   text-align: center;
 }
+
 .hero button {
   margin-top: 15px;
   padding: 10px 20px;
@@ -61,6 +67,12 @@ body {
   border: none;
   font-weight: bold;
   border-radius: 5px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .deal-card {
@@ -77,6 +89,7 @@ footer {
   text-align: center;
   padding: 20px;
 }
+
 footer iframe {
   width: 90%;
   height: 250px;
@@ -91,15 +104,18 @@ footer iframe {
   max-width: 100%;
   margin: 20px auto;
 }
+
 .banner-track {
   display: flex;
   transition: transform 0.5s ease-in-out;
   width: 400%;
 }
+
 .banner-slide {
   flex: 0 0 100%;
   max-height: 220px;
 }
+
 .banner-slide img {
   width: 100%;
   height: auto;
@@ -113,6 +129,7 @@ footer iframe {
   text-align: center;
   margin-top: 10px;
 }
+
 .carousel-dot {
   height: 10px;
   width: 10px;
@@ -123,6 +140,7 @@ footer iframe {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
 .carousel-dot.active {
   background-color: #555;
 }
@@ -136,10 +154,12 @@ footer iframe {
   margin: 20px auto;
   max-width: 900px;
 }
+
 .about-us h2 {
   font-size: 1.5em;
   margin-bottom: 10px;
 }
+
 .about-us p {
   font-size: 1em;
   line-height: 1.6;
@@ -150,24 +170,27 @@ footer iframe {
 .floating-chat {
   position: fixed;
   bottom: 20px;
-  right: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: #1b5e20;
   color: white;
   border: none;
-  padding: 12px 18px;
+  padding: 18px 32px;
   border-radius: 50px;
   font-weight: bold;
+  font-size: 1.2em;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   z-index: 999;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
   animation: bounceIn 1s ease-out, pulse 2.5s infinite 1s;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
+
 .floating-chat:hover,
 .floating-chat:focus {
   background-color: #43a047;
-}
-.floating-chat:focus {
   outline: none;
+  transform: translateX(-50%) scale(1.05);
 }
 
 /* Floating Chat Animations */
