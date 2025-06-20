@@ -21,13 +21,21 @@
     </div>
   </nav>
 
-  <!-- Static Banners -->
-  <section class="static-banners">
-    <img src="images/banner-10k.jpg" alt="Banner 1" />
-    <img src="images/banner-bestingrass.jpg" alt="Banner 2" />
-    <img src="images/banner-doubledutchcookies.jpg" alt="Banner 3" />
-    <img src="images/banner-dutchbreath.jpg" alt="Banner 4" />
-  </section>
+  <!-- Carousel -->
+<section id="banner-carousel">
+  <div class="banner-track" id="carouselTrack">
+    <div class="banner-slide"><img src="banner-10k.jpg" alt="Dutch Touch Banner 1" /></div>
+    <div class="banner-slide"><img src="banner-bestingrass.jpg" alt="Dutch Touch Banner 2" /></div>
+    <div class="banner-slide"><img src="banner-doubledutchcookies.jpg" alt="Dutch Touch Banner 3" /></div>
+    <div class="banner-slide"><img src="banner-dutchbreath.jpg" alt="Dutch Touch Banner 4" /></div>
+  </div>
+  <div class="carousel-dots">
+    <span class="carousel-dot active" onclick="goToSlide(0)"></span>
+    <span class="carousel-dot" onclick="goToSlide(1)"></span>
+    <span class="carousel-dot" onclick="goToSlide(2)"></span>
+    <span class="carousel-dot" onclick="goToSlide(3)"></span>
+  </div>
+</section>
 
   <!-- Hero Section -->
   <div class="hero">
