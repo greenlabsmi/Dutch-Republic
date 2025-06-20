@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Green Labs - Deals</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+
+    .main-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: #e8f5e9;
+      color: #1b5e20;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: #1b5e20;
+      text-decoration: none;
+      font-size: 1em;
+      transition: color 0.2s ease;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover {
+      color: #43a047;
+    }
+
+    .hero {
+      background: #285c30;
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .deal-header {
+      text-align: center;
+      background: #2e7d32;
+      color: white;
+      padding: 25px 10px 15px;
+    }
+
+    .dropdown-button {
+      display: block;
+      margin: 15px auto;
+      padding: 12px 24px;
+      background-color: #ccffcc;
+      border: none;
+      font-weight: bold;
+      font-size: 1em;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .dropdown-button:hover {
+      background-color: #b2fab4;
+    }
+
+    .dropdown-content {
+      display: none;
+      max-width: 1000px;
+      margin: 0 auto 30px;
+      padding: 10px 20px;
+    }
+
+    .deal-category {
+      margin-bottom: 30px;
+    }
+
+    .deal-category h3 {
+      color: #1b5e20;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #c8e6c9;
+      padding-bottom: 5px;
+    }
+
+    .tile-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .deal-tile {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      padding: 15px;
+      width: 280px;
+    }
+
+    .deal-tile h4 {
+      margin: 0 0 5px;
+      font-size: 1em;
+      color: #1b5e20;
+    }
+
+    .deal-tile p {
+      margin: 0;
+      font-size: 0.95em;
+    }
+
+    .floating-chat {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #1b5e20;
+      color: white;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1em;
+      cursor: pointer;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+      animation: bounceIn 1s ease-out, pulse 2.5s infinite 1s;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .floating-chat:hover,
+    .floating-chat:focus {
+      background-color: #43a047;
+      outline: none;
+      transform: translateX(-50%) scale(1.05);
+    }
+
+    @keyframes bounceIn {
+      0% {
+        transform: translateY(200%);
+        opacity: 0;
+      }
+      60% {
+        transform: translateY(-10%);
+        opacity: 1;
+      }
+      80% {
+        transform: translateY(5%);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(67, 160, 71, 0.6);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(67, 160, 71, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(67, 160, 71, 0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .main-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .nav-links a {
+        margin-left: 0;
+        font-size: 1.1em;
+      }
+
+      .floating-chat {
+        font-size: 0.95em;
+        padding: 10px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="main-nav">
+    <div class="nav-links">
+      <a href="#deals">Deals</a>
+      <a href="#about">About Us</a>
+      <a href="#dutch">Dutch Touch</a>
+      <a href="https://leafly.com/dispensary-info/green-labs-provisions" target="_blank">Order Now</a>
+    </div>
+  </nav>
+
+  <section class="deal-header" id="deals">
+    <h2>🔥 Today’s Deals at Green Labs</h2>
+    <p>Award-winning flower, edibles, and RSO — now with AI-powered shopping support.</p>
+    <button class="dropdown-button" onclick="toggleDeals()">💥 Browse Deal Categories</button>
+  </section>
+
+  <div class="deal-category"><h3>Flower</h3><div class="tile-grid"><div class="deal-tile"><h4>$25 OUNCES</h4><p>Grip Pre-Packaged Ounces - Back in Stock</p></div>
+<div class="deal-tile"><h4>$35 OUNCES</h4><p>Phone Home, Querkle #1 and Double Dutch Cookies Shake Ounces</p></div>
+<div class="deal-tile"><h4>$50 OUNCES</h4><p>Dutch Touch Ground Flower</p></div>
+<div class="deal-tile"><h4>$100 OUNCES</h4><p>Double Dutch Cookies</p></div>
+<div class="deal-tile"><h4>$110 OUNCES</h4><p>Orange Kush Cake and Death Star (Dutch Touch Classics!)</p></div>
+<div class="deal-tile"><h4>$125 OUNCES</h4><p>Thug Life, Sin City Grapes and Yoda'z Cream</p></div>
+<div class="deal-tile"><h4>$130 OUNCES</h4><p>Grease Monkey and AJ's Cream Cake</p></div>
+<div class="deal-tile"><h4>$150 OUNCES</h4><p>White Wampa and Dutch Breath (Fan Favorite New Strain!)</p></div>
+<div class="deal-tile"><h4>$200 OUNCES</h4><p>Mr. Clean</p></div>
+<div class="deal-tile"><h4>$55 HALF OUNCE</h4><p>Dead Prez and Apollo</p></div>
+<div class="deal-tile"><h4>$70 HALF OUNCE</h4><p>Goji OG, and Milk & Cookies</p></div>
+<div class="deal-tile"><h4>$75 HALF OUNCE</h4><p>Angelica, Sky Lotus, Grease Monkey and Thug Life</p></div>
+<div class="deal-tile"><h4>$35 QUARTER</h4><p>Yoda'z Cream, Dead Prez and Grape Gouda</p></div>
+<div class="deal-tile"><h4>$40 QUARTER</h4><p>AK-630, Angelica and Sky Lotus</p></div>
+<div class="deal-tile"><h4>$50 QUARTER</h4><p>Time Bandit or Mr. Dread (Top Tier)</p></div>
+<div class="deal-tile"><h4>$50 QUARTER</h4><p>Mr. Funk or Thunder Wookie (New Strains)</p></div>
+<div class="deal-tile"><h4>$20 EIGHTHS</h4><p>Crunchberries, Double Dutch Cookies and Sky Lotus</p></div>
+<div class="deal-tile"><h4>$25 EIGHTHS</h4><p>Light Sky Farm 4g Nitrogen Sealed Jars</p></div>
+<div class="deal-tile"><h4>$25 EIGHTHS</h4><p>10K and Illudium (Featured New Strains)</p></div>
+<div class="deal-tile"><h4>$30 EIGHTHS</h4><p>Mr. Funk or Thunder Wookie (New Strains)</p></div>
+<div class="deal-tile"><h4>$40 EIGHTHS</h4><p>Lilac Diesel - Award Winning Sativa Strains</p></div></div></div>
+<div class="deal-category"><h3>Pre-Rolls</h3><div class="tile-grid"><div class="deal-tile"><h4>10/$25</h4><p>Bud and Mary's 1g Pre-Rolls</p></div>
+<div class="deal-tile"><h4>Buy 2 Get 1</h4><p>Dutch Touch Full Bud 1g Pre-Rolls</p></div>
+<div class="deal-tile"><h4>$25</h4><p>Dutch Touch Full Bud 5pk Pre-Rolls (Excludes Award Winners)</p></div>
+<div class="deal-tile"><h4>$10 or 5/$45</h4><p>Loco 1g Diamond Doobs</p></div>
+<div class="deal-tile"><h4>$7 - 3/$20 or 10/$55</h4><p>Fire Styxx 1g Infused Pre-Rolls</p></div>
+<div class="deal-tile"><h4>$7</h4><p>Emerald Fire 1g Infused Pre-Rolls</p></div>
+<div class="deal-tile"><h4>$12 or 3/$30</h4><p>Dutch Touch Angelica or Milk & Cookies 1.3g Hash Pre-Roll</p></div>
+<div class="deal-tile"><h4>$35</h4><p>Dutch Touch 5pk Bubble Hash or Kief Infused Pre-Rolls</p></div>
+<div class="deal-tile"><h4>$35</h4><p>Jeeter 2g Infused</p></div>
+<div class="deal-tile"><h4>$45 or 3/$115</h4><p>Baby Jeeters</p></div></div></div>
+<div class="deal-category"><h3>Vapes & Disposables</h3><div class="tile-grid"><div class="deal-tile"><h4>$10 or 5/$45</h4><p>Levitate 1g Cartridges</p></div>
+<div class="deal-tile"><h4>$10 - 5/$40 or 10/$75</h4><p>Market 1g Cartridges</p></div>
+<div class="deal-tile"><h4>$10 or 15/$75</h4><p>Crude Boys & Drip (Mix & Match)</p></div>
+<div class="deal-tile"><h4>$20</h4><p>Batch 2g Cartridge</p></div>
+<div class="deal-tile"><h4>$12 or 3/$35</h4><p>Redbud Roots Full Spectrum Cartridges</p></div>
+<div class="deal-tile"><h4>$15</h4><p>Play 1g Live Resin Cartridges</p></div>
+<div class="deal-tile"><h4>$35</h4><p>Cresco 1g Live Resin Cartridges</p></div>
+<div class="deal-tile"><h4>3/$55</h4><p>Dutch Touch Genetics 1g Disposables (Includes Mr. Clean)</p></div>
+<div class="deal-tile"><h4>$20</h4><p>Rollganic 0.5g Rosin Disposable</p></div>
+<div class="deal-tile"><h4>$20</h4><p>Mad Scientist & Emerald Fire 1g Disposables</p></div>
+<div class="deal-tile"><h4>$20</h4><p>Drip 2g Disposables</p></div>
+<div class="deal-tile"><h4>$30 or 3/$75</h4><p>Franklin Fields 1g Live Resin Disposables</p></div>
+<div class="deal-tile"><h4>$35</h4><p>Pro Gro 1g Live Resin Disposables</p></div>
+<div class="deal-tile"><h4>$45</h4><p>Pro Gro 0.5g Live Rosin Disposables</p></div>
+<div class="deal-tile"><h4>$35</h4><p>Five Star 1g Disposable</p></div></div></div>
+<div class="deal-category"><h3>Edibles & Drinks</h3><div class="tile-grid"><div class="deal-tile"><h4>$10</h4><p>Dutch Touch 200mg RSO Gummies</p></div>
+<div class="deal-tile"><h4>$5</h4><p>Dutch Touch 200mg Bomb Pop and Maraschino Cherry Gummies</p></div>
+<div class="deal-tile"><h4>$5 or 10/$30</h4><p>Good Good 200mg Gummies</p></div>
+<div class="deal-tile"><h4>$5 or 10/$35</h4><p>True North 200mg Gummies</p></div>
+<div class="deal-tile"><h4>$5</h4><p>Choice 200mg Gummies</p></div>
+<div class="deal-tile"><h4>$7 - 5/$30</h4><p>Smokies 200mg Fruit Gummies (Excludes CBG/CBN)</p></div>
+<div class="deal-tile"><h4>$10</h4><p>Monster 200mg Sleep & 800mg Full Spectrum Gummies</p></div>
+<div class="deal-tile"><h4>$15</h4><p>Camino 200mg Gummies</p></div>
+<div class="deal-tile"><h4>$15 or 3/$40</h4><p>Pixels 200mg THC Nerds</p></div>
+<div class="deal-tile"><h4>20% OFF</h4><p>Wyld and Good Tide Gummies</p></div>
+<div class="deal-tile"><h4>$10 or 3/$25</h4><p>Tonic 100mg THC Drink</p></div>
+<div class="deal-tile"><h4>$15 or 3/$40</h4><p>Mary Jones 100mg & CQ 100mg Ginger Ale & Cola</p></div>
+<div class="deal-tile"><h4>$20 or 2/$30</h4><p>Mary Jones 200mg Syrups</p></div>
+<div class="deal-tile"><h4>$5 or 5/$20</h4><p>Highly Casual 5mg Seltzer</p></div></div></div>
+<div class="deal-category"><h3>Concentrates & RSO</h3><div class="tile-grid"><div class="deal-tile"><h4>$10</h4><p>Elite Extraction Concentrates</p></div>
+<div class="deal-tile"><h4>$12</h4><p>Trap House 1g Live Resin</p></div>
+<div class="deal-tile"><h4>$20</h4><p>Trap House 2g Live Resin</p></div>
+<div class="deal-tile"><h4>$15</h4><p>Cherry Empire 1g Nug Run Resin</p></div>
+<div class="deal-tile"><h4>$20</h4><p>Dutch Touch Genetics 1g Resin</p></div>
+<div class="deal-tile"><h4>$25</h4><p>Rosslyn 1g Mac Mintz & Redbud Roots 1g Rosin</p></div>
+<div class="deal-tile"><h4>$35</h4><p>LightSky Farms, Rosslyn, and Bosa 1g Rosin</p></div>
+<div class="deal-tile"><h4>$45</h4><p>Pro Gro 1g Premium Rosin</p></div>
+<div class="deal-tile"><h4>$55 or 2/$100</h4><p>Information Entropy 1g Premium Rosin</p></div>
+<div class="deal-tile"><h4>$30</h4><p>Dutch Touch Strain Specific RSO</p></div>
+<div class="deal-tile"><h4>$25</h4><p>Dutch Touch Non Strain Specific RSO</p></div>
+<div class="deal-tile"><h4>$20</h4><p>Ratio'd TreeTown Tinctures</p></div></div></div>
+
+  <button class="floating-chat">💬 Chat with AI Budtender</button>
+
+  <script>
+    function toggleDeals() {
+      const dropdown = document.getElementById('dealDropdown');
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+
+<section id="about" style="background:#f1f8e9;padding:40px 20px;">
+  <div style="max-width:800px;margin:0 auto;text-align:center;">
+    <h2>🌿 About Us</h2>
+    <p>At Green Labs Provisions, we proudly serve Luna Pier with a mission to elevate everyday wellness.
+    Our commitment to honesty, kindness, and quality is reflected in everything we do—from our curated menu to community involvement.</p>
+    <p>We regularly host local events like beach cleanups, park fundraisers, and patient education nights. 
+    Our loyal customers know we're more than a dispensary—we’re part of the community.</p>
+    <a href="https://www.instagram.com/greenlabsmi" target="_blank">📸 Follow us on Instagram</a>
+  </div>
+</section>
+
+
+<section id="dutch" style="background:#fff3e0;padding:40px 20px;">
+  <div style="max-width:900px;margin:0 auto;text-align:center;">
+    <h2>🏆 Dutch Touch Genetics</h2>
+    <p>Our award-winning in-house brand features elite genetics, carefully cultivated and lab-tested for terpene profile, potency, and effect.</p>
+    <ul style="text-align:left;max-width:600px;margin:20px auto;">
+      <li>🥇 Mr. Clean – 1st Place, High Times Cannabis Cup (Medical Sativa)</li>
+      <li>🥈 Lilac Diesel – 2nd Place, High Times Cannabis Cup</li>
+      <li>🌟 Death By Funk – Best In Grass Winner</li>
+    </ul>
+    <p>Explore the full Dutch Touch lineup and experience the best of Michigan-grown cannabis.</p>
+  </div>
+</section>
+
+
+<footer style="background:#1b5e20;color:white;padding:20px;text-align:center;">
+  <p>📍 10701 Madison St, Luna Pier, MI 48157 | 📞 (734) 800-0024</p>
+  <p><a href="https://www.instagram.com/greenlabsmi" style="color:white;text-decoration:underline;" target="_blank">Instagram</a> | 
+     <a href="https://www.facebook.com/greenlabsmi" style="color:white;text-decoration:underline;" target="_blank">Facebook</a></p>
+  <div style="margin-top:15px;">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3026.6120926517647!2d-83.43950452417317!3d41.80669887126273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883b9c0592544db7%3A0xb82f35e2939b6aa5!2sGreen%20Labs%20Provisions!5e0!3m2!1sen!2sus!4v1718657000000!5m2!1sen!2sus" 
+      width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</footer>
+
+</body>
+</html>
