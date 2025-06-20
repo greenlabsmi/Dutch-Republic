@@ -115,3 +115,24 @@ footer iframe {
 .carousel-dot.active {
   background-color: #555;
 }
+
+/* ===== About Us Section Styles ===== */
+.about-us {
+  padding: 30px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 900px;
+}
+
+.about-us h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.about-us p {
+  font-size: 1em;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
