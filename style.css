@@ -35,6 +35,9 @@ body {
   transition: color 0.2s ease;
   cursor: pointer;
 }
+.hidden {
+  display: none;
+}
 
 .nav-links a:hover {
   color: #43a047;
