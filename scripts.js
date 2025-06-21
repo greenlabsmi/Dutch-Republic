@@ -3,31 +3,14 @@
     alert("Opening the AI Budtender…");
   }
 
-  let currentSlide = 0;
-
-  function goToSlide(slideIndex) {
-    const track = document.getElementById('carouselTrack');
-    const dots = document.querySelectorAll('.carousel-dot');
-    currentSlide = slideIndex;
-    const slideWidth = track.offsetWidth / dots.length;
-    track.style.transform = `translateX(-${slideWidth * slideIndex}px)`;
-    dots.forEach(dot => dot.classList.remove('active'));
-    dots[slideIndex].classList.add('active');
-  }
-
   function toggleCategory(categoryId) {
     const categories = document.querySelectorAll('.deal-category');
-    categories.forEach(cat => {
+    categories.forEach((cat) => {
       if (cat.id === categoryId) {
-        cat.classList.toggle('hidden');
+        cat.classList.toggle('active');
       } else {
-        cat.classList.add('hidden');
+        cat.classList.remove('active');
       }
     });
   }
 </script>
-
-<!-- ✅ External script (optional if you're not using it yet) -->
-<script src="script.js"></script>
-</body>
-</html>
