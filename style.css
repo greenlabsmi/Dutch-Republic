@@ -40,8 +40,26 @@ body {
   color: #43a047;
 }
 
-.hidden {
-  display: none;
+/* Dropdown Section Always Visible */
+.dropdown-content {
+  display: block;
+  max-width: 1000px;
+  margin: 0 auto 30px;
+  padding: 10px 20px;
+}
+
+/* Dropdown Buttons */
+.dropdown-button {
+  display: block;
+  margin: 15px auto 20px;
+  padding: 12px 24px;
+  background-color: #ccffcc;
+  border: none;
+  font-weight: bold;
+  font-size: 1em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 /* Banners */
@@ -82,33 +100,19 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Deal Section */
-.dropdown-content {
-  display: block;
-  max-width: 1000px;
-  margin: 0 auto 30px;
-  padding: 10px 20px;
+/* Deal Cards */
+.deal-card {
+  background: white;
+  margin: 20px auto;
+  max-width: 90%;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-.dropdown-button {
-  display: block;
-  margin: 15px auto 10px;
-  padding: 12px 24px;
-  background-color: #ccffcc;
-  border: none;
-  font-weight: bold;
-  font-size: 1em;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.dropdown-button:hover {
-  background-color: #b2fab4;
-}
-
+/* Deal Categories */
 .deal-category {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .deal-category h3 {
@@ -128,10 +132,9 @@ body {
 .deal-tile {
   background: white;
   border-radius: 10px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
   padding: 15px;
   width: 280px;
-  cursor: pointer;
 }
 
 /* Footer */
@@ -146,6 +149,11 @@ footer iframe {
   height: 250px;
   border: none;
   margin-top: 10px;
+}
+
+footer a {
+  color: #1b5e20;
+  text-decoration: none;
 }
 
 /* Carousel */
@@ -247,7 +255,6 @@ footer iframe {
   transform: translateX(-50%) scale(1.05);
 }
 
-/* Emoji/Text alignment fix */
 .floating-chat span {
   display: inline-flex;
   align-items: center;
@@ -284,7 +291,7 @@ footer iframe {
   }
 }
 
-/* Responsive */
+/* Mobile */
 @media (max-width: 600px) {
   body {
     font-size: 0.95em;
@@ -306,5 +313,10 @@ footer iframe {
   .nav-links a {
     margin-left: 0;
     font-size: 1.1em;
+  }
+
+  .floating-chat {
+    font-size: 0.95em;
+    padding: 10px 18px;
   }
 }
