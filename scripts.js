@@ -14,3 +14,13 @@ function goToSlide(slideIndex) {
   dots.forEach(dot => dot.classList.remove('active'));
   dots[slideIndex].classList.add('active');
 }
+function toggleCategory(categoryId) {
+  const categories = document.querySelectorAll('.deal-category');
+  categories.forEach(cat => {
+    if (cat.id === categoryId) {
+      cat.classList.toggle('hidden');
+    } else {
+      cat.classList.add('hidden');
+    }
+  });
+}
