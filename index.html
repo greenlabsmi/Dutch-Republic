@@ -121,17 +121,106 @@
     <button class="dropdown-button" onclick="toggleDeals()">Browse Deal Categories</button>
   </section>
 
-  <section class="dropdown-content" id="dealDropdown">
-    <div class="deal-category">
-      <h3>Sample Deal Category</h3>
-      <div class="tile-grid">
-        <div class="deal-tile">
-          <h4>$25 Ounces</h4>
-          <p>Grip Pre-Packaged Ounces - Back in Stock</p>
-        </div>
+  
+<section class="dropdown-content" id="dealDropdown">
+  <!-- Deal Category Buttons + Containers -->
+  <button class="dropdown-button" onclick="toggleCategory('flowerDeals')">🌿 Flower</button>
+  <div id="flowerDeals" class="deal-category hidden">
+    <h3>Flower Deals</h3>
+    <div class="tile-grid">
+      <div class="deal-tile">
+        <h4>$25 Ounces</h4>
+        <p>Grip Pre-Packaged Ounces – Back in Stock</p>
       </div>
+      <!-- More flower tiles here -->
     </div>
-  </section>
+  </div>
+
+  <button class="dropdown-button" onclick="toggleCategory('vapeDeals')">💨 Vapes</button>
+  <div id="vapeDeals" class="deal-category hidden">
+    <h3>Vape Deals</h3>
+    <div class="tile-grid">
+      <div class="deal-tile">
+        <h4>BOGO Disposables</h4>
+        <p>Buy 1, Get 1 Free – Dutch Touch full spectrum</p>
+      </div>
+      <!-- More vape tiles here -->
+    </div>
+  </div>
+
+  <button class="dropdown-button" onclick="toggleCategory('edibleDeals')">🍬 Edibles</button>
+  <div id="edibleDeals" class="deal-category hidden">
+    <h3>Edible Deals</h3>
+    <div class="tile-grid">
+      <div class="deal-tile">
+        <h4>3 for $20</h4>
+        <p>Choose from select 100 mg gummies</p>
+      </div>
+      <!-- More edibles -->
+    </div>
+  </div>
+
+  <button class="dropdown-button" onclick="toggleCategory('prerollDeals')">🚬 Pre-Rolls</button>
+  <div id="prerollDeals" class="deal-category hidden">
+    <h3>Pre-Roll Deals</h3>
+    <div class="tile-grid">
+      <div class="deal-tile">
+        <h4>5/$25 Pre-Rolls</h4>
+        <p>Assorted Dutch Touch mini joints</p>
+      </div>
+      <!-- More preroll tiles -->
+    </div>
+  </div>
+
+  <button class="dropdown-button" onclick="toggleCategory('concentrateDeals')">🧪 Concentrates</button>
+  <div id="concentrateDeals" class="deal-category hidden">
+    <h3>Concentrate Deals</h3>
+    <div class="tile-grid">
+      <div class="deal-tile">
+        <h4>10% Off Rosin</h4>
+        <p>Organic solventless resin</p>
+      </div>
+      <!-- More concentrate tiles -->
+    </div>
+  </div>
+
+  <button class="dropdown-button" onclick="toggleCategory('rsoDeals')">🌈 RSO & Tinctures</button>
+  <div id="rsoDeals" class="deal-category hidden">
+    <h3>RSO & Tincture Deals</h3>
+    <div class="tile-grid">
+      <div class="deal-tile">
+        <h4>Wholesale RSO</h4>
+        <p>Buy 10 g, Get 1 g Free</p>
+      </div>
+      <!-- More RSO tiles -->
+    </div>
+  </div>
+
+  <button class="dropdown-button" onclick="toggleCategory('awardDeals')">🏆 Award Winners</button>
+  <div id="awardDeals" class="deal-category hidden">
+    <h3>Award Winner Deals</h3>
+    <div class="tile-grid">
+      <div class="deal-tile">
+        <h4>Mr. Clean 10% Off</h4>
+        <p>High Times 1st Place flower</p>
+      </div>
+      <!-- More award tiles -->
+    </div>
+  </div>
+
+  <button class="dropdown-button" onclick="toggleCategory('merchDeals')">🧢 Merch & Accessories</button>
+  <div id="merchDeals" class="deal-category hidden">
+    <h3>Merch Deals</h3>
+    <div class="tile-grid">
+      <div class="deal-tile">
+        <h4>10% Off Hats & Tees</h4>
+        <p>Green Labs merch</p>
+      </div>
+      <!-- More merch tiles -->
+    </div>
+  </div>
+</section>
+
 
   <section id="about" style="padding:40px 20px;">
     <h2>About Us</h2>
