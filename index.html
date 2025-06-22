@@ -376,11 +376,19 @@
     function openChat() {
       alert("Opening the AI Budtender…");
     }
-  function scrollToAllFlower() {
+  function hideAllFlowerDeals() {
   const mainSection = document.getElementById('flowerDeals');
   const allDeals = document.getElementById('allFlowerDeals');
   const btn = document.getElementById('flowerToggleBtn');
-  
+
+  mainSection.classList.remove('active');
+  allDeals.classList.remove('active');
+  btn.setAttribute('aria-expanded', false);
+  btn.textContent = '🌿 Flower';
+
+  // Scroll back to the Flower category button
+  btn.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
   // Toggle both main and extended flower sections
   mainSection.classList.toggle('active');
   allDeals.classList.toggle('active');
@@ -395,10 +403,6 @@
     document.getElementById('deals').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
-function scrollToAllFlower() {
-  const mainSection = document.getElementById('flowerDeals');
-  const allDeals = document.getElementById('allFlowerDeals');
-  const btn = document.getElementById('flowerToggleBtn');
 
   // Toggle both main and extended flower sections
   mainSection.classList.toggle('active');
