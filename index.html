@@ -374,19 +374,26 @@
   <script>
     function openChat() {
       alert("Opening the AI Budtender…");
-    } function scrollToAllFlower() {
-  const section = document.getElementById('allFlowerDeals');
-  section.classList.toggle('active');
-      
-      const btn = document.getElementById('flowerToggleBtn');
-btn.setAttribute('aria-expanded', section.classList.contains('active'));
-btn.textContent = section.classList.contains('active')
-  ? '👆 Hide Flower Deals'
-  : '🌿 Flower';     
-  if (section.classList.contains('active')) {
-    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  function scrollToAllFlower() {
+  const mainSection = document.getElementById('flowerDeals');
+  const allDeals = document.getElementById('allFlowerDeals');
+  const btn = document.getElementById('flowerToggleBtn');
+
+  // Toggle both main and extended flower sections
+  mainSection.classList.toggle('active');
+  allDeals.classList.toggle('active');
+
+  // Update button aria and text
+  const isActive = mainSection.classList.contains('active');
+  btn.setAttribute('aria-expanded', isActive);
+  btn.textContent = isActive ? '👆 Hide Flower Deals' : '🌿 Flower';
+
+  // Scroll to the top of the deals section if opening
+  if (isActive) {
+    document.getElementById('deals').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
+
 
     function toggleCategory(categoryId) {
       const categories = document.querySelectorAll('.deal-category');
