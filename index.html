@@ -375,7 +375,9 @@
       
       const btn = document.getElementById('flowerToggleBtn');
 btn.setAttribute('aria-expanded', section.classList.contains('active'));
-      
+btn.textContent = section.classList.contains('active')
+  ? '👆 Hide Flower Deals'
+  : '🌿 Flower';     
   if (section.classList.contains('active')) {
     section.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
