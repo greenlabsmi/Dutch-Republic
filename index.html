@@ -7,6 +7,10 @@
   <style>
     html { scroll-behavior: smooth; }
 
+    #allFlowerDeals {
+  margin-bottom: 40px;
+}
+    
     body {
       font-family: Arial, sans-serif;
       background: #f7f7f7;
@@ -218,17 +222,13 @@
 <section class="dropdown-content" id="dealDropdown">
 
   <!-- 🌿 Flower -->
- <button class="dropdown-button" onclick="scrollToAllFlower()">🌿 Flower</button>
+ <button id="flowerToggleBtn" class="dropdown-button" onclick="scrollToAllFlower()" aria-expanded="false">🌿 Flower</button>
   <div id="flowerDeals" class="deal-category active">
   <h3>Flower Deals</h3>
   <div class="tile-grid">
     <div class="deal-tile"><h4>$25 Ounces <span>💰 Best Value</span></h4><p>Grip Pre-Packaged Ounces – Back in Stock</p></div>
     <div class="deal-tile"><h4>2 for $50 Eighths <span>🏆 Award-Winning</span></h4><p>Includes Mr. Clean & Lilac Diesel – Mix & Match</p></div>
     <div class="deal-tile"><h4>$20 Quarters <span>🔥 New</span></h4><p>Fresh Drop – Dutch Touch Quarters 🪙</p></div>
-  </div>
-
-  <div style="text-align:center; margin: 20px;">
-    <button onclick="document.getElementById('allFlowerDeals').classList.toggle('active')" style="padding: 8px 20px; font-weight:bold; border-radius:6px; background:#ccffcc; border:none; cursor:pointer;">👇 See All Flower Deals</button>
   </div>
 
   <div id="allFlowerDeals" class="deal-category">
@@ -372,8 +372,12 @@
     } function scrollToAllFlower() {
   const section = document.getElementById('allFlowerDeals');
   section.classList.toggle('active');
+      
+      const btn = document.getElementById('flowerToggleBtn');
+btn.setAttribute('aria-expanded', section.classList.contains('active'));
+      
   if (section.classList.contains('active')) {
-    section.scrollIntoView({ behavior: 'smooth' });
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
 
