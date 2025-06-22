@@ -117,6 +117,7 @@
       box-shadow: 0 0 8px rgba(0,0,0,0.1);
       padding: 15px;
       width: 280px;
+      margin-bottom: 20px;
     }
 
     .floating-chat {
@@ -414,16 +415,23 @@ function scrollToAllFlower() {
   }
 }
 
-    function toggleCategory(categoryId) {
-      const categories = document.querySelectorAll('.deal-category');
-      categories.forEach((cat) => {
-        if (cat.id === categoryId) {
-          cat.classList.toggle('active');
-        } else {
-          cat.classList.remove('active');
+function toggleCategory(categoryId) {
+  const categories = document.querySelectorAll('.deal-category');
+  categories.forEach((cat) => {
+    if (cat.id === categoryId) {
+      cat.classList.toggle('active');
+      if (cat.classList.contains('active')) {
+        // Scroll to button that triggered it
+        const button = document.querySelector(`button[onclick="toggleCategory('${categoryId}')"]`);
+        if (button) {
+          button.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-      });
+      }
+    } else {
+      cat.classList.remove('active');
     }
+  });
+}
   </script>
 
   <script src="script.js"></script>
