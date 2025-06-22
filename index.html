@@ -120,6 +120,21 @@
       margin-bottom: 20px;
     }
 
+    .tile-grid-featured {
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.deal-tile.small-tile {
+  width: 200px;
+  padding: 12px;
+  font-size: 0.9em;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.08);
+  margin-bottom: 10px;
+}
+
     .floating-chat {
       position: fixed;
       bottom: 20px;
@@ -226,11 +241,20 @@
  <button id="flowerToggleBtn" class="dropdown-button" onclick="scrollToAllFlower()" aria-expanded="false">🌿 Flower</button>
   <div id="flowerDeals" class="deal-category">
   <h3>Flower Deals</h3>
-  <div class="tile-grid">
-    <div class="deal-tile"><h4>$25 Ounces <span>💰 Best Value</span></h4><p>Grip Pre-Packaged Ounces – Back in Stock</p></div>
-    <div class="deal-tile"><h4>2 for $50 Eighths <span>🏆 Award-Winning</span></h4><p>Includes Mr. Clean & Lilac Diesel – Mix & Match</p></div>
-    <div class="deal-tile"><h4>$20 Quarters <span>🔥 New</span></h4><p>Fresh Drop – Dutch Touch Quarters 🪙</p></div>
+ <div class="tile-grid tile-grid-featured">
+  <div class="deal-tile small-tile">
+    <h4>$25 Ounces <span>💰 Best Value</span></h4>
+    <p>Grip Pre-Packaged Ounces – Back in Stock</p>
   </div>
+  <div class="deal-tile small-tile">
+    <h4>2 for $50 Eighths <span>🏆 Award-Winning</span></h4>
+    <p>Includes Mr. Clean & Lilac Diesel – Mix & Match</p>
+  </div>
+  <div class="deal-tile small-tile">
+    <h4>$20 Quarters <span>🔥 New</span></h4>
+    <p>Fresh Drop – Dutch Touch Quarters 🪙</p>
+  </div>
+</div>
 
   <div id="allFlowerDeals" class="deal-category">
     <h4 style="margin-top:20px;color:#1b5e20;">Ounces</h4>
