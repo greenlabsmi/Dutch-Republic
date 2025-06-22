@@ -153,7 +153,16 @@
       height: 300px;
       border: none;
     }
-
+.deal-tile h4 span {
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 0.9em;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+    
     @media (max-width: 600px) {
       .main-nav {
         flex-direction: column;
@@ -209,19 +218,56 @@
 <section class="dropdown-content" id="dealDropdown">
 
   <!-- 🌿 Flower -->
-  <button class="dropdown-button" onclick="toggleCategory('flowerDeals')">🌿 Flower</button>
-  <div id="flowerDeals" class="deal-category">
-    <h3>Flower Deals</h3>
-    <div class="tile-grid">
-      <div class="deal-tile"><h4>$25 Ounces <span>💰 Best Value</span></h4><p>Grip Pre-Packaged Ounces – Back in Stock</p></div>
-      <div class="deal-tile"><h4>$45 Half Ounces</h4><p>Mixed Hybrid Options – While Supplies Last</p></div>
-      <div class="deal-tile"><h4>$20 Quarters <span>🔥 New</span></h4><p>Fresh Drop – Dutch Touch Quarters 🪙</p></div>
-      <div class="deal-tile"><h4>2 for $50 Eighths <span>🏆 Award-Winning</span></h4><p>Includes Mr. Clean & Lilac Diesel – Mix & Match</p></div>
-    </div>
-    <div style="text-align:center; margin-top:15px;">
-      <a href="https://leafly.com/dispensary-info/green-labs-provisions/menu" target="_blank" style="text-decoration:none; font-weight:bold; color:#1b5e20;">👀 See All Flower</a>
-    </div>
+ <button class="dropdown-button" onclick="scrollToAllFlower()">🌿 Flower</button>
+  <div id="flowerDeals" class="deal-category active">
+  <h3>Flower Deals</h3>
+  <div class="tile-grid">
+    <div class="deal-tile"><h4>$25 Ounces <span>💰 Best Value</span></h4><p>Grip Pre-Packaged Ounces – Back in Stock</p></div>
+    <div class="deal-tile"><h4>2 for $50 Eighths <span>🏆 Award-Winning</span></h4><p>Includes Mr. Clean & Lilac Diesel – Mix & Match</p></div>
+    <div class="deal-tile"><h4>$20 Quarters <span>🔥 New</span></h4><p>Fresh Drop – Dutch Touch Quarters 🪙</p></div>
   </div>
+
+  <div style="text-align:center; margin: 20px;">
+    <button onclick="document.getElementById('allFlowerDeals').classList.toggle('active')" style="padding: 8px 20px; font-weight:bold; border-radius:6px; background:#ccffcc; border:none; cursor:pointer;">👇 See All Flower Deals</button>
+  </div>
+
+  <div id="allFlowerDeals" class="deal-category">
+    <h4 style="margin-top:20px;color:#1b5e20;">Ounces</h4>
+    <ul>
+      <li>$25 – Grip Pre-Packaged Ounces</li>
+      <li>$35 – Lime OG, Querkle #1 and Double Dutch Cookies Shake</li>
+      <li>$50 – Dutch Touch Ground Flower</li>
+      <li>$100 – Double Dutch Cookies and Goji OG</li>
+      <li>$110 – Orange Kush Cake and Death Star</li>
+      <li>$125 – Thug Life, Sin City Grapes and Yoda'z Cream</li>
+      <li>$130 – Grease Monkey and AJ's Cream Cake</li>
+      <li>$150 – White Wampa and Dutch Breath</li>
+      <li>$200 – Mr. Clean</li>
+    </ul>
+
+    <h4 style="margin-top:20px;color:#1b5e20;">Half Ounces</h4>
+    <ul>
+      <li>$55 – Dead Prez and Apollo</li>
+      <li>$70 – Goji OG, and Milk & Cookies</li>
+      <li>$75 – Angelica, Sky Lotus, Grease Monkey and Thug Life</li>
+    </ul>
+
+    <h4 style="margin-top:20px;color:#1b5e20;">Quarters</h4>
+    <ul>
+      <li>$35 – Yoda'z Cream, Dead Prez and Grape Gouda</li>
+      <li>$40 – AK-630, Angelica and Sky Lotus</li>
+      <li>$50 – Time Bandit, Mr. Dread, Mr. Funk, Thunder Wookie</li>
+    </ul>
+
+    <h4 style="margin-top:20px;color:#1b5e20;">Eighths</h4>
+    <ul>
+      <li>$20 – Crunchberries and Querkle</li>
+      <li>$25 – Light Sky Farm 4g Nitrogen Jars, 10K and Illudium</li>
+      <li>$30 – Mr. Funk or Thunder Wookie</li>
+      <li>$40 – Lilac Diesel</li>
+    </ul>
+  </div>
+</div>
 
   <!-- 💨 Vapes -->
   <button class="dropdown-button" onclick="toggleCategory('vapeDeals')">💨 Vapes</button>
@@ -323,7 +369,13 @@
   <script>
     function openChat() {
       alert("Opening the AI Budtender…");
-    }
+    } function scrollToAllFlower() {
+  const section = document.getElementById('allFlowerDeals');
+  section.classList.toggle('active');
+  if (section.classList.contains('active')) {
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
+}
 
     function toggleCategory(categoryId) {
       const categories = document.querySelectorAll('.deal-category');
