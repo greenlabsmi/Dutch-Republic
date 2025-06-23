@@ -87,6 +87,20 @@
       <i onclick="toggleMenu()">☰</i>
     </div>
   </nav>
+
+<!-- ✅ HAMBURGER MENU DROPDOWN -->
+<div class="hamburger-menu">
+  <span class="close-btn" onclick="closeMenu()">✖️</span>
+  <a href="#deals">🔥 Today’s Deals</a>
+  <a href="#about">🌱 About Us</a>
+  <a href="#dutch">🏆 Dutch Touch</a>
+  <a href="#newsletter">🎁 Loyalty Signup</a>
+  <div class="menu-footer">
+    We’re Open Daily 9am–9pm<br/>
+    <a href="https://maps.app.goo.gl/JczoFXzeHxgRThXH7" target="_blank">📍 Directions</a>
+  </div>
+</div>
+
     <!-- 🌙 Nightcap Bundle Promo -->
   <section class="nightcap-banner" style="background:#1b5e20; color:white; text-align:center; padding: 20px 10px;">
     <h2>🌙 Nightcap Set</h2>
