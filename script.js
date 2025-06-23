@@ -55,8 +55,11 @@ function hideAllFlowerDeals() {
 }
 // === Hamburger Menu Open/Close ===
 function toggleMenu() {
+  console.log("toggleMenu fired");
   const menu = document.querySelector('.hamburger-menu');
   menu.classList.toggle('open');
+}
+
 }
 
 function closeMenu() {
