@@ -73,7 +73,7 @@ window.addEventListener('click', function (e) {
   if (menu && menu.classList.contains('open') && !menu.contains(e.target) && !e.target.closest('.hamburger-icon')) {
     closeMenu();
    }
-});
+
   function openPreferredMap() {
   const appleCoords = "41.81116,-83.44617"; // Correct pin location
   const googleAddress = encodeURIComponent("10701 Madison St, Luna Pier, MI 48157");
