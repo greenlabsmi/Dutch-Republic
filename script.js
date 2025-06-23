@@ -1,3 +1,5 @@
+console.log("script.js loaded");
+
 // === Chatbot and Search Actions ===
 function openChat() {
   alert("Launching the AI Budtender… (This will be replaced with actual chatbot trigger)");
