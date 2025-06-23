@@ -62,8 +62,6 @@ function toggleMenu() {
   menu.classList.toggle('open');
 }
 
-}
-
 function closeMenu() {
   const menu = document.querySelector('.hamburger-menu');
   if (menu) menu.classList.remove('open');
