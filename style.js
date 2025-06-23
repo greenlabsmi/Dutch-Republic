@@ -69,5 +69,14 @@ window.addEventListener('click', function (e) {
   const menu = document.querySelector('.hamburger-menu');
   if (menu && menu.classList.contains('open') && !menu.contains(e.target) && !e.target.closest('.hamburger-icon')) {
     closeMenu();
+  
+  function openPreferredMap() {
+    const address = encodeURIComponent("10701 Madison St, Luna Pier, MI 48157");
+    const isApple = /iPhone|iPad|Macintosh|Mac OS/.test(navigator.userAgent);
+
+    if (isApple) {
+      window.open(`https://maps.apple.com/?address=${address}`, '_blank');
+    } else {
+      window.open(`https://www.google.com/maps/place/${address}`, '_blank');
+    }
   }
-});
