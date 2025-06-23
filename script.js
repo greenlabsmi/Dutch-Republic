@@ -72,11 +72,13 @@ window.addEventListener('click', function (e) {
    }
 });
   function openPreferredMap() {
-    const address = encodeURIComponent("10701 Madison St, Luna Pier, MI 48157");
-    const isApple = /iPhone|iPad|Macintosh|Mac OS/.test(navigator.userAgent);
-    if (isApple) {
-      window.open(`https://maps.apple.com/?address=${address}`, '_blank');
-    } else {
-      window.open(`https://www.google.com/maps/place/${address}`, '_blank');
-    }
+  const appleCoords = "41.81116,-83.44617"; // Correct pin location
+  const googleAddress = encodeURIComponent("10701 Madison St, Luna Pier, MI 48157");
+  const isApple = /iPhone|iPad|Macintosh|Mac OS/.test(navigator.userAgent);
+
+  if (isApple) {
+    window.open(`https://maps.apple.com/?ll=${appleCoords}`, '_blank');
+  } else {
+    window.open(`https://www.google.com/maps/place/${googleAddress}`, '_blank');
   }
+}
