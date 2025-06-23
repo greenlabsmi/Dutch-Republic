@@ -273,61 +273,7 @@
   </footer>
     <!-- ✅ FLOATING CHATBOT BUTTON -->
   <button class="floating-chat" onclick="openChat()">💬 Chat with AI Budtender</button>
-
-  <!-- ✅ SCRIPTS -->
-  <script>
-    function openChat() {
-      alert("Launching the AI Budtender… (This will be replaced with actual chatbot trigger)");
-    }
-
-    function hideAllFlowerDeals() {
-      const mainSection = document.getElementById('flowerDeals');
-      const allDeals = document.getElementById('allFlowerDeals');
-      const btn = document.getElementById('flowerToggleBtn');
-
-      mainSection.classList.remove('active');
-      allDeals.classList.remove('active');
-      btn.setAttribute('aria-expanded', false);
-      btn.textContent = '🌿 Flower';
-
-      btn.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-
-    function scrollToAllFlower() {
-      const mainSection = document.getElementById('flowerDeals');
-      const allDeals = document.getElementById('allFlowerDeals');
-      const btn = document.getElementById('flowerToggleBtn');
-
-      mainSection.classList.toggle('active');
-      allDeals.classList.toggle('active');
-
-      const isActive = mainSection.classList.contains('active');
-      btn.setAttribute('aria-expanded', isActive);
-      btn.textContent = isActive ? '👆 Hide Flower Deals' : '🌿 Flower';
-
-      if (isActive) {
-        document.getElementById('deals').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-
-    function toggleCategory(categoryId) {
-      const categories = document.querySelectorAll('.deal-category');
-      categories.forEach((cat) => {
-        if (cat.id === categoryId) {
-          cat.classList.toggle('active');
-          if (cat.classList.contains('active')) {
-            const button = document.querySelector(`button[onclick="toggleCategory('${categoryId}')"]`);
-            if (button) {
-              button.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-          }
-        } else {
-          cat.classList.remove('active');
-        }
-      });
-    }
-  </script>
-
+ 
   <!-- ✅ OPTIONAL: EXTERNAL SCRIPT HOOK -->
   <script src="script.js"></script>
 </body>
