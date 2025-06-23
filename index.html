@@ -326,24 +326,6 @@
         }
       });
     }
-
-    // Hamburger menu toggle
-    function toggleMenu() {
-      const menu = document.querySelector('.hamburger-menu');
-      menu.classList.toggle('open');
-    }
-
-    function closeMenu() {
-      const menu = document.querySelector('.hamburger-menu');
-      menu.classList.remove('open');
-    }
-
-    window.addEventListener('click', function (e) {
-      const menu = document.querySelector('.hamburger-menu');
-      if (menu && menu.classList.contains('open') && !menu.contains(e.target) && !e.target.closest('.hamburger-icon')) {
-        closeMenu();
-      }
-    });
   </script>
 
   <!-- ✅ OPTIONAL: EXTERNAL SCRIPT HOOK -->
