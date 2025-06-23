@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Green Labs - Deals</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+    .info-banner {
+      background: #d0f0d0;
+      color: #1b5e20;
+      font-size: 0.9em;
+      padding: 6px 15px;
+      text-align: center;
+    }
+    .info-banner a {
+      color: #1b5e20;
+      text-decoration: underline;
+    }
+    .main-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: #e8f5e9;
+      color: #1b5e20;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-left img {
+      height: 28px;
+    }
+    .nav-left span {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #1b5e20;
+    }
+    .nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 1.3em;
+      cursor: pointer;
+    }
+    .nav-icons i {
+      color: #1b5e20;
+    }
+    .hero {
+      background: #285c30;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🗺️ Top Info Banner -->
+  <div class="info-banner">
+    📍 <a href="https://maps.app.goo.gl/JczoFXzeHxgRThXH7" target="_blank">10701 Madison St, Luna Pier, MI</a> – Open Daily 9am–9pm
+  </div>
+
+  <!-- 🌿 Sticky Navbar -->
+  <nav class="main-nav">
+    <div class="nav-left">
+      <img src="your-logo.png" alt="Green Labs Logo">
+      <span>Green Labs</span>
+    </div>
+    <div class="nav-icons">
+      <i onclick="openSearch()">🔍</i>
+      <i onclick="openChat()">💬</i>
+      <i onclick="toggleMenu()">☰</i>
+    </div>
+  </nav>
+    <!-- 🌙 Nightcap Bundle Promo -->
+  <section class="nightcap-banner" style="background:#1b5e20; color:white; text-align:center; padding: 20px 10px;">
+    <h2>🌙 Nightcap Set</h2>
+    <p>End your day on a high note. Explore our sleep-focused bundle now!</p>
+  </section>
+
+  <!-- 🔥 Today’s Deals Section -->
+  <section class="deal-header" id="deals" style="text-align:center; background:#2e7d32; color:white; padding: 25px 10px 15px;">
+    <h2>🔥 Today’s Deals</h2>
+    <p>👇 Select a deal category below:</p>
+  </section>
+
+  <section class="dropdown-content" id="dealDropdown" style="max-width: 1000px; margin: 0 auto 30px; padding: 10px 20px;">
+  
+    <!-- 🌿 Flower -->
+    <button id="flowerToggleBtn" class="dropdown-button" onclick="scrollToAllFlower()" aria-expanded="false">🌿 Flower</button>
+    <div id="flowerDeals" class="deal-category" style="display:none; margin-bottom: 40px;">
+      <h3 style="color:#1b5e20; border-bottom:2px solid #c8e6c9; padding-bottom:5px;">Flower Deals</h3>
+      <div class="tile-grid tile-grid-featured" style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-bottom:15px;">
+        <div class="deal-tile">
+          <h4>$25 Ounces <span>💰 Best Value</span></h4>
+          <p>Grip Pre-Packaged Ounces – Back in Stock</p>
+        </div>
+        <div class="deal-tile">
+          <h4>2 for $50 Eighths <span>🏆 Award-Winning</span></h4>
+          <p>Includes Mr. Clean & Lilac Diesel – Mix & Match</p>
+        </div>
+      </div>
+
+      <div id="allFlowerDeals" class="deal-category">
+        <h4 style="margin-top:20px;color:#1b5e20;">Ounces</h4>
+        <ul>
+          <li>$25 – Grip Pre-Packaged Ounces</li>
+          <li>$35 – Lime OG, Querkle #1 and Double Dutch Cookies Shake</li>
+          <li>$50 – Dutch Touch Ground Flower</li>
+          <li>$100 – Double Dutch Cookies and Goji OG</li>
+          <li>$110 – Orange Kush Cake and Death Star</li>
+          <li>$125 – Thug Life, Sin City Grapes and Yoda'z Cream</li>
+          <li>$130 – Grease Monkey and AJ's Cream Cake</li>
+          <li>$150 – White Wampa and Dutch Breath</li>
+          <li>$200 – Mr. Clean</li>
+        </ul>
+
+        <h4 style="margin-top:20px;color:#1b5e20;">Half Ounces</h4>
+        <ul>
+          <li>$55 – Dead Prez and Apollo</li>
+          <li>$70 – Goji OG, and Milk & Cookies</li>
+          <li>$75 – Angelica, Sky Lotus, Grease Monkey and Thug Life</li>
+        </ul>
+
+        <h4 style="margin-top:20px;color:#1b5e20;">Quarters</h4>
+        <ul>
+          <li>$35 – Yoda'z Cream, Dead Prez and Grape Gouda</li>
+          <li>$40 – AK-630, Angelica and Sky Lotus</li>
+          <li>$50 – Time Bandit, Mr. Dread, Mr. Funk, Thunder Wookie</li>
+        </ul>
+
+        <h4 style="margin-top:20px;color:#1b5e20;">Eighths</h4>
+        <ul>
+          <li>$20 – Crunchberries and Querkle</li>
+          <li>$25 – Light Sky Farm 4g Nitrogen Jars, 10K and Illudium</li>
+          <li>$30 – Mr. Funk or Thunder Wookie</li>
+          <li>$40 – Lilac Diesel</li>
+        </ul>
+
+        <!-- ❌ Hide Button -->
+        <div style="text-align:center; margin: 20px;">
+          <button onclick="hideAllFlowerDeals()" style="padding: 8px 20px; font-weight:bold; border-radius:6px; background:#ffd6d6; border:none; cursor:pointer;">❌ Hide All Deals</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 💨 Vapes -->
+    <button class="dropdown-button" onclick="toggleCategory('vapeDeals')">💨 Vapes</button>
+    <div id="vapeDeals" class="deal-category" style="display:none;">
+      <h3 style="color:#1b5e20; border-bottom:2px solid #c8e6c9; padding-bottom:5px;">Vape Deals</h3>
+      <div class="tile-grid">
+        <div class="deal-tile"><h4>BOGO Disposables <span>💰</span></h4><p>Buy 1, Get 1 Free – Dutch Touch full spectrum</p></div>
+        <div class="deal-tile"><h4>2 for $40 510 Carts</h4><p>Mix & Match House Brands – While Available</p></div>
+      </div>
+    </div>
+        <!-- 🍬 Edibles -->
+    <button class="dropdown-button" onclick="toggleCategory('edibleDeals')">🍬 Edibles</button>
+    <div id="edibleDeals" class="deal-category" style="display:none;">
+      <h3 style="color:#1b5e20; border-bottom:2px solid #c8e6c9; padding-bottom:5px;">Edible Deals</h3>
+      <div class="tile-grid">
+        <div class="deal-tile"><h4>3 for $20 Gummies <span>💰 Best Value</span></h4><p>Choose from select 100 mg packs – Limited Stock</p></div>
+        <div class="deal-tile"><h4>RSO Gummies <span>🔥 New</span></h4><p>200mg Full Spectrum: Crunch, Grape, Berry Burst</p></div>
+      </div>
+    </div>
+
+    <!-- 🪄 Pre-Rolls -->
+    <button class="dropdown-button" onclick="toggleCategory('prerollDeals')">🪄 Pre-Rolls</button>
+    <div id="prerollDeals" class="deal-category" style="display:none;">
+      <h3 style="color:#1b5e20; border-bottom:2px solid #c8e6c9; padding-bottom:5px;">Pre-Roll Deals</h3>
+      <div class="tile-grid">
+        <div class="deal-tile"><h4>5 for $25 Minis</h4><p>Assorted Dutch Touch mini pre-rolls – Great for Sharing</p></div>
+        <div class="deal-tile"><h4>Infused Blunts <span>🔥 New</span></h4><p>Premium Dutch Touch Options Available</p></div>
+      </div>
+    </div>
+
+    <!-- 💧 RSO & Tinctures -->
+    <button class="dropdown-button" onclick="toggleCategory('rsoDeals')">💧 RSO & Tinctures</button>
+    <div id="rsoDeals" class="deal-category" style="display:none;">
+      <h3 style="color:#1b5e20; border-bottom:2px solid #c8e6c9; padding-bottom:5px;">RSO & Tincture Deals</h3>
+      <div class="tile-grid">
+        <div class="deal-tile"><h4>Buy 10g, Get 1 Free <span>💰</span></h4><p>RSO Dart Wholesale Bundle</p></div>
+        <div class="deal-tile"><h4>Nightcap Set</h4><p>Pair RSO Tincture + Gummies for Sleep Support</p></div>
+      </div>
+    </div>
+
+    <!-- 🏆 Award Winners -->
+    <button class="dropdown-button" onclick="toggleCategory('awardDeals')">🏆 Award Winners</button>
+    <div id="awardDeals" class="deal-category" style="display:none;">
+      <h3 style="color:#1b5e20; border-bottom:2px solid #c8e6c9; padding-bottom:5px;">Award Winner Deals</h3>
+      <div class="tile-grid">
+        <div class="deal-tile"><h4>Mr. Clean 10% Off <span>🏆</span></h4><p>1st Place High Times Sativa – Potent and Crisp</p></div>
+        <div class="deal-tile"><h4>Lilac Diesel Bundle <span>🏆</span></h4><p>2 for $60 on Dutch Touch’s terp-rich hybrid</p></div>
+      </div>
+    </div>
+
+    <!-- 🧢 Merch & Accessories -->
+    <button class="dropdown-button" onclick="toggleCategory('merchDeals')">🧢 Merch & Accessories</button>
+    <div id="merchDeals" class="deal-category" style="display:none;">
+      <h3 style="color:#1b5e20; border-bottom:2px solid #c8e6c9; padding-bottom:5px;">Merch Deals</h3>
+      <div class="tile-grid">
+        <div class="deal-tile"><h4>10% Off Hats</h4><p>Green Labs Logo Gear</p></div>
+        <div class="deal-tile"><h4>Free Magnet with Any Grinder</h4><p>Cool swag while supplies last</p></div>
+      </div>
+    </div>
+
+  </section> <!-- ✅ END of dealDropdown -->
+  <!-- ✅ ABOUT US -->
+  <section id="about" style="padding: 40px 20px;">
+    <h2>About Us</h2>
+    <p>We’re proud to serve Luna Pier with high-quality cannabis, local care, and award-winning genetics. Our community efforts include beach cleanups, park projects, and customer education.</p>
+  </section>
+
+  <!-- ✅ DUTCH TOUCH GENETICS -->
+  <section id="dutch" style="padding: 40px 20px; background:#f1f8e9;">
+    <h2>Dutch Touch Genetics</h2>
+    <p>Born in Michigan, Dutch Touch Genetics is home to multiple award-winning strains including Mr. Clean (1st Place High Times) and Lilac Diesel (2nd Place High Times). We prioritize terpene-rich flower and purpose-driven breeding.</p>
+  </section>
+
+  <!-- ✅ TESTIMONIALS -->
+  <section style="padding: 40px 20px;">
+    <h2>🗣 What Our Customers Say</h2>
+    <p>“Love this shop! Best deals and budtenders in Michigan.” – Google Review</p>
+  </section>
+
+  <!-- ✅ GOOGLE MAP -->
+  <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18..." allowfullscreen="" loading="lazy"></iframe>
+
+  <!-- ✅ LOYALTY SIGN-UP -->
+  <section id="newsletter" style="padding: 40px 20px;">
+    <h2>🎁 Sign Up for Rewards</h2>
+    <form>
+      <input type="email" placeholder="Your email" required style="padding:10px; border-radius:6px; border:1px solid #ccc; margin-right:10px;">
+      <button type="submit" style="padding:10px 20px; background:#1b5e20; color:white; border:none; border-radius:6px;">Join Now</button>
+    </form>
+  </section>
+
+  <!-- ✅ FOOTER -->
+  <footer>
+    <p>📍 10701 Madison St, Luna Pier, MI 48157<br>📞 (734) 800-0024</p>
+    <p>
+      <a href="https://www.instagram.com/greenlabsmi" target="_blank">Instagram</a> |
+      <a href="https://www.facebook.com/greenlabsmi" target="_blank">Facebook</a>
+    </p>
+  </footer>
+    <!-- ✅ FLOATING CHATBOT BUTTON -->
+  <button class="floating-chat" onclick="openChat()">💬 Chat with AI Budtender</button>
+
+  <!-- ✅ SCRIPTS -->
+  <script>
+    function openChat() {
+      alert("Launching the AI Budtender… (This will be replaced with actual chatbot trigger)");
+    }
+
+    function hideAllFlowerDeals() {
+      const mainSection = document.getElementById('flowerDeals');
+      const allDeals = document.getElementById('allFlowerDeals');
+      const btn = document.getElementById('flowerToggleBtn');
+
+      mainSection.classList.remove('active');
+      allDeals.classList.remove('active');
+      btn.setAttribute('aria-expanded', false);
+      btn.textContent = '🌿 Flower';
+
+      btn.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function scrollToAllFlower() {
+      const mainSection = document.getElementById('flowerDeals');
+      const allDeals = document.getElementById('allFlowerDeals');
+      const btn = document.getElementById('flowerToggleBtn');
+
+      mainSection.classList.toggle('active');
+      allDeals.classList.toggle('active');
+
+      const isActive = mainSection.classList.contains('active');
+      btn.setAttribute('aria-expanded', isActive);
+      btn.textContent = isActive ? '👆 Hide Flower Deals' : '🌿 Flower';
+
+      if (isActive) {
+        document.getElementById('deals').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function toggleCategory(categoryId) {
+      const categories = document.querySelectorAll('.deal-category');
+      categories.forEach((cat) => {
+        if (cat.id === categoryId) {
+          cat.classList.toggle('active');
+          if (cat.classList.contains('active')) {
+            const button = document.querySelector(`button[onclick="toggleCategory('${categoryId}')"]`);
+            if (button) {
+              button.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }
+        } else {
+          cat.classList.remove('active');
+        }
+      });
+    }
+
+    // Hamburger menu toggle
+    function toggleMenu() {
+      const menu = document.querySelector('.hamburger-menu');
+      menu.classList.toggle('open');
+    }
+
+    function closeMenu() {
+      const menu = document.querySelector('.hamburger-menu');
+      menu.classList.remove('open');
+    }
+
+    window.addEventListener('click', function (e) {
+      const menu = document.querySelector('.hamburger-menu');
+      if (menu && menu.classList.contains('open') && !menu.contains(e.target) && !e.target.closest('.hamburger-icon')) {
+        closeMenu();
+      }
+    });
+  </script>
+
+  <!-- ✅ OPTIONAL: EXTERNAL SCRIPT HOOK -->
+  <script src="script.js"></script>
+</body>
+</html>
