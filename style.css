@@ -22,6 +22,12 @@ body {
 .info-banner a {
   color: #1b5e20;
   text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.info-banner a:hover {
+  color: #2e7d32;
+  text-decoration: none;
 }
 
 /* === Sticky Navbar === */
