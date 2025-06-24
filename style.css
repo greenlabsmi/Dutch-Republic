@@ -62,6 +62,10 @@ body {
   color: #1b5e20;
   white-space: nowrap;
 }
+.brand-text:hover {
+  color: #2e7d32;
+  cursor: pointer;
+}
 
 .nav-left span {
   font-size: 1.2em;
@@ -81,6 +85,16 @@ body {
 .nav-icons i {
   color: #1b5e20;
 }
+.nav-icons span {
+  font-size: 1.3em;
+  padding: 4px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.nav-icons span:hover {
+  transform: scale(1.1);
+  color: #2e7d32;
+}
 
 /* === Hero / Banner Sections === */
 .hero, .nightcap-banner {
@@ -88,11 +102,6 @@ body {
   color: white;
   padding: 40px 20px;
   text-align: center;
-}
-
-.info-banner a {
-  color: #1b5e20;
-  text-decoration: underline;
 }
 
 /* === Deal Section Headers === */
