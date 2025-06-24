@@ -76,7 +76,7 @@ body {
 .nav-icons {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 10px;
   font-size: 1.3em;
   cursor: pointer;
 }
