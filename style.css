@@ -40,7 +40,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 20px;
+  padding: 10px 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 /* === Navbar Left Section (Logo + Name) === */
@@ -55,10 +55,10 @@ body {
   margin-right: 2px;
 }
   .brand-text {
-  font-size: 1.5em;
+  font-size: 1.65em;
   font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: .5px;
   color: #00885A;
   white-space: nowrap;
 }
