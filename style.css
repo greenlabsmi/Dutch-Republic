@@ -47,12 +47,12 @@ body {
 .nav-left {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
 }
 
 .nav-left img {
   height: 56px;
-  margin-right: 6px;
+  margin-right: 2px;
 }
   .brand-text {
   font-size: 1.5em;
