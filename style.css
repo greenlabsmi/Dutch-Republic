@@ -51,7 +51,15 @@ body {
 }
 
 .nav-left img {
-  height: 28px;
+  height: 32px;
+  margin-right: 10px;
+}
+  .brand-text {
+  font-size: 1.5em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #1b5e20;
 }
 
 .nav-left span {
