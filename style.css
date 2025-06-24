@@ -86,7 +86,7 @@ body {
 }
 .nav-icons span {
   font-size: 1.3em;
-  padding: 4px;
+  padding: 2px;
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
