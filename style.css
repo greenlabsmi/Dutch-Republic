@@ -59,11 +59,11 @@ body {
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: #1b5e20;
+  color: #4CAF50;
   white-space: nowrap;
 }
 .brand-text:hover {
-  color: #2e7d32;
+  color: #388E3C;
   cursor: pointer;
 }
 
