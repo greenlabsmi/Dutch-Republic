@@ -58,7 +58,11 @@ function hideAllFlowerDeals() {
 
 function toggleAllFlower() {
   const section = document.getElementById('allFlowerDeals');
-  section.style.display = section.style.display === 'none' ? 'block' : 'none';
+  section.classList.toggle('active');
+
+  if (section.classList.contains('active')) {
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
 
 // === Hamburger Menu Open/Close ===
