@@ -55,6 +55,12 @@ function hideAllFlowerDeals() {
 
   btn.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
+
+function toggleAllFlower() {
+  const section = document.getElementById('allFlowerDeals');
+  section.style.display = section.style.display === 'none' ? 'block' : 'none';
+}
+
 // === Hamburger Menu Open/Close ===
 function toggleMenu() {
   console.log("toggleMenu fired");
