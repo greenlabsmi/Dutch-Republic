@@ -43,6 +43,19 @@ body {
   padding: 10px 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
+
+/* === Flower Nested Deals Animation === */
+#allFlowerDeals {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+#allFlowerDeals.active {
+  max-height: 1000px; /* Adjust if needed */
+}
+
+
 /* === Navbar Left Section (Logo + Name) === */
 .nav-left {
   display: flex;
