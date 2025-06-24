@@ -60,6 +60,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 1px;
   color: #1b5e20;
+  white-space: nowrap;
 }
 
 .nav-left span {
@@ -86,14 +87,6 @@ body {
   background: #285c30;
   color: white;
   padding: 40px 20px;
-  text-align: center;
-}
-/* === Info Banner (Top) === */
-.info-banner {
-  background: #d0f0d0;
-  color: #1b5e20;
-  font-size: 0.9em;
-  padding: 6px 15px;
   text-align: center;
 }
 
