@@ -118,7 +118,7 @@
   <section class="dropdown-content" id="dealDropdown">
   
     <!-- 🌿 Flower -->
-    <button id="flowerToggleBtn" class="dropdown-button" onclick="scrollToAllFlower()" aria-expanded="false">🌿 Flower</button>
+   <button class="dropdown-button" onclick="toggleCategory('flowerDeals')">🌿 Flower</button>
     <div id="flowerDeals" class="deal-category" style="display:none; margin-bottom: 40px;">
       <h3 style="color:#1b5e20; border-bottom:2px solid #c8e6c9; padding-bottom:5px;">Flower Deals</h3>
       <div class="tile-grid tile-grid-featured" style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-bottom:15px;">
@@ -131,6 +131,17 @@
           <p>Includes Mr. Clean & Lilac Diesel – Mix & Match</p>
         </div>
       </div>
+      
+<!-- 🔽 SEE ALL FLOWER DEALS BUTTON -->
+<div style="text-align: center; margin-top: 20px;">
+  <button onclick="toggleAllFlower()" style="padding: 8px 20px; font-weight:bold; border-radius:6px; background:#c8e6c9; border:none; cursor:pointer;">
+    🔽 See All Flower Deals
+  </button>
+</div>
+
+<div id="allFlowerDeals" class="deal-category" style="display: none;">
+  <!-- Your ounces / quarters / eighths content stays the same here -->
+</div>
 
       <div id="allFlowerDeals" class="deal-category">
         <h4 style="margin-top:20px;color:#1b5e20;">Ounces</h4>
@@ -171,6 +182,7 @@
         <!-- ❌ Hide Button -->
         <div style="text-align:center; margin: 20px;">
           <button onclick="hideAllFlowerDeals()" style="padding: 8px 20px; font-weight:bold; border-radius:6px; background:#ffd6d6; border:none; cursor:pointer;">❌ Hide All Deals</button>
+          
         </div>
       </div>
     </div>
