@@ -97,7 +97,7 @@ function toggleAllFlower() {
   if (isHidden) {
   document.getElementById('flowerDeals').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
-
+}
 // === Hamburger Menu Open/Close ===
 function toggleMenu() {
   console.log("toggleMenu fired");
