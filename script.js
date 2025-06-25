@@ -74,8 +74,6 @@ function collapseAllFlowerDeals() {
   // Optional: scroll back to main category header
   mainSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-  
-}
 
 function hideAllFlowerDeals() {
   const mainSection = document.getElementById('flowerDeals');
@@ -99,12 +97,6 @@ function toggleAllFlower() {
   if (isHidden) {
   document.getElementById('flowerDeals').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
-}
-
-function hideAllFlowerDeals() {
-  const section = document.getElementById('allFlowerDeals');
-  section.style.display = 'none';
-}
 
 // === Hamburger Menu Open/Close ===
 function toggleMenu() {
