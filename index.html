@@ -76,19 +76,34 @@
   📍 <a href="https://maps.apple.com/?ll=41.81116,-83.44617&q=Green+Labs+Provisions" target="_blank">10701 Madison St, Luna Pier, MI</a> – Open Daily 9am–9pm 
 </div>
 
-  <!-- 🌿 Sticky Navbar -->
- <nav class="main-nav">
+ <!-- 🌱 Sticky Navbar -->
+<nav class="main-nav">
   <div class="nav-left">
-    <img src="green_labs_logo.png" alt="Green Labs Logo">
+    <img src="green_labs_logo.png" alt="Green Labs Logo" />
     <span class="brand-text">GREEN LABS</span>
   </div>
   <div class="nav-icons">
     <span onclick="openSearch()">🔍</span>
     <span onclick="openChat()">💬</span>
-    <span class="hamburger-icon" onclick="toggleMenu()">☰</span>
+
+    <!-- 👇 Wrap the hamburger icon + menu here -->
+    <div style="position: relative;">
+      <span class="hamburger-icon" onclick="toggleMenu()">☰</span>
+      <div class="hamburger-menu">
+        <span class="close-btn" onclick="closeMenu()">✖️</span>
+        <a href="#deals">🔥 Today’s Deals</a>
+        <a href="#about">🌱 About Us</a>
+        <a href="#dutch">🏆 Dutch Touch</a>
+        <a href="#newsletter">🎁 Loyalty Signup</a>
+        <div class="menu-footer">
+          We’re Open Daily 9am–9pm<br />
+          <a href="https://maps.apple.com/?ll=41.81116,-83.44617&q=Green+Labs+Products">📍 Directions</a>
+        </div>
+      </div>
+    </div>
+    <!-- ☝️ Now the menu will open under the icon no matter where you are on the page -->
   </div>
 </nav>
-
 
 <!-- ✅ HAMBURGER MENU DROPDOWN -->
 <div class="hamburger-menu">
