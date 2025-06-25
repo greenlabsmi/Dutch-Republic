@@ -125,6 +125,10 @@ body {
   margin-bottom: 0; 
 }
 
+.deal-category {
+  transition: all 0.3s ease;
+}
+
 #dealDropdown {
   background: #f1f8e9; /* Matching tone */
   padding: 20px 10px;
