@@ -233,10 +233,10 @@ footer a:hover {
   background-color: #388e3c;
 }
 
-.hamburger-menu {
-  position: absolute; /* ← changed from fixed */
-  top: 100%; /* opens just below the hamburger icon */
-  right: 0;
+  .hamburger-menu {
+  position: absolute;
+  top: 100%;                 /* Align with bottom of nav bar */
+  right: 0;                  /* Flush with screen right edge */
   background: white;
   padding: 12px 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -245,7 +245,8 @@ footer a:hover {
   display: none;
   flex-direction: column;
   min-width: 220px;
-}
+  margin-top: 8px;           /* Optional spacing under navbar */
+} 
 
 /* === Hamburger Menu Open State === */
 .hamburger-menu.open {
