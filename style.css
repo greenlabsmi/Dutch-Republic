@@ -242,9 +242,9 @@ footer a:hover {
   top: 100%;                 /* Align with bottom of nav bar */
   right: 0;                  /* Flush with screen right edge */
   background: white;
-  padding: 12px 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
   z-index: 9999;
   display: none;
   flex-direction: column;
