@@ -43,6 +43,40 @@ function scrollToAllFlower() {
   }
 }
 
+function expandAllFlowerDeals() {
+  const mainSection = document.getElementById('flowerDeals');
+  const allDeals = document.getElementById('allFlowerDeals');
+  const btn = document.getElementById('flowerToggleBtn');
+
+  mainSection.style.display = 'block';
+  allDeals.classList.add('active');
+  allDeals.style.display = 'block';
+
+  btn.textContent = '✖️ Hide Flower Deals';
+  btn.setAttribute('onclick', 'collapseAllFlowerDeals()');
+
+  mainSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function collapseAllFlowerDeals() {
+  const mainSection = document.getElementById('flowerDeals');
+  const allDeals = document.getElementById('allFlowerDeals');
+  const btn = document.getElementById('flowerToggleBtn');
+
+  // Hide flower section
+  allDeals.classList.remove('active');
+  allDeals.style.display = 'none';
+
+  // Reset button text and action
+  btn.textContent = '➕ See All Flower Deals';
+  btn.setAttribute('onclick', 'expandAllFlowerDeals()');
+
+  // Optional: scroll back to main category header
+  mainSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+  
+}
+
 function hideAllFlowerDeals() {
   const mainSection = document.getElementById('flowerDeals');
   const allDeals = document.getElementById('allFlowerDeals');
