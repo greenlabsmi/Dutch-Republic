@@ -10,21 +10,18 @@ function openSearch() {
 }
 // === Deal Category Toggle ===
 function toggleCategory(categoryId) {
-  const categories = document.querySelectorAll('.deal-category');
-  categories.forEach((cat) => {
-    if (cat.id === categoryId) {
-      cat.classList.toggle('active');
-      if (cat.classList.contains('active')) {
-        const button = document.querySelector(`button[onclick="toggleCategory('${categoryId}')"]`);
-        if (button) {
-          button.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
+  const allCategories = document.querySelectorAll('.deal-category');
+  
+  allCategories.forEach(category => {
+    if (category.id === categoryId) {
+      const isHidden = category.style.display === 'none';
+      category.style.display = isHidden ? 'block' : 'none';
     } else {
-      cat.classList.remove('active');
+      category.style.display = 'none';
     }
   });
 }
+
 // === Flower Deals Expand/Collapse ===
 function scrollToAllFlower() {
   const mainSection = document.getElementById('flowerDeals');
