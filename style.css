@@ -238,19 +238,18 @@ footer a:hover {
 }
 
   .hamburger-menu {
-  position: absolute;
-  top: 100%;                 /* Align with bottom of nav bar */
-  right: 0;                  /* Flush with screen right edge */
+  position: fixed;
+  top: 60px; /* adjust if your navbar is taller or shorter */
+  right: 20px;
   background: white;
-  padding: 15px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
-  z-index: 9999;
+  padding: 15px;
+  z-index: 1000;
   display: none;
   flex-direction: column;
   min-width: 220px;
-  margin-top: 8px;           /* Optional spacing under navbar */
-} 
+}
 
 /* === Hamburger Menu Open State === */
 .hamburger-menu.open {
@@ -305,6 +304,13 @@ footer a:hover {
   .main-nav {
     padding: 10px 15px;
   }
+
+  @media (max-width: 768px) {
+  .hamburger-menu {
+    right: 10px;
+    top: 60px;
+  }
+}
 
   .nav-left span {
     font-size: 1em;
