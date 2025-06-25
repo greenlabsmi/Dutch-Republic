@@ -305,12 +305,12 @@ footer a:hover {
     padding: 10px 15px;
   }
 
-  @media (max-width: 768px) {
   .hamburger-menu {
     right: 10px;
     top: 60px;
   }
 }
+
 
   .nav-left span {
     font-size: 1em;
