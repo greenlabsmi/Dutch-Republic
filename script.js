@@ -58,11 +58,18 @@ function hideAllFlowerDeals() {
 
 function toggleAllFlower() {
   const section = document.getElementById('allFlowerDeals');
-  section.classList.toggle('active');
+  const isHidden = section.style.display === 'none' || section.style.display === '';
 
-  if (section.classList.contains('active')) {
-    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  section.style.display = isHidden ? 'block' : 'none';
+
+  if (isHidden) {
+  document.getElementById('flowerDeals').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
+}
+
+function hideAllFlowerDeals() {
+  const section = document.getElementById('allFlowerDeals');
+  section.style.display = 'none';
 }
 
 // === Hamburger Menu Open/Close ===
