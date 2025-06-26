@@ -8,10 +8,10 @@ function openChat() {
 function openSearch() {
   alert("Search function coming soon! Type to find strains, deals, or categories.");
 }
+
 // === Deal Category Toggle ===
 function toggleCategory(categoryId) {
   const allCategories = document.querySelectorAll('.deal-category');
-  
   allCategories.forEach(category => {
     if (category.id === categoryId) {
       const isHidden = category.style.display === 'none';
@@ -60,15 +60,12 @@ function collapseAllFlowerDeals() {
   const allDeals = document.getElementById('allFlowerDeals');
   const btn = document.getElementById('flowerToggleBtn');
 
-  // Hide flower section
   allDeals.classList.remove('active');
   allDeals.style.display = 'none';
 
-  // Reset button text and action
   btn.textContent = '➕ See All Flower Deals';
   btn.setAttribute('onclick', 'expandAllFlowerDeals()');
 
-  // Optional: scroll back to main category header
   mainSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
@@ -88,13 +85,13 @@ function hideAllFlowerDeals() {
 function toggleAllFlower() {
   const section = document.getElementById('allFlowerDeals');
   const isHidden = section.style.display === 'none' || section.style.display === '';
-
   section.style.display = isHidden ? 'block' : 'none';
 
   if (isHidden) {
-  document.getElementById('flowerDeals').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.getElementById('flowerDeals').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
+
 // === Hamburger Menu Open/Close ===
 function toggleMenu() {
   console.log("toggleMenu fired");
@@ -112,10 +109,12 @@ window.addEventListener('click', function (e) {
   const menu = document.querySelector('.hamburger-menu');
   if (menu && menu.classList.contains('open') && !menu.contains(e.target) && !e.target.closest('.hamburger-icon')) {
     closeMenu();
-   }
+  }
 });
-  function openPreferredMap() {
-  const appleCoords = "41.81116,-83.44617"; // Correct pin location
+
+// === Apple or Google Maps Button ===
+function openPreferredMap() {
+  const appleCoords = "41.81116,-83.44617";
   const googleAddress = encodeURIComponent("10701 Madison St, Luna Pier, MI 48157");
   const isApple = /iPhone|iPad|Macintosh|Mac OS/.test(navigator.userAgent);
 
@@ -126,6 +125,7 @@ window.addEventListener('click', function (e) {
   }
 }
 
+// === Load Deals from Google Sheets ===
 const sheetURL = 'https://script.google.com/macros/s/AKfycbwrWbijir5ddoJqCI4p-wAzlETQQZoekLoRCrBV58bI7ZLWssg5CfRcqJ0bw2BTOhea/exec';
 
 fetch(sheetURL)
