@@ -196,6 +196,28 @@ body {
   color: #444;
   margin: 0;
 }
+/* === Featured Deal Highlight === */
+.deal-tile.featured {
+  border: 2px solid #00c853;
+  box-shadow: 0 0 10px rgba(0, 200, 83, 0.2);
+}
+
+/* === Dynamic Deal Section Headers === */
+#deals-container h2 {
+  text-align: center;
+  color: #1b5e20;
+  font-size: 1.6em;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #dcedc8;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+/* === Default Hide for Toggleable Categories === */
+.deal-category {
+  display: none;
+}
 
 /* === Footer === */
 footer {
