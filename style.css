@@ -307,11 +307,12 @@ footer a:hover {
   }
 
   .hamburger-menu {
-    right: 10px;
-    top: 60px;
-    max-width: 90vw;
+    position: absolute;     /* Ensures it aligns with nav */
+    top: 60px;              /* Aligns below sticky nav */
+    right: 16px;            /* Match this with nav padding */
+    max-width: calc(100vw - 32px); /* Prevents overflow */
+    width: 250px;           /* Optional: fixed width for consistency */
   }
-}
 
   .nav-left span {
     font-size: 1em;
