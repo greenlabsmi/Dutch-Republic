@@ -239,8 +239,8 @@ footer a:hover {
 
   .hamburger-menu {
   position: fixed;
-  top: 60px; /* adjust if your navbar is taller or shorter */
-  right: 20px;
+  top: 60px;              /* adjust based on navbar height */
+  right: 10px;            /* aligns with the far right of nav */
   background: white;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
@@ -249,6 +249,7 @@ footer a:hover {
   display: none;
   flex-direction: column;
   min-width: 220px;
+  max-width: 90vw;        /* responsive constraint */
 }
 
 /* === Hamburger Menu Open State === */
@@ -306,11 +307,11 @@ footer a:hover {
   }
 
   .hamburger-menu {
-    right: 0;
+    right: 10px;
     top: 60px;
-    margin-right: 10px;
-    max-width: 90vw; /* optional: prevents it from stretching too far on small screens */
+    max-width: 90vw;
   }
+}
 
   .nav-left span {
     font-size: 1em;
