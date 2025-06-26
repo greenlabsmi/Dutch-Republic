@@ -125,3 +125,39 @@ window.addEventListener('click', function (e) {
     window.open(`https://www.google.com/maps/place/${googleAddress}`, '_blank');
   }
 }
+
+const sheetURL = 'https://script.google.com/macros/s/AKfycbwrWbijir5ddoJqCI4p-wAzlETQQZoekLoRCrBV58bI7ZLWssg5CfRcqJ0bw2BTOhea/exec';
+
+fetch(sheetURL)
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById('deals-container');
+    container.innerHTML = '';
+
+    const categories = {};
+    data.forEach(deal => {
+      if (!categories[deal.Category]) categories[deal.Category] = [];
+      categories[deal.Category].push(deal);
+    });
+
+    for (const [category, deals] of Object.entries(categories)) {
+      const section = document.createElement('div');
+      section.innerHTML = `
+        <h2>${category} Deals</h2>
+        <div class="deal-category">
+          ${deals.map(d => `
+            <div class="deal-tile ${d.Featured === 'yes' ? 'featured' : ''}">
+              <h3>${d["Deal Title"]}</h3>
+              <p>${d["Amount/Details"]}</p>
+              <p><strong>$${d.Price}</strong></p>
+            </div>
+          `).join('')}
+        </div>
+      `;
+      container.appendChild(section);
+    }
+  })
+  .catch(err => {
+    console.error('Error loading deals:', err);
+    document.getElementById('deals-container').innerText = 'Failed to load deals.';
+  });
