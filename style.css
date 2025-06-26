@@ -305,13 +305,12 @@ footer a:hover {
     padding: 10px 15px;
   }
 
-  @media (max-width: 768px) {
   .hamburger-menu {
-    right: 0;      /* Aligns flush with the screen edge */
-    top: 60px;     /* Adjust if needed for spacing below nav */
-    margin-right: 10px; /* Optional: slight inset for breathing room */
+    right: 0;
+    top: 60px;
+    margin-right: 10px;
+    max-width: 90vw; /* optional: prevents it from stretching too far on small screens */
   }
-}
 
   .nav-left span {
     font-size: 1em;
