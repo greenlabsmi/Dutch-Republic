@@ -108,12 +108,22 @@ body {
   color: #2e7d32;
 }
 
-/* === Hero / Banner Sections === */
-.hero, .nightcap-banner {
-  background: #285c30;
-  color: white;
-  padding: 40px 20px;
+.carousel {
+  background: #e0f2e9;
+  padding: 25px 10px;
   text-align: center;
+}
+
+.carousel h2 {
+  font-size: 2em;
+  color: #1b5e20;
+  margin: 0;
+}
+
+.carousel p {
+  font-size: 1.1em;
+  color: #2e7d32;
+  margin-top: 8px;
 }
 
 /* === Deal Section Headers === */
@@ -128,7 +138,18 @@ body {
 }
 
 .deal-category {
-  transition: all 0.3s ease;
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+#deals {
+  background-color: #e4f4e4;
+  padding: 16px 12px;
+  border-bottom: 1px solid #c9e5c9;
+  margin-bottom: 12px;
+  transition: background-color 0.3s ease;
 }
 
 #dealDropdown {
@@ -217,6 +238,12 @@ body {
   border-bottom: 2px solid #dcedc8;
   display: inline-block;
   padding-bottom: 5px;
+}
+
+#deals h2 {
+  margin-top: 0;
+  padding-top: 5px;
+  border-top: 2px solid #cde3ce;
 }
 
 /* === Default Hide for Toggleable Categories === */
