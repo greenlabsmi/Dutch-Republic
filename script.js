@@ -141,7 +141,7 @@ function openPreferredMap() {
 }
 
 // === Load Deals from Google Sheets ===
-const sheetURL = 'https://opensheet.elk.sh/132VDRorvAHHWm_OaJlJ-JDXrYfyP4ARWm6voajQbiqU/Sheet1';
+const sheetURL = 'https://opensheet.elk.sh/1vQJC7c35yJIP1k-T5lA7poli0yuub-obpEt_XiPPDcdLMfGEcCi_HnK-p7AthL2wLbYN_SRIddceV9f/Sheet1';
 
 fetch(sheetURL)
   .then(res => res.json())
