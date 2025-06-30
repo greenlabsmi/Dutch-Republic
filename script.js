@@ -141,7 +141,7 @@ function openPreferredMap() {
 }
 
 // === Load Deals from Google Sheets ===
-const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJC7c35yJIP1k-T5lA7poli0yuub-obpEt_XiPPDcdLMfGEcCi_HnK-p7AthL2wLbYN_SRIddceV9f/pubhtml";
+const sheetURL = 'https://opensheet.elk.sh/2PACX-1vQJC7c35yJIP1k-T5lA7poli0yuub-obpEt_XiPPDcdLMfGEcCi_HnK-p7AthL2wLbYN_SRIddceV9f/Sheet1';
 
 fetch(sheetURL)
   .then(res => res.json())
