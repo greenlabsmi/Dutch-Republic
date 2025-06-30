@@ -144,40 +144,46 @@ function openPreferredMap() {
 const sheetURL = 'https://opensheet.elk.sh/132VDRorvAHlWm_OaIJI-JDXrYiyPA4RWm6voajQbiqU/Sheet1';
 
 fetch(sheetURL)
-  .then(res => res.json())
+  .then(response => response.json())
   .then(data => {
-    const container = document.getElementById('deals-container');
-    container.innerHTML = '';
-
-    const categories = {};
-    data.forEach(deal => {
-      const category = deal.Category || "Uncategorized";
-      if (!categories[category]) categories[category] = [];
-      categories[category].push(deal);
-    });
-
-    for (const [category, deals] of Object.entries(categories)) {
-      const section = document.createElement('div');
-      section.className = "deal-category";
-      section.dataset.category = category;
-
-      section.innerHTML = `
-        <h2>${category} Deals</h2>
-        <div class="tile-grid">
-          ${deals.map(d => `
-            <div class="deal-tile ${d.Featured === 'yes' ? 'featured' : ''}">
-              <h4>${d["Deal Title"]}</h4>
-              <p>${d["Amount/Details"]}</p>
-              <p><strong>$${d.Price}</strong><br>Tax included</p>
-            </div>
-          `).join('')}
-        </div>
-      `;
-
-      container.appendChild(section);
-    }
+    console.log("Deals loaded:", data); // optional: debug
+    renderDeals(data); // your function to display them
   })
-  .catch(err => {
-    console.error('Error loading deals:', err);
-    document.getElementById('deals-container').innerText = 'Failed to load deals.';
+  .catch(error => {
+    console.error("Error loading deals:", error);
+    document.getElementById("dealsOutput").innerHTML = "<p>Failed to load deals.</p>";
   });
+
+function renderDeals(data) {
+  const container = document.getElementById("deals-container");
+  container.innerHTML = '';
+
+  const categories = {};
+
+  data.forEach(deal => {
+    const category = deal.Category || "Uncategorized";
+    if (!categories[category]) categories[category] = [];
+    categories[category].push(deal);
+  });
+
+  for (const [category, deals] of Object.entries(categories)) {
+    const section = document.createElement("div");
+    section.className = "deal-category";
+    section.dataset.category = category;
+
+    section.innerHTML = `
+      <h2>${category} Deals</h2>
+      <div class="tile-grid">
+        ${deals.map(d => `
+          <div class="deal-tile ${d.Featured === 'yes' ? 'featured' : ''}">
+            <h4>${d["Deal Title"]}</h4>
+            <p>${d["Amount/Details"]}</p>
+            <p><strong>$${d.Price}</strong><br>Tax included</p>
+          </div>
+        `).join('')}
+      </div>
+    `;
+
+    container.appendChild(section);
+  }
+}
