@@ -126,7 +126,6 @@ function handleCategorySelect(selectedValue) {
     window.scrollBy(0, -20); // Optional nudge so banner stays in view
   }
 }
-}
 
 // === Apple or Google Maps Button ===
 function openPreferredMap() {
