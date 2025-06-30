@@ -118,6 +118,14 @@ function handleCategorySelect(selectedValue) {
     const isMatch = section.dataset.category === selectedValue || selectedValue === 'All';
     section.style.display = isMatch ? 'block' : 'none';
   });
+
+  // Auto-scroll to the deals section after category change
+  const dealsSection = document.getElementById('deals');
+  if (dealsSection) {
+    dealsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.scrollBy(0, -20); // Optional nudge so banner stays in view
+  }
+}
 }
 
 // === Apple or Google Maps Button ===
