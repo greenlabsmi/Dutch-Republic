@@ -112,6 +112,14 @@ window.addEventListener('click', function (e) {
   }
 });
 
+function handleCategorySelect(selectedValue) {
+  const allSections = document.querySelectorAll('.deal-category');
+  allSections.forEach(section => {
+    const isMatch = section.dataset.category === selectedValue || selectedValue === 'All';
+    section.style.display = isMatch ? 'block' : 'none';
+  });
+}
+
 // === Apple or Google Maps Button ===
 function openPreferredMap() {
   const appleCoords = "41.81116,-83.44617";
@@ -141,21 +149,26 @@ fetch(sheetURL)
     });
 
     for (const [category, deals] of Object.entries(categories)) {
-      const section = document.createElement('div');
-      section.innerHTML = `
-        <h2>${category} Deals</h2>
-        <div class="deal-category">
-          ${deals.map(d => `
-            <div class="deal-tile ${d.Featured === 'yes' ? 'featured' : ''}">
-              <h3>${d["Deal Title"]}</h3>
-              <p>${d["Amount/Details"]}</p>
-              <p><strong>$${d.Price}</strong></p>
-            </div>
-          `).join('')}
+  const section = document.createElement('div');
+  section.className = "deal-category";
+  section.dataset.category = category;
+
+  section.innerHTML = `
+    <h2>${category} Deals</h2>
+    <div class="tile-grid">
+      ${deals.map(d => `
+        <div class="deal-tile ${d.Featured === 'yes' ? 'featured' : ''}">
+          <h4>${d["Deal Title"]}</h4>
+          <p>${d["Amount/Details"]}</p>
+          <p><strong>$${d.Price}</strong><br>Tax included</p>
         </div>
-      `;
-      container.appendChild(section);
-    }
+      `).join('')}
+    </div>
+  `;
+
+  container.appendChild(section);
+
+  }
   })
   .catch(err => {
     console.error('Error loading deals:', err);
