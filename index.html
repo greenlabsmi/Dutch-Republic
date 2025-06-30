@@ -104,11 +104,33 @@
   </div>
 </div>
 
-    <!-- 🌙 Nightcap Bundle Promo -->
-  <section class="nightcap-banner" style="background:#1b5e20; color:white; text-align:center; padding: 20px 10px;">
-    <h2>🌙 Nightcap Set</h2>
-    <p>End your day on a high note. Explore our sleep-focused bundle now!</p>
-  </section>
+  <!-- ✅ PHASE 1 CAROUSEL + CATEGORY DROPDOWN -->
+<section class="carousel" style="background: #dcedc8; padding: 30px 10px; text-align: center;">
+  <h2 style="font-size: 2em; color: #1b5e20; margin: 0;">💚 Welcome to Green Labs</h2>
+  <p style="font-size: 1.1em; color: #2e7d32; margin-top: 8px;">Your Luna Pier dispensary for fresh drops, best deals, and local love.</p>
+</section>
+
+<!-- 🔥 Today’s Deals Header + Category Filter -->
+<section class="deal-header" id="deals">
+  <h2 style="margin-bottom: 10px;">🔥 Today’s Deals</h2>
+  <label for="dealDropdown" class="sr-only">Choose Category</label>
+  <select id="dealDropdown" onchange="handleCategorySelect(this.value)" style="padding: 12px 18px; font-size: 1.05em; border-radius: 8px; border: 1px solid #ccc; margin-top: 10px;">
+    <option value="All">All Categories</option>
+    <option value="Flower">🌿 Flower</option>
+    <option value="Pre-Rolls">🚬 Pre-Rolls</option>
+    <option value="Vapes">💨 Carts & Disposables</option>
+    <option value="Edibles">🍬 Edibles & Drinks</option>
+    <option value="Concentrates">🛢 Concentrates</option>
+    <option value="RSO">🧪 RSO & Tinctures</option>
+    <option value="Merch">🧢 Merch & Accessories</option>
+    <option value="Award Winners">🏆 Award Winners</option>
+  </select>
+</section>
+
+<!-- ✅ Google Sheets–Powered Deal Container -->
+<div id="deals-container" style="padding: 20px;">
+  <p>Loading today's deals...</p>
+</div>
 
   <!-- 🔥 Today’s Deals Section -->
   <section class="deal-header" id="deals">
