@@ -119,10 +119,12 @@ body {
 /* === Deal Section Headers === */
 .deal-header {
   text-align: center;
-  background: #2e7d32;
-  color: white;
-  padding: 20px 10px 10px;
-  margin-bottom: 0; 
+  background: #d0e7c2; /* lighter green */
+  color: #1b5e20;
+  padding: 12px 10px;
+  margin-bottom: 0;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .deal-category {
@@ -130,9 +132,12 @@ body {
 }
 
 #dealDropdown {
-  background: #f1f8e9; /* Matching tone */
-  padding: 20px 10px;
+  background: #f1f8e9;
+  padding: 15px 10px;
   margin-top: 0;
+  border-top: 1px solid #c8e6c9;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
 }
 
 /* === Dropdown Buttons === */
