@@ -233,7 +233,7 @@ body {
   box-shadow: 0 0 10px rgba(0, 200, 83, 0.2);
 }
 
-/* === Dynamic Deal Section Headers === */
+/* === Dynamic Category Titles (e.g. Flower, Carts) === */
 #deals-container h2 {
   text-align: center;
   color: #1b5e20;
@@ -245,6 +245,7 @@ body {
   padding-bottom: 5px;
 }
 
+/* === Section Heading: "🔥 Today’s Deals" === */
 #deals h2 {
   margin-top: 0;
   padding-top: 5px;
