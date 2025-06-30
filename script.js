@@ -151,31 +151,31 @@ fetch(sheetURL)
 
     const categories = {};
     data.forEach(deal => {
-      if (!categories[deal.Category]) categories[deal.Category] = [];
-      categories[deal.Category].push(deal);
+      const category = deal.Category || "Uncategorized";
+      if (!categories[category]) categories[category] = [];
+      categories[category].push(deal);
     });
 
     for (const [category, deals] of Object.entries(categories)) {
-  const section = document.createElement('div');
-  section.className = "deal-category";
-  section.dataset.category = category;
+      const section = document.createElement('div');
+      section.className = "deal-category";
+      section.dataset.category = category;
 
-  section.innerHTML = `
-    <h2>${category} Deals</h2>
-    <div class="tile-grid">
-      ${deals.map(d => `
-        <div class="deal-tile ${d.Featured === 'yes' ? 'featured' : ''}">
-          <h4>${d["Deal Title"]}</h4>
-          <p>${d["Amount/Details"]}</p>
-          <p><strong>$${d.Price}</strong><br>Tax included</p>
+      section.innerHTML = `
+        <h2>${category} Deals</h2>
+        <div class="tile-grid">
+          ${deals.map(d => `
+            <div class="deal-tile ${d.Featured === 'yes' ? 'featured' : ''}">
+              <h4>${d["Deal Title"]}</h4>
+              <p>${d["Amount/Details"]}</p>
+              <p><strong>$${d.Price}</strong><br>Tax included</p>
+            </div>
+          `).join('')}
         </div>
-      `).join('')}
-    </div>
-  `;
+      `;
 
-  container.appendChild(section);
-
-  }
+      container.appendChild(section);
+    }
   })
   .catch(err => {
     console.error('Error loading deals:', err);
