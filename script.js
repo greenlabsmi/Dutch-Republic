@@ -168,32 +168,46 @@ function renderDealsByCategory(data, selectedCategory = 'All') {
   const container = document.getElementById("deals-container");
   container.innerHTML = '';
 
-  const allowedWeights = ['Ounce', 'Half', 'Quarter', 'Eighth'];
-  const validDeals = data.filter(d => {
-    return selectedCategory === 'All' || d.Category === selectedCategory;
-  });
+  const weightMap = {
+    '3.5g': 'Eighth',
+    '3.5G': 'Eighth',
+    '7g': 'Quarter',
+    '14g': 'Half',
+    '14G': 'Half',
+    '28g': 'Ounce',
+    '28G': 'Ounce'
+  };
 
-  // Group by weight (sub-grouping under Flower)
+  const validDeals = data.filter(d =>
+    selectedCategory === 'All' || d.Category === selectedCategory
+  );
+
+  // Group Flower deals by normalized weight label
   const groupedByWeight = {};
   validDeals.forEach(deal => {
-    if (!deal.Weight || !allowedWeights.includes(deal.Weight)) return;
-    if (!groupedByWeight[deal.Weight]) groupedByWeight[deal.Weight] = [];
-    groupedByWeight[deal.Weight].push(deal);
+    if (selectedCategory === 'Flower') {
+      const rawWeight = deal.Weight?.trim();
+      const groupLabel = weightMap[rawWeight];
+      if (!groupLabel) return;
+      if (!groupedByWeight[groupLabel]) groupedByWeight[groupLabel] = [];
+      groupedByWeight[groupLabel].push(deal);
+    } else {
+      // Fallback for other categories (non-weight based)
+      if (!groupedByWeight.General) groupedByWeight.General = [];
+      groupedByWeight.General.push(deal);
+    }
   });
 
-  // Build the section
   const section = document.createElement("div");
   section.className = "deal-category active";
   section.dataset.category = selectedCategory;
 
-  for (const weight of allowedWeights) {
-    if (!groupedByWeight[weight]) continue;
-
+  for (const [group, deals] of Object.entries(groupedByWeight)) {
     section.innerHTML += `
       <div class="weight-group">
-        <h3>${weight}s</h3>
+        <h3>${group}s</h3>
         <div class="flower-tile-group">
-          ${groupedByWeight[weight].map(d => `
+          ${deals.map(d => `
             <div class="deal-tile">
               <h4>${d["Deal Title"]}</h4>
               ${d["Amount/Details"] ? `<p>${d["Amount/Details"]}</p>` : ''}
