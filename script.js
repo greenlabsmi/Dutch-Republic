@@ -203,22 +203,26 @@ validDeals.forEach(deal => {
   section.dataset.category = selectedCategory;
 
   for (const [group, deals] of Object.entries(groupedByWeight)) {
-    section.innerHTML += `
-      <div class="weight-group">
-        <h3>${group}s</h3>
-        <div class="flower-tile-group">
+   section.innerHTML += `
+  <div class="weight-group">
+    <h3>${group}s</h3>
+    <div class="flower-tile-group">
+      <div class="deal-tile">
+        <div class="promo-info">
           ${deals.map(d => `
-            <div class="deal-tile">
-              <h4>${d["Deal Title"]}</h4>
-              ${d["Amount/Details"] ? `<p>${d["Amount/Details"]}</p>` : ''}
-              ${d.Notes ? `<p class="deal-notes">${d.Notes}</p>` : ''}
-              <p><strong>$${d.Price}</strong> <span class="tax-note">tax included</span></p>
-            </div>
+            <h4>${d["Deal Title"]}</h4>
+            ${d["Effects/Tagline"] ? `<p>${d["Effects/Tagline"]}</p>` : ''}
+            ${d["Amount/Details"] ? `<p>${d["Amount/Details"]}</p>` : ''}
+            ${d.Notes ? `<p class="deal-notes">${d.Notes}</p>` : ''}
+            <p class="price-tag">$${d.Price} <span class="tax-note">tax included</span></p>
+            <hr />
           `).join('')}
         </div>
       </div>
-    `;
-  }
+    </div>
+  </div>
+`;
 
   container.appendChild(section);
 }
+window.handleCategorySelect = handleCategorySelect;
