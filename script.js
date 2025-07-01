@@ -24,6 +24,7 @@ window.addEventListener('click', function (e) {
     closeMenu();
   }
 });
+
 // === Flower Toggle Logic ===
 function scrollToAllFlower() {
   const mainSection = document.getElementById('flowerDeals');
@@ -47,7 +48,6 @@ function hideAllFlowerDeals() {
   btn.textContent = '🌿 Flower';
   btn.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-
 // === Apple or Google Maps Logic ===
 function openPreferredMap() {
   const appleCoords = "41.81116,-83.44617";
@@ -58,15 +58,15 @@ function openPreferredMap() {
 
 // === Global Deals Variable ===
 let allDealsData = [];
+
 // === Load Deals from Google Sheets ===
 const sheetURL = 'https://opensheet.elk.sh/132VDRorvAHlWm_OaIJI-JDXrYiyPA4RWm6voajQbiqU/Sheet1';
-
 fetch(sheetURL)
   .then(response => response.json())
   .then(data => {
     console.log("Deals loaded:", data);
     allDealsData = data;
-handleCategorySelect('All');
+    handleCategorySelect('All');
   })
   .catch(error => {
     console.error("Error loading deals:", error);
@@ -83,7 +83,6 @@ function handleCategorySelect(selectedValue) {
 
   document.getElementById('deals').scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-  // Special case for Flower
   if (selectedValue === 'Flower') {
     renderGroupedFlowerDeals(allDealsData);
   } else {
@@ -117,10 +116,11 @@ function renderPromoTiles(data, selectedCategory = 'All') {
     </div>
   `).join('');
 }
+
+// === Grouped Flower Deals Renderer ===
 function renderGroupedFlowerDeals(data) {
   const container = document.getElementById("deals-container");
   if (!container) return;
-
   container.innerHTML = '';
 
   const weightMap = {
@@ -130,13 +130,9 @@ function renderGroupedFlowerDeals(data) {
     '3.5g': 'Eighth',
     '1g': 'Gram'
   };
-
   const weightOrder = ['Ounce', 'Half', 'Quarter', 'Eighth', 'Gram'];
 
-  const flowerDeals = data.filter(d =>
-    d.Category?.toLowerCase().trim() === 'flower'
-  );
-
+  const flowerDeals = data.filter(d => d.Category?.toLowerCase().trim() === 'flower');
   const groupedByWeight = {};
 
   flowerDeals.forEach(deal => {
@@ -165,7 +161,10 @@ function renderGroupedFlowerDeals(data) {
                   ${d.Label ? `<span class="promo-badge">${d.Label}</span>` : ''}
                 </div>
                 <div class="promo-info">
-                  <h4>${d["Deal Title"]}</h4>
+                  <h4>${d["Deal Title"]}
+                    ${d.Badge?.toLowerCase().includes("award") ? ' 🏆' : d.Badge?.toLowerCase().includes("new") ? ' 🔥' : ''}
+                    <span class="wishlist-icon" onclick="toggleWishlist('${d["Deal Title"]}')">➕</span>
+                  </h4>
                   ${d["Effects/Tagline"] ? `<p>${d["Effects/Tagline"]}</p>` : ''}
                   ${d["Amount/Details"] ? `<p>${d["Amount/Details"]}</p>` : ''}
                   ${d.Notes ? `<p class="deal-notes">${d.Notes}</p>` : ''}
@@ -181,3 +180,79 @@ function renderGroupedFlowerDeals(data) {
 
   container.appendChild(section);
 }
+// === Wishlist Logic ===
+let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+function toggleWishlist(item) {
+  const index = wishlist.indexOf(item);
+  if (index === -1) {
+    wishlist.push(item);
+  } else {
+    wishlist.splice(index, 1);
+  }
+  localStorage.setItem('wishlist', JSON.stringify(wishlist));
+  renderWishlistModal(); // update display
+}
+
+function clearWishlist() {
+  wishlist = [];
+  localStorage.removeItem('wishlist');
+  renderWishlistModal();
+}
+
+function renderWishlistModal() {
+  const modal = document.getElementById('wishlistModal');
+  if (!modal) return;
+
+  const content = document.getElementById('wishlistContent');
+  if (wishlist.length === 0) {
+    content.innerHTML = "<p>Your wishlist is empty.</p>";
+    return;
+  }
+
+  content.innerHTML = `
+    <ul class="wishlist-items">
+      ${wishlist.map(item => `<li>${item}</li>`).join('')}
+    </ul>
+    <p class="wishlist-note">Your wishlist won’t carry over. Show this list to your budtender or re-add on Leafly.</p>
+    <a class="leafly-btn" href="https://www.leafly.com/dispensary-info/green-labs-provisions" target="_blank">Go to Leafly</a>
+    <button onclick="clearWishlist()" class="clear-wishlist-btn">Clear Wishlist</button>
+  `;
+}
+
+// Show modal
+function showWishlistModal() {
+  const modal = document.getElementById('wishlistModal');
+  if (modal) modal.style.display = 'block';
+  renderWishlistModal();
+}
+
+// Hide modal
+function hideWishlistModal() {
+  const modal = document.getElementById('wishlistModal');
+  if (modal) modal.style.display = 'none';
+}
+
+// Close on background click
+window.onclick = function(event) {
+  const modal = document.getElementById('wishlistModal');
+  if (event.target === modal) {
+    hideWishlistModal();
+  }
+};
+
+// Auto-clear wishlist at 9 PM
+function scheduleWishlistReset() {
+  const now = new Date();
+  const next9PM = new Date();
+  next9PM.setHours(21, 0, 0, 0); // 9 PM today
+  if (now > next9PM) {
+    next9PM.setDate(next9PM.getDate() + 1);
+  }
+  const timeUntilReset = next9PM - now;
+  setTimeout(() => {
+    clearWishlist();
+    scheduleWishlistReset(); // reschedule next day's reset
+  }, timeUntilReset);
+}
+scheduleWishlistReset();
