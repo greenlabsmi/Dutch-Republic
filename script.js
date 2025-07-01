@@ -163,9 +163,7 @@ function renderPromoTiles(data, selectedCategory = 'All') {
     d.Featured && d.Featured.toLowerCase() === 'yes' &&
     (selectedCategory === 'All' || d.Category === selectedCategory)
   );
-  
-}
-  
+
   promoGrid.innerHTML = featuredDeals.map(d => `
     <div class="promo-tile">
       <div class="promo-image">
