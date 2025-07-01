@@ -178,7 +178,7 @@ function renderPromoTiles(data, selectedCategory = 'All') {
       </div>
     </div>
   `).join('');
-  
+  }
 function renderDealsByCategory(data, selectedCategory = 'All') {
   const container = document.getElementById("deals-container");
   container.innerHTML = '';
