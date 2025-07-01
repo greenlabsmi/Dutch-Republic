@@ -229,3 +229,4 @@ validDeals.forEach(deal => {
   container.appendChild(section);
 }
 window.handleCategorySelect = handleCategorySelect;
+}
