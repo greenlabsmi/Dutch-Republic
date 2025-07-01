@@ -177,6 +177,7 @@ function renderPromoTiles(data, selectedCategory = 'All') {
       </div>
     </div>
   `).join('');
+  }
 }
   
 function renderDealsByCategory(data, selectedCategory = 'All') {
