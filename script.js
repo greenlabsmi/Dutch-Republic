@@ -168,7 +168,7 @@ function renderDeals(data) {
 
   for (const [category, deals] of Object.entries(categories)) {
     const section = document.createElement("div");
-    section.className = "deal-category";
+    section.className = "deal-category active";
     section.dataset.category = category;
 
     section.innerHTML = `
