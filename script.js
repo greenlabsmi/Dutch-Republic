@@ -83,8 +83,14 @@ function handleCategorySelect(selectedValue) {
   });
 
   document.getElementById('deals').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  renderPromoTiles(allDealsData, selectedValue);
-  renderDealsByCategory(allDealsData, selectedValue);
+
+  // Special case for Flower
+  if (selectedValue === 'Flower') {
+    renderGroupedFlowerDeals(allDealsData);
+  } else {
+    renderPromoTiles(allDealsData, selectedValue);
+    renderDealsByCategory(allDealsData, selectedValue);
+  }
 }
 window.handleCategorySelect = handleCategorySelect;
 
@@ -112,57 +118,48 @@ function renderPromoTiles(data, selectedCategory = 'All') {
     </div>
   `).join('');
 }
-function renderDealsByCategory(data, selectedCategory = 'All') {
+function renderGroupedFlowerDeals(data) {
   const container = document.getElementById("deals-container");
   container.innerHTML = '';
 
   const weightMap = {
     '28g': 'Ounce', '28G': 'Ounce',
     '14g': 'Half', '14G': 'Half',
-    '7g': 'Quarter',
-    '3.5g': 'Eighth', '3.5G': 'Eighth'
+    '7g': 'Quarter', '7G': 'Quarter',
+    '3.5g': 'Eighth', '3.5G': 'Eighth',
+    '1g': 'Gram', '1G': 'Gram'
   };
 
-  const weightOrder = ['Ounce', 'Half', 'Quarter', 'Eighth'];
+  const weightOrder = ['Ounce', 'Half', 'Quarter', 'Eighth', 'Gram'];
 
-  const filtered = data.filter(d => selectedCategory === 'All' || d.Category === selectedCategory);
+  const flowerDeals = data.filter(d => d.Category?.toLowerCase() === 'flower');
 
   const groupedByWeight = {};
-  filtered.forEach(deal => {
-    const group = (d => {
-      if (selectedCategory === 'Flower' || selectedCategory === 'All') {
-        if (d.Category?.toLowerCase() === 'flower') {
-          return weightMap[d.Weight?.trim()];
-        }
-      }
-      return 'General';
-    })(deal);
-
-    if (group) {
-      if (!groupedByWeight[group]) groupedByWeight[group] = [];
-      groupedByWeight[group].push(deal);
-    }
+  flowerDeals.forEach(deal => {
+    const rawWeight = deal.Weight?.trim();
+    const group = weightMap[rawWeight] || 'General';
+    if (!groupedByWeight[group]) groupedByWeight[group] = [];
+    groupedByWeight[group].push(deal);
   });
 
   const section = document.createElement("div");
   section.className = "deal-category active";
-  section.dataset.category = selectedCategory;
+  section.dataset.category = 'Flower';
 
-  // Sort by weight order
   weightOrder.concat('General').forEach(group => {
     const deals = groupedByWeight[group];
     if (deals && deals.length > 0) {
+      deals.sort((a, b) => parseFloat(a.Price) - parseFloat(b.Price));
       section.innerHTML += `
         <div class="weight-group">
           <h3>${group}s</h3>
           <div class="flower-tile-group">
             ${deals.map(d => `
-              <div class="deal-tile">
-                ${group === 'General' ? `
+              <div class="deal-tile ${d.Featured?.toLowerCase() === 'yes' ? 'featured' : ''}">
                 <div class="promo-image">
                   <img src="${d.ImageURL?.trim() || 'https://raw.githubusercontent.com/greenlabsmi/Green-labs-site/main/green_labs_logo.png'}" alt="${d['Deal Title']}" />
                   ${d.Label ? `<span class="promo-badge">${d.Label}</span>` : ''}
-                </div>` : ''}
+                </div>
                 <div class="promo-info">
                   <h4>${d["Deal Title"]}</h4>
                   ${d["Effects/Tagline"] ? `<p>${d["Effects/Tagline"]}</p>` : ''}
