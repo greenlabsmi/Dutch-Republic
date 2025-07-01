@@ -18,6 +18,11 @@ body {
   padding: 6px 15px;
   text-align: center;
 }
+.info-banner {
+  z-index: 1001;
+  position: relative;
+  margin-top: 0;
+}
 
 .info-banner a {
   color: #1b5e20;
@@ -379,20 +384,27 @@ footer a:hover {
   padding: 30px 20px;
 }
 
+/* === Promo Grid: Horizontal Scroll with 2 Tiles Visible === */
 .promo-grid {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  gap: 12px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .promo-tile {
+  flex: 0 0 80%;
+  max-width: 280px;
   background: #ffffff;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   overflow: hidden;
-  width: 300px;
   text-align: center;
+  scroll-snap-align: start;
   transition: transform 0.2s ease;
 }
 
