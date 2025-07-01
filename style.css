@@ -381,3 +381,79 @@ footer a:hover {
     width: 100%;
   }
 }
+
+/* === Promo Featured Tiles === */
+.promo-section {
+  padding: 30px 20px;
+  background-color: #f2fdf5;
+}
+
+.promo-section h2 {
+  margin-bottom: 20px;
+  color: #1b5e20;
+  font-size: 1.6em;
+}
+
+.promo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.promo-tile {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.promo-tile:hover {
+  transform: scale(1.02);
+}
+
+.promo-image {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.promo-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.promo-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #ff5722;
+  color: white;
+  font-size: 0.75em;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.promo-info {
+  padding: 12px;
+  text-align: center;
+}
+
+.promo-info h4 {
+  margin: 0 0 6px;
+  font-size: 1.05em;
+  color: #1b5e20;
+}
+
+.price-tag {
+  font-weight: bold;
+  margin-top: 4px;
+}
+
+.tax-note {
+  font-weight: normal;
+  font-size: 0.8em;
+  color: #666;
+}
