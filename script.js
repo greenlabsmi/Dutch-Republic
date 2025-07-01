@@ -122,11 +122,11 @@ function renderGroupedFlowerDeals(data) {
   container.innerHTML = '';
 
   const weightMap = {
-    '28g': 'Ounce', '28G': 'Ounce',
-    '14g': 'Half', '14G': 'Half',
-    '7g': 'Quarter', '7G': 'Quarter',
-    '3.5g': 'Eighth', '3.5G': 'Eighth',
-    '1g': 'Gram', '1G': 'Gram'
+    '28g': 'Ounce',
+    '14g': 'Half',
+    '7g': 'Quarter',
+    '3.5g': 'Eighth',
+    '1g': 'Gram'
   };
 
   const weightOrder = ['Ounce', 'Half', 'Quarter', 'Eighth', 'Gram'];
@@ -135,7 +135,7 @@ function renderGroupedFlowerDeals(data) {
 
   const groupedByWeight = {};
   flowerDeals.forEach(deal => {
-    const rawWeight = deal.Weight?.trim();
+    const rawWeight = deal.Weight?.toLowerCase().trim();
     const group = weightMap[rawWeight] || 'General';
     if (!groupedByWeight[group]) groupedByWeight[group] = [];
     groupedByWeight[group].push(deal);
