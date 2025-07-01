@@ -6,92 +6,28 @@
   <title>Green Labs - Deals</title>
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
-  <style>
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: Arial, sans-serif;
-      background: #f7f7f7;
-      margin: 0;
-      padding: 0;
-    }
-    .info-banner {
-      background: #d0f0d0;
-      color: #1b5e20;
-      font-size: 0.9em;
-      padding: 6px 15px;
-      text-align: center;
-    }
-    .info-banner a {
-      color: #1b5e20;
-      text-decoration: underline;
-    }
-    .main-nav {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background-color: #e8f5e9;
-      color: #1b5e20;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 20px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    }
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .nav-left img {
-      height: 28px;
-    }
-    .nav-left span {
-      font-size: 1.3em;
-     cursor: pointer;
-      color: #1b5e20;
-    }
-    .nav-icons {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      font-size: 1.3em;
-      cursor: pointer;
-    }
-    .nav-icons i {
-      color: #1b5e20;
-    }
-
-    .hero {
-      background: #285c30;
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-    }
-  </style>
 </head>
 <body>
 
-<!-- 🗺️ Top Info Banner with Hover + Mobile Map Support -->
+<!-- 🗺️ Info Banner -->
 <div class="info-banner">
   📍 <a href="https://maps.apple.com/?ll=41.81116,-83.44617&q=Green+Labs+Provisions" target="_blank">10701 Madison St Luna Pier MI</a> – Open Daily 9am–9pm 
 </div>
 
- <!-- 🌱 Sticky Navbar -->
+<!-- 🌱 Sticky Navbar -->
 <nav class="main-nav">
   <div class="nav-left">
     <img src="green_labs_logo.png" alt="Green Labs Logo" />
     <span class="brand-text">GREEN LABS</span>
   </div>
- <div class="nav-icons">
-  <span onclick="openSearch()">🔍</span>
-  <span onclick="openChat()">💬</span>
-   
-  <div style="position: relative;">
-  <span class="hamburger-icon" onclick="toggleMenu()">☰</span>
-</div> 
+  <div class="nav-icons">
+    <span onclick="openSearch()">🔍</span>
+    <span onclick="openChat()">💬</span>
+    <span class="hamburger-icon" onclick="toggleMenu()">☰</span>
+  </div>
 </nav>
 
-<!-- ✅ HAMBURGER MENU DROPDOWN -->
+<!-- 🍔 Hamburger Menu -->
 <div class="hamburger-menu">
   <span class="close-btn" onclick="closeMenu()">✖️</span>
   <a href="#deals">🔥 Today’s Deals</a>
@@ -103,19 +39,19 @@
     <a href="https://maps.apple.com/?ll=41.81116,-83.44617&q=Green+Labs+Provisions" target="_blank">📍 Directions</a>
   </div>
 </div>
-
-<section class="carousel" style="background: #dcedc8; padding: 30px 10px; text-align: center;">
+<!-- 🎉 Hero Carousel -->
+<section class="carousel">
   <div class="carousel-slide">
-    <h2 style="font-size: 2em; color: #1b5e20; margin: 0;">💚 Welcome to Green Labs</h2>
-    <p style="font-size: 1.1em; color: #2e7d32; margin-top: 8px;">Your Luna Pier dispensary for fresh drops, best deals, and local love.</p>
+    <h2>💚 Welcome to Green Labs</h2>
+    <p>Your Luna Pier dispensary for fresh drops, best deals, and local love.</p>
   </div>
 </section>
 
 <!-- 🔥 Today’s Deals Header + Category Filter -->
 <section class="deal-header" id="deals">
-  <h2 style="margin-bottom: 10px;">🔥 Today’s Deals</h2>
+  <h2>🔥 Today’s Deals</h2>
   <label for="dealDropdown" class="sr-only">Choose Category</label>
- <select onchange="handleCategorySelect(this.value)" style="padding: 12px 18px; font-size: 1.05em; border-radius: 8px; border: 1px solid #ccc;">
+  <select onchange="handleCategorySelect(this.value)" style="padding: 12px 18px; font-size: 1.05em; border-radius: 8px; border: 1px solid #ccc;">
     <option value="All">All Categories</option>
     <option value="Flower">🌿 Flower</option>
     <option value="Pre-Rolls">🪄 Pre-Rolls</option>
@@ -127,45 +63,66 @@
     <option value="Award Winners">🏆 Award Winners</option>
   </select>
 </section>
-  <!-- 🌟 Promo Featured Deals Section -->
+
+<!-- 🌟 Featured Promo Section -->
 <section id="promo-deals" class="promo-section">
   <h2>🌟 Featured Picks</h2>
   <div class="promo-grid" id="promoGrid">
-    <!-- Promo tiles will be inserted here by JS -->
+    <!-- Injected via JS -->
   </div>
 </section>
-
 <!-- ✅ Google Sheets–Powered Deal Container -->
 <div id="deals-container" style="padding: 20px;">
   <p>Loading today's deals...</p>
 </div>
 
-  <!-- ✅ TESTIMONIALS -->
-  <section style="padding: 40px 20px;">
-    <h2>🗣 What Our Customers Say</h2>
-    <p>“Love this shop! Best deals and budtenders in Michigan.” – Google Review</p>
-  </section>
-
-  <!-- ✅ GOOGLE MAP -->
-  <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18..." allowfullscreen="" loading="lazy"></iframe>
-
-  <!-- ✅ LOYALTY SIGN-UP -->
-  <section id="newsletter" style="padding: 40px 20px;">
-    <h2>🎁 Sign Up for Rewards</h2>
-    <form>
-      <input type="email" placeholder="Your email" required style="padding:10px; border-radius:6px; border:1px solid #ccc; margin-right:10px;">
-      <button type="submit" style="padding:10px 20px; background:#1b5e20; color:white; border:none; border-radius:6px;">Join Now</button>
-    </form>
-  </section>
-
-  <!-- ✅ FOOTER -->
-  <footer>
-    <p>📍 10701 Madison St, Luna Pier, MI 48157<br>📞 (734) 800-0024</p>
-    <p>
-      <a href="https://www.instagram.com/greenlabsmi" target="_blank">Instagram</a> |
-      <a href="https://www.facebook.com/greenlabsmi" target="_blank">Facebook</a>
+<!-- 💚 Wishlist Modal -->
+<div id="wishlistModal" class="wishlist-modal" style="display: none;">
+  <div class="wishlist-content">
+    <span class="close-wishlist" onclick="closeWishlist()">✖</span>
+    <h3>🛒 Your Wishlist</h3>
+    <ul id="wishlistItems"></ul>
+    <p style="font-size: 0.9em; color: #777; margin-top: 10px;">
+      Your wishlist won’t carry over. Show this list to your budtender or re-add on Leafly.
     </p>
-  </footer>
-    
+    <div class="wishlist-actions">
+      <a id="leaflyCheckoutLink" href="https://www.leafly.com/dispensary-info/green-labs" target="_blank">Checkout on Leafly</a>
+      <button onclick="clearWishlist()">Clear Wishlist</button>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ Testimonials -->
+<section style="padding: 40px 20px;">
+  <h2>🗣 What Our Customers Say</h2>
+  <p>“Love this shop! Best deals and budtenders in Michigan.” – Google Review</p>
+</section>
+<!-- ✅ GOOGLE MAP -->
+<iframe class="map" 
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2937.477502436394!2d-83.44839952415825!3d41.8111856712444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883b94bfffead03b%3A0xcff0b47c47a44e58!2s10701%20Madison%20St%2C%20Luna%20Pier%2C%20MI%2048157!5e0!3m2!1sen!2sus!4v1718662400000!5m2!1sen!2sus" 
+  width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+
+<!-- ✅ LOYALTY SIGN-UP -->
+<section id="newsletter" style="padding: 40px 20px;">
+  <h2>🎁 Sign Up for Rewards</h2>
+  <form>
+    <input type="email" placeholder="Your email" required style="padding:10px; border-radius:6px; border:1px solid #ccc; margin-right:10px;">
+    <button type="submit" style="padding:10px 20px; background:#1b5e20; color:white; border:none; border-radius:6px;">Join Now</button>
+  </form>
+</section>
+
+<!-- ✅ FOOTER -->
+<footer>
+  <p>📍 10701 Madison St, Luna Pier, MI 48157<br>📞 (734) 800-0024</p>
+  <p>
+    <a href="https://www.instagram.com/greenlabsmi" target="_blank">Instagram</a> |
+    <a href="https://www.facebook.com/greenlabsmi" target="_blank">Facebook</a>
+  </p>
+</footer>
+
+<!-- ✅ Floating Wishlist Cart Trigger -->
+<button class="floating-chat" onclick="openWishlist()">💚 Wishlist</button>
+
 </body>
 </html>
