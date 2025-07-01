@@ -397,6 +397,7 @@ footer a:hover {
 }
 
 .promo-tile {
+  position: relative;
   flex: 0 0 80%;
   max-width: 280px;
   background: #ffffff;
@@ -420,8 +421,8 @@ footer a:hover {
 }
 
 .promo-badge {
-  position: relative;
-  z-index: 10; /* Ensures it stays above overlapping hover triggers */
+  position: absolute;
+  z-index: 10;
   background: #ff9800;
   color: white;
   font-size: 0.8em;
@@ -429,6 +430,8 @@ footer a:hover {
   top: 10px;
   left: 10px;
   border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none; /* Prevents hover flicker */
 }
 
 .promo-info {
