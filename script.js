@@ -183,18 +183,20 @@ function renderDealsByCategory(data, selectedCategory = 'All') {
   );
 
   // Group Flower deals by normalized weight label
+const groupedByWeight = {};
+validDeals.forEach(deal => {
   const category = deal.Category?.trim();
-const rawWeight = deal.Weight?.trim();
-const groupLabel = weightMap[rawWeight];
+  const rawWeight = deal.Weight?.trim();
+  const groupLabel = weightMap[rawWeight];
 
-if ((selectedCategory === 'Flower' || selectedCategory === 'All') && category === 'Flower' && groupLabel) {
-  if (!groupedByWeight[groupLabel]) groupedByWeight[groupLabel] = [];
-  groupedByWeight[groupLabel].push(deal);
-} else {
-  if (!groupedByWeight.General) groupedByWeight.General = [];
-  groupedByWeight.General.push(deal);
-}
-  });
+  if ((selectedCategory === 'Flower' || selectedCategory === 'All') && category === 'Flower' && groupLabel) {
+    if (!groupedByWeight[groupLabel]) groupedByWeight[groupLabel] = [];
+    groupedByWeight[groupLabel].push(deal);
+  } else {
+    if (!groupedByWeight.General) groupedByWeight.General = [];
+    groupedByWeight.General.push(deal);
+  }
+});
 
   const section = document.createElement("div");
   section.className = "deal-category active";
