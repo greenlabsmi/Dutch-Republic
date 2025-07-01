@@ -119,6 +119,8 @@ function renderPromoTiles(data, selectedCategory = 'All') {
 }
 function renderGroupedFlowerDeals(data) {
   const container = document.getElementById("deals-container");
+  if (!container) return;
+
   container.innerHTML = '';
 
   const weightMap = {
@@ -131,12 +133,15 @@ function renderGroupedFlowerDeals(data) {
 
   const weightOrder = ['Ounce', 'Half', 'Quarter', 'Eighth', 'Gram'];
 
-  const flowerDeals = data.filter(d => d.Category?.toLowerCase() === 'flower');
+  const flowerDeals = data.filter(d =>
+    d.Category?.toLowerCase().trim() === 'flower'
+  );
 
   const groupedByWeight = {};
+
   flowerDeals.forEach(deal => {
     const rawWeight = deal.Weight?.toLowerCase().trim();
-    const group = weightMap[rawWeight] || 'General';
+    const group = weightMap[rawWeight] || 'Other';
     if (!groupedByWeight[group]) groupedByWeight[group] = [];
     groupedByWeight[group].push(deal);
   });
@@ -145,7 +150,7 @@ function renderGroupedFlowerDeals(data) {
   section.className = "deal-category active";
   section.dataset.category = 'Flower';
 
-  weightOrder.concat('General').forEach(group => {
+  [...weightOrder, 'Other'].forEach(group => {
     const deals = groupedByWeight[group];
     if (deals && deals.length > 0) {
       deals.sort((a, b) => parseFloat(a.Price) - parseFloat(b.Price));
