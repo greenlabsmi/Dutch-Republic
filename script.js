@@ -167,7 +167,7 @@ function renderPromoTiles(data, selectedCategory = 'All') {
   promoGrid.innerHTML = featuredDeals.map(d => `
     <div class="promo-tile">
       <div class="promo-image">
-        <img src="${d.ImageURL || 'https://via.placeholder.com/200x200?text=Green+Labs'}" alt="${d["Deal Title"]}">
+        <img src="${d.ImageURL || 'https://github.com/greenlabsmi/Green-labs-site/raw/main/green_labs_logo.png">
         ${d.Label ? `<span class="promo-badge">${d.Label}</span>` : ''}
       </div>
       <div class="promo-info">
