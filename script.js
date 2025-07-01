@@ -168,34 +168,43 @@ function renderDealsByCategory(data, selectedCategory = 'All') {
   const container = document.getElementById("deals-container");
   container.innerHTML = '';
 
-  const categories = {};
-
-  data.forEach(deal => {
-    const category = deal.Category || "Uncategorized";
-    if (!categories[category]) categories[category] = [];
-    categories[category].push(deal);
+  const allowedWeights = ['Ounce', 'Half', 'Quarter', 'Eighth'];
+  const validDeals = data.filter(d => {
+    return selectedCategory === 'All' || d.Category === selectedCategory;
   });
 
-  for (const [category, deals] of Object.entries(categories)) {
-    if (selectedCategory !== 'All' && selectedCategory !== category) continue;
+  // Group by weight (sub-grouping under Flower)
+  const groupedByWeight = {};
+  validDeals.forEach(deal => {
+    if (!deal.Weight || !allowedWeights.includes(deal.Weight)) return;
+    if (!groupedByWeight[deal.Weight]) groupedByWeight[deal.Weight] = [];
+    groupedByWeight[deal.Weight].push(deal);
+  });
 
-    const section = document.createElement("div");
-    section.className = "deal-category active";
-    section.dataset.category = category;
+  // Build the section
+  const section = document.createElement("div");
+  section.className = "deal-category active";
+  section.dataset.category = selectedCategory;
 
-    section.innerHTML = `
-      <h2>${category} Deals</h2>
-      <div class="tile-grid">
-        ${deals.map(d => `
-          <div class="deal-tile">
-            <h4>${d["Deal Title"]}</h4>
-            <p>${d["Amount/Details"] || ''}</p>
-            <p><strong>$${d.Price}</strong> <span class="tax-note">tax included</span></p>
-          </div>
-        `).join('')}
+  for (const weight of allowedWeights) {
+    if (!groupedByWeight[weight]) continue;
+
+    section.innerHTML += `
+      <div class="weight-group">
+        <h3>${weight}s</h3>
+        <div class="flower-tile-group">
+          ${groupedByWeight[weight].map(d => `
+            <div class="deal-tile">
+              <h4>${d["Deal Title"]}</h4>
+              ${d["Amount/Details"] ? `<p>${d["Amount/Details"]}</p>` : ''}
+              ${d.Notes ? `<p class="deal-notes">${d.Notes}</p>` : ''}
+              <p><strong>$${d.Price}</strong> <span class="tax-note">tax included</span></p>
+            </div>
+          `).join('')}
+        </div>
       </div>
     `;
-
-    container.appendChild(section);
   }
+
+  container.appendChild(section);
 }
