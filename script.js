@@ -1,3 +1,4 @@
+// === Initialization and Utility ===
 console.log("script.js loaded");
 
 // === Chatbot and Search Actions ===
@@ -9,18 +10,25 @@ function openSearch() {
   alert("Search function coming soon! Type to find strains, deals, or categories.");
 }
 
-// === Deal Category Toggle ===
-function toggleCategory(categoryId) {
-  const allCategories = document.querySelectorAll('.deal-category');
-  allCategories.forEach(category => {
-    if (category.id === categoryId) {
-      const isHidden = category.style.display === 'none';
-      category.style.display = isHidden ? 'block' : 'none';
-    } else {
-      category.style.display = 'none';
-    }
-  });
+// === Hamburger Menu Open/Close ===
+function toggleMenu() {
+  console.log("toggleMenu fired");
+  const menu = document.querySelector('.hamburger-menu');
+  menu.classList.toggle('open');
 }
+
+function closeMenu() {
+  const menu = document.querySelector('.hamburger-menu');
+  if (menu) menu.classList.remove('open');
+}
+
+// Tap outside to close menu
+window.addEventListener('click', function (e) {
+  const menu = document.querySelector('.hamburger-menu');
+  if (menu && menu.classList.contains('open') && !menu.contains(e.target) && !e.target.closest('.hamburger-icon')) {
+    closeMenu();
+  }
+});
 
 // === Flower Deals Expand/Collapse ===
 function scrollToAllFlower() {
@@ -81,52 +89,6 @@ function hideAllFlowerDeals() {
 
   btn.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-
-function toggleAllFlower() {
-  const section = document.getElementById('allFlowerDeals');
-  const isHidden = section.style.display === 'none' || section.style.display === '';
-  section.style.display = isHidden ? 'block' : 'none';
-
-  if (isHidden) {
-    document.getElementById('flowerDeals').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-}
-
-// === Hamburger Menu Open/Close ===
-function toggleMenu() {
-  console.log("toggleMenu fired");
-  const menu = document.querySelector('.hamburger-menu');
-  menu.classList.toggle('open');
-}
-
-function closeMenu() {
-  const menu = document.querySelector('.hamburger-menu');
-  if (menu) menu.classList.remove('open');
-}
-
-// Tap outside to close menu
-window.addEventListener('click', function (e) {
-  const menu = document.querySelector('.hamburger-menu');
-  if (menu && menu.classList.contains('open') && !menu.contains(e.target) && !e.target.closest('.hamburger-icon')) {
-    closeMenu();
-  }
-});
-
-function handleCategorySelect(selectedValue) {
-  const allSections = document.querySelectorAll('.deal-category');
-  allSections.forEach(section => {
-    const isMatch = section.dataset.category === selectedValue || selectedValue === 'All';
-    section.style.display = isMatch ? 'block' : 'none';
-  });
-
-  // Auto-scroll to the deals section after category change
-  const dealsSection = document.getElementById('deals');
-  if (dealsSection) {
-    dealsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    window.scrollBy(0, -20); // Optional nudge so banner stays in view
-  }
-}
-
 // === Apple or Google Maps Button ===
 function openPreferredMap() {
   const appleCoords = "41.81116,-83.44617";
@@ -140,26 +102,49 @@ function openPreferredMap() {
   }
 }
 
+// === Global Storage for Deals ===
+let allDealsData = [];
+
+// === Handle Category Select Dropdown ===
+function handleCategorySelect(selectedValue) {
+  const allSections = document.querySelectorAll('.deal-category');
+  allSections.forEach(section => {
+    const isMatch = section.dataset.category === selectedValue || selectedValue === 'All';
+    section.style.display = isMatch ? 'block' : 'none';
+  });
+
+  const dealsSection = document.getElementById('deals');
+  if (dealsSection) {
+    dealsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.scrollBy(0, -20);
+  }
+
+  // Re-render filtered content
+  renderPromoTiles(allDealsData, selectedValue);
+  renderDealsByCategory(allDealsData, selectedValue);
+}
 // === Load Deals from Google Sheets ===
 const sheetURL = 'https://opensheet.elk.sh/132VDRorvAHlWm_OaIJI-JDXrYiyPA4RWm6voajQbiqU/Sheet1';
 
 fetch(sheetURL)
   .then(response => response.json())
-   .then(data => {
+  .then(data => {
     console.log("Deals loaded:", data);
-    window.allDeals = data; // Save full dataset globally
-    renderPromoTiles(data, 'All'); // Initial Featured Picks
-    renderDealsByCategory(data, 'All'); // Initial deal sections
+    allDealsData = data;
+    renderPromoTiles(data, 'All');
+    renderDealsByCategory(data, 'All');
   })
-
   .catch(error => {
     console.error("Error loading deals:", error);
     document.getElementById("deals-container").innerHTML = "<p>Failed to load deals.</p>";
   });
 
+// === Render Featured Promo Tiles ===
 function renderPromoTiles(data, selectedCategory = 'All') {
   const promoGrid = document.getElementById("promoGrid");
-  const featuredDeals = data.filter(d => 
+  if (!promoGrid) return;
+
+  const featuredDeals = data.filter(d =>
     d.Featured && d.Featured.toLowerCase() === 'yes' &&
     (selectedCategory === 'All' || d.Category === selectedCategory)
   );
@@ -167,8 +152,7 @@ function renderPromoTiles(data, selectedCategory = 'All') {
   promoGrid.innerHTML = featuredDeals.map(d => `
     <div class="promo-tile">
       <div class="promo-image">
-        <img src="${d.ImageURL || 'https://raw.githubusercontent.com/greenlabsmii/Green-labs-site/main/green_labs_logo.png'}" ... />
-
+        <img src="${d.ImageURL || 'https://raw.githubusercontent.com/greenlabsmii/Green-labs-site/main/green_labs_logo.png'}" alt="${d['Deal Title']}" />
         ${d.Label ? `<span class="promo-badge">${d.Label}</span>` : ''}
       </div>
       <div class="promo-info">
@@ -178,7 +162,8 @@ function renderPromoTiles(data, selectedCategory = 'All') {
       </div>
     </div>
   `).join('');
-  }
+}
+// === Render All Deals By Category ===
 function renderDealsByCategory(data, selectedCategory = 'All') {
   const container = document.getElementById("deals-container");
   container.innerHTML = '';
