@@ -4,7 +4,7 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   background: #f7f7f7;
   margin: 0;
   padding: 0;
@@ -52,9 +52,8 @@ body {
 }
 
 #allFlowerDeals.active {
-  max-height: 2000px; /* Adjust if needed */
+  max-height: 2000px;
 }
-
 
 /* === Navbar Left Section (Logo + Name) === */
 .nav-left {
@@ -67,7 +66,8 @@ body {
   height: 56px;
   margin-right: 2px;
 }
-  .brand-text {
+
+.brand-text {
   font-size: 1.65em;
   font-weight: bold;
   text-transform: uppercase;
@@ -75,6 +75,7 @@ body {
   color: #00885A;
   white-space: nowrap;
 }
+
 .brand-text:hover {
   color: #00a174;
   cursor: pointer;
@@ -97,6 +98,7 @@ body {
 .nav-icons i {
   color: #1b5e20;
 }
+
 .nav-icons span {
   font-size: 1.3em;
   padding: 1px;
@@ -129,7 +131,7 @@ body {
 /* === Deal Section Headers === */
 .deal-header {
   text-align: center;
-  background: #d0e7c2; /* lighter green */
+  background: #d0e7c2;
   color: #1b5e20;
   padding: 12px 10px;
   margin-bottom: 0;
@@ -148,13 +150,6 @@ body {
   display: block;
   opacity: 1;
   transform: translateY(0);
-}
- {
-  background-color: #e4f4e4;
-  padding: 16px 12px;
-  border-bottom: 1px solid #c9e5c9;
-  margin-bottom: 12px;
-  transition: background-color 0.3s ease;
 }
 
 #dealDropdown {
@@ -186,33 +181,7 @@ body {
   background: #dcedc8;
 }
 
-/* === Deal Tiles === */
-.tile-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.tile-grid-featured {
-  margin-top: 15px;
-}
-
-.deal-tile {
-  background: white;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  flex: 1 1 250px;
-  max-width: 300px;
-}
 /* === Deal Tile Headings & Tags === */
-.deal-tile h4 {
-  color: #1b5e20;
-  margin: 0 0 8px 0;
-}
-
 .deal-tile span {
   background: #e8f5e9;
   padding: 3px 8px;
@@ -222,18 +191,7 @@ body {
   color: #2e7d32;
 }
 
-.deal-tile p {
-  font-size: 0.95em;
-  color: #444;
-  margin: 0;
-}
-/* === Featured Deal Highlight === */
-.deal-tile.featured {
-  border: 2px solid #00c853;
-  box-shadow: 0 0 10px rgba(0, 200, 83, 0.2);
-}
-
-/* === Dynamic Category Titles (e.g. Flower, Carts) === */
+/* === Dynamic Category Titles === */
 #deals-container h2 {
   text-align: center;
   color: #1b5e20;
@@ -245,7 +203,60 @@ body {
   padding-bottom: 5px;
 }
 
-/* === Section Heading: "🔥 Today’s Deals" === */
+#deals-container {
+  padding: 20px;
+}
+
+.deal-category h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #1b5e20;
+  border-bottom: 2px solid #d0f0d0;
+  padding-bottom: 4px;
+}
+
+/* === Tile Grid Layout === */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+/* === Individual Deal Tile === */
+.deal-tile {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.deal-tile:hover {
+  transform: scale(1.02);
+}
+
+/* === Deal Text === */
+.deal-tile h4 {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.deal-tile p {
+  margin: 4px 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* === Featured Highlight === */
+.deal-tile.featured {
+  border: 2px solid #7ed957;
+  box-shadow: 0 0 10px rgba(126, 217, 87, 0.4);
+}
+
+/* === Section Heading === */
 #deals h2 {
   margin-top: 0;
   padding-top: 5px;
@@ -292,7 +303,8 @@ footer a:hover {
   background-color: #388e3c;
 }
 
-  .hamburger-menu {
+/* === Hamburger Menu === */
+.hamburger-menu {
   position: absolute;
   top: 50px;
   right: 0;
@@ -303,12 +315,11 @@ footer a:hover {
   z-index: 2000;
   display: none;
 }
-/* === Hamburger Menu Open State === */
+
 .hamburger-menu.open {
   display: flex;
 }
 
-/* === Hamburger Menu Items === */
 .hamburger-menu a {
   padding: 12px 18px;
   text-decoration: none;
@@ -325,7 +336,6 @@ footer a:hover {
   background: #f1f8e9;
 }
 
-/* === Close Button === */
 .hamburger-menu .close-btn {
   position: absolute;
   top: 6px;
@@ -335,7 +345,6 @@ footer a:hover {
   color: #999;
 }
 
-/* === Menu Bottom Message === */
 .hamburger-menu .menu-footer {
   margin-top: 12px;
   padding: 10px 18px;
@@ -351,18 +360,17 @@ footer a:hover {
   text-decoration: none;
 }
 
-/* === Responsive Adjustments === */
+/* === Responsive === */
 @media (max-width: 768px) {
   .main-nav {
     padding: 10px 15px;
   }
 
   .hamburger-menu {
-    position: absolute;     /* Ensures it aligns with nav */
-    top: 90px;              /* Aligns below sticky nav */
-    right: 16px;            /* Match this with nav padding */
-    max-width: calc(100vw - 32px); /* Prevents overflow */
-    width: 250px;           /* Optional: fixed width for consistency */
+    top: 90px;
+    right: 16px;
+    max-width: calc(100vw - 32px);
+    width: 250px;
   }
 
   .nav-left span {
@@ -371,10 +379,5 @@ footer a:hover {
 
   .deal-tile {
     width: 100%;
-  }
-
-  .tile-grid {
-    flex-direction: column;
-    gap: 10px;
   }
 }
