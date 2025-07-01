@@ -66,8 +66,7 @@ fetch(sheetURL)
   .then(data => {
     console.log("Deals loaded:", data);
     allDealsData = data;
-    renderPromoTiles(data, 'All');
-    renderDealsByCategory(data, 'All');
+handleCategorySelect('All');
   })
   .catch(error => {
     console.error("Error loading deals:", error);
