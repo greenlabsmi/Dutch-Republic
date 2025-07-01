@@ -145,37 +145,46 @@ const sheetURL = 'https://opensheet.elk.sh/132VDRorvAHlWm_OaIJI-JDXrYiyPA4RWm6vo
 
 fetch(sheetURL)
   .then(response => response.json())
-  .then(data => {
+   .then(data => {
     console.log("Deals loaded:", data);
-    renderDeals(data);
+    window.allDeals = data; // Save full dataset globally
+    renderPromoTiles(data, 'All'); // Initial Featured Picks
+    renderDealsByCategory(data, 'All'); // Initial deal sections
   })
+
   .catch(error => {
     console.error("Error loading deals:", error);
     document.getElementById("deals-container").innerHTML = "<p>Failed to load deals.</p>";
   });
 
-function renderDeals(data) {
+function renderPromoTiles(data, selectedCategory = 'All') {
+  const promoGrid = document.getElementById("promoGrid");
+  const featuredDeals = data.filter(d => 
+    d.Featured && d.Featured.toLowerCase() === 'yes' &&
+    (selectedCategory === 'All' || d.Category === selectedCategory)
+  );
+  
+}
+  
+  promoGrid.innerHTML = featuredDeals.map(d => `
+    <div class="promo-tile">
+      <div class="promo-image">
+        <img src="${d.ImageURL || 'https://via.placeholder.com/200x200?text=Green+Labs'}" alt="${d["Deal Title"]}">
+        ${d.Label ? `<span class="promo-badge">${d.Label}</span>` : ''}
+      </div>
+      <div class="promo-info">
+        <h4>${d["Deal Title"]}</h4>
+        <p>${d["Effects/Tagline"] || ''}</p>
+        <p class="price-tag">$${d.Price} <span class="tax-note">tax included</span></p>
+      </div>
+    </div>
+  `).join('');
+}
+  
+function renderDealsByCategory(data, selectedCategory = 'All') {
   const container = document.getElementById("deals-container");
   container.innerHTML = '';
 
-// === Render Promo Tiles ===
-const promoGrid = document.getElementById("promoGrid");
-const featuredDeals = data.filter(d => d.Featured && d.Featured.toLowerCase() === 'yes');
-
-promoGrid.innerHTML = featuredDeals.map(d => `
-  <div class="promo-tile">
-    <div class="promo-image">
-      <img src="${d.ImageURL || 'https://via.placeholder.com/200x200?text=Green+Labs'}" alt="${d["Deal Title"]}">
-      ${d.Label ? `<span class="promo-badge">${d.Label}</span>` : ''}
-    </div>
-    <div class="promo-info">
-      <h4>${d["Deal Title"]}</h4>
-      <p>${d["Effects/Tagline"] || ''}</p>
-      <p class="price-tag">$${d.Price} <span class="tax-note">tax included</span></p>
-    </div>
-  </div>
-`).join('');
-  
   const categories = {};
 
   data.forEach(deal => {
@@ -185,6 +194,8 @@ promoGrid.innerHTML = featuredDeals.map(d => `
   });
 
   for (const [category, deals] of Object.entries(categories)) {
+    if (selectedCategory !== 'All' && selectedCategory !== category) continue;
+
     const section = document.createElement("div");
     section.className = "deal-category active";
     section.dataset.category = category;
@@ -193,10 +204,10 @@ promoGrid.innerHTML = featuredDeals.map(d => `
       <h2>${category} Deals</h2>
       <div class="tile-grid">
         ${deals.map(d => `
-          <div class="deal-tile ${d.Featured === 'yes' ? 'featured' : ''}">
+          <div class="deal-tile">
             <h4>${d["Deal Title"]}</h4>
-            <p>${d["Amount/Details"]}</p>
-            <p><strong>$${d.Price}</strong><br>Tax included</p>
+            <p>${d["Amount/Details"] || ''}</p>
+            <p><strong>$${d.Price}</strong> <span class="tax-note">tax included</span></p>
           </div>
         `).join('')}
       </div>
