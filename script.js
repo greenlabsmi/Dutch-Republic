@@ -206,21 +206,24 @@ validDeals.forEach(deal => {
    section.innerHTML += `
   <div class="weight-group">
     <h3>${group}s</h3>
-    <div class="flower-tile-group">
-      <div class="deal-tile">
-        <div class="promo-info">
-          ${deals.map(d => `
-            <h4>${d["Deal Title"]}</h4>
-            ${d["Effects/Tagline"] ? `<p>${d["Effects/Tagline"]}</p>` : ''}
-            ${d["Amount/Details"] ? `<p>${d["Amount/Details"]}</p>` : ''}
-            ${d.Notes ? `<p class="deal-notes">${d.Notes}</p>` : ''}
-            <p class="price-tag">$${d.Price} <span class="tax-note">tax included</span></p>
-            <hr />
-          `).join('')}
-        </div>
+    
+<div class="flower-tile-group">
+  ${deals.map(d => `
+    <div class="deal-tile">
+      <div class="promo-image">
+        <img src="${d.ImageURL && d.ImageURL.trim() !== '' ? d.ImageURL : 'https://raw.githubusercontent.com/greenlabsmi/Green-labs-site/main/green_labs_logo.png'}" alt="${d['Deal Title']}" />
+        ${d.Label ? `<span class="promo-badge">${d.Label}</span>` : ''}
+      </div>
+      <div class="promo-info">
+        <h4>${d["Deal Title"]}</h4>
+        ${d["Effects/Tagline"] ? `<p>${d["Effects/Tagline"]}</p>` : ''}
+        ${d["Amount/Details"] ? `<p>${d["Amount/Details"]}</p>` : ''}
+        ${d.Notes ? `<p class="deal-notes">${d.Notes}</p>` : ''}
+        <p class="price-tag">$${d.Price} <span class="tax-note">tax included</span></p>
       </div>
     </div>
-  </div>
+  `).join('')}
+</div>
 `;
 
   container.appendChild(section);
