@@ -146,12 +146,12 @@ const sheetURL = 'https://opensheet.elk.sh/132VDRorvAHlWm_OaIJI-JDXrYiyPA4RWm6vo
 fetch(sheetURL)
   .then(response => response.json())
   .then(data => {
-    console.log("Deals loaded:", data); // optional: debug
-    renderDeals(data); // your function to display them
+    console.log("Deals loaded:", data);
+    renderDeals(data);
   })
   .catch(error => {
     console.error("Error loading deals:", error);
-    document.getElementById("dealsOutput").innerHTML = "<p>Failed to load deals.</p>";
+    document.getElementById("deals-container").innerHTML = "<p>Failed to load deals.</p>";
   });
 
 function renderDeals(data) {
