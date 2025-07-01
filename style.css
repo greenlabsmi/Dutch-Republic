@@ -420,7 +420,8 @@ footer a:hover {
 }
 
 .promo-badge {
-  position: absolute;
+  position: relative;
+  z-index: 10; /* Ensures it stays above overlapping hover triggers */
   background: #ff9800;
   color: white;
   font-size: 0.8em;
