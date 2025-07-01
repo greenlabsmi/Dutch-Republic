@@ -17,10 +17,8 @@ body {
   font-size: 0.9em;
   padding: 6px 15px;
   text-align: center;
-}
-.info-banner {
-  z-index: 1001;
   position: relative;
+  z-index: 1001;
   margin-top: 0;
 }
 
@@ -49,18 +47,6 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-/* === Flower Nested Deals Animation === */
-#allFlowerDeals {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease;
-}
-
-#allFlowerDeals.active {
-  max-height: 2000px;
-}
-
-/* === Navbar Left Section (Logo + Name) === */
 .nav-left {
   display: flex;
   align-items: center;
@@ -86,12 +72,6 @@ body {
   cursor: pointer;
 }
 
-.nav-left span {
-  font-size: 1.2em;
-  font-weight: bold;
-}
-
-/* === Navbar Right Icons === */
 .nav-icons {
   display: flex;
   align-items: center;
@@ -114,7 +94,18 @@ body {
   transform: scale(1.1);
   color: #2e7d32;
 }
+/* === Flower Nested Deals Animation === */
+#allFlowerDeals {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
 
+#allFlowerDeals.active {
+  max-height: 2000px;
+}
+
+/* === Carousel Styles === */
 .carousel {
   background: #e0f2e9;
   padding: 25px 10px;
@@ -186,40 +177,6 @@ body {
   background: #dcedc8;
 }
 
-/* === Deal Tile Headings & Tags === */
-.deal-tile span {
-  background: #e8f5e9;
-  padding: 3px 8px;
-  border-radius: 6px;
-  font-size: 0.8em;
-  margin-left: 6px;
-  color: #2e7d32;
-}
-
-/* === Dynamic Category Titles === */
-#deals-container h2 {
-  text-align: center;
-  color: #1b5e20;
-  font-size: 1.6em;
-  margin-top: 30px;
-  margin-bottom: 10px;
-  border-bottom: 2px solid #dcedc8;
-  display: inline-block;
-  padding-bottom: 5px;
-}
-
-#deals-container {
-  padding: 20px;
-}
-
-.deal-category h2 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  color: #1b5e20;
-  border-bottom: 2px solid #d0f0d0;
-  padding-bottom: 4px;
-}
-
 /* === Tile Grid Layout === */
 .tile-grid {
   display: grid;
@@ -228,163 +185,7 @@ body {
   margin-bottom: 40px;
 }
 
-/* === Individual Deal Tile === */
-
-.deal-tile:hover {
-  transform: scale(1.02);
-}
-
-/* === Deal Text === */
-.deal-tile h4 {
-  margin: 0 0 6px;
-  font-size: 1.1rem;
-  color: #333;
-}
-
-.deal-tile p {
-  margin: 4px 0;
-  font-size: 0.95rem;
-  color: #555;
-}
-
-/* === Featured Highlight === */
-.deal-tile.featured {
-  border: 2px solid #7ed957;
-  box-shadow: 0 0 10px rgba(126, 217, 87, 0.4);
-}
-
-/* === Section Heading === */
-#deals h2 {
-  margin-top: 0;
-  padding-top: 5px;
-  border-top: 2px solid #cde3ce;
-}
-
-/* === Footer === */
-footer {
-  background: #e8f5e9;
-  color: #1b5e20;
-  text-align: center;
-  padding: 25px 15px;
-  font-size: 0.9em;
-}
-
-footer a {
-  color: #1b5e20;
-  text-decoration: none;
-  font-weight: bold;
-  margin: 0 6px;
-}
-
-footer a:hover {
-  text-decoration: underline;
-}
-
-/* === Floating Chatbot Button === */
-.floating-chat {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #1b5e20;
-  color: white;
-  border: none;
-  padding: 14px 18px;
-  border-radius: 50px;
-  font-size: 1em;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-  z-index: 999;
-}
-
-.floating-chat:hover {
-  background-color: #388e3c;
-}
-
-/* === Hamburger Menu === */
-.hamburger-menu {
-  position: absolute;
-  top: 50px;
-  right: 0;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  padding: 20px;
-  z-index: 2000;
-  display: none;
-}
-
-.hamburger-menu.open {
-  display: flex;
-}
-
-.hamburger-menu a {
-  padding: 12px 18px;
-  text-decoration: none;
-  color: #1b5e20;
-  font-weight: 500;
-  font-size: 1em;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  transition: background 0.2s ease-in-out;
-}
-
-.hamburger-menu a:hover {
-  background: #f1f8e9;
-}
-
-.hamburger-menu .close-btn {
-  position: absolute;
-  top: 6px;
-  right: 10px;
-  font-size: 1.2em;
-  cursor: pointer;
-  color: #999;
-}
-
-.hamburger-menu .menu-footer {
-  margin-top: 12px;
-  padding: 10px 18px;
-  border-top: 1px solid #e0e0e0;
-  font-size: 0.85em;
-  color: #4caf50;
-  text-align: center;
-}
-
-.hamburger-menu .menu-footer a {
-  color: #1b5e20;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-/* === Responsive === */
-@media (max-width: 768px) {
-  .main-nav {
-    padding: 10px 15px;
-  }
-
-  .hamburger-menu {
-    top: 90px;
-    right: 16px;
-    max-width: calc(100vw - 32px);
-    width: 250px;
-  }
-
-  .nav-left span {
-    font-size: 1em;
-  }
-
-  .deal-tile {
-    width: 100%;
-  }
-}
-
 /* === Promo Tile Styles === */
-.promo-section {
-  padding: 30px 20px;
-}
-
-/* === Promo Grid: Horizontal Scroll with 2 Tiles Visible === */
 .promo-grid {
   display: flex;
   flex-wrap: nowrap;
@@ -412,7 +213,6 @@ footer a:hover {
 .promo-tile:hover {
   transform: translateY(-4px);
 }
-
 .promo-image img {
   width: 100%;
   height: auto;
@@ -431,7 +231,7 @@ footer a:hover {
   left: 10px;
   border-radius: 4px;
   white-space: nowrap;
-  pointer-events: none; /* Prevents hover flicker */
+  pointer-events: none;
 }
 
 .promo-info {
@@ -450,55 +250,99 @@ footer a:hover {
   font-size: 0.8em;
 }
 
-
-/* === Grouped Flower Deals === */
-.weight-group {
-  margin-bottom: 30px;
+/* === Wishlist Styles === */
+.wishlist-icon {
+  font-size: 1.1em;
+  color: #bbb;
+  cursor: pointer;
+  margin-left: 8px;
+  vertical-align: middle;
+  transition: color 0.2s ease;
 }
 
-.weight-group h3 {
-  font-size: 1.4em;
-  margin-bottom: 10px;
+.wishlist-icon.active {
+  color: #00885A;
+}
+
+.wishlist-icon:hover {
+  color: #00a174;
+}
+
+/* === Wishlist Modal === */
+#wishlistModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  z-index: 3000;
+  max-width: 400px;
+  width: 90%;
+  display: none;
+}
+
+#wishlistModal h3 {
+  margin-top: 0;
   color: #1b5e20;
-  border-bottom: 2px solid #a5d6a7;
-  padding-bottom: 4px;
+  font-size: 1.3em;
 }
 
-.flower-tile-group {
+#wishlistModal ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 20px;
+}
+
+#wishlistModal li {
+  margin-bottom: 8px;
+  font-size: 0.95em;
+  color: #444;
+}
+
+#wishlistModal .modal-buttons {
   display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-content: flex-start;
+  justify-content: space-between;
+  gap: 10px;
 }
 
-.deal-tile {
-  background: #fff;
-  border-radius: 10px;
-  padding: 12px;
-  width: 270px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  text-align: center;
-  transition: box-shadow 0.3s ease;
-}
-
-.deal-tile:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.deal-tile img {
-  width: 100%;
-  max-height: 160px;
-  object-fit: cover;
+#wishlistModal button {
+  flex: 1;
+  padding: 10px;
+  font-size: 0.9em;
   border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-.deal-notes {
-  font-size: 0.85em;
-  color: #777;
-  margin-top: 4px;
+#wishlistModal .show-budtender {
+  background-color: #e0f2f1;
+  color: #00796b;
 }
 
-/* Responsive Cleanup */
+#wishlistModal .go-to-leafly {
+  background-color: #dcedc8;
+  color: #33691e;
+}
+
+#wishlistModal .clear-wishlist {
+  background-color: #fce4ec;
+  color: #c2185b;
+}
+
+#wishlistModal .modal-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 1.2em;
+  color: #aaa;
+  cursor: pointer;
+}
+
+/* === Responsive Cleanup === */
 @media screen and (max-width: 768px) {
   .promo-grid,
   .flower-tile-group {
@@ -514,4 +358,9 @@ footer a:hover {
   .weight-group h3 {
     font-size: 1.2em;
   }
+
+  #wishlistModal {
+    max-width: 90%;
+  }
 }
+
