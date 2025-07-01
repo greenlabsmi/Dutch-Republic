@@ -158,6 +158,24 @@ function renderDeals(data) {
   const container = document.getElementById("deals-container");
   container.innerHTML = '';
 
+// === Render Promo Tiles ===
+const promoGrid = document.getElementById("promoGrid");
+const featuredDeals = data.filter(d => d.Featured && d.Featured.toLowerCase() === 'yes');
+
+promoGrid.innerHTML = featuredDeals.map(d => `
+  <div class="promo-tile">
+    <div class="promo-image">
+      <img src="${d.ImageURL || 'https://via.placeholder.com/200x200?text=Green+Labs'}" alt="${d["Deal Title"]}">
+      ${d.Label ? `<span class="promo-badge">${d.Label}</span>` : ''}
+    </div>
+    <div class="promo-info">
+      <h4>${d["Deal Title"]}</h4>
+      <p>${d["Effects/Tagline"] || ''}</p>
+      <p class="price-tag">$${d.Price} <span class="tax-note">tax included</span></p>
+    </div>
+  </div>
+`).join('');
+  
   const categories = {};
 
   data.forEach(deal => {
