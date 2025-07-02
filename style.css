@@ -429,3 +429,17 @@ body {
   font-size: 14px;
   color: #666;
 }
+
+body {
+  overflow-x: hidden;
+}
+
+.hamburger-menu {
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+.hamburger-menu ul li a {
+  display: block;
+  padding: 10px 0;
+}
