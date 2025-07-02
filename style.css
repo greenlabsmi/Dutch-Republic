@@ -443,3 +443,16 @@ body {
   display: block;
   padding: 10px 0;
 }
+
+.hamburger-menu {
+  z-index: 1002; /* Lift above icon when open */
+}
+
+body.menu-open {
+  overflow: hidden; /* Prevent background scroll while menu is open */
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
