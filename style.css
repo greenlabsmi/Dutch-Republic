@@ -364,3 +364,68 @@ body {
   }
 }
 
+.hamburger-icon {
+  font-size: 26px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.hamburger-menu {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 280px;
+  height: 100%;
+  background: #ffffff;
+  box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+  z-index: 1000;
+  padding: 20px;
+  transition: right 0.3s ease;
+  border-radius: 8px 0 0 8px;
+}
+
+.hamburger-menu.open {
+  right: 0;
+}
+
+.hamburger-menu .menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.hamburger-menu .close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.hamburger-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.hamburger-menu ul li {
+  margin-bottom: 15px;
+}
+
+.hamburger-menu ul li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+}
+
+.hamburger-menu .menu-footer {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 14px;
+  color: #666;
+}
