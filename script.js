@@ -12,7 +12,8 @@ function openSearch() {
 // === Hamburger Menu ===
 function toggleMenu() {
   const menu = document.getElementById("hamburgerMenu");
-  menu.classList.toggle("open");
+  const isOpen = menu.classList.toggle("open");
+  document.body.classList.toggle("menu-open", isOpen);
 }
 
 // Close the menu if user clicks outside of it
