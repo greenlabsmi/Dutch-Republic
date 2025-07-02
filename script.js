@@ -106,19 +106,23 @@ function renderPromoTiles(data, selectedCategory = 'All') {
     (selectedCategory === 'All' || d.Category === selectedCategory)
   );
 
-  promoGrid.innerHTML = featuredDeals.map(d => `
-    <div class="promo-tile">
-      <div class="promo-image">
-        <img src="${d.ImageURL?.trim() || 'https://raw.githubusercontent.com/greenlabsmi/Green-labs-site/main/green_labs_logo.png'}" alt="${d['Deal Title']}" />
-        ${d.Label ? `<span class="promo-badge">${d.Label}</span>` : ''}
+  promoGrid.innerHTML = featuredDeals.map(d => {
+    const hasImage = d.ImageURL && d.ImageURL.trim() !== '';
+
+    return `
+      <div class="promo-tile">
+        <div class="promo-image">
+          ${hasImage ? `<img src="${d.ImageURL.trim()}" alt="${d['Deal Title']}" />` : ''}
+          ${d.Label ? `<span class="promo-badge">${d.Label}</span>` : ''}
+        </div>
+        <div class="promo-info">
+          <h4>${d["Deal Title"]}</h4>
+          <p>${d["Effects/Tagline"] || ''}</p>
+          <p class="price-tag">$${d.Price} <span class="tax-note">tax included</span></p>
+        </div>
       </div>
-      <div class="promo-info">
-        <h4>${d["Deal Title"]}</h4>
-        <p>${d["Effects/Tagline"] || ''}</p>
-        <p class="price-tag">$${d.Price} <span class="tax-note">tax included</span></p>
-      </div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
 }
 
 // === Grouped Flower Deals Renderer ===
@@ -161,9 +165,9 @@ function renderGroupedFlowerDeals(data) {
             ${deals.map(d => `
               <div class="deal-tile ${d.Featured?.toLowerCase() === 'yes' ? 'featured' : ''}">
                 <div class="promo-image">
-                  <img src="${d.ImageURL?.trim() || 'https://raw.githubusercontent.com/greenlabsmi/Green-labs-site/main/green_labs_logo.png'}" alt="${d['Deal Title']}" />
                   ${d.Label ? `<span class="promo-badge">${d.Label}</span>` : ''}
                 </div>
+                
                 <div class="promo-info">
                   <h4>${d["Deal Title"]}
                     ${d.Badge?.toLowerCase().includes("award") ? ' 🏆' : d.Badge?.toLowerCase().includes("new") ? ' 🔥' : ''}
