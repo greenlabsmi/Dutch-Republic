@@ -26,19 +26,26 @@
     <span class="hamburger-icon" onclick="toggleMenu()">☰</span>
   </div>
 </nav>
+  
+<!-- Hamburger Menu Icon -->
+<div class="hamburger-icon" onclick="toggleMenu()">☰</div>
 
-<!-- 🍔 Hamburger Menu -->
-<div class="hamburger-menu">
-  <span class="close-btn" onclick="closeMenu()">✖️</span>
-  <a href="#deals">🔥 Today’s Deals</a>
-  <a href="#about">🌱 About Us</a>
-  <a href="#dutch">🏆 Dutch Touch</a>
-  <a href="#newsletter">🎁 Loyalty Signup</a>
-  <div class="menu-footer">
-    We’re Open Daily 9am–9pm<br/>
-    <a href="https://maps.apple.com/?ll=41.81116,-83.44617&q=Green+Labs+Provisions" target="_blank">📍 Directions</a>
+<!-- Slide-out Menu -->
+<div id="hamburgerMenu" class="hamburger-menu">
+  <div class="menu-header">
+    <span>Menu</span>
+    <button onclick="toggleMenu()" class="close-btn">✖️</button>
   </div>
+  <ul>
+    <li><a href="#deals">🔥 Deals</a></li>
+    <li><a href="#about">📍 About Us</a></li>
+    <li><a href="#dutch">🌿 Dutch Touch</a></li>
+    <li><a href="#loyalty">💌 Loyalty</a></li>
+    <li><a href="#chat">💬 Chat with Budtender</a></li>
+  </ul>
+  <div class="menu-footer">🟢 We’re Open: 9AM – 9PM</div>
 </div>
+
 <!-- 🎉 Hero Carousel -->
 <section class="carousel">
   <div class="carousel-slide">
