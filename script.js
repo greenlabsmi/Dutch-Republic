@@ -11,17 +11,20 @@ function openSearch() {
 
 // === Hamburger Menu ===
 function toggleMenu() {
-  const menu = document.querySelector('.hamburger-menu');
-  menu.classList.toggle('open');
+  const menu = document.getElementById("hamburgerMenu");
+  menu.classList.toggle("open");
 }
-function closeMenu() {
-  const menu = document.querySelector('.hamburger-menu');
-  if (menu) menu.classList.remove('open');
-}
-window.addEventListener('click', function (e) {
-  const menu = document.querySelector('.hamburger-menu');
-  if (menu && menu.classList.contains('open') && !menu.contains(e.target) && !e.target.closest('.hamburger-icon')) {
-    closeMenu();
+
+// Close the menu if user clicks outside of it
+document.addEventListener("click", function (e) {
+  const menu = document.getElementById("hamburgerMenu");
+  const icon = document.querySelector(".hamburger-icon");
+  if (
+    menu.classList.contains("open") &&
+    !menu.contains(e.target) &&
+    !icon.contains(e.target)
+  ) {
+    menu.classList.remove("open");
   }
 });
 
