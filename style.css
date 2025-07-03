@@ -33,11 +33,15 @@ body {
   text-decoration: none;
 }
 
-/* === Sticky Navbar === */
-.main-nav {
+.main-header {
   position: sticky;
   top: 0;
   z-index: 1000;
+  background-color: #e8f5e9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+/* === Sticky Navbar === */
+.main-nav {
   background-color: #e8f5e9;
   color: #1b5e20;
   display: flex;
