@@ -446,10 +446,6 @@ body {
   color: #666;
 }
 
-body {
-  overflow-x: hidden;
-}
-
 .hamburger-menu {
   max-height: 100vh;
   overflow-y: auto;
@@ -469,6 +465,5 @@ body.menu-open {
 }
 
 html, body {
-  max-width: 100%;
   overflow-x: hidden;
 }
