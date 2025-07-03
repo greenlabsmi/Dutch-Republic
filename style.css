@@ -380,9 +380,9 @@ body {
 
 .hamburger-icon {
   font-size: 26px;
-  position: fixed;
-  top: 20px;
-  right: 20px;
+  position: relative;
+  top: auto;
+  right: auto;
   cursor: pointer;
   z-index: 1001;
 }
