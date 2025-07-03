@@ -32,16 +32,15 @@ body {
   color: #2e7d32;
   text-decoration: none;
 }
-
 .main-header {
   position: sticky;
   top: 0;
   z-index: 1000;
+  width: 100%;         /* Add this */
   background-color: #e8f5e9;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  padding: 10px 0;
-  min-height: 60px;
 }
+
 /* === Sticky Navbar === */
 .main-nav {
   background-color: #e8f5e9;
