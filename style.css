@@ -52,6 +52,15 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
+.main-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background-color: #e8f5e9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
 .logo-title {
   display: flex;
   align-items: center;
