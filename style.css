@@ -36,7 +36,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  width: 100%;         /* Add this */
+  width: 100%;       
   background-color: #e8f5e9;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
@@ -390,10 +390,9 @@ body {
 .hamburger-menu {
   position: fixed;
   top: 0;
-  right: -300px;
+  right: -100vw;
   width: 280px;
-  max-height: 350px;
-  margin-top: 60px;
+  height: 100%;
   border-radius: 8px 0 0 8px;
   background: #ffffff;
   box-shadow: -2px 0 8px rgba(0,0,0,0.2);
@@ -401,6 +400,7 @@ body {
   padding: 20px;
   transition: right 0.3s ease;
   border-radius: 8px 0 0 8px;
+  overflow-y: auto;
 }
 
 .hamburger-menu.open {
