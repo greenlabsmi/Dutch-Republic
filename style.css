@@ -523,50 +523,60 @@ html, body {
   color: #777;
 }
 
+/* ✅ Promo Tile Styles */
 .promo-section {
-  padding: 30px 20px;
+  padding: 40px 20px;
+  background-color: #f9f9f9;
 }
 
-.promo-grid-cards {
+.promo-section h2 {
+  text-align: center;
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.promo-container {
   display: flex;
+  justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
-  justify-content: center;
 }
 
-.promo-card {
-  background: #fff;
-  border-radius: 16px;
+.promo-tile {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  width: 260px;
   padding: 15px;
-  width: 170px;
   text-align: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.promo-card img {
+.promo-tile img {
   width: 100%;
   border-radius: 8px;
-  margin: 10px 0;
+  object-fit: cover;
+  margin-bottom: 12px;
 }
 
-.promo-card .badge {
-  display: inline-block;
-  font-size: 0.85em;
-  font-weight: 600;
-  background: #f2f2f2;
-  padding: 4px 10px;
-  border-radius: 999px;
-  margin-bottom: 5px;
-}
-
-.promo-card h3 {
-  font-size: 1.1em;
+.promo-info h3 {
   margin: 10px 0 5px;
-  line-height: 1.3em;
+  font-size: 1.1em;
+  color: #111;
 }
 
-.promo-card .price {
-  color: green;
+.promo-info .price {
+  color: #2e7d32;
   font-weight: bold;
+  margin-bottom: 8px;
   font-size: 1.1em;
+}
+
+.badge {
+  display: inline-block;
+  background-color: #eee;
+  color: #555;
+  padding: 4px 10px;
+  font-size: 0.85em;
+  border-radius: 12px;
 }
