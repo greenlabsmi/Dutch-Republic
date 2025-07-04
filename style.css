@@ -470,6 +470,7 @@ html, body {
   overflow-x: hidden !important;
   scroll-behavior: smooth;
 }
+
 .featured-picks {
   padding: 30px 20px;
   background: #fafafa;
@@ -520,4 +521,52 @@ html, body {
   font-weight: normal;
   font-size: 0.9rem;
   color: #777;
+}
+
+.promo-section {
+  padding: 30px 20px;
+}
+
+.promo-grid-cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.promo-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 15px;
+  width: 170px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.promo-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.promo-card .badge {
+  display: inline-block;
+  font-size: 0.85em;
+  font-weight: 600;
+  background: #f2f2f2;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 5px;
+}
+
+.promo-card h3 {
+  font-size: 1.1em;
+  margin: 10px 0 5px;
+  line-height: 1.3em;
+}
+
+.promo-card .price {
+  color: green;
+  font-weight: bold;
+  font-size: 1.1em;
 }
