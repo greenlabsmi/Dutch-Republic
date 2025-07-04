@@ -118,7 +118,7 @@ function renderPromoTiles(data, selectedCategory = 'All') {
         <div class="promo-info">
           <h4>${d["Deal Title"]}</h4>
           <p>${d["Effects/Tagline"] || ''}</p>
-          <p class="price-tag">$${d.Price} <span class="tax-note">tax included</span></p>
+          p class="price-tag">$${d.Price} <span class="tax-note">tax included</span></p>
         </div>
       </div>
     `;
@@ -219,7 +219,7 @@ function renderDealsByCategory(data, selectedCategory) {
             ${d["Effects/Tagline"] ? `<p>${d["Effects/Tagline"]}</p>` : ''}
             ${d["Amount/Details"] ? `<p>${d["Amount/Details"]}</p>` : ''}
             ${d.Notes ? `<p class="deal-notes">${d.Notes}</p>` : ''}
-            <p class="price-tag">$${d.Price} <span class="tax-note">tax included</span></p>
+            p class="price-tag">$${d.Price} <span class="tax-note">tax included</span></p>
           </div>
         </div>
       `).join('')}
