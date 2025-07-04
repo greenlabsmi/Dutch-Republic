@@ -547,18 +547,18 @@ html, body {
 
 /* === Responsive Promo Tile for Mobile === */
 @media (max-width: 600px) {
-  .promo-tile {
-    width: 90%;
-    margin: 0 auto;
-    padding: 12px;
-  }
+  .promo-tile {
+    width: 95%;
+    margin: 0 auto 20px;
+    padding: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
 
-  .promo-info h3 {
-    font-size: 1em;
-  }
+  .promo-info h3 {
+    font-size: 1em;
+  }
 
-  .promo-info .price {
-    font-size: 0.95em;
-  }
+  .promo-info .price {
+    font-size: 0.95em;
+  }
 }
-
