@@ -188,6 +188,47 @@ function renderGroupedFlowerDeals(data) {
 
   container.appendChild(section);
 }
+
+function renderDealsByCategory(data, selectedCategory) {
+  const container = document.getElementById("deals-container");
+  if (!container) return;
+
+  // Remove all but Flower
+  const nonFlowerSections = container.querySelectorAll('.deal-category:not([data-category="Flower"])');
+  nonFlowerSections.forEach(section => section.remove());
+
+  const filteredDeals = data.filter(d => 
+    d.Category?.toLowerCase().trim() === selectedCategory.toLowerCase().trim()
+  );
+
+  if (filteredDeals.length === 0) return;
+
+  const section = document.createElement("div");
+  section.className = "deal-category active";
+  section.dataset.category = selectedCategory;
+
+  section.innerHTML = `
+    <div class="tile-grid">
+      ${filteredDeals.map(d => `
+        <div class="deal-tile">
+          ${d.Label ? `<span class="promo-badge">${d.Label}</span>` : ''}
+          <div class="promo-info">
+            <h4>${d["Deal Title"]}
+              <span class="wishlist-icon" onclick="toggleWishlist('${d["Deal Title"]}')">➕</span>
+            </h4>
+            ${d["Effects/Tagline"] ? `<p>${d["Effects/Tagline"]}</p>` : ''}
+            ${d["Amount/Details"] ? `<p>${d["Amount/Details"]}</p>` : ''}
+            ${d.Notes ? `<p class="deal-notes">${d.Notes}</p>` : ''}
+            <p class="price-tag">$${d.Price} <span class="tax-note">tax included</span></p>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+
+  container.appendChild(section);
+}
+
 // === Wishlist Logic ===
 let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
