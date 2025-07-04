@@ -556,3 +556,37 @@ html, body {
   font-size: 0.85em;
   border-radius: 12px;
 }
+
+/* === UI & Layout Improvements === */
+
+/* Shrink the info banner (store address + hours) */
+.info-banner {
+  font-size: 0.8em;
+  padding: 4px 10px;
+}
+
+/* Fix scroll behavior so "Today’s Deals" is visible when linked */
+#deals {
+  scroll-margin-top: 120px;
+}
+
+/* Shrink "Today’s Deals" heading space */
+#deals h2 {
+  font-size: 1.4em;
+  font-weight: 600;
+  margin: 10px 0 10px 0;
+}
+
+/* Add space between the category dropdown and featured tiles */
+.category-select {
+  margin-bottom: 20px;
+}
+
+/* Square promo tile images with sharper presentation */
+.promo-tile img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
