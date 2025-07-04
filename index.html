@@ -71,12 +71,23 @@
 </section>
 
 <!-- 🌟 Featured Promo Section -->
-<section id="promo-deals" class="promo-section">
-  <h2>🌟 Featured Picks</h2>
-  <div class="promo-grid" id="promoGrid">
-    <!-- Injected via JS -->
+<header id="mainHeader" class="main-header">
+  <div class="top-bar">
+    <a href="https://maps.app.goo.gl/XXX">📍 10701 Madison St – Open 10am–9pm</a>
   </div>
-</section>
+  <nav class="main-nav">
+    <div class="logo-title">
+      <img src="green_labs_logo.png" alt="Green Labs Logo" />
+      <span class="brand-text">GREEN LABS</span>
+    </div>
+    <div class="nav-icons">
+      <span onclick="openSearch()">🔍</span>
+      <span onclick="openChat()">💬</span>
+      <span class="hamburger-icon" onclick="toggleMenu()">☰</span>
+    </div>
+  </nav>
+</header>
+
 <!-- ✅ Google Sheets–Powered Deal Container -->
 <div id="deals-container" style="padding: 20px;">
   <p>Loading today's deals...</p>
