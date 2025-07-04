@@ -228,12 +228,6 @@ body {
 .promo-tile:hover {
   transform: translateY(-4px);
 }
-.promo-tile img {
-  width: 100%;
-  border-radius: 8px;
-  object-fit: cover;
-  margin-bottom: 12px;
-}
 
 .promo-badge {
   position: absolute;
@@ -523,22 +517,6 @@ html, body {
   font-size: 1.8em;
   margin-bottom: 20px;
   color: #333;
-}
-
-.promo-container {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.promo-tile {
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  width: 260px;
-  padding: 15px;
-  text-align: center;
 }
 
 .promo-info .price {
