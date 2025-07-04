@@ -230,6 +230,10 @@ body {
   color: #2e7d32;
 }
 
+.promo-image:not(:has(img)) .promo-badge {
+  display: none;
+}
+
 .tax-note {
   font-weight: normal;
   color: #666;
@@ -345,7 +349,7 @@ body {
 }
 
 @media (max-width: 600px) {
-  .promo-tile {
+   {
     width: 95%;
   }
 }
@@ -545,20 +549,30 @@ html, body {
   margin: 2px 0;
 }
 
-/* === Responsive Promo Tile for Mobile === */
-@media (max-width: 600px) {
-  .promo-tile {
-    width: 95%;
-    margin: 0 auto 20px;
-    padding: 10px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-  }
-
-  .promo-info h3 {
-    font-size: 1em;
-  }
-
-  .promo-info .price {
-    font-size: 0.95em;
-  }
+/* Make promo tiles responsive */
+.promo-tile {
+  width: 100%;
+  max-width: 300px;
+  margin: 10px auto;
+  box-sizing: border-box;
 }
+
+@media (min-width: 600px) {
+  #promoGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .promo-tile {
+    width: calc(50% - 15px);
+  }
+}
+
+@media (min-width: 900px) {
+  .promo-tile {
+    width: calc(33.33% - 15px);
+  }
+}
+
