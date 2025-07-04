@@ -545,7 +545,7 @@ html, body {
 
 /* Fix scroll behavior so "Today’s Deals" is visible when linked */
 #deals {
-  scroll-margin-top: 120px;
+  scroll-margin-top: 60px;
 }
 
 /* Shrink "Today’s Deals" heading space */
