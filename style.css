@@ -364,11 +364,19 @@ body {
     justify-content: center;
   }
 
-  .deal-tile,
+ .promo-tile {
+  width: 300px;
+  max-width: 90vw;
+  margin: 10px auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 600px) {
   .promo-tile {
-    width: 90%;
-    max-width: 340px;
+    width: 95%;
   }
+}
 
   .weight-group h3 {
     font-size: 1.2em;
