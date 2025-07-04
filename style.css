@@ -228,11 +228,11 @@ body {
 .promo-tile:hover {
   transform: translateY(-4px);
 }
-.promo-image img {
+.promo-tile img {
   width: 100%;
-  height: auto;
+  border-radius: 8px;
   object-fit: cover;
-  border-bottom: 1px solid #eee;
+  margin-bottom: 12px;
 }
 
 .promo-badge {
@@ -364,26 +364,18 @@ body {
     justify-content: center;
   }
 
- .promo-tile {
-  width: 300px;
-  max-width: 90vw;
-  margin: 10px auto;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-@media (max-width: 600px) {
-  .promo-tile {
-    width: 95%;
-  }
-}
-
   .weight-group h3 {
     font-size: 1.2em;
   }
 
   #wishlistModal {
     max-width: 90%;
+  }
+}
+
+@media (max-width: 600px) {
+  .promo-tile {
+    width: 95%;
   }
 }
 
@@ -547,19 +539,6 @@ html, body {
   width: 260px;
   padding: 15px;
   text-align: center;
-}
-
-.promo-tile img {
-  width: 100%;
-  border-radius: 8px;
-  object-fit: cover;
-  margin-bottom: 12px;
-}
-
-.promo-info h3 {
-  margin: 10px 0 5px;
-  font-size: 1.1em;
-  color: #111;
 }
 
 .promo-info .price {
