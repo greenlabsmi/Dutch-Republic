@@ -615,7 +615,21 @@ html, body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px; /* reduce from 15px */
+  gap: 10px;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  #promoGrid {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scroll-snap-type: x mandatory;
+  }
+
+  .promo-tile {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
 }
 
 .promo-tile {
