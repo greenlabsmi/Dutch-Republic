@@ -121,6 +121,32 @@ body {
 }
 
 /* === Carousel Styles === */
+/* === Dutch Touch Banner Style === */
+.dutch-banner {
+  background: #000; /* black */
+  padding: 30px 15px;
+  text-align: center;
+  border-top: 3px solid gold;
+  border-bottom: 3px solid gold;
+}
+
+.dutch-heading {
+  font-family: 'Georgia', serif;
+  color: gold;
+  font-size: 2em;
+  margin: 0;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 5px rgba(255, 215, 0, 0.3); /* foil effect */
+}
+
+.dutch-subtext {
+  font-family: 'Georgia', serif;
+  color: #ffd700;
+  font-size: 1.1em;
+  margin-top: 8px;
+  text-shadow: 1px 1px 3px rgba(255, 215, 0, 0.2);
+}
+
 .carousel {
   background: #e0f2e9;
   padding: 25px 10px;
@@ -588,30 +614,4 @@ html, body {
   .promo-tile {
     width: calc(33.33% - 15px);
   }
-}
-
-/* === Dutch Touch Banner Style === */
-.dutch-banner {
-  background: #000; /* black */
-  padding: 30px 15px;
-  text-align: center;
-  border-top: 3px solid gold;
-  border-bottom: 3px solid gold;
-}
-
-.dutch-heading {
-  font-family: 'Georgia', serif;
-  color: gold;
-  font-size: 2em;
-  margin: 0;
-  letter-spacing: 1px;
-  text-shadow: 1px 1px 5px rgba(255, 215, 0, 0.3); /* foil effect */
-}
-
-.dutch-subtext {
-  font-family: 'Georgia', serif;
-  color: #ffd700;
-  font-size: 1.1em;
-  margin-top: 8px;
-  text-shadow: 1px 1px 3px rgba(255, 215, 0, 0.2);
 }
