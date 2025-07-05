@@ -87,23 +87,25 @@ function handleCategorySelect(selectedValue) {
 
   document.getElementById('deals').scrollIntoView({ behavior: 'smooth', block: 'start' });
 
+  // ✅ Filter promo tiles
+  const promoTiles = document.querySelectorAll('#promoGrid .promo-tile');
+  promoTiles.forEach(tile => {
+    const tileCategory = tile.dataset.category;
+    if (selectedValue === 'All' || tileCategory === selectedValue) {
+      tile.classList.remove('hidden');
+    } else {
+      tile.classList.add('hidden');
+    }
+  });
+
+  // ✅ Now render other deals below
   if (selectedValue === 'Flower') {
     renderGroupedFlowerDeals(allDealsData);
   } else {
     renderPromoTiles(allDealsData, selectedValue);
     renderDealsByCategory(allDealsData, selectedValue);
   }
-  
-// ✅ Filter promo tiles based on selected category
-const promoTiles = document.querySelectorAll('#promoGrid .promo-tile');
-promoTiles.forEach(tile => {
-  const tileCategory = tile.dataset.category;
-  if (selectedValue === 'All' || tileCategory === selectedValue) {
-    tile.classList.remove('hidden');
-  } else {
-    tile.classList.add('hidden');
-  }
-});
+}
 
 // === Promo Tiles Renderer ===
 function renderPromoTiles(data, selectedCategory = 'All') {
