@@ -93,9 +93,7 @@ function handleCategorySelect(selectedValue) {
     renderPromoTiles(allDealsData, selectedValue);
     renderDealsByCategory(allDealsData, selectedValue);
   }
-}
-window.handleCategorySelect = handleCategorySelect;
-
+  
 // ✅ Filter promo tiles based on category
 const promoTiles = document.querySelectorAll('#promoGrid .promo-tile');
 promoTiles.forEach(tile => {
