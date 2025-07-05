@@ -113,6 +113,19 @@ window.handleCategorySelect = handleCategorySelect;
     }
   }
 
+// ✅ Filter promo tiles based on category
+const promoTiles = document.querySelectorAll('#promoTilesAll .promo-tile');
+
+promoTiles.forEach(tile => {
+  const tileCategory = tile.dataset.category;
+
+  if (selectedValue === 'All' || tileCategory === selectedValue) {
+    tile.classList.remove('hidden');
+  } else {
+    tile.classList.add('hidden');
+  }
+});
+
 // === Promo Tiles Renderer ===
 function renderPromoTiles(data, selectedCategory = 'All') {
   const promoGrid = document.getElementById("promoGrid");
