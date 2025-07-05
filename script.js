@@ -96,7 +96,7 @@ function handleCategorySelect(selectedValue) {
 }
 window.handleCategorySelect = handleCategorySelect;
 
-  // ✅ Promo Tile Toggle Logic
+// ✅ Promo Tile Toggle Logic
   const promoAll = document.getElementById('promoTilesAll');
   const promoFlower = document.getElementById('promoTilesFlower');
 
