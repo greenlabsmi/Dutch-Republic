@@ -96,6 +96,23 @@ function handleCategorySelect(selectedValue) {
 }
 window.handleCategorySelect = handleCategorySelect;
 
+  // ✅ Promo Tile Toggle Logic
+  const promoAll = document.getElementById('promoTilesAll');
+  const promoFlower = document.getElementById('promoTilesFlower');
+
+  if (promoAll && promoFlower) {
+    if (selectedValue === 'All') {
+      promoAll.classList.remove('hidden');
+      promoFlower.classList.add('hidden');
+    } else if (selectedValue === 'Flower') {
+      promoAll.classList.add('hidden');
+      promoFlower.classList.remove('hidden');
+    } else {
+      promoAll.classList.add('hidden');
+      promoFlower.classList.add('hidden');
+    }
+  }
+
 // === Promo Tiles Renderer ===
 function renderPromoTiles(data, selectedCategory = 'All') {
   const promoGrid = document.getElementById("promoGrid");
