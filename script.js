@@ -249,20 +249,6 @@ function renderDealsByCategory(data, selectedCategory) {
   container.appendChild(section);
 }
 
-promoDeals.forEach(deal => {
-  const tile = document.createElement("div");
-  tile.className = "promo-tile Flower";
-  tile.innerHTML = `
-    <img src="${deal.image}" alt="${deal.name}">
-    <div class="promo-info">
-      <h3>${deal.name} – ${deal.weight}</h3>
-      <p class="price">${deal.price}</p>
-      <span class="promo-badge">${deal.badge}</span>
-    </div>
-  `;
-  promoGrid.appendChild(tile);
-});
-
 // === Wishlist Logic ===
 let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
