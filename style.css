@@ -195,9 +195,11 @@ body {
 /* === Tile Grid Layout === */
 .tile-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
   margin-bottom: 40px;
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 /* === Promo Tile Styles === */
