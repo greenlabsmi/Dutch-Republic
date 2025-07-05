@@ -208,23 +208,23 @@ function renderDealsByCategory(data, selectedCategory) {
   section.dataset.category = selectedCategory;
 
   section.innerHTML = `
-    <div class="tile-grid">
-      ${filteredDeals.map(d => `
-        <div class="deal-tile">
-          ${d.Label ? `<span class="promo-badge">${d.Label}</span>` : ''}
-          <div class="promo-info">
-            <h4>${d["Deal Title"]}
-              <span class="wishlist-icon" onclick="toggleWishlist('${d["Deal Title"]}')">➕</span>
-            </h4>
-            ${d["Effects/Tagline"] ? `<p>${d["Effects/Tagline"]}</p>` : ''}
-            ${d["Amount/Details"] ? `<p>${d["Amount/Details"]}</p>` : ''}
-            ${d.Notes ? `<p class="deal-notes">${d.Notes}</p>` : ''}
-            <p class="price-tag">$${d.Price} <span class="tax-note">tax included</span></p>
-          </div>
+  <div class="tile-grid">
+    ${filteredDeals.map(d => `
+      <div class="deal-tile">
+        ${d.Label ? `<span class="promo-badge">${d.Label}</span>` : ''}
+        <div class="promo-info">
+          <h4>${d["Deal Title"]}
+            <span class="wishlist-icon" onclick="toggleWishlist('${d["Deal Title"]}')">➕</span>
+          </h4>
+          ${d["Effects/Tagline"] ? `<p>${d["Effects/Tagline"]}</p>` : ''}
+          ${d["Amount/Details"] ? `<p>${d["Amount/Details"]}</p>` : ''}
+          ${d.Notes ? `<p class="deal-notes">${d.Notes}</p>` : ''}
+          <p class="price-tag">$${d.Price} <span class="tax-note">tax included</span></p>
         </div>
-      `).join('')}
-    </div>
-  `;
+      </div>
+    `).join('')}
+  </div>
+`;
 
   container.appendChild(section);
 }
