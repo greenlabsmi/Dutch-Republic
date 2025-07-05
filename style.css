@@ -613,12 +613,9 @@ html, body {
 
 #promoGrid {
   display: flex;
-  overflow-x: auto;
-  gap: 12px; /* reduced from 16px */
-  padding: 12px 8px;
-  scroll-snap-type: x mandatory;
-  justify-content: flex-start;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px; /* reduce from 15px */
 }
 
 .promo-tile {
