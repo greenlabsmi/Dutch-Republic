@@ -635,7 +635,7 @@ html, body {
 .promo-tile {
   flex: 0 0 auto;
   width: 180px;
-  margin: 10px 5px
+  margin: 10px 5px;
   scroll-snap-align: start;
   background: #fff;
   border-radius: 12px;
