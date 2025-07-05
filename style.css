@@ -601,21 +601,35 @@ html, body {
   box-sizing: border-box;
 }
 
-@media (min-width: 600px) {
-  #promoGrid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-  }
-
-  .promo-tile {
-    width: calc(50% - 15px);
-  }
+#promoGrid {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  padding: 16px;
+  scroll-snap-type: x mandatory;
 }
 
-@media (min-width: 900px) {
-  .promo-tile {
-    width: calc(33.33% - 15px);
-  }
+.promo-tile {
+  flex: 0 0 auto;
+  width: 250px;
+  scroll-snap-align: start;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding-bottom: 12px;
+  transition: transform 0.3s ease;
+}
+
+.promo-tile img {
+  width: 100%;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.promo-info {
+  padding: 10px 12px;
+}
+
+.promo-tile.hidden {
+  display: none;
 }
