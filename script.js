@@ -100,19 +100,6 @@ window.handleCategorySelect = handleCategorySelect;
   const promoAll = document.getElementById('promoTilesAll');
   const promoFlower = document.getElementById('promoTilesFlower');
 
-  if (promoAll && promoFlower) {
-    if (selectedValue === 'All') {
-      promoAll.classList.remove('hidden');
-      promoFlower.classList.add('hidden');
-    } else if (selectedValue === 'Flower') {
-      promoAll.classList.add('hidden');
-      promoFlower.classList.remove('hidden');
-    } else {
-      promoAll.classList.add('hidden');
-      promoFlower.classList.add('hidden');
-    }
-  }
-
 // ✅ Filter promo tiles based on category
 const promoTiles = document.querySelectorAll('#promoTilesAll .promo-tile');
 
