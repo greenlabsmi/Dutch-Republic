@@ -10,6 +10,10 @@ body {
   padding: 0;
 }
 
+.hidden {
+  display: none !important;
+}
+
 /* === Info Banner (non-sticky) === */
 .info-banner {
   background: #d0f0d0;
