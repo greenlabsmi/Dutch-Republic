@@ -613,6 +613,7 @@ html, body {
 
 #promoGrid {
   display: flex;
+  margin-bottom: 20px;
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
@@ -622,6 +623,8 @@ html, body {
 @media (max-width: 768px) {
   #promoGrid {
     overflow-x: auto;
+    max-width: 300px;
+    flex: 1 1 45%;
     flex-wrap: nowrap;
     scroll-snap-type: x mandatory;
   }
