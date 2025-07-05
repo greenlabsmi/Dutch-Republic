@@ -229,6 +229,40 @@ function renderDealsByCategory(data, selectedCategory) {
   container.appendChild(section);
 }
 
+// Load Featured Promo Tiles
+const promoGrid = document.getElementById("promoGrid");
+
+const promoDeals = [
+  {
+    name: "Death By Funk",
+    weight: "7g",
+    price: "$45",
+    badge: "🏆 Award Winner",
+    image: "death-by-funk.png"
+  },
+  {
+    name: "Lemon Wookie",
+    weight: "3.5g",
+    price: "$25",
+    badge: "💼 Staff Pick",
+    image: "lemon-wookie.png"
+  }
+];
+
+promoDeals.forEach(deal => {
+  const tile = document.createElement("div");
+  tile.className = "promo-tile Flower";
+  tile.innerHTML = `
+    <img src="${deal.image}" alt="${deal.name}">
+    <div class="promo-info">
+      <h3>${deal.name} – ${deal.weight}</h3>
+      <p class="price">${deal.price}</p>
+      <span class="promo-badge">${deal.badge}</span>
+    </div>
+  `;
+  promoGrid.appendChild(tile);
+});
+
 // === Wishlist Logic ===
 let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
