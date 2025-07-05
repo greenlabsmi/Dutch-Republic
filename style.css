@@ -195,11 +195,23 @@ body {
 /* === Tile Grid Layout === */
 .tile-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: 16px;
   margin-bottom: 40px;
-  max-width: 100%;
-  overflow-x: auto;
+}
+
+@media (max-width: 640px) {
+  .tile-grid {
+    grid-template-columns: 280px 280px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .deal-tile {
+    min-width: 280px;
+    scroll-snap-align: start;
+  }
 }
 
 /* === Promo Tile Styles === */
