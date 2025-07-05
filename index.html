@@ -70,71 +70,8 @@
 
 <!-- ✅ Promo Tiles: Featured Product Promos (Phase 1 Static Setup) -->
 <section id="promoDeals" class="promo-section">
-  <h2 style="text-align: center; margin-top: 30px;">🔥 Featured Drops 🔥</h2>
-
-  <!-- 🧱 Scrollable Row of All Promos (Initial View) -->
-  <div id="promoTilesAll" class="promo-grid" style="overflow-x: auto; display: flex; gap: 16px; padding: 20px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;">
-  <!-- Death By Funk (Flower) -->
-  <div class="promo-tile" data-category="Flower" style="min-width: 260px; scroll-snap-align: start;">
-    <img src="death-by-funk.png" alt="Death By Funk">
-    <div class="promo-info">
-      <h3>🏆 Death By Funk – 7g</h3>
-      <p class="price">$75</p>
-      <p>Potent, heavy-hitter</p>
-    </div>
-  </div>
-
-  <!-- Lemon Wookie (Flower) -->
-  <div class="promo-tile" data-category="Flower" style="min-width: 260px; scroll-snap-align: start;">
-    <img src="lemon-wookie.png" alt="Lemon Wookie">
-    <div class="promo-info">
-      <h3>💼 Lemon Wookie – 3.5g</h3>
-      <p class="price">$30</p>
-      <p>Energizing citrus uplift</p>
-    </div>
-  </div>
-
-  <!-- Vape Placeholder -->
-  <div class="promo-tile" data-category="Vapes" style="min-width: 260px; scroll-snap-align: start;">
-    <img src="green_labs_logo.png" alt="Placeholder">
-    <div class="promo-info">
-      <h3>💨 Dutch Touch Vape</h3>
-      <p class="price">$35</p>
-      <p>Full spectrum flavor (placeholder)</p>
-    </div>
-  </div>
-
-  <!-- Edible Placeholder (Optional: Remove) -->
-  <div class="promo-tile" data-category="Edibles" style="min-width: 260px; scroll-snap-align: start;">
-    <img src="green_labs_logo.png" alt="Placeholder">
-    <div class="promo-info">
-      <h3>🍬 Delta 9 Gummies</h3>
-      <p class="price">$18</p>
-      <p>Great flavor and effects (placeholder)</p>
-    </div>
-  </div>
-</div>
-
- <!-- 🌿 Flower Category Promo Tiles (Shows Only When "Flower" is Selected) -->
-<div id="promoTilesFlower" class="promo-grid hidden">
-  <div class="promo-tile" data-category="Flower">
-    <img src="death-by-funk.png" alt="Death By Funk" />
-    <div class="promo-info">
-      <h3 style="color: gold;">🏆 Death By Funk – 7g</h3>
-      <p class="price">$75</p>
-      <p style="color: #ffd700;">Potent, heavy-hitter</p>
-    </div>
-  </div>
-
-  <div class="promo-tile" data-category="Flower">
-    <img src="lemon-wookie.png" alt="Lemon Wookie" />
-    <div class="promo-info">
-      <h3 style="color: gold;">❇️ Lemon Wookie – 3.5g</h3>
-      <p class="price">$30</p>
-      <p style="color: #ffd700;">Energizing citrus uplift</p>
-    </div>
-  </div>
-</div>
+  <h2 class="promo-heading">✨ Featured Drops ✨</h2>
+  <div id="promoGrid"></div>
 </section>
 
 <!-- ✅ Google Sheets–Powered Deal Container -->
