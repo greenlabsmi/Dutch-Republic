@@ -620,7 +620,8 @@ html, body {
 
 .promo-tile {
   flex: 0 0 auto;
-  width: 220px; /* reduced from 250px */
+  width: 180px;
+  margin: 10px 5px
   scroll-snap-align: start;
   background: #fff;
   border-radius: 12px;
