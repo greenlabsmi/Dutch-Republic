@@ -101,13 +101,24 @@ function renderPromoTiles(data, selectedCategory = 'All') {
   const promoGrid = document.getElementById("promoGrid");
   if (!promoGrid) return;
 
-  const featuredDeals = data.filter(d =>
+  // Clear existing tiles
+  promoGrid.innerHTML = "";
+
+  // Filter the data based on Featured flag and category
+  let featuredDeals = data.filter(d =>
     d.Featured?.toLowerCase() === 'yes' &&
-    (selectedCategory === 'All' || d.Category === selectedCategory)
+    (selectedCategory === 'All' || d.Category?.toLowerCase() === selectedCategory.toLowerCase())
   );
 
+  // Special case: Only show 2 Flower featured tiles
+  if (selectedCategory === 'Flower') {
+    featuredDeals = featuredDeals.slice(0, 2); // Limit to 2 tiles for Flower
+  }
+
+  // Create and inject the promo tiles
   promoGrid.innerHTML = featuredDeals.map(d => {
     const hasImage = d.ImageURL && d.ImageURL.trim() !== '';
+    const price = d.Price?.includes('$') ? d.Price : `$${d.Price}`;
 
     return `
       <div class="promo-tile">
@@ -118,7 +129,7 @@ function renderPromoTiles(data, selectedCategory = 'All') {
         <div class="promo-info">
           <h4>${d["Deal Title"]}</h4>
           <p>${d["Effects/Tagline"] || ''}</p>
-          <p class="price-tag">${d.Price || '—'} <span class="tax-note">tax included</span></p>
+          <p class="price-tag">${price} <span class="tax-note">tax included</span></p>
         </div>
       </div>
     `;
@@ -228,26 +239,6 @@ function renderDealsByCategory(data, selectedCategory) {
 
   container.appendChild(section);
 }
-
-// Load Featured Promo Tiles
-const promoGrid = document.getElementById("promoGrid");
-
-const promoDeals = [
-  {
-    name: "Death By Funk",
-    weight: "7g",
-    price: "$45",
-    badge: "🏆 Award Winner",
-    image: "death-by-funk.png"
-  },
-  {
-    name: "Lemon Wookie",
-    weight: "3.5g",
-    price: "$25",
-    badge: "💼 Staff Pick",
-    image: "lemon-wookie.png"
-  }
-];
 
 promoDeals.forEach(deal => {
   const tile = document.createElement("div");
