@@ -249,6 +249,17 @@ function renderDealsByCategory(data, selectedCategory) {
   container.appendChild(section);
 }
 
+document.getElementById('dealCategory').addEventListener('change', function () {
+  const selectedCategory = this.value;
+  document.querySelectorAll('.promo-tile').forEach(tile => {
+    if (!selectedCategory || selectedCategory === 'all' || tile.dataset.category === selectedCategory) {
+      tile.classList.remove('hidden');
+    } else {
+      tile.classList.add('hidden');
+    }
+  });
+});
+
 // === Wishlist Logic ===
 let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
