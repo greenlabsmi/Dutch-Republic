@@ -248,7 +248,8 @@ function renderDealsByCategory(data, selectedCategory) {
 
   container.appendChild(section);
 }
-
+  
+// === Promo Tile Category Filtering ===
 document.getElementById('dealCategory').addEventListener('change', function () {
   const selectedCategory = this.value;
   document.querySelectorAll('.promo-tile').forEach(tile => {
