@@ -648,7 +648,7 @@ html, body {
 
 @media (min-width: 900px) {
   .promo-tile {
-    width: calc(33.33% - 15px);
+    width: calc(25% - 20px);
   }
 }
 
