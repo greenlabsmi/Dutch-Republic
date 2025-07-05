@@ -94,7 +94,7 @@ function handleCategorySelect(selectedValue) {
     renderDealsByCategory(allDealsData, selectedValue);
   }
   
-// ✅ Filter promo tiles based on category
+// ✅ Filter promo tiles based on selected category
 const promoTiles = document.querySelectorAll('#promoGrid .promo-tile');
 promoTiles.forEach(tile => {
   const tileCategory = tile.dataset.category;
