@@ -654,9 +654,9 @@ html, body {
   padding: 10px 12px;
 }
 
-.promo-tile.hidden {
+/*.promo-tile.hidden {
   display: none;
-}
+} */
 
 @media (min-width: 900px) {
   .promo-tile {
