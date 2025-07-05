@@ -96,16 +96,10 @@ function handleCategorySelect(selectedValue) {
 }
 window.handleCategorySelect = handleCategorySelect;
 
-// ✅ Promo Tile Toggle Logic
-  const promoAll = document.getElementById('promoTilesAll');
-  const promoFlower = document.getElementById('promoTilesFlower');
-
 // ✅ Filter promo tiles based on category
-const promoTiles = document.querySelectorAll('#promoTilesAll .promo-tile');
-
+const promoTiles = document.querySelectorAll('#promoGrid .promo-tile');
 promoTiles.forEach(tile => {
   const tileCategory = tile.dataset.category;
-
   if (selectedValue === 'All' || tileCategory === selectedValue) {
     tile.classList.remove('hidden');
   } else {
