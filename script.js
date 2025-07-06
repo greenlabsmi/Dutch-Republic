@@ -251,16 +251,23 @@ function renderDealsByCategory(data, selectedCategory) {
 }
   
 // === Promo Tile Category Filtering ===
-document.getElementById('dealCategory').addEventListener('change', function () {
-  const selectedCategory = this.value;
-  document.querySelectorAll('.promo-tile').forEach(tile => {
-    if (!selectedCategory || selectedCategory === 'all' || tile.dataset.category === selectedCategory) {
-      tile.classList.remove('hidden');
-    } else {
-      tile.classList.add('hidden');
-    }
+const dealCategorySelect = document.getElementById('dealCategory');
+if (dealCategorySelect) {
+  dealCategorySelect.addEventListener('change', function () {
+    const selectedCategory = this.value;
+    document.querySelectorAll('.promo-tile').forEach(tile => {
+      if (
+        !selectedCategory ||
+        selectedCategory === 'all' ||
+        tile.dataset.category === selectedCategory
+      ) {
+        tile.classList.remove('hidden');
+      } else {
+        tile.classList.add('hidden');
+      }
+    });
   });
-});
+}
 
 // === Wishlist Logic ===
 let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
