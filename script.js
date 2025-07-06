@@ -160,7 +160,11 @@ function renderGroupedFlowerDeals(data) {
   };
   const weightOrder = ['Ounce', 'Half', 'Quarter', 'Eighth', 'Gram'];
 
-  const flowerDeals = data.filter(d => d.Category?.toLowerCase().trim() === 'flower');
+ const flowerDeals = data.filter(d => 
+  d.Category?.toLowerCase().trim() === 'flower' || 
+  (d.Featured?.toLowerCase() === 'yes' && d.Category?.toLowerCase().trim() === 'flower')
+);
+
   const groupedByWeight = {};
 
   flowerDeals.forEach(deal => {
