@@ -70,8 +70,11 @@ fetch(sheetURL)
   .then(data => {
     console.log("Deals loaded:", data);
     allDealsData = data;
-    handleCategorySelect('All');
+
+    renderPromoTiles(data, 'All'); // ✅ show Featured Deals by default
+    handleCategorySelect('All');   // ✅ render all other deals
   })
+
   .catch(error => {
     console.error("Error loading deals:", error);
     document.getElementById("deals-container").innerHTML = "<p>Failed to load deals.</p>";
