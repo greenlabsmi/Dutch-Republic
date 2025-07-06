@@ -91,15 +91,17 @@ function handleCategorySelect(selectedValue) {
   document.getElementById('deals').scrollIntoView({ behavior: 'smooth', block: 'start' });
 
   // ✅ Filter promo tiles
-  const promoTiles = document.querySelectorAll('#promoGrid .promo-tile');
-  promoTiles.forEach(tile => {
-    const tileCategory = tile.dataset.category;
-    if (selectedValue === 'All' || tileCategory === selectedValue) {
-      tile.classList.remove('hidden');
-    } else {
-      tile.classList.add('hidden');
-    }
-  });
+const promoTiles = document.querySelectorAll('#promoGrid .promo-tile');
+promoTiles.forEach(tile => {
+  const tileCategory = tile.dataset.category;
+  console.log("Promo tile category:", tileCategory); // 👈 Add this for debugging
+  if (selectedValue === 'All' || tileCategory === selectedValue) {
+    tile.classList.remove('hidden');
+  } else {
+    tile.classList.add('hidden');
+  }
+});
+
 
   // ✅ Now render other deals below
   if (selectedValue === 'Flower') {
