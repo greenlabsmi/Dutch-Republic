@@ -240,9 +240,9 @@ body {
   }
 
   .deal-tile {
-    min-width: 280px;
-    scroll-snap-align: start;
-  }
+  flex: 1 1 250px;
+  max-width: 280px;
+  padding: 15px;
 }
 
 /* === Promo Tile Styles === */
