@@ -224,9 +224,10 @@ body {
 
 /* === Tile Grid Layout === */
 .tile-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
   margin-bottom: 40px;
 }
 
