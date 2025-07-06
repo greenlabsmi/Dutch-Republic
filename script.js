@@ -126,15 +126,13 @@ function renderPromoTiles(data, selectedCategory = 'All') {
     featuredDeals = featuredDeals.slice(0, 2); // Limit to 2 tiles for Flower
   }
 
-  // Create and inject the promo tiles
+  // Create and inject the promo tiles (no image for now)
   promoGrid.innerHTML = featuredDeals.map(d => {
-    const hasImage = d.ImageURL && d.ImageURL.trim() !== '';
     const price = d.Price?.includes('$') ? d.Price : `$${d.Price}`;
 
     return `
       <div class="promo-tile">
         <div class="promo-image">
-          ${hasImage ? `<img src="${d.ImageURL.trim()}" alt="${d['Deal Title']}" />` : ''}
           ${d.Label ? `<span class="promo-badge">${d.Label}</span>` : ''}
         </div>
         <div class="promo-info">
@@ -185,11 +183,8 @@ function renderGroupedFlowerDeals(data) {
           <h3>${group}s</h3>
           <div class="flower-tile-group">
             ${deals.map(d => `
-              <div class="deal-tile ${d.Featured?.toLowerCase() === 'yes' ? 'featured' : ''}">
-                <div class="promo-image">
-                  ${d.Label ? `<span class="promo-badge">${d.Label}</span>` : ''}
-                </div>
-                
+              <div class="deal-tile">
+                ${d.Label ? `<span class="promo-badge">${d.Label}</span>` : ''}
                 <div class="promo-info">
                   <h4>${d["Deal Title"]}
                     ${d.Badge?.toLowerCase().includes("award") ? ' 🏆' : d.Badge?.toLowerCase().includes("new") ? ' 🔥' : ''}
