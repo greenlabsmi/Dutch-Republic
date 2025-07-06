@@ -140,7 +140,7 @@ function renderPromoTiles(data, selectedCategory = 'All') {
         <div class="promo-image">
           ${d.Label ? `<span class="promo-badge">${d.Label}</span>` : ''}
         </div>
-        <div class="promo-info">
+        <div class="promo-tile" data-category="${d.Category}">
           <h4>${d["Deal Title"]}</h4>
           <p>${d["Effects/Tagline"] || ''}</p>
           <p class="price-tag">${price} <span class="tax-note">tax included</span></p>
