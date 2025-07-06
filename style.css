@@ -615,8 +615,9 @@ html, body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 16px;
+  gap: 10px;
   padding: 10px 0 30px;
+  margin-bottom: 20px;
 }
 
 @media (max-width: 768px) {
