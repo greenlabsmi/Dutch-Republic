@@ -1,4 +1,4 @@
-/* === Base Reset & Typography === */
+/* === BASE RESET === */
 * {
   margin: 0;
   padding: 0;
@@ -13,9 +13,9 @@ body {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  margin-top: 100px;
 }
 
+/* === TYPOGRAPHY === */
 h1, h2, h3 {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
@@ -32,7 +32,7 @@ p {
   margin-bottom: 1em;
 }
 
-/* === Top Info Banner === */
+/* === TOP BANNER === */
 .top-banner {
   background-color: #000;
   color: #facc15;
@@ -43,7 +43,7 @@ p {
   z-index: 999;
 }
 
-/* === Navbar === */
+/* === NAVBAR === */
 .navbar {
   position: sticky;
   top: 0;
@@ -57,14 +57,14 @@ p {
   border-bottom: 1px solid #333;
 }
 
-.navbar-left {
+.nav-left {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
 .navbar img {
-  height: 36px;
+  height: 28px;
   width: auto;
 }
 
@@ -73,11 +73,12 @@ p {
   font-size: 1.25rem;
   color: #facc15;
   font-weight: bold;
+  line-height: 1;
 }
 
 .navbar-icons {
   display: flex;
-  gap: 15px;
+  gap: 16px;
   font-size: 20px;
   color: #facc15;
 }
@@ -86,11 +87,11 @@ p {
   cursor: pointer;
 }
 
-/* === Hero Banner === */
+/* === HERO === */
 .hero-banner {
   background-color: #000;
   color: #facc15;
-  padding: 50px 20px;
+  padding: 60px 20px;
   text-align: center;
 }
 
@@ -103,7 +104,7 @@ p {
   font-size: 1.1rem;
 }
 
-/* === Carousel Placeholder === */
+/* === PLACEHOLDER CAROUSEL === */
 .carousel-placeholder {
   text-align: center;
   background-color: #111;
@@ -115,7 +116,7 @@ p {
   margin-bottom: 10px;
 }
 
-/* === Dropdown & Deal Section === */
+/* === DROPDOWN & DEAL SECTION === */
 #categoryDropdown {
   padding: 10px;
   font-size: 1em;
@@ -134,14 +135,14 @@ p {
   gap: 20px;
 }
 
-/* === Deal Tile === */
+/* === DEAL TILE === */
 .deal-tile {
   background: #1a1a1a;
   border-radius: 10px;
   padding: 15px;
   width: 240px;
   color: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
   transition: transform 0.2s ease;
 }
 
@@ -155,7 +156,7 @@ p {
   color: #facc15;
 }
 
-/* === Sections === */
+/* === SECTION === */
 section {
   padding: 60px 20px;
   max-width: 1000px;
@@ -163,7 +164,7 @@ section {
   text-align: center;
 }
 
-/* === Footer === */
+/* === FOOTER === */
 footer {
   background: #111;
   color: #bbb;
@@ -172,24 +173,35 @@ footer {
   font-size: 0.9em;
 }
 
-/* === Responsive === */
+/* === RESPONSIVE === */
 @media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-icons {
+    margin-top: 10px;
+  }
+
   .deal-tile {
     width: 100%;
     max-width: 90%;
   }
 
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 12px;
+  .hero-banner h1 {
+    font-size: 1.6rem;
   }
 
-  .navbar-left {
-    margin-bottom: 10px;
+  .hero-banner p {
+    font-size: 1rem;
   }
 
-  .navbar-icons {
-    align-self: flex-end;
+  .navbar-title {
+    font-size: 1.1rem;
+  }
+
+  .navbar img {
+    height: 24px;
   }
 }
