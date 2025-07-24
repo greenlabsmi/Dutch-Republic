@@ -5,138 +5,120 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dutch District - Deals</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <script defer src="script.js"></script>
 </head>
 <body>
 
-<!-- 🗺️ Info Banner -->
-<div class="info-banner">
-  📍 <a href="https://maps.apple.com/?ll=41.81116,-83.44617&q=Dutch+District" target="_blank">10701 Madison St Luna Pier MI</a> – Open Daily 9am–9pm 
-</div>
-
-<!-- 🌿 Sticky Navbar -->
-<header id="mainHeader" class="main-header">
-  <nav class="main-nav">
-    <div class="logo-title">
-      <img src="dutch_district_logo.png" alt="Dutch District Logo" />
-      <span class="brand-text">DUTCH DISTRICT</span>
-    </div>
-    <div class="nav-icons">
-      <span onclick="openSearch()">🔍</span>
-      <span onclick="openChat()">💬</span>
-      <span class="hamburger-icon" onclick="toggleMenu()">☰</span>
-    </div>
-  </nav>
-</header>
-
-<!-- Slide-out Menu -->
-<div id="hamburgerMenu" class="hamburger-menu">
-  <div class="menu-header">
-    <span>Menu</span>
-    <button onclick="toggleMenu()" class="close-btn">✖️</button>
+  <!-- Info Bar -->
+  <div class="info-bar">
+    📍 <a href="https://maps.app.goo.gl/M3kcfQvsC2fDnBjc8" target="_blank">10701 Madison St Luna Pier MI</a> — Open Daily 9am–9pm
   </div>
-  <ul>
-    <li><a href="#deals" onclick="toggleMenu()">🔥 Deals</a></li>
-    <li><a href="#about" onclick="toggleMenu()">📍 About Us</a></li>
-    <li><a href="#dutch" onclick="toggleMenu()">🏆 Dutch Touch</a></li>
-    <li><a href="#loyalty" onclick="toggleMenu()">💌 Loyalty</a></li>
-    <li><a href="#chat" onclick="toggleMenu()">💬 Chat with Budtender</a></li>
-  </ul>
-  <div class="menu-footer">🟢 We’re Open: 9AM – 9PM</div>
-</div>
 
-<!-- 🎉 Hero Carousel -->
-<section class="hero-section" style="background: linear-gradient(135deg, #000, #1c1c1c); color: gold; padding: 40px 20px; text-align: center;">
-  <h1 style="font-size: 1.8em;">🏆 Dutch Touch Carousel Coming Soon</h1>
-  <p style="font-size: 1.1em; color: #ffcc00;">Exclusive promos and fresh drops from award-winning strains.</p>
-</section>
+  <!-- Sticky Nav -->
+  <header class="main-header">
+    <nav class="navbar">
+      <div class="logo-area">
+        <img src="dutch_logo.png" alt="Dutch District Logo" class="logo-img">
+        <span class="site-title">DUTCH DISTRICT</span>
+      </div>
+      <div class="nav-icons">
+        <span class="nav-icon" id="searchIcon">🔍</span>
+        <span class="nav-icon" id="chatIcon">💬</span>
+        <span class="nav-icon" id="menuToggle">☰</span>
+      </div>
+    </nav>
+  </header>
 
-<!-- 🔥 Today’s Deals Header + Category Filter -->
-<section class="deal-header" id="deals">
- <h2 class="deals-heading">Today’s Deals</h2>
-  <label for="dealDropdown" class="sr-only">Choose Category</label>
-  <select id="dealCategory" onchange="handleCategorySelect(this.value)" style="padding: 12px 18px; font-size: 1.05em; border-radius: 8px; border: 1px solid #ccc;">
-    <option value="All">All Categories</option>
-    <option value="Flower">🌿 Flower</option>
-    <option value="Pre-Rolls">🪄 Pre-Rolls</option>
-    <option value="Vapes">💨 Carts & Disposables</option>
-    <option value="Edibles">🍬 Edibles & Drinks</option>
-    <option value="Concentrates">🛢 Concentrates</option>
-    <option value="RSO">🧪 RSO & Tinctures</option>
-    <option value="Merch">🧢 Merch & Accessories</option>
-    <option value="Award Winners">🏆 Award Winners</option>
-  </select>
-</section>
-
-<!-- 🌟 Featured Promo Deals -->
-<div id="promoGrid" class="promo-tile-container" style="padding: 20px;"></div>
-
-<!-- ✅ Google Sheets–Powered Deal Container -->
-<div id="deals-container" style="padding: 20px;"></div>
-<!-- 💚 Wishlist Modal -->
-<div id="wishlistModal" class="wishlist-modal" style="display: none;">
-  <div class="wishlist-content">
-    <span class="close-wishlist" onclick="hideWishlistModal()">✖</span>
-    <h3>🛒 Your Wishlist</h3>
-    <div id="wishlistContent"></div>
+  <!-- Hamburger Menu -->
+  <div class="hamburger-menu" id="hamburgerMenu">
+    <div class="menu-header">
+      <span>Menu</span>
+      <span id="menuClose">✖️</span>
+    </div>
+    <ul>
+      <li><a href="#deals">🔥 Deals</a></li>
+      <li><a href="#about">🌿 About Us</a></li>
+      <li><a href="#dutch">🦁 Dutch Touch</a></li>
+      <li><a href="#loyalty">💌 Loyalty</a></li>
+      <li><a href="#chat">🤖 Chat with Budtender</a></li>
+    </ul>
+    <div class="menu-footer">🟢 We’re Open: 9AM – 9PM</div>
   </div>
-</div>
-  
-<!-- 📍 About Us -->
-<section id="about" style="padding: 40px 20px;">
-  <h2>📍 About Dutch District</h2>
-  <p>We’re Luna Pier locals obsessed with premium genetics, community vibes, and top-notch service.</p>
-</section>
 
-<!-- 🏆 Dutch Touch -->
-<section id="dutch" style="padding: 40px 20px;">
-  <h2>🏆 Dutch Touch Genetics</h2>
-  <p>Home of award-winning strains like Mr. Clean and Death By Funk. Ask in store for our latest drops!</p>
-</section>
+  <!-- Hero / Carousel Placeholder -->
+  <section class="carousel-placeholder">
+    <h2>🦁 Dutch Touch Carousel Coming Soon</h2>
+    <p>Exclusive promos and fresh drops from award-winning strains.</p>
+  </section>
 
-<!-- 💌 Loyalty -->
-<section id="loyalty" style="padding: 40px 20px;">
-  <h2>💌 Loyalty Rewards</h2>
-  <p>Earn 5% back on every purchase—no card needed, just your phone number.</p>
-</section>
+  <!-- Deal Category Section -->
+  <section class="deal-section" id="deals">
+    <h2>Today's Deals</h2>
+    <label for="categorySelect">Choose Category</label>
+    <select id="categorySelect">
+      <option value="All">All</option>
+      <option value="Flower">Flower</option>
+      <option value="Pre-Rolls">Pre-Rolls</option>
+      <option value="Carts & Disposables">Carts & Disposables</option>
+      <option value="Edibles & Drinks">Edibles & Drinks</option>
+      <option value="Concentrates">Concentrates</option>
+      <option value="RSO & Tinctures">RSO & Tinctures</option>
+      <option value="Award Winners">Award Winners</option>
+    </select>
+    <div id="dealTilesContainer"></div>
+  </section>
+ <!-- About Section -->
+  <section id="about" class="about-section">
+    <h2>About Dutch District</h2>
+    <p>Dutch District brings premium cannabis to Michigan with local heart and craft quality. Built by the team behind Dutch Touch Genetics, our roots run deep—through the gardens, the culture, and the community.</p>
+  </section>
 
-<!-- 💬 Chat with Budtender -->
-<section id="chat" style="padding: 40px 20px;">
-  <h2>💬 Chat With a Budtender</h2>
-  <p>Need help? Tap the AI Budtender in the corner to get personalized recommendations.</p>
-</section>
+  <!-- Dutch Touch Feature -->
+  <section id="dutch" class="dutch-touch-section">
+    <h2>🌟 Dutch Touch Spotlight</h2>
+    <p>Meet our award-winning flower, grown for flavor and effect. Try <strong>Death by Funk</strong>, <strong>Mr. Clean</strong>, <strong>Lilac Diesel</strong>, and this year’s drop: <strong>Lemon Wookie</strong>.</p>
+    <div class="dutch-gallery">
+      <img src="lemon-wookie.png" alt="Lemon Wookie">
+      <img src="death-by-funk.png" alt="Death By Funk">
+    </div>
+  </section>
 
-<!-- ✅ Testimonials -->
-<section style="padding: 40px 20px;">
-  <h2>🗣 What Our Customers Say</h2>
-  <p>“Best selection and service ever!” – Google Review</p>
-</section>
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <h2>💬 What Customers Say</h2>
+    <blockquote>“Best flower in Monroe County. Period.”</blockquote>
+    <blockquote>“I come here for Dutch Touch and leave with a full bag every time.”</blockquote>
+  </section>
 
-<!-- ✅ Google Map Embed -->
-<iframe class="map" 
-  src="https://www.google.com/maps/embed?pb=!1m18…(truncated)…" 
-  width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  <!-- Loyalty Signup -->
+  <section id="loyalty" class="loyalty-section">
+    <h2>💌 Join Our Loyalty Club</h2>
+    <p>Earn points, get exclusive deals, and never miss a drop.</p>
+    <form id="loyaltyForm">
+      <input type="email" placeholder="Enter your email" required>
+      <button type="submit">Sign Up</button>
+    </form>
+  </section>
 
-<!-- 🎁 Rewards Signup -->
-<section id="newsletter" style="padding: 40px 20px;">
-  <h2>🎁 Sign Up for Rewards</h2>
-  <form>
-    <input type="email" placeholder="Your email" required style="padding:10px; border-radius:6px; border:1px solid #ccc; margin-right:10px;">
-    <button type="submit" style="padding:10px 20px; background:#000; color:gold; border:none; border-radius:6px;">Join Now</button>
-  </form>
-</section>
+  <!-- Google Map -->
+  <section class="map-section">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2934.6380522556156!2d-83.4395946234478!3d41.80616577123264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883b333d8ad217cd%3A0x1e87192dd6c66443!2s10701%20Madison%20St%2C%20Luna%20Pier%2C%20MI%2048145!5e0!3m2!1sen!2sus!4v1721700000000"
+      width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+    </iframe>
+  </section>
 
-<!-- ✅ Footer -->
-<footer style="padding:20px; text-align:center; background:#000; color:gold;">
-  <p>📍 10701 Madison St, Luna Pier, MI 48157<br>📞 (734) 800-0024</p>
-  <p>
-    <a href="https://www.instagram.com/dutchdistrictmi" target="_blank" style="color:gold;">Instagram</a> |
-    <a href="https://www.facebook.com/dutchdistrictmi" target="_blank" style="color:gold;">Facebook</a>
-  </p>
-</footer>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>&copy; 2025 Dutch District • 10701 Madison St, Luna Pier, MI • (734) 000-0000</p>
+    <p><a href="https://www.instagram.com/greenlabsmi" target="_blank">Instagram</a> | <a href="https://www.facebook.com/greenlabsmi" target="_blank">Facebook</a></p>
+  </footer>
 
-<!-- 💚 Floating Wishlist Button -->
-<button class="floating-chat" onclick="showWishlistModal()">💚 Wishlist</button>
+  <!-- Chatbot Button -->
+  <button class="chatbot-button" id="chatbotTrigger">💬 Chat with AI Budtender</button>
 
 </body>
 </html>
