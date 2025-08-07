@@ -35,3 +35,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const strainTiles = document.querySelectorAll(".strain-tile");
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      // Remove 'active' class from all buttons
+      filterButtons.forEach((btn) => btn.classList.remove("active"));
+      // Add 'active' to clicked button
+      this.classList.add("active");
+
+      const filter = this.textContent.trim();
+
+      strainTiles.forEach((tile) => {
+        const tags = tile.getAttribute("data-tags");
+
+        if (filter === "All" || tags.includes(filter)) {
+          tile.style.display = "block";
+        } else {
+          tile.style.display = "none";
+        }
+      });
+    });
+  });
+});
