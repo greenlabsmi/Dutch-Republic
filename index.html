@@ -69,7 +69,6 @@
 
   <!-- Search and Filter Controls -->
   <div class="strain-controls">
-    <h3>Explore Our Strains</h3>
     <input type="text" id="strainSearch" placeholder="Search strains..." />
     <div class="filter-buttons">
       <button data-filter="all" class="active">All</button>
@@ -77,59 +76,78 @@
       <button data-filter="mellow">Mellow</button>
       <button data-filter="balanced">Balanced</button>
       <button data-filter="award">🏆 Award Winners</button>
+      <button data-filter="new">🆕 New Drops</button>
+      <button data-filter="favorite">💚 House Favorites</button>
     </div>
   </div>
 
   <!-- Strain Grid -->
   <div class="strain-grid" id="strainGrid">
-    <!-- Strain tiles will be loaded via JavaScript -->
+    <!-- Strain tiles load here -->
   </div>
 </section>
 
 <script>
-  // Sample Dutch Touch strains
   const strains = [
     {
       name: "Mr. Clean",
       category: "uplifting",
       tags: ["terpinolene", "limonene"],
-      effect: "Sharp, citrusy, and energizing",
-      award: true
+      effect: "Sharp, citrusy, energizing",
+      award: true,
+      new: false,
+      favorite: true,
+      emoji: "⚡"
     },
     {
       name: "Lilac Diesel",
       category: "balanced",
       tags: ["myrcene", "caryophyllene"],
       effect: "Floral, smooth, balanced buzz",
-      award: false
+      award: false,
+      new: true,
+      favorite: false,
+      emoji: "🍃"
     },
     {
       name: "Lemon Wookie",
       category: "uplifting",
       tags: ["limonene", "ocimene"],
       effect: "Zesty, playful, euphoric",
-      award: true
+      award: true,
+      new: false,
+      favorite: true,
+      emoji: "✨"
     },
     {
       name: "Space Hippy",
       category: "mellow",
       tags: ["linalool", "myrcene"],
       effect: "Dreamy, sedative, spacey",
-      award: false
+      award: false,
+      new: true,
+      favorite: false,
+      emoji: "🌙"
     },
     {
       name: "Clusterfunk",
       category: "balanced",
       tags: ["caryophyllene", "humulene"],
       effect: "Savory, grounded, chill",
-      award: false
+      award: false,
+      new: false,
+      favorite: false,
+      emoji: "💨"
     },
     {
       name: "Death By Funk",
       category: "mellow",
       tags: ["myrcene", "terpinolene"],
       effect: "Heavy, funky, couchlock",
-      award: true
+      award: true,
+      new: false,
+      favorite: true,
+      emoji: "🛋️"
     }
   ];
 
@@ -140,15 +158,22 @@
   function renderStrains(filter = "all", searchTerm = "") {
     strainGrid.innerHTML = "";
     const filtered = strains.filter(strain => {
-      const matchesFilter = filter === "all" || (filter === "award" && strain.award) || strain.category === filter;
+      const matchesCategory =
+        filter === "all" ||
+        (filter === "award" && strain.award) ||
+        (filter === "new" && strain.new) ||
+        (filter === "favorite" && strain.favorite) ||
+        strain.category === filter;
+
       const matchesSearch = strain.name.toLowerCase().includes(searchTerm.toLowerCase());
-      return matchesFilter && matchesSearch;
+      return matchesCategory && matchesSearch;
     });
+
     filtered.forEach(strain => {
       const tile = document.createElement("div");
-      tile.className = "strain-tile";
+      tile.className = "strain-tile fade-in";
       tile.innerHTML = `
-        <h3>${strain.name}</h3>
+        <h3>${strain.emoji} ${strain.name}</h3>
         ${strain.award ? '<span class="badge">🏆 Award Winner</span>' : ""}
         <p class="effect">${strain.effect}</p>
         <p class="tags">${strain.tags.join(" • ")}</p>
@@ -172,6 +197,7 @@
     });
   });
 </script>
+
 
 
   <!-- Newsletter -->
