@@ -1,6 +1,6 @@
+<!-- Updated layout with styling polish and strain explorer shell -->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
   <!-- Hero Section -->
   <section class="hero">
@@ -19,7 +18,7 @@
     </div>
   </section>
 
-  <!-- Mood Navigation Section -->
+  <!-- Mood Navigation -->
   <section class="moods">
     <h2>Explore by Mood</h2>
     <div class="mood-grid">
@@ -30,7 +29,7 @@
     </div>
   </section>
 
-  <!-- Featured Deals Section -->
+  <!-- Featured Deals -->
   <section id="deals" class="featured-deals">
     <h2>Featured Deals</h2>
     <div class="deal-grid">
@@ -51,38 +50,48 @@
       </div>
     </div>
   </section>
-
-   <!-- About Section -->
+  
+  <!-- About Us -->
   <section class="about">
     <h2>About Dutch Republic</h2>
     <p>
       Dutch Republic is your go-to destination for premium cannabis in Douglas, Michigan.
-      Powered by Dutch Touch Genetics, our menu blends award-winning strains with personalized service and educational support.
+      We’re powered by Dutch Touch Genetics — our in-house cultivation line bred for terpene richness, award-winning quality, and full-spectrum experience. Our dispensary blends top-tier products with educational service and down-to-earth vibes.
     </p>
   </section>
-  
+
   <!-- Dutch Touch Genetics Section -->
-  <section id="dutch-touch" class="dutch-touch">
-    <h2>🌿 Dutch Touch Genetics</h2>
-    <p>Homegrown excellence. Explore the story, science, and award-winning strains behind Michigan’s premier craft genetics brand.</p>
+  <section class="dutch-touch">
+    <h2>Dutch Touch Genetics</h2>
+    <p>
+      Handcrafted in Michigan, Dutch Touch strains are bred with love and precision. Each cultivar is selected for terpene synergy and grown to perfection in our state-of-the-art facilities.
+    </p>
     <div class="strain-explorer">
-      <div class="strain-card">
-        <h3>Lemon Wookie</h3>
-        <p><strong>Terpenes:</strong> Limonene · Myrcene · Caryophyllene</p>
-        <p><strong>Vibe:</strong> Uplifting · Creative · Euphoric</p>
-        <p><strong>Awards:</strong> 2023 High Times Cup Finalist</p>
+      <h3>Explore Our Strains</h3>
+      <div class="strain-filters">
+        <button class="filter-btn">🏆 Award Winners</button>
+        <button class="filter-btn">🌿 Uplifting</button>
+        <button class="filter-btn">😌 Mellow</button>
+        <button class="filter-btn">🔥 Potent</button>
       </div>
-      <div class="strain-card">
-        <h3>Death by Funk</h3>
-        <p><strong>Terpenes:</strong> Myrcene · Linalool · Humulene</p>
-        <p><strong>Vibe:</strong> Heavy · Sedative · Flavor Bomb</p>
-        <p><strong>Awards:</strong> 2024 MI Growers Cup Winner</p>
+      <div class="strain-grid">
+        <div class="strain-tile">
+          <h4>Death by Funk</h4>
+          <p>🏆 Heavy · Funky · Relaxing</p>
+        </div>
+        <div class="strain-tile">
+          <h4>Lemon Wookie</h4>
+          <p>💼 Citrus · Balanced · Uplifting</p>
+        </div>
+        <div class="strain-tile">
+          <h4>Secret Gelato</h4>
+          <p>🌈 Sweet · Euphoric · Creative</p>
+        </div>
       </div>
     </div>
-    <p class="note">⭐ In the future, you’ll be able to rate strains, ask questions, and get live recommendations powered by our AI budtender.</p>
   </section>
 
-  <!-- Newsletter / Loyalty Sign-up -->
+  <!-- Newsletter -->
   <section class="newsletter">
     <h2>💌 Stay Connected</h2>
     <p>Sign up for exclusive offers, loyalty rewards, and early access to drops.</p>
@@ -92,27 +101,23 @@
     </form>
   </section>
 
-  <!-- Find Us Section -->
-  <section class="find-us">
-    <h2>📍 Find Us</h2>
-    <p>Located in Douglas, Michigan — just minutes from the lakeshore.</p>
-    <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3012.5993489386253!2d-86.203339!3d42.643153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x881754e02d7e0bb3%3A0xa35b8e623e7d430e!2sDouglas%2C%20MI!5e0!3m2!1sen!2sus!4v1699378397154" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-    <div class="social-links">
-      <a href="https://www.instagram.com/greenlabsmi" target="_blank">📸 Instagram</a>
-      <a href="https://www.facebook.com/greenlabsmi" target="_blank">📘 Facebook</a>
-      <a href="https://www.google.com/maps/search/?api=1&query=Dutch+Republic+Dispensary+Douglas+MI" target="_blank">⭐ Leave a Google Review</a>
-    </div>
-  </section>
-
-  <!-- Footer -->
+  <!-- Footer with Map & Links -->
   <footer>
-    <p>© 2025 Dutch Republic. All rights reserved.</p>
-    <p><a href="#dutch-touch">Dutch Touch Genetics</a> | <a href="#contact">Contact</a></p>
+    <div class="footer-grid">
+      <div class="footer-column">
+        <h4>Visit Us</h4>
+        <iframe src="https://maps.google.com/maps?q=Douglas%20MI&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="150" style="border:0;" allowfullscreen></iframe>
+      </div>
+      <div class="footer-column">
+        <h4>Connect</h4>
+        <p><a href="https://www.instagram.com/greenlabsmi" target="_blank">Instagram</a></p>
+        <p><a href="https://www.facebook.com/greenlabsmi" target="_blank">Facebook</a></p>
+        <p><a href="https://www.google.com/maps/place/Dutch+Republic+Dispensary" target="_blank">Leave a Review</a></p>
+      </div>
+    </div>
+    <p class="footer-note">© 2025 Dutch Republic. All rights reserved.</p>
   </footer>
 
   <script src="script.js"></script>
 </body>
-
 </html>
