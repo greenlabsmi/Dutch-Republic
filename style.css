@@ -1,77 +1,182 @@
-/* Dutch District Design System - Plain CSS version */
-:root {
-  /* Neutrals */
-  --background: hsl(30, 8%, 97%);
-  --foreground: hsl(20, 8%, 15%);
-  --card: hsl(0, 0%, 100%);
-  --card-foreground: hsl(20, 8%, 15%);
-
-  /* Primary Deep Green + Accents */
-  --primary: hsl(140, 35%, 25%);
-  --primary-light: hsl(140, 25%, 45%);
-  --primary-lighter: hsl(140, 20%, 75%);
-  --gold: hsl(45, 85%, 65%);
-  --gold-dark: hsl(42, 80%, 55%);
-
-  /* Text and borders */
-  --muted: hsl(30, 10%, 92%);
-  --border: hsl(25, 15%, 85%);
-  --radius: 12px;
-
-  /* Shadows */
-  --shadow-soft: 0 4px 20px -2px hsla(20, 8%, 15%, 0.1);
-  --shadow-gold: 0 8px 32px -4px hsla(45, 85%, 65%, 0.3);
-}
-
-/* Base styling */
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: 'Playfair Display', serif;
+/* Reset + Base Styles */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Playfair Display', serif;
+  background-color: #f9f9f6;
+  color: #1a1a1a;
+  line-height: 1.6;
+  text-align: center;
   padding: 0;
 }
 
-/* Cards & Containers */
-.card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.5rem;
-  box-shadow: var(--shadow-soft);
-  margin-bottom: 1.5rem;
-}
-
-.card.gold-shadow {
-  box-shadow: var(--shadow-gold);
-}
-
-/* Buttons */
-.button {
-  background-color: var(--primary);
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #1a1a1a, #2e2e2e);
   color: white;
+  padding: 4rem 2rem;
+}
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.hero-content p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+.cta-button {
+  background-color: #ffc857;
+  color: #1a1a1a;
   padding: 0.75rem 1.5rem;
-  border-radius: var(--radius);
   border: none;
-  font-weight: 600;
-  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 0.5rem;
   transition: background 0.3s ease;
 }
-.button:hover {
-  background-color: var(--primary-light);
+.cta-button:hover {
+  background-color: #e6b347;
 }
 
-/* Accent text */
-.accent {
-  color: var(--gold);
-  font-weight: bold;
+/* Mood Tiles */
+.moods {
+  padding: 3rem 1rem;
+  background-color: #ffffff;
 }
-
-/* Section headers */
-.section-header {
+.moods h2 {
   font-size: 2rem;
-  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+}
+.mood-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.mood-tile {
+  background-color: #e2e8ce;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+}
+
+/* Featured Deals */
+.featured-deals {
+  padding: 3rem 1rem;
+  background-color: #f5f5f5;
+}
+.featured-deals h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.deal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.deal-tile {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+.deal-tile h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.deal-tile .badge {
+  display: inline-block;
+  background-color: #ffc857;
+  color: #1a1a1a;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+/* About */
+.about {
+  padding: 3rem 2rem;
+  background-color: #fff;
+}
+.about h2 {
+  font-size: 2rem;
   margin-bottom: 1rem;
-  color: var(--primary);
-  text-align: center;
+}
+.about p {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+}
+
+/* Newsletter */
+.newsletter {
+  padding: 3rem 1rem;
+  background-color: #e2e8ce;
+}
+.newsletter h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.newsletter form {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.newsletter input[type="email"] {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 300px;
+}
+.newsletter button {
+  background-color: #1a1a1a;
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.newsletter button:hover {
+  background-color: #333;
+}
+
+/* Footer */
+footer {
+  background-color: #1a1a1a;
+  color: #ccc;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+}
+footer a {
+  color: #ffc857;
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+  .cta-button {
+    width: 100%;
+    display: inline-block;
+  }
+  .deal-grid {
+    grid-template-columns: 1fr;
+  }
 }
