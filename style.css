@@ -299,6 +299,21 @@ footer a:hover {
     gap: 1rem;
   }
 
+  /* Vibe-based Color Hues */
+.strain-tile.uplifting {
+  border-left: 6px solid #ff7f50;       /* Coral */
+  background-color: #fff6f2;
+}
+.strain-tile.mellow {
+  border-left: 6px solid #7da6ff;       /* Soft Blue */
+  background-color: #f3f7ff;
+}
+.strain-tile.balanced {
+  border-left: 6px solid #b0e57c;       /* Greenish */
+  background-color: #f6fff2;
+}
+
+
   .strain-tile {
     padding: 1.25rem;
     font-size: 0.95rem;
