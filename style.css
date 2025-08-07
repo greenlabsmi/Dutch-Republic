@@ -1,181 +1,77 @@
-/* App.css */
-#root { 
-  max-width: 1280px; 
-  margin: 0 auto;
-  padding: 2rem;
+/* Dutch District Design System - Plain CSS version */
+:root {
+  /* Neutrals */
+  --background: hsl(30, 8%, 97%);
+  --foreground: hsl(20, 8%, 15%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 8%, 15%);
+
+  /* Primary Deep Green + Accents */
+  --primary: hsl(140, 35%, 25%);
+  --primary-light: hsl(140, 25%, 45%);
+  --primary-lighter: hsl(140, 20%, 75%);
+  --gold: hsl(45, 85%, 65%);
+  --gold-dark: hsl(42, 80%, 55%);
+
+  /* Text and borders */
+  --muted: hsl(30, 10%, 92%);
+  --border: hsl(25, 15%, 85%);
+  --radius: 12px;
+
+  /* Shadows */
+  --shadow-soft: 0 4px 20px -2px hsla(20, 8%, 15%, 0.1);
+  --shadow-gold: 0 8px 32px -4px hsla(45, 85%, 65%, 0.3);
+}
+
+/* Base styling */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Playfair Display', serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Cards & Containers */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 1.5rem;
+}
+
+.card.gold-shadow {
+  box-shadow: var(--shadow-gold);
+}
+
+/* Buttons */
+.button {
+  background-color: var(--primary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.button:hover {
+  background-color: var(--primary-light);
+}
+
+/* Accent text */
+.accent {
+  color: var(--gold);
+  font-weight: bold;
+}
+
+/* Section headers */
+.section-header {
+  font-size: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
   text-align: center;
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-
-/* index.css */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Dutch District Cannabis Dispensary Design System
-All colors MUST be HSL. Neutral tones with green and gold accents.
-*/
-
-@layer base {
-  :root {
-    /* Base neutral palette */
-    --background: 30 8% 97%;
-    --foreground: 20 8% 15%;
-
-    /* Card backgrounds */
-    --card: 0 0% 100%;
-    --card-foreground: 20 8% 15%;
-
-    /* Popover */
-    --popover: 0 0% 100%;
-    --popover-foreground: 20 8% 15%;
-
-    /* Primary - Deep Forest Green */
-    --primary: 140 35% 25%;
-    --primary-foreground: 0 0% 98%;
-
-    /* Secondary - Warm Stone */
-    --secondary: 25 15% 88%;
-    --secondary-foreground: 20 8% 15%;
-
-    /* Muted - Light Stone */
-    --muted: 30 10% 92%;
-    --muted-foreground: 20 8% 45%;
-
-    /* Accent - Golden */
-    --accent: 45 85% 65%;
-    --accent-foreground: 20 8% 15%;
-
-    /* Cannabis Green variants */
-    --cannabis-primary: 140 35% 25%;
-    --cannabis-light: 140 25% 45%;
-    --cannabis-lighter: 140 20% 75%;
-
-    /* Gold variants */
-    --gold-primary: 45 85% 65%;
-    --gold-dark: 42 80% 55%;
-    --gold-light: 48 90% 85%;
-
-    /* Destructive */
-    --destructive: 0 65% 55%;
-    --destructive-foreground: 0 0% 98%;
-
-    /* Borders and inputs */
-    --border: 25 15% 85%;
-    --input: 25 15% 85%;
-    --ring: 140 35% 25%;
-
-    /* Design elements */
-    --radius: 0.75rem;
-
-    /* Gradients */
-    --gradient-cannabis: linear-gradient(135deg, hsl(var(--cannabis-primary)), hsl(var(--cannabis-light)));
-    --gradient-gold: linear-gradient(135deg, hsl(var(--gold-dark)), hsl(var(--gold-primary)));
-    --gradient-hero: linear-gradient(135deg, hsl(var(--background)), hsl(var(--muted)));
-
-    /* Shadows */
-    --shadow-soft: 0 4px 20px -2px hsl(var(--foreground) / 0.1);
-    --shadow-cannabis: 0 8px 32px -4px hsl(var(--cannabis-primary) / 0.2);
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-
