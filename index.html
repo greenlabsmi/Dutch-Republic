@@ -1,4 +1,3 @@
-<!-- Updated layout with styling polish and strain explorer shell -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,36 +59,118 @@
     </p>
   </section>
 
-  <!-- Dutch Touch Genetics Section -->
-  <section class="dutch-touch">
-    <h2>Dutch Touch Genetics</h2>
-    <p>
-      Handcrafted in Michigan, Dutch Touch strains are bred with love and precision. Each cultivar is selected for terpene synergy and grown to perfection in our state-of-the-art facilities.
-    </p>
-    <div class="strain-explorer">
-      <h3>Explore Our Strains</h3>
-      <div class="strain-filters">
-        <button class="filter-btn">🏆 Award Winners</button>
-        <button class="filter-btn">🌿 Uplifting</button>
-        <button class="filter-btn">😌 Mellow</button>
-        <button class="filter-btn">🔥 Potent</button>
-      </div>
-      <div class="strain-grid">
-        <div class="strain-tile">
-          <h4>Death by Funk</h4>
-          <p>🏆 Heavy · Funky · Relaxing</p>
-        </div>
-        <div class="strain-tile">
-          <h4>Lemon Wookie</h4>
-          <p>💼 Citrus · Balanced · Uplifting</p>
-        </div>
-        <div class="strain-tile">
-          <h4>Secret Gelato</h4>
-          <p>🌈 Sweet · Euphoric · Creative</p>
-        </div>
-      </div>
+ <!-- Dutch Touch Genetics Interactive Section -->
+<section id="dutch-touch" class="dutch-touch-section">
+  <h2>🌿 Dutch Touch Genetics</h2>
+  <p class="section-intro">
+    Hand-grown in Michigan, Dutch Touch Genetics showcases award-winning strains with vibrant terpene profiles and curated effects. Explore our catalog below.
+  </p>
+
+  <!-- Search and Filter Controls -->
+  <div class="strain-controls">
+    <input type="text" id="strainSearch" placeholder="Search strains..." />
+    <div class="filter-buttons">
+      <button data-filter="all" class="active">All</button>
+      <button data-filter="uplifting">Uplifting</button>
+      <button data-filter="mellow">Mellow</button>
+      <button data-filter="balanced">Balanced</button>
+      <button data-filter="award">🏆 Award Winners</button>
     </div>
-  </section>
+  </div>
+
+  <!-- Strain Grid -->
+  <div class="strain-grid" id="strainGrid">
+    <!-- Strain tiles will be loaded via JavaScript -->
+  </div>
+</section>
+
+<script>
+  // Sample Dutch Touch strains
+  const strains = [
+    {
+      name: "Mr. Clean",
+      category: "uplifting",
+      tags: ["terpinolene", "limonene"],
+      effect: "Sharp, citrusy, and energizing",
+      award: true
+    },
+    {
+      name: "Lilac Diesel",
+      category: "balanced",
+      tags: ["myrcene", "caryophyllene"],
+      effect: "Floral, smooth, balanced buzz",
+      award: false
+    },
+    {
+      name: "Lemon Wookie",
+      category: "uplifting",
+      tags: ["limonene", "ocimene"],
+      effect: "Zesty, playful, euphoric",
+      award: true
+    },
+    {
+      name: "Space Hippy",
+      category: "mellow",
+      tags: ["linalool", "myrcene"],
+      effect: "Dreamy, sedative, spacey",
+      award: false
+    },
+    {
+      name: "Clusterfunk",
+      category: "balanced",
+      tags: ["caryophyllene", "humulene"],
+      effect: "Savory, grounded, chill",
+      award: false
+    },
+    {
+      name: "Death By Funk",
+      category: "mellow",
+      tags: ["myrcene", "terpinolene"],
+      effect: "Heavy, funky, couchlock",
+      award: true
+    }
+  ];
+
+  const strainGrid = document.getElementById("strainGrid");
+  const strainSearch = document.getElementById("strainSearch");
+  const filterButtons = document.querySelectorAll(".filter-buttons button");
+
+  function renderStrains(filter = "all", searchTerm = "") {
+    strainGrid.innerHTML = "";
+    const filtered = strains.filter(strain => {
+      const matchesFilter = filter === "all" || (filter === "award" && strain.award) || strain.category === filter;
+      const matchesSearch = strain.name.toLowerCase().includes(searchTerm.toLowerCase());
+      return matchesFilter && matchesSearch;
+    });
+    filtered.forEach(strain => {
+      const tile = document.createElement("div");
+      tile.className = "strain-tile";
+      tile.innerHTML = `
+        <h3>${strain.name}</h3>
+        ${strain.award ? '<span class="badge">🏆 Award Winner</span>' : ""}
+        <p class="effect">${strain.effect}</p>
+        <p class="tags">${strain.tags.join(" • ")}</p>
+      `;
+      strainGrid.appendChild(tile);
+    });
+  }
+
+  renderStrains();
+
+  strainSearch.addEventListener("input", () => {
+    const filter = document.querySelector(".filter-buttons .active").dataset.filter;
+    renderStrains(filter, strainSearch.value);
+  });
+
+  filterButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      filterButtons.forEach(btn => btn.classList.remove("active"));
+      button.classList.add("active");
+      renderStrains(button.dataset.filter, strainSearch.value);
+    });
+  });
+</script>
+
 
   <!-- Newsletter -->
   <section class="newsletter">
