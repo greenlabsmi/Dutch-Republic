@@ -1,4 +1,4 @@
-// Dutch Republic Site JS – Full Script (filters, search, sort, hues, chatbot hook)
+// Dutch Republic Site JS — Full Script (filters, search, sort, hues, wishlist, modal, chatbot)
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Dutch Republic site ready.");
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Deal tile click placeholder ---
+  // --- Deal tile click placeholder (future: open promo modal / link) ---
   document.querySelectorAll(".deal-tile").forEach((tile) => {
     tile.addEventListener("click", () => {
       alert(`You clicked on ${tile.querySelector("h3").innerText}`);
@@ -96,9 +96,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   ];
 
+  // --- Wishlist (session only; upgrade to localStorage later if you want) ---
   let wishlist = new Set();
 
-  // --- Elements ---
+  // --- Elements expected in HTML ---
   const strainGrid = document.getElementById("strainGrid");
   const searchInput = document.getElementById("strain-search");
   const filterButtons = document.querySelectorAll(".filter-buttons .filter-btn");
@@ -144,10 +145,15 @@ document.addEventListener("DOMContentLoaded", () => {
     return strain.category === filter;
   }
 
-  // --- Render ---
+  // --- Render the grid ---
   function renderStrains() {
+    if (!strainGrid) return;
+
     const activeFilterBtn = document.querySelector(".filter-buttons .active");
-    const filter = activeFilterBtn ? activeFilterBtn.dataset.filter || activeFilterBtn.textContent.trim().toLowerCase() : "all";
+    const filter = activeFilterBtn
+      ? activeFilterBtn.dataset.filter || activeFilterBtn.textContent.trim().toLowerCase()
+      : "all";
+
     const q = (searchInput?.value || "").toLowerCase();
     const sortMode = sortSelect?.value || "az";
 
@@ -174,33 +180,47 @@ document.addEventListener("DOMContentLoaded", () => {
       tile.style.borderLeft = `6px solid ${hues.border}`;
       tile.style.backgroundColor = hues.bg;
 
-     tile.innerHTML = `
-  <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;">
-    <h3 style="margin:0;">${s.emoji} ${s.name}</h3>
-    <button class="star" aria-label="Save strain" data-name="${s.name}" title="Save">
-      ${wishlist.has(s.name) ? "⭐" : "☆"}
-    </button>
-  </div>
-  ${s.award ? '<span class="badge">🏆 Award Winner</span>' : ""}
-  ${s.new ? '<span class="badge" style="margin-left:6px;">🆕 New Drop</span>' : ""}
-  ${s.favorite ? '<span class="badge" style="margin-left:6px;">💚 Favorite</span>' : ""}
-  <p class="effect" style="margin-top:.5rem;">${s.effect}</p>
-  <p class="tags" style="color:#666;">${s.tags.join(" • ")}</p>
-  <div style="display:flex;gap:.5rem;margin-top:.75rem;">
-    <button class="button learn-more" type="button">Details</button>
-    <button class="button secondary chat" type="button">Ask</button>
-  </div>
-`;
+      tile.innerHTML = `
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;">
+          <h3 style="margin:0;">${s.emoji} ${s.name}</h3>
+          <button class="star" aria-label="Save strain" data-name="${s.name}" title="Save">
+            ${wishlist.has(s.name) ? "⭐" : "☆"}
+          </button>
+        </div>
+        ${s.award ? '<span class="badge">🏆 Award Winner</span>' : ""}
+        ${s.new ? '<span class="badge" style="margin-left:6px;">🆕 New Drop</span>' : ""}
+        ${s.favorite ? '<span class="badge" style="margin-left:6px;">💚 Favorite</span>' : ""}
+        <p class="effect" style="margin-top:.5rem;">${s.effect}</p>
+        <p class="tags" style="color:#666;">${s.tags.join(" • ")}</p>
+        <div style="display:flex;gap:.5rem;margin-top:.75rem;">
+          <button class="button learn-more" type="button">Details</button>
+          <button class="button secondary chat" type="button">Ask</button>
+        </div>
+      `;
 
+      // wishlist star toggle
+      tile.querySelector(".star")?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const name = e.currentTarget.dataset.name;
+        if (wishlist.has(name)) wishlist.delete(name);
+        else wishlist.add(name);
+        e.currentTarget.textContent = wishlist.has(name) ? "⭐" : "☆";
+      });
 
-      // chatbot hook on click
-      tile.querySelector(".learn-more").addEventListener("click", (e) => {
+      // details → open modal
+      tile.querySelector(".learn-more")?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        openStrainModal(s);
+      });
+
+      // ask → chatbot
+      tile.querySelector(".chat")?.addEventListener("click", (e) => {
         e.stopPropagation();
         openChatbotForStrain(s.name);
       });
 
-      // tile click also triggers chatbot (optional)
-      tile.addEventListener("click", () => openChatbotForStrain(s.name));
+      // (optional) clicking tile could also open modal:
+      tile.addEventListener("click", () => openStrainModal(s));
 
       strainGrid.appendChild(tile);
     });
@@ -213,7 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // --- Events ---
+  // --- Filter/sort/search events ---
   filterButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
       filterButtons.forEach((b) => b.classList.remove("active"));
@@ -227,22 +247,86 @@ document.addEventListener("DOMContentLoaded", () => {
 
   showAllBtn?.addEventListener("click", () => {
     filterButtons.forEach((b) => b.classList.remove("active"));
-    const allBtn = document.querySelector('.filter-buttons .filter-btn[data-filter="all"]') || document.querySelector(".filter-buttons .filter-btn");
+    const allBtn =
+      document.querySelector('.filter-buttons .filter-btn[data-filter="all"]') ||
+      document.querySelector(".filter-buttons .filter-btn");
     allBtn?.classList.add("active");
     if (searchInput) searchInput.value = "";
     if (sortSelect) sortSelect.value = "az";
     renderStrains();
   });
 
-  // --- Chatbot hooks ---
+  // --- Smooth scroll for anchor links ---
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute("href"));
+      if (target) target.scrollIntoView({ behavior: "smooth" });
+    });
+  });
+
+  // --- Chatbot globals ---
   window.openChatbot = function () {
     alert("Chatbot coming soon! In the meantime, ask staff in-store or DM us on Instagram.");
   };
-
   function openChatbotForStrain(name) {
     alert(`💬 Chatbot will answer about: ${name}`);
     // future: open real chatbot widget w/ context: { strain: name }
   }
+
+  // --- Modal (safe if HTML not present; guards in place) ---
+  const modal = document.getElementById("strain-modal");
+  const modalClose = modal?.querySelector(".modal-close");
+  const modalBackdrop = modal?.querySelector(".modal-backdrop");
+  const modalTitle = modal?.querySelector("#strain-modal-title");
+  const modalBadges = modal?.querySelector(".modal-badges");
+  const modalEffect = modal?.querySelector(".modal-effect");
+  const modalTerpenes = modal?.querySelector(".modal-terpenes");
+  const modalChatBtn = modal?.querySelector("#modal-chat");
+  const modalSaveBtn = modal?.querySelector("#modal-save");
+
+  function openStrainModal(s) {
+    if (!modal) return; // if you haven't added the modal HTML yet, do nothing
+    modalTitle.textContent = s.name;
+    modalBadges.innerHTML = `
+      ${s.award ? "🏆 Award Winner · " : ""}
+      ${s.new ? "🆕 New Drop · " : ""}
+      ${s.favorite ? "💚 House Favorite · " : ""}
+      ${s.emoji} ${s.category}
+    `;
+    modalEffect.textContent = s.effect;
+    modalTerpenes.textContent = `Terpenes: ${s.tags.join(", ")}`;
+
+    // save button reflects wishlist
+    if (modalSaveBtn) {
+      modalSaveBtn.textContent = wishlist.has(s.name) ? "⭐ Saved" : "⭐ Save";
+      modalSaveBtn.onclick = () => {
+        if (wishlist.has(s.name)) wishlist.delete(s.name);
+        else wishlist.add(s.name);
+        modalSaveBtn.textContent = wishlist.has(s.name) ? "⭐ Saved" : "⭐ Save";
+        renderStrains(); // update stars on tiles too
+      };
+    }
+
+    if (modalChatBtn) {
+      modalChatBtn.onclick = () => openChatbotForStrain(s.name);
+    }
+
+    modal.classList.remove("hidden");
+    modal.setAttribute("aria-hidden", "false");
+  }
+
+  function closeStrainModal() {
+    if (!modal) return;
+    modal.classList.add("hidden");
+    modal.setAttribute("aria-hidden", "true");
+  }
+
+  modalClose?.addEventListener("click", closeStrainModal);
+  modalBackdrop?.addEventListener("click", closeStrainModal);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modal?.classList?.contains("hidden")) closeStrainModal();
+  });
 
   // Initial render
   renderStrains();
