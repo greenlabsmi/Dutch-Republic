@@ -113,3 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return "#d1d5db"; // neutral gray fallback
   }
 });
+
+function openChatbot() {
+  alert("Chatbot coming soon! In the meantime, our team is happy to help in-store or via DM.");
+}
