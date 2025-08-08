@@ -239,6 +239,23 @@
   </footer>
 
   <script src="script.js"></script>
+
+<!-- Strain Detail Modal -->
+<div id="strain-modal" class="modal hidden" aria-hidden="true">
+  <div class="modal-backdrop"></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="strain-modal-title">
+    <button class="modal-close" aria-label="Close">✕</button>
+    <h3 id="strain-modal-title"></h3>
+    <p class="modal-badges"></p>
+    <p class="modal-effect"></p>
+    <p class="modal-terpenes"></p>
+    <div class="modal-actions">
+      <button class="button" id="modal-chat">Ask Budtender</button>
+      <button class="button secondary" id="modal-save">⭐ Save</button>
+    </div>
+  </div>
+</div>
+
   
   <!-- Floating Chatbot Button -->
 <button class="chatbot-button" onclick="openChatbot()">
