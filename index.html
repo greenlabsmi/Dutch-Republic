@@ -60,32 +60,45 @@
     </p>
   </section>
 
- <!-- Dutch Touch Genetics Interactive Section -->
-<section id="dutch-touch" class="dutch-touch-section">
+ <!-- Dutch Touch Genetics — Interactive Explorer -->
+<section id="dutch-touch" class="dutch-touch">
   <h2>🌿 Dutch Touch Genetics</h2>
   <p class="section-intro">
-    Hand-grown in Michigan, Dutch Touch Genetics showcases award-winning strains with vibrant terpene profiles and curated effects. Explore our catalog below.
+    Hand-grown in Michigan. Explore strains by vibe, see awards, and find your perfect match.
   </p>
 
-  <!-- Search and Filter Controls -->
-  <div class="strain-controls">
-    <input type="text" id="strainSearch" placeholder="Search strains..." />
-    <div class="filter-buttons">
-      <button data-filter="all" class="active">All</button>
-      <button data-filter="uplifting">Uplifting</button>
-      <button data-filter="mellow">Mellow</button>
-      <button data-filter="balanced">Balanced</button>
-      <button data-filter="award">🏆 Award Winners</button>
-      <button data-filter="new">🆕 New Drops</button>
-      <button data-filter="favorite">💚 House Favorites</button>
-    </div>
-  </div>
+  <div class="strain-explorer">
+    <h3>Strain Explorer</h3>
 
-  <!-- Strain Grid -->
-  <div class="strain-grid" id="strainGrid">
-    <!-- Strain tiles load here -->
+    <!-- Controls -->
+    <div class="strain-controls" style="max-width:1000px;margin:0 auto 1rem;display:flex;flex-wrap:wrap;gap:0.75rem;justify-content:center;">
+      <input type="text" id="strain-search" placeholder="Search strains..." class="strain-search" />
+      
+      <div class="filter-buttons" style="display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="uplifting">Uplifting</button>
+        <button class="filter-btn" data-filter="mellow">Mellow</button>
+        <button class="filter-btn" data-filter="balanced">Balanced</button>
+        <button class="filter-btn" data-filter="award">🏆 Award Winners</button>
+        <button class="filter-btn" data-filter="new">🆕 New Drops</button>
+        <button class="filter-btn" data-filter="favorite">💚 House Favorites</button>
+      </div>
+
+      <select id="strain-sort" class="strain-sort" aria-label="Sort strains">
+        <option value="az">Sort: A → Z</option>
+        <option value="za">Sort: Z → A</option>
+        <option value="new">Newest first</option>
+        <option value="award">Award winners first</option>
+      </select>
+
+      <button id="show-all-strains" class="cta-button" type="button">Show All</button>
+    </div>
+
+    <!-- Grid (JS renders tiles here) -->
+    <div class="strain-grid" id="strainGrid"></div>
   </div>
 </section>
+
 
 <script>
   const strains = [
