@@ -96,6 +96,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   ];
 
+  let wishlist = new Set();
+
   // --- Elements ---
   const strainGrid = document.getElementById("strainGrid");
   const searchInput = document.getElementById("strain-search");
@@ -172,15 +174,24 @@ document.addEventListener("DOMContentLoaded", () => {
       tile.style.borderLeft = `6px solid ${hues.border}`;
       tile.style.backgroundColor = hues.bg;
 
-      tile.innerHTML = `
-        <h3>${s.emoji} ${s.name}</h3>
-        ${s.award ? '<span class="badge">🏆 Award Winner</span>' : ""}
-        ${s.new ? '<span class="badge" style="margin-left:6px;">🆕 New Drop</span>' : ""}
-        ${s.favorite ? '<span class="badge" style="margin-left:6px;">💚 Favorite</span>' : ""}
-        <p class="effect" style="margin-top:.5rem;">${s.effect}</p>
-        <p class="tags" style="color:#666;">${s.tags.join(" • ")}</p>
-        <button class="button learn-more" type="button" style="margin-top:.75rem;">Learn more</button>
-      `;
+     tile.innerHTML = `
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;">
+    <h3 style="margin:0;">${s.emoji} ${s.name}</h3>
+    <button class="star" aria-label="Save strain" data-name="${s.name}" title="Save">
+      ${wishlist.has(s.name) ? "⭐" : "☆"}
+    </button>
+  </div>
+  ${s.award ? '<span class="badge">🏆 Award Winner</span>' : ""}
+  ${s.new ? '<span class="badge" style="margin-left:6px;">🆕 New Drop</span>' : ""}
+  ${s.favorite ? '<span class="badge" style="margin-left:6px;">💚 Favorite</span>' : ""}
+  <p class="effect" style="margin-top:.5rem;">${s.effect}</p>
+  <p class="tags" style="color:#666;">${s.tags.join(" • ")}</p>
+  <div style="display:flex;gap:.5rem;margin-top:.75rem;">
+    <button class="button learn-more" type="button">Details</button>
+    <button class="button secondary chat" type="button">Ask</button>
+  </div>
+`;
+
 
       // chatbot hook on click
       tile.querySelector(".learn-more").addEventListener("click", (e) => {
