@@ -319,3 +319,18 @@ footer a:hover {
     font-size: 0.95rem;
   }
 }
+
+.footer-links {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.footer-links a {
+  color: #ffc857;
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
