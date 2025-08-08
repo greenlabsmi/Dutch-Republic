@@ -1,4 +1,4 @@
-// Dutch Republic Site JS – Full Script
+// Dutch Republic Site JS – Full Script (filters, search, sort, hues, chatbot hook)
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Dutch Republic site ready.");
@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       const emailInput = this.querySelector('input[type="email"]');
       const email = emailInput.value.trim();
-
       if (email) {
         alert(`Thanks for signing up, ${email}!`);
         emailInput.value = "";
@@ -20,100 +19,220 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Tile click behavior (placeholder for Leafly/modal/chatbot) ---
-  const dealTiles = document.querySelectorAll(".deal-tile");
-  dealTiles.forEach((tile) => {
+  // --- Deal tile click placeholder ---
+  document.querySelectorAll(".deal-tile").forEach((tile) => {
     tile.addEventListener("click", () => {
       alert(`You clicked on ${tile.querySelector("h3").innerText}`);
-      // Future: expand with strain info or redirect to chatbot/Leafly
     });
   });
 
-  // --- Dutch Touch strain filtering ---
-  const filterButtons = document.querySelectorAll(".filter-btn");
-  const strainTiles = document.querySelectorAll(".strain-tile");
+  // --- Dutch Touch: data model ---
+  const strains = [
+    {
+      name: "Mr. Clean",
+      category: "uplifting",
+      tags: ["terpinolene", "limonene"],
+      effect: "Sharp, citrusy, energizing",
+      award: true,
+      new: false,
+      favorite: true,
+      emoji: "⚡",
+      addedAt: 20240120
+    },
+    {
+      name: "Lilac Diesel",
+      category: "balanced",
+      tags: ["myrcene", "caryophyllene"],
+      effect: "Floral, smooth, balanced buzz",
+      award: false,
+      new: true,
+      favorite: false,
+      emoji: "🍃",
+      addedAt: 20250615
+    },
+    {
+      name: "Lemon Wookie",
+      category: "uplifting",
+      tags: ["limonene", "ocimene"],
+      effect: "Zesty, playful, euphoric",
+      award: true,
+      new: false,
+      favorite: true,
+      emoji: "✨",
+      addedAt: 20240302
+    },
+    {
+      name: "Space Hippy",
+      category: "mellow",
+      tags: ["linalool", "myrcene"],
+      effect: "Dreamy, sedative, spacey",
+      award: false,
+      new: true,
+      favorite: false,
+      emoji: "🌙",
+      addedAt: 20250701
+    },
+    {
+      name: "Clusterfunk",
+      category: "balanced",
+      tags: ["caryophyllene", "humulene"],
+      effect: "Savory, grounded, chill",
+      award: false,
+      new: false,
+      favorite: false,
+      emoji: "💨",
+      addedAt: 20231010
+    },
+    {
+      name: "Death By Funk",
+      category: "mellow",
+      tags: ["myrcene", "terpinolene"],
+      effect: "Heavy, funky, couchlock",
+      award: true,
+      new: false,
+      favorite: true,
+      emoji: "🛋️",
+      addedAt: 20231205
+    }
+  ];
 
-  filterButtons.forEach((button) => {
-    button.addEventListener("click", function () {
-      filterButtons.forEach((btn) => btn.classList.remove("active"));
-      this.classList.add("active");
-
-      const filter = this.textContent.trim().toLowerCase();
-      strainTiles.forEach((tile) => {
-        const tags = tile.getAttribute("data-tags").toLowerCase();
-
-        if (filter === "all" || tags.includes(filter)) {
-          tile.style.display = "block";
-        } else {
-          tile.style.display = "none";
-        }
-      });
-    });
-  });
-
-  // --- Show All button logic ---
-  const showAllButton = document.getElementById("show-all-strains");
-  if (showAllButton) {
-    showAllButton.addEventListener("click", () => {
-      strainTiles.forEach((tile) => (tile.style.display = "block"));
-      filterButtons.forEach((btn) => btn.classList.remove("active"));
-    });
-  }
-
-  // --- Live search filter ---
+  // --- Elements ---
+  const strainGrid = document.getElementById("strainGrid");
   const searchInput = document.getElementById("strain-search");
-  if (searchInput) {
-    searchInput.addEventListener("input", function () {
-      const query = this.value.toLowerCase();
-      strainTiles.forEach((tile) => {
-        const name = tile.querySelector("h4").innerText.toLowerCase();
-        if (name.includes(query)) {
-          tile.style.display = "block";
-        } else {
-          tile.style.display = "none";
-        }
+  const filterButtons = document.querySelectorAll(".filter-buttons .filter-btn");
+  const sortSelect = document.getElementById("strain-sort");
+  const showAllBtn = document.getElementById("show-all-strains");
+
+  // --- Helpers ---
+  function vibeClass(cat) {
+    if (cat === "uplifting") return "uplifting";
+    if (cat === "mellow") return "mellow";
+    if (cat === "balanced") return "balanced";
+    return "";
+  }
+
+  function tileHueFromCategory(cat) {
+    if (cat === "uplifting") return { border: "#f97316", bg: "#fff6f2" }; // coral
+    if (cat === "mellow") return { border: "#60a5fa", bg: "#f3f7ff" };    // blue
+    if (cat === "balanced") return { border: "#10b981", bg: "#f6fff2" };  // green
+    return { border: "#d1d5db", bg: "#ffffff" };                          // gray
+  }
+
+  function sortStrains(list, mode) {
+    const copy = [...list];
+    switch (mode) {
+      case "az":
+        return copy.sort((a, b) => a.name.localeCompare(b.name));
+      case "za":
+        return copy.sort((a, b) => b.name.localeCompare(a.name));
+      case "new":
+        return copy.sort((a, b) => b.addedAt - a.addedAt);
+      case "award":
+        return copy.sort((a, b) => Number(b.award) - Number(a.award));
+      default:
+        return copy;
+    }
+  }
+
+  function matchesFilter(strain, filter) {
+    if (filter === "all") return true;
+    if (filter === "award") return strain.award;
+    if (filter === "new") return strain.new;
+    if (filter === "favorite") return strain.favorite;
+    return strain.category === filter;
+  }
+
+  // --- Render ---
+  function renderStrains() {
+    const activeFilterBtn = document.querySelector(".filter-buttons .active");
+    const filter = activeFilterBtn ? activeFilterBtn.dataset.filter || activeFilterBtn.textContent.trim().toLowerCase() : "all";
+    const q = (searchInput?.value || "").toLowerCase();
+    const sortMode = sortSelect?.value || "az";
+
+    // filter + search
+    let view = strains.filter((s) => {
+      const inFilter = matchesFilter(s, filter);
+      const inSearch =
+        s.name.toLowerCase().includes(q) ||
+        s.effect.toLowerCase().includes(q) ||
+        s.tags.join(" ").toLowerCase().includes(q);
+      return inFilter && inSearch;
+    });
+
+    // sort
+    view = sortStrains(view, sortMode);
+
+    // draw
+    strainGrid.innerHTML = "";
+    view.forEach((s) => {
+      const tile = document.createElement("div");
+      tile.className = `strain-tile fade-in ${vibeClass(s.category)}`;
+
+      const hues = tileHueFromCategory(s.category);
+      tile.style.borderLeft = `6px solid ${hues.border}`;
+      tile.style.backgroundColor = hues.bg;
+
+      tile.innerHTML = `
+        <h3>${s.emoji} ${s.name}</h3>
+        ${s.award ? '<span class="badge">🏆 Award Winner</span>' : ""}
+        ${s.new ? '<span class="badge" style="margin-left:6px;">🆕 New Drop</span>' : ""}
+        ${s.favorite ? '<span class="badge" style="margin-left:6px;">💚 Favorite</span>' : ""}
+        <p class="effect" style="margin-top:.5rem;">${s.effect}</p>
+        <p class="tags" style="color:#666;">${s.tags.join(" • ")}</p>
+        <button class="button learn-more" type="button" style="margin-top:.75rem;">Learn more</button>
+      `;
+
+      // chatbot hook on click
+      tile.querySelector(".learn-more").addEventListener("click", (e) => {
+        e.stopPropagation();
+        openChatbotForStrain(s.name);
       });
+
+      // tile click also triggers chatbot (optional)
+      tile.addEventListener("click", () => openChatbotForStrain(s.name));
+
+      strainGrid.appendChild(tile);
     });
+
+    if (view.length === 0) {
+      const empty = document.createElement("p");
+      empty.style.marginTop = "1rem";
+      empty.textContent = "No strains match your search/filter.";
+      strainGrid.appendChild(empty);
+    }
   }
 
-  // --- Smooth scroll for anchor links ---
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute("href"));
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth" });
-      }
+  // --- Events ---
+  filterButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      filterButtons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      renderStrains();
     });
   });
 
-  // --- Optional: strain tile chatbot popup on click ---
-  const strainTilesInteractive = document.querySelectorAll(".strain-tile");
-  strainTilesInteractive.forEach((tile) => {
-    tile.addEventListener("click", () => {
-      const strainName = tile.querySelector("h4")?.innerText;
-      const simulatedQuery = `Tell me more about the strain ${strainName}`;
-      alert(`💬 AI Chatbot will answer: ${simulatedQuery}`);
-      // In future: trigger embedded chatbot with strain context
-    });
+  searchInput?.addEventListener("input", renderStrains);
+  sortSelect?.addEventListener("change", renderStrains);
+
+  showAllBtn?.addEventListener("click", () => {
+    filterButtons.forEach((b) => b.classList.remove("active"));
+    const allBtn = document.querySelector('.filter-buttons .filter-btn[data-filter="all"]') || document.querySelector(".filter-buttons .filter-btn");
+    allBtn?.classList.add("active");
+    if (searchInput) searchInput.value = "";
+    if (sortSelect) sortSelect.value = "az";
+    renderStrains();
   });
 
-  // --- Automatic color hue application based on data-tags ---
-  strainTiles.forEach((tile) => {
-    const tags = tile.getAttribute("data-tags").toLowerCase();
-    const color = getColorFromTags(tags);
-    tile.style.borderTop = `6px solid ${color}`;
-  });
+  // --- Chatbot hooks ---
+  window.openChatbot = function () {
+    alert("Chatbot coming soon! In the meantime, ask staff in-store or DM us on Instagram.");
+  };
 
-  function getColorFromTags(tags) {
-    if (tags.includes("uplifting")) return "#f97316"; // coral
-    if (tags.includes("mellow")) return "#60a5fa"; // blue
-    if (tags.includes("balanced")) return "#10b981"; // green
-    if (tags.includes("award")) return "#facc15"; // gold
-    return "#d1d5db"; // neutral gray fallback
+  function openChatbotForStrain(name) {
+    alert(`💬 Chatbot will answer about: ${name}`);
+    // future: open real chatbot widget w/ context: { strain: name }
   }
+
+  // Initial render
+  renderStrains();
 });
-
-function openChatbot() {
-  alert("Chatbot coming soon! In the meantime, our team is happy to help in-store or via DM.");
-}
