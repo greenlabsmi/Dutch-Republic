@@ -1,315 +1,296 @@
-/* =========================
-   Dutch District – script.js
-   ========================= */
+// ------------------------------------------------------------
+// Dutch District – main client script
+// ------------------------------------------------------------
+document.addEventListener('DOMContentLoaded', () => {
+  // ================= Header / meta =================
+  // Sticky header shadow
+  (function stickyHeader() {
+    const hdr = document.querySelector('.site-header');
+    if (!hdr) return;
+    const onScroll = () => hdr.classList.toggle('is-scrolled', window.scrollY > 8);
+    onScroll();
+    document.addEventListener('scroll', onScroll, { passive: true });
+  })();
 
-/* Year in footer */
-const yearEl = document.getElementById('year');
-if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-/* Mark "Home" tab active (demo) */
-document.querySelectorAll('.tab-nav .tab').forEach(t => {
-  t.classList.toggle('is-active', t.getAttribute('href') === '#home');
-});
-
-/* -------------------------
-   DAILY DEALS (deals.json)
-   ------------------------- */
-(async function loadDeals() {
-  const container = document.getElementById('dealList');
-  if (!container) return;
-
-  try {
-    const res = await fetch('deals.json', { cache: 'no-store' });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-
-    const html = data.map(cat => {
-      const title = `<div class="deal-cat-title">${cat.category}</div>`;
-
-      if (Array.isArray(cat.groups) && cat.groups.length) {
-        const groupsHTML = cat.groups.map(g => `
-          <div class="deal-subgroup">
-            <div class="deal-subtitle">${g.title}</div>
-            <ul class="deal-items">
-              ${g.items.map(item => `<li>${item}</li>`).join('')}
-            </ul>
-          </div>
-        `).join('');
-        return `<div class="deal-cat">${title}${groupsHTML}</div>`;
-      }
-
-      const itemsHTML = (cat.items || []).map(item => `<li>${item}</li>`).join('');
-      return `<div class="deal-cat">${title}<ul class="deal-items">${itemsHTML}</ul></div>`;
-    }).join('');
-
-    container.innerHTML = html || `<div class="deal-cat"><ul class="deal-items"><li>No active deals today.</li></ul></div>`;
-
-    // Optional tax note
-    const note = document.createElement('div');
-    note.className = 'deal-note';
-    note.textContent = 'ALL PRICES ARE TAX INCLUDED';
-    container.appendChild(note);
-
-  } catch (err) {
-    console.error('Failed to load deals.json:', err);
-    const fallback = `<div class="deal-cat"><ul class="deal-items"><li>Deals are loading…</li></ul></div>`;
-    container.innerHTML = fallback;
-  }
-})();
-
-/* -------------------------
-   Deals accordion (HOD-style)
-   ------------------------- */
-const dealCard = document.querySelector('.deal-card');
-const dealBody = document.getElementById('dealBody');
-const closeBtn = document.getElementById('closeDeals');
-
-function setDealsOpen(open){
-  if (!dealCard || !dealBody) return;
-  dealBody.classList.toggle('collapsed', !open);
-  dealCard.setAttribute('aria-expanded', open ? 'true' : 'false');
-  if (closeBtn) closeBtn.style.display = open ? 'inline-block' : 'none';
-}
-// start collapsed with ~3-line teaser
-setDealsOpen(false);
-
-// Only toggle if you didn’t click an interactive element inside
-function clickShouldToggle(e){
-  const t = e.target;
-  return !(t.closest('a, button, input, select, textarea'));
-}
-dealCard?.addEventListener('click', (e) => {
-  if (!clickShouldToggle(e)) return;
-  const isOpen = dealCard.getAttribute('aria-expanded') === 'true';
-  setDealsOpen(!isOpen);
-});
-dealCard?.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter' || e.key === ' ') {
-    e.preventDefault();
-    const isOpen = dealCard.getAttribute('aria-expanded') === 'true';
-    setDealsOpen(!isOpen);
-  }
-});
-closeBtn?.addEventListener('click', (e) => { e.stopPropagation(); setDealsOpen(false); });
-
-/* -------------------------
-   Hero carousel (dots + auto)
-   ------------------------- */
-(function initCarousel(){
-  const scroller = document.querySelector('[data-carousel]');
-  const dotsWrap = document.querySelector('[data-dots]');
-  if (!scroller || !dotsWrap) return;
-
-  const slides = [...scroller.querySelectorAll('.slide')];
-  slides.forEach((_, i) => {
-    const b = document.createElement('button');
-    if (i === 0) b.classList.add('is-active');
-    b.addEventListener('click', () => {
-      scroller.scrollTo({ left: i * scroller.clientWidth, behavior: 'smooth' });
-    });
-    dotsWrap.appendChild(b);
+  // Active tab (naive demo highlighting)
+  document.querySelectorAll('.tab-nav .tab').forEach(t => {
+    t.classList.toggle('is-active', t.getAttribute('href') === '#home');
   });
 
-  const updateDots = () => {
-    const i = Math.round(scroller.scrollLeft / scroller.clientWidth);
-    dotsWrap.querySelectorAll('button').forEach((d, idx) => d.classList.toggle('is-active', idx === i));
-  };
-  scroller.addEventListener('scroll', () => requestAnimationFrame(updateDots), { passive: true });
+  // Year in footer
+  const y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
 
-  // Optional auto-advance
-  let idx = 0;
-  setInterval(() => {
-    if (!document.body.contains(scroller)) return; // safety
-    idx = (idx + 1) % slides.length;
-    scroller.scrollTo({ left: idx * scroller.clientWidth, behavior: 'smooth' });
-  }, 6000);
-})();
+  // ================= Hero carousel =================
+  (function initCarousel() {
+    const scroller = document.querySelector('[data-carousel]');
+    const dotsWrap = document.querySelector('[data-dots]');
+    if (!scroller || !dotsWrap) return;
 
-/* -------------------------
-   External commerce links
-   ------------------------- */
-document.querySelectorAll('[data-ext]').forEach(a => {
-  a.setAttribute('rel', 'noopener');
-  a.setAttribute('target', '_blank');
-});
+    const slides = [...scroller.querySelectorAll('.slide')];
 
-/* ---------------------------------------
-   Hours of operation – pill + popover
-   --------------------------------------- */
-// Green Labs hours: 9:00–21:00 every day
-const HOURS = {
-  0: { open: '09:00', close: '21:00' },  // Sun
-  1: { open: '09:00', close: '21:00' },  // Mon
-  2: { open: '09:00', close: '21:00' },
-  3: { open: '09:00', close: '21:00' },
-  4: { open: '09:00', close: '21:00' },
-  5: { open: '09:00', close: '21:00' },  // Fri
-  6: { open: '09:00', close: '21:00' },  // Sat
-};
-const OPENING_SOON_MIN = 45;
-const CLOSING_SOON_MIN = 45;
+    slides.forEach((_, i) => {
+      const b = document.createElement('button');
+      if (i === 0) b.classList.add('is-active');
+      b.addEventListener('click', () => {
+        scroller.scrollTo({ left: i * scroller.clientWidth, behavior: 'smooth' });
+      });
+      dotsWrap.appendChild(b);
+    });
 
-const hoursBtn = document.getElementById('hoursBtn');
-const pop  = document.getElementById('hoursPopover');
-const overlay = document.getElementById('hoursOverlay');
-const listEl = document.getElementById('hoursList');
-const dotEl  = document.getElementById('hoursStatusDot');
-const noteEl = document.getElementById('hoursNote');
+    const updateDots = () => {
+      const i = Math.round(scroller.scrollLeft / scroller.clientWidth);
+      dotsWrap.querySelectorAll('button').forEach((d, idx) => {
+        d.classList.toggle('is-active', idx === i);
+      });
+    };
+    scroller.addEventListener('scroll', () => requestAnimationFrame(updateDots), { passive: true });
 
-function t2m(s){ const [h,m] = s.split(':').map(Number); return h*60+m; }
-function nowMinutes(){ const d=new Date(); return d.getHours()*60+d.getMinutes(); }
+    // Auto-advance
+    let idx = 0;
+    setInterval(() => {
+      idx = (idx + 1) % slides.length;
+      scroller.scrollTo({ left: idx * scroller.clientWidth, behavior: 'smooth' });
+    }, 6000);
+  })();
 
-function computeStatus(){
-  const d = new Date();
-  const dow = d.getDay();
-  const today = HOURS[dow];
-  const mins = nowMinutes();
+  // Open external links in a new tab
+  document.querySelectorAll('[data-ext]').forEach(a => {
+    a.setAttribute('rel', 'noopener');
+    a.setAttribute('target', '_blank');
+  });
 
-  let state = 'closed'; // 'open' | 'opening-soon' | 'closing-soon' | 'closed'
-  let label = 'CLOSED';
+  // ================= Mobile drawer =================
+  (function mobileDrawer() {
+    const openBtn = document.querySelector('[data-open-menu]');
+    const drawer = document.getElementById('navDrawer');
+    const closeBtn = drawer?.querySelector('.drawer-close');
+    if (!openBtn || !drawer || !closeBtn) return;
 
-  if (today && today.open && today.close){
-    const o = t2m(today.open), c = t2m(today.close);
+    const open = () => drawer.removeAttribute('hidden');
+    const close = () => drawer.setAttribute('hidden', '');
+    openBtn.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+    drawer.addEventListener('click', (e) => {
+      if (e.target.closest('a')) close();
+    });
+  })();
 
-    if (mins >= o && mins < c){
-      const toClose = c - mins;
-      if (toClose <= CLOSING_SOON_MIN) { state = 'closing-soon'; label = 'CLOSING SOON'; }
-      else { state = 'open'; label = 'OPEN'; }
-    } else if (mins < o){
-      const toOpen = o - mins;
-      if (toOpen <= OPENING_SOON_MIN){ state = 'opening-soon'; label = 'OPENING SOON'; }
-      else { state = 'closed'; label = 'CLOSED'; }
-    } else {
-      state = 'closed'; label = 'CLOSED';
+  // ================= Today’s Deals =================
+  (function deals() {
+    const body = document.getElementById('dealBody');
+    const list = document.getElementById('dealList');
+    const card = document.querySelector('.deal-card');
+    if (!body || !list || !card) return;
+
+    // Fetch and render deals.json (must be at /deals.json)
+    fetch('deals.json', { cache: 'no-store' })
+      .then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then(data => renderDeals(list, data))
+      .catch(() => { list.innerHTML = '<li>Deals unavailable right now.</li>'; });
+
+    function esc(s) {
+      return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     }
-  }
+    function renderDeals(target, data) {
+      // Supports categories with optional subgroups
+      const html = data.map(cat => {
+        if (cat.groups && Array.isArray(cat.groups)) {
+          const groups = cat.groups.map(g => `
+            <div class="deal-subgroup">
+              <div class="deal-subtitle">${esc(g.title)}</div>
+              <ul class="deal-items">
+                ${(g.items || []).map(it => `<li>${esc(it)}</li>`).join('')}
+              </ul>
+            </div>
+          `).join('');
+          return `
+            <li class="deal-cat">
+              <div class="deal-cat-title">${esc(cat.category)}</div>
+              ${groups}
+            </li>
+          `;
+        } else {
+          return `
+            <li class="deal-cat">
+              <div class="deal-cat-title">${esc(cat.category)}</div>
+              <ul class="deal-items">
+                ${(cat.items || []).map(it => `<li>${esc(it)}</li>`).join('')}
+              </ul>
+            </li>
+          `;
+        }
+      }).join('');
+      target.innerHTML = html + `<div class="deal-note">All prices include tax.</div>`;
+    }
 
-  // Update pill text + state color class
-  if (hoursBtn){
-    hoursBtn.textContent = label;
-    hoursBtn.classList.remove('state-open','state-soon','state-closed');
-    hoursBtn.classList.add(state==='open' ? 'state-open'
-                      : (state==='closing-soon' || state==='opening-soon') ? 'state-soon'
-                      : 'state-closed');
-  }
+    // Expand/collapse the card (entire header is clickable)
+    const head = card.querySelector('.deal-head');
+    const closeBtn = document.getElementById('closeDeals');
 
-  // Update dot in popover
-  if (dotEl){
-    dotEl.className = 'status-dot ' + (state==='open' ? 'is-open'
-                            : (state==='closing-soon' || state==='opening-soon') ? 'is-soon'
-                            : 'is-closed');
-  }
-}
+    const expand = () => {
+      card.setAttribute('aria-expanded', 'true');
+      body.classList.remove('collapsed');
+    };
+    const collapse = () => {
+      card.setAttribute('aria-expanded', 'false');
+      body.classList.add('collapsed');
+    };
 
-function renderWeek(){
-  if (!listEl) return;
-  const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  const dow = new Date().getDay();
+    head?.addEventListener('click', () => {
+      const expanded = card.getAttribute('aria-expanded') === 'true';
+      expanded ? collapse() : expand();
+    });
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const expanded = card.getAttribute('aria-expanded') === 'true';
+        expanded ? collapse() : expand();
+      }
+    });
+    closeBtn?.addEventListener('click', collapse);
+  })();
 
-  listEl.innerHTML = '';
-  for (let i=0;i<7;i++){
-    const h = HOURS[i];
-    const line = h ? `${h.open}–${h.close}` : 'Closed';
-    const li = document.createElement('li');
-    li.innerHTML = `<span>${dayNames[i]}</span><span>${line}</span>`;
-    if (i===dow) li.classList.add('is-today');
-    listEl.appendChild(li);
-  }
-  if (noteEl) noteEl.textContent = 'Tap anywhere to close';
-}
+  // ================= Hours popover & pill =================
+  (function hours() {
+    const btn = document.getElementById('hoursBtn');
+    const pop = document.getElementById('hoursPopover');
+    const ovl = document.getElementById('hoursOverlay');
+    const list = document.getElementById('hoursList');
+    const note = document.getElementById('hoursNote');
+    const statusDot = document.getElementById('hoursStatusDot');
+    if (!btn || !pop || !ovl || !list || !note || !statusDot) return;
 
-function openHours(){
-  if (!pop || !overlay) return;
-  renderWeek();
-  computeStatus();
-  pop.hidden = false;
-  overlay.hidden = false;
-  hoursBtn?.setAttribute('aria-expanded','true');
-}
-function closeHours(){
-  if (!pop || !overlay) return;
-  pop.hidden = true;
-  overlay.hidden = true;
-  hoursBtn?.setAttribute('aria-expanded','false');
-}
+    // Business hours (9–21 daily)
+    const HOURS = [
+      { d: 'Sunday',    open: 9, close: 21 },
+      { d: 'Monday',    open: 9, close: 21 },
+      { d: 'Tuesday',   open: 9, close: 21 },
+      { d: 'Wednesday', open: 9, close: 21 },
+      { d: 'Thursday',  open: 9, close: 21 },
+      { d: 'Friday',    open: 9, close: 21 },
+      { d: 'Saturday',  open: 9, close: 21 },
+    ];
 
-hoursBtn?.addEventListener('click', () => {
-  const expanded = hoursBtn.getAttribute('aria-expanded') === 'true';
-  expanded ? closeHours() : openHours();
+    function fmt(h) {
+      const ampm = h >= 12 ? 'PM' : 'AM';
+      const hr = ((h + 11) % 12) + 1;
+      return `${hr}${ampm}`;
+    }
+    function statusNow() {
+      const now = new Date();
+      const idx = now.getDay();
+      const hour = now.getHours() + now.getMinutes() / 60;
+      const { open, close } = HOURS[idx];
+      const openSoon = hour >= open - 0.5 && hour < open;
+      const closingSoon = hour >= close - 0.5 && hour < close;
+      const isOpen = hour >= open && hour < close;
+      return { isOpen, openSoon, closingSoon, open, close, idx };
+    }
+    function paintPill() {
+      const s = statusNow();
+      btn.classList.remove('state-open','state-soon','state-closed');
+      if (s.isOpen && s.closingSoon) {
+        btn.textContent = 'CLOSING SOON';
+        btn.classList.add('state-soon');
+        statusDot.className = 'status-dot is-soon';
+      } else if (!s.isOpen && s.openSoon) {
+        btn.textContent = 'OPENING SOON';
+        btn.classList.add('state-soon');
+        statusDot.className = 'status-dot is-soon';
+      } else if (s.isOpen) {
+        btn.textContent = 'OPEN';
+        btn.classList.add('state-open');
+        statusDot.className = 'status-dot is-open';
+      } else {
+        btn.textContent = 'CLOSED';
+        btn.classList.add('state-closed');
+        statusDot.className = 'status-dot is-closed';
+      }
+    }
+    function renderHours() {
+      const today = new Date().getDay();
+      list.innerHTML = HOURS.map((h, i) => `
+        <li class="${i === today ? 'is-today' : ''}">
+          <span>${h.d}</span>
+          <span>${fmt(h.open)} – ${fmt(h.close)}</span>
+        </li>
+      `).join('');
+      const s = statusNow();
+      note.textContent = s.isOpen
+        ? `We’re open until ${fmt(s.close)} today.`
+        : `We open at ${fmt(s.open)}.`;
+    }
+    function openPop() {
+      pop.hidden = false;
+      ovl.hidden = false;
+      btn.setAttribute('aria-expanded', 'true');
+    }
+    function closePop() {
+      pop.hidden = true;
+      ovl.hidden = true;
+      btn.setAttribute('aria-expanded', 'false');
+    }
+
+    paintPill();
+    renderHours();
+    btn.addEventListener('click', () => (pop.hidden ? openPop() : closePop()));
+    ovl.addEventListener('click', closePop);
+    window.addEventListener('scroll', closePop, { passive: true });
+    setInterval(paintPill, 60 * 1000); // keep fresh
+  })();
+
+  // ================= Maps (smart open) =================
+  (function maps() {
+    // Your exact deep links (Luna Pier)
+    const appleMapsURL = 'https://maps.apple.com/place?address=10701%20Madison%20St,%20Luna%20Pier,%20MI%2048157,%20United%20States&coordinate=41.811131,-83.446182&name=Green%20Labs&place-id=I7D92A14C05BBFB93&map=explore';
+    const googleMapsURL = 'https://www.google.com/maps/place//data=!4m2!3m1!1s0x883b792f918df687:0xb3cf2121d239bc1d?entry=s&sa=X&ved=1t:8290&hl=en-us&ictx=111&g_ep=Eg1tbF8yMDI1MDgwNl8wIOC7DCoASAJQAg%3D%3D';
+
+    const isApple = () => /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent || '');
+
+    // MODE A: single smart button
+    const openMapsSmartBtn = document.getElementById('openMapsSmart');
+    openMapsSmartBtn?.addEventListener('click', () => {
+      window.open(isApple() ? appleMapsURL : googleMapsURL, '_blank', 'noopener');
+    });
+
+    // MODE B: preference buttons (if present)
+    const getMapPref = () => localStorage.getItem('mapPref') || (isApple() ? 'apple' : 'google');
+    const setMapPref = (p) => { try { localStorage.setItem('mapPref', p); } catch(e) {} };
+    const openPreferredMap = () => {
+      const pref = getMapPref();
+      const url = pref === 'apple' ? appleMapsURL : googleMapsURL;
+      window.open(url, '_blank', 'noopener');
+    };
+
+    // If these exist in HTML, wire them too
+    document.getElementById('openMaps')?.addEventListener('click', openPreferredMap);
+    document.getElementById('switchMapPref')?.addEventListener('click', () => {
+      const next = getMapPref() === 'apple' ? 'google' : 'apple';
+      setMapPref(next);
+      const btn = document.getElementById('switchMapPref');
+      if (btn) {
+        btn.textContent = next === 'apple' ? 'Use Apple Maps' : 'Use Google Maps';
+        setTimeout(() => (btn.textContent = 'Switch'), 1200);
+      }
+    });
+    document.getElementById('mapLink')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      openPreferredMap();
+    });
+  })();
+
+  // ================= Loyalty expand-on-continue =================
+  (function loyalty() {
+    const start = document.getElementById('loyStart');
+    const body = document.getElementById('loyBody');
+    const email = document.getElementById('loyEmail');
+    if (!start || !body || !email) return;
+    const open = () => body.hidden = false;
+    start.addEventListener('click', open);
+    email.addEventListener('focus', open);
+  })();
+
+  // Clean up any old wishlist storage
+  try { localStorage.removeItem('wishlist'); } catch (e) {}
 });
-overlay?.addEventListener('click', closeHours);
-document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape' && !pop?.hidden) closeHours(); });
-
-// Initial + keep fresh every minute
-computeStatus();
-setInterval(computeStatus, 60*1000);
-
-/* ---------------------------------------
-   Device-aware Maps open (Apple / Google)
-   --------------------------------------- */
-const ADDRESS_QUERY = '435+Blue+Star+Hwy,+Douglas,+MI+49406';
-const appleMapsURL = `https://maps.apple.com/?q=${ADDRESS_QUERY}`;
-const googleMapsURL = `https://www.google.com/maps/search/?api=1&query=${ADDRESS_QUERY}`;
-
-function detectAppleEnv(){
-  const ua = navigator.userAgent || '';
-  return /iPad|iPhone|iPod|Macintosh/.test(ua);
-}
-function getMapPref(){
-  return localStorage.getItem('mapPref') || (detectAppleEnv() ? 'apple' : 'google');
-}
-function setMapPref(p){ try{ localStorage.setItem('mapPref', p); }catch(_){} }
-
-function openPreferredMap(){
-  const pref = getMapPref();
-  const url = pref === 'apple' ? appleMapsURL : googleMapsURL;
-  window.open(url, '_blank', 'noopener');
-}
-
-document.getElementById('openMaps')?.addEventListener('click', openPreferredMap);
-document.getElementById('switchMapPref')?.addEventListener('click', () => {
-  const next = getMapPref() === 'apple' ? 'google' : 'apple';
-  setMapPref(next);
-  const btn = document.getElementById('switchMapPref');
-  if (btn){
-    btn.textContent = next === 'apple' ? 'Use Google' : 'Use Apple';
-    setTimeout(()=>{ btn.textContent = 'Switch'; }, 1200);
-  }
-});
-document.getElementById('mapLink')?.addEventListener('click', (e) => {
-  e.preventDefault();
-  openPreferredMap();
-});
-
-/* -------------------------
-   Loyalty expand-on-continue
-   ------------------------- */
-const loyEmail = document.getElementById('loyEmail');
-const loyStart = document.getElementById('loyStart');
-const loyBody = document.getElementById('loyBody');
-
-function openLoyalty(){
-  if (!loyBody) return;
-  loyBody.hidden = false;
-  loyBody.scrollIntoView({ behavior:'smooth', block:'start' });
-}
-loyStart?.addEventListener('click', openLoyalty);
-loyEmail?.addEventListener('focus', openLoyalty);
-
-/* -------------------------
-   Mobile drawer (optional)
-   ------------------------- */
-const openBtn = document.querySelector('[data-open-menu]');
-const drawer  = document.getElementById('navDrawer');
-const closeX  = drawer?.querySelector('.drawer-close');
-
-function openDrawer(){ if (!drawer) return; drawer.hidden = false; document.body.style.overflow = 'hidden'; }
-function closeDrawer(){ if (!drawer) return; drawer.hidden = true; document.body.style.overflow = ''; }
-
-openBtn?.addEventListener('click', openDrawer);
-closeX?.addEventListener('click', closeDrawer);
-drawer?.addEventListener('click', (e)=>{ if (e.target.classList.contains('drawer-link')) closeDrawer(); });
-document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape' && drawer && !drawer.hidden) closeDrawer(); });
-
-/* Clean up any old wishlist */
-try { localStorage.removeItem('wishlist'); } catch(e) {}
