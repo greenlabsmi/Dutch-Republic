@@ -6,6 +6,7 @@
   <title>Dutch Republic</title>
   <link rel="stylesheet" href="style.css" />
   <meta name="description" content="Dutch Republic • Premium cannabis, powered by Dutch Touch Genetics." />
+  <meta name="theme-color" content="#104c3f" />
 </head>
 <body>
   <!-- Sticky Header -->
@@ -21,15 +22,15 @@
       </a>
 
       <div class="header-actions">
-        <button class="util-btn" data-open-menu aria-label="Menu">Menu</button>
+        <button class="util-btn" data-open-menu aria-label="Open menu">Menu</button>
         <a class="hdr-icon" href="#" aria-label="Search">
-          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M10 18a8 8 0 1 1 5.3-14A8 8 0 0 1 10 18Zm11 3-6.1-6.1"/></svg>
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M10 18a8 8 0 1 1 5.3-14A8 8 0 0 1 10 18Zm11 3-6.1-6.1"/></svg>
         </a>
         <a class="hdr-icon" href="#" aria-label="Account">
-          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-5 0-9 2.5-9 5.5A1.5 1.5 0 0 0 4.5 21h15A1.5 1.5 0 0 0 21 19.5C21 16.5 17 14 12 14Z"/></svg>
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-5 0-9 2.5-9 5.5A1.5 1.5 0 0 0 4.5 21h15A1.5 1.5 0 0 0 21 19.5C21 16.5 17 14 12 14Z"/></svg>
         </a>
         <a class="hdr-icon cart" href="#" aria-label="Cart">
-          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M7 4H4L3 6v2h2l3.6 7.6A2 2 0 0 0 11.4 17h6.7a2 2 0 0 0 1.9-1.4L23 8H7"/><circle cx="10" cy="20" r="1.7"/><circle cx="18" cy="20" r="1.7"/></svg>
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M7 4H4L3 6v2h2l3.6 7.6A2 2 0 0 0 11.4 17h6.7a2 2 0 0 0 1.9-1.4L23 8H7"/><circle cx="10" cy="20" r="1.7"/><circle cx="18" cy="20" r="1.7"/></svg>
           <span class="cart-badge">0</span>
         </a>
         <a class="btn small" href="https://your-ecom-link" data-ext>Order Online</a>
@@ -53,6 +54,17 @@
         </nav>
       </div>
     </div>
+
+    <!-- Mobile drawer nav -->
+    <div id="navDrawer" class="nav-drawer" hidden>
+      <nav aria-label="Mobile">
+        <a href="#home" class="drawer-link">Home</a>
+        <a href="https://your-ecom-link" class="drawer-link" data-ext>Shop</a>
+        <a href="https://your-ecom-link?view=brands" class="drawer-link" data-ext>Brands</a>
+        <a href="#deals" class="drawer-link">Specials</a>
+      </nav>
+      <button class="drawer-close" aria-label="Close menu">✕</button>
+    </div>
   </header>
 
   <main id="home">
@@ -69,43 +81,44 @@
       </div>
     </section>
 
-    <!-- Deals Announcement (collapsible like HOD) -->
+    <!-- Deals (accordion with teaser + Close button) -->
     <section id="deals" class="deal-banner">
       <div class="container">
         <button class="deal-toggle" aria-expanded="false" aria-controls="dealBody">
           <span>🌟 This Week’s Deals — Tap to expand</span>
           <span class="chev" aria-hidden="true">▾</span>
         </button>
-        <div id="dealBody" class="deal-body" hidden>
-  <ul class="deal-list" id="dealList"><!-- JS renders categories here --></ul>
-  <div class="deal-actions">
-    <button id="closeDeals" class="btn outline">Close deals</button>
-  </div>
-</div>
+        <div id="dealBody" class="deal-body collapsed">
+          <ul class="deal-list" id="dealList"><!-- JS renders categories here --></ul>
+          <div class="deal-actions">
+            <button id="closeDeals" class="btn outline">Close deals</button>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Category Tiles (HOD sizing) -->
+    <!-- Category Tiles -->
     <section id="shop" class="categories">
       <div class="container">
         <h2 class="section-title">Shop Categories</h2>
         <div class="cat-grid">
           <a class="cat-card" href="https://your-ecom-link?category=flower" data-ext>
-            <img src="img/cat-flower.jpg" alt="" /><span>Flower</span>
+            <img src="img/cat-flower.jpg" alt="" loading="lazy" /><span>Flower</span>
           </a>
           <a class="cat-card" href="https://your-ecom-link?category=pre-rolls" data-ext>
-            <img src="img/cat-preroll.jpg" alt="" /><span>Pre-Rolls</span>
+            <img src="img/cat-preroll.jpg" alt="" loading="lazy" /><span>Pre-Rolls</span>
           </a>
           <a class="cat-card" href="https://your-ecom-link?category=vaporizers" data-ext>
-            <img src="img/cat-vapes.jpg" alt="" /><span>Vaporizers</span>
+            <img src="img/cat-vapes.jpg" alt="" loading="lazy" /><span>Vaporizers</span>
           </a>
           <a class="cat-card" href="https://your-ecom-link?category=concentrates" data-ext>
-            <img src="img/cat-conc.jpg" alt="" /><span>Concentrates</span>
+            <img src="img/cat-conc.jpg" alt="" loading="lazy" /><span>Concentrates</span>
           </a>
           <a class="cat-card" href="https://your-ecom-link?category=edibles" data-ext>
-            <img src="img/cat-edibles.jpg" alt="" /><span>Edibles</span>
+            <img src="img/cat-edibles.jpg" alt="" loading="lazy" /><span>Edibles</span>
           </a>
           <a class="cat-card" href="https://your-ecom-link?category=tinctures" data-ext>
-            <img src="img/cat-tinctures.jpg" alt="" /><span>Tinctures</span>
+            <img src="img/cat-tinctures.jpg" alt="" loading="lazy" /><span>Tinctures</span>
           </a>
         </div>
         <div class="center">
@@ -114,20 +127,20 @@
       </div>
     </section>
 
-    <!-- Dutch Touch Genetics (condensed tiles) -->
+    <!-- Dutch Touch Genetics -->
     <section id="dtg" class="dtg">
       <div class="container">
         <h2 class="section-title">Dutch Touch Genetics</h2>
         <p class="section-sub">Curated genetics with clean, informative tiles.</p>
         <div class="dtg-grid">
           <article class="dtg-card">
-            <img src="img/dtg-1.jpg" alt="Legendary Lime" />
+            <img src="img/dtg-1.jpg" alt="Legendary Lime" loading="lazy" />
             <h3 class="dtg-title">Legendary Lime</h3>
             <div class="dtg-meta"><span class="badge">Hybrid</span><span class="meta">THC 26%</span></div>
             <a class="dtg-link" href="https://your-ecom-link?brand=dutch-touch-genetics" data-ext>View on menu</a>
           </article>
           <article class="dtg-card">
-            <img src="img/dtg-2.jpg" alt="Grape 1:1" />
+            <img src="img/dtg-2.jpg" alt="Grape 1:1" loading="lazy" />
             <h3 class="dtg-title">Grape 1:1</h3>
             <div class="dtg-meta"><span class="badge">Indica</span><span class="meta">THC 22%</span></div>
             <a class="dtg-link" href="https://your-ecom-link?brand=dutch-touch-genetics" data-ext>View on menu</a>
