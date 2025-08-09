@@ -119,29 +119,118 @@ document.querySelectorAll('[data-ext]').forEach(a => {
   a.setAttribute('target', '_blank');
 });
 
-// ---- Mobile drawer menu ----
+// ---- Hours of operation / status pill & popover ----
+// Green Labs hours: 9:00–21:00 every day
+const HOURS = {
+  0: { open: '09:00', close: '21:00' },  // Sun
+  1: { open: '09:00', close: '21:00' },  // Mon
+  2: { open: '09:00', close: '21:00' },
+  3: { open: '09:00', close: '21:00' },
+  4: { open: '09:00', close: '21:00' },
+  5: { open: '09:00', close: '21:00' },  // Fri
+  6: { open: '09:00', close: '21:00' },  // Sat
+};
+const OPENING_SOON_MIN = 45;
+const CLOSING_SOON_MIN = 45;
+
+const hoursBtn = document.getElementById('hoursBtn');
+const pop  = document.getElementById('hoursPopover');
+const overlay = document.getElementById('hoursOverlay');
+const listEl = document.getElementById('hoursList');
+const dotEl  = document.getElementById('hoursStatusDot');
+const noteEl = document.getElementById('hoursNote');
+
+function t2m(s){ const [h,m] = s.split(':').map(Number); return h*60+m; }
+function nowMinutes(){ const d=new Date(); return d.getHours()*60+d.getMinutes(); }
+
+function computeStatus(){
+  const d = new Date();
+  const dow = d.getDay();
+  const today = HOURS[dow];
+  const mins = nowMinutes();
+
+  let state = 'closed'; // 'open' | 'opening-soon' | 'closing-soon' | 'closed'
+  let label = 'CLOSED';
+
+  if (today && today.open && today.close){
+    const o = t2m(today.open), c = t2m(today.close);
+
+    if (mins >= o && mins < c){
+      const toClose = c - mins;
+      if (toClose <= CLOSING_SOON_MIN) { state = 'closing-soon'; label = 'CLOSING SOON'; }
+      else { state = 'open'; label = 'OPEN'; }
+    } else if (mins < o){
+      const toOpen = o - mins;
+      if (toOpen <= OPENING_SOON_MIN){ state = 'opening-soon'; label = 'OPENING SOON'; }
+      else { state = 'closed'; label = 'CLOSED'; }
+    } else {
+      state = 'closed'; label = 'CLOSED';
+    }
+  }
+
+  if (hoursBtn){
+    hoursBtn.textContent = label;
+    hoursBtn.classList.remove('state-open','state-soon','state-closed');
+    hoursBtn.classList.add(state==='open' ? 'state-open' : state==='closing-soon' || state==='opening-soon' ? 'state-soon' : 'state-closed');
+  }
+
+  if (dotEl){
+    dotEl.className = 'status-dot ' + (state==='open' ? 'is-open' : (state==='closing-soon' || state==='opening-soon') ? 'is-soon' : 'is-closed');
+  }
+}
+
+function renderWeek(){
+  if (!listEl) return;
+  const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const dow = new Date().getDay();
+
+  listEl.innerHTML = '';
+  for (let i=0;i<7;i++){
+    const h = HOURS[i];
+    const line = h ? `${h.open}–${h.close}` : 'Closed';
+    const li = document.createElement('li');
+    li.innerHTML = `<span>${dayNames[i]}</span><span>${line}</span>`;
+    if (i===dow) li.classList.add('is-today');
+    listEl.appendChild(li);
+  }
+  if (noteEl) noteEl.textContent = 'Tap anywhere to close';
+}
+
+function openHours(){
+  if (!pop || !overlay) return;
+  renderWeek();
+  computeStatus();
+  pop.hidden = false;
+  overlay.hidden = false;
+  hoursBtn?.setAttribute('aria-expanded','true');
+}
+function closeHours(){
+  if (!pop || !overlay) return;
+  pop.hidden = true;
+  overlay.hidden = true;
+  hoursBtn?.setAttribute('aria-expanded','false');
+}
+
+hoursBtn?.addEventListener('click', () => {
+  const expanded = hoursBtn.getAttribute('aria-expanded') === 'true';
+  expanded ? closeHours() : openHours();
+});
+overlay?.addEventListener('click', closeHours);
+document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape' && !pop?.hidden) closeHours(); });
+
+computeStatus();
+setInterval(computeStatus, 60*1000);
+
+// ---- Mobile drawer (kept for later use, hidden by default in desktop) ----
 const openBtn = document.querySelector('[data-open-menu]');
 const drawer  = document.getElementById('navDrawer');
 const closeX  = drawer?.querySelector('.drawer-close');
-
-function openDrawer(){
-  if (!drawer) return;
-  drawer.hidden = false;
-  document.body.style.overflow = 'hidden';
-}
-function closeDrawer(){
-  if (!drawer) return;
-  drawer.hidden = true;
-  document.body.style.overflow = '';
-}
+function openDrawer(){ if (!drawer) return; drawer.hidden = false; document.body.style.overflow = 'hidden'; }
+function closeDrawer(){ if (!drawer) return; drawer.hidden = true; document.body.style.overflow = ''; }
 openBtn?.addEventListener('click', openDrawer);
 closeX?.addEventListener('click', closeDrawer);
-drawer?.addEventListener('click', (e)=>{
-  if (e.target.classList.contains('drawer-link')) closeDrawer();
-});
-document.addEventListener('keydown', (e)=>{
-  if (e.key === 'Escape' && drawer && !drawer.hidden) closeDrawer();
-});
+drawer?.addEventListener('click', (e)=>{ if (e.target.classList.contains('drawer-link')) closeDrawer(); });
+document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape' && drawer && !drawer.hidden) closeDrawer(); });
 
 // (Wishlist intentionally removed)
 try { localStorage.removeItem('wishlist'); } catch(e) {}
