@@ -56,7 +56,15 @@ a{color:inherit;text-decoration:none}
   width:38px;height:38px;border-radius:10px;border:1px solid var(--line);
   background:#fff;font-weight:700;color:var(--ink)
 }
-.pill{padding:6px 10px;border-radius:999px;background:#ECFDF3;color:#027A48;font-weight:800;border:1px solid #D1FADF}
+
+/* OPEN/CLOSE pill with state-based colors */
+.pill{
+  padding:6px 10px;border-radius:999px;border:1px solid var(--line);
+  background:#fff;font-weight:800;min-width:120px;text-align:center;
+}
+.pill.state-open{ color:#047857; background:#ECFDF3; border-color:#D1FADF; }
+.pill.state-soon{ color:#B45309; background:#FFF7ED; border-color:#FED7AA; }
+.pill.state-closed{ color:#B91C1C; background:#FEF2F2; border-color:#FECACA; }
 
 /* Mobile drawer */
 .nav-drawer{
@@ -81,7 +89,7 @@ a{color:inherit;text-decoration:none}
 .dots button{width:8px;height:8px;border-radius:50%;border:0;background:#d0d4da}
 .dots button.is-active{background:#9aa3ae}
 
-/* ========== Today’s Deals (uniform card, whole card clickable) ========== */
+/* ========== Today’s Deals ========== */
 .deals-section{margin:18px 0}
 .deal-card{
   background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;
@@ -105,7 +113,7 @@ a{color:inherit;text-decoration:none}
   padding:12px 16px;background:var(--deal-hue);position:relative;
   transition:max-height .25s ease
 }
-/* ~3-line teaser when collapsed (tweak if needed) */
+/* ~3-line teaser when collapsed */
 .deal-body.collapsed{max-height:168px;overflow:hidden}
 .deal-body.collapsed::after{
   content:""; position:absolute; left:0; right:0; bottom:0; height:28px;
@@ -129,7 +137,7 @@ a{color:inherit;text-decoration:none}
 .deal-note{margin-top:10px;font-size:.85rem;color:var(--muted)}
 .deal-actions{text-align:center;margin-top:10px}
 
-/* ========== Categories (light tiles) ========== */
+/* ========== Categories ========== */
 .categories{margin:24px 0}
 .cat-grid{display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
 @media (min-width:900px){.cat-grid{grid-template-columns:repeat(3,1fr)}}
@@ -141,7 +149,7 @@ a{color:inherit;text-decoration:none}
 .cat-card img{width:96px;height:64px;object-fit:cover;border-radius:10px}
 .cat-card span{font-weight:800;font-size:1.08rem}
 
-/* ========== DTG (condensed) ========== */
+/* ========== DTG ========== */
 .dtg{margin:16px 0 28px}
 .dtg-grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
 .dtg-card{border:1px solid var(--line);border-radius:16px;padding:10px;background:#fff}
@@ -151,7 +159,30 @@ a{color:inherit;text-decoration:none}
 .badge{background:#fff;color:var(--ink);padding:4px 8px;border-radius:999px;font-weight:700;border:1px solid var(--line)}
 .dtg-link{display:inline-block;margin-top:8px;font-weight:800;color:#111315;border-bottom:2px solid var(--gold)}
 
-/* ========== Footer ========== */
+/* ========== Hours popover & Contact ========== */
+.hours-overlay{position:fixed;inset:0;z-index:60;background:transparent}
+.hours-popover{
+  position:fixed; z-index:61; top:68px; right:16px;
+  width:280px; background:#fff; border:1px solid var(--line);
+  border-radius:12px; box-shadow:0 18px 40px rgba(16,24,40,.12);
+  padding:12px;
+}
+.hours-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.status-dot{width:10px;height:10px;border-radius:999px;background:#aaa;display:inline-block}
+.status-dot.is-open{background:#16a34a}
+.status-dot.is-soon{background:#f59e0b}
+.status-dot.is-closed{background:#ef4444}
+.hours-list{list-style:none;margin:0;padding:0}
+.hours-list li{display:flex;justify-content:space-between;padding:6px 2px;font-weight:600}
+.hours-list li.is-today{color:#111315}
+.hours-note{color:var(--muted);font-size:.9rem;margin-top:6px}
+
+.contact{padding:28px 0;border-top:1px solid var(--line);background:#fff}
+.contact-grid{display:grid;gap:20px;grid-template-columns:1fr}
+@media (min-width:900px){.contact-grid{grid-template-columns:1fr 1fr}}
+.socials a{font-weight:700}
+
+/* Footer */
 .site-footer{border-top:1px solid var(--line);padding:20px 0;background:#fff}
 .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .footer-inner nav a{color:var(--muted);margin-left:14px;font-size:.95rem}
