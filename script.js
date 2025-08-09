@@ -13,7 +13,7 @@ document.querySelectorAll('.tab-nav .tab').forEach(t => {
   t.classList.toggle('is-active', t.getAttribute('href') === '#home');
 });
 
-// ---- DAILY DEALS (from deals.json; supports groups) ----
+// ---- DAILY DEALS (from deals.json; supports groups/subgroups) ----
 (async function loadDeals() {
   const container = document.getElementById('dealList');
   if (!container) return;
@@ -24,10 +24,9 @@ document.querySelectorAll('.tab-nav .tab').forEach(t => {
     const data = await res.json();
 
     const html = data.map(cat => {
-      // Category title
       const title = `<div class="deal-cat-title">${cat.category}</div>`;
 
-      // If category has grouped sections
+      // Groups (sub-sections like Ounces / Halves / Quarters / Eighths)
       if (Array.isArray(cat.groups) && cat.groups.length) {
         const groupsHTML = cat.groups.map(g => `
           <div class="deal-subgroup">
@@ -40,19 +39,14 @@ document.querySelectorAll('.tab-nav .tab').forEach(t => {
         return `<div class="deal-cat">${title}${groupsHTML}</div>`;
       }
 
-      // Fallback: flat items array
+      // Flat items array
       const itemsHTML = (cat.items || []).map(item => `<li>${item}</li>`).join('');
-      return `
-        <div class="deal-cat">
-          ${title}
-          <ul class="deal-items">${itemsHTML}</ul>
-        </div>
-      `;
+      return `<div class="deal-cat">${title}<ul class="deal-items">${itemsHTML}</ul></div>`;
     }).join('');
 
     container.innerHTML = html || `<div class="deal-cat"><ul class="deal-items"><li>No active deals today.</li></ul></div>`;
 
-    // Optional tax note footer
+    // Optional tax note
     const note = document.createElement('div');
     note.className = 'deal-note';
     note.textContent = 'ALL PRICES ARE TAX INCLUDED';
@@ -64,16 +58,28 @@ document.querySelectorAll('.tab-nav .tab').forEach(t => {
   }
 })();
 
-// Deals accordion
+// Deals accordion (teaser + label swap + Close button)
 const toggle = document.querySelector('.deal-toggle');
 const dealBody = document.getElementById('dealBody');
-if (toggle && dealBody) {
-  toggle.addEventListener('click', () => {
-    const expanded = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', (!expanded).toString());
-    dealBody.hidden = expanded;
-  });
+const closeBtn = document.getElementById('closeDeals');
+
+function setDealsOpen(open){
+  if (!toggle || !dealBody) return;
+  dealBody.classList.toggle('collapsed', !open);
+  toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  const label = open
+    ? '🌟 This Week’s Deals — Tap to collapse'
+    : '🌟 This Week’s Deals — Tap to expand';
+  const labelSpan = toggle.querySelector('span:first-child');
+  if (labelSpan) labelSpan.textContent = label; else toggle.textContent = label;
+  if (closeBtn) closeBtn.style.display = open ? 'inline-block' : 'none';
 }
+setDealsOpen(false);
+toggle?.addEventListener('click', () => {
+  const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+  setDealsOpen(!isOpen);
+});
+closeBtn?.addEventListener('click', () => setDealsOpen(false));
 
 // Carousel dots + scroll-sync
 (function initCarousel(){
@@ -111,9 +117,28 @@ document.querySelectorAll('[data-ext]').forEach(a => {
   a.setAttribute('target', '_blank');
 });
 
-// Temporary “Menu” button behavior (could open a drawer later)
-document.querySelector('[data-open-menu]')?.addEventListener('click', () => {
-  window.location.hash = '#shop';
+// Mobile drawer menu
+const openBtn = document.querySelector('[data-open-menu]');
+const drawer  = document.getElementById('navDrawer');
+const closeX  = drawer?.querySelector('.drawer-close');
+
+function openDrawer(){
+  if (!drawer) return;
+  drawer.hidden = false;
+  document.body.style.overflow = 'hidden';
+}
+function closeDrawer(){
+  if (!drawer) return;
+  drawer.hidden = true;
+  document.body.style.overflow = '';
+}
+openBtn?.addEventListener('click', openDrawer);
+closeX?.addEventListener('click', closeDrawer);
+drawer?.addEventListener('click', (e)=>{
+  if (e.target.classList.contains('drawer-link')) closeDrawer();
+});
+document.addEventListener('keydown', (e)=>{
+  if (e.key === 'Escape' && drawer && !drawer.hidden) closeDrawer();
 });
 
 // (Wishlist intentionally removed)
