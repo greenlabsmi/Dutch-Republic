@@ -26,7 +26,6 @@ document.querySelectorAll('.tab-nav .tab').forEach(t => {
     const html = data.map(cat => {
       const title = `<div class="deal-cat-title">${cat.category}</div>`;
 
-      // Groups (sub-sections like Ounces / Halves / Quarters / Eighths)
       if (Array.isArray(cat.groups) && cat.groups.length) {
         const groupsHTML = cat.groups.map(g => `
           <div class="deal-subgroup">
@@ -39,7 +38,6 @@ document.querySelectorAll('.tab-nav .tab').forEach(t => {
         return `<div class="deal-cat">${title}${groupsHTML}</div>`;
       }
 
-      // Flat items array
       const itemsHTML = (cat.items || []).map(item => `<li>${item}</li>`).join('');
       return `<div class="deal-cat">${title}<ul class="deal-items">${itemsHTML}</ul></div>`;
     }).join('');
@@ -58,7 +56,7 @@ document.querySelectorAll('.tab-nav .tab').forEach(t => {
   }
 })();
 
-// Deals accordion (teaser + label swap + Close button)
+// Deals accordion (teaser + label swap + Close button + chevron rotate)
 const toggle = document.querySelector('.deal-toggle');
 const dealBody = document.getElementById('dealBody');
 const closeBtn = document.getElementById('closeDeals');
@@ -67,14 +65,19 @@ function setDealsOpen(open){
   if (!toggle || !dealBody) return;
   dealBody.classList.toggle('collapsed', !open);
   toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+
   const label = open
     ? '🌟 This Week’s Deals — Tap to collapse'
     : '🌟 This Week’s Deals — Tap to expand';
+
   const labelSpan = toggle.querySelector('span:first-child');
   if (labelSpan) labelSpan.textContent = label; else toggle.textContent = label;
+
   if (closeBtn) closeBtn.style.display = open ? 'inline-block' : 'none';
 }
+// initial state = collapsed teaser (shows 3-ish lines)
 setDealsOpen(false);
+
 toggle?.addEventListener('click', () => {
   const isOpen = toggle.getAttribute('aria-expanded') === 'true';
   setDealsOpen(!isOpen);
