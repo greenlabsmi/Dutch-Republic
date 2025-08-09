@@ -13,29 +13,54 @@ document.querySelectorAll('.tab-nav .tab').forEach(t => {
   t.classList.toggle('is-active', t.getAttribute('href') === '#home');
 });
 
-// ---- DAILY DEALS (category-based from deals.json) ----
+// ---- DAILY DEALS (from deals.json; supports groups) ----
 (async function loadDeals() {
-  const list = document.getElementById('dealList');
-  if (!list) return;
+  const container = document.getElementById('dealList');
+  if (!container) return;
 
   try {
     const res = await fetch('deals.json', { cache: 'no-store' });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
 
-    // Render categories -> items
-    list.innerHTML = data.map(cat => `
-      <li class="deal-cat">
-        <div class="deal-cat-title">${cat.category}</div>
-        <ul class="deal-items">
-          ${cat.items.map(item => `<li>${item}</li>`).join('')}
-        </ul>
-      </li>
-    `).join('');
+    const html = data.map(cat => {
+      // Category title
+      const title = `<div class="deal-cat-title">${cat.category}</div>`;
+
+      // If category has grouped sections
+      if (Array.isArray(cat.groups) && cat.groups.length) {
+        const groupsHTML = cat.groups.map(g => `
+          <div class="deal-subgroup">
+            <div class="deal-subtitle">${g.title}</div>
+            <ul class="deal-items">
+              ${g.items.map(item => `<li>${item}</li>`).join('')}
+            </ul>
+          </div>
+        `).join('');
+        return `<div class="deal-cat">${title}${groupsHTML}</div>`;
+      }
+
+      // Fallback: flat items array
+      const itemsHTML = (cat.items || []).map(item => `<li>${item}</li>`).join('');
+      return `
+        <div class="deal-cat">
+          ${title}
+          <ul class="deal-items">${itemsHTML}</ul>
+        </div>
+      `;
+    }).join('');
+
+    container.innerHTML = html || `<div class="deal-cat"><ul class="deal-items"><li>No active deals today.</li></ul></div>`;
+
+    // Optional tax note footer
+    const note = document.createElement('div');
+    note.className = 'deal-note';
+    note.textContent = 'ALL PRICES ARE TAX INCLUDED';
+    container.appendChild(note);
 
   } catch (err) {
     console.error('Failed to load deals.json:', err);
-    list.innerHTML = `<li>Deals are loading…</li>`;
+    container.innerHTML = `<div class="deal-cat"><ul class="deal-items"><li>Deals are loading…</li></ul></div>`;
   }
 })();
 
