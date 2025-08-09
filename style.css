@@ -59,6 +59,9 @@ a{color:inherit;text-decoration:none}
 .deal-body[hidden]{display:none}
 .deal-list{margin:8px 0 12px;padding-left:18px}
 
+.deal-actions{ text-align:center; margin-top:10px; }
+.btn.outline{ background:#fff; border:1px solid var(--line); }
+
 /* Category-based deals styling */
 .deal-cat{margin-bottom:16px}
 .deal-cat-title{
