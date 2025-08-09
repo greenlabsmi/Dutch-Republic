@@ -60,23 +60,26 @@ a{color:inherit;text-decoration:none}
 .deal-list{margin:8px 0 12px;padding-left:18px}
 
 /* Category-based deals styling */
-.deal-cat { margin-bottom: 16px; }
-.deal-cat-title {
-  font-weight: 700;
-  font-size: 1.05rem;
-  background: var(--brand-2);
-  padding: 6px 10px;
-  border-radius: var(--radius);
-  margin-bottom: 6px;
+.deal-cat{margin-bottom:16px}
+.deal-cat-title{
+  font-weight:700; font-size:1.05rem; background:var(--brand-2);
+  padding:6px 10px; border-radius:var(--radius); margin-bottom:6px;
 }
-.deal-items {
-  margin: 0;
-  padding-left: 18px;
+.deal-items{margin:0; padding-left:18px}
+.deal-items li{margin:3px 0; line-height:1.4}
+
+/* Sub-groups inside categories (e.g., Ounces / Halves / Quarters / Eighths) */
+.deal-subgroup{margin:8px 0 12px}
+.deal-subtitle{
+  font-weight:700; font-size:.96rem; color:var(--ink);
+  margin:6px 0 4px; padding-left:2px; border-left:3px solid var(--brand);
 }
-.deal-items li {
-  margin: 3px 0;
-  line-height: 1.4;
+
+/* Optional tax note */
+.deal-note{
+  margin-top:10px; font-size:.85rem; color:var(--muted); text-align:left;
 }
+
 /* ========== Categories (big tiles) ========== */
 .categories{margin:20px 0}
 .cat-grid{display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
