@@ -1,4 +1,4 @@
-// Sticky header shadow (implicit via backdrop) + year
+// Year
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
@@ -7,7 +7,7 @@ document.querySelectorAll('.tab-nav .tab').forEach(t => {
   t.classList.toggle('is-active', t.getAttribute('href') === '#home');
 });
 
-// ---- DAILY DEALS (from deals.json; supports groups/subgroups) ----
+// ---- DAILY DEALS (from deals.json; groups/subgroups) ----
 (async function loadDeals() {
   const container = document.getElementById('dealList');
   if (!container) return;
@@ -50,33 +50,41 @@ document.querySelectorAll('.tab-nav .tab').forEach(t => {
   }
 })();
 
-// Deals accordion (teaser + label swap + Close button + chevron rotate via [aria-expanded])
-const toggle = document.querySelector('.deal-toggle');
+// ---- Deals accordion (whole card clickable) ----
+const dealCard = document.querySelector('.deal-card');
 const dealBody = document.getElementById('dealBody');
 const closeBtn = document.getElementById('closeDeals');
 
 function setDealsOpen(open){
-  if (!toggle || !dealBody) return;
+  if (!dealCard || !dealBody) return;
   dealBody.classList.toggle('collapsed', !open);
-  toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-
-  const label = open
-    ? 'This Week’s Deals — Tap to collapse'
-    : 'This Week’s Deals — Tap to expand';
-  const titleEl = toggle.querySelector('.deal-title');
-  if (titleEl) titleEl.textContent = label;
-
+  dealCard.setAttribute('aria-expanded', open ? 'true' : 'false');
   if (closeBtn) closeBtn.style.display = open ? 'inline-block' : 'none';
 }
+// initial: collapsed teaser
 setDealsOpen(false);
 
-toggle?.addEventListener('click', () => {
-  const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+// Toggle when clicking anywhere on the card head/body background.
+// Ignore clicks on interactive elements (links/buttons inside).
+function clickShouldToggle(e){
+  const t = e.target;
+  return !(t.closest('a, button, input, select, textarea'));
+}
+dealCard?.addEventListener('click', (e) => {
+  if (!clickShouldToggle(e)) return;
+  const isOpen = dealCard.getAttribute('aria-expanded') === 'true';
   setDealsOpen(!isOpen);
 });
-closeBtn?.addEventListener('click', () => setDealsOpen(false));
+dealCard?.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    const isOpen = dealCard.getAttribute('aria-expanded') === 'true';
+    setDealsOpen(!isOpen);
+  }
+});
+closeBtn?.addEventListener('click', (e) => { e.stopPropagation(); setDealsOpen(false); });
 
-// Carousel dots + scroll-sync
+// ---- Carousel dots + scroll-sync ----
 (function initCarousel(){
   const scroller = document.querySelector('[data-carousel]');
   const dotsWrap = document.querySelector('[data-dots]');
@@ -112,7 +120,7 @@ document.querySelectorAll('[data-ext]').forEach(a => {
   a.setAttribute('target', '_blank');
 });
 
-// Mobile drawer menu
+// ---- Mobile drawer menu ----
 const openBtn = document.querySelector('[data-open-menu]');
 const drawer  = document.getElementById('navDrawer');
 const closeX  = drawer?.querySelector('.drawer-close');
