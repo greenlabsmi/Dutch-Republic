@@ -7,21 +7,22 @@ document.addEventListener('scroll', () => {
 
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Mobile nav toggle
-const navToggle = document.querySelector('.nav-toggle');
-const navMenu = document.getElementById('navMenu');
-if (navToggle && navMenu) {
-  navToggle.addEventListener('click', () => {
-    const open = navMenu.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  // Close on link click (mobile)
-  navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    if (navMenu.classList.contains('open')) {
-      navMenu.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-    }
-  }));
+// Mark "Home" tab active (simple demo)
+document.querySelectorAll('.tab-nav .tab').forEach(t => {
+  t.classList.toggle('is-active', t.getAttribute('href') === '#home');
+});
+
+// Deals data (edit here) — shows inside the accordion
+const DEALS = [
+  { label: 'Mon–Thu', text: 'Wake & Save 15% (open–12pm)' },
+  { label: 'Saturday', text: 'BOGO select pre-rolls' },
+  { label: 'All Week', text: 'Price match within 10 miles' }
+];
+
+// Populate deals list
+const dealList = document.getElementById('dealList');
+if (dealList) {
+  dealList.innerHTML = DEALS.map(d => `<li><strong>${d.label}:</strong> ${d.text}</li>`).join('');
 }
 
 // Deals accordion
@@ -35,7 +36,7 @@ if (toggle && dealBody) {
   });
 }
 
-// Carousel dots + scroll-sync (simple, no lib)
+// Carousel dots + scroll-sync
 (function initCarousel(){
   const scroller = document.querySelector('[data-carousel]');
   const dotsWrap = document.querySelector('[data-dots]');
@@ -71,5 +72,10 @@ document.querySelectorAll('[data-ext]').forEach(a => {
   a.setAttribute('target', '_blank');
 });
 
-// (Wishlist intentionally removed/neutralized)
+// Temporary “Menu” button behavior (could open a drawer later)
+document.querySelector('[data-open-menu]')?.addEventListener('click', () => {
+  window.location.hash = '#shop';
+});
+
+// (Wishlist intentionally removed)
 try { localStorage.removeItem('wishlist'); } catch(e) {}
