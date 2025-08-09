@@ -1,13 +1,19 @@
-// Year
+/* =========================
+   Dutch District – script.js
+   ========================= */
+
+/* Year in footer */
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// Mark "Home" tab active (simple demo)
+/* Mark "Home" tab active (demo) */
 document.querySelectorAll('.tab-nav .tab').forEach(t => {
   t.classList.toggle('is-active', t.getAttribute('href') === '#home');
 });
 
-// ---- DAILY DEALS (from deals.json; supports groups/subgroups) ----
+/* -------------------------
+   DAILY DEALS (deals.json)
+   ------------------------- */
 (async function loadDeals() {
   const container = document.getElementById('dealList');
   if (!container) return;
@@ -46,11 +52,14 @@ document.querySelectorAll('.tab-nav .tab').forEach(t => {
 
   } catch (err) {
     console.error('Failed to load deals.json:', err);
-    container.innerHTML = `<div class="deal-cat"><ul class="deal-items"><li>Deals are loading…</li></ul></div>`;
+    const fallback = `<div class="deal-cat"><ul class="deal-items"><li>Deals are loading…</li></ul></div>`;
+    container.innerHTML = fallback;
   }
 })();
 
-// ---- Deals accordion (whole card clickable) ----
+/* -------------------------
+   Deals accordion (HOD-style)
+   ------------------------- */
 const dealCard = document.querySelector('.deal-card');
 const dealBody = document.getElementById('dealBody');
 const closeBtn = document.getElementById('closeDeals');
@@ -61,10 +70,10 @@ function setDealsOpen(open){
   dealCard.setAttribute('aria-expanded', open ? 'true' : 'false');
   if (closeBtn) closeBtn.style.display = open ? 'inline-block' : 'none';
 }
-// initial collapsed teaser (~3 lines)
+// start collapsed with ~3-line teaser
 setDealsOpen(false);
 
-// Toggle anywhere on the card (except interactive elements)
+// Only toggle if you didn’t click an interactive element inside
 function clickShouldToggle(e){
   const t = e.target;
   return !(t.closest('a, button, input, select, textarea'));
@@ -83,7 +92,9 @@ dealCard?.addEventListener('keydown', (e) => {
 });
 closeBtn?.addEventListener('click', (e) => { e.stopPropagation(); setDealsOpen(false); });
 
-// ---- Carousel dots + scroll-sync ----
+/* -------------------------
+   Hero carousel (dots + auto)
+   ------------------------- */
 (function initCarousel(){
   const scroller = document.querySelector('[data-carousel]');
   const dotsWrap = document.querySelector('[data-dots]');
@@ -108,18 +119,23 @@ closeBtn?.addEventListener('click', (e) => { e.stopPropagation(); setDealsOpen(f
   // Optional auto-advance
   let idx = 0;
   setInterval(() => {
+    if (!document.body.contains(scroller)) return; // safety
     idx = (idx + 1) % slides.length;
     scroller.scrollTo({ left: idx * scroller.clientWidth, behavior: 'smooth' });
   }, 6000);
 })();
 
-// External commerce links – open in new tab
+/* -------------------------
+   External commerce links
+   ------------------------- */
 document.querySelectorAll('[data-ext]').forEach(a => {
   a.setAttribute('rel', 'noopener');
   a.setAttribute('target', '_blank');
 });
 
-// ---- Hours of operation / status pill & popover ----
+/* ---------------------------------------
+   Hours of operation – pill + popover
+   --------------------------------------- */
 // Green Labs hours: 9:00–21:00 every day
 const HOURS = {
   0: { open: '09:00', close: '21:00' },  // Sun
@@ -168,14 +184,20 @@ function computeStatus(){
     }
   }
 
+  // Update pill text + state color class
   if (hoursBtn){
     hoursBtn.textContent = label;
     hoursBtn.classList.remove('state-open','state-soon','state-closed');
-    hoursBtn.classList.add(state==='open' ? 'state-open' : state==='closing-soon' || state==='opening-soon' ? 'state-soon' : 'state-closed');
+    hoursBtn.classList.add(state==='open' ? 'state-open'
+                      : (state==='closing-soon' || state==='opening-soon') ? 'state-soon'
+                      : 'state-closed');
   }
 
+  // Update dot in popover
   if (dotEl){
-    dotEl.className = 'status-dot ' + (state==='open' ? 'is-open' : (state==='closing-soon' || state==='opening-soon') ? 'is-soon' : 'is-closed');
+    dotEl.className = 'status-dot ' + (state==='open' ? 'is-open'
+                            : (state==='closing-soon' || state==='opening-soon') ? 'is-soon'
+                            : 'is-closed');
   }
 }
 
@@ -218,19 +240,76 @@ hoursBtn?.addEventListener('click', () => {
 overlay?.addEventListener('click', closeHours);
 document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape' && !pop?.hidden) closeHours(); });
 
+// Initial + keep fresh every minute
 computeStatus();
 setInterval(computeStatus, 60*1000);
 
-// ---- Mobile drawer (kept for later use, hidden by default in desktop) ----
+/* ---------------------------------------
+   Device-aware Maps open (Apple / Google)
+   --------------------------------------- */
+const ADDRESS_QUERY = '435+Blue+Star+Hwy,+Douglas,+MI+49406';
+const appleMapsURL = `https://maps.apple.com/?q=${ADDRESS_QUERY}`;
+const googleMapsURL = `https://www.google.com/maps/search/?api=1&query=${ADDRESS_QUERY}`;
+
+function detectAppleEnv(){
+  const ua = navigator.userAgent || '';
+  return /iPad|iPhone|iPod|Macintosh/.test(ua);
+}
+function getMapPref(){
+  return localStorage.getItem('mapPref') || (detectAppleEnv() ? 'apple' : 'google');
+}
+function setMapPref(p){ try{ localStorage.setItem('mapPref', p); }catch(_){} }
+
+function openPreferredMap(){
+  const pref = getMapPref();
+  const url = pref === 'apple' ? appleMapsURL : googleMapsURL;
+  window.open(url, '_blank', 'noopener');
+}
+
+document.getElementById('openMaps')?.addEventListener('click', openPreferredMap);
+document.getElementById('switchMapPref')?.addEventListener('click', () => {
+  const next = getMapPref() === 'apple' ? 'google' : 'apple';
+  setMapPref(next);
+  const btn = document.getElementById('switchMapPref');
+  if (btn){
+    btn.textContent = next === 'apple' ? 'Use Google' : 'Use Apple';
+    setTimeout(()=>{ btn.textContent = 'Switch'; }, 1200);
+  }
+});
+document.getElementById('mapLink')?.addEventListener('click', (e) => {
+  e.preventDefault();
+  openPreferredMap();
+});
+
+/* -------------------------
+   Loyalty expand-on-continue
+   ------------------------- */
+const loyEmail = document.getElementById('loyEmail');
+const loyStart = document.getElementById('loyStart');
+const loyBody = document.getElementById('loyBody');
+
+function openLoyalty(){
+  if (!loyBody) return;
+  loyBody.hidden = false;
+  loyBody.scrollIntoView({ behavior:'smooth', block:'start' });
+}
+loyStart?.addEventListener('click', openLoyalty);
+loyEmail?.addEventListener('focus', openLoyalty);
+
+/* -------------------------
+   Mobile drawer (optional)
+   ------------------------- */
 const openBtn = document.querySelector('[data-open-menu]');
 const drawer  = document.getElementById('navDrawer');
 const closeX  = drawer?.querySelector('.drawer-close');
+
 function openDrawer(){ if (!drawer) return; drawer.hidden = false; document.body.style.overflow = 'hidden'; }
 function closeDrawer(){ if (!drawer) return; drawer.hidden = true; document.body.style.overflow = ''; }
+
 openBtn?.addEventListener('click', openDrawer);
 closeX?.addEventListener('click', closeDrawer);
 drawer?.addEventListener('click', (e)=>{ if (e.target.classList.contains('drawer-link')) closeDrawer(); });
 document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape' && drawer && !drawer.hidden) closeDrawer(); });
 
-// (Wishlist intentionally removed)
+/* Clean up any old wishlist */
 try { localStorage.removeItem('wishlist'); } catch(e) {}
