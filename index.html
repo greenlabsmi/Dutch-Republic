@@ -31,7 +31,8 @@
       </nav>
 
       <div class="header-actions">
-        <span class="pill open" aria-label="Store status">OPEN</span>
+        <!-- OPEN pill becomes a button with popover -->
+        <button class="pill" id="hoursBtn" type="button" aria-haspopup="dialog" aria-expanded="false">OPEN</button>
         <button class="icon-btn" data-open-menu aria-label="Open menu">☰</button>
         <a class="icon-btn" href="#" aria-label="Search">🔍</a>
         <a class="icon-btn" href="#" aria-label="Account">👤</a>
@@ -39,15 +40,15 @@
       </div>
     </div>
 
-    <!-- Mobile drawer -->
-    <div id="navDrawer" class="nav-drawer" hidden>
-      <nav aria-label="Mobile">
-        <a href="#home" class="drawer-link">Home</a>
-        <a href="https://your-ecom-link" class="drawer-link" data-ext>Shop</a>
-        <a href="https://your-ecom-link?view=brands" class="drawer-link" data-ext>Brands</a>
-        <a href="#deals" class="drawer-link">Specials</a>
-      </nav>
-      <button class="drawer-close" aria-label="Close menu">✕</button>
+    <!-- click-away overlay & hours popover -->
+    <div id="hoursOverlay" class="hours-overlay" hidden></div>
+    <div id="hoursPopover" class="hours-popover" role="dialog" aria-modal="false" hidden>
+      <div class="hours-head">
+        <strong>Today’s Hours</strong>
+        <span class="status-dot" id="hoursStatusDot"></span>
+      </div>
+      <ul class="hours-list" id="hoursList"><!-- JS fills hours --></ul>
+      <div class="hours-note" id="hoursNote"></div>
     </div>
   </header>
 
@@ -64,7 +65,7 @@
       </div>
     </section>
 
-    <!-- Today’s Deals (uniform card, whole card clickable) -->
+    <!-- Today’s Deals -->
     <section id="deals" class="deals-section">
       <div class="container">
         <div class="deal-card" role="button" tabindex="0" aria-expanded="false" aria-controls="dealBody">
@@ -131,6 +132,42 @@
             <div class="dtg-meta"><span class="badge">Indica</span><span class="meta">THC 22%</span></div>
             <a class="dtg-link" href="https://your-ecom-link?brand=dutch-touch-genetics" data-ext>View on menu</a>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact / Social / Reviews (Green Labs info for now) -->
+    <section id="contact" class="contact">
+      <div class="container contact-grid">
+        <div>
+          <h2 class="section-title">Visit Us — Green Labs Provisions</h2>
+          <p><strong>Address</strong><br>
+            435 Blue Star Hwy, Douglas, MI 49406
+          </p>
+          <p>
+            <a class="btn small" href="https://maps.apple.com/?address=435%20Blue%20Star%20Hwy,%20Douglas,%20MI%2049406" data-ext>Apple Maps</a>
+            <a class="btn small" href="https://www.google.com/maps/search/?api=1&query=435+Blue+Star+Hwy,+Douglas,+MI+49406" data-ext>Google Maps</a>
+          </p>
+          <p><strong>Phone</strong><br><a href="tel:+17348000024">(734) 800-0024</a></p>
+          <p><strong>Email</strong><br><a href="mailto:Shop@greenlabs.com">Shop@greenlabs.com</a></p>
+        </div>
+
+        <div>
+          <h2 class="section-title">Loyalty</h2>
+          <p>Earn points on every purchase. Redeem for exclusive rewards.</p>
+          <p><a class="btn gold" href="https://your-loyalty-link" data-ext>Join / Sign In</a></p>
+
+          <h3 class="section-sub" style="margin-top:16px">Follow Us</h3>
+          <p class="socials">
+            <a href="https://www.instagram.com/greenlabsmi" data-ext>Instagram</a> •
+            <a href="https://www.facebook.com/greenlabsmi" data-ext>Facebook</a>
+          </p>
+
+          <h3 class="section-sub" style="margin-top:16px">Leave a Review</h3>
+          <p>
+            <a href="https://share.google/sXlxPZrTMpuUN6DLd" data-ext>Google</a> •
+            <a href="https://maps.apple.com/?address=435%20Blue%20Star%20Hwy,%20Douglas,%20MI%2049406" data-ext>Apple Maps</a>
+          </p>
         </div>
       </div>
     </section>
