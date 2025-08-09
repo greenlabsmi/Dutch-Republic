@@ -31,7 +31,7 @@ a{color:inherit;text-decoration:none}
 .cart{position:relative}
 .cart-badge{position:absolute;top:-6px;right:-6px;background:var(--brand);color:#fff;font-size:11px;padding:2px 6px;border-radius:999px}
 
-/* Utility bar + tabs (Backpack Boyz vibe) */
+/* Utility bar + tabs */
 .util-bar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fafafa}
 .util-inner{display:flex;align-items:center;justify-content:space-between;height:44px}
 .status{display:flex;align-items:center;gap:10px;font-size:.95rem}
@@ -77,13 +77,22 @@ a{color:inherit;text-decoration:none}
 
 /* ========== Deals Banner (Accordion) ========== */
 .deal-banner{margin:16px 0}
-.deal-toggle{width:100%;background:var(--brand-2);border:1px solid var(--line);padding:12px 14px;border-radius:var(--radius);font-weight:700;display:flex;align-items:center;justify-content:space-between}
-.deal-body{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);padding:12px 14px;background:#fff;transition:max-height .25s ease;position:relative}
-.deal-body[hidden]{display:none}
+.deal-toggle{
+  width:100%;background:var(--brand-2);border:1px solid var(--line);
+  padding:12px 14px;border-radius:var(--radius);font-weight:700;
+  display:flex;align-items:center;justify-content:space-between
+}
+.deal-toggle .chev{transition:transform .2s ease}
+.deal-toggle[aria-expanded="true"] .chev{transform:rotate(180deg)}
+
+.deal-body{
+  border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);
+  padding:12px 14px;background:#fff;transition:max-height .25s ease;position:relative
+}
 .deal-list{margin:8px 0 12px;padding-left:0;list-style:none}
 
-/* Teaser when collapsed */
-.deal-body.collapsed{max-height:64px;overflow:hidden}
+/* Three-line teaser when collapsed */
+.deal-body.collapsed{max-height:132px;overflow:hidden}
 .deal-body.collapsed::after{
   content:""; position:absolute; left:0; right:0; bottom:0; height:28px;
   background:linear-gradient(to bottom, rgba(255,255,255,0), #fff);
@@ -95,12 +104,13 @@ a{color:inherit;text-decoration:none}
 
 /* Category-based deals styling */
 .deal-cat{margin-bottom:16px}
+.deal-cat + .deal-cat{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}
 .deal-cat-title{
-  font-weight:700; font-size:1.05rem; background:var(--brand-2);
-  padding:6px 10px; border-radius:var(--radius); margin-bottom:6px;
+  font-weight:800; font-size:1.06rem; background:var(--brand-2);
+  padding:8px 10px; border-radius:var(--radius); margin-bottom:8px;
 }
 .deal-items{margin:0; padding-left:18px}
-.deal-items li{margin:3px 0; line-height:1.4}
+.deal-items li{margin:4px 0; line-height:1.45}
 
 /* Sub-groups inside categories */
 .deal-subgroup{margin:8px 0 12px}
