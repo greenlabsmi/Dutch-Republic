@@ -1,4 +1,4 @@
-// Dutch Republic Site JS — Full Script (filters, search, sort, hues, wishlist, modal, chatbot)
+// Dutch Republic Site JS — Full Script (filters, search, sort, hues, wishlist w/ localStorage, modal, chatbot, smooth scroll)
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Dutch Republic site ready.");
@@ -96,8 +96,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   ];
 
-  // --- Wishlist (session only; upgrade to localStorage later if you want) ---
-  let wishlist = new Set();
+  // --- Wishlist (persisted) ---
+  const WISHLIST_KEY = "dr_wishlist_v1";
+  function loadWishlist() {
+    try {
+      const raw = localStorage.getItem(WISHLIST_KEY);
+      if (!raw) return new Set();
+      const arr = JSON.parse(raw);
+      return new Set(Array.isArray(arr) ? arr : []);
+    } catch {
+      return new Set();
+    }
+  }
+  function saveWishlist(set) {
+    try {
+      localStorage.setItem(WISHLIST_KEY, JSON.stringify([...set]));
+    } catch {}
+  }
+  let wishlist = loadWishlist();
 
   // --- Elements expected in HTML ---
   const strainGrid = document.getElementById("strainGrid");
@@ -118,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (cat === "uplifting") return { border: "#f97316", bg: "#fff6f2" }; // coral
     if (cat === "mellow") return { border: "#60a5fa", bg: "#f3f7ff" };    // blue
     if (cat === "balanced") return { border: "#10b981", bg: "#f6fff2" };  // green
-    return { border: "#d1d5db", bg: "#ffffff" };                          // gray
+    return { border: "#d1d5db", bg: "#ffffff" };                           // gray
   }
 
   function sortStrains(list, mode) {
@@ -198,13 +214,17 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       `;
 
-      // wishlist star toggle
+      // wishlist star toggle (persist)
       tile.querySelector(".star")?.addEventListener("click", (e) => {
         e.stopPropagation();
         const name = e.currentTarget.dataset.name;
-        if (wishlist.has(name)) wishlist.delete(name);
-        else wishlist.add(name);
+        if (wishlist.has(name)) {
+          wishlist.delete(name);
+        } else {
+          wishlist.add(name);
+        }
         e.currentTarget.textContent = wishlist.has(name) ? "⭐" : "☆";
+        saveWishlist(wishlist);
       });
 
       // details → open modal
@@ -301,9 +321,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (modalSaveBtn) {
       modalSaveBtn.textContent = wishlist.has(s.name) ? "⭐ Saved" : "⭐ Save";
       modalSaveBtn.onclick = () => {
-        if (wishlist.has(s.name)) wishlist.delete(s.name);
-        else wishlist.add(s.name);
+        if (wishlist.has(s.name)) {
+          wishlist.delete(s.name);
+        } else {
+          wishlist.add(s.name);
+        }
         modalSaveBtn.textContent = wishlist.has(s.name) ? "⭐ Saved" : "⭐ Save";
+        saveWishlist(wishlist);
         renderStrains(); // update stars on tiles too
       };
     }
