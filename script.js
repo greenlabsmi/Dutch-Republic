@@ -7,7 +7,7 @@ document.querySelectorAll('.tab-nav .tab').forEach(t => {
   t.classList.toggle('is-active', t.getAttribute('href') === '#home');
 });
 
-// ---- DAILY DEALS (from deals.json; groups/subgroups) ----
+// ---- DAILY DEALS (from deals.json; supports groups/subgroups) ----
 (async function loadDeals() {
   const container = document.getElementById('dealList');
   if (!container) return;
@@ -61,11 +61,10 @@ function setDealsOpen(open){
   dealCard.setAttribute('aria-expanded', open ? 'true' : 'false');
   if (closeBtn) closeBtn.style.display = open ? 'inline-block' : 'none';
 }
-// initial: collapsed teaser
+// initial collapsed teaser (~3 lines)
 setDealsOpen(false);
 
-// Toggle when clicking anywhere on the card head/body background.
-// Ignore clicks on interactive elements (links/buttons inside).
+// Toggle anywhere on the card (except interactive elements)
 function clickShouldToggle(e){
   const t = e.target;
   return !(t.closest('a, button, input, select, textarea'));
