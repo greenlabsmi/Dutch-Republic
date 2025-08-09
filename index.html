@@ -136,86 +136,98 @@
       </div>
     </section>
 
-    <!-- Contact / Social / Reviews (Green Labs info for now) -->
+    <!-- Contact / Social / Reviews (Green Labs, Luna Pier) -->
     <section id="contact" class="contact contact--gold">
-  <div class="container contact-wrap">
-    <!-- Left: address + map -->
-    <div class="contact-col">
-      <h2 class="section-title">Visit Us</h2>
+      <div class="container contact-wrap">
+        <!-- Left: address + live map -->
+        <div class="contact-col">
+          <h2 class="section-title">Visit Us — Green Labs</h2>
 
-      <div class="map-card">
-        <!-- Temporary preview image; replace when ready -->
-        <a id="mapLink" class="map-link" href="#" data-ext aria-label="Open in Maps">
-          <img src="assets/map-placeholder.jpg" alt="Map to 435 Blue Star Hwy, Douglas, MI 49406" />
-          <span class="map-pin">📍</span>
-        </a>
-        <div class="map-actions">
-          <div class="addr">
-            <strong>435 Blue Star Hwy</strong><br/>Douglas, MI 49406
+          <div class="map-card">
+            <!-- Live Google Maps embed centered on your coordinates -->
+            <div class="map-link" aria-label="Map preview">
+              <iframe
+                title="Map — Green Labs"
+                width="100%"
+                height="220"
+                style="border:0; display:block"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=41.811131,-83.446182&hl=en&z=15&output=embed">
+              </iframe>
+              <span class="map-pin">📍</span>
+            </div>
+
+            <div class="map-actions">
+              <div class="addr">
+                <strong>10701 Madison St</strong><br/>Luna Pier, MI 48157
+              </div>
+              <div class="map-buttons">
+                <a class="btn small gold" href="https://maps.apple.com/place?address=10701%20Madison%20St,%20Luna%20Pier,%20MI%2048157,%20United%20States&coordinate=41.811131,-83.446182&name=Green%20Labs&place-id=I7D92A14C05BBFB93&map=explore" target="_blank" rel="noopener">Apple Maps</a>
+                <a class="btn small outline" href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x883b792f918df687:0xb3cf2121d239bc1d?entry=s&sa=X&ved=1t:8290&hl=en-us&ictx=111&g_ep=Eg1tbF8yMDI1MDgwNl8wIOC7DCoASAJQAg%3D%3D" target="_blank" rel="noopener">Google Maps</a>
+              </div>
+            </div>
           </div>
-          <div class="map-buttons">
-            <button id="openMaps" class="btn small gold" type="button">Open in Maps</button>
-            <button id="switchMapPref" class="btn small outline" type="button">Switch</button>
-          </div>
+
+          <ul class="contact-list">
+            <li><strong>Phone</strong> <a href="tel:+17348000024">(734) 800-0024</a></li>
+            <li><strong>Email</strong> <a href="mailto:Shop@greenlabs.com">Shop@greenlabs.com</a></li>
+            <li class="socials">
+              <strong>Social</strong>
+              <a href="https://www.instagram.com/greenlabsmi" data-ext>Instagram</a> •
+              <a href="https://www.facebook.com/greenlabsmi" data-ext>Facebook</a> •
+              <a href="https://share.google/sXlxPZrTMpuUN6DLd" data-ext>Google Reviews</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right: loyalty -->
+        <div class="contact-col">
+          <h2 class="section-title">Loyalty</h2>
+
+          <form id="loyaltyForm" class="loyalty-card" action="#" method="post" onsubmit="return false;">
+            <!-- collapsed head -->
+            <label class="loy-row loy-inline" for="loyEmail">
+              <input id="loyEmail" name="email" type="email" placeholder="Enter your email to join" required />
+              <button id="loyStart" class="btn gold" type="button">Continue</button>
+            </label>
+
+            <!-- expands on continue/focus -->
+            <div id="loyBody" class="loy-body" hidden>
+              <div class="loy-grid">
+                <label>First Name
+                  <input name="firstName" type="text" autocomplete="given-name" />
+                </label>
+                <label>Last Name
+                  <input name="lastName" type="text" autocomplete="family-name" />
+                </label>
+                <label>Mobile Phone
+                  <input name="phone" type="tel" inputmode="tel" autocomplete="tel" />
+                </label>
+              </div>
+
+              <div class="loy-blurb">
+                Earn points on every purchase. Redeem for exclusive Dutch District rewards and drops.
+              </div>
+
+              <label class="loy-agree">
+                <input type="checkbox" required />
+                <span>
+                  By signing up, I consent to receive marketing communications and agree to the program terms.
+                  Standard messaging rates may apply. I confirm I am of legal age.
+                </span>
+              </label>
+
+              <div class="loy-actions">
+                <!-- Swap these href values to your real loyalty provider when ready -->
+                <a class="btn gold" href="https://your-loyalty-link" data-ext>Create Account</a>
+                <a class="btn outline" href="https://your-loyalty-link" data-ext>Sign In</a>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
-
-      <ul class="contact-list">
-        <li><strong>Phone</strong> <a href="tel:+17348000024">(734) 800-0024</a></li>
-        <li><strong>Email</strong> <a href="mailto:Shop@greenlabs.com">Shop@greenlabs.com</a></li>
-        <li class="socials">
-          <strong>Social</strong>
-          <a href="https://www.instagram.com/greenlabsmi" data-ext>Instagram</a> •
-          <a href="https://www.facebook.com/greenlabsmi" data-ext>Facebook</a> •
-          <a href="https://share.google/sXlxPZrTMpuUN6DLd" data-ext>Google Reviews</a>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Right: loyalty -->
-    <div class="contact-col">
-      <h2 class="section-title">Loyalty</h2>
-
-      <form id="loyaltyForm" class="loyalty-card" action="#" method="post" onsubmit="return false;">
-        <label class="loy-row loy-inline" for="loyEmail">
-          <input id="loyEmail" name="email" type="email" placeholder="Enter your email to join" required />
-          <button id="loyStart" class="btn gold" type="button">Continue</button>
-        </label>
-
-        <div id="loyBody" class="loy-body" hidden>
-          <div class="loy-grid">
-            <label>First Name
-              <input name="firstName" type="text" autocomplete="given-name" />
-            </label>
-            <label>Last Name
-              <input name="lastName" type="text" autocomplete="family-name" />
-            </label>
-            <label>Mobile Phone
-              <input name="phone" type="tel" inputmode="tel" autocomplete="tel" />
-            </label>
-          </div>
-
-          <div class="loy-blurb">
-            Earn points on every purchase. Redeem for exclusive Dutch District rewards and drops.
-          </div>
-
-          <label class="loy-agree">
-            <input type="checkbox" required />
-            <span>
-              By signing up, I consent to receive marketing communications and agree to the program terms.
-              Standard messaging rates may apply. I confirm I am of legal age.
-            </span>
-          </label>
-
-          <div class="loy-actions">
-            <a class="btn gold" href="https://your-loyalty-link" data-ext>Create Account</a>
-            <a class="btn outline" href="https://your-loyalty-link" data-ext>Sign In</a>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-</section>
+    </section>
   </main>
 
   <footer class="site-footer">
