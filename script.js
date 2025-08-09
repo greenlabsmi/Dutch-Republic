@@ -5,25 +5,39 @@ document.addEventListener('scroll', () => {
   header.classList.toggle('is-scrolled', window.scrollY > 8);
 }, { passive: true });
 
-document.getElementById('year').textContent = new Date().getFullYear();
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 // Mark "Home" tab active (simple demo)
 document.querySelectorAll('.tab-nav .tab').forEach(t => {
   t.classList.toggle('is-active', t.getAttribute('href') === '#home');
 });
 
-// Deals data (edit here) — shows inside the accordion
-const DEALS = [
-  { label: 'Mon–Thu', text: 'Wake & Save 15% (open–12pm)' },
-  { label: 'Saturday', text: 'BOGO select pre-rolls' },
-  { label: 'All Week', text: 'Price match within 10 miles' }
-];
+// ---- DAILY DEALS (category-based from deals.json) ----
+(async function loadDeals() {
+  const list = document.getElementById('dealList');
+  if (!list) return;
 
-// Populate deals list
-const dealList = document.getElementById('dealList');
-if (dealList) {
-  dealList.innerHTML = DEALS.map(d => `<li><strong>${d.label}:</strong> ${d.text}</li>`).join('');
-}
+  try {
+    const res = await fetch('deals.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+
+    // Render categories -> items
+    list.innerHTML = data.map(cat => `
+      <li class="deal-cat">
+        <div class="deal-cat-title">${cat.category}</div>
+        <ul class="deal-items">
+          ${cat.items.map(item => `<li>${item}</li>`).join('')}
+        </ul>
+      </li>
+    `).join('');
+
+  } catch (err) {
+    console.error('Failed to load deals.json:', err);
+    list.innerHTML = `<li>Deals are loading…</li>`;
+  }
+})();
 
 // Deals accordion
 const toggle = document.querySelector('.deal-toggle');
