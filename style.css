@@ -182,6 +182,38 @@ a{color:inherit;text-decoration:none}
 @media (min-width:900px){.contact-grid{grid-template-columns:1fr 1fr}}
 .socials a{font-weight:700}
 
+/* Contact section – gold tint */
+.contact--gold{background:var(--deal-hue); border-top:1px solid var(--line); padding:28px 0}
+.contact-wrap{display:grid; gap:20px; grid-template-columns:1fr}
+@media (min-width:900px){ .contact-wrap{grid-template-columns:1fr 1fr} }
+.contact-col .section-title{margin-bottom:10px}
+
+/* Map card */
+.map-card{background:#fff; border:1px solid var(--line); border-radius:16px; overflow:hidden}
+.map-link{position:relative; display:block; line-height:0}
+.map-link img{width:100%; height:220px; object-fit:cover}
+.map-pin{position:absolute; right:10px; bottom:10px; background:#111315; color:#fff; padding:6px 8px; border-radius:999px; font-weight:800}
+.map-actions{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px}
+.map-actions .addr{font-weight:700}
+.map-buttons{display:flex; gap:8px}
+
+/* Contact list */
+.contact-list{list-style:none; padding:0; margin:14px 0 0}
+.contact-list li{margin:8px 0}
+.socials a{font-weight:800}
+
+/* Loyalty card */
+.loyalty-card{background:#fff; border:1px solid var(--line); border-radius:16px; padding:12px}
+.loy-row{display:flex; gap:8px; align-items:center}
+.loy-inline input{flex:1; height:44px; border:1px solid var(--line); border-radius:12px; padding:0 12px; font-weight:600}
+.loy-body{margin-top:10px}
+.loy-grid{display:grid; gap:10px; grid-template-columns:1fr}
+.loy-grid input{height:44px; border:1px solid var(--line); border-radius:12px; padding:0 12px; font-weight:600}
+@media (min-width:600px){ .loy-grid{grid-template-columns:1fr 1fr} }
+.loy-blurb{margin:8px 0; color:var(--muted)}
+.loy-agree{display:flex; align-items:flex-start; gap:10px; font-size:.92rem; color:#344054; margin:8px 0}
+.loy-actions{display:flex; gap:10px; margin-top:6px}
+
 /* Footer */
 .site-footer{border-top:1px solid var(--line);padding:20px 0;background:#fff}
 .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:10px}
