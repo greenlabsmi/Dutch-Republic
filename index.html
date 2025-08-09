@@ -10,50 +10,60 @@
 <body>
   <!-- Sticky Header -->
   <header class="site-header" data-sticky>
-    <div class="container header-inner">
+    <div class="container brand-bar">
+      <!-- Temporary SVG logo -->
       <a class="brand" href="/">
-        <img src="img/logo.svg" alt="Dutch Republic" />
+        <svg viewBox="0 0 540 120" width="170" height="38" aria-label="Dutch Republic">
+          <rect width="540" height="120" rx="14" fill="#104c3f"></rect>
+          <text x="50%" y="55%" text-anchor="middle" font-size="44" font-weight="700" fill="#ffffff" font-family="ui-sans-serif,system-ui">Dutch Republic</text>
+          <text x="50%" y="84%" text-anchor="middle" font-size="18" fill="#cfe9e1" font-family="ui-sans-serif,system-ui">Powered by Dutch Touch</text>
+        </svg>
       </a>
 
-      <nav class="nav" aria-label="Primary">
-        <button class="nav-toggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
-          <span></span><span></span><span></span>
-        </button>
-        <ul id="navMenu" class="nav-menu">
-          <li><a href="#shop">Shop</a></li>
-          <li><a href="#deals">Deals</a></li>
-          <li><a href="#dtg">Dutch Touch Genetics</a></li>
-          <li><a href="#about">About</a></li>
-        </ul>
-      </nav>
-
       <div class="header-actions">
+        <button class="util-btn" data-open-menu aria-label="Menu">Menu</button>
+        <a class="hdr-icon" href="#" aria-label="Search">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M10 18a8 8 0 1 1 5.3-14A8 8 0 0 1 10 18Zm11 3-6.1-6.1"/></svg>
+        </a>
         <a class="hdr-icon" href="#" aria-label="Account">
-          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-5 0-9 2.5-9 5.5A1.5 1.5 0 0 0 4.5 21h15A1.5 1.5 0 0 0 21 19.5C21 16.5 17 14 12 14Z"/></svg>
+          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-5 0-9 2.5-9 5.5A1.5 1.5 0 0 0 4.5 21h15A1.5 1.5 0 0 0 21 19.5C21 16.5 17 14 12 14Z"/></svg>
         </a>
         <a class="hdr-icon cart" href="#" aria-label="Cart">
-          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M7 4h-2l-1 2v2h2l3.6 7.6A2 2 0 0 0 11.4 17h6.7a2 2 0 0 0 1.9-1.4L23 8H7"/><circle cx="10" cy="20" r="1.7"/><circle cx="18" cy="20" r="1.7"/></svg>
-          <span class="cart-badge" aria-hidden="true">0</span>
+          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M7 4H4L3 6v2h2l3.6 7.6A2 2 0 0 0 11.4 17h6.7a2 2 0 0 0 1.9-1.4L23 8H7"/><circle cx="10" cy="20" r="1.7"/><circle cx="18" cy="20" r="1.7"/></svg>
+          <span class="cart-badge">0</span>
         </a>
         <a class="btn small" href="https://your-ecom-link" data-ext>Order Online</a>
       </div>
     </div>
+
+    <!-- Utility bar (Backpack Boyz vibe) -->
+    <div class="util-bar">
+      <div class="container util-inner">
+        <div class="status">
+          <span class="pill open">OPEN</span>
+          <span class="muted">Pickup</span>
+          <span class="dot"></span>
+          <span class="muted">Recreational</span>
+        </div>
+        <nav class="tab-nav" aria-label="Shop tabs">
+          <a href="#home" class="tab is-active">Home</a>
+          <a href="https://your-ecom-link" class="tab" data-ext>Shop</a>
+          <a href="https://your-ecom-link?view=brands" class="tab" data-ext>Brands</a>
+          <a href="#deals" class="tab">Specials</a>
+        </nav>
+      </div>
+    </div>
   </header>
 
-  <main>
+  <main id="home">
     <!-- Hero Carousel -->
     <section class="hero">
       <div class="container">
         <div class="slides" data-carousel>
-          <a class="slide is-active" href="#shop">
-            <img src="img/hero-1.jpg" alt="Shop Dutch Republic" />
-          </a>
-          <a class="slide" href="#deals">
-            <img src="img/hero-2.jpg" alt="Weekly Deals" />
-          </a>
-          <a class="slide" href="#dtg">
-            <img src="img/hero-3.jpg" alt="Dutch Touch Genetics" />
-          </a>
+          <!-- Replace src with your images -->
+          <a class="slide is-active" href="#shop"><img src="img/hero-1.jpg" alt="Shop Dutch Republic" /></a>
+          <a class="slide" href="#deals"><img src="img/hero-2.jpg" alt="Weekly Deals" /></a>
+          <a class="slide" href="#dtg"><img src="img/hero-3.jpg" alt="Dutch Touch Genetics" /></a>
         </div>
         <div class="dots" data-dots></div>
       </div>
@@ -67,11 +77,7 @@
           <span class="chev" aria-hidden="true">▾</span>
         </button>
         <div id="dealBody" class="deal-body" hidden>
-          <ul class="deal-list">
-            <li><strong>Mon–Thu:</strong> Wake & Save 15% (open–12pm)</li>
-            <li><strong>Sat:</strong> BOGO select pre-rolls</li>
-            <li><strong>All Week:</strong> Price match within 10 miles</li>
-          </ul>
+          <ul class="deal-list" id="dealList"><!-- populated by JS --></ul>
           <a class="btn" href="https://your-ecom-link/deals" data-ext>View all deals</a>
         </div>
       </div>
@@ -113,33 +119,23 @@
         <h2 class="section-title">Dutch Touch Genetics</h2>
         <p class="section-sub">Curated genetics with clean, informative tiles.</p>
         <div class="dtg-grid">
-          <!-- Repeat dtg-card for items -->
           <article class="dtg-card">
-            <img src="img/dtg-1.jpg" alt="Strain name" />
+            <img src="img/dtg-1.jpg" alt="Legendary Lime" />
             <h3 class="dtg-title">Legendary Lime</h3>
-            <div class="dtg-meta">
-              <span class="badge">Hybrid</span>
-              <span class="meta">THC 26%</span>
-            </div>
+            <div class="dtg-meta"><span class="badge">Hybrid</span><span class="meta">THC 26%</span></div>
             <a class="dtg-link" href="https://your-ecom-link?brand=dutch-touch-genetics" data-ext>View on menu</a>
           </article>
-
           <article class="dtg-card">
-            <img src="img/dtg-2.jpg" alt="Strain name" />
+            <img src="img/dtg-2.jpg" alt="Grape 1:1" />
             <h3 class="dtg-title">Grape 1:1</h3>
-            <div class="dtg-meta">
-              <span class="badge">Indica</span>
-              <span class="meta">THC 22%</span>
-            </div>
+            <div class="dtg-meta"><span class="badge">Indica</span><span class="meta">THC 22%</span></div>
             <a class="dtg-link" href="https://your-ecom-link?brand=dutch-touch-genetics" data-ext>View on menu</a>
           </article>
-
-          <!-- Add more as needed -->
         </div>
       </div>
     </section>
 
-    <!-- About / Footer CTA -->
+    <!-- About -->
     <section id="about" class="about">
       <div class="container">
         <h2 class="section-title">About Dutch Republic</h2>
@@ -159,6 +155,6 @@
     </div>
   </footer>
 
-  <script src="app.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
