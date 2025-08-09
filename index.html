@@ -5,18 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dutch District</title>
   <meta name="description" content="Dutch District • Premium cannabis, powered by Dutch Touch Genetics." />
-  <meta name="theme-color" content="#0F1115" />
+  <meta name="theme-color" content="#ffffff" />
+  <!-- Inter (ChatGPT-style font) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <!-- Single sticky header -->
-  <header class="site-header" data-sticky>
+  <header class="site-header">
     <div class="container header-bar">
       <a class="brand" href="/" aria-label="Dutch District">
-        <!-- temp wordmark -->
+        <!-- temporary wordmark -->
         <svg viewBox="0 0 540 120" width="170" height="38" aria-hidden="true">
           <rect width="540" height="120" rx="14" fill="var(--gold)"></rect>
-          <text x="50%" y="58%" text-anchor="middle" font-size="42" font-weight="800" fill="#0F1115" font-family="ui-sans-serif,system-ui">Dutch District</text>
+          <text x="50%" y="58%" text-anchor="middle" font-size="42" font-weight="800" fill="#111315" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto">Dutch District</text>
         </svg>
       </a>
 
@@ -54,7 +56,6 @@
     <section class="hero">
       <div class="container">
         <div class="slides" data-carousel>
-          <!-- swap these placeholders later -->
           <a class="slide is-active" href="#shop"><img src="img/hero-1.jpg" alt="Shop Dutch District" /></a>
           <a class="slide" href="#deals"><img src="img/hero-2.jpg" alt="Weekly Deals" /></a>
           <a class="slide" href="#dtg"><img src="img/hero-3.jpg" alt="Dutch Touch Genetics" /></a>
@@ -63,21 +64,22 @@
       </div>
     </section>
 
-    <!-- Deals -->
+    <!-- Deals (uniform card, whole card clickable) -->
     <section id="deals" class="deals-section">
       <div class="container">
-        <div class="deal-card">
-          <button class="deal-head deal-toggle" aria-expanded="false" aria-controls="dealBody">
-            <span class="deal-title">This Week’s Deals — Tap to expand</span>
+        <div class="deal-card" role="button" tabindex="0" aria-expanded="false" aria-controls="dealBody">
+          <div class="deal-head">
+            <div class="head-line"></div>
+            <div class="deal-title">Today’s Deals</div>
             <span class="chev" aria-hidden="true">▾</span>
-          </button>
-
-          <div id="dealBody" class="deal-body collapsed">
-            <ul class="deal-list" id="dealList"><!-- JS renders here --></ul>
-            <div class="deal-actions">
-              <button id="closeDeals" class="btn outline">Close deals</button>
-            </div>
           </div>
+
+        <div id="dealBody" class="deal-body collapsed">
+          <ul class="deal-list" id="dealList"><!-- JS renders here --></ul>
+          <div class="deal-actions">
+            <button id="closeDeals" class="btn outline">Close deals</button>
+          </div>
+        </div>
         </div>
       </div>
     </section>
