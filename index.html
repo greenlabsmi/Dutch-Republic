@@ -1,164 +1,164 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dutch Republic | Premium Cannabis Dispensary</title>
-  <meta name="description" content="Dutch Republic — premium cannabis in Douglas, Michigan. Explore Dutch Touch Genetics strains, featured deals, and sign up for exclusive offers." />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dutch Republic</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Dutch Republic • Premium cannabis, powered by Dutch Touch Genetics." />
 </head>
 <body>
+  <!-- Sticky Header -->
+  <header class="site-header" data-sticky>
+    <div class="container header-inner">
+      <a class="brand" href="/">
+        <img src="img/logo.svg" alt="Dutch Republic" />
+      </a>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Welcome to Dutch Republic</h1>
-      <p>Premium cannabis. Elevated experiences. Locally rooted.</p>
-      <a href="#deals" class="cta-button">View Today's Deals</a>
-    </div>
-  </section>
+      <nav class="nav" aria-label="Primary">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul id="navMenu" class="nav-menu">
+          <li><a href="#shop">Shop</a></li>
+          <li><a href="#deals">Deals</a></li>
+          <li><a href="#dtg">Dutch Touch Genetics</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
 
-  <!-- Mood Navigation -->
-  <section class="moods">
-    <h2>Explore by Mood</h2>
-    <div class="mood-grid">
-      <div class="mood-tile">🧘‍♀️ Relax</div>
-      <div class="mood-tile">🔥 Uplift</div>
-      <div class="mood-tile">🌙 Sleep</div>
-      <div class="mood-tile">🎨 Create</div>
-    </div>
-  </section>
-
-  <!-- Featured Deals -->
-  <section id="deals" class="featured-deals">
-    <h2>Featured Deals</h2>
-    <div class="deal-grid">
-      <div class="deal-tile">
-        <h3>Death by Funk 7g</h3>
-        <span class="badge">🏆 Award Winner</span>
-        <p>$40 • Dutch Touch</p>
-      </div>
-      <div class="deal-tile">
-        <h3>Lemon Wookie 3.5g</h3>
-        <span class="badge">💼 Staff Pick</span>
-        <p>$30 • Dutch Touch</p>
-      </div>
-      <div class="deal-tile">
-        <h3>Berry Burst RSO Gummies</h3>
-        <span class="badge">🛌 Nighttime</span>
-        <p>$15 • 200mg Full Spectrum</p>
+      <div class="header-actions">
+        <a class="hdr-icon" href="#" aria-label="Account">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-5 0-9 2.5-9 5.5A1.5 1.5 0 0 0 4.5 21h15A1.5 1.5 0 0 0 21 19.5C21 16.5 17 14 12 14Z"/></svg>
+        </a>
+        <a class="hdr-icon cart" href="#" aria-label="Cart">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M7 4h-2l-1 2v2h2l3.6 7.6A2 2 0 0 0 11.4 17h6.7a2 2 0 0 0 1.9-1.4L23 8H7"/><circle cx="10" cy="20" r="1.7"/><circle cx="18" cy="20" r="1.7"/></svg>
+          <span class="cart-badge" aria-hidden="true">0</span>
+        </a>
+        <a class="btn small" href="https://your-ecom-link" data-ext>Order Online</a>
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- About Us -->
-  <section class="about">
-    <h2>About Dutch Republic</h2>
-    <p>
-      Dutch Republic is your go-to destination for premium cannabis in Douglas, Michigan.
-      We’re powered by Dutch Touch Genetics — our in-house cultivation line bred for terpene richness, award-winning quality, and full-spectrum experience. Our dispensary blends top-tier products with educational service and down-to-earth vibes.
-    </p>
-  </section>
-
-  <!-- Dutch Touch Genetics — Interactive Explorer -->
-  <section id="dutch-touch" class="dutch-touch">
-    <h2>🌿 Dutch Touch Genetics</h2>
-    <p class="section-intro">
-      Hand-grown in Michigan. Explore strains by vibe, see awards, and find your perfect match.
-    </p>
-
-    <div class="strain-explorer">
-      <h3>Strain Explorer</h3>
-
-      <!-- Controls -->
-      <div class="strain-controls" style="max-width:1000px;margin:0 auto 1rem;display:flex;flex-wrap:wrap;gap:0.75rem;justify-content:center;">
-        <!-- Visually hidden label for a11y -->
-        <label for="strain-search" style="position:absolute;left:-9999px;">Search strains</label>
-        <input type="text" id="strain-search" placeholder="Search strains..." class="strain-search" />
-
-        <div class="filter-buttons" style="display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="uplifting">Uplifting</button>
-          <button class="filter-btn" data-filter="mellow">Mellow</button>
-          <button class="filter-btn" data-filter="balanced">Balanced</button>
-          <button class="filter-btn" data-filter="award">🏆 Award Winners</button>
-          <button class="filter-btn" data-filter="new">🆕 New Drops</button>
-          <button class="filter-btn" data-filter="favorite">💚 House Favorites</button>
+  <main>
+    <!-- Hero Carousel -->
+    <section class="hero">
+      <div class="container">
+        <div class="slides" data-carousel>
+          <a class="slide is-active" href="#shop">
+            <img src="img/hero-1.jpg" alt="Shop Dutch Republic" />
+          </a>
+          <a class="slide" href="#deals">
+            <img src="img/hero-2.jpg" alt="Weekly Deals" />
+          </a>
+          <a class="slide" href="#dtg">
+            <img src="img/hero-3.jpg" alt="Dutch Touch Genetics" />
+          </a>
         </div>
-
-        <label for="strain-sort" style="position:absolute;left:-9999px;">Sort strains</label>
-        <select id="strain-sort" class="strain-sort" aria-label="Sort strains">
-          <option value="az">Sort: A → Z</option>
-          <option value="za">Sort: Z → A</option>
-          <option value="new">Newest first</option>
-          <option value="award">Award winners first</option>
-        </select>
-
-        <button id="show-all-strains" class="cta-button" type="button">Show All</button>
+        <div class="dots" data-dots></div>
       </div>
+    </section>
 
-      <!-- Grid (JS renders tiles here) -->
-      <div class="strain-grid" id="strainGrid" aria-live="polite"></div>
-    </div>
-  </section>
-
-  <!-- Newsletter -->
-  <section id="newsletter" class="newsletter">
-    <h2>💌 Stay Connected</h2>
-    <p>Sign up for exclusive offers, loyalty rewards, and early access to drops.</p>
-    <form>
-      <label for="newsletter-email" style="position:absolute;left:-9999px;">Email</label>
-      <input id="newsletter-email" type="email" placeholder="Enter your email" required />
-      <button type="submit">Join Now</button>
-    </form>
-  </section>
-
-  <!-- Footer with Map & Links -->
-  <footer>
-    <div class="footer-grid">
-      <div class="footer-column">
-        <h4>Visit Us</h4>
-        <iframe
-          src="https://maps.google.com/maps?q=Douglas%20MI&t=&z=13&ie=UTF8&iwloc=&output=embed"
-          width="100%" height="150" style="border:0;" allowfullscreen loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-
-      <div class="footer-column">
-        <h4>Connect</h4>
-        <div class="footer-links">
-          <a href="https://www.instagram.com/greenlabsmi" target="_blank" rel="noopener">Instagram</a> |
-          <a href="https://www.facebook.com/greenlabsmi" target="_blank" rel="noopener">Facebook</a> |
-          <a href="https://www.google.com/maps/place/Dutch+Republic+Dispensary" target="_blank" rel="noopener">Leave a Review</a>
+    <!-- Deals Announcement (collapsible like HOD) -->
+    <section id="deals" class="deal-banner">
+      <div class="container">
+        <button class="deal-toggle" aria-expanded="false" aria-controls="dealBody">
+          <span>🌟 This Week’s Deals — Tap to expand</span>
+          <span class="chev" aria-hidden="true">▾</span>
+        </button>
+        <div id="dealBody" class="deal-body" hidden>
+          <ul class="deal-list">
+            <li><strong>Mon–Thu:</strong> Wake & Save 15% (open–12pm)</li>
+            <li><strong>Sat:</strong> BOGO select pre-rolls</li>
+            <li><strong>All Week:</strong> Price match within 10 miles</li>
+          </ul>
+          <a class="btn" href="https://your-ecom-link/deals" data-ext>View all deals</a>
         </div>
       </div>
+    </section>
+
+    <!-- Category Tiles (HOD sizing) -->
+    <section id="shop" class="categories">
+      <div class="container">
+        <h2 class="section-title">Shop Categories</h2>
+        <div class="cat-grid">
+          <a class="cat-card" href="https://your-ecom-link?category=flower" data-ext>
+            <img src="img/cat-flower.jpg" alt="" /><span>Flower</span>
+          </a>
+          <a class="cat-card" href="https://your-ecom-link?category=pre-rolls" data-ext>
+            <img src="img/cat-preroll.jpg" alt="" /><span>Pre-Rolls</span>
+          </a>
+          <a class="cat-card" href="https://your-ecom-link?category=vaporizers" data-ext>
+            <img src="img/cat-vapes.jpg" alt="" /><span>Vaporizers</span>
+          </a>
+          <a class="cat-card" href="https://your-ecom-link?category=concentrates" data-ext>
+            <img src="img/cat-conc.jpg" alt="" /><span>Concentrates</span>
+          </a>
+          <a class="cat-card" href="https://your-ecom-link?category=edibles" data-ext>
+            <img src="img/cat-edibles.jpg" alt="" /><span>Edibles</span>
+          </a>
+          <a class="cat-card" href="https://your-ecom-link?category=tinctures" data-ext>
+            <img src="img/cat-tinctures.jpg" alt="" /><span>Tinctures</span>
+          </a>
+        </div>
+        <div class="center">
+          <a class="btn" href="https://your-ecom-link" data-ext>View All</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dutch Touch Genetics (condensed tiles) -->
+    <section id="dtg" class="dtg">
+      <div class="container">
+        <h2 class="section-title">Dutch Touch Genetics</h2>
+        <p class="section-sub">Curated genetics with clean, informative tiles.</p>
+        <div class="dtg-grid">
+          <!-- Repeat dtg-card for items -->
+          <article class="dtg-card">
+            <img src="img/dtg-1.jpg" alt="Strain name" />
+            <h3 class="dtg-title">Legendary Lime</h3>
+            <div class="dtg-meta">
+              <span class="badge">Hybrid</span>
+              <span class="meta">THC 26%</span>
+            </div>
+            <a class="dtg-link" href="https://your-ecom-link?brand=dutch-touch-genetics" data-ext>View on menu</a>
+          </article>
+
+          <article class="dtg-card">
+            <img src="img/dtg-2.jpg" alt="Strain name" />
+            <h3 class="dtg-title">Grape 1:1</h3>
+            <div class="dtg-meta">
+              <span class="badge">Indica</span>
+              <span class="meta">THC 22%</span>
+            </div>
+            <a class="dtg-link" href="https://your-ecom-link?brand=dutch-touch-genetics" data-ext>View on menu</a>
+          </article>
+
+          <!-- Add more as needed -->
+        </div>
+      </div>
+    </section>
+
+    <!-- About / Footer CTA -->
+    <section id="about" class="about">
+      <div class="container">
+        <h2 class="section-title">About Dutch Republic</h2>
+        <p>Premium cannabis with a focus on terpene education, clean design, and a frictionless shopping experience.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Dutch Republic. All rights reserved.</p>
+      <nav aria-label="Footer">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#deals">Deals</a>
+      </nav>
     </div>
-    <p class="footer-note">© 2025 Dutch Republic. All rights reserved.</p>
   </footer>
 
-  <!-- Strain Detail Modal (works with script.js; safe if JS not loaded) -->
-  <div id="strain-modal" class="modal hidden" aria-hidden="true">
-    <div class="modal-backdrop"></div>
-    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="strain-modal-title">
-      <button class="modal-close" aria-label="Close">✕</button>
-      <h3 id="strain-modal-title"></h3>
-      <p class="modal-badges"></p>
-      <p class="modal-effect"></p>
-      <p class="modal-terpenes"></p>
-      <div class="modal-actions">
-        <button class="button" id="modal-chat" type="button">Ask Budtender</button>
-        <button class="button secondary" id="modal-save" type="button">⭐ Save</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Site Script -->
-  <script src="script.js"></script>
-
-  <!-- Floating Chatbot Button -->
-  <button class="chatbot-button" onclick="openChatbot()">
-    💬 Chat with Budtender
-  </button>
+  <script src="app.js"></script>
 </body>
 </html>
