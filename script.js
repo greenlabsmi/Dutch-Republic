@@ -1,10 +1,4 @@
-// Sticky header shadow + year
-document.addEventListener('scroll', () => {
-  const header = document.querySelector('.site-header');
-  if (!header) return;
-  header.classList.toggle('is-scrolled', window.scrollY > 8);
-}, { passive: true });
-
+// Sticky header shadow (implicit via backdrop) + year
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
@@ -56,7 +50,7 @@ document.querySelectorAll('.tab-nav .tab').forEach(t => {
   }
 })();
 
-// Deals accordion (teaser + label swap + Close button + chevron rotate)
+// Deals accordion (teaser + label swap + Close button + chevron rotate via [aria-expanded])
 const toggle = document.querySelector('.deal-toggle');
 const dealBody = document.getElementById('dealBody');
 const closeBtn = document.getElementById('closeDeals');
@@ -67,15 +61,13 @@ function setDealsOpen(open){
   toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
 
   const label = open
-    ? '🌟 This Week’s Deals — Tap to collapse'
-    : '🌟 This Week’s Deals — Tap to expand';
-
-  const labelSpan = toggle.querySelector('span:first-child');
-  if (labelSpan) labelSpan.textContent = label; else toggle.textContent = label;
+    ? 'This Week’s Deals — Tap to collapse'
+    : 'This Week’s Deals — Tap to expand';
+  const titleEl = toggle.querySelector('.deal-title');
+  if (titleEl) titleEl.textContent = label;
 
   if (closeBtn) closeBtn.style.display = open ? 'inline-block' : 'none';
 }
-// initial state = collapsed teaser (shows 3-ish lines)
 setDealsOpen(false);
 
 toggle?.addEventListener('click', () => {
