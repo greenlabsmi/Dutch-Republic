@@ -39,9 +39,32 @@ a{color:inherit;text-decoration:none}
 .pill.open{background:var(--brand-2);color:var(--brand)}
 .muted{color:var(--muted)}
 .dot{width:6px;height:6px;border-radius:50%;background:#c9cdd3;display:inline-block}
-.tab-nav{display:flex;gap:18px}
-.tab{padding:8px 0;font-weight:700;color:#4b5563;position:relative}
+.tab-nav{display:flex;gap:18px;flex-wrap:wrap}
+.tab{padding:10px 0;font-weight:700;color:#4b5563;position:relative;white-space:nowrap}
 .tab.is-active::after{content:"";position:absolute;left:0;right:0;bottom:-12px;height:2px;background:var(--brand)}
+@media (min-width:700px) and (max-width:1024px){
+  .tab-nav{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .tab-nav::-webkit-scrollbar{display:none}
+  .tab{flex:0 0 auto}
+}
+@media (max-width:900px){
+  .tab-nav{display:none}
+  .util-inner{justify-content:space-between}
+}
+
+/* Mobile drawer */
+.nav-drawer{
+  position:fixed; inset:64px 0 0 0; background:#fff; border-top:1px solid var(--line);
+  padding:14px 16px; display:block;
+}
+.nav-drawer[hidden]{display:none}
+.nav-drawer nav{display:flex;flex-direction:column;gap:12px}
+.drawer-link{font-weight:700;padding:10px 4px;border-bottom:1px solid #f1f2f4}
+.drawer-link:last-child{border-bottom:0}
+.drawer-close{
+  position:absolute; right:12px; top:10px; background:#fff;
+  border:1px solid var(--line); border-radius:10px; padding:6px 10px;
+}
 
 /* ========== Hero ========== */
 .hero{margin:14px 0}
@@ -55,12 +78,20 @@ a{color:inherit;text-decoration:none}
 /* ========== Deals Banner (Accordion) ========== */
 .deal-banner{margin:16px 0}
 .deal-toggle{width:100%;background:var(--brand-2);border:1px solid var(--line);padding:12px 14px;border-radius:var(--radius);font-weight:700;display:flex;align-items:center;justify-content:space-between}
-.deal-body{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);padding:12px 14px;background:#fff}
+.deal-body{border:1px solid var(--line);border-top:none;border-radius:0 0 var(--radius) var(--radius);padding:12px 14px;background:#fff;transition:max-height .25s ease;position:relative}
 .deal-body[hidden]{display:none}
-.deal-list{margin:8px 0 12px;padding-left:18px}
+.deal-list{margin:8px 0 12px;padding-left:0;list-style:none}
 
-.deal-actions{ text-align:center; margin-top:10px; }
-.btn.outline{ background:#fff; border:1px solid var(--line); }
+/* Teaser when collapsed */
+.deal-body.collapsed{max-height:64px;overflow:hidden}
+.deal-body.collapsed::after{
+  content:""; position:absolute; left:0; right:0; bottom:0; height:28px;
+  background:linear-gradient(to bottom, rgba(255,255,255,0), #fff);
+}
+
+/* Button inside Deals */
+.deal-actions{text-align:center;margin-top:10px}
+.btn.outline{background:#fff;border:1px solid var(--line)}
 
 /* Category-based deals styling */
 .deal-cat{margin-bottom:16px}
@@ -71,7 +102,7 @@ a{color:inherit;text-decoration:none}
 .deal-items{margin:0; padding-left:18px}
 .deal-items li{margin:3px 0; line-height:1.4}
 
-/* Sub-groups inside categories (e.g., Ounces / Halves / Quarters / Eighths) */
+/* Sub-groups inside categories */
 .deal-subgroup{margin:8px 0 12px}
 .deal-subtitle{
   font-weight:700; font-size:.96rem; color:var(--ink);
@@ -79,9 +110,7 @@ a{color:inherit;text-decoration:none}
 }
 
 /* Optional tax note */
-.deal-note{
-  margin-top:10px; font-size:.85rem; color:var(--muted); text-align:left;
-}
+.deal-note{margin-top:10px; font-size:.85rem; color:var(--muted); text-align:left}
 
 /* ========== Categories (big tiles) ========== */
 .categories{margin:20px 0}
