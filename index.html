@@ -6,19 +6,19 @@
   <title>Dutch District</title>
   <meta name="description" content="Dutch District • Premium cannabis, powered by Dutch Touch Genetics." />
   <meta name="theme-color" content="#ffffff" />
-  <!-- Inter (ChatGPT-style font) -->
+  <!-- Inter (ChatGPT-like font) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Single sticky header -->
+  <!-- Sticky header -->
   <header class="site-header">
     <div class="container header-bar">
       <a class="brand" href="/" aria-label="Dutch District">
         <!-- temporary wordmark -->
         <svg viewBox="0 0 540 120" width="170" height="38" aria-hidden="true">
           <rect width="540" height="120" rx="14" fill="var(--gold)"></rect>
-          <text x="50%" y="58%" text-anchor="middle" font-size="42" font-weight="800" fill="#111315" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto">Dutch District</text>
+          <text x="50%" y="58%" text-anchor="middle" font-size="42" font-weight="800" fill="#111315" font-family="Inter, system-ui">Dutch District</text>
         </svg>
       </a>
 
@@ -57,29 +57,28 @@
       <div class="container">
         <div class="slides" data-carousel>
           <a class="slide is-active" href="#shop"><img src="img/hero-1.jpg" alt="Shop Dutch District" /></a>
-          <a class="slide" href="#deals"><img src="img/hero-2.jpg" alt="Weekly Deals" /></a>
+          <a class="slide" href="#deals"><img src="img/hero-2.jpg" alt="Today’s Deals" /></a>
           <a class="slide" href="#dtg"><img src="img/hero-3.jpg" alt="Dutch Touch Genetics" /></a>
         </div>
         <div class="dots" data-dots></div>
       </div>
     </section>
 
-    <!-- Deals (uniform card, whole card clickable) -->
+    <!-- Today’s Deals (uniform card, whole card clickable) -->
     <section id="deals" class="deals-section">
       <div class="container">
         <div class="deal-card" role="button" tabindex="0" aria-expanded="false" aria-controls="dealBody">
           <div class="deal-head">
-            <div class="head-line"></div>
             <div class="deal-title">Today’s Deals</div>
             <span class="chev" aria-hidden="true">▾</span>
           </div>
 
-        <div id="dealBody" class="deal-body collapsed">
-          <ul class="deal-list" id="dealList"><!-- JS renders here --></ul>
-          <div class="deal-actions">
-            <button id="closeDeals" class="btn outline">Close deals</button>
+          <div id="dealBody" class="deal-body collapsed">
+            <ul class="deal-list" id="dealList"><!-- JS renders here --></ul>
+            <div class="deal-actions">
+              <button id="closeDeals" class="btn outline">Close deals</button>
+            </div>
           </div>
-        </div>
         </div>
       </div>
     </section>
@@ -90,28 +89,22 @@
         <h2 class="section-title">Shop Categories</h2>
         <div class="cat-grid">
           <a class="cat-card" href="https://your-ecom-link?category=flower" data-ext>
-            <img src="img/cat-flower.jpg" alt="" loading="lazy" />
-            <span>Flower</span>
+            <img src="img/cat-flower.jpg" alt="" loading="lazy" /><span>Flower</span>
           </a>
           <a class="cat-card" href="https://your-ecom-link?category=pre-rolls" data-ext>
-            <img src="img/cat-preroll.jpg" alt="" loading="lazy" />
-            <span>Pre-Rolls</span>
+            <img src="img/cat-preroll.jpg" alt="" loading="lazy" /><span>Pre-Rolls</span>
           </a>
           <a class="cat-card" href="https://your-ecom-link?category=vaporizers" data-ext>
-            <img src="img/cat-vapes.jpg" alt="" loading="lazy" />
-            <span>Vaporizers</span>
+            <img src="img/cat-vapes.jpg" alt="" loading="lazy" /><span>Vaporizers</span>
           </a>
           <a class="cat-card" href="https://your-ecom-link?category=concentrates" data-ext>
-            <img src="img/cat-conc.jpg" alt="" loading="lazy" />
-            <span>Concentrates</span>
+            <img src="img/cat-conc.jpg" alt="" loading="lazy" /><span>Concentrates</span>
           </a>
           <a class="cat-card" href="https://your-ecom-link?category=edibles" data-ext>
-            <img src="img/cat-edibles.jpg" alt="" loading="lazy" />
-            <span>Edibles</span>
+            <img src="img/cat-edibles.jpg" alt="" loading="lazy" /><span>Edibles</span>
           </a>
           <a class="cat-card" href="https://your-ecom-link?category=tinctures" data-ext>
-            <img src="img/cat-tinctures.jpg" alt="" loading="lazy" />
-            <span>Tinctures</span>
+            <img src="img/cat-tinctures.jpg" alt="" loading="lazy" /><span>Tinctures</span>
           </a>
         </div>
         <div class="center">
