@@ -391,3 +391,41 @@ a{color:inherit;text-decoration:none}
   :root{ --nav-h: var(--nav-h-sm); }
   .sticky-logo .brand-lion{ height: calc(var(--nav-h) - 4px) !important; }
 }
+
+/* ===== Dutch Republic Banner — Bigger icon, closer to font ===== */
+.brand-mark{
+  gap: 6px !important; /* icon closer to text */
+}
+
+.brand-mark__icon{
+  width: 88px !important;
+  height: 88px !important;
+}
+
+.brand-mark__name{
+  font-size: 2.35rem !important;
+  letter-spacing: 0.02em !important; /* subtle spacing between letters */
+}
+
+/* Desktop bump */
+@media (min-width:768px){
+  .brand-mark__icon{
+    width: 100px !important;
+    height: 100px !important;
+  }
+  .brand-mark__name{
+    font-size: 3rem !important;
+    letter-spacing: 0.025em !important;
+  }
+}
+
+/* ===== Dutch Republic Banner — Tighter top/bottom padding ===== */
+.brand-banner{
+  padding: 8px 16px !important; /* mobile */
+}
+
+@media (min-width:768px){
+  .brand-banner{
+    padding: 12px 20px !important; /* desktop */
+  }
+}
