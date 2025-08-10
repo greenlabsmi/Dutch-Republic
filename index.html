@@ -2,303 +2,287 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dutch Republic — Michigan</title>
-  <meta name="description" content="Dutch Republic — heritage craft, modern elevation. Dutch Touch Genetics, loyalty perks, and award-winning selection." />
-
-  <!-- Brand fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-
-  <!-- Favicons -->
-  <link rel="icon" href="/logo-dutch-republic.svg" type="image/svg+xml">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
-  <!-- Open Graph / Twitter (safe defaults; update image path when you have one) -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Dutch Republic — Michigan">
-  <meta property="og:description" content="Heritage craft, modern elevation. Dutch Touch Genetics and award-winning selection.">
-  <meta property="og:image" content="/images/og/dutch-republic-og.jpg">
-  <meta property="og:url" content="https://your-domain.example/">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Dutch Republic — Michigan">
-  <meta name="twitter:description" content="Heritage craft, modern elevation.">
-  <meta name="twitter:image" content="/images/og/dutch-republic-og.jpg">
-
-  <!-- Optional: analytics slot (paste your GA/Tag script here) -->
-  <!-- <script>/* your analytics */</script> -->
-
-  <style>
-    :root{
-      --ink:#0B0B0C; --text:#1F1F1F; --muted:#6b7280; --line:#E9E9E9; --bg:#ffffff;
-      --gold:#D47B19; --cream:#FAF5E9; --deep:#0D0D0D; --accent:#3B82F6;
-      --radius:16px; --radius-lg:22px; --max:1200px; --gap:16px;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 Inter,system-ui,Segoe UI,Roboto,Arial}
-    h1,h2,h3,h4,.brand{font-family:Cinzel,serif;letter-spacing:.3px}
-    a{color:inherit;text-decoration:none}
-    img{display:block;max-width:100%;height:auto}
-    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
-
-    /* Header / Nav */
-    .site-header{position:sticky;top:0;z-index:1000;background:#fff;border-bottom:1px solid var(--line);transition:box-shadow .25s}
-    .site-header.is-scrolled{box-shadow:0 8px 28px rgba(0,0,0,.06)}
-    .header-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px;max-width:var(--max);margin:0 auto}
-    .brand-wrap{display:flex;align-items:center;gap:10px}
-    .brand-wrap img{width:34px;height:34px}
-    .brand{font-size:1.15rem;font-weight:700}
-    .nav{display:flex;align-items:center;gap:18px}
-    .nav a{padding:8px 10px;border-radius:10px;color:#333}
-    .nav a:hover{background:#f6f6f6}
-    .hamburger{display:none;flex-direction:column;gap:4px;border:0;background:transparent;padding:8px;cursor:pointer}
-    .hamburger span{display:block;width:22px;height:2px;background:#111;border-radius:2px}
-    @media (max-width:900px){
-      .nav{display:none;position:absolute;left:0;right:0;top:60px;background:#fff;border-bottom:1px solid var(--line);padding:12px 20px;flex-direction:column;align-items:flex-start}
-      .nav.is-open{display:flex}
-      .hamburger{display:flex}
-    }
-
-    /* Hero */
-    .hero{background:radial-gradient(1200px 600px at 10% -10%, #FFF6EC, #FFFFFF);border-bottom:1px solid var(--line);padding:64px 0 40px}
-    .hero .kicker{color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.08em}
-    .hero h1{font-size:clamp(2rem,3.6vw,3rem);margin:.25em 0 .3em}
-    .hero p{max-width:70ch;color:#444;margin:0 0 18px}
-    .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--gold);padding:12px 16px;border-radius:999px;background:linear-gradient(180deg,#FFFAEE,#FFECC9);font-weight:700;color:#5b4a1d}
-    .btn.alt{background:#111;color:#fff;border-color:#111}
-
-    /* Categories */
-    .section-cats{padding:34px 0}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap)}
-    .category-card{grid-column:span 6;position:relative;border-radius:var(--radius-lg);overflow:hidden;background:#f4f4f4;aspect-ratio:16/9;isolation:isolate}
-    .category-card img{width:100%;height:100%;object-fit:cover;filter:saturate(1.05) contrast(1.05)}
-    .category-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(0,0,0,.45) 100%);transition:opacity .3s;opacity:.75;pointer-events:none}
-    .category-card:hover img{transform:scale(1.03);transition:transform .35s}
-    .category-card:hover::after{opacity:.55}
-    .category-card .label{position:absolute;left:14px;bottom:12px;color:#fff;font-weight:700;font-size:1.05rem;z-index:2}
-    @media (min-width:900px){.category-card{grid-column:span 4}}
-
-    /* Dutch Touch (lion roar) */
-    .section-dutch{position:relative;overflow:hidden;background:var(--cream);padding:84px 0;transition:background .4s;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-    .section-dutch .eyebrow{color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.08em}
-    .section-dutch h2{font-size:clamp(1.6rem,3vw,2.2rem);margin:.25em 0 .35em;color:var(--deep)}
-    .section-dutch p{max-width:70ch;color:#3a3a3a;margin:0}
-    .badges{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
-    .badge{padding:10px 14px;border-radius:999px;border:1px solid #E1D6BD;background:#fff;font-weight:600;color:#5b4a1d}
-    .lion-overlay{position:absolute;inset:-10%;z-index:1;pointer-events:none;display:grid;place-items:center;opacity:0;transform:scale(1.12);filter:blur(8px);transition:opacity .9s,transform .9s,filter .9s}
-    .lion-overlay svg{width:min(140vmin,1200px);height:auto;opacity:.08}
-    .section-dutch.is-active{background:linear-gradient(180deg,#FAF5E9 0%, #FFFFFF 60%)}
-    .section-dutch.is-active .lion-overlay{opacity:1;transform:scale(1);filter:blur(0)}
-    .section-dutch.is-active .lion-overlay svg{animation:roar .9s ease-out 200ms 1}
-    @keyframes roar{0%{transform:translate(0,0) scale(1.02)}20%{transform:translate(-6px,2px) scale(1.02)}40%{transform:translate(5px,-3px) scale(1.02)}60%{transform:translate(-3px,1px) scale(1.01)}100%{transform:translate(0,0) scale(1)}}
-
-    @media (prefers-reduced-motion:reduce){
-      .category-card:hover img{transform:none}
-      .lion-overlay,.section-dutch.is-active .lion-overlay svg{animation:none;transition:none}
-      html{scroll-behavior:auto}
-    }
-
-    /* Dutch Touch Genetics */
-    .section-genetics{background:#0b0b0c;color:#f7f7f7;padding:70px 0;border-bottom:1px solid #161616}
-    .section-genetics .heading{display:flex;align-items:center;gap:12px;margin-bottom:10px}
-    .section-genetics .heading img{width:28px;height:28px}
-    .section-genetics h2{margin:.15em 0 .35em;font-size:clamp(1.6rem,3vw,2.2rem)}
-    .gen-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:18px}
-    .gen-card{grid-column:span 12;background:linear-gradient(180deg,#0f0f10,#0b0b0c);border:1px solid #232323;border-radius:18px;padding:18px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
-    .gen-card h3{margin:0 0 6px;color:#fff}
-    .gen-card p{margin:0;color:#cfcfcf}
-    .gen-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-    .pill{border:1px solid #2b2b2b;border-radius:999px;padding:8px 12px;background:#111;color:#eaeaea}
-    @media (min-width:900px){.gen-card{grid-column:span 6}}
-
-    /* Loyalty */
-    .section-loyalty{background:radial-gradient(1200px 600px at 10% -10%, #FFF8E7, #FFFFFF);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:64px 0}
-    .loy-grid{display:grid;gap:20px}
-    @media (min-width:900px){.loy-grid{grid-template-columns:1.2fr .8fr}}
-    .loy-card{background:#fff;border:1px solid #EFE8D4;border-radius:var(--radius-lg);padding:24px;box-shadow:0 6px 28px rgba(0,0,0,.05)}
-    .progress{height:10px;border-radius:999px;background:#F1E7CC;overflow:hidden}
-    .progress>span{display:block;height:100%;width:42%;background:linear-gradient(90deg,#E8C569,#D47B19)}
-    .loy-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
-
-    /* Footer */
-    footer{padding:28px 0;color:#555}
-    footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:18px}
-  </style>
+  <title>Dutch District</title>
+  <meta name="description" content="Dutch District • Premium cannabis, powered by Dutch Touch Genetics." />
+  <meta name="theme-color" content="#ffffff" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- Header / Nav -->
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="brand-wrap" href="#home" aria-label="Dutch Republic Home">
-        <img src="/logo-dutch-republic.svg" alt="Dutch Republic logo" />
-        <span class="brand">Dutch Republic</span>
+  <!-- ===== Brand banner (NOT sticky) ===== -->
+  <header id="siteHeader">
+    <div class="brand-banner">
+      <a class="brand-link" href="/" aria-label="Dutch District">
+        <svg viewBox="0 0 540 120" width="220" height="48" aria-hidden="true">
+          <rect width="540" height="120" rx="14" fill="var(--gold)"></rect>
+          <text x="50%" y="58%" text-anchor="middle" font-size="44" font-weight="800" fill="#111315" font-family="Inter, system-ui">
+            Dutch District
+          </text>
+        </svg>
       </a>
-      <nav class="nav" aria-label="Primary">
-        <a href="#home">Home</a>
-        <a href="#shop">Shop</a>
-        <a href="#dutch-touch">Dutch Touch</a>
-        <a href="#genetics">DT Genetics</a>
-        <a href="#loyalty">Loyalty</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <button class="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
+
+    <!-- ===== Sticky compact nav (shows after you scroll past banner) ===== -->
+    <nav class="sticky-nav" aria-label="Primary">
+      <div class="sticky-nav__inner container">
+        <a class="sticky-logo" href="/" aria-label="Home">DD</a>
+
+        <!-- Desktop-only quick link -->
+        <div class="sticky-tabs">
+          <a href="#deals" class="stab" aria-label="Today’s Deals">⬇︎ Deals</a>
+        </div>
+
+        <div class="sticky-actions">
+          <a class="btn gold small btn-order" href="https://your-ecom-link" data-ext aria-label="Order Online">Order</a>
+
+          <!-- Hours pill with tooltip trigger -->
+          <button class="pill" id="hoursBtn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-describedby="hoursTip">OPEN</button>
+          <div id="hoursTip" class="tooltip" role="tooltip" hidden>Open until 9PM</div>
+
+          <button class="icon-btn" data-open-menu aria-label="Open menu">☰</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hours popover -->
+    <div id="hoursOverlay" class="hours-overlay" hidden></div>
+    <div id="hoursPopover" class="hours-popover" role="dialog" aria-modal="false" hidden>
+      <div class="hours-head">
+        <strong>Today’s Hours</strong>
+        <span class="status-dot" id="hoursStatusDot"></span>
+      </div>
+      <ul class="hours-list" id="hoursList"></ul>
+      <div class="hours-note" id="hoursNote"></div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <aside id="navDrawer" class="nav-drawer" hidden>
+      <button class="drawer-close" type="button">Close</button>
+      <nav>
+        <a class="drawer-link" href="#deals">Today’s Deals</a>
+        <a class="drawer-link" href="#contact">Contact & Map</a>
+        <a class="drawer-link" href="#shop">Shop Categories</a>
+        <a class="drawer-link" href="#dtg">Dutch Touch Genetics</a>
+        <a class="drawer-link" href="#loyalty">Loyalty</a>
+      </nav>
+    </aside>
   </header>
 
   <main id="home">
     <!-- Hero -->
     <section class="hero">
       <div class="container">
-        <div class="kicker">Now Serving West Michigan</div>
-        <h1>Heritage Craft. Modern Elevation.</h1>
-        <p>Small-batch genetics, precision curing, and terpene-forward profiles. When you see the lion, expect award-winning flavor and consistency.</p>
-        <div class="cta">
-          <a class="btn" href="#dutch-touch">Explore Dutch Touch</a>
-          <a class="btn alt" href="#shop">Shop Categories</a>
+        <div class="slides" data-carousel>
+          <a class="slide is-active" href="#shop"><img src="img/hero-1.jpg" alt="Shop Dutch District" /></a>
+          <a class="slide" href="#deals"><img src="img/hero-2.jpg" alt="Today’s Deals" /></a>
+          <a class="slide" href="#dtg"><img src="img/hero-3.jpg" alt="Dutch Touch Genetics" /></a>
+        </div>
+        <div class="dots" data-dots></div>
+      </div>
+    </section>
+
+    <!-- Today’s Deals -->
+    <section id="deals" class="deals-section">
+      <div class="container">
+        <div class="deal-card" role="button" tabindex="0" aria-expanded="false" aria-controls="dealBody">
+          <div class="deal-head">
+            <div class="deal-title">Today’s Deals</div>
+            <span class="chev" aria-hidden="true">▾</span>
+          </div>
+
+          <div id="dealBody" class="deal-body collapsed">
+            <ul class="deal-list" id="dealList"><!-- JS renders here --></ul>
+            <div class="deal-actions">
+              <button id="closeDeals" class="btn outline">Close deals</button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Categories -->
-    <section id="shop" class="section-cats">
+    <section id="shop" class="categories">
       <div class="container">
-        <div class="grid">
-          <a class="category-card" href="/flower"><img src="/images/categories/flower.jpg" alt="Flower"><span class="label">Flower</span></a>
-          <a class="category-card" href="/vapes"><img src="/images/categories/vapes.jpg" alt="Vapes"><span class="label">Vapes</span></a>
-          <a class="category-card" href="/edibles"><img src="/images/categories/edibles.jpg" alt="Edibles"><span class="label">Edibles</span></a>
-          <a class="category-card" href="/prerolls"><img src="/images/categories/prerolls.jpg" alt="Pre-rolls"><span class="label">Pre-rolls</span></a>
-          <a class="category-card" href="/concentrates"><img src="/images/categories/concentrates.jpg" alt="Concentrates"><span class="label">Concentrates</span></a>
-          <a class="category-card" href="/topicals"><img src="/images/categories/topicals.jpg" alt="Topicals"><span class="label">Topicals</span></a>
+        <h2 class="section-title">Shop Categories</h2>
+        <div class="cat-grid">
+          <a class="cat-card" href="https://your-ecom-link?category=flower" data-ext>
+            <img src="img/cat-flower.jpg" alt="" loading="lazy" /><span>Flower</span>
+          </a>
+          <a class="cat-card" href="https://your-ecom-link?category=pre-rolls" data-ext>
+            <img src="img/cat-preroll.jpg" alt="" loading="lazy" /><span>Pre-Rolls</span>
+          </a>
+          <a class="cat-card" href="https://your-ecom-link?category=vaporizers" data-ext>
+            <img src="img/cat-vapes.jpg" alt="" loading="lazy" /><span>Vaporizers</span>
+          </a>
+          <a class="cat-card" href="https://your-ecom-link?category=concentrates" data-ext>
+            <img src="img/cat-conc.jpg" alt="" loading="lazy" /><span>Concentrates</span>
+          </a>
+          <a class="cat-card" href="https://your-ecom-link?category=edibles" data-ext>
+            <img src="img/cat-edibles.jpg" alt="" loading="lazy" /><span>Edibles</span>
+          </a>
+          <a class="cat-card" href="https://your-ecom-link?category=tinctures" data-ext>
+            <img src="img/cat-tinctures.jpg" alt="" loading="lazy" /><span>Tinctures</span>
+          </a>
         </div>
-      </div>
-    </section>
-
-    <!-- Dutch Touch (lion roar) -->
-    <section id="dutch-touch" class="section-dutch">
-      <div class="lion-overlay" aria-hidden="true">
-        <!-- Placeholder silhouette for the roar effect.
-             Swap with a simple lion-only SVG path if you prefer. -->
-        <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
-          <path d="M60 280c30-40 80-40 120-30 25-45 70-90 140-110 60-18 96 15 110 60 50 0 80 20 90 40-40-10-70 10-90 40-40 60-140 90-240 70-60-12-100-34-130-70z" fill="#000"/>
-        </svg>
-      </div>
-      <div class="container" style="position:relative;z-index:2">
-        <div class="eyebrow">Dutch Touch®</div>
-        <h2>The Lion Roars in West Michigan</h2>
-        <p>Genetics you can taste. Cured for depth, dialed for consistency. Our mark stands for potency and terpene-rich flavor profiles.</p>
-        <div class="badges">
-          <div class="badge">2023 People’s Choice</div><div class="badge">Lab Verified</div>
-          <div class="badge">Small Batch</div><div class="badge">Terpene Rich</div>
+        <div class="center">
+          <a class="btn gold" href="https://your-ecom-link" data-ext>View All</a>
         </div>
       </div>
     </section>
 
     <!-- Dutch Touch Genetics -->
-    <section id="genetics" class="section-genetics">
+    <section id="dtg" class="dtg">
       <div class="container">
-        <div class="heading">
-          <img src="/logo-dutch-republic.svg" alt="">
-          <span class="kicker" style="color:var(--gold);font-weight:700;letter-spacing:.08em;text-transform:uppercase">Dutch Touch Genetics</span>
-        </div>
-        <h2>Signature Strains. Real Provenance.</h2>
-        <p style="color:#cfcfcf;max-width:70ch;margin:0 0 14px">Curated phenos, slow-cured, and terpene-forward. Ask in store for drop schedules and lab sheets.</p>
-        <div class="gen-grid">
-          <div class="gen-card"><h3>Legendary Lime</h3><p>Lime zest on the nose, candy on the exhale. Euphoric lift with clean fade.</p><div class="gen-meta"><span class="pill">Sativa-leaning</span><span class="pill">Limonene • Terpinolene</span><span class="pill">28–31% THC</span></div></div>
-          <div class="gen-card"><h3>Grape 1:1 (THC:CBN)</h3><p>Night-mode comfort. Smooth body feel with dessert-grape finish.</p><div class="gen-meta"><span class="pill">Evening</span><span class="pill">Myrcene • Caryophyllene</span><span class="pill">200 mg / pack (edible)</span></div></div>
-          <div class="gen-card"><h3>Frosted Orange</h3><p>Citrus frosting, cool pine. Crisp focus with mellow glide.</p><div class="gen-meta"><span class="pill">Hybrid</span><span class="pill">Ocimene • Pinene</span><span class="pill">26–29% THC</span></div></div>
-          <div class="gen-card"><h3>Sugar Lion</h3><p>Sticky-sweet nose, creamy finish. Heavy presence, couch-friendly.</p><div class="gen-meta"><span class="pill">Indica-leaning</span><span class="pill">Myrcene • Linalool</span><span class="pill">30%+ THC</span></div></div>
+        <h2 class="section-title">Dutch Touch Genetics</h2>
+        <p class="section-sub">Curated genetics with clean, informative tiles.</p>
+        <div class="dtg-grid">
+          <article class="dtg-card">
+            <img src="img/dtg-1.jpg" alt="Legendary Lime" loading="lazy" />
+            <h3 class="dtg-title">Legendary Lime</h3>
+            <div class="dtg-meta"><span class="badge">Hybrid</span><span class="meta">THC 26%</span></div>
+            <a class="dtg-link" href="https://your-ecom-link?brand=dutch-touch-genetics" data-ext>View on menu</a>
+          </article>
+          <article class="dtg-card">
+            <img src="img/dtg-2.jpg" alt="Grape 1:1" loading="lazy" />
+            <h3 class="dtg-title">Grape 1:1</h3>
+            <div class="dtg-meta"><span class="badge">Indica</span><span class="meta">THC 22%</span></div>
+            <a class="dtg-link" href="https://your-ecom-link?brand=dutch-touch-genetics" data-ext>View on menu</a>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- Loyalty -->
-    <section id="loyalty" class="section-loyalty">
+    <section id="loyalty" class="loyalty-section">
       <div class="container">
-        <div class="loy-grid">
-          <div class="loy-card">
-            <h3 class="brand" style="margin:0 0 .5rem 0;">Loyalty Pays</h3>
-            <p>Earn points on every purchase, unlock exclusive drops, and hit milestones for VIP perks.</p>
-            <div class="progress" aria-label="Progress to next reward"><span></span></div>
-            <div class="loy-cta">
-              <a class="btn" href="/loyalty">Join Now</a>
-              <a class="btn" href="/rewards">See Rewards</a>
+        <h2 class="section-title">Loyalty</h2>
+
+        <form id="loyaltyForm" class="loyalty-card" action="#" method="post" onsubmit="return false;">
+          <label class="loy-row loy-inline" for="loyEmail">
+            <input id="loyEmail" name="email" type="email" placeholder="Enter your email to join" required />
+            <button id="loyStart" class="btn gold" type="button">Continue</button>
+          </label>
+
+          <div id="loyBody" class="loy-body" hidden>
+            <div class="loy-grid">
+              <label>First Name
+                <input name="firstName" type="text" autocomplete="given-name" />
+              </label>
+              <label>Last Name
+                <input name="lastName" type="text" autocomplete="family-name" />
+              </label>
+              <label>Mobile Phone
+                <input name="phone" type="tel" inputmode="tel" autocomplete="tel" />
+              </label>
+            </div>
+
+            <div class="loy-blurb">
+              Earn points on every purchase. Redeem for exclusive Dutch District rewards and drops.
+            </div>
+
+            <label class="loy-agree">
+              <input type="checkbox" required />
+              <span>
+                By signing up, I consent to receive marketing communications and agree to the program terms.
+                Standard messaging rates may apply. I confirm I am of legal age.
+              </span>
+            </label>
+
+            <div class="loy-actions">
+              <a class="btn gold" href="https://your-loyalty-link" data-ext>Create Account</a>
+              <a class="btn outline" href="https://your-loyalty-link" data-ext>Sign In</a>
             </div>
           </div>
-          <div class="loy-card">
-            <h4 style="margin:0 0 .5rem 0;">Perks</h4>
-            <ul style="margin:0;padding-left:18px">
-              <li>2× points on Dutch Touch</li>
-              <li>Birthday gift & early access</li>
-              <li>Member-only pricing</li>
+        </form>
+      </div>
+    </section>
+
+    <!-- Visit Us -->
+    <section id="contact" class="contact contact--gold">
+      <div class="container contact-wrap">
+        <div class="contact-col">
+          <h2 class="section-title">Visit Us — Green Labs</h2>
+
+          <div class="map-card">
+            <div class="map-link" aria-label="Map preview">
+              <iframe
+                title="Map — Green Labs"
+                width="100%"
+                height="220"
+                style="border:0; display:block"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=41.811131,-83.446182&hl=en&z=15&output=embed">
+              </iframe>
+              <span class="map-pin">📍</span>
+            </div>
+
+            <div class="map-actions">
+              <div class="addr">
+                <strong>10701 Madison St</strong><br/>Luna Pier, MI 48157
+              </div>
+              <div class="map-buttons">
+                <button id="openMapsSmart" class="btn small gold" type="button">Open in Maps</button>
+              </div>
+            </div>
+
+            <ul class="contact-list">
+              <li><strong>Phone</strong> <a href="tel:+17348000024">(734) 800-0024</a></li>
+              <li><strong>Email</strong> <a href="mailto:Shop@greenlabs.com">Shop@greenlabs.com</a></li>
+              <li class="socials">
+                <strong>Social</strong>
+                <a href="https://www.instagram.com/greenlabsmi" data-ext>Instagram</a> •
+                <a href="https://www.facebook.com/greenlabsmi" data-ext>Facebook</a> •
+                <a href="https://share.google/sXlxPZrTMpuUN6DLd" data-ext>Google Reviews</a>
+              </li>
             </ul>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- Optional: Find Us (wire your Apple/Google map URLs) -->
-    <section class="section-cats" id="find-us">
-      <div class="container">
-        <h2 class="brand" style="margin:0 0 .5rem 0;">Find Us</h2>
-        <p style="margin:0 0 12px;color:#444">Tap a map to navigate:</p>
-        <div class="cta">
-          <a class="btn" href="#" id="apple-maps">Open in Apple Maps</a>
-          <a class="btn alt" href="#" id="google-maps">Open in Google Maps</a>
-        </div>
-      </div>
-    </section>
-
   </main>
 
-  <footer id="contact">
-    <div class="container">
-      <div class="row">
-        <div>© <span id="year"></span> Dutch Republic</div>
-        <div><a href="mailto:hello@dutchrepublic.example">hello@dutchrepublic.example</a></div>
-      </div>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Dutch District. All rights reserved.</p>
+      <nav aria-label="Footer">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#deals">Deals</a>
+      </nav>
     </div>
   </footer>
 
+  <script src="script.js"></script>
+
+  <!-- Inline helpers kept from earlier (deals toggle + loyalty auto-open/remove) -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const header = document.querySelector('.site-header');
-      const nav = document.querySelector('.nav');
-      const burger = document.querySelector('.hamburger');
-
-      if (header){
-        const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 8);
-        onScroll(); document.addEventListener('scroll', onScroll, { passive: true });
-      }
-      if (burger && nav){
-        burger.addEventListener('click', () => {
-          nav.classList.toggle('is-open');
-          burger.setAttribute('aria-expanded', nav.classList.contains('is-open'));
-        });
-        nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('is-open')));
-      }
-      const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
-
-      const dutch = document.querySelector('.section-dutch');
-      if (dutch){
-        const io = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) dutch.classList.add('is-active');
-            else dutch.classList.remove('is-active');
-          });
-        }, { threshold: 0.35 });
-        io.observe(dutch);
+      // Deals toggle (click anywhere)
+      const dealCard = document.querySelector('.deal-card');
+      const dealBody = document.getElementById('dealBody');
+      const closeDeals = document.getElementById('closeDeals');
+      if (dealCard && dealBody) {
+        const toggle = () => {
+          const isOpen = !dealBody.classList.contains('collapsed');
+          if (isOpen) { dealBody.classList.add('collapsed'); dealCard.setAttribute('aria-expanded','false'); }
+          else { dealBody.classList.remove('collapsed'); dealCard.setAttribute('aria-expanded','true'); }
+        };
+        dealCard.addEventListener('click', (e) => { if (!e.target.closest('button,a,input,label,select,textarea')) toggle(); });
+        dealCard.addEventListener('keydown', (e) => { if (e.key==='Enter'||e.key===' ') { e.preventDefault(); toggle(); } });
+        closeDeals?.addEventListener('click', (e) => { e.stopPropagation(); dealBody.classList.add('collapsed'); dealCard.setAttribute('aria-expanded','false'); });
       }
 
-      // Map links — paste real URLs when you have them
-      document.getElementById('apple-maps')?.setAttribute('href', '#');   // e.g., 'https://maps.apple.com/?address=...'
-      document.getElementById('google-maps')?.setAttribute('href', '#');  // e.g., 'https://goo.gl/maps/...'
-
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-        document.documentElement.style.setProperty('scroll-behavior','auto');
-      }
+      // Loyalty: reveal + remove Continue on email focus/typing
+      const loyEmail = document.getElementById('loyEmail');
+      const loyStart = document.getElementById('loyStart');
+      const loyBody  = document.getElementById('loyBody');
+      const revealAndRemove = () => { if (loyBody?.hidden) loyBody.hidden = false; loyStart?.remove(); };
+      loyEmail?.addEventListener('focus', revealAndRemove, { once:true });
+      loyEmail?.addEventListener('input', revealAndRemove, { once:true });
+      loyStart?.addEventListener('click', (e) => { e.preventDefault(); revealAndRemove(); });
     });
   </script>
 </body>
