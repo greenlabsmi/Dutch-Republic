@@ -38,26 +38,31 @@ a{color:inherit;text-decoration:none}
 .btn-order{font-weight:800;padding:8px 12px;font-size:14px;line-height:1.1;border-radius:12px;white-space:nowrap}
 
 /* ========== Header ========== */
-/* Brand banner (top, non-sticky) */
+/* ===== Brand banner (Green Labs scale) ===== */
 .brand-banner{
   background:#fff;
   border-bottom:1px solid var(--line);
-  padding:14px 16px;
+  padding:18px 16px;                 /* mobile height */
   text-align:center;
 }
-/* Alias both brand-cta* and brand-mark* so either HTML works */
-.brand-mark, .brand-cta{ display:inline-flex; align-items:center; gap:12px; text-decoration:none; }
-.brand-mark__icon, .brand-cta__icon{
-  width:36px; height:36px; display:block; aspect-ratio:1/1; object-fit:contain; object-position:center;
+.brand-mark{
+  display:inline-flex; align-items:center; gap:14px;
+  text-decoration:none;
 }
-.brand-mark__name, .brand-cta__name{
-  font-family:"UnifrakturCook","Cinzel",serif; /* Old English vibe */
-  font-size:1.6rem; line-height:1; letter-spacing:.4px; color:var(--ink);
+.brand-mark__icon{ width:40px; height:40px; display:block; aspect-ratio:1/1; object-fit:contain; }
+.brand-mark__name{
+  font-family:"UnifrakturCook","Cinzel",serif;
+  font-size:1.9rem;                  /* mobile wordmark size */
+  line-height:1; letter-spacing:.4px; color:var(--ink);
 }
+
+/* desktop bump */
 @media (min-width:768px){
-  .brand-mark__icon, .brand-cta__icon{ width:50px; height:50px }
-  .brand-mark__name, .brand-cta__name{ font-size:1.9rem }
+  .brand-banner{ padding:26px 20px; } /* ~74–78px total height like Green Labs */
+  .brand-mark__icon{ width:54px; height:54px; }
+  .brand-mark__name{ font-size:2.35rem; }
 }
+
 
 /* Sticky nav — always visible */
 .sticky-nav{
