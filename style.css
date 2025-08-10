@@ -102,8 +102,6 @@ a{color:inherit;text-decoration:none}
   .sticky-logo .brand-lion{ height:calc(var(--nav-h) - 6px) }
 }
 
-@media (max-width:480px){ .sticky-logo .brand-lion{ width:28px; height:28px } }
-
 .sticky-brand-name{
   font-family:"UnifrakturCook","Cinzel",serif;
   font-size:1.05rem; letter-spacing:.3px; color:var(--ink);
