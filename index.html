@@ -31,12 +31,12 @@
       </nav>
 
       <div class="header-actions">
-        <!-- OPEN pill becomes a button with popover -->
-        <button class="pill" id="hoursBtn" type="button" aria-haspopup="dialog" aria-expanded="false">OPEN</button>
+        <!-- OPEN pill (hooks added for styling) -->
+        <button class="pill badge-open btn-open" id="hoursBtn" type="button" aria-haspopup="dialog" aria-expanded="false">OPEN</button>
         <button class="icon-btn" data-open-menu aria-label="Open menu">☰</button>
         <a class="icon-btn" href="#" aria-label="Search">🔍</a>
         <a class="icon-btn" href="#" aria-label="Account">👤</a>
-        <a class="btn gold small" href="https://your-ecom-link" data-ext>Order Online</a>
+        <a class="btn gold small btn-order" href="https://your-ecom-link" data-ext>Order Online</a>
       </div>
     </div>
 
@@ -136,10 +136,57 @@
       </div>
     </section>
 
-    <!-- Contact / Social / Reviews (Green Labs, Luna Pier) -->
+    <!-- Loyalty (moved ABOVE Visit Us) -->
+    <section id="loyalty" class="loyalty-section">
+      <div class="container">
+        <h2 class="section-title">Loyalty</h2>
+
+        <form id="loyaltyForm" class="loyalty-card" action="#" method="post" onsubmit="return false;">
+          <!-- collapsed head -->
+          <label class="loy-row loy-inline" for="loyEmail">
+            <input id="loyEmail" name="email" type="email" placeholder="Enter your email to join" required />
+            <button id="loyStart" class="btn gold" type="button">Continue</button>
+          </label>
+
+          <!-- expands on continue/focus -->
+          <div id="loyBody" class="loy-body" hidden>
+            <div class="loy-grid">
+              <label>First Name
+                <input name="firstName" type="text" autocomplete="given-name" />
+              </label>
+              <label>Last Name
+                <input name="lastName" type="text" autocomplete="family-name" />
+              </label>
+              <label>Mobile Phone
+                <input name="phone" type="tel" inputmode="tel" autocomplete="tel" />
+              </label>
+            </div>
+
+            <div class="loy-blurb">
+              Earn points on every purchase. Redeem for exclusive Dutch District rewards and drops.
+            </div>
+
+            <label class="loy-agree">
+              <input type="checkbox" required />
+              <span>
+                By signing up, I consent to receive marketing communications and agree to the program terms.
+                Standard messaging rates may apply. I confirm I am of legal age.
+              </span>
+            </label>
+
+            <div class="loy-actions">
+              <!-- Swap these href values to your real loyalty provider when ready -->
+              <a class="btn gold" href="https://your-loyalty-link" data-ext>Create Account</a>
+              <a class="btn outline" href="https://your-loyalty-link" data-ext>Sign In</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Visit Us (now below Loyalty) -->
     <section id="contact" class="contact contact--gold">
       <div class="container contact-wrap">
-        <!-- Left: address + live map -->
         <div class="contact-col">
           <h2 class="section-title">Visit Us — Green Labs</h2>
 
@@ -159,71 +206,26 @@
             </div>
 
             <div class="map-actions">
-  <div class="addr">
-    <strong>10701 Madison St</strong><br/>Luna Pier, MI 48157
-  </div>
-  <div class="map-buttons">
-    <!-- Single smart button: uses Apple or Google depending on device -->
-    <button id="openMapsSmart" class="btn small gold" type="button">Open in Maps</button>
-  </div>
-</div>
-
-          <ul class="contact-list">
-            <li><strong>Phone</strong> <a href="tel:+17348000024">(734) 800-0024</a></li>
-            <li><strong>Email</strong> <a href="mailto:Shop@greenlabs.com">Shop@greenlabs.com</a></li>
-            <li class="socials">
-              <strong>Social</strong>
-              <a href="https://www.instagram.com/greenlabsmi" data-ext>Instagram</a> •
-              <a href="https://www.facebook.com/greenlabsmi" data-ext>Facebook</a> •
-              <a href="https://share.google/sXlxPZrTMpuUN6DLd" data-ext>Google Reviews</a>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Right: loyalty -->
-        <div class="contact-col">
-          <h2 class="section-title">Loyalty</h2>
-
-          <form id="loyaltyForm" class="loyalty-card" action="#" method="post" onsubmit="return false;">
-            <!-- collapsed head -->
-            <label class="loy-row loy-inline" for="loyEmail">
-              <input id="loyEmail" name="email" type="email" placeholder="Enter your email to join" required />
-              <button id="loyStart" class="btn gold" type="button">Continue</button>
-            </label>
-
-            <!-- expands on continue/focus -->
-            <div id="loyBody" class="loy-body" hidden>
-              <div class="loy-grid">
-                <label>First Name
-                  <input name="firstName" type="text" autocomplete="given-name" />
-                </label>
-                <label>Last Name
-                  <input name="lastName" type="text" autocomplete="family-name" />
-                </label>
-                <label>Mobile Phone
-                  <input name="phone" type="tel" inputmode="tel" autocomplete="tel" />
-                </label>
+              <div class="addr">
+                <strong>10701 Madison St</strong><br/>Luna Pier, MI 48157
               </div>
-
-              <div class="loy-blurb">
-                Earn points on every purchase. Redeem for exclusive Dutch District rewards and drops.
-              </div>
-
-              <label class="loy-agree">
-                <input type="checkbox" required />
-                <span>
-                  By signing up, I consent to receive marketing communications and agree to the program terms.
-                  Standard messaging rates may apply. I confirm I am of legal age.
-                </span>
-              </label>
-
-              <div class="loy-actions">
-                <!-- Swap these href values to your real loyalty provider when ready -->
-                <a class="btn gold" href="https://your-loyalty-link" data-ext>Create Account</a>
-                <a class="btn outline" href="https://your-loyalty-link" data-ext>Sign In</a>
+              <div class="map-buttons">
+                <!-- Single smart button: uses Apple or Google depending on device -->
+                <button id="openMapsSmart" class="btn small gold" type="button">Open in Maps</button>
               </div>
             </div>
-          </form>
+
+            <ul class="contact-list">
+              <li><strong>Phone</strong> <a href="tel:+17348000024">(734) 800-0024</a></li>
+              <li><strong>Email</strong> <a href="mailto:Shop@greenlabs.com">Shop@greenlabs.com</a></li>
+              <li class="socials">
+                <strong>Social</strong>
+                <a href="https://www.instagram.com/greenlabsmi" data-ext>Instagram</a> •
+                <a href="https://www.facebook.com/greenlabsmi" data-ext>Facebook</a> •
+                <a href="https://share.google/sXlxPZrTMpuUN6DLd" data-ext>Google Reviews</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -241,5 +243,68 @@
   </footer>
 
   <script src="script.js"></script>
+
+  <!-- Quick inline fixes:
+       1) Make Deals header clickable anywhere
+       2) Remove the Loyalty "Continue" button once email is focused/typed -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1) Deals: click anywhere on the card header to toggle
+      const dealCard = document.querySelector('.deal-card');
+      const dealBody = document.getElementById('dealBody');
+      const closeDeals = document.getElementById('closeDeals');
+
+      if (dealCard && dealBody) {
+        const toggle = () => {
+          const isOpen = !dealBody.classList.contains('collapsed');
+          if (isOpen) {
+            dealBody.classList.add('collapsed');
+            dealCard.setAttribute('aria-expanded', 'false');
+          } else {
+            dealBody.classList.remove('collapsed');
+            dealCard.setAttribute('aria-expanded', 'true');
+          }
+        };
+
+        // Click anywhere on the .deal-card except on real controls/links
+        dealCard.addEventListener('click', (e) => {
+          if (e.target.closest('button, a, input, label, select, textarea')) return;
+          toggle();
+        });
+        // Keyboard support
+        dealCard.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggle();
+          }
+        });
+        // Close button still works
+        closeDeals?.addEventListener('click', (e) => {
+          e.stopPropagation();
+          dealBody.classList.add('collapsed');
+          dealCard.setAttribute('aria-expanded', 'false');
+        });
+      }
+
+      // 2) Loyalty: hide "Continue" as soon as email is focused or typed
+      const loyEmail = document.getElementById('loyEmail');
+      const loyStart = document.getElementById('loyStart');
+      const loyBody  = document.getElementById('loyBody');
+
+      const revealAndRemove = () => {
+        if (loyBody?.hidden) loyBody.hidden = false;
+        loyStart?.remove(); // remove the redundant button entirely
+      };
+
+      loyEmail?.addEventListener('focus', revealAndRemove, { once: true });
+      loyEmail?.addEventListener('input', revealAndRemove, { once: true });
+
+      // Keep the old button behavior if someone taps it first
+      loyStart?.addEventListener('click', (e) => {
+        e.preventDefault();
+        revealAndRemove();
+      });
+    });
+  </script>
 </body>
 </html>
