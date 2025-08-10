@@ -320,3 +320,21 @@ a{color:inherit;text-decoration:none}
 @media (max-width:480px){ #deals, #contact, #shop, #dtg, #loyalty { scroll-margin-top:64px; } }
 :target{ scroll-margin-top:80px; }
 @media (min-width:768px){ :target{ scroll-margin-top:96px; } }
+
+/* --- Extra-tight brand banner adjustments --- */
+.brand-banner {
+  padding: 4px 12px !important; /* much smaller top/bottom padding */
+}
+
+.brand-mark {
+  gap: 1px !important; /* icon and text almost touching */
+}
+
+.brand-mark__icon {
+  width: 92px !important; 
+  height: 92px !important;
+}
+
+.brand-mark__name {
+  margin-left: -1px !important; /* tiny nudge to visually center */
+}
