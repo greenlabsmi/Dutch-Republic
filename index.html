@@ -74,17 +74,18 @@
       <div class="hours-note" id="hoursNote"></div>
     </div>
 
-    <!-- Mobile drawer -->
-    <aside id="navDrawer" class="nav-drawer" hidden>
-      <button class="drawer-close" type="button">Close</button>
-      <nav>
-        <a class="drawer-link" href="#deals">Today’s Deals</a>
-        <a class="drawer-link" href="#contact">Contact & Map</a>
-        <a class="drawer-link" href="#shop">Shop Categories</a>
-        <a class="drawer-link" href="#dtg">Dutch Touch Genetics</a>
-        <a class="drawer-link" href="#loyalty">Loyalty</a>
-      </nav>
-    </aside>
+  <!-- Menu popover (like the Hours dialog) -->
+<div id="menuOverlay" class="menu-overlay" hidden></div>
+
+<aside id="navDrawer" class="menu-popover" role="dialog" aria-modal="false" hidden>
+  <nav class="menu-list" aria-label="Site">
+    <a class="drawer-link" href="#deals">Today’s Deals</a>
+    <a class="drawer-link" href="#contact">Contact & Map</a>
+    <a class="drawer-link" href="#shop">Shop Categories</a>
+    <a class="drawer-link" href="#dtg">Dutch Touch Genetics</a>
+    <a class="drawer-link" href="#loyalty">Loyalty</a>
+  </nav>
+</aside>
 
   <main id="home">
     <!-- Hero -->
