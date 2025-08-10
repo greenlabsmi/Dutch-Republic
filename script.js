@@ -68,20 +68,35 @@ document.addEventListener('DOMContentLoaded', () => {
     a.setAttribute('rel', 'noopener');
     a.setAttribute('target', '_blank');
   });
-  // ================= Mobile drawer =================
-  (function mobileDrawer() {
-    const openBtn = document.querySelector('[data-open-menu]');
-    const drawer = document.getElementById('navDrawer');
-    const closeBtn = drawer?.querySelector('.drawer-close');
-    if (!openBtn || !drawer || !closeBtn) return;
-    const open = () => drawer.removeAttribute('hidden');
-    const close = () => drawer.setAttribute('hidden', '');
-    openBtn.addEventListener('click', open);
-    closeBtn.addEventListener('click', close);
-    drawer.addEventListener('click', (e) => {
-      if (e.target.closest('a')) close();
-    });
-  })();
+
+  // ================= Menu popover (like Hours) =================
+(function menuPopover(){
+  const openBtn = document.querySelector('[data-open-menu]');
+  const pop = document.getElementById('navDrawer');      // now a popover
+  const ovl = document.getElementById('menuOverlay');
+  if (!openBtn || !pop || !ovl) return;
+
+  const open = () => { pop.hidden = false; ovl.hidden = false; openBtn.setAttribute('aria-expanded','true'); };
+  const close = () => { pop.hidden = true; ovl.hidden = true; openBtn.setAttribute('aria-expanded','false'); };
+
+  openBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    (pop.hidden ? open() : close());
+  });
+  ovl.addEventListener('click', close);
+
+  // Close when clicking any link inside
+  pop.addEventListener('click', (e) => {
+    if (e.target.closest('a')) close();
+  });
+
+  // Close on ESC
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+
+  // Close if window scrolls a lot (optional)
+  window.addEventListener('scroll', close, { passive:true });
+})();
+
   // ================= Today’s Deals =================
   (function deals() {
     const body = document.getElementById('dealBody');
