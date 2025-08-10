@@ -6,7 +6,7 @@
   <title>Dutch District</title>
   <meta name="description" content="Dutch District • Premium cannabis, powered by Dutch Touch Genetics." />
   <meta name="theme-color" content="#ffffff" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -22,10 +22,12 @@
     <!-- ===== Sticky compact nav (shows after you scroll past banner) ===== -->
     <header class="site-header sticky-nav">
   <div class="container sticky-nav__inner">
-    <!-- left: brand icon -->
-    <a class="sticky-logo" href="#home" aria-label="Home">
-      <img src="/logo-dutch-republic.svg" alt="" style="width:20px;height:20px" />
-    </a>
+    <!-- left: brand icon + name -->
+<a class="sticky-logo" href="#home" aria-label="Home">
+  <!-- IMPORTANT: use relative path on GitHub Pages -->
+  <img src="logo-dutch-republic.svg" alt="" style="width:24px;height:24px" />
+  <span class="sticky-brand-name">Dutch Republic</span>
+</a>
 
     <!-- keep tabs if you use them; otherwise you can remove this div -->
     <div class="sticky-tabs tab-nav" aria-label="Primary">
@@ -41,7 +43,6 @@
     <div class="sticky-actions">
       <a class="btn-order btn gold" href="/order" aria-label="Order online">Order</a>
 
-      <span id="hoursStatusDot" class="status-dot" aria-hidden="true"></span>
       <button id="hoursBtn" class="pill" aria-expanded="false" type="button" title="Store hours">OPEN</button>
 
       <button class="icon-btn" id="searchBtn" aria-label="Search products" title="Search">
