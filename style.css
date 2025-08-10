@@ -112,14 +112,33 @@ a{color:inherit;text-decoration:none}
   position:fixed; inset:56px 0 0 0; background:#fff; border-top:1px solid var(--line);
   padding:14px 16px; display:block;
 }
-.nav-drawer[hidden]{display:none}
-.nav-drawer nav{display:flex;flex-direction:column;gap:12px}
-.drawer-link{font-weight:800;padding:14px 6px;border-bottom:1px solid var(--line);color:var(--ink)}
-.drawer-link:last-child{border-bottom:0}
-.drawer-close{
-  position:absolute; right:12px; top:10px; background:#fff;
-  border:1px solid var(--line); border-radius:10px; padding:6px 10px; color:var(--ink)
+/* Popover-style menu (no page distortion) */
+.menu-overlay{
+  position:fixed; inset:0; z-index:59; background:transparent;
 }
+.menu-overlay[hidden]{ display:none }
+
+.menu-popover{
+  position:fixed; z-index:61;
+  top:64px;        /* sits just under the sticky nav */
+  right:12px;
+  width:min(86vw, 320px);
+  max-height:70vh; overflow:auto;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  box-shadow:0 18px 40px rgba(16,24,40,.12);
+  padding:10px;
+}
+.menu-popover[hidden]{ display:none }
+
+.menu-list{ display:flex; flex-direction:column; gap:6px }
+.menu-list .drawer-link{
+  display:block; padding:12px 10px; border-radius:10px;
+  border:1px solid var(--line); background:#fff; font-weight:800; color:var(--ink);
+}
+.menu-list .drawer-link:active{ background:#f7f7f7 }
+
 /* ========== Hero ========== */
 .hero{margin:14px 0}
 .slides{display:grid;grid-auto-flow:column;grid-auto-columns:100%;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:var(--radius)}
