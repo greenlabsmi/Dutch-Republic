@@ -1,8 +1,9 @@
 // ------------------------------------------------------------
-// Dutch District – main client script (Updated + Working Maps)
+// Dutch District – main client script
 // ------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
   // ================= Header / meta =================
+  // Sticky header shadow (noop if .site-header doesn't exist)
   (function stickyHeader() {
     const hdr = document.querySelector('.site-header');
     if (!hdr) return;
@@ -10,12 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
     onScroll();
     document.addEventListener('scroll', onScroll, { passive: true });
   })();
-
+  // NEW: show compact sticky nav after brand banner scrolls away
   (function stickySwap(){
-    const banner = document.querySelector('.brand-banner');
+    const banner = document.querySelector('.brand-banner'); // from new header
     if (!banner) return;
     const activate = (on) => document.body.classList.toggle('show-sticky', on);
-
     if ('IntersectionObserver' in window) {
       const io = new IntersectionObserver((entries) => {
         activate(!entries[0].isIntersecting);
@@ -28,24 +28,19 @@ document.addEventListener('DOMContentLoaded', () => {
       window.addEventListener('resize', check);
     }
   })();
-
-  // Active tab
+  // Active tab (naive demo highlighting)
   document.querySelectorAll('.tab-nav .tab').forEach(t => {
     t.classList.toggle('is-active', t.getAttribute('href') === '#home');
   });
-
   // Year in footer
   const y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
-
   // ================= Hero carousel =================
   (function initCarousel() {
     const scroller = document.querySelector('[data-carousel]');
     const dotsWrap = document.querySelector('[data-dots]');
     if (!scroller || !dotsWrap) return;
-
     const slides = [...scroller.querySelectorAll('.slide')];
-
     slides.forEach((_, i) => {
       const b = document.createElement('button');
       if (i === 0) b.classList.add('is-active');
@@ -54,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       dotsWrap.appendChild(b);
     });
-
     const updateDots = () => {
       const i = Math.round(scroller.scrollLeft / scroller.clientWidth);
       dotsWrap.querySelectorAll('button').forEach((d, idx) => {
@@ -62,27 +56,24 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     };
     scroller.addEventListener('scroll', () => requestAnimationFrame(updateDots), { passive: true });
-
+    // Auto-advance
     let idx = 0;
     setInterval(() => {
       idx = (idx + 1) % slides.length;
       scroller.scrollTo({ left: idx * scroller.clientWidth, behavior: 'smooth' });
     }, 6000);
   })();
-
-  // External links
+  // Open external links in a new tab
   document.querySelectorAll('[data-ext]').forEach(a => {
     a.setAttribute('rel', 'noopener');
     a.setAttribute('target', '_blank');
   });
-
   // ================= Mobile drawer =================
   (function mobileDrawer() {
     const openBtn = document.querySelector('[data-open-menu]');
     const drawer = document.getElementById('navDrawer');
     const closeBtn = drawer?.querySelector('.drawer-close');
     if (!openBtn || !drawer || !closeBtn) return;
-
     const open = () => drawer.removeAttribute('hidden');
     const close = () => drawer.setAttribute('hidden', '');
     openBtn.addEventListener('click', open);
@@ -91,23 +82,22 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.target.closest('a')) close();
     });
   })();
-
   // ================= Today’s Deals =================
   (function deals() {
     const body = document.getElementById('dealBody');
     const list = document.getElementById('dealList');
     const card = document.querySelector('.deal-card');
     if (!body || !list || !card) return;
-
+    // Fetch and render deals.json (must be at /deals.json)
     fetch('deals.json', { cache: 'no-store' })
       .then(r => r.ok ? r.json() : Promise.reject(r.status))
       .then(data => renderDeals(list, data))
       .catch(() => { list.innerHTML = '<li>Deals unavailable right now.</li>'; });
-
     function esc(s) {
       return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     }
     function renderDeals(target, data) {
+      // Supports categories with optional subgroups
       const html = data.map(cat => {
         if (cat.groups && Array.isArray(cat.groups)) {
           const groups = cat.groups.map(g => `
@@ -137,26 +127,36 @@ document.addEventListener('DOMContentLoaded', () => {
       }).join('');
       target.innerHTML = html + `<div class="deal-note">All prices include tax.</div>`;
     }
-
-    const expand = () => { card.setAttribute('aria-expanded', 'true'); body.classList.remove('collapsed'); };
-    const collapse = () => { card.setAttribute('aria-expanded', 'false'); body.classList.add('collapsed'); };
-    const toggle = () => { (card.getAttribute('aria-expanded') === 'true') ? collapse() : expand(); };
-
+    // Expand/collapse helpers
+    const expand = () => {
+      card.setAttribute('aria-expanded', 'true');
+      body.classList.remove('collapsed');
+    };
+    const collapse = () => {
+      card.setAttribute('aria-expanded', 'false');
+      body.classList.add('collapsed');
+    };
+    const toggle = () => {
+      (card.getAttribute('aria-expanded') === 'true') ? collapse() : expand();
+    };
+    // Make the WHOLE CARD clickable (except real controls/links)
     card.addEventListener('click', (e) => {
       if (e.target.closest('button, a, input, label, select, textarea')) return;
       toggle();
     });
-
+    // Keyboard support
     card.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggle();
+      }
     });
-
+    // Close button still works
     document.getElementById('closeDeals')?.addEventListener('click', (e) => {
       e.stopPropagation();
       collapse();
     });
   })();
-
   // ================= Hours popover & pill =================
   (function hours() {
     const btn = document.getElementById('hoursBtn');
@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const note = document.getElementById('hoursNote');
     const statusDot = document.getElementById('hoursStatusDot');
     if (!btn || !pop || !ovl || !list || !note || !statusDot) return;
-
+    // Business hours (9–21 daily)
     const HOURS = [
       { d: 'Sunday',    open: 9, close: 21 },
       { d: 'Monday',    open: 9, close: 21 },
@@ -176,7 +176,6 @@ document.addEventListener('DOMContentLoaded', () => {
       { d: 'Friday',    open: 9, close: 21 },
       { d: 'Saturday',  open: 9, close: 21 },
     ];
-
     function fmt(h) {
       const ampm = h >= 12 ? 'PM' : 'AM';
       const hr = ((h + 11) % 12) + 1;
@@ -227,28 +226,30 @@ document.addEventListener('DOMContentLoaded', () => {
         : `We open at ${fmt(s.open)}.`;
     }
     function openPop() {
-      pop.hidden = false; ovl.hidden = false; btn.setAttribute('aria-expanded', 'true');
+      pop.hidden = false;
+      ovl.hidden = false;
+      btn.setAttribute('aria-expanded', 'true');
     }
     function closePop() {
-      pop.hidden = true; ovl.hidden = true; btn.setAttribute('aria-expanded', 'false');
+      pop.hidden = true;
+      ovl.hidden = true;
+      btn.setAttribute('aria-expanded', 'false');
     }
-
     paintPill();
     renderHours();
     btn.addEventListener('click', () => (pop.hidden ? openPop() : closePop()));
     ovl.addEventListener('click', closePop);
     window.addEventListener('scroll', closePop, { passive: true });
-    setInterval(paintPill, 60 * 1000);
+    setInterval(paintPill, 60 * 1000); // keep fresh
   })();
-
-  // Tooltip for hours pill
+  // NEW: Hours pill tooltip (uses hoursNote text)
   (function hoursTooltip(){
     const btn = document.getElementById('hoursBtn');
     const tip = document.getElementById('hoursTip');
     const note = document.getElementById('hoursNote');
     if (!btn || !tip) return;
-
     const syncTip = () => {
+      // shorten the note ("We’re open until 9PM today." -> "Open until 9PM")
       const raw = (note?.textContent || '').trim();
       const short = raw
         .replace(/^We’re\s*/i,'')
@@ -258,28 +259,26 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     const show = () => { syncTip(); tip.hidden = false; };
     const hide = () => { tip.hidden = true; };
-
     btn.addEventListener('mouseenter', show);
     btn.addEventListener('mouseleave', hide);
     btn.addEventListener('focus', show);
     btn.addEventListener('blur', hide);
-
+    // keep the tooltip accurate as time passes
     setInterval(syncTip, 60 * 1000);
     syncTip();
   })();
-
-  // ================= Maps (with your exact deep links) =================
+  // ================= Maps (smart open) =================
   (function maps() {
+    // Your exact deep links (Luna Pier)
     const appleMapsURL = 'https://maps.apple.com/place?address=10701%20Madison%20St,%20Luna%20Pier,%20MI%2048157,%20United%20States&coordinate=41.811131,-83.446182&name=Green%20Labs&place-id=I7D92A14C05BBFB93&map=explore';
     const googleMapsURL = 'https://www.google.com/maps/place//data=!4m2!3m1!1s0x883b792f918df687:0xb3cf2121d239bc1d?entry=s&sa=X&ved=1t:8290&hl=en-us&ictx=111&g_ep=Eg1tbF8yMDI1MDgwNl8wIOC7DCoASAJQAg%3D%3D';
-
     const isApple = () => /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent || '');
-
+    // MODE A: single smart button
     const openMapsSmartBtn = document.getElementById('openMapsSmart');
     openMapsSmartBtn?.addEventListener('click', () => {
       window.open(isApple() ? appleMapsURL : googleMapsURL, '_blank', 'noopener');
     });
-
+    // MODE B: preference buttons (if present)
     const getMapPref = () => localStorage.getItem('mapPref') || (isApple() ? 'apple' : 'google');
     const setMapPref = (p) => { try { localStorage.setItem('mapPref', p); } catch(e) {} };
     const openPreferredMap = () => {
@@ -287,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const url = pref === 'apple' ? appleMapsURL : googleMapsURL;
       window.open(url, '_blank', 'noopener');
     };
-
+    // If these exist in HTML, wire them too
     document.getElementById('openMaps')?.addEventListener('click', openPreferredMap);
     document.getElementById('switchMapPref')?.addEventListener('click', () => {
       const next = getMapPref() === 'apple' ? 'google' : 'apple';
@@ -303,26 +302,24 @@ document.addEventListener('DOMContentLoaded', () => {
       openPreferredMap();
     });
   })();
-
-  // ================= Loyalty =================
+  // ================= Loyalty expand & remove "Continue" =================
   (function loyalty() {
     const start = document.getElementById('loyStart');
     const body  = document.getElementById('loyBody');
     const email = document.getElementById('loyEmail');
     if (!body || !email) return;
-
     const reveal = () => { if (body.hidden) body.hidden = false; };
     const nukeStart = () => { start?.remove(); };
-
+    // Reveal and remove button as soon as user interacts with email
     email.addEventListener('focus', () => { reveal(); nukeStart(); }, { once: true });
     email.addEventListener('input', () => { reveal(); nukeStart(); }, { once: true });
-
+    // Still support clicking the old button if they tap it first
     start?.addEventListener('click', (e) => {
       e.preventDefault();
       reveal();
       nukeStart();
     });
   })();
-
+  // Clean up any old wishlist storage
   try { localStorage.removeItem('wishlist'); } catch (e) {}
 });
