@@ -333,6 +333,7 @@ a{color:inherit;text-decoration:none}
   display: flex !important;
   align-items: center !important;
   gap: 4px !important; /* tighter space between icon & text */
+  transform: translateX(-10px); /* shift the whole group left */
 }
 
 .brand-mark__icon {
