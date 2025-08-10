@@ -294,3 +294,7 @@ a{color:inherit;text-decoration:none}
 /* ===== Anchor offset so headings show below sticky nav ===== */
 #deals, #contact, #shop, #dtg, #loyalty { scroll-margin-top: 72px; }
 @media (max-width:480px){ #deals, #contact, #shop, #dtg, #loyalty { scroll-margin-top: 64px; } }
+
+/* Make in-page anchors land with the heading fully visible under sticky nav */
+:target{ scroll-margin-top: 80px; }
+@media (min-width:768px){ :target{ scroll-margin-top: 96px; } }
