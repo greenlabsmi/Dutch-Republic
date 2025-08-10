@@ -55,7 +55,7 @@ a{color:inherit;text-decoration:none}
   font-size:1.6rem; line-height:1; letter-spacing:.4px; color:var(--ink);
 }
 @media (min-width:768px){
-  .brand-mark__icon, .brand-cta__icon{ width:44px; height:44px }
+  .brand-mark__icon, .brand-cta__icon{ width:50px; height:50px }
   .brand-mark__name, .brand-cta__name{ font-size:1.9rem }
 }
 
