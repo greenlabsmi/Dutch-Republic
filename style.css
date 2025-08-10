@@ -5,13 +5,11 @@
   --line:#e7e8ec;
   --ink:#111315;
   --muted:#667085;
-  --gold:#D47B19; /* Updated to match logo */
+  --gold:#D8AA3B;
   --deal-hue:#FFF9E6;   /* uniform background for the deals block */
   --radius:14px;
   --container:1080px;
 }
-
-/* Reset & base */
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{
@@ -24,7 +22,6 @@ a{color:inherit;text-decoration:none}
 .section-title{font-size:1.7rem;margin:0 0 12px;font-weight:800}
 .section-sub{color:var(--muted);margin:0 0 18px}
 .center{text-align:center}
-
 .btn{
   display:inline-block;padding:12px 16px;border-radius:12px;
   border:1px solid var(--line);background:var(--surface);color:var(--ink);
@@ -34,7 +31,6 @@ a{color:inherit;text-decoration:none}
 .btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
 .btn.gold{background:var(--gold);color:#111315;border-color:var(--gold)}
 .btn.outline{background:#fff;border-color:var(--line)}
-
 /* Dedicated hook to style the "Order Online" button consistently */
 .btn-order{
   font-weight:800;
@@ -44,8 +40,8 @@ a{color:inherit;text-decoration:none}
   border-radius:12px;
   white-space:nowrap;
 }
-
-/* ========== HEADER ========== */
+/* ========== HEADER (new) ========== */
+/* Top brand banner (NOT sticky) */
 .brand-banner{
   display:flex; align-items:center; justify-content:center;
   padding:14px 0; background:#fff; border-bottom:1px solid var(--line);
@@ -55,7 +51,8 @@ a{color:inherit;text-decoration:none}
   .brand-banner{padding:10px 0}
   .brand-link svg{width:190px; height:42px}
 }
-
+/* Sticky compact nav that appears after you scroll past the banner
+   (body gets .show-sticky via JS) */
 .sticky-nav{
   position:sticky; top:0; z-index:60;
   background:rgba(255,255,255,.9);
@@ -66,7 +63,6 @@ a{color:inherit;text-decoration:none}
 }
 .show-sticky .sticky-nav{ transform:translateY(0); opacity:1; pointer-events:auto; }
 .show-sticky .sticky-nav{ box-shadow: 0 6px 18px rgba(16,24,40,.08); }
-
 .sticky-nav__inner{
   display:flex; align-items:center; justify-content:space-between; gap:12px;
   height:56px;
@@ -76,12 +72,11 @@ a{color:inherit;text-decoration:none}
   width:32px; height:32px; border-radius:8px; border:1px solid var(--line);
   font-weight:900; color:#111315; background:#fff; text-decoration:none;
 }
-
+/* Desktop-only quick link area */
 .sticky-tabs{display:flex; align-items:center; gap:18px; justify-content:center; flex:1}
 .stab{font-weight:800; color:#475467; white-space:nowrap}
 .stab:hover{color:var(--ink)}
 @media (max-width:900px){ .sticky-tabs{display:none} }
-
 .sticky-actions{display:flex; align-items:center; gap:8px; position:relative}
 .sticky-actions > *{
   height:32px; display:inline-flex; align-items:center; justify-content:center;
@@ -91,7 +86,7 @@ a{color:inherit;text-decoration:none}
   border-radius:10px;border:1px solid var(--line);
   background:#fff;font-weight:700;color:var(--ink)
 }
-
+/* OPEN/CLOSE pill (compact) */
 .pill{
   padding:4px 10px;
   border-radius:999px;border:1px solid var(--line);
@@ -101,7 +96,7 @@ a{color:inherit;text-decoration:none}
 .pill.state-open{ color:#047857; background:#ECFDF3; border-color:#D1FADF; }
 .pill.state-soon{ color:#B45309; background:#FFF7ED; border-color:#FED7AA; }
 .pill.state-closed{ color:#B91C1C; background:#FEF2F2; border-color:#FECACA; }
-
+/* Tooltip for hours pill */
 .tooltip{
   position:absolute; z-index:70;
   padding:6px 8px; font-size:12px; font-weight:700; color:#111315;
@@ -109,9 +104,10 @@ a{color:inherit;text-decoration:none}
   box-shadow:0 8px 24px rgba(16,24,40,.08);
 }
 .tooltip[hidden]{display:none}
+/* place near pill (adjust if needed) */
 #hoursTip{ right:88px; top:42px; }
 @media (max-width:480px){ #hoursTip{ right:72px; top:38px; } }
-
+/* Mobile drawer (unchanged, just works with new header) */
 .nav-drawer{
   position:fixed; inset:56px 0 0 0; background:#fff; border-top:1px solid var(--line);
   padding:14px 16px; display:block;
@@ -124,8 +120,7 @@ a{color:inherit;text-decoration:none}
   position:absolute; right:12px; top:10px; background:#fff;
   border:1px solid var(--line); border-radius:10px; padding:6px 10px; color:var(--ink)
 }
-
-/* Hero */
+/* ========== Hero ========== */
 .hero{margin:14px 0}
 .slides{display:grid;grid-auto-flow:column;grid-auto-columns:100%;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:var(--radius)}
 .slide{scroll-snap-align:start}
@@ -133,49 +128,109 @@ a{color:inherit;text-decoration:none}
 .dots{display:flex;gap:6px;justify-content:center;margin-top:8px}
 .dots button{width:8px;height:8px;border-radius:50%;border:0;background:#d0d4da}
 .dots button.is-active{background:#9aa3ae}
-
-/* Categories */
+/* ========== Today’s Deals ========== */
+.deals-section{margin:18px 0}
+.deal-card{
+  background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;
+  cursor:pointer;
+}
+.deal-card:focus{outline:2px solid var(--gold);outline-offset:2px}
+/* header strip */
+.deal-head{
+  display:grid;grid-template-columns:1fr auto;align-items:center;
+  padding:12px 16px; position:relative;
+  background:var(--deal-hue);
+  border-bottom:1px solid var(--line);
+}
+.deal-title{justify-self:center;font-weight:900;color:#2B2F33}
+.chev{transition:transform .2s ease;color:#6b7280}
+.deal-card[aria-expanded="true"] .chev{transform:rotate(180deg)}
+/* body */
+.deal-body{
+  padding:12px 16px;background:var(--deal-hue);position:relative;
+  transition:max-height .25s ease
+}
+/* ~3-line teaser when collapsed */
+.deal-body.collapsed{max-height:168px;overflow:hidden}
+.deal-body.collapsed::after{
+  content:""; position:absolute; left:0; right:0; bottom:0; height:28px;
+  background:linear-gradient(to bottom, rgba(255,249,230,0), var(--deal-hue));
+}
+.deal-list{margin:8px 0 12px;padding-left:0;list-style:none}
+.deal-cat{margin-bottom:16px}
+.deal-cat + .deal-cat{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}
+.deal-cat-title{
+  font-weight:800; font-size:1.02rem; background:#fff;
+  padding:8px 10px; border-radius:10px; margin-bottom:8px; color:var(--ink); border:1px solid var(--line)
+}
+.deal-subgroup{margin:8px 0 12px}
+.deal-subtitle{
+  font-weight:700; font-size:.96rem; color:var(--ink);
+  margin:6px 0 4px; padding-left:6px; border-left:3px solid var(--gold)
+}
+.deal-items{margin:0; padding-left:18px; color:var(--ink)}
+.deal-items li{margin:4px 0; line-height:1.45}
+.deal-note{margin-top:10px;font-size:.85rem;color:var(--muted)}
+.deal-actions{text-align:center;margin-top:10px}
+/* ========== Categories ========== */
 .categories{margin:24px 0}
 .cat-grid{display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
 @media (min-width:900px){.cat-grid{grid-template-columns:repeat(3,1fr)}}
 .cat-card{
   display:flex;align-items:center;gap:14px;padding:14px;border:1px solid var(--line);
-  border-radius:16px;background:#fff;transition:transform .3s, box-shadow .3s;
+  border-radius:16px;background:#fff;transition:transform .15s, box-shadow .15s, border-color .15s
 }
-.cat-card:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 12px 28px rgba(16,24,40,.08);border-color:var(--gold)}
+.cat-card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(16,24,40,.08);border-color:var(--gold)}
 .cat-card img{width:96px;height:64px;object-fit:cover;border-radius:10px}
 .cat-card span{font-weight:800;font-size:1.08rem}
-
-/* Dutch Touch Roar Section */
-.dutch-touch{
-  position:relative;
-  padding:60px 16px;
-  background:#111315;
-  color:#fff;
-  overflow:hidden;
+/* ========== DTG ========== */
+.dtg{margin:16px 0 28px}
+.dtg-grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.dtg-card{border:1px solid var(--line);border-radius:16px;padding:10px;background:#fff}
+.dtg-card img{width:100%;height:120px;object-fit:cover;border-radius:10px}
+.dtg-title{font-weight:800;font-size:1rem;line-height:1.25;margin:8px 0 4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.dtg-meta{display:flex;gap:8px;align-items:center;font-size:.82rem;color:var(--muted)}
+.badge{background:#fff;color:var(--ink);padding:4px 8px;border-radius:999px;font-weight:700;border:1px solid var(--line)}
+.dtg-link{display:inline-block;margin-top:8px;font-weight:800;color:#111315;border-bottom:2px solid var(--gold)}
+/* ========== Hours popover & Contact ========== */
+.hours-overlay{position:fixed;inset:0;z-index:60;background:transparent}
+.hours-popover{
+  position:fixed; z-index:61; top:68px; right:16px;
+  width:280px; background:#fff; border:1px solid var(--line);
+  border-radius:12px; box-shadow:0 18px 40px rgba(16,24,40,.12);
+  padding:12px;
 }
-.dutch-touch h2{color:var(--gold)}
-.dutch-lion{
-  position:absolute;
-  inset:0;
-  background:url('/assets/logo-dutch-republic.svg') center/contain no-repeat;
-  opacity:0;
-  filter:blur(8px);
-  transform:scale(0.8);
-  transition:all 1s ease;
-  z-index:0;
-}
-.dutch-touch.visible .dutch-lion{
-  opacity:0.15;
-  filter:blur(0px);
-  transform:scale(1.05);
-}
-.dutch-content{
-  position:relative;
-  z-index:1;
-}
-
-/* Loyalty */
+.hours-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.status-dot{width:10px;height:10px;border-radius:999px;background:#aaa;display:inline-block}
+.status-dot.is-open{background:#16a34a}
+.status-dot.is-soon{background:#f59e0b}
+.status-dot.is-closed{background:#ef4444}
+.hours-list{list-style:none;margin:0;padding:0}
+.hours-list li{display:flex;justify-content:space-between;padding:6px 2px;font-weight:600}
+.hours-list li.is-today{color:#111315}
+.hours-note{color:var(--muted);font-size:.9rem;margin-top:6px}
+.contact{padding:28px 0;border-top:1px solid var(--line);background:#fff}
+.contact-grid{display:grid;gap:20px;grid-template-columns:1fr}
+@media (min-width:900px){.contact-grid{grid-template-columns:1fr 1fr}}
+.socials a{font-weight:700}
+/* Contact section – gold tint */
+.contact--gold{background:var(--deal-hue); border-top:1px solid var(--line); padding:28px 0}
+.contact-wrap{display:grid; gap:20px; grid-template-columns:1fr}
+@media (min-width:900px){ .contact-wrap{grid-template-columns:1fr 1fr} }
+.contact-col .section-title{margin-bottom:10px}
+/* Map card */
+.map-card{background:#fff; border:1px solid var(--line); border-radius:16px; overflow:hidden}
+.map-link{position:relative; display:block; line-height:0}
+.map-link img{width:100%; height:220px; object-fit:cover}
+.map-pin{position:absolute; right:10px; bottom:10px; background:#111315; color:#fff; padding:6px 8px; border-radius:999px; font-weight:800}
+.map-actions{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px}
+.map-actions .addr{font-weight:700}
+.map-buttons{display:flex; gap:8px}
+/* Contact list */
+.contact-list{list-style:none; padding:0; margin:14px 0 0}
+.contact-list li{margin:8px 0}
+.socials a{font-weight:800}
+/* Loyalty card */
 .loyalty-card{background:#fff; border:1px solid var(--line); border-radius:16px; padding:12px}
 .loy-row{display:flex; gap:8px; align-items:center}
 .loy-inline input{flex:1; height:44px; border:1px solid var(--line); border-radius:12px; padding:0 12px; font-weight:600}
@@ -186,8 +241,15 @@ a{color:inherit;text-decoration:none}
 .loy-blurb{margin:8px 0; color:var(--muted)}
 .loy-agree{display:flex; align-items:flex-start; gap:10px; font-size:.92rem; color:#344054; margin:8px 0}
 .loy-actions{display:flex; gap:10px; margin-top:6px}
-
 /* Footer */
 .site-footer{border-top:1px solid var(--line);padding:20px 0;background:#fff}
 .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .footer-inner nav a{color:var(--muted);margin-left:14px;font-size:.95rem}
+/* ===== Responsive tweaks ===== */
+@media (max-width:480px){
+  .sticky-nav__inner{height:52px}
+  .sticky-actions > *{height:28px}
+  .icon-btn{width:34px;height:28px}
+  .pill{padding:3px 8px;min-width:64px;font-size:11px}
+  .btn-order{padding:6px 10px;font-size:13px;border-radius:10px}
+}
