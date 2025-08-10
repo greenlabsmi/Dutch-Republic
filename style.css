@@ -254,23 +254,26 @@ a{color:inherit;text-decoration:none}
   .btn-order{padding:6px 10px;font-size:13px;border-radius:10px}
 }
 
-/* ---- Top brand banner button polish ---- */
-.brand-banner{ 
-  text-align:center; 
-  padding:10px 0; 
-  background:#fff; 
+/* Clean banner like Green Labs — large, centered mark */
+.brand-banner{
+  background:#fff;
   border-bottom:1px solid var(--line);
+  padding:14px 16px;
+  text-align:center;
 }
-.brand-cta{
-  display:inline-flex; align-items:center; gap:10px;
-  background: var(--gold); color:#111315; font-weight:900;
-  padding:12px 18px; border-radius:14px; border:1px solid var(--gold);
-  box-shadow:0 8px 24px rgba(212,123,25,.25);
-  transition:transform .08s ease, box-shadow .18s ease;
+.brand-mark{
+  display:inline-flex; align-items:center; gap:12px;
+  text-decoration:none;
 }
-.brand-cta:hover{ transform:translateY(-1px); box-shadow:0 12px 28px rgba(212,123,25,.35); }
-.brand-cta__icon{ width:22px; height:22px; display:block }
-.brand-cta__name{ font-size:1.05rem; letter-spacing:.2px }
+.brand-mark__icon{ width:36px; height:36px; display:block }
+.brand-mark__name{
+  font-family:"UnifrakturCook","Cinzel",serif; /* Old English vibe */
+  font-size:1.6rem; line-height:1; letter-spacing:.4px; color:var(--ink);
+}
+@media (min-width:768px){
+  .brand-mark__icon{ width:44px; height:44px }
+  .brand-mark__name{ font-size:1.9rem }
+}
 
 /* ---- NAV: always visible, no slide-in ---- */
 .sticky-nav{
