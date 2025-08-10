@@ -124,10 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
       target.innerHTML = html + `<div class="deal-note">All prices include tax.</div>`;
     }
 
-    // Expand/collapse the card (entire header is clickable)
-    const head = card.querySelector('.deal-head');
-    const closeBtn = document.getElementById('closeDeals');
-
+    // Expand/collapse helpers
     const expand = () => {
       card.setAttribute('aria-expanded', 'true');
       body.classList.remove('collapsed');
@@ -136,19 +133,29 @@ document.addEventListener('DOMContentLoaded', () => {
       card.setAttribute('aria-expanded', 'false');
       body.classList.add('collapsed');
     };
+    const toggle = () => {
+      (card.getAttribute('aria-expanded') === 'true') ? collapse() : expand();
+    };
 
-    head?.addEventListener('click', () => {
-      const expanded = card.getAttribute('aria-expanded') === 'true';
-      expanded ? collapse() : expand();
+    // Make the WHOLE CARD clickable (except real controls/links)
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('button, a, input, label, select, textarea')) return;
+      toggle();
     });
+
+    // Keyboard support
     card.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        const expanded = card.getAttribute('aria-expanded') === 'true';
-        expanded ? collapse() : expand();
+        toggle();
       }
     });
-    closeBtn?.addEventListener('click', collapse);
+
+    // Close button still works
+    document.getElementById('closeDeals')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      collapse();
+    });
   })();
 
   // ================= Hours popover & pill =================
@@ -280,15 +287,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   })();
 
-  // ================= Loyalty expand-on-continue =================
+  // ================= Loyalty expand & remove "Continue" =================
   (function loyalty() {
     const start = document.getElementById('loyStart');
-    const body = document.getElementById('loyBody');
+    const body  = document.getElementById('loyBody');
     const email = document.getElementById('loyEmail');
-    if (!start || !body || !email) return;
-    const open = () => body.hidden = false;
-    start.addEventListener('click', open);
-    email.addEventListener('focus', open);
+    if (!body || !email) return;
+
+    const reveal = () => { if (body.hidden) body.hidden = false; };
+    const nukeStart = () => { start?.remove(); };
+
+    // Reveal and remove button as soon as user interacts with email
+    email.addEventListener('focus', () => { reveal(); nukeStart(); }, { once: true });
+    email.addEventListener('input', () => { reveal(); nukeStart(); }, { once: true });
+
+    // Still support clicking the old button if they tap it first
+    start?.addEventListener('click', (e) => {
+      e.preventDefault();
+      reveal();
+      nukeStart();
+    });
   })();
 
   // Clean up any old wishlist storage
