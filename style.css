@@ -323,11 +323,11 @@ a{color:inherit;text-decoration:none}
 
 /* --- Extra-tight brand banner adjustments --- */
 .brand-banner {
-  padding: 4px 12px !important; /* much smaller top/bottom padding */
+  padding: 4px 12px !important; /* small top/bottom padding */
 }
 
 .brand-mark {
-  gap: 1px !important; /* icon and text almost touching */
+  gap: 4px !important; /* slightly closer, but not touching */
 }
 
 .brand-mark__icon {
@@ -336,5 +336,5 @@ a{color:inherit;text-decoration:none}
 }
 
 .brand-mark__name {
-  margin-left: -1px !important; /* tiny nudge to visually center */
+  margin-left: -2px !important; /* bring text closer to icon */
 }
