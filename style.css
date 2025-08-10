@@ -41,7 +41,9 @@ a{color:inherit;text-decoration:none}
 .btn-order{font-weight:800;padding:8px 12px;font-size:14px;line-height:1.1;border-radius:12px;white-space:nowrap}
 
 /* ========== Header ========== */
-/* Brand banner */
+/* ===== Brand Banner & Sticky Nav — Final Adjusted ===== */
+
+/* Banner container */
 .brand-banner{
   padding:8px 16px; /* tighter mobile */
   background:
@@ -50,27 +52,38 @@ a{color:inherit;text-decoration:none}
   border-bottom:1px solid var(--line);
   text-align:center;
 }
+
+/* Icon + text wrapper */
 .brand-mark{
-  display:inline-flex; align-items:center; gap:6px;
+  display:inline-flex;
+  align-items:center;        /* vertical centering */
+  justify-content:center;    /* unit centered in banner */
+  gap:3px;                   /* tighter space between icon & text */
   text-decoration:none;
 }
+
+/* Banner icon */
 .brand-mark__icon{
-  width:88px; height:88px; display:block; aspect-ratio:1/1; object-fit:contain;
+  width:88px; height:88px;
+  display:block; aspect-ratio:1/1; object-fit:contain;
 }
+
+/* Banner text */
 .brand-mark__name{
   font-family:"UnifrakturCook","Cinzel",serif;
   font-size:2.35rem;
   line-height:1; letter-spacing:0.02em; color:var(--ink);
+  margin-left:-2px;          /* micro nudge for visual balance */
 }
 
 /* Desktop banner bump */
 @media (min-width:768px){
   .brand-banner{ padding:12px 20px; }
   .brand-mark__icon{ width:100px; height:100px; }
-  .brand-mark__name{ font-size:3rem; letter-spacing:0.025em; }
+  .brand-mark__name{ font-size:3rem; letter-spacing:0.025em; margin-left:-2px; }
 }
 
-/* Sticky nav — always visible */
+/* Sticky nav — always visible + tint */
 .sticky-nav{
   position:sticky; top:0; z-index:60;
   background:
@@ -80,6 +93,8 @@ a{color:inherit;text-decoration:none}
   border-bottom:1px solid var(--line);
   box-shadow:0 6px 18px rgba(16,24,40,.08);
 }
+
+/* Nav inner container */
 .sticky-nav__inner{
   display:flex; align-items:center; justify-content:space-between; gap:12px;
   height:var(--nav-h);
@@ -88,20 +103,23 @@ a{color:inherit;text-decoration:none}
 /* Left logo — fill height, no square */
 .sticky-logo{
   display:inline-flex; align-items:center; gap:10px;
-  height:100%;
-  padding:0; border:0; background:transparent; border-radius:0;
+  height:100%; padding:0; border:0; background:transparent; border-radius:0;
 }
+
+/* Nav icon */
 .sticky-logo .brand-lion{
   display:block;
-  height:calc(var(--nav-h) - 4px); /* tiny buffer */
+  height:calc(var(--nav-h) - 4px); /* almost edge-to-edge */
   width:auto; object-fit:contain; object-position:center; margin:0;
 }
 
+/* Nav text */
 .sticky-brand-name{
   font-family:"UnifrakturCook","Cinzel",serif;
   font-size:1.05rem; letter-spacing:.3px; color:var(--ink);
 }
 
+/* Tabs & actions */
 .sticky-tabs{display:flex; align-items:center; gap:18px; justify-content:center; flex:1}
 .stab{font-weight:800; color:#475467; white-space:nowrap}
 .stab:hover{color:var(--ink)}
@@ -146,7 +164,7 @@ a{color:inherit;text-decoration:none}
 .menu-list{ display:flex; flex-direction:column; gap:6px }
 .menu-list .drawer-link{
   display:block; padding:12px 10px; border-radius:10px;
-  border:1px solid var(--line); background:#fff; font-weight:800; color:var(--ink);
+  border:1px solid var(--line); background:#fff; font-weight:800; color:#var(--ink);
 }
 .menu-list .drawer-link:active{ background:#f7f7f7 }
 
@@ -284,11 +302,13 @@ a{color:inherit;text-decoration:none}
 /* Footer */
 .site-footer{border-top:1px solid var(--line);padding:20px 0;background:#fff}
 .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.footer-inner nav a{color:var(--muted);margin-left:14px;font-size:.95rem}
+.footer-inner nav a{color:#var(--muted);margin-left:14px;font-size:.95rem}
 
 /* ===== Responsive tweaks ===== */
 @media (max-width:480px){
   :root{ --nav-h:54px; } /* mobile nav height */
+  .brand-mark__icon{ width:80px; height:80px; }
+  .brand-mark__name{ font-size:2rem; }
   .sticky-actions > *{height:28px}
   .icon-btn{width:34px;height:28px}
   .pill{padding:3px 8px;min-width:64px;font-size:11px}
