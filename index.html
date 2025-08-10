@@ -6,50 +6,68 @@
   <title>Dutch District</title>
   <meta name="description" content="Dutch District • Premium cannabis, powered by Dutch Touch Genetics." />
   <meta name="theme-color" content="#ffffff" />
-  <!-- Inter (ChatGPT-like font) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Sticky header -->
-  <header class="site-header">
-    <div class="container header-bar">
-      <a class="brand" href="/" aria-label="Dutch District">
-        <!-- temporary wordmark -->
-        <svg viewBox="0 0 540 120" width="170" height="38" aria-hidden="true">
+
+  <!-- ===== Brand banner (NOT sticky) ===== -->
+  <header id="siteHeader">
+    <div class="brand-banner">
+      <a class="brand-link" href="/" aria-label="Dutch District">
+        <svg viewBox="0 0 540 120" width="220" height="48" aria-hidden="true">
           <rect width="540" height="120" rx="14" fill="var(--gold)"></rect>
-          <text x="50%" y="58%" text-anchor="middle" font-size="42" font-weight="800" fill="#111315" font-family="Inter, system-ui">Dutch District</text>
+          <text x="50%" y="58%" text-anchor="middle" font-size="44" font-weight="800" fill="#111315" font-family="Inter, system-ui">
+            Dutch District
+          </text>
         </svg>
       </a>
-
-      <!-- desktop tabs -->
-      <nav class="tab-nav" aria-label="Primary">
-        <a href="#home" class="tab is-active">Home</a>
-        <a href="https://your-ecom-link" class="tab" data-ext>Shop</a>
-        <a href="https://your-ecom-link?view=brands" class="tab" data-ext>Brands</a>
-        <a href="#deals" class="tab">Specials</a>
-      </nav>
-
-      <div class="header-actions">
-        <!-- OPEN pill (hooks added for styling) -->
-        <button class="pill badge-open btn-open" id="hoursBtn" type="button" aria-haspopup="dialog" aria-expanded="false">OPEN</button>
-        <button class="icon-btn" data-open-menu aria-label="Open menu">☰</button>
-        <a class="icon-btn" href="#" aria-label="Search">🔍</a>
-        <a class="icon-btn" href="#" aria-label="Account">👤</a>
-        <a class="btn gold small btn-order" href="https://your-ecom-link" data-ext>Order Online</a>
-      </div>
     </div>
 
-    <!-- click-away overlay & hours popover -->
+    <!-- ===== Sticky compact nav (shows after you scroll past banner) ===== -->
+    <nav class="sticky-nav" aria-label="Primary">
+      <div class="sticky-nav__inner container">
+        <a class="sticky-logo" href="/" aria-label="Home">DD</a>
+
+        <!-- Desktop-only quick link -->
+        <div class="sticky-tabs">
+          <a href="#deals" class="stab" aria-label="Today’s Deals">⬇︎ Deals</a>
+        </div>
+
+        <div class="sticky-actions">
+          <a class="btn gold small btn-order" href="https://your-ecom-link" data-ext aria-label="Order Online">Order</a>
+
+          <!-- Hours pill with tooltip trigger -->
+          <button class="pill" id="hoursBtn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-describedby="hoursTip">OPEN</button>
+          <div id="hoursTip" class="tooltip" role="tooltip" hidden>Open until 9PM</div>
+
+          <button class="icon-btn" data-open-menu aria-label="Open menu">☰</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hours popover -->
     <div id="hoursOverlay" class="hours-overlay" hidden></div>
     <div id="hoursPopover" class="hours-popover" role="dialog" aria-modal="false" hidden>
       <div class="hours-head">
         <strong>Today’s Hours</strong>
         <span class="status-dot" id="hoursStatusDot"></span>
       </div>
-      <ul class="hours-list" id="hoursList"><!-- JS fills hours --></ul>
+      <ul class="hours-list" id="hoursList"></ul>
       <div class="hours-note" id="hoursNote"></div>
     </div>
+
+    <!-- Mobile drawer -->
+    <aside id="navDrawer" class="nav-drawer" hidden>
+      <button class="drawer-close" type="button">Close</button>
+      <nav>
+        <a class="drawer-link" href="#deals">Today’s Deals</a>
+        <a class="drawer-link" href="#contact">Contact & Map</a>
+        <a class="drawer-link" href="#shop">Shop Categories</a>
+        <a class="drawer-link" href="#dtg">Dutch Touch Genetics</a>
+        <a class="drawer-link" href="#loyalty">Loyalty</a>
+      </nav>
+    </aside>
   </header>
 
   <main id="home">
@@ -136,19 +154,17 @@
       </div>
     </section>
 
-    <!-- Loyalty (moved ABOVE Visit Us) -->
+    <!-- Loyalty -->
     <section id="loyalty" class="loyalty-section">
       <div class="container">
         <h2 class="section-title">Loyalty</h2>
 
         <form id="loyaltyForm" class="loyalty-card" action="#" method="post" onsubmit="return false;">
-          <!-- collapsed head -->
           <label class="loy-row loy-inline" for="loyEmail">
             <input id="loyEmail" name="email" type="email" placeholder="Enter your email to join" required />
             <button id="loyStart" class="btn gold" type="button">Continue</button>
           </label>
 
-          <!-- expands on continue/focus -->
           <div id="loyBody" class="loy-body" hidden>
             <div class="loy-grid">
               <label>First Name
@@ -175,7 +191,6 @@
             </label>
 
             <div class="loy-actions">
-              <!-- Swap these href values to your real loyalty provider when ready -->
               <a class="btn gold" href="https://your-loyalty-link" data-ext>Create Account</a>
               <a class="btn outline" href="https://your-loyalty-link" data-ext>Sign In</a>
             </div>
@@ -184,14 +199,13 @@
       </div>
     </section>
 
-    <!-- Visit Us (now below Loyalty) -->
+    <!-- Visit Us -->
     <section id="contact" class="contact contact--gold">
       <div class="container contact-wrap">
         <div class="contact-col">
           <h2 class="section-title">Visit Us — Green Labs</h2>
 
           <div class="map-card">
-            <!-- Live Google Maps embed centered on your coordinates -->
             <div class="map-link" aria-label="Map preview">
               <iframe
                 title="Map — Green Labs"
@@ -210,7 +224,6 @@
                 <strong>10701 Madison St</strong><br/>Luna Pier, MI 48157
               </div>
               <div class="map-buttons">
-                <!-- Single smart button: uses Apple or Google depending on device -->
                 <button id="openMapsSmart" class="btn small gold" type="button">Open in Maps</button>
               </div>
             </div>
@@ -244,66 +257,32 @@
 
   <script src="script.js"></script>
 
-  <!-- Quick inline fixes:
-       1) Make Deals header clickable anywhere
-       2) Remove the Loyalty "Continue" button once email is focused/typed -->
+  <!-- Inline helpers kept from earlier (deals toggle + loyalty auto-open/remove) -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // 1) Deals: click anywhere on the card header to toggle
+      // Deals toggle (click anywhere)
       const dealCard = document.querySelector('.deal-card');
       const dealBody = document.getElementById('dealBody');
       const closeDeals = document.getElementById('closeDeals');
-
       if (dealCard && dealBody) {
         const toggle = () => {
           const isOpen = !dealBody.classList.contains('collapsed');
-          if (isOpen) {
-            dealBody.classList.add('collapsed');
-            dealCard.setAttribute('aria-expanded', 'false');
-          } else {
-            dealBody.classList.remove('collapsed');
-            dealCard.setAttribute('aria-expanded', 'true');
-          }
+          if (isOpen) { dealBody.classList.add('collapsed'); dealCard.setAttribute('aria-expanded','false'); }
+          else { dealBody.classList.remove('collapsed'); dealCard.setAttribute('aria-expanded','true'); }
         };
-
-        // Click anywhere on the .deal-card except on real controls/links
-        dealCard.addEventListener('click', (e) => {
-          if (e.target.closest('button, a, input, label, select, textarea')) return;
-          toggle();
-        });
-        // Keyboard support
-        dealCard.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            toggle();
-          }
-        });
-        // Close button still works
-        closeDeals?.addEventListener('click', (e) => {
-          e.stopPropagation();
-          dealBody.classList.add('collapsed');
-          dealCard.setAttribute('aria-expanded', 'false');
-        });
+        dealCard.addEventListener('click', (e) => { if (!e.target.closest('button,a,input,label,select,textarea')) toggle(); });
+        dealCard.addEventListener('keydown', (e) => { if (e.key==='Enter'||e.key===' ') { e.preventDefault(); toggle(); } });
+        closeDeals?.addEventListener('click', (e) => { e.stopPropagation(); dealBody.classList.add('collapsed'); dealCard.setAttribute('aria-expanded','false'); });
       }
 
-      // 2) Loyalty: hide "Continue" as soon as email is focused or typed
+      // Loyalty: reveal + remove Continue on email focus/typing
       const loyEmail = document.getElementById('loyEmail');
       const loyStart = document.getElementById('loyStart');
       const loyBody  = document.getElementById('loyBody');
-
-      const revealAndRemove = () => {
-        if (loyBody?.hidden) loyBody.hidden = false;
-        loyStart?.remove(); // remove the redundant button entirely
-      };
-
-      loyEmail?.addEventListener('focus', revealAndRemove, { once: true });
-      loyEmail?.addEventListener('input', revealAndRemove, { once: true });
-
-      // Keep the old button behavior if someone taps it first
-      loyStart?.addEventListener('click', (e) => {
-        e.preventDefault();
-        revealAndRemove();
-      });
+      const revealAndRemove = () => { if (loyBody?.hidden) loyBody.hidden = false; loyStart?.remove(); };
+      loyEmail?.addEventListener('focus', revealAndRemove, { once:true });
+      loyEmail?.addEventListener('input', revealAndRemove, { once:true });
+      loyStart?.addEventListener('click', (e) => { e.preventDefault(); revealAndRemove(); });
     });
   </script>
 </body>
