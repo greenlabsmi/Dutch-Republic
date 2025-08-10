@@ -3,13 +3,32 @@
 // ------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
   // ================= Header / meta =================
-  // Sticky header shadow
+  // Sticky header shadow (noop if .site-header doesn't exist)
   (function stickyHeader() {
     const hdr = document.querySelector('.site-header');
     if (!hdr) return;
     const onScroll = () => hdr.classList.toggle('is-scrolled', window.scrollY > 8);
     onScroll();
     document.addEventListener('scroll', onScroll, { passive: true });
+  })();
+
+  // NEW: show compact sticky nav after brand banner scrolls away
+  (function stickySwap(){
+    const banner = document.querySelector('.brand-banner'); // from new header
+    if (!banner) return;
+    const activate = (on) => document.body.classList.toggle('show-sticky', on);
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        activate(!entries[0].isIntersecting);
+      }, { rootMargin: '-1px 0px 0px 0px', threshold: 0 });
+      io.observe(banner);
+    } else {
+      const check = () => activate(window.scrollY > banner.offsetHeight - 1);
+      check();
+      window.addEventListener('scroll', check, { passive:true });
+      window.addEventListener('resize', check);
+    }
   })();
 
   // Active tab (naive demo highlighting)
@@ -245,6 +264,35 @@ document.addEventListener('DOMContentLoaded', () => {
     ovl.addEventListener('click', closePop);
     window.addEventListener('scroll', closePop, { passive: true });
     setInterval(paintPill, 60 * 1000); // keep fresh
+  })();
+
+  // NEW: Hours pill tooltip (uses hoursNote text)
+  (function hoursTooltip(){
+    const btn = document.getElementById('hoursBtn');
+    const tip = document.getElementById('hoursTip');
+    const note = document.getElementById('hoursNote');
+    if (!btn || !tip) return;
+
+    const syncTip = () => {
+      // shorten the note ("We’re open until 9PM today." -> "Open until 9PM")
+      const raw = (note?.textContent || '').trim();
+      const short = raw
+        .replace(/^We’re\s*/i,'')
+        .replace(/\s*today\.?$/i,'')
+        .replace(/^We\s*/,'');
+      tip.textContent = short || 'Store hours';
+    };
+    const show = () => { syncTip(); tip.hidden = false; };
+    const hide = () => { tip.hidden = true; };
+
+    btn.addEventListener('mouseenter', show);
+    btn.addEventListener('mouseleave', hide);
+    btn.addEventListener('focus', show);
+    btn.addEventListener('blur', hide);
+
+    // keep the tooltip accurate as time passes
+    setInterval(syncTip, 60 * 1000);
+    syncTip();
   })();
 
   // ================= Maps (smart open) =================
