@@ -429,3 +429,28 @@ a{color:inherit;text-decoration:none}
     padding: 12px 20px !important; /* desktop */
   }
 }
+
+/* ===== Dutch Republic Sticky Nav — Tighter height, bigger icon ===== */
+:root{
+  --nav-h: 60px;     /* desktop/tablet nav height */
+  --nav-h-sm: 54px;  /* mobile nav height */
+}
+
+.sticky-nav__inner{
+  height: var(--nav-h) !important;
+}
+
+.sticky-logo .brand-lion{
+  height: calc(var(--nav-h) - 4px) !important; /* fills almost full height */
+  width: auto !important;
+  margin: 0 !important;
+}
+
+@media (max-width:480px){
+  .sticky-nav__inner{
+    height: var(--nav-h-sm) !important;
+  }
+  .sticky-logo .brand-lion{
+    height: calc(var(--nav-h-sm) - 3px) !important;
+  }
+}
