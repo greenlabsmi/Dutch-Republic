@@ -271,33 +271,6 @@
 
   <script src="script.js"></script>
 
-  <!-- Inline helpers kept from earlier (deals toggle + loyalty auto-open/remove) -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Deals toggle (click anywhere)
-      const dealCard = document.querySelector('.deal-card');
-      const dealBody = document.getElementById('dealBody');
-      const closeDeals = document.getElementById('closeDeals');
-      if (dealCard && dealBody) {
-        const toggle = () => {
-          const isOpen = !dealBody.classList.contains('collapsed');
-          if (isOpen) { dealBody.classList.add('collapsed'); dealCard.setAttribute('aria-expanded','false'); }
-          else { dealBody.classList.remove('collapsed'); dealCard.setAttribute('aria-expanded','true'); }
-        };
-        dealCard.addEventListener('click', (e) => { if (!e.target.closest('button,a,input,label,select,textarea')) toggle(); });
-        dealCard.addEventListener('keydown', (e) => { if (e.key==='Enter'||e.key===' ') { e.preventDefault(); toggle(); } });
-        closeDeals?.addEventListener('click', (e) => { e.stopPropagation(); dealBody.classList.add('collapsed'); dealCard.setAttribute('aria-expanded','false'); });
-      }
-
-      // Loyalty: reveal + remove Continue on email focus/typing
-      const loyEmail = document.getElementById('loyEmail');
-      const loyStart = document.getElementById('loyStart');
-      const loyBody  = document.getElementById('loyBody');
-      const revealAndRemove = () => { if (loyBody?.hidden) loyBody.hidden = false; loyStart?.remove(); };
-      loyEmail?.addEventListener('focus', revealAndRemove, { once:true });
-      loyEmail?.addEventListener('input', revealAndRemove, { once:true });
-      loyStart?.addEventListener('click', (e) => { e.preventDefault(); revealAndRemove(); });
-    });
-  </script>
+  
 </body>
 </html>
