@@ -312,3 +312,16 @@ a{color:inherit;text-decoration:none}
 @media (max-width:480px){ #deals, #contact, #shop, #dtg, #loyalty { scroll-margin-top:64px; } }
 :target{ scroll-margin-top:80px; }
 @media (min-width:768px){ :target{ scroll-margin-top:96px; } }
+
+/* ---- GOLD FOIL HARDENING ---- */
+.brand-banner .brand-title .foil{
+  -webkit-text-fill-color:transparent !important;
+  color:transparent !important;
+  -webkit-background-clip:text !important;
+  background-clip:text !important;
+}
+/* animation (in case something stripped it earlier) */
+@keyframes foilShine{
+  from{ background-position:-40% 0; }
+  to  { background-position:180% 0; }
+}
