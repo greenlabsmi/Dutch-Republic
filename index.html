@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
 
   <!-- Cache-bust your CSS -->
- <link rel="stylesheet" href="style.css?v=dr-005" />
+ <link rel="stylesheet" href="style.css?v=dr-006" />
 
   <!-- TEMP hotfix to guarantee the parchment + foil header wins -->
   <style id="hotfix-header">
@@ -42,6 +42,9 @@
   }
   @media (prefers-reduced-motion: reduce){
     header.brand-banner .brand-title .foil{ animation:none !important; }
+  @keyframes foilShine{
+    from{ background-position:-40% 0; }
+    to  { background-position:180% 0; }
   }
   </style>
 </head>
