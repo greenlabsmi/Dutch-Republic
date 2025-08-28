@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
 
   <!-- Cache-bust your CSS -->
-  <link rel="stylesheet" href="style.css?v=dr-004" />
+ <link rel="stylesheet" href="style.css?v=dr-005" />
 
   <!-- TEMP hotfix to guarantee the parchment + foil header wins -->
   <style id="hotfix-header">
@@ -51,7 +51,23 @@
 <!-- Non-sticky header ABOVE the sticky nav -->
 <header class="brand-banner" role="banner">
   <a class="brand-title" href="#top" aria-label="Dutch Republic">
-    <span class="foil">Dutch Republic</span>
+    <span
+      class="foil"
+      style="
+        font-family:'UnifrakturCook','Cinzel',serif;
+        font-weight:900;
+        font-size:clamp(30px,6.4vw,56px);
+        letter-spacing:.3px; line-height:1;
+        /* foil gradient, clipped to text */
+        background-image:linear-gradient(92deg,#9C6B1A 0%,#F2C14E 22%,#FFE27A 45%,#F2C14E 62%,#9C6B1A 100%);
+        background-size:220% auto;
+        -webkit-background-clip:text; background-clip:text;
+        -webkit-text-fill-color:transparent; color:transparent;
+        text-shadow:0 1px 0 rgba(0,0,0,.25), 0 2px 8px rgba(0,0,0,.15);
+        animation:foilShine 12s linear infinite;
+        display:inline-block;
+      "
+    >Dutch Republic</span>
   </a>
 </header>
 
