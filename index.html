@@ -6,8 +6,44 @@
   <title>Dutch District</title>
   <meta name="description" content="Dutch District • Premium cannabis, powered by Dutch Touch Genetics." />
   <meta name="theme-color" content="#ffffff" />
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+
+  <!-- Cache-bust your CSS -->
+  <link rel="stylesheet" href="style.css?v=dr-004" />
+
+  <!-- TEMP hotfix to guarantee the parchment + foil header wins -->
+  <style id="hotfix-header">
+  header.brand-banner{
+    display:flex !important; align-items:center !important; justify-content:center !important;
+    min-height:90px !important; padding:16px 18px !important;
+    background:
+      radial-gradient(140% 160% at 50% -20%, rgba(0,0,0,.10), transparent 60%),
+      radial-gradient(160% 140% at 50% 120%, rgba(0,0,0,.06), transparent 60%),
+      linear-gradient(180deg, rgba(212,123,25,.04), rgba(212,123,25,.00)),
+      #F1E1BE !important;
+    border-bottom:6px solid #D47B19 !important;
+    box-shadow:0 10px 24px rgba(16,24,40,.06) !important;
+  }
+  header.brand-banner .brand-title{ display:inline-block !important; padding:2px 6px !important; }
+  header.brand-banner .brand-title .foil{
+    font-family:"UnifrakturCook","Cinzel",serif !important;
+    font-weight:900 !important;
+    font-size:clamp(30px, 6.4vw, 56px) !important;
+    letter-spacing:.3px !important; line-height:1 !important;
+    background-image:linear-gradient(92deg,#9C6B1A 0%,#F2C14E 22%,#FFE27A 45%,#F2C14E 62%,#9C6B1A 100%) !important;
+    background-size:220% auto !important;
+    -webkit-background-clip:text !important; background-clip:text !important;
+    -webkit-text-fill-color:transparent !important; color:transparent !important;
+    text-shadow:0 1px 0 rgba(0,0,0,.25), 0 2px 8px rgba(0,0,0,.15) !important;
+    animation:foilShine 12s linear infinite !important;
+  }
+  @media (prefers-reduced-motion: reduce){
+    header.brand-banner .brand-title .foil{ animation:none !important; }
+  }
+  </style>
 </head>
 <body>
 
