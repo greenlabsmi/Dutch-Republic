@@ -5,14 +5,14 @@
   --line:#e7e8ec;
   --ink:#111315;
   --muted:#667085;
-  --gold:#D47B19;              /* Dutch orange / brand gold */
+  --gold:#D47B19;
   --deal-hue:#FFF9E6;
   --radius:14px;
   --container:1080px;
 
   /* Brand + nav */
-  --gold-tint: rgba(212,123,25,.08); /* subtle brand wash */
-  --nav-h: 60px;                     /* default nav height */
+  --gold-tint: rgba(212,123,25,.08);
+  --nav-h: 60px;
 }
 
 /* Base */
@@ -41,54 +41,59 @@ a{color:inherit;text-decoration:none}
 .btn-order{font-weight:800;padding:8px 12px;font-size:14px;line-height:1.1;border-radius:12px;white-space:nowrap}
 
 /* ========== Header (Logo-free parchment + foil) ========== */
-
 .brand-banner{
+  position:relative; overflow:hidden;
   display:flex; align-items:center; justify-content:center;
-  min-height:90px;                      /* a touch taller for presence */
-  padding:16px 18px;
-  /* Parchment background + soft vignette top/bottom */
+  min-height:96px; padding:18px 20px;
   background:
-    radial-gradient(140% 160% at 50% -20%, rgba(0,0,0,.10), transparent 60%),
+    radial-gradient(140% 160% at 50% -20%, rgba(0,0,0,.12), transparent 60%),
     radial-gradient(160% 140% at 50% 120%, rgba(0,0,0,.06), transparent 60%),
-    linear-gradient(180deg, rgba(212,123,25,.04), rgba(212,123,25,.00)),
+    linear-gradient(180deg, rgba(212,123,25,.06), rgba(212,123,25,.00)),
     #F1E1BE;
-  border-bottom:6px solid var(--gold);  /* bold Dutch orange bar */
+  border-bottom:6px solid var(--gold);
   box-shadow:0 10px 24px rgba(16,24,40,.06);
 }
 .brand-title{ display:inline-block; padding:2px 6px; }
 
-/* Gold foil text */
-.brand-title .foil{
-  font-family:"UnifrakturCook","Cinzel",serif;
-  font-weight:900;
-  font-size:clamp(30px, 6.4vw, 56px);
-  letter-spacing:.3px;
-  line-height:1;
-  background-image:linear-gradient(92deg,#9C6B1A 0%,#F2C14E 22%,#FFE27A 45%,#F2C14E 62%,#9C6B1A 100%);
-  background-size:220% auto;
-  -webkit-background-clip:text;
-          background-clip:text;
-  -webkit-text-fill-color:transparent;      /* iOS/Safari required */
-  color:transparent;
-  text-shadow:0 1px 0 rgba(0,0,0,.25), 0 2px 8px rgba(0,0,0,.15);
-  animation:foilShine 12s linear infinite;  /* slower = more premium */
+/* Paper grain (optional – add /img/paper-noise.png) */
+.brand-banner::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:url("img/paper-noise.png");
+  background-size:280px 280px; opacity:.08; mix-blend-mode:multiply;
 }
 
+/* Gold foil text */
+.brand-title .foil{
+  font-family:"Cinzel","UnifrakturCook",serif;  /* Cinzel first */
+  font-weight:900;
+  font-size:clamp(36px, 7vw, 72px);
+  letter-spacing:.3px; line-height:1;
+  background-image:linear-gradient(92deg,#9C6B1A 0%,#F2C14E 22%,#FFE27A 45%,#F2C14E 62%,#9C6B1A 100%);
+  background-size:220% auto;
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent; color:transparent; /* iOS/Safari */
+  -webkit-text-stroke:1px #26231c;                         /* dark outline */
+  text-shadow:0 1px 0 rgba(0,0,0,.25), 0 2px 8px rgba(0,0,0,.15);
+  animation:foilShine 12s linear infinite;
+}
+
+/* Motion pref */
 @media (prefers-reduced-motion: reduce){
   .brand-title .foil{ animation:none; }
 }
 
+/* Foil animation */
 @keyframes foilShine{
   from{ background-position:-40% 0; }
   to  { background-position:180% 0; }
 }
 
-/* Desktop banner bump (keeps things comfy on wide screens) */
+/* Desktop banner padding bump */
 @media (min-width:768px){
   .brand-banner{ padding:18px 24px; }
 }
 
-/* ========== Sticky nav (unchanged) ========== */
+/* ========== Sticky nav ========== */
 .sticky-nav{
   position:sticky; top:0; z-index:60;
   background:
@@ -107,9 +112,7 @@ a{color:inherit;text-decoration:none}
   height:100%; padding:0; border:0; background:transparent; border-radius:0;
 }
 .sticky-logo .brand-lion{
-  display:block;
-  height:calc(var(--nav-h) - 4px);
-  width:auto; object-fit:contain; object-position:center; margin:0;
+  display:block; height:calc(var(--nav-h) - 4px); width:auto; object-fit:contain; object-position:center; margin:0;
 }
 .sticky-brand-name{
   font-family:"UnifrakturCook","Cinzel",serif;
@@ -126,7 +129,7 @@ a{color:inherit;text-decoration:none}
   background:#fff;font-weight:700;color:var(--ink)
 }
 
-/* OPEN/CLOSE pill (compact) */
+/* OPEN/CLOSE pill */
 .pill{
   padding:4px 10px; border-radius:999px; border:1px solid var(--line);
   background:#fff; font-weight:800; min-width:72px; text-align:center; font-size:12px; line-height:1;
@@ -158,7 +161,7 @@ a{color:inherit;text-decoration:none}
 .menu-list{ display:flex; flex-direction:column; gap:6px }
 .menu-list .drawer-link{
   display:block; padding:12px 10px; border-radius:10px;
-  border:1px solid var(--line); background:#fff; font-weight:800; color:#var(--ink);
+  border:1px solid var(--line); background:#fff; font-weight:800; color:var(--ink);
 }
 .menu-list .drawer-link:active{ background:#f7f7f7 }
 
@@ -193,14 +196,14 @@ a{color:inherit;text-decoration:none}
 .deal-cat + .deal-cat{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}
 .deal-cat-title{
   font-weight:800; font-size:1.02rem; background:#fff;
-  padding:8px 10px; border-radius:10px; margin-bottom:8px; color:#var(--ink); border:1px solid var(--line)
+  padding:8px 10px; border-radius:10px; margin-bottom:8px; color:var(--ink); border:1px solid var(--line)
 }
 .deal-subgroup{margin:8px 0 12px}
 .deal-subtitle{
-  font-weight:700; font-size:.96rem; color:#var(--ink);
+  font-weight:700; font-size:.96rem; color:var(--ink);
   margin:6px 0 4px; padding-left:6px; border-left:3px solid var(--gold)
 }
-.deal-items{margin:0; padding-left:18px; color:#var(--ink)}
+.deal-items{margin:0; padding-left:18px; color:var(--ink)}
 .deal-items li{margin:4px 0; line-height:1.45}
 .deal-note{margin-top:10px;font-size:.85rem;color:var(--muted)}
 .deal-actions{text-align:center;margin-top:10px}
@@ -296,11 +299,11 @@ a{color:inherit;text-decoration:none}
 /* Footer */
 .site-footer{border-top:1px solid var(--line);padding:20px 0;background:#fff}
 .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.footer-inner nav a{color:#var(--muted);margin-left:14px;font-size:.95rem}
+.footer-inner nav a{color:var(--muted);margin-left:14px;font-size:.95rem}
 
 /* ===== Responsive tweaks ===== */
 @media (max-width:480px){
-  :root{ --nav-h:54px; } /* mobile nav height */
+  :root{ --nav-h:54px; }
   .sticky-actions > *{height:28px}
   .icon-btn{width:34px;height:28px}
   .pill{padding:3px 8px;min-width:64px;font-size:11px}
@@ -313,68 +316,10 @@ a{color:inherit;text-decoration:none}
 :target{ scroll-margin-top:80px; }
 @media (min-width:768px){ :target{ scroll-margin-top:96px; } }
 
-/* ---- GOLD FOIL HARDENING ---- */
-.brand-banner .brand-title .foil{
-  -webkit-text-fill-color:transparent !important;
-  color:transparent !important;
-  -webkit-background-clip:text !important;
-  background-clip:text !important;
-}
-/* animation (in case something stripped it earlier) */
-@keyframes foilShine{
-  from{ background-position:-40% 0; }
-  to  { background-position:180% 0; }
-}
-
-/* Parchment header */
-.brand-banner{
-  position:relative; overflow:hidden;
-  display:flex; align-items:center; justify-content:center;
-  min-height:96px; padding:18px 20px;
-  background:
-    radial-gradient(140% 160% at 50% -20%, rgba(0,0,0,.12), transparent 60%),
-    radial-gradient(160% 140% at 50% 120%, rgba(0,0,0,.06), transparent 60%),
-    linear-gradient(180deg, rgba(212,123,25,.06), rgba(212,123,25,.00)),
-    #F1E1BE;
-  border-bottom:6px solid var(--gold);
-  box-shadow:0 10px 24px rgba(16,24,40,.06);
-}
-.brand-title{ display:inline-block; padding:2px 6px; }
-
-/* OPTIONAL: real paper grain if you add /img/paper-noise.png */
-.brand-banner::after{
-  content:""; position:absolute; inset:0; pointer-events:none;
-  background-image:url('img/paper-noise.png');  /* <— drop in a tiny noise PNG */
-  background-size:280px 280px; opacity:.08; mix-blend-mode:multiply;
-}
-
-/* Foil hardening (kills any overrides) */
-.brand-banner .brand-title .foil{
-  -webkit-text-fill-color:transparent !important;
-  color:transparent !important;
-  -webkit-background-clip:text !important;
-  background-clip:text !important;
-}
-
-/* Foil animation (kept in case other CSS removed it) */
-@keyframes foilShine{
-  from{ background-position:-40% 0; }
-  to  { background-position:180% 0; }
-}
-
-/* --- GOLD FOIL SAFETY (keeps Safari/iOS from losing the gradient) --- */
+/* --- GOLD FOIL SAFETY (keep last so nothing overrides it) --- */
 .brand-banner .brand-title .foil{
   -webkit-text-fill-color:transparent;
   color:transparent;
   -webkit-background-clip:text;
   background-clip:text;
-}
-
-/* Optional paper grain like the mock – add /img/paper-noise.png */
-.brand-banner{ position:relative; overflow:hidden; }
-.brand-banner::after{
-  content:""; position:absolute; inset:0; pointer-events:none;
-  background-image:url("img/paper-noise.png");
-  background-size:280px 280px;
-  opacity:.08; mix-blend-mode:multiply;
 }
