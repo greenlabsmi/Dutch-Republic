@@ -347,3 +347,62 @@ a{color:inherit;text-decoration:none}
   -webkit-background-clip:text;
   background-clip:text;
 }
+
+/* ========== Clean foil wordmarks (no SVG stroke) ========== */
+/* Banner size */
+.brand-title .logo-text{
+  position:relative;
+  display:inline-block;
+  font-family:"Cinzel","UnifrakturCook",serif;
+  font-weight:900;
+  font-size:clamp(36px, 7vw, 72px);
+  letter-spacing:.3px; line-height:1;
+
+  /* foil fill */
+  background-image:linear-gradient(92deg,#9C6B1A 0%,#F2C14E 22%,#FFE27A 45%,#F2C14E 62%,#9C6B1A 100%);
+  background-size:220% auto;
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent; color:transparent;
+  text-shadow:0 1px 0 rgba(0,0,0,.25), 0 2px 8px rgba(0,0,0,.15);
+  animation:foilShine 12s linear infinite;
+}
+
+/* Faux outline painted BEHIND using an 8-way shadow */
+.brand-title .logo-text::before{
+  content:attr(data-text);
+  position:absolute; inset:0; z-index:-1; color:transparent;
+  text-shadow:
+    1px 0   #26231C, -1px 0   #26231C,
+    0   1px #26231C,  0  -1px #26231C,
+    1px 1px #26231C, -1px -1px #26231C,
+   -1px 1px #26231C,  1px -1px #26231C;
+  filter:blur(.2px); /* anti-alias the edge slightly */
+}
+
+/* Compact nav size */
+.sticky-brand-name .logo-text-small{
+  position:relative; display:block;
+  font-family:"Cinzel","UnifrakturCook",serif;
+  font-weight:900;
+  font-size:1.05rem; line-height:1; letter-spacing:.3px;
+
+  background-image:linear-gradient(92deg,#9C6B1A 0%,#F2C14E 22%,#FFE27A 45%,#F2C14E 62%,#9C6B1A 100%);
+  background-size:220% auto;
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent; color:transparent;
+  text-shadow:0 1px 0 rgba(0,0,0,.25), 0 2px 4px rgba(0,0,0,.12);
+  animation:foilShine 12s linear infinite;
+}
+.sticky-brand-name .logo-text-small::before{
+  content:attr(data-text);
+  position:absolute; inset:0; z-index:-1; color:transparent;
+  text-shadow:
+    .8px 0   #26231C, -.8px 0   #26231C,
+    0   .8px #26231C,  0   -.8px #26231C,
+    .8px .8px #26231C, -.8px -.8px #26231C,
+   -.8px .8px #26231C,  .8px -.8px #26231C;
+  filter:blur(.15px);
+}
+
+/* Kill any leftover strokes on old text */
+.brand-title .foil{ -webkit-text-stroke:0 transparent; }
