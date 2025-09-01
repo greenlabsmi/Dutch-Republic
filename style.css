@@ -62,7 +62,18 @@ a{color:inherit;text-decoration:none}
   background-size:280px 280px; opacity:.08; mix-blend-mode:multiply;
 }
 
-/* Gold foil text */
+/* ========= NEW: SVG foil logo (banner) ========= */
+.foil-svg{
+  display:block;
+  width:100%;
+  max-width:980px;          /* tune to taste */
+  height:auto;
+  /* mimic your former text-shadow glow */
+  filter: drop-shadow(0 1px 0 rgba(0,0,0,.25))
+          drop-shadow(0 2px 8px rgba(0,0,0,.15));
+}
+
+/* Gold foil text (legacy fallback if <span class="foil"> is used) */
 .brand-title .foil{
   font-family:"Cinzel","UnifrakturCook",serif;  /* Cinzel first */
   font-weight:900;
@@ -72,7 +83,10 @@ a{color:inherit;text-decoration:none}
   background-size:220% auto;
   -webkit-background-clip:text; background-clip:text;
   -webkit-text-fill-color:transparent; color:transparent; /* iOS/Safari */
-  -webkit-text-stroke:1px #26231c;                         /* dark outline */
+
+  /* CHANGED: neutralize stroke so it doesn't cut into glyphs */
+  -webkit-text-stroke:0 transparent;
+
   text-shadow:0 1px 0 rgba(0,0,0,.25), 0 2px 8px rgba(0,0,0,.15);
   animation:foilShine 12s linear infinite;
 }
@@ -118,6 +132,16 @@ a{color:inherit;text-decoration:none}
   font-family:"UnifrakturCook","Cinzel",serif;
   font-size:1.05rem; letter-spacing:.3px; color:var(--ink);
 }
+
+/* ========= NEW: compact SVG foil logo (sticky nav) ========= */
+.sticky-brand-name .foil-svg-small{
+  display:block;
+  height:1.2em;             /* align with nav text height */
+  width:auto;
+  filter: drop-shadow(0 1px 0 rgba(0,0,0,.25))
+          drop-shadow(0 2px 4px rgba(0,0,0,.12));
+}
+
 .sticky-tabs{display:flex; align-items:center; gap:18px; justify-content:center; flex:1}
 .stab{font-weight:800; color:#475467; white-space:nowrap}
 .stab:hover{color:var(--ink)}
