@@ -62,36 +62,9 @@ header.brand-banner .brand-title .foil{
 <!-- Brand banner (logo + big wordmark, no button) -->
 <!-- Non-sticky header ABOVE the sticky nav -->
 <header class="brand-banner" role="banner">
-  <a class="brand-title" href="#top" aria-label="Dutch Republic">
-    <!-- SVG banner wordmark -->
-    <svg class="foil-svg" viewBox="0 0 1200 180" role="img" aria-label="DUTCH REPUBLIC" preserveAspectRatio="xMidYMid meet">
-      <defs>
-        <!-- Gold foil gradient with animated sweep -->
-        <linearGradient id="foilGrad" x1="-40%" y1="0%" x2="180%" y2="0%">
-          <stop offset="0%"   stop-color="#9C6B1A"/>
-          <stop offset="22%"  stop-color="#F2C14E"/>
-          <stop offset="45%"  stop-color="#FFE27A"/>
-          <stop offset="62%"  stop-color="#F2C14E"/>
-          <stop offset="100%" stop-color="#9C6B1A"/>
-          <animate attributeName="x1" values="-40%;0%;-40%" dur="12s" repeatCount="indefinite"/>
-          <animate attributeName="x2" values="180%;220%;180%" dur="12s" repeatCount="indefinite"/>
-        </linearGradient>
-      </defs>
-
-      <text x="50%" y="64%" text-anchor="middle"
-            font-family="Cinzel, 'UnifrakturCook', serif"
-            font-weight="900"
-            font-size="120"
-            fill="url(#foilGrad)"
-            stroke="#26231C"
-            stroke-width="3"
-            stroke-linejoin="round"
-            stroke-miterlimit="2"
-            style="paint-order: stroke fill;">
-        DUTCH REPUBLIC
-      </text>
-    </svg>
-  </a>
+ <a class="brand-title" href="#top" aria-label="Dutch Republic">
+  <span class="logo-text" data-text="DUTCH REPUBLIC">DUTCH REPUBLIC</span>
+</a>
 </header>
 
 <!-- ===== Sticky compact nav (shows after you scroll past banner) ===== -->
