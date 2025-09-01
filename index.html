@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
 
   <!-- Cache-bust your CSS -->
- <link rel="stylesheet" href="style.css?v=dr-006" />
+  <link rel="stylesheet" href="style.css?v=dr-006" />
 
   <style id="hotfix-header">
 /* Parchment banner (forced, with !important to win) */
@@ -29,23 +29,18 @@ header.brand-banner{
 }
 header.brand-banner .brand-title{ display:inline-block !important; padding:2px 6px !important; }
 
+/* Legacy foil text fallback — keep but neutralize stroke */
 header.brand-banner .brand-title .foil{
-  /* Put Cinzel FIRST so it actually takes effect */
   font-family:"Cinzel","UnifrakturCook",serif !important;
   font-weight:900 !important;
-  font-size:clamp(36px, 7vw, 72px) !important;  /* bigger like the mock */
+  font-size:clamp(36px, 7vw, 72px) !important;
   letter-spacing:.3px !important; line-height:1 !important;
-
-  /* gold foil */
   background-image:linear-gradient(92deg,#9C6B1A 0%,#F2C14E 22%,#FFE27A 45%,#F2C14E 62%,#9C6B1A 100%) !important;
   background-size:220% auto !important;
   -webkit-background-clip:text !important; background-clip:text !important;
   -webkit-text-fill-color:transparent !important; color:transparent !important;
-
-  /* outline + glow */
-  -webkit-text-stroke:1px #26231c !important;
+  -webkit-text-stroke:0 transparent !important; /* was 1px #26231c; now OFF */
   text-shadow:0 1px 0 rgba(0,0,0,.25), 0 2px 8px rgba(0,0,0,.15) !important;
-
   animation:foilShine 12s linear infinite !important;
   display:inline-block !important;
 }
@@ -68,43 +63,84 @@ header.brand-banner .brand-title .foil{
 <!-- Non-sticky header ABOVE the sticky nav -->
 <header class="brand-banner" role="banner">
   <a class="brand-title" href="#top" aria-label="Dutch Republic">
-    <span class="foil"
-      style="
-        font-family:'UnifrakturCook','Cinzel',serif;
-        font-weight:900;
-        font-size:clamp(30px,6.4vw,56px);
-        letter-spacing:.3px; line-height:1;
-        /* foil gradient clipped to text */
-        background-image:linear-gradient(92deg,#9C6B1A 0%,#F2C14E 22%,#FFE27A 45%,#F2C14E 62%,#9C6B1A 100%);
-        background-size:220% auto;
-        -webkit-background-clip:text; background-clip:text;
-        -webkit-text-fill-color:transparent; color:transparent;
-        /* outline + glow */
-        -webkit-text-stroke:0.7px #26231c;
-        text-shadow:0 1px 0 rgba(0,0,0,.25), 0 2px 8px rgba(0,0,0,.15);
-        animation:foilShine 12s linear infinite;
-        display:inline-block;
-      "
-    >Dutch Republic</span>
+    <!-- SVG banner wordmark -->
+    <svg class="foil-svg" viewBox="0 0 1200 180" role="img" aria-label="DUTCH REPUBLIC" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <!-- Gold foil gradient with animated sweep -->
+        <linearGradient id="foilGrad" x1="-40%" y1="0%" x2="180%" y2="0%">
+          <stop offset="0%"   stop-color="#9C6B1A"/>
+          <stop offset="22%"  stop-color="#F2C14E"/>
+          <stop offset="45%"  stop-color="#FFE27A"/>
+          <stop offset="62%"  stop-color="#F2C14E"/>
+          <stop offset="100%" stop-color="#9C6B1A"/>
+          <animate attributeName="x1" values="-40%;0%;-40%" dur="12s" repeatCount="indefinite"/>
+          <animate attributeName="x2" values="180%;220%;180%" dur="12s" repeatCount="indefinite"/>
+        </linearGradient>
+      </defs>
+
+      <text x="50%" y="64%" text-anchor="middle"
+            font-family="Cinzel, 'UnifrakturCook', serif"
+            font-weight="900"
+            font-size="120"
+            fill="url(#foilGrad)"
+            stroke="#26231C"
+            stroke-width="3"
+            stroke-linejoin="round"
+            stroke-miterlimit="2"
+            style="paint-order: stroke fill;">
+        DUTCH REPUBLIC
+      </text>
+    </svg>
   </a>
 </header>
 
-    <!-- ===== Sticky compact nav (shows after you scroll past banner) ===== -->
-    <header class="site-header sticky-nav">
+<!-- ===== Sticky compact nav (shows after you scroll past banner) ===== -->
+<header class="site-header sticky-nav">
   <div class="container sticky-nav__inner">
     
-    <!-- left: brand icon + name -->
-<a class="sticky-logo" href="#home" aria-label="Home">
-  <img class="brand-lion" src="logo-dutch-republic.svg" alt="Dutch Republic crest" />
-</a>
+    <!-- left: brand icon -->
+    <a class="sticky-logo" href="#home" aria-label="Home">
+      <img class="brand-lion" src="logo-dutch-republic.svg" alt="Dutch Republic crest" />
+    </a>
 
- <div class="sticky-tabs tab-nav" aria-label="Primary">
-  <a class="stab tab" href="#home">Home</a>
-  <a class="stab tab" href="#deals">Deals</a>
-  <a class="stab tab" href="#shop">Shop</a>
-  <a class="stab tab" href="#dtg">Dutch Touch Genetics</a>
-  <a class="stab tab" href="#contact">Contact</a>
-</div>
+    <!-- compact SVG brand name -->
+    <div class="sticky-brand-name" aria-hidden="false">
+      <svg class="foil-svg-small" viewBox="0 0 600 90" role="img" aria-label="Dutch Republic" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="foilGradSmall" x1="-40%" y1="0%" x2="180%" y2="0%">
+            <stop offset="0%"   stop-color="#9C6B1A"/>
+            <stop offset="22%"  stop-color="#F2C14E"/>
+            <stop offset="45%"  stop-color="#FFE27A"/>
+            <stop offset="62%"  stop-color="#F2C14E"/>
+            <stop offset="100%" stop-color="#9C6B1A"/>
+            <animate attributeName="x1" values="-40%;0%;-40%" dur="12s" repeatCount="indefinite"/>
+            <animate attributeName="x2" values="180%;220%;180%" dur="12s" repeatCount="indefinite"/>
+          </linearGradient>
+        </defs>
+
+        <text x="50%" y="68%" text-anchor="middle"
+              font-family="Cinzel, 'UnifrakturCook', serif"
+              font-weight="900"
+              font-size="48"
+              fill="url(#foilGradSmall)"
+              stroke="#26231C"
+              stroke-width="2"
+              stroke-linejoin="round"
+              stroke-miterlimit="2"
+              style="paint-order: stroke fill;">
+          Dutch Republic
+        </text>
+      </svg>
+    </div>
+
+    <!-- center: tabs -->
+    <div class="sticky-tabs tab-nav" aria-label="Primary">
+      <a class="stab tab" href="#home">Home</a>
+      <a class="stab tab" href="#deals">Deals</a>
+      <a class="stab tab" href="#shop">Shop</a>
+      <a class="stab tab" href="#dtg">Dutch Touch Genetics</a>
+      <a class="stab tab" href="#contact">Contact</a>
+    </div>
 
     <!-- right: order → open pill → search → hamburger -->
     <div class="sticky-actions">
@@ -130,18 +166,18 @@ header.brand-banner .brand-title .foil{
   </div>
 </header>
 
-    <!-- Hours popover -->
-    <div id="hoursOverlay" class="hours-overlay" hidden></div>
-    <div id="hoursPopover" class="hours-popover" role="dialog" aria-modal="false" hidden>
-      <div class="hours-head">
-        <strong>Today’s Hours</strong>
-        <span class="status-dot" id="hoursStatusDot"></span>
-      </div>
-      <ul class="hours-list" id="hoursList"></ul>
-      <div class="hours-note" id="hoursNote"></div>
-    </div>
+<!-- Hours popover -->
+<div id="hoursOverlay" class="hours-overlay" hidden></div>
+<div id="hoursPopover" class="hours-popover" role="dialog" aria-modal="false" hidden>
+  <div class="hours-head">
+    <strong>Today’s Hours</strong>
+    <span class="status-dot" id="hoursStatusDot"></span>
+  </div>
+  <ul class="hours-list" id="hoursList"></ul>
+  <div class="hours-note" id="hoursNote"></div>
+</div>
 
-  <!-- Menu popover (like the Hours dialog) -->
+<!-- Menu popover (like the Hours dialog) -->
 <div id="menuOverlay" class="menu-overlay" hidden></div>
 
 <aside id="navDrawer" class="menu-popover" role="dialog" aria-modal="false" hidden>
@@ -154,193 +190,191 @@ header.brand-banner .brand-title .foil{
   </nav>
 </aside>
 
-  <main id="home">
-    <!-- Hero -->
-    <section class="hero">
-      <div class="container">
-        <div class="slides" data-carousel>
-          <a class="slide is-active" href="#shop"><img src="img/hero-1.jpg" alt="Shop Dutch District" /></a>
-          <a class="slide" href="#deals"><img src="img/hero-2.jpg" alt="Today’s Deals" /></a>
-          <a class="slide" href="#dtg"><img src="img/hero-3.jpg" alt="Dutch Touch Genetics" /></a>
-        </div>
-        <div class="dots" data-dots></div>
+<main id="home">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="slides" data-carousel>
+        <a class="slide is-active" href="#shop"><img src="img/hero-1.jpg" alt="Shop Dutch District" /></a>
+        <a class="slide" href="#deals"><img src="img/hero-2.jpg" alt="Today’s Deals" /></a>
+        <a class="slide" href="#dtg"><img src="img/hero-3.jpg" alt="Dutch Touch Genetics" /></a>
       </div>
-    </section>
+      <div class="dots" data-dots></div>
+    </div>
+  </section>
 
-    <!-- Today’s Deals -->
-    <section id="deals" class="deals-section">
-      <div class="container">
-        <div class="deal-card" role="button" tabindex="0" aria-expanded="false" aria-controls="dealBody">
-          <div class="deal-head">
-            <div class="deal-title">Today’s Deals</div>
-            <span class="chev" aria-hidden="true">▾</span>
+  <!-- Today’s Deals -->
+  <section id="deals" class="deals-section">
+    <div class="container">
+      <div class="deal-card" role="button" tabindex="0" aria-expanded="false" aria-controls="dealBody">
+        <div class="deal-head">
+          <div class="deal-title">Today’s Deals</div>
+          <span class="chev" aria-hidden="true">▾</span>
+        </div>
+
+        <div id="dealBody" class="deal-body collapsed">
+          <ul class="deal-list" id="dealList"><!-- JS renders here --></ul>
+          <div class="deal-actions">
+            <button id="closeDeals" class="btn outline">Close deals</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section id="shop" class="categories">
+    <div class="container">
+      <h2 class="section-title">Shop Categories</h2>
+      <div class="cat-grid">
+        <a class="cat-card" href="https://your-ecom-link?category=flower" data-ext>
+          <img src="img/cat-flower.jpg" alt="" loading="lazy" /><span>Flower</span>
+        </a>
+        <a class="cat-card" href="https://your-ecom-link?category=pre-rolls" data-ext>
+          <img src="img/cat-preroll.jpg" alt="" loading="lazy" /><span>Pre-Rolls</span>
+        </a>
+        <a class="cat-card" href="https://your-ecom-link?category=vaporizers" data-ext>
+          <img src="img/cat-vapes.jpg" alt="" loading="lazy" /><span>Vaporizers</span>
+        </a>
+        <a class="cat-card" href="https://your-ecom-link?category=concentrates" data-ext>
+          <img src="img/cat-conc.jpg" alt="" loading="lazy" /><span>Concentrates</span>
+        </a>
+        <a class="cat-card" href="https://your-ecom-link?category=edibles" data-ext>
+          <img src="img/cat-edibles.jpg" alt="" loading="lazy" /><span>Edibles</span>
+        </a>
+        <a class="cat-card" href="https://your-ecom-link?category=tinctures" data-ext>
+          <img src="img/cat-tinctures.jpg" alt="" loading="lazy" /><span>Tinctures</span>
+        </a>
+      </div>
+      <div class="center">
+        <a class="btn gold" href="https://your-ecom-link" data-ext>View All</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dutch Touch Genetics -->
+  <section id="dtg" class="dtg">
+    <div class="container">
+      <h2 class="section-title">Dutch Touch Genetics</h2>
+      <p class="section-sub">Curated genetics with clean, informative tiles.</p>
+      <div class="dtg-grid">
+        <article class="dtg-card">
+          <img src="img/dtg-1.jpg" alt="Lemon Wookie" loading="lazy" />
+          <h3 class="dtg-title">Lemon Wookie</h3>
+          <div class="dtg-meta"><span class="badge">Hybrid</span><span class="meta">THC 26%</span></div>
+          <a class="dtg-link" href="https://your-ecom-link?brand=dutch-touch-genetics" data-ext>View on menu</a>
+        </article>
+        <article class="dtg-card">
+          <img src="img/dtg-2.jpg" alt="Death By Funk" loading="lazy" />
+          <h3 class="dtg-title">Death By Funk</h3>
+          <div class="dtg-meta"><span class="badge">Indica</span><span class="meta">THC 22%</span></div>
+          <a class="dtg-link" href="https://your-ecom-link?brand=dutch-touch-genetics" data-ext>View on menu</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Loyalty -->
+  <section id="loyalty" class="loyalty-section">
+    <div class="container">
+      <h2 class="section-title">Loyalty</h2>
+
+      <form id="loyaltyForm" class="loyalty-card" action="#" method="post" onsubmit="return false;">
+        <label class="loy-row loy-inline" for="loyEmail">
+          <input id="loyEmail" name="email" type="email" placeholder="Enter your email to join" required />
+          <button id="loyStart" class="btn gold" type="button">Continue</button>
+        </label>
+
+        <div id="loyBody" class="loy-body" hidden>
+          <div class="loy-grid">
+            <label>First Name
+              <input name="firstName" type="text" autocomplete="given-name" />
+            </label>
+            <label>Last Name
+              <input name="lastName" type="text" autocomplete="family-name" />
+            </label>
+            <label>Mobile Phone
+              <input name="phone" type="tel" inputmode="tel" autocomplete="tel" />
+            </label>
           </div>
 
-          <div id="dealBody" class="deal-body collapsed">
-            <ul class="deal-list" id="dealList"><!-- JS renders here --></ul>
-            <div class="deal-actions">
-              <button id="closeDeals" class="btn outline">Close deals</button>
-            </div>
+          <div class="loy-blurb">
+            Earn points on every purchase. Redeem for exclusive Dutch District rewards and drops.
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Categories -->
-    <section id="shop" class="categories">
-      <div class="container">
-        <h2 class="section-title">Shop Categories</h2>
-        <div class="cat-grid">
-          <a class="cat-card" href="https://your-ecom-link?category=flower" data-ext>
-            <img src="img/cat-flower.jpg" alt="" loading="lazy" /><span>Flower</span>
-          </a>
-          <a class="cat-card" href="https://your-ecom-link?category=pre-rolls" data-ext>
-            <img src="img/cat-preroll.jpg" alt="" loading="lazy" /><span>Pre-Rolls</span>
-          </a>
-          <a class="cat-card" href="https://your-ecom-link?category=vaporizers" data-ext>
-            <img src="img/cat-vapes.jpg" alt="" loading="lazy" /><span>Vaporizers</span>
-          </a>
-          <a class="cat-card" href="https://your-ecom-link?category=concentrates" data-ext>
-            <img src="img/cat-conc.jpg" alt="" loading="lazy" /><span>Concentrates</span>
-          </a>
-          <a class="cat-card" href="https://your-ecom-link?category=edibles" data-ext>
-            <img src="img/cat-edibles.jpg" alt="" loading="lazy" /><span>Edibles</span>
-          </a>
-          <a class="cat-card" href="https://your-ecom-link?category=tinctures" data-ext>
-            <img src="img/cat-tinctures.jpg" alt="" loading="lazy" /><span>Tinctures</span>
-          </a>
-        </div>
-        <div class="center">
-          <a class="btn gold" href="https://your-ecom-link" data-ext>View All</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Dutch Touch Genetics -->
-    <section id="dtg" class="dtg">
-      <div class="container">
-        <h2 class="section-title">Dutch Touch Genetics</h2>
-        <p class="section-sub">Curated genetics with clean, informative tiles.</p>
-        <div class="dtg-grid">
-          <article class="dtg-card">
-            <img src="img/dtg-1.jpg" alt="Lemon Wookie" loading="lazy" />
-            <h3 class="dtg-title">Lemon Wookie</h3>
-            <div class="dtg-meta"><span class="badge">Hybrid</span><span class="meta">THC 26%</span></div>
-            <a class="dtg-link" href="https://your-ecom-link?brand=dutch-touch-genetics" data-ext>View on menu</a>
-          </article>
-          <article class="dtg-card">
-            <img src="img/dtg-2.jpg" alt="Death By Funk" loading="lazy" />
-            <h3 class="dtg-title">Death By Funk</h3>
-            <div class="dtg-meta"><span class="badge">Indica</span><span class="meta">THC 22%</span></div>
-            <a class="dtg-link" href="https://your-ecom-link?brand=dutch-touch-genetics" data-ext>View on menu</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Loyalty -->
-    <section id="loyalty" class="loyalty-section">
-      <div class="container">
-        <h2 class="section-title">Loyalty</h2>
-
-        <form id="loyaltyForm" class="loyalty-card" action="#" method="post" onsubmit="return false;">
-          <label class="loy-row loy-inline" for="loyEmail">
-            <input id="loyEmail" name="email" type="email" placeholder="Enter your email to join" required />
-            <button id="loyStart" class="btn gold" type="button">Continue</button>
+          <label class="loy-agree">
+            <input type="checkbox" required />
+            <span>
+              By signing up, I consent to receive marketing communications and agree to the program terms.
+              Standard messaging rates may apply. I confirm I am of legal age.
+            </span>
           </label>
 
-          <div id="loyBody" class="loy-body" hidden>
-            <div class="loy-grid">
-              <label>First Name
-                <input name="firstName" type="text" autocomplete="given-name" />
-              </label>
-              <label>Last Name
-                <input name="lastName" type="text" autocomplete="family-name" />
-              </label>
-              <label>Mobile Phone
-                <input name="phone" type="tel" inputmode="tel" autocomplete="tel" />
-              </label>
-            </div>
-
-            <div class="loy-blurb">
-              Earn points on every purchase. Redeem for exclusive Dutch District rewards and drops.
-            </div>
-
-            <label class="loy-agree">
-              <input type="checkbox" required />
-              <span>
-                By signing up, I consent to receive marketing communications and agree to the program terms.
-                Standard messaging rates may apply. I confirm I am of legal age.
-              </span>
-            </label>
-
-            <div class="loy-actions">
-              <a class="btn gold" href="https://your-loyalty-link" data-ext>Create Account</a>
-              <a class="btn outline" href="https://your-loyalty-link" data-ext>Sign In</a>
-            </div>
-          </div>
-        </form>
-      </div>
-    </section>
-
-    <!-- Visit Us -->
-    <section id="contact" class="contact contact--gold">
-      <div class="container contact-wrap">
-        <div class="contact-col">
-          <h2 class="section-title">Visit Us — Green Labs</h2>
-
-          <div class="map-card">
-            <div class="map-link" aria-label="Map preview">
-              <iframe
-                title="Map — Green Labs"
-                width="100%"
-                height="220"
-                style="border:0; display:block"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps?q=41.811131,-83.446182&hl=en&z=15&output=embed">
-              </iframe>
-              <span class="map-pin">📍</span>
-            </div>
-
-            <div class="map-actions">
-              <div class="addr">
-                <strong>10701 Madison St</strong><br/>Luna Pier, MI 48157
-              </div>
-              <div class="map-buttons">
-                <button id="openMapsSmart" class="btn small gold" type="button">Open in Maps</button>
-              </div>
-            </div>
-
-            <ul class="contact-list">
-              <li><strong>Phone</strong> <a href="tel:+17348000024">(734) 800-0024</a></li>
-              <li><strong>Email</strong> <a href="mailto:Shop@greenlabs.com">Shop@greenlabs.com</a></li>
-              <li class="socials">
-                <strong>Social</strong>
-                <a href="https://www.instagram.com/greenlabsmi" data-ext>Instagram</a> •
-                <a href="https://www.facebook.com/greenlabsmi" data-ext>Facebook</a> •
-                <a href="https://share.google/sXlxPZrTMpuUN6DLd" data-ext>Google Reviews</a>
-              </li>
-            </ul>
+          <div class="loy-actions">
+            <a class="btn gold" href="https://your-loyalty-link" data-ext>Create Account</a>
+            <a class="btn outline" href="https://your-loyalty-link" data-ext>Sign In</a>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>© <span id="year"></span> Dutch District. All rights reserved.</p>
-      <nav aria-label="Footer">
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-        <a href="#deals">Deals</a>
-      </nav>
+      </form>
     </div>
-  </footer>
+  </section>
 
-  <script src="script.js"></script>
+  <!-- Visit Us -->
+  <section id="contact" class="contact contact--gold">
+    <div class="container contact-wrap">
+      <div class="contact-col">
+        <h2 class="section-title">Visit Us — Green Labs</h2>
 
-  
+        <div class="map-card">
+          <div class="map-link" aria-label="Map preview">
+            <iframe
+              title="Map — Green Labs"
+              width="100%"
+              height="220"
+              style="border:0; display:block"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=41.811131,-83.446182&hl=en&z=15&output=embed">
+            </iframe>
+            <span class="map-pin">📍</span>
+          </div>
+
+          <div class="map-actions">
+            <div class="addr">
+              <strong>10701 Madison St</strong><br/>Luna Pier, MI 48157
+            </div>
+            <div class="map-buttons">
+              <button id="openMapsSmart" class="btn small gold" type="button">Open in Maps</button>
+            </div>
+          </div>
+
+          <ul class="contact-list">
+            <li><strong>Phone</strong> <a href="tel:+17348000024">(734) 800-0024</a></li>
+            <li><strong>Email</strong> <a href="mailto:Shop@greenlabs.com">Shop@greenlabs.com</a></li>
+            <li class="socials">
+              <strong>Social</strong>
+              <a href="https://www.instagram.com/greenlabsmi" data-ext>Instagram</a> •
+              <a href="https://www.facebook.com/greenlabsmi" data-ext>Facebook</a> •
+              <a href="https://share.google/sXlxPZrTMpuUN6DLd" data-ext>Google Reviews</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© <span id="year"></span> Dutch District. All rights reserved.</p>
+    <nav aria-label="Footer">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#deals">Deals</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
