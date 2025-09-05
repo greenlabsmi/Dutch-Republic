@@ -476,6 +476,55 @@ a{color:inherit;text-decoration:none}
   /* Hide the extra foil wordmark in the sticky bar on mobile */
   .sticky-brand-name{ display:none !important; }
 
+/* ===== MOBILE status strip under nav ===== */
+@media (max-width:900px){
+  .status-strip{
+    position: sticky;
+    top: var(--nav-h);            /* sits right under the sticky nav */
+    z-index: 59;                  /* just beneath the nav (nav is z=60) */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 36px;
+    padding: 0 12px;
+    background: #fff;             /* or var(--deal-hue) if you want a tint */
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 4px 10px rgba(16,24,40,.06);
+    font-weight: 800;
+    color: #1f2937;
+  }
+  .status-strip:active{ background:#fafafa; }
+
+  .status-dot{
+    width: 12px; height: 12px;
+    border-radius: 999px;
+    background: #a3a3a3;          /* default */
+    border: 1px solid rgba(0,0,0,.18);
+    flex: 0 0 auto;
+  }
+
+  .status-text{
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Hide the big OPEN pill on mobile to free space */
+  #hoursBtn{ display:none !important; }
+}
+
+/* Desktop: keep the pill; hide the strip */
+@media (min-width:901px){
+  .status-strip{ display:none; }
+}
+
+/* Dot colors to mirror your pill states */
+.status-dot.is-open{   background:#16a34a; border-color:#0f622f; } /* green */
+.status-dot.is-soon{   background:#f59e0b; border-color:#b45309; } /* amber */
+.status-dot.is-closed{ background:#ef4444; border-color:#991b1b; } /* red */
+  
   /* Keep tabs visible and scrollable horizontally */
   .sticky-tabs{
     display:flex !important;
