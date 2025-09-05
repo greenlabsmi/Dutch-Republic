@@ -239,30 +239,81 @@ function smartMapHref(address){
     if (statusDot) statusDot.className = 'status-dot is-closed';
   }
 }
-    function renderHours() {
-      const today = new Date().getDay();
-      list.innerHTML = HOURS.map((h, i) => `
-        <li class="${i === today ? 'is-today' : ''}">
-          <span>${h.d}</span>
-          <span>${fmt(h.open)} – ${fmt(h.close)}</span>
-        </li>
-      `).join('');
-     // Replace the bottom note with a clickable address (smart maps link)
-const addr = "435 Blue Star Hwy, Douglas, MI 49406";
-const href = smartMapHref(addr);
-note.innerHTML = `<a class="note-address" href="${href}">${addr}</a>`;
+    
+function renderHours() {
+  const today = new Date().getDay();
+  list.innerHTML = HOURS.map((h, i) => `
+    <li class="${i === today ? 'is-today' : ''}">
+      <span>${h.d}</span>
+      <span>${fmt(h.open)} – ${fmt(h.close)}</span>
+    </li>
+  `).join('');
 
-// Only set target/rel for web URLs (NOT for maps:// or geo:)
-const a = note.querySelector('.note-address');
-if (/^https?:/i.test(href)) { a.target = '_blank'; a.rel = 'noopener'; }
+  // --- Address link (smart map + only set target for web URLs) ---
+  const addr = "435 Blue Star Hwy, Douglas, MI 49406";
 
+  // Prefer Apple Maps on Apple devices, otherwise Google Maps web
+  const smartMapHref = (address) =>
+    /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent || '')
+      ? `maps://?q=${encodeURIComponent(address)}`
+      : `https://www.google.com/maps?q=${encodeURIComponent(address)}`;
 
+  const href = smartMapHref(addr);
+  note.innerHTML = `
+    <a class="note-address" href="${href}">
+      ${addr}
+    </a>
+  `;
+
+  // Only set target/rel for actual web URLs (http/https), not app schemes like maps://
+  const a = note.querySelector('.note-address');
+  if (a) {
+    if (/^https?:/i.test(a.href)) {
+      a.target = '_blank';
+      a.rel = 'noopener';
+    } else {
+      a.removeAttribute('target');
+      a.removeAttribute('rel');
     }
-    function openPop() {
-      pop.hidden = false;
-      ovl.hidden = false;
-      btn.setAttribute('aria-expanded', 'true');
-    }
+  }
+}
+
+/* ---------- Popover alignment to the mobile status strip ---------- */
+/* Anchors the hours popover so its top edge sits flush with the
+   bottom of the thin "status strip" (Open/Closed + address). */
+function alignHoursPopover() {
+  // Use the mobile strip if it exists & is visible; otherwise fall back to the sticky header
+  const strip = document.getElementById('statusStrip');
+  const stripVisible = strip && getComputedStyle(strip).display !== 'none';
+  const anchor = stripVisible ? strip : document.querySelector('.site-header');
+
+  if (!anchor) return;
+
+  const rect = anchor.getBoundingClientRect();
+  const top = rect.top + window.scrollY + anchor.offsetHeight;
+
+  pop.style.top = `${top}px`;
+  // keep your existing right value; adjust if you want it tighter/looser
+  pop.style.right = '16px';
+}
+
+function openPop() {
+  pop.hidden = false;
+  ovl.hidden  = false;
+  btn.setAttribute('aria-expanded', 'true');
+  alignHoursPopover();        // <- make sure it’s aligned when opened
+}
+
+/* Keep alignment while the page moves/resizes */
+let alignRaf = null;
+const queueAlign = () => {
+  if (pop.hidden) return;
+  if (alignRaf) cancelAnimationFrame(alignRaf);
+  alignRaf = requestAnimationFrame(alignHoursPopover);
+};
+window.addEventListener('scroll', queueAlign, { passive:true });
+window.addEventListener('resize', queueAlign);
+    
     function closePop() {
       pop.hidden = true;
       ovl.hidden = true;
