@@ -486,41 +486,63 @@ a{color:inherit;text-decoration:none}
   /* hide extra foil wordmark in sticky bar on mobile */
   .sticky-brand-name{ display:none !important; }
 
-  /* ===== MOBILE status strip under nav ===== */
-  .status-strip{
-    position: sticky;
-    top: var(--nav-h);               /* sits right under the sticky nav */
-    z-index: 59;                     /* just beneath the nav (nav is z=60) */
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    height: 36px;
-    padding: 0 12px;
-    background: #fff;                /* or var(--deal-hue) if you want a tint */
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    box-shadow: 0 4px 10px rgba(16,24,40,.06);
-    font-weight: 800;
-    color: #1f2937;
-  }
-  .status-strip:active{ background:#fafafa; }
+  /* Strip layout */
+.status-strip{
+  position: sticky;
+  top: var(--nav-h);
+  z-index: 59;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 36px;
+  padding: 0 12px;
+  background: #fff;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 4px 10px rgba(16,24,40,.06);
+  font-weight: 800;
+  color: #1f2937;
+}
 
-  .status-dot{
-    width: 12px; height: 12px;
-    border-radius: 999px;
-    background: #a3a3a3;            /* default */
-    border: 1px solid rgba(0,0,0,.18);
-    flex: 0 0 auto;
-  }
-  .status-text{
-    font-size: 14px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+/* Dot */
+.status-dot{
+  width: 12px; height: 12px;
+  border-radius: 999px;
+  background: #a3a3a3;
+  border: 1px solid rgba(0,0,0,.18);
+  flex: 0 0 auto;
+}
 
-  /* hide the big OPEN pill on mobile to free space */
-  #hoursBtn{ display:none !important; }
+/* The small word (“Open”, “Closing Soon”, “Closed”) */
+.status-text{
+  font-size: 13px;
+  line-height: 1;
+}
+
+/* Color the word to match state */
+.status-text.open   { color:#047857; }  /* green */
+.status-text.soon   { color:#B45309; }  /* amber */
+.status-text.closed { color:#B91C1C; }  /* red */
+
+/* Address anchored to the right */
+.status-addr{
+  margin-left: auto;                /* push to far right */
+  font-weight: 800;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 2px solid var(--gold);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Dot fill colors match the pill states */
+.status-dot.is-open{   background:#16a34a; border-color:#0f622f; }
+.status-dot.is-soon{   background:#f59e0b; border-color:#b45309; }
+.status-dot.is-closed{ background:#ef4444; border-color:#991b1b; }
+
+/* Hide the old pill on mobile (keep on desktop) */
+#hoursBtn{ display:none !important; }
 
   /* keep tabs visible and scrollable horizontally */
   .sticky-tabs{
