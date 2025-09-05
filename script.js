@@ -249,23 +249,17 @@ function renderHours() {
     </li>
   `).join('');
 
-  // --- Address link (smart map + only set target for web URLs) ---
+  // Use the global smartMapHref helper
   const addr = "435 Blue Star Hwy, Douglas, MI 49406";
-
-  // Prefer Apple Maps on Apple devices, otherwise Google Maps web
-  const smartMapHref = (address) =>
-    /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent || '')
-      ? `maps://?q=${encodeURIComponent(address)}`
-      : `https://www.google.com/maps?q=${encodeURIComponent(address)}`;
-
   const href = smartMapHref(addr);
+
   note.innerHTML = `
     <a class="note-address" href="${href}">
       ${addr}
     </a>
   `;
 
-  // Only set target/rel for actual web URLs (http/https), not app schemes like maps://
+  // Only set target/rel for web URLs (http/https), not app schemes (maps://, geo:)
   const a = note.querySelector('.note-address');
   if (a) {
     if (/^https?:/i.test(a.href)) {
@@ -425,8 +419,7 @@ window.addEventListener('resize', queueAlign);
   const ADDRESS = '435 Blue Star Hwy, Douglas, MI 49406';
   if (addrEl){
     addrEl.textContent = ADDRESS;
-    addrEl.href = 'https://www.google.com/maps?q=' + encodeURIComponent(ADDRESS);
-  }
+     }
 
   const setText = (label, klass) => {
     textEl.className = 'status-text';
