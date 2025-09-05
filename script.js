@@ -338,3 +338,44 @@ document.addEventListener('DOMContentLoaded', () => {
   // Clean up any old wishlist storage
   try { localStorage.removeItem('wishlist'); } catch (e) {}
 });
+
+(function(){
+  const strip   = document.getElementById('statusStrip');
+  const dot     = strip ? strip.querySelector('.status-dot') : null;
+  const textEl  = document.getElementById('statusText');
+  const pillBtn = document.getElementById('hoursBtn');     // your existing OPEN pill
+  const noteEl  = document.getElementById('hoursNote');    // optional text source
+
+  if (!strip || !pillBtn) return;
+
+  // Clicking the strip triggers the same Hours popover as the pill
+  strip.addEventListener('click', () => pillBtn.click());
+
+  // Copy state from the pill to the dot (run now + after pill toggles)
+  function syncState(){
+    if (!dot) return;
+    dot.classList.remove('is-open','is-soon','is-closed');
+
+    // Your pill uses classes like state-open/state-soon/state-closed
+    if (pillBtn.classList.contains('state-open'))  dot.classList.add('is-open');
+    if (pillBtn.classList.contains('state-soon'))  dot.classList.add('is-soon');
+    if (pillBtn.classList.contains('state-closed'))dot.classList.add('is-closed');
+
+    // Optional: show a short status text from your hours note if present
+    if (noteEl && noteEl.textContent.trim()){
+      textEl.textContent = noteEl.textContent.trim();
+    } else {
+      // Fallback label based on state
+      if (dot.classList.contains('is-open'))   textEl.textContent = 'Open';
+      else if (dot.classList.contains('is-soon')) textEl.textContent = 'Closing soon';
+      else if (dot.classList.contains('is-closed')) textEl.textContent = 'Closed';
+      else textEl.textContent = 'Store status';
+    }
+  }
+
+  // Initial sync
+  syncState();
+
+  // Re-sync a moment after the pill toggles (adjust if you use custom events)
+  pillBtn.addEventListener('click', () => setTimeout(syncState, 150));
+})();
