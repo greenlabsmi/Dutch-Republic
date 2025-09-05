@@ -344,35 +344,33 @@ note.innerHTML = `
   try { localStorage.removeItem('wishlist'); } catch (e) {}
 });
 
-(function(){
-  const strip    = document.getElementById('statusStrip');
-  const dot      = strip ? strip.querySelector('.status-dot') : null;
-  const textEl   = document.getElementById('statusText');
-  const pillBtn  = document.getElementById('hoursBtn');   // OPEN/CLOSED pill
-  const noteEl   = document.getElementById('hoursNote');  // optional
-  const addrEl   = document.getElementById('statusAddr');
+// === Mobile status strip: mirror pill + keep clickable address ===
+(function statusStripSync(){
+  const strip   = document.getElementById('statusStrip');
+  const dot     = strip ? strip.querySelector('.status-dot') : null;
+  const textEl  = document.getElementById('statusText');
+  const pillBtn = document.getElementById('hoursBtn');
+  const addrEl  = document.getElementById('statusAddr');
 
-  if (!strip || !pillBtn) return;
+  if (!strip || !pillBtn || !dot || !textEl) return;
 
-  // Make the address link NOT toggle the popover
+  // Keep the address link from toggling the popover
   addrEl?.addEventListener('click', (e) => e.stopPropagation());
 
-  // Set the address link once (also safe if you already hard-coded it in HTML)
+  // Ensure address is set (safe even if already in HTML)
   const ADDRESS = '435 Blue Star Hwy, Douglas, MI 49406';
   if (addrEl){
     addrEl.textContent = ADDRESS;
     addrEl.href = 'https://www.google.com/maps?q=' + encodeURIComponent(ADDRESS);
   }
 
-  function setText(label, stateClass){
-    textEl.className = 'status-text';         // reset
-    if (stateClass) textEl.classList.add(stateClass);
+  const setText = (label, klass) => {
+    textEl.className = 'status-text';
+    if (klass) textEl.classList.add(klass);
     textEl.textContent = label;
-  }
+  };
 
-  function syncState(){
-    if (!dot || !textEl) return;
-
+  const syncState = () => {
     dot.classList.remove('is-open','is-soon','is-closed');
 
     if (pillBtn.classList.contains('state-open')){
@@ -384,13 +382,18 @@ note.innerHTML = `
     } else {
       setText('Store status','');
     }
-  }
+  };
 
-  // Clicking the strip opens the same Hours popover as the pill
+  // Clicking the strip opens the Hours popover (same as pill)
   strip.addEventListener('click', () => pillBtn.click());
 
-  // Initial + after pill changes + periodic refresh
-  syncState();
-  pillBtn.addEventListener('click', () => setTimeout(syncState, 150));
-  setInterval(syncState, 60 * 1000);
+  // 1) Initial (after hours() has painted)
+  setTimeout(syncState, 0);
+
+  // 2) Resync when the pill’s class changes
+  const mo = new MutationObserver(syncState);
+  mo.observe(pillBtn, { attributes: true, attributeFilter: ['class'] });
+
+  // 3) Periodic refresh so it flips automatically at open/close minutes
+  setInterval(syncState, 30 * 1000);
 })();
