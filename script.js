@@ -172,6 +172,17 @@ document.addEventListener('DOMContentLoaded', () => {
       collapse();
     });
   })();
+
+  // ---- Map helpers (use default maps app on phones) ----
+function isIOS(){ return /iPad|iPhone|iPod/.test(navigator.userAgent || ''); }
+function isAndroid(){ return /Android/.test(navigator.userAgent || ''); }
+function smartMapHref(address){
+  const q = encodeURIComponent(address);
+  if (isIOS())     return `maps://?q=${q}`;     // Apple Maps app
+  if (isAndroid()) return `geo:0,0?q=${q}`;     // Default maps app (Android)
+  return `https://www.google.com/maps?q=${q}`;  // Desktop fallback
+}
+  
   // ================= Hours popover & pill =================
   (function hours() {
     const btn = document.getElementById('hoursBtn');
@@ -236,14 +247,16 @@ document.addEventListener('DOMContentLoaded', () => {
           <span>${fmt(h.open)} – ${fmt(h.close)}</span>
         </li>
       `).join('');
-      // Replace the bottom note with a clickable address
+     // Replace the bottom note with a clickable address (smart maps link)
 const addr = "435 Blue Star Hwy, Douglas, MI 49406";
-const mapsUrl = `https://www.google.com/maps?q=${encodeURIComponent(addr)}`;
-note.innerHTML = `
-  <a class="note-address" href="${mapsUrl}" target="_blank" rel="noopener">
-    ${addr}
-  </a>
-`;
+const href = smartMapHref(addr);
+note.innerHTML = `<a class="note-address" href="${href}">${addr}</a>`;
+
+// Only set target/rel for web URLs (NOT for maps:// or geo:)
+const a = note.querySelector('.note-address');
+if (/^https?:/i.test(href)) { a.target = '_blank'; a.rel = 'noopener'; }
+
+
     }
     function openPop() {
       pop.hidden = false;
