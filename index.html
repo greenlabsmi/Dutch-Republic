@@ -62,9 +62,31 @@ header.brand-banner .brand-title .foil{
 <!-- Brand banner (logo + big wordmark, no button) -->
 <!-- Non-sticky header ABOVE the sticky nav -->
 <header class="brand-banner" role="banner">
- <a class="brand-title" href="#top" aria-label="Dutch Republic">
-  <span class="logo-text" data-text="DUTCH REPUBLIC">DUTCH REPUBLIC</span>
-</a>
+  <a class="brand-title" href="#top" aria-label="Dutch Republic">
+    <!-- Replaced black text with foil SVG wordmark (no plain black text) -->
+    <svg class="foil-svg-large" viewBox="0 0 1200 180" role="img" aria-label="Dutch Republic" preserveAspectRatio="xMidYMid meet" style="display:block; width:min(92vw, 980px); height:auto;">
+      <defs>
+        <linearGradient id="foilGradLarge" x1="-40%" y1="0%" x2="180%" y2="0%">
+          <stop offset="0%"   stop-color="#9C6B1A"/>
+          <stop offset="22%"  stop-color="#F2C14E"/>
+          <stop offset="45%"  stop-color="#FFE27A"/>
+          <stop offset="62%"  stop-color="#F2C14E"/>
+          <stop offset="100%" stop-color="#9C6B1A"/>
+          <animate attributeName="x1" values="-40%;0%;-40%" dur="12s" repeatCount="indefinite"/>
+          <animate attributeName="x2" values="180%;220%;180%" dur="12s" repeatCount="indefinite"/>
+        </linearGradient>
+      </defs>
+      <text x="50%" y="68%" text-anchor="middle"
+            font-family="Cinzel, 'UnifrakturCook', serif"
+            font-weight="900"
+            font-size="120"
+            fill="url(#foilGradLarge)"
+            stroke="none"
+            style="paint-order: stroke fill;">
+        DUTCH REPUBLIC
+      </text>
+    </svg>
+  </a>
 </header>
 
 <!-- ===== Sticky compact nav (shows after you scroll past banner) ===== -->
@@ -73,9 +95,9 @@ header.brand-banner .brand-title .foil{
     
     <!-- left: brand icon -->
     <a class="sticky-logo" href="#home" aria-label="Home">
-  <img class="brand-lion" src="logo-dutch-republic.svg" alt="Dutch Republic crest" />
-  <span class="logo-text-small" data-text="Dutch Republic">Dutch Republic</span>
-</a>
+      <img class="brand-lion" src="logo-dutch-republic.svg" alt="Dutch Republic crest" />
+      <span class="logo-text-small" data-text="Dutch Republic">Dutch Republic</span>
+    </a>
 
     <!-- compact SVG brand name -->
     <div class="sticky-brand-name" aria-hidden="false">
@@ -107,8 +129,8 @@ header.brand-banner .brand-title .foil{
       </svg>
     </div>
 
-    <!-- center: tabs -->
-    <div class="sticky-tabs tab-nav" aria-label="Primary">
+    <!-- center: tabs (mobile-fit via horizontal scroll) -->
+    <div class="sticky-tabs tab-nav" aria-label="Primary" style="overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch;">
       <a class="stab tab" href="#home">Home</a>
       <a class="stab tab" href="#deals">Deals</a>
       <a class="stab tab" href="#shop">Shop</a>
@@ -165,8 +187,8 @@ header.brand-banner .brand-title .foil{
 </aside>
 
 <main id="home">
-  <!-- Hero -->
-  <section class="hero">
+  <!-- Hero (now with solid black background) -->
+  <section class="hero" style="background:#000;">
     <div class="container">
       <div class="slides" data-carousel>
         <a class="slide is-active" href="#shop"><img src="img/hero-1.jpg" alt="Shop Dutch District" /></a>
@@ -180,13 +202,15 @@ header.brand-banner .brand-title .foil{
   <!-- Today’s Deals -->
   <section id="deals" class="deals-section">
     <div class="container">
-      <div class="deal-card" role="button" tabindex="0" aria-expanded="false" aria-controls="dealBody">
+      <!-- Black outline added to dropdown wrapper -->
+      <div class="deal-card" role="button" tabindex="0" aria-expanded="false" aria-controls="dealBody" style="border:2px solid #000; border-radius:12px;">
         <div class="deal-head">
           <div class="deal-title">Today’s Deals</div>
           <span class="chev" aria-hidden="true">▾</span>
         </div>
 
-        <div id="dealBody" class="deal-body collapsed">
+        <!-- Black outline applied to the collapsible body too -->
+        <div id="dealBody" class="deal-body collapsed" style="border-top:2px solid #000; border-bottom-left-radius:12px; border-bottom-right-radius:12px;">
           <ul class="deal-list" id="dealList"><!-- JS renders here --></ul>
           <div class="deal-actions">
             <button id="closeDeals" class="btn outline">Close deals</button>
