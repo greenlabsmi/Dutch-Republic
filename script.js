@@ -348,53 +348,49 @@ note.innerHTML = `
   const strip    = document.getElementById('statusStrip');
   const dot      = strip ? strip.querySelector('.status-dot') : null;
   const textEl   = document.getElementById('statusText');
-  const pillBtn  = document.getElementById('hoursBtn');   // existing OPEN pill
+  const pillBtn  = document.getElementById('hoursBtn');   // OPEN/CLOSED pill
   const noteEl   = document.getElementById('hoursNote');  // optional
   const addrEl   = document.getElementById('statusAddr');
 
   if (!strip || !pillBtn) return;
 
-  // Set the address link + text once
+  // Make the address link NOT toggle the popover
+  addrEl?.addEventListener('click', (e) => e.stopPropagation());
+
+  // Set the address link once (also safe if you already hard-coded it in HTML)
   const ADDRESS = '435 Blue Star Hwy, Douglas, MI 49406';
   if (addrEl){
     addrEl.textContent = ADDRESS;
     addrEl.href = 'https://www.google.com/maps?q=' + encodeURIComponent(ADDRESS);
   }
 
-  // Clicking the strip opens the same Hours popover as the pill
-  strip.addEventListener('click', () => pillBtn.click());
-
   function setText(label, stateClass){
-    // reset then apply the right color class
-    textEl.className = 'status-text';
+    textEl.className = 'status-text';         // reset
     if (stateClass) textEl.classList.add(stateClass);
     textEl.textContent = label;
   }
 
-  // Copy state from the pill to the strip
   function syncState(){
     if (!dot || !textEl) return;
 
     dot.classList.remove('is-open','is-soon','is-closed');
 
     if (pillBtn.classList.contains('state-open')){
-      dot.classList.add('is-open');
-      setText('Open', 'open');
+      dot.classList.add('is-open');   setText('Open','open');
     } else if (pillBtn.classList.contains('state-soon')){
-      dot.classList.add('is-soon');
-      setText('Closing Soon', 'soon');
+      dot.classList.add('is-soon');   setText('Closing Soon','soon');
     } else if (pillBtn.classList.contains('state-closed')){
-      dot.classList.add('is-closed');
-      setText('Closed', 'closed');
+      dot.classList.add('is-closed'); setText('Closed','closed');
     } else {
-      setText('Store status', '');
+      setText('Store status','');
     }
   }
 
-  // Initial + after pill changes
+  // Clicking the strip opens the same Hours popover as the pill
+  strip.addEventListener('click', () => pillBtn.click());
+
+  // Initial + after pill changes + periodic refresh
   syncState();
   pillBtn.addEventListener('click', () => setTimeout(syncState, 150));
-
-  // Also resync every minute in case the pill updates on its own
   setInterval(syncState, 60 * 1000);
 })();
