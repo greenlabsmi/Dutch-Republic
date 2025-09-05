@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const list = document.getElementById('hoursList');
     const note = document.getElementById('hoursNote');
     const statusDot = document.getElementById('hoursStatusDot');
-    if (!btn || !pop || !ovl || !list || !note || !statusDot) return;
+    if (!btn || !pop || !ovl || !list || !note) return;
     // Business hours (9–21 daily)
     const HOURS = [
       { d: 'Sunday',    open: 9, close: 21 },
@@ -209,6 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function paintPill() {
       const s = statusNow();
       btn.classList.remove('state-open','state-soon','state-closed');
+
       if (s.isOpen && s.closingSoon) {
         btn.textContent = 'CLOSING SOON';
         btn.classList.add('state-soon');
