@@ -234,11 +234,16 @@ a{color:inherit;text-decoration:none}
   border-radius:16px;
   overflow:hidden;
   cursor:pointer;
-  transition:box-shadow .2s ease;  /* smooth pop */
+  transition: box-shadow .22s ease, transform .22s ease; /* smoother pop */
 }
 
 .deal-card[aria-expanded="true"]{
-  box-shadow:0 6px 20px rgba(0,0,0,.25);  /* the pop effect */
+  position:relative;           /* allow stacking */
+  z-index:2;                   /* sit above neighbors */
+  transform: translateY(-2px); /* slight lift */
+  box-shadow:
+    0 14px 36px rgba(0,0,0,.35),  /* main shadow */
+    0 4px 10px rgba(0,0,0,.18);   /* secondary soft shadow */
 }
 .deal-head{
   display:grid;grid-template-columns:1fr auto;align-items:center;
