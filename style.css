@@ -471,23 +471,22 @@ a{color:inherit;text-decoration:none}
   .brand-title .logo-text{ display:none !important; }
 }
 
-/* 3) Mobile sticky header: prevent double logos and make tabs fit */
+/* 3) Mobile sticky header: prevent double logos, add status strip, make tabs fit */
 @media (max-width:900px){
-  /* Hide the extra foil wordmark in the sticky bar on mobile */
+  /* hide extra foil wordmark in sticky bar on mobile */
   .sticky-brand-name{ display:none !important; }
 
-/* ===== MOBILE status strip under nav ===== */
-@media (max-width:900px){
+  /* ===== MOBILE status strip under nav ===== */
   .status-strip{
     position: sticky;
-    top: var(--nav-h);            /* sits right under the sticky nav */
-    z-index: 59;                  /* just beneath the nav (nav is z=60) */
+    top: var(--nav-h);               /* sits right under the sticky nav */
+    z-index: 59;                     /* just beneath the nav (nav is z=60) */
     display: flex;
     align-items: center;
     gap: 10px;
     height: 36px;
     padding: 0 12px;
-    background: #fff;             /* or var(--deal-hue) if you want a tint */
+    background: #fff;                /* or var(--deal-hue) if you want a tint */
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
     box-shadow: 0 4px 10px rgba(16,24,40,.06);
@@ -499,11 +498,10 @@ a{color:inherit;text-decoration:none}
   .status-dot{
     width: 12px; height: 12px;
     border-radius: 999px;
-    background: #a3a3a3;          /* default */
+    background: #a3a3a3;            /* default */
     border: 1px solid rgba(0,0,0,.18);
     flex: 0 0 auto;
   }
-
   .status-text{
     font-size: 14px;
     white-space: nowrap;
@@ -511,21 +509,10 @@ a{color:inherit;text-decoration:none}
     text-overflow: ellipsis;
   }
 
-  /* Hide the big OPEN pill on mobile to free space */
+  /* hide the big OPEN pill on mobile to free space */
   #hoursBtn{ display:none !important; }
-}
 
-/* Desktop: keep the pill; hide the strip */
-@media (min-width:901px){
-  .status-strip{ display:none; }
-}
-
-/* Dot colors to mirror your pill states */
-.status-dot.is-open{   background:#16a34a; border-color:#0f622f; } /* green */
-.status-dot.is-soon{   background:#f59e0b; border-color:#b45309; } /* amber */
-.status-dot.is-closed{ background:#ef4444; border-color:#991b1b; } /* red */
-  
-  /* Keep tabs visible and scrollable horizontally */
+  /* keep tabs visible and scrollable horizontally */
   .sticky-tabs{
     display:flex !important;
     justify-content:flex-start !important;
@@ -537,10 +524,20 @@ a{color:inherit;text-decoration:none}
   }
   .sticky-tabs::-webkit-scrollbar{ display:none; }
 
-  /* Tighten spacing so everything fits */
+  /* tighten spacing so everything fits */
   .sticky-nav__inner{ gap:8px !important; }
   .stab{ font-size:14px !important; }
 }
+
+/* Desktop: keep the pill; hide the mobile strip */
+@media (min-width:901px){
+  .status-strip{ display:none; }
+}
+
+/* Dot colors to mirror your pill states */
+.status-dot.is-open{   background:#16a34a; border-color:#0f622f; } /* green */
+.status-dot.is-soon{   background:#f59e0b; border-color:#b45309; } /* amber */
+.status-dot.is-closed{ background:#ef4444; border-color:#991b1b; } /* red */
 
 /* 4) Hero: remove the accidental black background (in case it was set inline) */
 .hero{ background:transparent !important; }
