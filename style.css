@@ -339,7 +339,7 @@ a{color:inherit;text-decoration:none}
   font-weight:800;
   color:inherit;              /* keep the same text color */
   text-decoration:none;       /* remove default underline */
-  border-bottom:2px solid var(--gold);
+  border-bottom: none;
 }
 .hours-note .note-address:hover{
   opacity:.85;
@@ -542,8 +542,7 @@ a{color:inherit;text-decoration:none}
   font-weight: 800;
   text-decoration: none;
   color: inherit;
-  border-bottom: 2px solid var(--gold);
-  white-space: nowrap;
+  border-bottom: none;
   overflow: hidden;
   text-overflow: ellipsis;
 }
