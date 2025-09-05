@@ -62,13 +62,21 @@ a{color:inherit;text-decoration:none}
   background-size:280px 280px; opacity:.08; mix-blend-mode:multiply;
 }
 
-/* ========= NEW: SVG foil logo (banner) ========= */
+/* ========= NEW: SVG foil logos ========= */
 .foil-svg{
   display:block;
   width:100%;
-  max-width:980px;          /* tune to taste */
+  max-width:980px;
   height:auto;
-  /* mimic your former text-shadow glow */
+  filter: drop-shadow(0 1px 0 rgba(0,0,0,.25))
+          drop-shadow(0 2px 8px rgba(0,0,0,.15));
+}
+/* Large banner SVG helper (matches .foil-svg look) */
+.foil-svg-large{
+  display:block;
+  width:100%;
+  max-width:980px;
+  height:auto;
   filter: drop-shadow(0 1px 0 rgba(0,0,0,.25))
           drop-shadow(0 2px 8px rgba(0,0,0,.15));
 }
@@ -82,11 +90,8 @@ a{color:inherit;text-decoration:none}
   background-image:linear-gradient(92deg,#9C6B1A 0%,#F2C14E 22%,#FFE27A 45%,#F2C14E 62%,#9C6B1A 100%);
   background-size:220% auto;
   -webkit-background-clip:text; background-clip:text;
-  -webkit-text-fill-color:transparent; color:transparent; /* iOS/Safari */
-
-  /* CHANGED: neutralize stroke so it doesn't cut into glyphs */
-  -webkit-text-stroke:0 transparent;
-
+  -webkit-text-fill-color:transparent; color:transparent;
+  -webkit-text-stroke:0 transparent; /* neutralize stroke */
   text-shadow:0 1px 0 rgba(0,0,0,.25), 0 2px 8px rgba(0,0,0,.15);
   animation:foilShine 12s linear infinite;
 }
@@ -105,6 +110,11 @@ a{color:inherit;text-decoration:none}
 /* Desktop banner padding bump */
 @media (min-width:768px){
   .brand-banner{ padding:18px 24px; }
+}
+
+/* ====== Desktop-only: hide black fallback text in banner ====== */
+@media (min-width:900px){
+  .brand-title .logo-text{ display:none !important; }
 }
 
 /* ========== Sticky nav ========== */
@@ -133,19 +143,35 @@ a{color:inherit;text-decoration:none}
   font-size:1.05rem; letter-spacing:.3px; color:var(--ink);
 }
 
-/* ========= NEW: compact SVG foil logo (sticky nav) ========= */
+/* Compact SVG foil logo in sticky nav */
 .sticky-brand-name .foil-svg-small{
   display:block;
-  height:1.2em;             /* align with nav text height */
+  height:1.2em;
   width:auto;
   filter: drop-shadow(0 1px 0 rgba(0,0,0,.25))
           drop-shadow(0 2px 4px rgba(0,0,0,.12));
 }
 
-.sticky-tabs{display:flex; align-items:center; gap:18px; justify-content:center; flex:1}
+/* Tabs */
+.sticky-tabs{
+  display:flex; align-items:center; gap:18px; justify-content:center; flex:1;
+}
 .stab{font-weight:800; color:#475467; white-space:nowrap}
 .stab:hover{color:var(--ink)}
-@media (max-width:900px){ .sticky-tabs{display:none} }
+
+/* ===== UPDATED: Mobile tabs stay visible and scroll horizontally ===== */
+@media (max-width:900px){
+  .sticky-tabs{
+    justify-content:flex-start;
+    gap:14px;
+    overflow-x:auto;
+    white-space:nowrap;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none; /* Firefox */
+  }
+  .sticky-tabs::-webkit-scrollbar{ display:none; } /* WebKit */
+}
+
 .sticky-actions{display:flex; align-items:center; gap:8px; position:relative}
 .sticky-actions > *{height:32px; display:inline-flex; align-items:center; justify-content:center}
 .icon-btn{
@@ -190,7 +216,8 @@ a{color:inherit;text-decoration:none}
 .menu-list .drawer-link:active{ background:#f7f7f7 }
 
 /* ========== Hero ========== */
-.hero{margin:14px 0}
+/* UPDATED: hero uses solid black background per request */
+.hero{margin:14px 0; background:#000;}
 .slides{display:grid;grid-auto-flow:column;grid-auto-columns:100%;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:var(--radius)}
 .slide{scroll-snap-align:start}
 .slide img{width:100%;height:220px;object-fit:cover;border-radius:var(--radius)}
@@ -200,7 +227,14 @@ a{color:inherit;text-decoration:none}
 
 /* ========== Today’s Deals ========== */
 .deals-section{margin:18px 0}
-.deal-card{ background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden; cursor:pointer }
+
+/* UPDATED: black outline for dropdown wrapper + expanded body */
+.deal-card{
+  background:#fff;
+  border:2px solid #000;               /* was 1px var(--line) */
+  border-radius:16px;
+  overflow:hidden; cursor:pointer
+}
 .deal-card:focus{outline:2px solid var(--gold);outline-offset:2px}
 .deal-head{
   display:grid;grid-template-columns:1fr auto;align-items:center;
@@ -209,7 +243,12 @@ a{color:inherit;text-decoration:none}
 .deal-title{justify-self:center;font-weight:900;color:#2B2F33}
 .chev{transition:transform .2s ease;color:#6b7280}
 .deal-card[aria-expanded="true"] .chev{transform:rotate(180deg)}
-.deal-body{ padding:12px 16px;background:var(--deal-hue);position:relative; transition:max-height .25s ease }
+.deal-body{
+  padding:12px 16px;background:var(--deal-hue);position:relative; transition:max-height .25s ease;
+  border-top:2px solid #000;            /* NEW */
+  border-bottom-left-radius:16px;       /* NEW */
+  border-bottom-right-radius:16px;      /* NEW */
+}
 .deal-body.collapsed{max-height:168px;overflow:hidden}
 .deal-body.collapsed::after{
   content:""; position:absolute; left:0; right:0; bottom:0; height:28px;
@@ -349,7 +388,7 @@ a{color:inherit;text-decoration:none}
 }
 
 /* ========== Clean foil wordmarks (no SVG stroke) ========== */
-/* Banner size */
+/* Banner size (mobile fallback text still allowed) */
 .brand-title .logo-text{
   position:relative;
   display:inline-block;
