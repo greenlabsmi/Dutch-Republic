@@ -207,27 +207,27 @@ document.addEventListener('DOMContentLoaded', () => {
       return { isOpen, openSoon, closingSoon, open, close, idx };
     }
     function paintPill() {
-      const s = statusNow();
-      btn.classList.remove('state-open','state-soon','state-closed');
+  const s = statusNow();
+  btn.classList.remove('state-open','state-soon','state-closed');
 
-      if (s.isOpen && s.closingSoon) {
-        btn.textContent = 'CLOSING SOON';
-        btn.classList.add('state-soon');
-        statusDot.className = 'status-dot is-soon';
-      } else if (!s.isOpen && s.openSoon) {
-        btn.textContent = 'OPENING SOON';
-        btn.classList.add('state-soon');
-        statusDot.className = 'status-dot is-soon';
-      } else if (s.isOpen) {
-        btn.textContent = 'OPEN';
-        btn.classList.add('state-open');
-        statusDot.className = 'status-dot is-open';
-      } else {
-        btn.textContent = 'CLOSED';
-        btn.classList.add('state-closed');
-        statusDot.className = 'status-dot is-closed';
-      }
-    }
+  if (s.isOpen && s.closingSoon) {
+    btn.textContent = 'CLOSING SOON';
+    btn.classList.add('state-soon');
+    if (statusDot) statusDot.className = 'status-dot is-soon';
+  } else if (!s.isOpen && s.openSoon) {
+    btn.textContent = 'OPENING SOON';
+    btn.classList.add('state-soon');
+    if (statusDot) statusDot.className = 'status-dot is-soon';
+  } else if (s.isOpen) {
+    btn.textContent = 'OPEN';
+    btn.classList.add('state-open');
+    if (statusDot) statusDot.className = 'status-dot is-open';
+  } else {
+    btn.textContent = 'CLOSED';
+    btn.classList.add('state-closed');
+    if (statusDot) statusDot.className = 'status-dot is-closed';
+  }
+}
     function renderHours() {
       const today = new Date().getDay();
       list.innerHTML = HOURS.map((h, i) => `
