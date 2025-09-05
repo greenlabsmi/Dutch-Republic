@@ -14,22 +14,24 @@
   <!-- Cache-bust your CSS -->
   <link rel="stylesheet" href="style.css?v=dr-007" />
 
-  <style id="hotfix-header">
-/* Parchment banner (forced, with !important to win) */
+ <style id="hotfix-header">
+/* Top banner: transparent background, no border/shadow */
 header.brand-banner{
   display:flex !important; align-items:center !important; justify-content:center !important;
   min-height:96px !important; padding:18px 20px !important;
-  background:
-    radial-gradient(140% 160% at 50% -20%, rgba(0,0,0,.12), transparent 60%),
-    radial-gradient(160% 140% at 50% 120%, rgba(0,0,0,.06), transparent 60%),
-    linear-gradient(180deg, rgba(212,123,25,.06), rgba(212,123,25,.00)),
-    #F1E1BE !important;
-  border-bottom:6px solid #D47B19 !important;
-  box-shadow:0 10px 24px rgba(16,24,40,.06) !important;
+
+  /* remove the parchment */
+  background: transparent !important;
+
+  /* remove gold divider + drop shadow */
+  border-bottom: 0 !important;
+  box-shadow: none !important;
 }
+
+header.brand-banner::after{ display:none !important; } /* kill paper texture */
 header.brand-banner .brand-title{ display:inline-block !important; padding:2px 6px !important; }
 
-/* Legacy foil text fallback — keep but neutralize stroke */
+/* keep foil text behavior if ever used */
 header.brand-banner .brand-title .foil{
   font-family:"Cinzel","UnifrakturCook",serif !important;
   font-weight:900 !important;
@@ -39,18 +41,12 @@ header.brand-banner .brand-title .foil{
   background-size:220% auto !important;
   -webkit-background-clip:text !important; background-clip:text !important;
   -webkit-text-fill-color:transparent !important; color:transparent !important;
-  -webkit-text-stroke:0 transparent !important; /* was 1px #26231c; now OFF */
+  -webkit-text-stroke:0 transparent !important;
   text-shadow:0 1px 0 rgba(0,0,0,.25), 0 2px 8px rgba(0,0,0,.15) !important;
   animation:foilShine 12s linear infinite !important;
   display:inline-block !important;
 }
 
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce){
-  header.brand-banner .brand-title .foil{ animation:none !important; }
-}
-
-/* keyframes (outside @media and syntactically closed) */
 @keyframes foilShine{
   from{ background-position:-40% 0; }
   to  { background-position:180% 0; }
