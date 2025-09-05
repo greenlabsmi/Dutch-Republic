@@ -398,10 +398,3 @@ note.innerHTML = `
   // Also resync every minute in case the pill updates on its own
   setInterval(syncState, 60 * 1000);
 })();
-
-  // Initial sync
-  syncState();
-
-  // Re-sync a moment after the pill toggles (adjust if you use custom events)
-  pillBtn.addEventListener('click', () => setTimeout(syncState, 150));
-})();
