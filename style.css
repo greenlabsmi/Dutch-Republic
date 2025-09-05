@@ -485,7 +485,6 @@ a{color:inherit;text-decoration:none}
 @media (max-width:900px){
   .sticky-brand-name{ display:none !important; }
 
-  /* Strip layout */
   .status-strip{
     position: sticky;
     top: var(--nav-h);
@@ -503,7 +502,6 @@ a{color:inherit;text-decoration:none}
     font-weight: 800;
   }
 
-  /* Dot + colors */
   .status-dot{
     width: 12px; height: 12px;
     border-radius: 999px;
@@ -515,30 +513,23 @@ a{color:inherit;text-decoration:none}
   .status-dot.is-soon{   background:#f59e0b; border-color:#b45309; }
   .status-dot.is-closed{ background:#ef4444; border-color:#991b1b; }
 
-  /* Status word (“Open”, “Closed”, etc.) */
-  .status-text{
-    font-size: 13px;
-    line-height: 1;
-    font-weight: 700;
-  }
+  .status-text{ font-size:13px; line-height:1; font-weight:700; }
 
-  /* Address — match size and sit close to the status */
+  /* single, final address style */
   .status-addr{
-    margin-left: 6px;           /* keep it close to the word */
-    font-size: 13px;            /* match .status-text */
-    font-weight: 700;
-    text-decoration: none;
-    color: inherit;
-    border-bottom: none;        /* no orange line */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    margin-left:6px;              /* sit close to “Open/Closed” */
+    font-size:13px;               /* match the status word */
+    font-weight:700;
+    text-decoration:none;
+    color:inherit;
+    border-bottom:none;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
   }
 
-  /* Hide the old pill on mobile */
   #hoursBtn{ display:none !important; }
 
-  /* Tabs keep scrolling */
   .sticky-tabs{
     display:flex !important;
     justify-content:flex-start !important;
