@@ -337,14 +337,17 @@ a{color:inherit;text-decoration:none}
 .hours-note .note-address{
   display:inline-block;
   font-weight:600;
-  font-size: 0.82rem;        /* smaller font so it fits one line */
-  color:#2563eb;             /* blue link color */
-  text-decoration:underline; /* underline to look like a link */
-  border-bottom:none;        /* ensure no orange border */
+  font-size: 0.82rem;         /* smaller font */
+  color:#2563eb;              /* blue link color */
+  text-decoration:underline;  /* underline like a link */
+  border-bottom:none;
+  white-space: nowrap;        /* force single line */
+  overflow: hidden;           /* prevent overflow breaking layout */
+  text-overflow: ellipsis;    /* adds "…" if screen is too narrow */
 }
 
 .hours-note .note-address:hover{
-  color:#1e40af;             /* darker blue on hover */
+  color:#1e40af;              /* darker blue on hover */
 }
 
 /* Contact */
