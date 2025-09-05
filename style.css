@@ -228,12 +228,17 @@ a{color:inherit;text-decoration:none}
 /* ========== Today’s Deals ========== */
 .deals-section{margin:18px 0}
 
-/* UPDATED: black outline for dropdown wrapper + expanded body */
 .deal-card{
   background:#fff;
-  border:2px solid #000;               /* was 1px var(--line) */
+  border:2px solid #000;
   border-radius:16px;
-  overflow:hidden; cursor:pointer
+  overflow:hidden;
+  cursor:pointer;
+  transition:box-shadow .2s ease;  /* smooth pop */
+}
+
+.deal-card[aria-expanded="true"]{
+  box-shadow:0 6px 20px rgba(0,0,0,.25);  /* the pop effect */
 }
 .deal-head{
   display:grid;grid-template-columns:1fr auto;align-items:center;
