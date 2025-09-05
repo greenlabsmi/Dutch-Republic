@@ -397,3 +397,22 @@ note.innerHTML = `
   // 3) Periodic refresh so it flips automatically at open/close minutes
   setInterval(syncState, 30 * 1000);
 })();
+
+// Make the address in the thin status strip open the Hours popover
+(function () {
+  const addrEl = document.getElementById('statusAddr');   // the address in the strip
+  const pillBtn = document.getElementById('hoursBtn');    // the OPEN/CLOSED pill button
+  if (!addrEl || !pillBtn) return;
+
+  // If it's still an <a>, neutralize its navigation
+  addrEl.removeAttribute?.('href');
+  addrEl.removeAttribute?.('target');
+
+  // Tap = open the same popover as the pill
+  addrEl.style.cursor = 'pointer';
+  addrEl.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    pillBtn.click();
+  });
+})();
