@@ -235,10 +235,14 @@ document.addEventListener('DOMContentLoaded', () => {
           <span>${fmt(h.open)} – ${fmt(h.close)}</span>
         </li>
       `).join('');
-      const s = statusNow();
-      note.textContent = s.isOpen
-        ? `We’re open until ${fmt(s.close)} today.`
-        : `We open at ${fmt(s.open)}.`;
+      // Replace the bottom note with a clickable address
+const addr = "435 Blue Star Hwy, Douglas, MI 49406";
+const mapsUrl = `https://www.google.com/maps?q=${encodeURIComponent(addr)}`;
+note.innerHTML = `
+  <a class="note-address" href="${mapsUrl}" target="_blank" rel="noopener">
+    ${addr}
+  </a>
+`;
     }
     function openPop() {
       pop.hidden = false;
