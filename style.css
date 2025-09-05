@@ -514,15 +514,27 @@ a{color:inherit;text-decoration:none}
 }
 
 /* The small word (“Open”, “Closing Soon”, “Closed”) */
-.status-text{
-  font-size: 12px;
-  line-height: 1;
+.status-text{ font-size: 12px; line-height: 1; }
+.status-text.open   { color:#047857; }   /* green */
+.status-text.soon   { color:#B45309; }   /* amber */
+.status-text.closed { color:#B91C1C; }   /* red */
+
+/* Address on the right – no underline */
+.status-addr{
+  margin-left: auto;
+  font-weight: 800;
+  text-decoration: none;   /* remove underline */
+  border-bottom: 0;        /* remove orange line */
+  color: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Color the word to match state */
-.status-text.open   { color:#047857; }  /* green */
-.status-text.soon   { color:#B45309; }  /* amber */
-.status-text.closed { color:#B91C1C; }  /* red */
+/* Dot fill colors */
+.status-dot.is-open{   background:#16a34a; border-color:#0f622f; }
+.status-dot.is-soon{   background:#f59e0b; border-color:#b45309; }
+.status-dot.is-closed{ background:#ef4444; border-color:#991b1b; }
 
 /* Address anchored to the right */
 .status-addr{
