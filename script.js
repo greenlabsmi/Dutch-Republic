@@ -276,19 +276,23 @@ function renderHours() {
 /* Anchors the hours popover so its top edge sits flush with the
    bottom of the thin "status strip" (Open/Closed + address). */
 function alignHoursPopover() {
-  // Use the mobile strip if it exists & is visible; otherwise fall back to the sticky header
+  // Prefer the mobile status strip when it's visible; otherwise use the sticky nav/site header
   const strip = document.getElementById('statusStrip');
   const stripVisible = strip && getComputedStyle(strip).display !== 'none';
-  const anchor = stripVisible ? strip : document.querySelector('.site-header');
+
+  const anchor =
+    (stripVisible && strip) ||
+    document.querySelector('.sticky-nav') ||
+    document.querySelector('.site-header');
 
   if (!anchor) return;
 
-  const rect = anchor.getBoundingClientRect();
-  const top = rect.top + window.scrollY + anchor.offsetHeight;
+  const rect = anchor.getBoundingClientRect(); // viewport coords for position:fixed anchor
+  const top = rect.bottom;                      // sit flush under the bar
 
+  // Position the fixed popover in viewport space
   pop.style.top = `${top}px`;
-  // keep your existing right value; adjust if you want it tighter/looser
-  pop.style.right = '16px';
+  pop.style.right = '16px';                     // keep your existing horizontal snap
 }
 
 function openPop() {
