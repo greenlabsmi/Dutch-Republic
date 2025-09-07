@@ -663,3 +663,19 @@ body:not(.show-sticky){
 @media (max-width:900px){
   .sticky-logo{ display:none !important; }
 }
+
+/* MOBILE: hide any "Home" in the sticky header */
+@media (max-width:900px){
+  /* 1) Hide the lion/logo link */
+  .sticky-logo{ display:none !important; }
+
+  /* 2) Hide a Home tab by href, class, or id */
+  .sticky-tabs .stab[href="#home"],
+  .sticky-tabs a[href="#home"],
+  .sticky-tabs .stab.home,
+  .sticky-tabs li.home,
+  .sticky-tabs #home-link,
+  .sticky-tabs a[aria-label="Home"]{
+    display:none !important;
+  }
+}
