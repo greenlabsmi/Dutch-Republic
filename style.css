@@ -656,3 +656,35 @@ body:not(.show-sticky){
     color: #111315;                    /* readable dark text */
   }
 }
+
+/* ===== Desktop nav polish ===== */
+@media (min-width:901px){
+  .sticky-tabs{
+    display:flex !important;
+    align-items:center;
+    gap:20px;                 /* tighten/relax as you like */
+    white-space:nowrap;
+    overflow:visible;
+  }
+  .sticky-tabs .stab{
+    display:inline-flex;
+    align-items:center;
+    padding:0;                /* no chip styling on desktop */
+    border:0;
+    background:transparent;
+  }
+  /* kill any accidental bullets or separator pseudo-elements */
+  .sticky-tabs, .sticky-tabs *{ list-style:none; }
+  .sticky-tabs .stab::before,
+  .sticky-tabs .stab::after{ content:none !important; }
+}
+
+/* Desktop: keep the solid gold Order button */
+@media (min-width:901px){
+  .btn-order.btn.gold{
+    background: var(--gold);
+    color: #111315;
+    border-color: var(--gold);
+    box-shadow: 0 6px 18px rgba(16,24,40,.08);
+  }
+}
