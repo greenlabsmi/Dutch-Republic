@@ -613,3 +613,22 @@ body:not(.show-sticky){
 
 /* 4) Hero: remove the accidental black background (in case it was set inline) */
 .hero{ background:transparent !important; }
+
+/* Mobile: clean pill-style Order button */
+@media (max-width:900px){
+  .btn-order.btn.gold{
+    background: #fff;                  /* white background */
+    color: var(--gold);                /* gold text */
+    border: 2px solid var(--gold);     /* clear gold outline */
+    border-radius: 999px;              /* pill shape */
+    font-weight: 800;
+    padding: 6px 14px;                 /* comfy touch area */
+    box-shadow: none;
+    transition: background .2s, color .2s;
+  }
+  .btn-order.btn.gold:hover,
+  .btn-order.btn.gold:active{
+    background: var(--gold);           /* fill on tap/hover */
+    color: #111315;                    /* readable dark text */
+  }
+}
