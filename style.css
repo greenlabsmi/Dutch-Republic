@@ -658,3 +658,8 @@ body:not(.show-sticky){
 .sticky-tabs .stab{ list-style:none !important; }
 .sticky-tabs .stab::before,
 .sticky-tabs .stab::after{ content:none !important; }
+
+/* Hide the Home (lion) link on mobile */
+@media (max-width:900px){
+  .sticky-logo{ display:none !important; }
+}
