@@ -62,28 +62,17 @@ a{color:inherit;text-decoration:none}
   background-size:280px 280px; opacity:.08; mix-blend-mode:multiply;
 }
 
-/* ========= NEW: SVG foil logos ========= */
-.foil-svg{
-  display:block;
-  width:100%;
-  max-width:980px;
-  height:auto;
-  filter: drop-shadow(0 1px 0 rgba(0,0,0,.25))
-          drop-shadow(0 2px 8px rgba(0,0,0,.15));
-}
-/* Large banner SVG helper (matches .foil-svg look) */
+/* ========= SVG foil logos ========= */
+.foil-svg,
 .foil-svg-large{
-  display:block;
-  width:100%;
-  max-width:980px;
-  height:auto;
+  display:block; width:100%; max-width:980px; height:auto;
   filter: drop-shadow(0 1px 0 rgba(0,0,0,.25))
           drop-shadow(0 2px 8px rgba(0,0,0,.15));
 }
 
-/* Gold foil text (legacy fallback if <span class="foil"> is used) */
+/* Gold foil text fallback */
 .brand-title .foil{
-  font-family:"Cinzel","UnifrakturCook",serif;  /* Cinzel first */
+  font-family:"Cinzel","UnifrakturCook",serif;
   font-weight:900;
   font-size:clamp(36px, 7vw, 72px);
   letter-spacing:.3px; line-height:1;
@@ -91,17 +80,14 @@ a{color:inherit;text-decoration:none}
   background-size:220% auto;
   -webkit-background-clip:text; background-clip:text;
   -webkit-text-fill-color:transparent; color:transparent;
-  -webkit-text-stroke:0 transparent; /* neutralize stroke */
+  -webkit-text-stroke:0 transparent;
   text-shadow:0 1px 0 rgba(0,0,0,.25), 0 2px 8px rgba(0,0,0,.15);
   animation:foilShine 12s linear infinite;
 }
 
-/* Motion pref */
 @media (prefers-reduced-motion: reduce){
   .brand-title .foil{ animation:none; }
 }
-
-/* Foil animation */
 @keyframes foilShine{
   from{ background-position:-40% 0; }
   to  { background-position:180% 0; }
@@ -112,7 +98,7 @@ a{color:inherit;text-decoration:none}
   .brand-banner{ padding:18px 24px; }
 }
 
-/* ====== Desktop-only: hide black fallback text in banner ====== */
+/* Desktop-only: hide black fallback text in banner */
 @media (min-width:900px){
   .brand-title .logo-text{ display:none !important; }
 }
@@ -143,72 +129,70 @@ a{color:inherit;text-decoration:none}
   font-size:1.05rem; letter-spacing:.3px; color:var(--ink);
 }
 
-/* Mobile: hide Home + Shop in the sticky nav */
-@media (max-width:900px){
-  .sticky-tabs .stab.only-desktop{
-    display: none !important;
-  }
-}
-
-@media (max-width:900px){
-  .sticky-tabs,
-  .sticky-tabs li,
-  .sticky-tabs .stab {
-    list-style: none !important;
-  }
-
-  .sticky-tabs .stab::before,
-  .sticky-tabs .stab::after {
-    content: none !important;
-  }
-}
-
-@media (max-width:900px){
-  .sticky-tabs{
-    justify-content: center;   /* center items */
-    gap: 10px !important;      /* tighten spacing */
-  }
-
-  .sticky-tabs .stab{
-    font-size: 13px;           /* slightly smaller */
-    flex-shrink: 1;            /* allow it to shrink instead of overflow */
-  }
-}
-
-/* Compact SVG foil logo in sticky nav */
-.sticky-brand-name .foil-svg-small{
-  display:block;
-  height:1.2em;
-  width:auto;
-  filter: drop-shadow(0 1px 0 rgba(0,0,0,.25))
-          drop-shadow(0 2px 4px rgba(0,0,0,.12));
-}
-
-/* Tabs */
+/* ===== Tabs ===== */
 .sticky-tabs{
   display:flex; align-items:center; gap:18px; justify-content:center; flex:1;
 }
 .stab{font-weight:800; color:#475467; white-space:nowrap}
 .stab:hover{color:var(--ink)}
 
-/* ===== UPDATED: Mobile tabs stay visible and scroll horizontally ===== */
+/* Kill bullets/dots everywhere (mobile + desktop) */
+.sticky-tabs,
+.sticky-tabs li,
+.sticky-tabs .stab{ list-style:none !important; }
+.sticky-tabs .stab::before,
+.sticky-tabs .stab::after{ content:none !important; }
+
+/* ===== Mobile nav tweaks ===== */
 @media (max-width:900px){
-  .sticky-tabs{
-    justify-content:flex-start;
-    gap:14px;
-    overflow-x:auto;
-    white-space:nowrap;
-    -webkit-overflow-scrolling:touch;
-    scrollbar-width:none; /* Firefox */
-  }
-  .sticky-tabs::-webkit-scrollbar{ display:none; } /* WebKit */
+  .sticky-brand-name{ display:none !important; }       /* no double logos */
+  .sticky-tabs{ justify-content:center; gap:10px !important; }
+  .sticky-tabs .stab{ font-size:13px; flex-shrink:1; }
+  .sticky-tabs{ overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+  .sticky-tabs::-webkit-scrollbar{ display:none; }
+  .sticky-nav__inner{ gap:16px !important; }
+  .stab{ font-size:14px !important; }
 }
 
+/* ===== Desktop nav polish ===== */
+@media (min-width:901px){
+  :root{ --nav-h:76px; }               /* taller bar */
+  .sticky-brand-name{ font-size:1.42rem; letter-spacing:.4px; }
+  .sticky-logo .brand-lion{ height:calc(var(--nav-h) - 8px); }
+  .sticky-tabs{ display:flex !important; align-items:center; gap:20px; white-space:nowrap; overflow:visible; }
+  .sticky-tabs .stab{ display:inline-flex; align-items:center; padding:0; border:0; background:transparent; }
+}
+
+/* Actions (right side) */
 .sticky-actions{display:flex; align-items:center; gap:8px; position:relative}
 .sticky-actions > *{height:32px; display:inline-flex; align-items:center; justify-content:center}
+
+/* Search/Hamburger buttons */
 .icon-btn{
   width:38px;height:32px;border-radius:10px;border:1px solid var(--line);
   background:#fff;font-weight:700;color:var(--ink)
+}
+
+/* ===== Order button (blends with icon buttons) ===== */
+.btn-order{
+  height:32px; display:inline-flex; align-items:center; justify-content:center;
+  padding:0 12px; border-radius:10px; border:1px solid var(--line);
+  background:#fff; color:var(--ink); font-weight:800; box-shadow:none;
+}
+.btn-order:hover{ transform:none; box-shadow:0 8px 24px rgba(16,24,40,.08); }
+
+/* Remove old gold fill anywhere it sneaks in */
+.btn-order.btn.gold{
+  background:#fff !important; color:var(--ink) !important; border:1px solid var(--line) !important;
+}
+
+/* Desktop label override: “Order Online”; Mobile: “Order” */
+@media (min-width:901px){
+  .btn-order{ color:transparent; position:relative; }
+  .btn-order::after{
+    content:"Order Online";
+    position:relative; color:var(--ink);
+  }
 }
 
 /* OPEN/CLOSE pill */
@@ -230,15 +214,12 @@ a{color:inherit;text-decoration:none}
 #hoursTip{ right:88px; top:42px }
 @media (max-width:480px){ #hoursTip{ right:72px; top:38px } }
 
-/* Popover menu */
+/* ===== Popover menu ===== */
 .menu-overlay{
   position: fixed;
-  top: var(--nav-h);   /* ← starts under the sticky header */
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 59;
-  background: transparent;
+  top: var(--nav-h);
+  left: 0; right: 0; bottom: 0;
+  z-index: 59; background: transparent;
 }
 .menu-overlay[hidden]{ display:none }
 .menu-popover{
@@ -257,42 +238,20 @@ a{color:inherit;text-decoration:none}
 
 /* --- Menu / overlay offsets for both page states --- */
 :root{
-  --banner-h: 96px;   /* your .brand-banner min-height */
-  --strip-h: 0px;     /* will be 32px on mobile */
-  --menu-top: var(--nav-h); /* default when sticky nav is at the top */
+  --banner-h: 96px;   /* .brand-banner min-height */
+  --strip-h: 0px;     /* 32px on mobile */
+  --menu-top: var(--nav-h);
 }
-
-/* When the banner is STILL visible (body does NOT have .show-sticky),
-   push the menu below BOTH banner and sticky nav */
 body:not(.show-sticky){
   --menu-top: calc(var(--nav-h) + var(--banner-h));
 }
-
-/* Mobile: status strip exists, expose its height for scroll offsets below */
 @media (max-width:900px){
   :root{ --strip-h: 32px; }
 }
-
-/* Use the unified --menu-top for overlay + drawer */
-.menu-overlay{
-  position: fixed;
-  top: var(--menu-top);
-  left: 0; right: 0; bottom: 0;
-  z-index: 59;
-  background: transparent;
-}
-.menu-popover{
-  position: fixed; z-index: 61;
-  top: var(--menu-top);           /* <-- changed to the unified var */
-  right: 12px;
-  width: min(86vw, 320px);
-  max-height: 70vh; overflow: auto;
-  background: #fff; border: 1px solid var(--line); border-radius: 12px;
-  box-shadow: 0 18px 40px rgba(16,24,40,.12); padding: 10px;
-}
+.menu-overlay{ top: var(--menu-top); }
+.menu-popover{ top: var(--menu-top); }
 
 /* ========== Hero ========== */
-/* UPDATED: hero uses solid black background per request */
 .hero{margin:14px 0; background:#000;}
 .slides{display:grid;grid-auto-flow:column;grid-auto-columns:100%;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:var(--radius)}
 .slide{scroll-snap-align:start}
@@ -303,23 +262,14 @@ body:not(.show-sticky){
 
 /* ========== Today’s Deals ========== */
 .deals-section{margin:18px 0}
-
 .deal-card{
-  background:#fff;
-  border:2px solid #000;
-  border-radius:16px;
-  overflow:hidden;
-  cursor:pointer;
-  transition: box-shadow .22s ease, transform .22s ease; /* smoother pop */
+  background:#fff; border:2px solid #000; border-radius:16px;
+  overflow:hidden; cursor:pointer;
+  transition: box-shadow .22s ease, transform .22s ease;
 }
-
 .deal-card[aria-expanded="true"]{
-  position:relative;           /* allow stacking */
-  z-index:2;                   /* sit above neighbors */
-  transform: translateY(-2px); /* slight lift */
-  box-shadow:
-    0 14px 36px rgba(0,0,0,.35),  /* main shadow */
-    0 4px 10px rgba(0,0,0,.18);   /* secondary soft shadow */
+  position:relative; z-index:2; transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(0,0,0,.35), 0 4px 10px rgba(0,0,0,.18);
 }
 .deal-head{
   display:grid;grid-template-columns:1fr auto;align-items:center;
@@ -330,9 +280,8 @@ body:not(.show-sticky){
 .deal-card[aria-expanded="true"] .chev{transform:rotate(180deg)}
 .deal-body{
   padding:12px 16px;background:var(--deal-hue);position:relative; transition:max-height .25s ease;
-  border-top:2px solid #000;            /* NEW */
-  border-bottom-left-radius:16px;       /* NEW */
-  border-bottom-right-radius:16px;      /* NEW */
+  border-top:2px solid #000;
+  border-bottom-left-radius:16px; border-bottom-right-radius:16px;
 }
 .deal-body.collapsed{max-height:168px;overflow:hidden}
 .deal-body.collapsed::after{
@@ -394,7 +343,7 @@ body:not(.show-sticky){
 /* ========== Hours popover & Contact ========== */
 .hours-overlay{position:fixed;inset:0;z-index:60;background:transparent}
 .hours-popover{
-  position:fixed; z-index:61; rright:16px;
+  position:fixed; z-index:61; right:16px;            /* fixed typo */
   width:280px; background:#fff; border:1px solid var(--line);
   border-radius:12px; box-shadow:0 18px 40px rgba(16,24,40,.12);
   padding:12px;
@@ -409,22 +358,13 @@ body:not(.show-sticky){
 .hours-list li.is-today{color:#111315}
 .hours-note{color:var(--muted);font-size:.9rem;margin-top:6px}
 
-/* Address link in the Hours popover */
+/* Address link in Hours popover */
 .hours-note .note-address{
-  display:inline-block;
-  font-weight:600;
-  font-size: 0.82rem;         /* smaller font */
-  color:#2563eb;              /* blue link color */
-  text-decoration:underline;  /* underline like a link */
-  border-bottom:none;
-  white-space: nowrap;        /* force single line */
-  overflow: hidden;           /* prevent overflow breaking layout */
-  text-overflow: ellipsis;    /* adds "…" if screen is too narrow */
+  display:inline-block; font-weight:600; font-size:.82rem;
+  color:#2563eb; text-decoration:underline; border-bottom:none;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 }
-
-.hours-note .note-address:hover{
-  color:#1e40af;              /* darker blue on hover */
-}
+.hours-note .note-address:hover{ color:#1e40af; }
 
 /* Contact */
 .contact{padding:28px 0;border-top:1px solid var(--line);background:#fff}
@@ -472,37 +412,26 @@ body:not(.show-sticky){
   .sticky-actions > *{height:28px}
   .icon-btn{width:34px;height:28px}
   .pill{padding:3px 8px;min-width:64px;font-size:11px}
-  .btn-order{padding:6px 10px;font-size:13px;border-radius:10px}
+  .btn-order{padding:0 10px;font-size:13px;border-radius:10px}
 }
 
 /* ===== Anchor offset: land below sticky nav + mobile status strip ===== */
 #deals, #contact, #shop, #dtg, #loyalty{
   scroll-margin-top: calc(var(--nav-h) + var(--strip-h) + 8px);
 }
+:target{ scroll-margin-top: calc(var(--nav-h) + var(--strip-h) + 16px); }
 
-:target{
-  scroll-margin-top: calc(var(--nav-h) + var(--strip-h) + 16px);
-}
-
-/* --- GOLD FOIL SAFETY (keep last so nothing overrides it) --- */
+/* --- GOLD FOIL SAFETY --- */
 .brand-banner .brand-title .foil{
-  -webkit-text-fill-color:transparent;
-  color:transparent;
-  -webkit-background-clip:text;
-  background-clip:text;
+  -webkit-text-fill-color:transparent; color:transparent;
+  -webkit-background-clip:text; background-clip:text;
 }
 
 /* ========== Clean foil wordmarks (no SVG stroke) ========== */
-/* Banner size (mobile fallback text still allowed) */
 .brand-title .logo-text{
-  position:relative;
-  display:inline-block;
+  position:relative; display:inline-block;
   font-family:"Cinzel","UnifrakturCook",serif;
-  font-weight:900;
-  font-size:clamp(36px, 7vw, 72px);
-  letter-spacing:.3px; line-height:1;
-
-  /* foil fill */
+  font-weight:900; font-size:clamp(36px, 7vw, 72px); letter-spacing:.3px; line-height:1;
   background-image:linear-gradient(92deg,#9C6B1A 0%,#F2C14E 22%,#FFE27A 45%,#F2C14E 62%,#9C6B1A 100%);
   background-size:220% auto;
   -webkit-background-clip:text; background-clip:text;
@@ -510,8 +439,6 @@ body:not(.show-sticky){
   text-shadow:0 1px 0 rgba(0,0,0,.25), 0 2px 8px rgba(0,0,0,.15);
   animation:foilShine 12s linear infinite;
 }
-
-/* Faux outline painted BEHIND using an 8-way shadow */
 .brand-title .logo-text::before{
   content:attr(data-text);
   position:absolute; inset:0; z-index:-1; color:transparent;
@@ -520,16 +447,14 @@ body:not(.show-sticky){
     0   1px #26231C,  0  -1px #26231C,
     1px 1px #26231C, -1px -1px #26231C,
    -1px 1px #26231C,  1px -1px #26231C;
-  filter:blur(.2px); /* anti-alias the edge slightly */
+  filter:blur(.2px);
 }
 
-/* Compact nav size */
+/* Compact nav size wordmark */
 .sticky-brand-name .logo-text-small{
   position:relative; display:block;
   font-family:"Cinzel","UnifrakturCook",serif;
-  font-weight:900;
-  font-size:1.05rem; line-height:1; letter-spacing:.3px;
-
+  font-weight:900; font-size:1.05rem; line-height:1; letter-spacing:.3px;
   background-image:linear-gradient(92deg,#9C6B1A 0%,#F2C14E 22%,#FFE27A 45%,#F2C14E 62%,#9C6B1A 100%);
   background-size:220% auto;
   -webkit-background-clip:text; background-clip:text;
@@ -551,182 +476,39 @@ body:not(.show-sticky){
 /* Kill any leftover strokes on old text */
 .brand-title .foil{ -webkit-text-stroke:0 transparent; }
 
-/* ====== 0905 HOTFIX: banner bg + mobile nav + hero revert ====== */
-
-/* 1) Make the top banner background solid black (no parchment) */
+/* ===== 0905 banner solid black (kept) ===== */
 .brand-banner{
   background:#000 !important;
-  border-bottom:6px solid #D47B19 !important; /* keep the gold edge */
+  border-bottom:6px solid #D47B19 !important;
   box-shadow:0 10px 24px rgba(16,24,40,.06) !important;
 }
-.brand-banner::after{ display:none !important; } /* remove paper texture */
-
-/* 2) Desktop: remove black fallback text in the big banner.
-      Mobile can keep the text fallback if SVG fails. */
+.brand-banner::after{ display:none !important; }
 @media (min-width:900px){
   .brand-title .logo-text{ display:none !important; }
 }
 
-/* 3) Mobile sticky header: prevent double logos, add status strip, make tabs fit */
+/* Mobile status strip (JS populates) */
 @media (max-width:900px){
-  .sticky-brand-name{ display:none !important; }
-
   .status-strip{
-    position: sticky;
-    top: var(--nav-h);
-    z-index: 59;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    height: 32px;
-    padding: 0 10px;
-    background: #fff;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    box-shadow: 0 4px 10px rgba(16,24,40,.06);
-    color: #1f2937;
-    font-weight: 800;
+    position: sticky; top: var(--nav-h); z-index: 59;
+    display: flex; align-items: center; gap: 8px;
+    height: 32px; padding: 0 10px; background: #fff;
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    box-shadow: 0 4px 10px rgba(16,24,40,.06); color: #1f2937; font-weight: 800;
   }
-
-  .status-dot{
-    width: 12px; height: 12px;
-    border-radius: 999px;
-    background: #a3a3a3;
-    border: 1px solid rgba(0,0,0,.18);
-    flex: 0 0 auto;
-  }
+  .status-dot{ width:12px; height:12px; border-radius:999px; background:#a3a3a3; border:1px solid rgba(0,0,0,.18); flex:0 0 auto; }
   .status-dot.is-open{   background:#16a34a; border-color:#0f622f; }
   .status-dot.is-soon{   background:#f59e0b; border-color:#b45309; }
   .status-dot.is-closed{ background:#ef4444; border-color:#991b1b; }
-
   .status-text{ font-size:13px; line-height:1; font-weight:700; }
-
-  /* single, final address style */
   .status-addr{
-    margin-left:6px;              /* sit close to “Open/Closed” */
-    font-size:13px;               /* match the status word */
-    font-weight:700;
-    text-decoration:none;
-    color:inherit;
-    border-bottom:none;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
+    margin-left:6px; font-size:13px; font-weight:700; text-decoration:none; color:inherit;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
   }
-
   #hoursBtn{ display:none !important; }
-
-  .sticky-tabs{
-    display:flex !important;
-    justify-content:flex-start !important;
-    gap:14px !important;
-    overflow-x:auto !important;
-    white-space:nowrap !important;
-    -webkit-overflow-scrolling:touch;
-    scrollbar-width:none;
-  }
-  .sticky-tabs::-webkit-scrollbar{ display:none; }
-
-  .sticky-nav__inner{ gap:16px !important; }
-  .stab{ font-size:14px !important; }
 }
 
-/* Desktop: keep the pill; hide the mobile strip */
+/* Desktop: hide the mobile strip */
 @media (min-width:901px){
   .status-strip{ display:none; }
-  /* Desktop adjustments */
-:root{ --nav-h:76px; }  /* makes the nav bar taller */
-
-.sticky-brand-name{
-  font-size:1.42rem;   /* make “Dutch Republic” bigger */
-  letter-spacing:.4px;
-}
-
-.sticky-logo .brand-lion{
-  height: calc(var(--nav-h) - 8px); /* keep lion proportional */
-}
-  
-  /* Remove unwanted dots/bullets around nav links */
-.sticky-tabs,
-.sticky-tabs li,
-.sticky-tabs .stab {
-  list-style: none !important;
-}
-
-.sticky-tabs .stab::before,
-.sticky-tabs .stab::after {
-  content: none !important;
-}
-
-/* 4) Hero: remove the accidental black background (in case it was set inline) */
-.hero{ background:transparent !important; }
-
-/* Mobile: clean pill-style Order button */
-@media (max-width:900px){
-  .btn-order.btn.gold{
-    background: #fff;                  /* white background */
-    color: var(--gold);                /* gold text */
-    border: 2px solid var(--gold);     /* clear gold outline */
-    border-radius: 999px;              /* pill shape */
-    font-weight: 800;
-    padding: 6px 14px;                 /* comfy touch area */
-    box-shadow: none;
-    transition: background .2s, color .2s;
-  }
-  .btn-order.btn.gold:hover,
-  .btn-order.btn.gold:active{
-    background: var(--gold);           /* fill on tap/hover */
-    color: #111315;                    /* readable dark text */
-  }
-}
-
-/* Mobile: clean pill-style Order button */
-@media (max-width:900px){
-  .btn-order.btn.gold{
-    background: #fff;                  /* white background */
-    color: var(--gold);                /* gold text */
-    border: 2px solid var(--gold);     /* clear gold outline */
-    border-radius: 999px;              /* pill shape */
-    font-weight: 800;
-    padding: 6px 14px;                 /* comfy touch area */
-    box-shadow: none;
-    transition: background .2s, color .2s;
-  }
-  .btn-order.btn.gold:hover,
-  .btn-order.btn.gold:active{
-    background: var(--gold);           /* fill on tap/hover */
-    color: #111315;                    /* readable dark text */
-  }
-}
-
-/* ===== Desktop nav polish ===== */
-@media (min-width:901px){
-  .sticky-tabs{
-    display:flex !important;
-    align-items:center;
-    gap:20px;                 /* tighten/relax as you like */
-    white-space:nowrap;
-    overflow:visible;
-  }
-  .sticky-tabs .stab{
-    display:inline-flex;
-    align-items:center;
-    padding:0;                /* no chip styling on desktop */
-    border:0;
-    background:transparent;
-  }
-  /* kill any accidental bullets or separator pseudo-elements */
-  .sticky-tabs, .sticky-tabs *{ list-style:none; }
-  .sticky-tabs .stab::before,
-  .sticky-tabs .stab::after{ content:none !important; }
-}
-
-/* Desktop: keep the solid gold Order button */
-@media (min-width:901px){
-  .btn-order.btn.gold{
-    background: var(--gold);
-    color: #111315;
-    border-color: var(--gold);
-    box-shadow: 0 6px 18px rgba(16,24,40,.08);
-  }
 }
