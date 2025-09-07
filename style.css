@@ -527,17 +527,22 @@ body:not(.show-sticky){
     background: #fff;
     color: var(--gold);
     border: 2px solid var(--gold);
-    border-radius: 999px;
-    font-weight: 800;
-    padding: 8px 18px;              /* adjust box size to text */
-    box-shadow: 0 3px 6px rgba(0,0,0,.12), 
-                0 1px 2px rgba(0,0,0,.08); /* subtle shadow */
+    border-radius: 10px;               /* match search + menu corner radius */
+    font-weight: 700;
+    font-size: 14px;                   /* smaller, matches icons */
+    line-height: 1.1;
+    padding: 6px 12px;                 /* same vertical height as icons */
+    height: 32px;                      /* lock to same height as .icon-btn */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,.08);  /* subtle */
     transition: background .2s, color .2s, box-shadow .2s;
   }
   .btn-order.btn.gold:hover {
     background: var(--gold);
     color: #111315;
-    box-shadow: 0 6px 14px rgba(0,0,0,.18);
+    box-shadow: 0 4px 8px rgba(0,0,0,.15);
   }
 }
 
