@@ -126,14 +126,22 @@ header.brand-banner .brand-title .foil{
     </div>
 
     <!-- center: tabs (mobile-fit via horizontal scroll) -->
-    <div class="sticky-tabs tab-nav" aria-label="Primary"
-     style="overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch;">
-  <a class="stab tab only-desktop" href="#home">Home</a>
-  <a class="stab tab" href="#deals">Deals</a>
-  <a class="stab tab only-desktop" href="#shop">Shop</a>
-  <a class="stab tab" href="#dtg">Dutch Touch Genetics</a>
-  <a class="stab tab" href="#contact">Contact</a>
-</div>
+   <ul class="sticky-tabs site-nav nav-links" aria-label="Primary">
+  <li><a class="stab" href="#deals">Deals</a></li>
+
+  <li>
+    <a class="stab" href="#dutch-touch">
+      <span class="label-desktop">Dutch Touch Genetics</span>
+      <span class="label-mobile">Dutch Touch</span>
+    </a>
+  </li>
+
+  <li><a class="stab" href="#contact">Contact</a></li>
+
+  <li class="nav-cta">
+    <a href="/order" class="btn btn-order">Order</a>
+  </li>
+</ul>
 
     <!-- right: order → open pill → search → hamburger -->
     <div class="sticky-actions">
