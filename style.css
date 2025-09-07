@@ -659,17 +659,28 @@ body:not(.show-sticky){
 .sticky-tabs .stab::before,
 .sticky-tabs .stab::after{ content:none !important; }
 
-/* Hide the Home (lion) link on mobile */
-@media (max-width:900px){
-  .sticky-logo{ display:none !important; }
-}
-
 /* MOBILE: hide any "Home" in the sticky header */
 @media (max-width:900px){
   /* 1) Hide the lion/logo link */
   .sticky-logo{ display:none !important; }
 
   /* 2) Hide a Home tab by href, class, or id */
+  .sticky-tabs .stab[href="#home"],
+  .sticky-tabs a[href="#home"],
+  .sticky-tabs .stab.home,
+  .sticky-tabs li.home,
+  .sticky-tabs #home-link,
+  .sticky-tabs a[aria-label="Home"]{
+    display:none !important;
+  }
+}
+/* Re-show the lion logo on mobile */
+@media (max-width:900px){
+  .sticky-logo{ display:inline-flex !important; }  /* undo earlier display:none */
+}
+
+/* Keep ONLY a text "Home" tab hidden on mobile (if present) */
+@media (max-width:900px){
   .sticky-tabs .stab[href="#home"],
   .sticky-tabs a[href="#home"],
   .sticky-tabs .stab.home,
