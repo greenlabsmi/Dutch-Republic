@@ -223,6 +223,42 @@ a{color:inherit;text-decoration:none}
 }
 .menu-list .drawer-link:active{ background:#f7f7f7 }
 
+/* --- Menu / overlay offsets for both page states --- */
+:root{
+  --banner-h: 96px;   /* your .brand-banner min-height */
+  --strip-h: 0px;     /* will be 32px on mobile */
+  --menu-top: var(--nav-h); /* default when sticky nav is at the top */
+}
+
+/* When the banner is STILL visible (body does NOT have .show-sticky),
+   push the menu below BOTH banner and sticky nav */
+body:not(.show-sticky){
+  --menu-top: calc(var(--nav-h) + var(--banner-h));
+}
+
+/* Mobile: status strip exists, expose its height for scroll offsets below */
+@media (max-width:900px){
+  :root{ --strip-h: 32px; }
+}
+
+/* Use the unified --menu-top for overlay + drawer */
+.menu-overlay{
+  position: fixed;
+  top: var(--menu-top);
+  left: 0; right: 0; bottom: 0;
+  z-index: 59;
+  background: transparent;
+}
+.menu-popover{
+  position: fixed; z-index: 61;
+  top: var(--menu-top);           /* <-- changed to the unified var */
+  right: 12px;
+  width: min(86vw, 320px);
+  max-height: 70vh; overflow: auto;
+  background: #fff; border: 1px solid var(--line); border-radius: 12px;
+  box-shadow: 0 18px 40px rgba(16,24,40,.12); padding: 10px;
+}
+
 /* ========== Hero ========== */
 /* UPDATED: hero uses solid black background per request */
 .hero{margin:14px 0; background:#000;}
@@ -407,11 +443,14 @@ a{color:inherit;text-decoration:none}
   .btn-order{padding:6px 10px;font-size:13px;border-radius:10px}
 }
 
-/* ===== Anchor offset so headings show below sticky nav ===== */
-#deals, #contact, #shop, #dtg, #loyalty { scroll-margin-top:72px; }
-@media (max-width:480px){ #deals, #contact, #shop, #dtg, #loyalty { scroll-margin-top:64px; } }
-:target{ scroll-margin-top:80px; }
-@media (min-width:768px){ :target{ scroll-margin-top:96px; } }
+/* ===== Anchor offset: land below sticky nav + mobile status strip ===== */
+#deals, #contact, #shop, #dtg, #loyalty{
+  scroll-margin-top: calc(var(--nav-h) + var(--strip-h) + 8px);
+}
+
+:target{
+  scroll-margin-top: calc(var(--nav-h) + var(--strip-h) + 16px);
+}
 
 /* --- GOLD FOIL SAFETY (keep last so nothing overrides it) --- */
 .brand-banner .brand-title .foil{
