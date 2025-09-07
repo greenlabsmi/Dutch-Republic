@@ -14,44 +14,6 @@
   <!-- Cache-bust your CSS -->
   <link rel="stylesheet" href="style.css?v=dr-010" />
 
- <style id="hotfix-header">
-/* Top banner: transparent background, no border/shadow */
-header.brand-banner{
-  display:flex !important; align-items:center !important; justify-content:center !important;
-  min-height:96px !important; padding:18px 20px !important;
-
-  /* solid black background behind foil text */
-background: #000 !important;
-
-  /* remove gold divider + drop shadow */
-  border-bottom: 0 !important;
-  box-shadow: none !important;
-}
-
-header.brand-banner::after{ display:none !important; } /* kill paper texture */
-header.brand-banner .brand-title{ display:inline-block !important; padding:2px 6px !important; }
-
-/* keep foil text behavior if ever used */
-header.brand-banner .brand-title .foil{
-  font-family:"Cinzel","UnifrakturCook",serif !important;
-  font-weight:900 !important;
-  font-size:clamp(36px, 7vw, 72px) !important;
-  letter-spacing:.3px !important; line-height:1 !important;
-  background-image:linear-gradient(92deg,#9C6B1A 0%,#F2C14E 22%,#FFE27A 45%,#F2C14E 62%,#9C6B1A 100%) !important;
-  background-size:220% auto !important;
-  -webkit-background-clip:text !important; background-clip:text !important;
-  -webkit-text-fill-color:transparent !important; color:transparent !important;
-  -webkit-text-stroke:0 transparent !important;
-  text-shadow:0 1px 0 rgba(0,0,0,.25), 0 2px 8px rgba(0,0,0,.15) !important;
-  animation:foilShine 12s linear infinite !important;
-  display:inline-block !important;
-}
-
-@keyframes foilShine{
-  from{ background-position:-40% 0; }
-  to  { background-position:180% 0; }
-}
-</style>
 </head>
 <body>
 
@@ -128,24 +90,18 @@ header.brand-banner .brand-title .foil{
     <!-- center: tabs (mobile-fit via horizontal scroll) -->
    <ul class="sticky-tabs site-nav nav-links" aria-label="Primary">
   <li><a class="stab" href="#deals">Deals</a></li>
-
   <li>
-    <a class="stab" href="#dutch-touch">
+    <a class="stab" href="#dtg">
       <span class="label-desktop">Dutch Touch Genetics</span>
       <span class="label-mobile">Dutch Touch</span>
     </a>
   </li>
-
   <li><a class="stab" href="#contact">Contact</a></li>
-
-  <li class="nav-cta">
-    <a href="/order" class="btn btn-order">Order</a>
-  </li>
 </ul>
 
     <!-- right: order → open pill → search → hamburger -->
     <div class="sticky-actions">
-      <a class="btn-order btn gold" href="/order" aria-label="Order online">Order</a>
+      <a class="btn btn-order" href="/order" aria-label="Order online">Order</a>
 
       <button id="hoursBtn" class="pill" aria-expanded="false" type="button" title="Store hours">OPEN</button>
 
