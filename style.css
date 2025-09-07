@@ -150,6 +150,31 @@ a{color:inherit;text-decoration:none}
   }
 }
 
+@media (max-width:900px){
+  .sticky-tabs,
+  .sticky-tabs li,
+  .sticky-tabs .stab {
+    list-style: none !important;
+  }
+
+  .sticky-tabs .stab::before,
+  .sticky-tabs .stab::after {
+    content: none !important;
+  }
+}
+
+@media (max-width:900px){
+  .sticky-tabs{
+    justify-content: center;   /* center items */
+    gap: 10px !important;      /* tighten spacing */
+  }
+
+  .sticky-tabs .stab{
+    font-size: 13px;           /* slightly smaller */
+    flex-shrink: 1;            /* allow it to shrink instead of overflow */
+  }
+}
+
 /* Compact SVG foil logo in sticky nav */
 .sticky-brand-name .foil-svg-small{
   display:block;
