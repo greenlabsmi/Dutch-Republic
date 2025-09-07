@@ -632,3 +632,8 @@ body:not(.show-sticky){
     color: #111315;                    /* readable dark text */
   }
 }
+
+/* Mobile: hide sticky nav text links */
+@media (max-width:900px){
+  .sticky-tabs{ display:none !important; }
+}
