@@ -602,14 +602,24 @@ body:not(.show-sticky){
   }
   .sticky-tabs::-webkit-scrollbar{ display:none; }
 
-  .sticky-nav__inner{ gap:8px !important; }
+  .sticky-nav__inner{ gap:16px !important; }
   .stab{ font-size:14px !important; }
 }
 
 /* Desktop: keep the pill; hide the mobile strip */
 @media (min-width:901px){
   .status-strip{ display:none; }
-  :root{ --nav-h: 76px; }
+  /* Desktop adjustments */
+:root{ --nav-h:76px; }  /* makes the nav bar taller */
+
+.sticky-brand-name{
+  font-size:1.42rem;   /* make “Dutch Republic” bigger */
+  letter-spacing:.4px;
+}
+
+.sticky-logo .brand-lion{
+  height: calc(var(--nav-h) - 8px); /* keep lion proportional */
+}
   
   /* Remove unwanted dots/bullets around nav links */
 .sticky-tabs,
