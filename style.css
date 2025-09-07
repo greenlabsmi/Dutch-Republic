@@ -609,6 +609,7 @@ body:not(.show-sticky){
 /* Desktop: keep the pill; hide the mobile strip */
 @media (min-width:901px){
   .status-strip{ display:none; }
+  :root{ --nav-h: 76px; }
   
   /* Remove unwanted dots/bullets around nav links */
 .sticky-tabs,
