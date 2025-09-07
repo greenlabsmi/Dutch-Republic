@@ -562,3 +562,46 @@ body:not(.show-sticky){
     color: #111315;
   }
 }
+
+/* ===== DESKTOP POLISH (place at the very end) ===== */
+
+/* Remove the orange divider between banner and nav on desktop */
+@media (min-width:901px){
+  .brand-banner{ border-bottom:0 !important; }
+}
+
+/* Order button: neutral style, centered label, subtle elevation */
+.btn-order{
+  display:inline-flex;                 /* centers label vertically */
+  align-items:center;
+  justify-content:center;
+  height:40px;                         /* even vertical rhythm */
+  padding:0 16px;                      /* width scales with text */
+  font-weight:800;
+  background:#fff;                     /* match search/hamburger */
+  color:var(--ink);
+  border:1px solid var(--line);
+  border-radius:12px;
+  line-height:1;                       /* remove extra line height */
+  box-shadow:0 4px 10px rgba(16,24,40,.10);
+  transition:transform .06s ease, box-shadow .15s ease;
+}
+.btn-order:hover{
+  transform:translateY(-1px);
+  box-shadow:0 8px 18px rgba(16,24,40,.14);
+}
+
+/* Label swap: desktop shows “Order Online”, mobile shows “Order” */
+.label-desktop{ display:none; }
+.label-mobile{ display:inline; }
+@media (min-width:901px){
+  .label-desktop{ display:inline; }
+  .label-mobile{ display:none;   }
+}
+
+/* Keep nav links bullet-free everywhere (belts & suspenders) */
+.sticky-tabs,
+.sticky-tabs li,
+.sticky-tabs .stab{ list-style:none !important; }
+.sticky-tabs .stab::before,
+.sticky-tabs .stab::after{ content:none !important; }
