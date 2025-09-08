@@ -733,3 +733,45 @@ body:not(.show-sticky){
     box-shadow: 0 1px 5px rgba(0,0,0,.18);
   }
 }
+
+/* === Mobile header: icons only, no text tabs === */
+@media (max-width: 900px){
+  .sticky-tabs{ display:none !important; }          /* hides Deals / Dutch Touch / etc */
+
+  /* make right-side controls look tap-able */
+  .sticky-actions > *,
+  .btn-order,
+  .icon-btn,
+  .search-btn,
+  .menu-btn{
+    box-shadow: 0 2px 8px rgba(0,0,0,.12) !important;
+    transition: box-shadow .18s ease, transform .18s ease;
+  }
+  .sticky-actions > *:active{ 
+    transform: translateY(1px);
+    box-shadow: 0 1px 5px rgba(0,0,0,.18) !important;
+  }
+}
+
+/* Same height/shape as the icon buttons */
+.btn-order{
+  display:inline-flex; align-items:center; justify-content:center;
+  height:32px; padding:0 12px; border-radius:10px;
+  background:#fff; color:var(--ink);
+  border:1px solid var(--line); font-weight:800; line-height:1;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+}
+
+/* Label swap */
+.btn-order .label-desktop{ display:none; }
+.btn-order .label-mobile{ display:inline; }
+@media (min-width:901px){
+  .btn-order .label-desktop{ display:inline; }
+  .btn-order .label-mobile{ display:none; }
+}
+
+/* Tap feedback (desktop gets a slightly higher lift on hover) */
+.btn-order:hover{ box-shadow:0 6px 14px rgba(0,0,0,.14); }
+@media (max-width:900px){
+  .btn-order:hover{ box-shadow:0 4px 10px rgba(0,0,0,.12); }
+}
