@@ -327,6 +327,14 @@ body:not(.show-sticky){
 .badge{background:#fff;color:var(--ink);padding:4px 8px;border-radius:999px;font-weight:700;border:1px solid var(--line)}
 .dtg-link{display:inline-block;margin-top:8px;font-weight:800;color:#111315;border-bottom:2px solid var(--gold)}
 
+/* prevent long labels from spilling out of the card */
+.tile .title,
+.category-card .title{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
 /* Section title polish */
 .section-title{
   font-family:"Cinzel",serif;
