@@ -690,3 +690,15 @@ body:not(.show-sticky){
     display:none !important;
   }
 }
+
+/* Mobile: hide specific text links, keep Order/search/menu */
+@media (max-width: 820px){
+  /* If your nav wrapper is .site-nav, adjust if different */
+  .site-nav a[href*="dutch"],
+  .site-nav a[href*="contact"]{
+    display: none !important;
+  }
+
+  /* Optional: tighten gaps if those links were in a flex row */
+  .site-nav { gap: 10px; }
+}
