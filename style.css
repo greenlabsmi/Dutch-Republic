@@ -789,16 +789,13 @@ body:not(.show-sticky){
   .btn-order:hover{ box-shadow:0 4px 10px rgba(0,0,0,.12); }
 }
 
-/* === Switch banner + nav wordmarks to Old English === */
+/* Only top header wordmark */
 .brand-title .logo-text,
-.brand-title .foil,
-.sticky-brand-name .logo-text-small{
+.brand-title .foil{
   font-family: "UnifrakturCook", "Cinzel", serif !important;
-  font-weight: 700 !important;    /* blackletter looks better a bit lighter */
-  letter-spacing: 0 !important;   /* blackletter doesn't like extra tracking */
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
 }
-
-/* Outline tuning so strokes don't “cross” too hard on blackletter */
 .brand-title .logo-text::before{
   text-shadow:
     0.6px 0   #26231C, -0.6px 0   #26231C,
@@ -806,14 +803,4 @@ body:not(.show-sticky){
     0.6px 0.6px #26231C, -0.6px -0.6px #26231C,
    -0.6px 0.6px #26231C,  0.6px -0.6px #26231C;
   filter: blur(.15px);
-}
-
-/* Small nav version outline = even subtler */
-.sticky-brand-name .logo-text-small::before{
-  text-shadow:
-    0.5px 0   #26231C, -0.5px 0   #26231C,
-    0   0.5px #26231C,  0   -0.5px #26231C,
-    0.5px 0.5px #26231C, -0.5px -0.5px #26231C,
-   -0.5px 0.5px #26231C,  0.5px -0.5px #26231C;
-  filter: blur(.12px);
 }
