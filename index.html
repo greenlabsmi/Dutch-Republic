@@ -236,112 +236,147 @@
     </div>
   </section>
 
-  /* === Awards Rail (uniform small cards, horizontal scroll) === */
-.awards-sub{
-  text-align:center;
-  color:var(--muted);
-  margin:0 0 12px;
-  font-size:1.05rem;
-  font-weight:500;
-}
+  <!-- ===== Dutch Touch Genetics — Awards Rail (drop-in) ===== -->
+<section id="dtg" class="dtg-awards">
+  <div class="container">
+    <h2 class="section-title">Dutch Touch Genetics</h2>
+    <p class="dtgA-sub">Award-Winning Cannabis — Scroll to explore ⇢</p>
 
-.rail-head{
-  display:grid;
-  grid-template-columns:auto 1fr auto;
-  align-items:center;
-  gap:8px;
-  margin: 4px 0 10px;
-}
-.rail-title{ font-weight:900; margin:0; }
-.rail-btn{
-  height:32px; width:32px; border-radius:10px;
-  border:1px solid var(--line); background:#fff; cursor:pointer;
-  font-weight:800; line-height:1; display:inline-flex; align-items:center; justify-content:center;
-}
-.rail-btn:hover{ box-shadow:0 4px 10px rgba(0,0,0,.10); }
+    <!-- Horizontal scroll rail -->
+    <div class="dtgA-rail" id="dtgAwardsRail" tabindex="0" aria-label="Dutch Touch Genetics awards">
 
-/* horizontal rail */
-.rail--awards{
-  display:flex;
-  gap:14px;
-  overflow-x:auto;
-  scroll-snap-type:x mandatory;
-  padding:6px 2px 12px;      /* bottom pad leaves room for scrollbar */
-}
-.rail--awards::-webkit-scrollbar{ height:10px; }
-.rail--awards::-webkit-scrollbar-thumb{
-  background: rgba(0,0,0,.25);
-  border-radius:999px;
-  border:2px solid transparent;
-  background-clip: padding-box;
-}
-.rail--awards{ scrollbar-color: rgba(0,0,0,.25) transparent; }
+      <!-- Mr. Clean — 1st Place Sativa -->
+      <article class="dtgA-card" role="group" aria-label="Mr. Clean — High Times Cannabis Cup Sativa, 1st Place">
+        <div class="dtgA-tag">🥇 1st</div>
+        <img src="img/awards-mrclean.jpg" alt="Mr. Clean strain" loading="lazy">
+        <div class="dtgA-body">
+          <h3 class="dtgA-title">Mr. Clean</h3>
+          <p class="dtgA-meta">High Times Cannabis Cup — Sativa</p>
+          <p class="dtgA-blurb">Crisp, energizing profile that took the top spot.</p>
+          <a class="dtgA-link" href="#" target="_blank" rel="noopener">Details</a>
+        </div>
+      </article>
 
-/* uniform small cards */
-.award-card{
-  position:relative;
-  flex: 0 0 260px;           /* fixed width so every card matches */
-  max-width:260px;
-  height: 340px;             /* fixed height for uniform grid feel */
-  display:flex; flex-direction:column;
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:16px;
-  overflow:hidden;
-  box-shadow:0 3px 10px rgba(0,0,0,.06);
-  scroll-snap-align:start;
-  transition:transform .15s ease, box-shadow .15s ease;
-}
-.award-card:hover{
-  transform: translateY(-2px);
-  box-shadow:0 8px 18px rgba(0,0,0,.12);
-}
-.award-card img{
-  width:100%;
-  height:140px;              /* keeps images consistent */
-  object-fit:cover;
-}
+      <!-- Lilac Diesel — 3rd Place Sativa -->
+      <article class="dtgA-card" role="group" aria-label="Lilac Diesel — High Times Cannabis Cup Sativa, 3rd Place">
+        <div class="dtgA-tag">🥉 3rd</div>
+        <img src="img/awards-lilacdiesel.jpg" alt="Lilac Diesel strain" loading="lazy">
+        <div class="dtgA-body">
+          <h3 class="dtgA-title">Lilac Diesel</h3>
+          <p class="dtgA-meta">High Times Cannabis Cup — Sativa</p>
+          <p class="dtgA-blurb">Sweet floral diesel with a euphoric lift.</p>
+          <a class="dtgA-link" href="#" target="_blank" rel="noopener">Details</a>
+        </div>
+      </article>
 
-.award-tag{
-  position:absolute;
-  top:10px; left:10px;
-  background:var(--gold);
-  color:#111315;
-  font-weight:800;
-  padding:3px 8px;
-  border-radius:10px;
-  font-size:.8rem;
-  box-shadow:0 2px 6px rgba(0,0,0,.18);
-}
+      <!-- Death By Funk — Best In Grass -->
+      <article class="dtgA-card" role="group" aria-label="Death By Funk — Best In Grass winner">
+        <div class="dtgA-tag">🏆 Winner</div>
+        <img src="img/awards-dbf.jpg" alt="Death By Funk strain" loading="lazy">
+        <div class="dtgA-body">
+          <h3 class="dtgA-title">Death By Funk</h3>
+          <p class="dtgA-meta">Best In Grass</p>
+          <p class="dtgA-blurb">Unmatched funk + gas terpene punch.</p>
+          <a class="dtgA-link" href="#" target="_blank" rel="noopener">Details</a>
+        </div>
+      </article>
 
-.award-body{
-  display:flex; flex-direction:column;
-  gap:6px;
-  padding:10px 12px 12px;
-  min-height: 0;             /* safe flex sizing */
-}
-.award-title{
-  font-weight:900; margin:0; font-size:1.02rem;
-}
-.award-meta-line{
-  margin:0; color:var(--muted); font-size:.86rem; font-weight:700;
-}
-.award-blurb{
-  margin:0; font-size:.90rem; line-height:1.35; color:var(--ink);
-  display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
-}
-.award-link{
-  margin-top:auto;           /* push link to bottom for consistent layout */
-  align-self:flex-start;
-  font-weight:800;
-  border-bottom:2px solid var(--gold);
-  padding-bottom:1px;
-}
+      <!-- Angelica — High Times winner (RSO) -->
+      <article class="dtgA-card" role="group" aria-label="Angelica — High Times winner for RSO syringe">
+        <div class="dtgA-tag">🏆 Winner</div>
+        <img src="img/awards-angelica.jpg" alt="Angelica RSO syringe" loading="lazy">
+        <div class="dtgA-body">
+          <h3 class="dtgA-title">Angelica</h3>
+          <p class="dtgA-meta">High Times — RSO Syringe</p>
+          <p class="dtgA-blurb">Recognized for potency and purity.</p>
+          <a class="dtgA-link" href="#" target="_blank" rel="noopener">Details</a>
+        </div>
+      </article>
 
-/* small screens can use slightly wider cards for readability */
-@media (max-width:420px){
-  .award-card{ flex-basis: 280px; max-width:280px; }
-}
+      <!-- Space Hippy — 2nd Place Disposables -->
+      <article class="dtgA-card" role="group" aria-label="Space Hippy — Cannabis Cup Disposables, 2nd Place">
+        <div class="dtgA-tag">🥈 2nd</div>
+        <img src="img/awards-spacehippy.jpg" alt="Space Hippy disposable" loading="lazy">
+        <div class="dtgA-body">
+          <h3 class="dtgA-title">Space Hippy</h3>
+          <p class="dtgA-meta">Cannabis Cup — Disposables</p>
+          <p class="dtgA-blurb">Innovative disposable format with a celebrated finish.</p>
+          <a class="dtgA-link" href="#" target="_blank" rel="noopener">Details</a>
+        </div>
+      </article>
+
+      <!-- Coming soon -->
+      <article class="dtgA-card" role="group" aria-label="More Dutch Touch winners coming soon">
+        <div class="dtgA-tag">…</div>
+        <img src="img/awards-placeholder.jpg" alt="Coming soon" loading="lazy">
+        <div class="dtgA-body">
+          <h3 class="dtgA-title">More Winners</h3>
+          <p class="dtgA-meta">Showcase updates incoming</p>
+          <p class="dtgA-blurb">We’ll add additional verified wins here.</p>
+          <a class="dtgA-link" href="#" aria-disabled="true">Coming Soon</a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Arrow controls -->
+    <div class="dtgA-arrows">
+      <button class="dtgA-btn dtgA-left" type="button" aria-label="Scroll left">◂</button>
+      <button class="dtgA-btn dtgA-right" type="button" aria-label="Scroll right">▸</button>
+    </div>
+  </div>
+
+  <!-- Scoped styles for this section -->
+  <style>
+    .dtg-awards{background:var(--deal-hue,#FFF9E6);border-top:1px solid var(--line,#e7e8ec);padding:28px 0}
+    .dtgA-sub{text-align:center;color:var(--muted,#667085);margin:0 0 12px;font-size:1.05rem;font-weight:500}
+
+    /* Rail */
+    .dtgA-rail{display:flex;gap:14px;overflow-x:auto;padding:10px 6px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+    .dtgA-rail::-webkit-scrollbar{display:none}
+
+    /* Cards (uniform size) */
+    .dtgA-card{position:relative;flex:0 0 240px;max-width:240px;height:340px;display:flex;flex-direction:column;
+      background:#FFFCF4;border:1px solid #eadfcb;border-radius:14px;overflow:hidden;scroll-snap-align:start;
+      box-shadow:0 2px 6px rgba(0,0,0,.08);transition:transform .15s ease, box-shadow .15s ease}
+    .dtgA-card:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(0,0,0,.12)}
+    .dtgA-card img{width:100%;height:140px;object-fit:cover}
+
+    .dtgA-tag{position:absolute;top:10px;left:10px;background:var(--gold,#D47B19);color:#111315;font-weight:800;
+      padding:3px 8px;border-radius:10px;font-size:.8rem;box-shadow:0 2px 6px rgba(0,0,0,.18)}
+
+    .dtgA-body{display:flex;flex-direction:column;gap:6px;padding:10px 12px 12px;min-height:0}
+    .dtgA-title{font-weight:900;font-size:1rem;margin:0}
+    .dtgA-meta{margin:0;color:var(--muted,#667085);font-size:.85rem;font-weight:700}
+    .dtgA-blurb{margin:0;font-size:.9rem;line-height:1.35;color:var(--ink,#111315);
+      display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+    .dtgA-link{margin-top:auto;align-self:flex-start;font-weight:800;border-bottom:2px solid var(--gold,#D47B19);padding-bottom:1px}
+
+    /* Arrow buttons */
+    .dtgA-arrows{display:flex;justify-content:flex-end;gap:8px;margin-top:10px}
+    .dtgA-btn{height:32px;width:32px;border-radius:10px;border:1px solid var(--line,#e7e8ec);
+      background:#FFF6E9;font-weight:800;line-height:1;cursor:pointer}
+    .dtgA-btn:active{transform:translateY(1px)}
+    @media(max-width:420px){.dtgA-card{flex-basis:280px;max-width:280px}}
+  </style>
+
+  <!-- Minimal JS for arrow scrolling -->
+  <script>
+    (function(){
+      const rail=document.getElementById('dtgAwardsRail');
+      const left=document.querySelector('.dtgA-left');
+      const right=document.querySelector('.dtgA-right');
+      if(!rail||!left||!right) return;
+      const gap=14;
+      const card=rail.querySelector('.dtgA-card');
+      const step=(card?card.getBoundingClientRect().width:240)+gap;
+      const scrollBy=(dir)=>rail.scrollBy({left:dir*step,behavior:'smooth'});
+      left.addEventListener('click',()=>scrollBy(-1));
+      right.addEventListener('click',()=>scrollBy(1));
+    })();
+  </script>
+</section>
+<!-- ===== /Dutch Touch Genetics — Awards Rail ===== -->
 
   <!-- Visit Us -->
   <section id="contact" class="contact contact--gold">
