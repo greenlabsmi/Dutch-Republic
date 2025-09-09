@@ -788,19 +788,3 @@ body:not(.show-sticky){
 @media (max-width:900px){
   .btn-order:hover{ box-shadow:0 4px 10px rgba(0,0,0,.12); }
 }
-
-/* Only top header wordmark */
-.brand-title .logo-text,
-.brand-title .foil{
-  font-family: "UnifrakturCook", "Cinzel", serif !important;
-  font-weight: 700 !important;
-  letter-spacing: 0 !important;
-}
-.brand-title .logo-text::before{
-  text-shadow:
-    0.6px 0   #26231C, -0.6px 0   #26231C,
-    0   0.6px #26231C,  0   -0.6px #26231C,
-    0.6px 0.6px #26231C, -0.6px -0.6px #26231C,
-   -0.6px 0.6px #26231C,  0.6px -0.6px #26231C;
-  filter: blur(.15px);
-}
