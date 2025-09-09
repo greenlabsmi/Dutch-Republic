@@ -236,97 +236,112 @@
     </div>
   </section>
 
-  <!-- Dutch Touch Genetics — Award-Winning Showcase -->
-<section id="dtg" class="awards">
-  <div class="container">
+  /* === Awards Rail (uniform small cards, horizontal scroll) === */
+.awards-sub{
+  text-align:center;
+  color:var(--muted);
+  margin:0 0 12px;
+  font-size:1.05rem;
+  font-weight:500;
+}
 
-    <!-- Header -->
-    <h2 class="section-title">Dutch Touch Genetics</h2>
-    <p class="awards-sub">Award-Winning Cannabis — Proudly Recognized by High Times & Beyond</p>
+.rail-head{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:8px;
+  margin: 4px 0 10px;
+}
+.rail-title{ font-weight:900; margin:0; }
+.rail-btn{
+  height:32px; width:32px; border-radius:10px;
+  border:1px solid var(--line); background:#fff; cursor:pointer;
+  font-weight:800; line-height:1; display:inline-flex; align-items:center; justify-content:center;
+}
+.rail-btn:hover{ box-shadow:0 4px 10px rgba(0,0,0,.10); }
 
-    <!-- Featured Awards -->
-    <div class="awards-featured">
-      
-      <!-- Mr. Clean -->
-      <article class="award-card award-card--featured">
-        <div class="award-ribbon">🥇 1st Place</div>
-        <img src="img/awards-mrclean.jpg" alt="Mr. Clean strain" loading="lazy">
-        <div class="award-body">
-          <h3 class="award-title">Mr. Clean</h3>
-          <ul class="award-meta">
-            <li><strong>Award:</strong> High Times Cannabis Cup — Sativa</li>
-            <li><strong>Placement:</strong> 1st Place</li>
-          </ul>
-          <p class="award-blurb">Our flagship sativa — a crisp, energizing profile that took home the top spot at the Cannabis Cup.</p>
-        </div>
-      </article>
+/* horizontal rail */
+.rail--awards{
+  display:flex;
+  gap:14px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  padding:6px 2px 12px;      /* bottom pad leaves room for scrollbar */
+}
+.rail--awards::-webkit-scrollbar{ height:10px; }
+.rail--awards::-webkit-scrollbar-thumb{
+  background: rgba(0,0,0,.25);
+  border-radius:999px;
+  border:2px solid transparent;
+  background-clip: padding-box;
+}
+.rail--awards{ scrollbar-color: rgba(0,0,0,.25) transparent; }
 
-      <!-- Lilac Diesel -->
-      <article class="award-card award-card--featured">
-        <div class="award-ribbon">🥉 3rd Place</div>
-        <img src="img/awards-lilacdiesel.jpg" alt="Lilac Diesel strain" loading="lazy">
-        <div class="award-body">
-          <h3 class="award-title">Lilac Diesel</h3>
-          <ul class="award-meta">
-            <li><strong>Award:</strong> High Times Cannabis Cup — Sativa</li>
-            <li><strong>Placement:</strong> 3rd Place</li>
-          </ul>
-          <p class="award-blurb">Sweet floral diesel notes with a euphoric lift — recognized among Michigan’s best sativas.</p>
-        </div>
-      </article>
+/* uniform small cards */
+.award-card{
+  position:relative;
+  flex: 0 0 260px;           /* fixed width so every card matches */
+  max-width:260px;
+  height: 340px;             /* fixed height for uniform grid feel */
+  display:flex; flex-direction:column;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 3px 10px rgba(0,0,0,.06);
+  scroll-snap-align:start;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.award-card:hover{
+  transform: translateY(-2px);
+  box-shadow:0 8px 18px rgba(0,0,0,.12);
+}
+.award-card img{
+  width:100%;
+  height:140px;              /* keeps images consistent */
+  object-fit:cover;
+}
 
-    </div>
+.award-tag{
+  position:absolute;
+  top:10px; left:10px;
+  background:var(--gold);
+  color:#111315;
+  font-weight:800;
+  padding:3px 8px;
+  border-radius:10px;
+  font-size:.8rem;
+  box-shadow:0 2px 6px rgba(0,0,0,.18);
+}
 
-    <!-- Rail of other accolades -->
-    <div class="awards-rail">
-      <h3 class="rail-title">More Accolades</h3>
-      <div class="rail" data-rail>
+.award-body{
+  display:flex; flex-direction:column;
+  gap:6px;
+  padding:10px 12px 12px;
+  min-height: 0;             /* safe flex sizing */
+}
+.award-title{
+  font-weight:900; margin:0; font-size:1.02rem;
+}
+.award-meta-line{
+  margin:0; color:var(--muted); font-size:.86rem; font-weight:700;
+}
+.award-blurb{
+  margin:0; font-size:.90rem; line-height:1.35; color:var(--ink);
+  display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
+}
+.award-link{
+  margin-top:auto;           /* push link to bottom for consistent layout */
+  align-self:flex-start;
+  font-weight:800;
+  border-bottom:2px solid var(--gold);
+  padding-bottom:1px;
+}
 
-        <!-- Death By Funk -->
-        <article class="award-card">
-          <div class="award-tag">Best in Grass</div>
-          <img src="img/awards-dbf.jpg" alt="Death By Funk strain" loading="lazy">
-          <div class="award-body">
-            <h4 class="award-title">Death By Funk</h4>
-            <p class="award-blurb small">Took home “Best in Grass” for its unmatched funk + gas terpene punch.</p>
-          </div>
-        </article>
-
-        <!-- Angelica -->
-        <article class="award-card">
-          <div class="award-tag">High Times Winner</div>
-          <img src="img/awards-angelica.jpg" alt="Angelica RSO syringe" loading="lazy">
-          <div class="award-body">
-            <h4 class="award-title">Angelica (RSO Syringe)</h4>
-            <p class="award-blurb small">Recognized in the RSO category for potency and purity.</p>
-          </div>
-        </article>
-
-        <!-- Space Hippy -->
-        <article class="award-card">
-          <div class="award-tag">🥈 2nd Place</div>
-          <img src="img/awards-spacehippy.jpg" alt="Space Hippy disposable" loading="lazy">
-          <div class="award-body">
-            <h4 class="award-title">Space Hippy</h4>
-            <p class="award-blurb small">2nd Place Cannabis Cup — celebrated for its innovative disposable format.</p>
-          </div>
-        </article>
-
-        <!-- Coming Soon -->
-        <article class="award-card">
-          <div class="award-tag">Coming Soon</div>
-          <img src="img/awards-placeholder.jpg" alt="Coming soon" loading="lazy">
-          <div class="award-body">
-            <h4 class="award-title">More Dutch Touch Winners</h4>
-            <p class="award-blurb small">Stay tuned — additional award-winning strains and products will be showcased here.</p>
-          </div>
-        </article>
-
-      </div>
-    </div>
-
-  </div>
-</section>
+/* small screens can use slightly wider cards for readability */
+@media (max-width:420px){
+  .award-card{ flex-basis: 280px; max-width:280px; }
+}
 
   <!-- Visit Us -->
   <section id="contact" class="contact contact--gold">
