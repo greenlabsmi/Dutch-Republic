@@ -788,3 +788,37 @@ body:not(.show-sticky){
 @media (max-width:900px){
   .btn-order:hover{ box-shadow:0 4px 10px rgba(0,0,0,.12); }
 }
+
+/* === Contact card overrides (adds padding + styled icon row) === */
+.contact-list{
+  padding-left: 8px;   /* cushion for whole list */
+  margin: 14px 0 0;
+  list-style: none;
+}
+.contact-item{
+  margin: 6px 0;
+  padding-left: 4px;   /* same left cushion as socials */
+}
+.icon-row{
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-left: 4px;   /* keeps icons off the left edge */
+}
+.icon-row a{
+  font-size: 1.4rem;
+  line-height: 1;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;            /* space between icon and text */
+  transition: color .25s ease, transform .1s ease;
+}
+.icon-row a:hover{ color: var(--gold, #D47B19); }
+.icon-row a:active{ transform: scale(.96); }
+.icon-row span{ font-size: .9rem; }
+
+/* Optional: center the whole block under the map */
+ /* .contact-list{ text-align:center; }
+    .icon-row{ justify-content:center; } */
