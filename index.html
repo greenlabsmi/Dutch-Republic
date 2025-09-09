@@ -11,9 +11,26 @@
   <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
 
+  <!-- Icons (for Instagram, Facebook, X, TikTok) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <!-- Cache-bust your CSS -->
   <link rel="stylesheet" href="style.css?v=dr-010" />
 
+  <!-- Minimal helper styles for the icon row so it looks great out of the box -->
+  <style>
+    .icon-row {
+      display:flex; gap:16px; align-items:center; flex-wrap:wrap;
+    }
+    .icon-row a {
+      font-size:1.4rem; line-height:1; color:inherit; 
+      display:inline-flex; align-items:center; justify-content:center;
+      transition:color .25s ease, transform .1s ease;
+    }
+    .icon-row a:hover { color: var(--gold, #D47B19); }
+    .icon-row a:active { transform: scale(.96); }
+    .icon-row .sep { opacity:.35; }
+  </style>
 </head>
 <body>
 
@@ -54,7 +71,6 @@
     <!-- left: brand icon -->
     <a class="sticky-logo" href="#home" aria-label="Home">
       <img class="brand-lion" src="logo-dutch-republic.svg" alt="Dutch Republic crest" />
-     
     </a>
 
     <!-- compact SVG brand name -->
@@ -88,24 +104,24 @@
     </div>
 
     <!-- center: tabs (mobile-fit via horizontal scroll) -->
-  <ul class="sticky-tabs site-nav nav-links" aria-label="Primary">
-  <li class="only-desktop"><a class="stab" href="#home">Home</a></li>
-  <li><a class="stab" href="#deals">Deals</a></li>
-  <li>
-    <a class="stab" href="#dtg">
-      <span class="label-desktop">Dutch Touch Genetics</span>
-      <span class="label-mobile">Dutch Touch</span>
-    </a>
-  </li>
-  <li><a class="stab" href="#contact">Contact</a></li>
-</ul>
+    <ul class="sticky-tabs site-nav nav-links" aria-label="Primary">
+      <li class="only-desktop"><a class="stab" href="#home">Home</a></li>
+      <li><a class="stab" href="#deals">Deals</a></li>
+      <li>
+        <a class="stab" href="#dtg">
+          <span class="label-desktop">Dutch Touch Genetics</span>
+          <span class="label-mobile">Dutch Touch</span>
+        </a>
+      </li>
+      <li><a class="stab" href="#contact">Contact</a></li>
+    </ul>
 
     <!-- right: order → open pill → search → hamburger -->
     <div class="sticky-actions">
       <a class="btn btn-order" href="/order" aria-label="Order online">
-  <span class="label-desktop">Order Online</span>
-  <span class="label-mobile">Order</span>
-</a>
+        <span class="label-desktop">Order Online</span>
+        <span class="label-mobile">Order</span>
+      </a>
 
       <button id="hoursBtn" class="pill" aria-expanded="false" type="button" title="Store hours">OPEN</button>
 
@@ -131,8 +147,7 @@
 <div id="statusStrip" class="status-strip" role="button" aria-label="Store status">
   <span class="status-dot" aria-hidden="true"></span>
   <span class="status-text" id="statusText">Store status</span>
-  <span id="statusAddr"
-     class="status-addr">
+  <span id="statusAddr" class="status-addr">
     435 Blue Star Hwy, Douglas, MI 49406
   </span>
 </div>
@@ -140,7 +155,6 @@
 <!-- Hours popover -->
 <div id="hoursOverlay" class="hours-overlay" hidden></div>
 <div id="hoursPopover" class="hours-popover" role="dialog" aria-modal="false" hidden>
-  
   <ul class="hours-list" id="hoursList"></ul>
   <div class="hours-note" id="hoursNote"></div>
 </div>
@@ -297,6 +311,7 @@
 
         <div class="map-card">
           <div class="map-link" aria-label="Map preview">
+            <!-- UPDATED: Douglas map coordinates -->
             <iframe
               title="Map — Dutch Republic"
               width="100%"
@@ -304,7 +319,7 @@
               style="border:0; display:block"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps?q=41.811131,-83.446182&hl=en&z=15&output=embed">
+              src="https://www.google.com/maps?q=42.63703,-86.21112&hl=en&z=15&output=embed">
             </iframe>
             <span class="map-pin">📍</span>
           </div>
@@ -321,11 +336,17 @@
           <ul class="contact-list">
             <li><strong>Phone</strong> <a href="tel:+17348000024">(734) 800-0024</a></li>
             <li><strong>Email</strong> <a href="mailto:nick@dutchrepublic.org">Nick@dutchrepublic.org</a></li>
+
+            <!-- REPLACED: text links → icon row (no "Social" label) -->
             <li class="socials">
-              <strong>Social</strong>
-              <a href="https://www.instagram.com/dutchrepublic_?igsh=ZjhyYmhhZTAxbm1o" data-ext>Instagram</a> •
-              <a href="https://www.facebook.com/greenlabsmi" data-ext>Facebook</a> •
-              <a href="https://share.google/sXlxPZrTMpuUN6DLd" data-ext>Google Reviews</a>
+              <div class="icon-row" aria-label="Social links">
+                <a href="https://instagram.com/DutchRepublic_" target="_blank" aria-label="Instagram" rel="noopener"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                <a href="#" target="_blank" aria-label="Facebook (coming soon)" rel="noopener"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                <a href="https://x.com/_DutchRepublic" target="_blank" aria-label="X (Twitter)" rel="noopener"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+                <a href="https://www.tiktok.com/@dutchrepublic.mi" target="_blank" aria-label="TikTok" rel="noopener"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
+                <span class="sep">•</span>
+                <a href="https://share.google/sXlxPZrTMpuUN6DLd" target="_blank" aria-label="Google Reviews" rel="noopener">Google Reviews</a>
+              </div>
             </li>
           </ul>
         </div>
