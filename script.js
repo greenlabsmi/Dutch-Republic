@@ -349,41 +349,36 @@ window.addEventListener('resize', queueAlign);
     setInterval(syncTip, 60 * 1000);
     syncTip();
   })();
+
   // ================= Maps (smart open) =================
-  (function maps() {
-    // Your exact deep links (Luna Pier)
-    const appleMapsURL = 'https://maps.apple.com/place?address=10701%20Madison%20St,%20Luna%20Pier,%20MI%2048157,%20United%20States&coordinate=41.811131,-83.446182&name=Green%20Labs&place-id=I7D92A14C05BBFB93&map=explore';
-    const googleMapsURL = 'https://www.google.com/maps/place//data=!4m2!3m1!1s0x883b792f918df687:0xb3cf2121d239bc1d?entry=s&sa=X&ved=1t:8290&hl=en-us&ictx=111&g_ep=Eg1tbF8yMDI1MDgwNl8wIOC7DCoASAJQAg%3D%3D';
-    const isApple = () => /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent || '');
-    // MODE A: single smart button
-    const openMapsSmartBtn = document.getElementById('openMapsSmart');
-    openMapsSmartBtn?.addEventListener('click', () => {
-      window.open(isApple() ? appleMapsURL : googleMapsURL, '_blank', 'noopener');
+(function maps() {
+  const btn = document.getElementById('openMapsSmart');
+  if (!btn) return;
+
+  const ADDRESS = '435 Blue Star Hwy, Douglas, MI 49406';
+
+  // Button opens the right maps app on phones, Google Maps on desktop
+  btn.addEventListener('click', () => {
+    const href = smartMapHref(ADDRESS); // uses your helper above
+    if (/^https?:/i.test(href)) {
+      window.open(href, '_blank', 'noopener');   // desktop/web
+    } else {
+      window.location.href = href;               // app schemes: maps:// (iOS) / geo: (Android)
+    }
+  });
+
+  // Optional: clicking the map card (outside the iframe) opens Google Maps in a new tab
+  const mapLink = document.querySelector('.map-link');
+  if (mapLink) {
+    mapLink.addEventListener('click', (e) => {
+      // ignore clicks that originate inside the iframe
+      if (e.target && e.target.tagName && e.target.tagName.toLowerCase() === 'iframe') return;
+      const webUrl = 'https://www.google.com/maps?q=' + encodeURIComponent(ADDRESS);
+      window.open(webUrl, '_blank', 'noopener');
     });
-    // MODE B: preference buttons (if present)
-    const getMapPref = () => localStorage.getItem('mapPref') || (isApple() ? 'apple' : 'google');
-    const setMapPref = (p) => { try { localStorage.setItem('mapPref', p); } catch(e) {} };
-    const openPreferredMap = () => {
-      const pref = getMapPref();
-      const url = pref === 'apple' ? appleMapsURL : googleMapsURL;
-      window.open(url, '_blank', 'noopener');
-    };
-    // If these exist in HTML, wire them too
-    document.getElementById('openMaps')?.addEventListener('click', openPreferredMap);
-    document.getElementById('switchMapPref')?.addEventListener('click', () => {
-      const next = getMapPref() === 'apple' ? 'google' : 'apple';
-      setMapPref(next);
-      const btn = document.getElementById('switchMapPref');
-      if (btn) {
-        btn.textContent = next === 'apple' ? 'Use Apple Maps' : 'Use Google Maps';
-        setTimeout(() => (btn.textContent = 'Switch'), 1200);
-      }
-    });
-    document.getElementById('mapLink')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      openPreferredMap();
-    });
-  })();
+  }
+})();
+  
   // ================= Loyalty expand & remove "Continue" =================
   (function loyalty() {
     const start = document.getElementById('loyStart');
