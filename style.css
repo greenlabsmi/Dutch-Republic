@@ -929,3 +929,12 @@ body:not(.show-sticky){
 @media (max-width:420px){
   .award-card{ flex-basis: 280px; max-width:280px; }
 }
+
+/* === Desktop: let JS place the panels next to their triggers === */
+@media (min-width:901px){
+  .menu-popover,
+  #hoursTip{
+    right:auto !important;   /* JS will set exact left/top */
+    left:auto !important;
+  }
+}
