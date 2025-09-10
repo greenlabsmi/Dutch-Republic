@@ -378,6 +378,47 @@
 </section>
 <!-- ===== /Dutch Touch Genetics — Awards Rail ===== -->
 
+ <!-- Loyalty -->
+  <section id="loyalty" class="loyalty-section">
+    <div class="container">
+      <h2 class="section-title">Loyalty</h2>
+      <form id="loyaltyForm" class="loyalty-card" action="#" method="post" onsubmit="return false;">
+        <label class="loy-row loy-inline" for="loyEmail">
+          <input id="loyEmail" name="email" type="email" placeholder="Enter your email to join" required />
+          <button id="loyStart" class="btn gold" type="button">Continue</button>
+        </label>
+        <div id="loyBody" class="loy-body" hidden>
+          <div class="loy-grid">
+            <label>First Name
+              <input name="firstName" type="text" autocomplete="given-name" />
+            </label>
+            <label>Last Name
+              <input name="lastName" type="text" autocomplete="family-name" />
+            </label>
+            <label>Mobile Phone
+              <input name="phone" type="tel" inputmode="tel" autocomplete="tel" />
+            </label>
+          </div>
+          <div class="loy-blurb">
+            Earn points on every purchase. Redeem for exclusive Dutch District rewards and drops.
+          </div>
+          <label class="loy-agree">
+            <input type="checkbox" required />
+            <span>
+              By signing up, I consent to receive marketing communications and agree to the program terms.
+              Standard messaging rates may apply. I confirm I am of legal age.
+            </span>
+          </label>
+          <div class="loy-actions">
+            <a class="btn gold" href="https://your-loyalty-link" data-ext>Create Account</a>
+            <a class="btn outline" href="https://your-loyalty-link" data-ext>Sign In</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  
   <!-- Visit Us -->
   <section id="contact" class="contact contact--gold">
     <div class="container contact-wrap">
