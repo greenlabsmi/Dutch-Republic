@@ -54,10 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
       window.addEventListener('resize', check);
     }
   })();
-  // Active tab (naive demo highlighting)
-  document.querySelectorAll('.tab-nav .tab').forEach(t => {
-    t.classList.toggle('is-active', t.getAttribute('href') === '#home');
-  });
+document.querySelectorAll('.sticky-tabs .stab').forEach(t => {
+  t.classList.toggle('is-active', t.getAttribute('href') === '#home');
+});
+
   // Year in footer
   const y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
