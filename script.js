@@ -2,6 +2,32 @@
 // Dutch District – main client script
 // ------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
+  
+    // Place a floating panel under a trigger (keeps it near the icon)
+  function alignFloating(trigger, panel, opts = {}) {
+    if (!trigger || !panel) return;
+    const r = trigger.getBoundingClientRect();
+    const gap   = opts.gap ?? 8;                 // space between trigger & panel
+    const align = opts.align ?? 'end';           // 'start' | 'center' | 'end'
+
+    // make sure CSS "right" isn’t fighting us
+    panel.style.position = 'fixed';
+    panel.style.right = '';                      // clear any right: Npx from CSS
+
+    // compute left
+    let left;
+    if (align === 'start')  left = r.left;
+    if (align === 'center') left = r.left + r.width/2 - panel.offsetWidth/2;
+    if (align === 'end')    left = r.left + r.width - panel.offsetWidth;
+
+    // keep inside viewport
+    const pad = 8;
+    left = Math.max(pad, Math.min(left, window.innerWidth - panel.offsetWidth - pad));
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top  = Math.round(r.bottom + gap) + 'px';
+  }
+  
   // ================= Header / meta =================
   // Sticky header shadow (noop if .site-header doesn't exist)
   (function stickyHeader() {
@@ -69,15 +95,26 @@ document.addEventListener('DOMContentLoaded', () => {
     a.setAttribute('target', '_blank');
   });
 
-  // ================= Menu popover (like Hours) =================
+ // ================= Menu popover (like Hours) =================
 (function menuPopover(){
   const openBtn = document.querySelector('[data-open-menu]');
-  const pop = document.getElementById('navDrawer');      // now a popover
+  const pop = document.getElementById('navDrawer');      // the popover panel
   const ovl = document.getElementById('menuOverlay');
   if (!openBtn || !pop || !ovl) return;
 
-  const open = () => { pop.hidden = false; ovl.hidden = false; openBtn.setAttribute('aria-expanded','true'); };
-  const close = () => { pop.hidden = true; ovl.hidden = true; openBtn.setAttribute('aria-expanded','false'); };
+  const open = () => {
+    pop.hidden = false;
+    ovl.hidden = false;
+    openBtn.setAttribute('aria-expanded','true');
+    // Align right under the hamburger icon
+    alignFloating(openBtn, pop, { align: 'end', gap: 8 });
+  };
+
+  const close = () => {
+    pop.hidden = true;
+    ovl.hidden = true;
+    openBtn.setAttribute('aria-expanded','false');
+  };
 
   openBtn.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -93,8 +130,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // Close on ESC
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
 
-  // Close if window scrolls a lot (optional)
-  window.addEventListener('scroll', close, { passive:true });
+  // Keep the panel hugged to the icon on resize/scroll
+  const keepAligned = () => { if (!pop.hidden) alignFloating(openBtn, pop, { align:'end', gap:8 }); };
+  window.addEventListener('resize', keepAligned, { passive:true });
+  window.addEventListener('scroll',  keepAligned, { passive:true });
+
+  // Optional: close if window scrolls a lot
+  window.addEventListener('scroll', close, { passive: true });
 })();
 
   // ================= Today’s Deals =================
