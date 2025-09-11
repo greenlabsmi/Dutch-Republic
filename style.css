@@ -1579,3 +1579,64 @@ body:not(.show-sticky){
 
 /* spacing above Contact so the two tinted sections don't touch */
 #contact{ margin-top:18px; }
+
+/* === FINAL OVERRIDES: navbar + reverse Contact shading === */
+
+/* 1) Sticky nav: parchment tint + blur (looks solid on iOS) */
+.sticky-nav{
+  background:
+    linear-gradient(var(--gold-tint), var(--gold-tint)),
+    #ffffff !important;
+  -webkit-backdrop-filter: saturate(160%) blur(8px);
+  backdrop-filter: saturate(160%) blur(8px);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 6px 18px rgba(16,24,40,.08);
+}
+
+/* 2) Contact section: reverse the shading from screenshot #2  */
+#contact.contact--gold{                /* section background now white */
+  background: #fff !important;
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+}
+
+/* Make the whole card the pale-gold panel */
+#contact .map-card{
+  background: var(--deal-hue, #FFF9E6) !important;
+  border: 1px solid #eadfcb !important;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.06);
+  padding: 10px;                       /* little breathing room around iframe */
+}
+
+/* Keep the iframe nicely rounded inside the gold panel */
+#contact .map-link{
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* White content band inside the gold card (like your screenshot),
+   so text/buttons remain crisp */
+#contact .map-actions{
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  margin: 10px 0 0;
+}
+
+/* Social/contact row also sits on white for readability */
+#contact .contact-list{
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin-top: 10px;
+}
+
+/* Optional: match the "Open in Maps" button tone to brand gold */
+#contact .map-buttons .btn.gold{
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #111315;
+}
