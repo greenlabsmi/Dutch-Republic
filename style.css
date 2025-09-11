@@ -305,47 +305,53 @@ body:not(.show-sticky){
 .deal-note{margin-top:10px;font-size:.85rem;color:var(--muted)}
 .deal-actions{text-align:center;margin-top:10px}
 
-/* ========== Categories ========== */
-.categories{margin:24px 0}
-.cat-grid {
+/* ===== Categories ===== */
+.categories{ margin:24px 0; }
+
+/* more breathing room and stable columns */
+.cat-grid{
   display:grid;
-  gap:24px; /* more breathing room */
-  grid-template-columns:repeat(auto-fill, minmax(200px,1fr));
+  gap:24px; /* was 14px */
+  grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
 }
-@media (min-width:900px){.cat-grid{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:900px){
+  .cat-grid{ grid-template-columns:repeat(3, 1fr); }
+}
+
+/* make cards darker / more pronounced against white */
 .cat-card{
-  display:flex;align-items:center;gap:14px;padding:14px;border:1px solid var(--line);
-  border-radius:16px;background:#fff;transition:transform .15s, box-shadow .15s, border-color .15s
-}
-/* Category card text: keep inside the box */
-.cat-card {
   display:flex;
   align-items:center;
   gap:14px;
   padding:16px;
   border-radius:16px;
-  background:#f9f9f9; /* light contrast against page */
-  border:2px solid #ddd;
-  transition:all .2s ease-in-out;
+  background:#f9f9fb;             /* subtle gray panel */
+  border:2px solid #dcdfe6;        /* darker edge so it pops */
+  transition:background .2s ease, border-color .2s ease, box-shadow .2s ease, transform .15s ease;
+}
+.cat-card:hover{
+  background:#ffffff;
+  border-color:var(--gold, #D47B19);
+  box-shadow:0 4px 12px rgba(0,0,0,.12);
+  transform:translateY(-1px);
 }
 
-.cat-card:hover {
-  background:#fff;
-  border-color:var(--gold); /* brand highlight */
-  box-shadow:0 4px 10px rgba(0,0,0,.12);
+/* image sizing stays the same; add a fallback bg so broken/empty images aren’t just blank */
+.cat-card img{
+  width:96px; height:64px; object-fit:cover; border-radius:8px;
+  background:#eceff3;              /* placeholder tone if image not loaded */
 }
 
-.cat-card img{ width:96px; height:64px; object-fit:cover; border-radius:10px; flex:0 0 auto; margin-bottom:8px; }
-
+/* keep the text strong */
 .cat-card span{
-  flex:1 1 auto;          /* allow text to use remaining space */
-  min-width:0;            /* KEY for ellipsis inside flex */
-  display:block;
   font-weight:800;
   font-size:1.08rem;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
+}
+
+/* add space before the View All button */
+.view-all-btn{
+  display:inline-block;
+  margin-top:20px;
 }
 
 /* ========== Dutch Touch Genetics ========== */
