@@ -606,7 +606,7 @@ a{color:inherit;text-decoration:none}
 /* ========== Sticky nav (opaque) ========== */
 .sticky-nav{
   position: sticky; top: 0; z-index: 60;
-  background: #fff;                 /* force solid */
+  background: #ffffff;                 /* force solid */
   border-bottom: 1px solid var(--line);
   box-shadow: 0 6px 18px rgba(16,24,40,.08);
 }
@@ -1480,3 +1480,39 @@ body:not(.show-sticky){
     left:auto !important;
   }
 }
+
+/* ===== Loyalty Section Polish ===== */
+.loyalty-section{
+  background:var(--deal-hue, #FFF9E6);
+  padding:28px 0;
+}
+
+.loyalty-card{
+  background:#fff;
+  border:2px solid var(--gold, #D47B19);
+  border-radius:16px;
+  padding:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.loy-inline input{
+  flex:1;
+  height:44px;
+  border:2px solid var(--line);
+  border-radius:12px;
+  padding:0 12px;
+  font-weight:600;
+}
+
+.loy-actions .btn.gold{
+  background:var(--gold);
+  border-color:var(--gold);
+  color:#111315;
+}
+
+.loy-actions .btn.outline{
+  background:#fff;
+  border:2px solid var(--line);
+  color:var(--ink);
+}
+
