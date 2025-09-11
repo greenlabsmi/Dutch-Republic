@@ -1516,3 +1516,66 @@ body:not(.show-sticky){
   color:var(--ink);
 }
 
+/* === 1) Sticky nav: force fully opaque, no transparency anywhere === */
+.site-header.sticky-nav{
+  background:#ffffff !important;        /* solid */
+  border-bottom:1px solid var(--line) !important;
+  box-shadow:0 6px 18px rgba(16,24,40,.08) !important;
+  -webkit-backdrop-filter:none !important;
+  backdrop-filter:none !important;
+}
+
+/* (Optional) bring back the subtle gold haze from before without alpha) */
+.site-header.sticky-nav::before{
+  content:"";
+  position:absolute; inset:0;
+  background:linear-gradient(0deg, rgba(212,123,25,.06), rgba(212,123,25,.06));
+  pointer-events:none;
+}
+
+/* === 2) Loyalty: stronger separation + on-brand controls === */
+:root{
+  --loyal-bg:#FFEFCB;   /* deeper than --deal-hue so it stands out */
+  --loyal-ring:#E9B15E; /* warm border tone */
+}
+
+#loyalty.loyalty-section{
+  background:var(--loyal-bg) !important;
+  padding:28px 0 !important;
+  border-top:1px solid var(--line);
+}
+
+.loyalty-card{
+  background:#fff !important;
+  border:2px solid var(--loyal-ring) !important;
+  box-shadow:0 6px 14px rgba(0,0,0,.08) !important;
+  border-radius:16px !important;
+  padding:16px !important;
+}
+
+/* input + “Continue” row */
+.loy-inline input{
+  height:48px !important;
+  border:2px solid var(--line) !important;
+  border-radius:12px !important;
+  background:#fff;
+}
+.loy-inline input::placeholder{ color:#9aa3ae; }
+
+/* the small “terms” checkbox text */
+.loy-agree{ color:#344054; }
+
+/* buttons */
+#loyalty .btn.gold{
+  background:var(--gold) !important;
+  border-color:var(--gold) !important;
+  color:#111315 !important;
+}
+#loyalty .btn.outline{
+  background:#fff !important;
+  border:2px solid var(--line) !important;
+  color:var(--ink) !important;
+}
+
+/* spacing above Contact so the two tinted sections don't touch */
+#contact{ margin-top:18px; }
