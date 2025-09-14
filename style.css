@@ -606,19 +606,23 @@ a{color:inherit;text-decoration:none}
 /* ========== Sticky nav (opaque) ========== */
 .sticky-nav{
   position: sticky; top: 0; z-index: 60;
-  background: #F1E9DC;                 /* force solid */
+  background: #F1E9DC;                /* darker, reads well */
   border-bottom: 1px solid var(--line);
-  box-shadow: 0 6px 18px rgba(16,24,40,.08);
+  box-shadow: 0 6px 18px rgba(16,24,40,.10);
 }
 
-/* If you still want the fancy blur on browsers that support it */
+/* keep the polish if the browser supports blur, but stay opaque */
 @supports (backdrop-filter: blur(8px)) or (-webkit-backdrop-filter: blur(8px)){
   .sticky-nav{
-    background: rgba(255,255,255,.92);  /* slightly translucent, but looks opaque */
+    background: #F1E9DC;              /* NOT rgba — stays opaque */
     -webkit-backdrop-filter: saturate(160%) blur(8px);
     backdrop-filter: saturate(160%) blur(8px);
   }
 }
+
+.sticky-tabs .stab,
+.sticky-actions .icon-btn,
+.btn-order{ color:#1f2937; }
 
 .sticky-nav__inner{
   display:flex; align-items:center; justify-content:space-between; gap:12px;
