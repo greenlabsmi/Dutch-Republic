@@ -1708,6 +1708,25 @@ html, body { overflow-x: clip; }
   .site-header.sticky-nav{ background:#F0E7D7 !important; } /* very gentle */
 }
 
+/* Loyalty form input styling */
+.loyalty-card input[type="text"],
+.loyalty-card input[type="email"],
+.loyalty-card input[type="tel"] {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #000;  /* black line under each field */
+  padding: 8px 4px;
+  font-size: 1rem;
+  background: transparent;
+  outline: none;
+}
+
+.loyalty-card input[type="text"]:focus,
+.loyalty-card input[type="email"]:focus,
+.loyalty-card input[type="tel"]:focus {
+  border-bottom-color: var(--gold, #D47B19);  /* gold line highlight on focus */
+}
+
 /* === Giant Shop Online CTA + Deals title bump (white background) === */
 
 /* Section: keep page background white */
