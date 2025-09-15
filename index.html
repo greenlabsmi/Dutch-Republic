@@ -32,40 +32,16 @@
     .icon-row .sep { opacity:.35; }
   </style>
 
-  <!-- Leafly embed helper styles -->
- <!-- Leafly embed helper styles -->
-<style>
+  <style>
   .menu-embed { padding: 24px 0; }
-
-  :root{
-    --leafly-cut-desktop: 300px;
-    --leafly-cut-mobile: 475px;
-  }
-
-  .leafly-viewport{
-    position: relative;
-    overflow: hidden;
-    border-radius: 14px;
+  /* Optional pretty wrapper */
+  .embed-shell{
     border: 1px solid var(--line, #e7e8ec);
+    border-radius: 14px;
     box-shadow: 0 6px 18px rgba(16,24,40,.08);
+    overflow: hidden;
   }
-
-  .leafly-frame{
-    width: 100%;
-    border: 0;
-    display: block;
-    transform: translateY(calc(-1 * var(--leafly-cut-desktop)));
-    min-height: calc(1800px + var(--leafly-cut-desktop));
-  }
-
-  @media (max-width: 900px){
-    .leafly-frame{
-      transform: translateY(calc(-1 * var(--leafly-cut-mobile)));
-      min-height: calc(1800px + var(--leafly-cut-mobile));
-    }
-  }
-
-  .leafly-loading { opacity: .2; pointer-events: none; }
+  #leafly-embed-wrapper{ min-height: 2000px; }
 </style>
 </head>
 <body>
@@ -240,19 +216,23 @@
     </div>
   </section>
 
-<!-- ===== Embedded Menu (Leafly) ===== -->
+<!-- ===== Embedded Menu (Leafly) — official embed ===== -->
 <section id="menu" class="menu-embed">
   <div class="container">
     <h2 class="section-title">Shop Our Menu</h2>
 
-    <!-- Cropped viewport so Leafly's header/tabs are hidden -->
-    <div class="leafly-viewport">
-      <iframe
-        id="leaflyFrame"
-        class="leafly-frame"
-        title="Dutch Republic Menu"
-        loading="eager"
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="embed-shell">
+      <div id="leafly-embed-wrapper">
+        <script
+          id="leafly-embed-script"
+          src="https://web-embedded-menu.leafly.com/loader.js"
+          data-origin="https://web-embedded-menu.leafly.com"
+          data-slug="dutch-republic"
+          data-primary="#FFCD00"
+          data-secondary="#2890DC"
+          data-deals="#CE300A">
+        </script>
+      </div>
     </div>
   </div>
 </section>
@@ -430,58 +410,7 @@
         right.addEventListener('click',()=>scrollBy(1));
       })();
     </script>
-
-<script>
-(function(){
-  const DEFAULT_MENU_URL = "https://www.leafly.com/dispensary-info/dutch-republic/menu";
-  const menuSection = document.getElementById("menu");
-  const frame = document.getElementById("leaflyFrame");
-  const homeSection = document.getElementById("home");
-
-  if (!menuSection || !frame) return;
-
-  menuSection.hidden = true;
-  frame.src = "";
-
-  function showMenu(url) {
-    const nextUrl = url || DEFAULT_MENU_URL;
-    menuSection.hidden = false;
-    if (frame.getAttribute("src") !== nextUrl) {
-      frame.classList.add("leafly-loading");
-      frame.src = nextUrl;
-    }
-    menuSection.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-
-  function hideMenu() {
-    menuSection.hidden = true;
-    frame.src = "";
-  }
-
-  frame.addEventListener("load", ()=>frame.classList.remove("leafly-loading"));
-
-  document.addEventListener("click", (e)=>{
-    const menuLink = e.target.closest('a[data-leafly-src]');
-    if(menuLink){
-      e.preventDefault();
-      showMenu(menuLink.getAttribute("data-leafly-src"));
-      return;
-    }
-    const homeLink = e.target.closest('a[href="#home"], .sticky-logo[href="#home"]');
-    if(homeLink){
-      hideMenu();
-      if(homeSection){
-        setTimeout(()=>homeSection.scrollIntoView({behavior:"smooth", block:"start"}),0);
-      }
-      return;
-    }
-  });
-
-  window.addEventListener("hashchange", ()=>{
-    if(location.hash==="#home"||location.hash==="") hideMenu();
-  });
-})();
-</script>
+    
 </body>
 </html>
     
