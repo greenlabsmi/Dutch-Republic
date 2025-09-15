@@ -1793,7 +1793,7 @@ html, body { overflow-x: clip; }
   font-weight:900;
   letter-spacing:.02em;
   border-radius:16px;
-  background:var(--deal-hue,#FFF9E6);
+  background: #fff;
   color:#111315;                 /* default text */
   border:3px solid #000;         /* black outline */
   box-shadow:0 10px 26px rgba(0,0,0,.18);
