@@ -339,7 +339,7 @@
 
   <!-- Scoped styles for this section -->
   <style>
-    .dtg-awards{background:var(--deal-hue,#FFF9E6);border-top:1px solid var(--line,#e7e8ec);padding:28px 0}
+    .dtg-awards{background:var(--deal-hue,#9E6);border-top:1px solid var(--line,#e7e8ec);padding:28px 0}
     .dtgA-sub{text-align:center;color:var(--muted,#667085);margin:0 0 12px;font-size:1.05rem;font-weight:500}
 
     /* Rail */
@@ -348,7 +348,7 @@
 
     /* Cards (uniform size) */
     .dtgA-card{position:relative;flex:0 0 240px;max-width:240px;height:340px;display:flex;flex-direction:column;
-      background:#FFFCF4;border:1px solid #eadfcb;border-radius:14px;overflow:hidden;scroll-snap-align:start;
+      background:#CF4;border:1px solid #eadfcb;border-radius:14px;overflow:hidden;scroll-snap-align:start;
       box-shadow:0 2px 6px rgba(0,0,0,.08);transition:transform .15s ease, box-shadow .15s ease}
     .dtgA-card:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(0,0,0,.12)}
     .dtgA-card img{width:100%;height:140px;object-fit:cover}
@@ -366,7 +366,7 @@
     /* Arrow buttons */
     .dtgA-arrows{display:flex;justify-content:flex-end;gap:8px;margin-top:10px}
     .dtgA-btn{height:32px;width:32px;border-radius:10px;border:1px solid var(--line,#e7e8ec);
-      background:#FFF6E9;font-weight:800;line-height:1;cursor:pointer}
+      background:#6E9;font-weight:800;line-height:1;cursor:pointer}
     .dtgA-btn:active{transform:translateY(1px)}
     @media(max-width:420px){.dtgA-card{flex-basis:280px;max-width:280px}}
   </style>
@@ -1708,12 +1708,12 @@ html, body { overflow-x: clip; }
   .site-header.sticky-nav{ background:#F0E7D7 !important; } /* very gentle */
 }
 
-/* === Giant Shop Online CTA + Deals title bump (unified look) === */
+/* === Giant Shop Online CTA + Deals title bump (white background) === */
 
-/* Section matches Deals/DTG background */
+/* Section: keep page background white */
 .cta-shop{
   padding: 24px 0 10px;
-  background: var(--deal-hue, #FFF9E6);
+  background: #fff;       /* white background */
   text-align: center;
 }
 
@@ -1725,12 +1725,12 @@ html, body { overflow-x: clip; }
   letter-spacing: .02em;
   border-radius: 16px;
 
-  /* unified button color + black outline */
-  background: #fff;
+  /* button: pale-gold like Deals/DTG with black outline */
+  background: var(--deal-hue, #FFF9E6);
   color: #111315;
   border: 3px solid #000;
 
-  /* keep lift + shadow */
+  /* lift + shadow */
   box-shadow: 0 10px 26px rgba(0,0,0,.18);
   text-decoration: none;
   transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
@@ -1747,7 +1747,7 @@ html, body { overflow-x: clip; }
   .btn-giant{ width: 96%; padding: 20px 18px; }
 }
 
-/* Desktop: bump Today’s Deals title and add subtle card lift */
+/* Desktop: bump Today’s Deals title and subtle card lift */
 @media (min-width: 900px){
   .deal-title{
     font-size: 1.5rem;
