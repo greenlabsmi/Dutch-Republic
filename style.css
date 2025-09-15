@@ -1672,9 +1672,9 @@ html, body { overflow-x: clip; }
   }
 
   /* 2) Make text links larger + more spaced */
-  .sticky-tabs{ gap:28px; }                    /* was ~20px */
+  .sticky-tabs{ gap:36px; }                    /* was ~20px */
   .sticky-tabs .stab{
-    font-size:16px;                            /* up from ~14–15 */
+    font-size:19px;                            /* up from ~14–15 */
     letter-spacing:.2px;
   }
 
