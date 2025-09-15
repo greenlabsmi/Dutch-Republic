@@ -1726,7 +1726,7 @@ html, body { overflow-x: clip; }
   border-radius: 16px;
 
   /* unified button color + black outline */
-  background: var(--deal-hue, #FFF9E6);
+  background: #fff;
   color: #111315;
   border: 3px solid #000;
 
