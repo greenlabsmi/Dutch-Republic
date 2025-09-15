@@ -1707,3 +1707,46 @@ html, body { overflow-x: clip; }
 @media (max-width:900px){
   .site-header.sticky-nav{ background:#F0E7D7 !important; } /* very gentle */
 }
+
+/* === Giant Shop Online CTA + Deals title bump === */
+
+/* GIANT Shop Online CTA */
+.cta-shop { padding: 24px 0 10px; }
+.cta-shop .center { text-align: center; }
+
+.btn-giant {
+  display:inline-block;
+  padding: 22px 44px;
+  font-size: clamp(1.25rem, 2.5vw, 2rem); /* responsive size */
+  font-weight: 900;
+  letter-spacing:.02em;
+  border-radius: 16px;
+  background: linear-gradient(180deg,#F7D470 0%, #D99A1A 55%, #B97B12 100%);
+  color:#111315;
+  border: 0;
+  box-shadow: 0 10px 26px rgba(0,0,0,.18), 0 2px 0 rgba(0,0,0,.35) inset;
+  text-decoration:none;
+  transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+}
+.btn-giant:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(0,0,0,.22), 0 2px 0 rgba(0,0,0,.35) inset;
+  filter: saturate(1.05);
+}
+.btn-giant:active{ transform: translateY(0); }
+
+/* Mobile full-width */
+@media (max-width: 520px){
+  .btn-giant{ width: 96%; padding: 20px 18px; }
+}
+
+/* Desktop: bump Today’s Deals title */
+@media (min-width: 900px){
+  .deal-title{
+    font-size: 1.5rem;     /* larger title */
+    line-height: 1.2;
+  }
+  .deal-card{
+    box-shadow: 0 8px 22px rgba(0,0,0,.06); /* subtle lift */
+  }
+}
