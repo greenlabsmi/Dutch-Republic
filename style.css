@@ -1730,6 +1730,13 @@ html, body { overflow-x: clip; }
   color: #111315;
   border: 3px solid #000;
 
+  .btn-giant:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(0,0,0,.22), 0 2px 0 rgba(0,0,0,.35) inset;
+  filter: saturate(1.05);
+  color: var(--gold, #D47B19);   /* text turns gold */
+}
+  
   /* lift + shadow */
   box-shadow: 0 10px 26px rgba(0,0,0,.18);
   text-decoration: none;
