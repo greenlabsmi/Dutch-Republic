@@ -1757,3 +1757,40 @@ html, body { overflow-x: clip; }
     box-shadow: 0 8px 22px rgba(0,0,0,.06);
   }
 }
+
+/* Giant CTA — keep white section, pale-gold pill with black outline */
+.cta-shop{
+  padding:24px 0 10px;
+  background:#fff;
+  text-align:center;
+}
+
+.btn-giant,
+.btn-giant:link,
+.btn-giant:visited{
+  display:inline-block;
+  padding:22px 44px;
+  font-size:clamp(1.25rem,2.5vw,2rem);
+  font-weight:900;
+  letter-spacing:.02em;
+  border-radius:16px;
+  background:var(--deal-hue,#FFF9E6);
+  color:#111315;                 /* default text */
+  border:3px solid #000;         /* black outline */
+  box-shadow:0 10px 26px rgba(0,0,0,.18);
+  text-decoration:none;
+  transition:transform .12s ease, box-shadow .12s ease, filter .12s ease, color .12s ease;
+}
+
+.btn-giant:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 34px rgba(0,0,0,.22);
+  filter:saturate(1.05);
+  color:var(--gold,#D47B19);     /* text turns gold on hover */
+}
+
+.btn-giant:active{ transform:translateY(0); }
+
+@media (max-width:520px){
+  .btn-giant{ width:96%; padding:20px 18px; }
+}
