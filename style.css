@@ -1661,3 +1661,49 @@ html, body { overflow-x: clip; }
   border-color: var(--gold);
   color: #111315;
 }
+
+/* ========== DESKTOP-ONLY NAV POLISH (safe drop-in) ========== */
+@media (min-width:901px){
+  /* 1) Slightly darker parchment so icons don’t blend in */
+  .site-header.sticky-nav{
+    background:#EDE4D3 !important;            /* a notch darker than #F1E9DC */
+    border-bottom:1px solid #d7cdbb;
+    box-shadow:0 8px 18px rgba(16,24,40,.10);
+  }
+
+  /* 2) Make text links larger + more spaced */
+  .sticky-tabs{ gap:28px; }                    /* was ~20px */
+  .sticky-tabs .stab{
+    font-size:16px;                            /* up from ~14–15 */
+    letter-spacing:.2px;
+  }
+
+  /* 3) Give Order/Open/Search/Menu a darker ring so they pop */
+  .sticky-actions .icon-btn,
+  .sticky-actions .pill,
+  .sticky-actions .btn-order{
+    border:2px solid #bfb6a5;                  /* deeper border */
+    box-shadow:0 2px 6px rgba(0,0,0,.08);
+  }
+
+  /* 4) Keep icons/text a touch darker for contrast */
+  .sticky-tabs .stab,
+  .sticky-actions .icon-btn,
+  .btn-order{
+    color:#1f2937;                             /* readable charcoal */
+  }
+
+  /* 5) Hover feedback (subtle) */
+  .sticky-tabs .stab:hover{ color:#111315; }
+  .sticky-actions .icon-btn:hover,
+  .sticky-actions .btn-order:hover,
+  .sticky-actions .pill:hover{
+    box-shadow:0 6px 14px rgba(0,0,0,.14);
+    transform:translateY(-1px);
+  }
+}
+
+/* MOBILE: keep layout the same, just nudge the shade a hair darker */
+@media (max-width:900px){
+  .site-header.sticky-nav{ background:#F0E7D7 !important; } /* very gentle */
+}
