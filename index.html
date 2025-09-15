@@ -185,7 +185,7 @@
 </aside>
 
 <main id="home">
-  <!-- Hero (solid black background) -->
+  <!-- Hero (solid black background) --></body>
   <section class="hero" style="background:#000;">
     <div class="container">
       <div class="slides" data-carousel>
@@ -216,23 +216,14 @@
     </div>
   </section>
 
-<!-- ===== Embedded Menu (Leafly) — official embed ===== -->
-<section id="menu" class="menu-embed">
+<!-- ===== Embedded Menu (Leafly) — lazy loaded ===== -->
+<section id="menu" class="menu-embed" hidden>
   <div class="container">
     <h2 class="section-title">Shop Our Menu</h2>
 
     <div class="embed-shell">
-      <div id="leafly-embed-wrapper">
-        <script
-          id="leafly-embed-script"
-          src="https://web-embedded-menu.leafly.com/loader.js"
-          data-origin="https://web-embedded-menu.leafly.com"
-          data-slug="dutch-republic"
-          data-primary="#FFCD00"
-          data-secondary="#2890DC"
-          data-deals="#CE300A">
-        </script>
-      </div>
+      <!-- Leafly renders into this wrapper when we open the menu -->
+      <div id="leafly-embed-wrapper"></div>
     </div>
   </div>
 </section>
@@ -410,6 +401,63 @@
         right.addEventListener('click',()=>scrollBy(1));
       })();
     </script>
+
+<script>
+(function(){
+  const menu = document.getElementById('menu');
+  const mount = document.getElementById('leafly-embed-wrapper');
+  let loaded = false;
+
+  // keep menu hidden on initial load (also handled via 'hidden' in HTML)
+  if (menu) menu.hidden = true;
+
+  function loadLeafly() {
+    if (loaded || !mount) return;
+    const s = document.createElement('script');
+    s.id = 'leafly-embed-script';
+    s.src = 'https://web-embedded-menu.leafly.com/loader.js';
+    s.dataset.origin = 'https://web-embedded-menu.leafly.com';
+    s.dataset.slug = 'dutch-republic';
+    s.dataset.primary = '#FFCD00';
+    s.dataset.secondary = '#2890DC';
+    s.dataset.deals = '#CE300A';
+    mount.appendChild(s);
+    loaded = true;
+  }
+
+  function openMenu() {
+    if (!menu) return;
+    menu.hidden = false;
+    loadLeafly();
+    menu.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function closeMenu() {
+    if (!menu) return;
+    menu.hidden = true;
+  }
+
+  // Open on "Order Online" or any link to #menu (incl. category cards)
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('a[href="#menu"], a[data-leafly-src]');
+    if (!trigger) return;
+    e.preventDefault();
+    openMenu();
+  });
+
+  // Hide again when clicking Home / crest
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('a[href="#home"], .sticky-logo[href="#home"]')) {
+      closeMenu();
+    }
+  });
+
+  // Hide if user navigates back to #home
+  window.addEventListener('hashchange', () => {
+    if (location.hash === '#home' || location.hash === '') closeMenu();
+  });
+})();
+</script>
     
 </body>
 </html>
