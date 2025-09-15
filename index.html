@@ -217,20 +217,19 @@
   </section>
 
   <!-- ===== Embedded Menu (Leafly) ===== -->
-  <section id="menu" class="menu-embed">
-    <div class="container">
-      <h2 class="section-title">Shop Our Menu</h2>
-      <iframe
-        id="leaflyFrame"
-        class="leafly-frame"
-        title="Dutch Republic Menu"
-        src="https://www.leafly.com/dispensary-info/dutch-republic/menu"
-        loading="eager"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
-  </section>
-  <!-- ===== /Embedded Menu (Leafly) ===== -->
+<section id="menu" class="menu-embed" hidden>
+  <div class="container">
+    <h2 class="section-title">Shop Our Menu</h2>
+    <iframe
+      id="leaflyFrame"
+      class="leafly-frame"
+      title="Dutch Republic Menu"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+<!-- ===== /Embedded Menu (Leafly) ===== -->
   
   <!-- Categories -->
   <section id="shop" class="categories">
@@ -569,33 +568,6 @@
 
 <!-- Your existing JS bundle -->
 <script src="script.js"></script>
-
-<!-- Tiny helper: swap the Leafly iframe src + smooth-scroll to #menu -->
-<script>
-  (function(){
-    const frame = document.getElementById('leaflyFrame');
-    if (!frame) return;
-
-    function setLeaflySrc(url) {
-      if (!url) return;
-      frame.classList.add('leafly-loading');
-      frame.src = url;
-      frame.addEventListener('load', () => frame.classList.remove('leafly-loading'), { once: true });
-    }
-
-    document.addEventListener('click', (e) => {
-      const a = e.target.closest('a[data-leafly-src]');
-      if (!a) return;
-      const url = a.getAttribute('data-leafly-src');
-      if (url) {
-        e.preventDefault();
-        setLeaflySrc(url);
-        const menu = document.getElementById('menu');
-        if (menu) menu.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  })();
-</script>
 
 </body>
 </html>
