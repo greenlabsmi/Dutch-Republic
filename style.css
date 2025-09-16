@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- Cache-bust your CSS -->
-  <link rel="stylesheet" href="style.css?v=dr-011" />
+  <link rel="stylesheet" href="style.css?v=dr-012" />
 
   <!-- Minimal helper styles for the icon row so it looks great out of the box -->
   <style>
@@ -1873,4 +1873,14 @@ html, body { overflow-x: clip; }
 .map-card .addr {
   word-wrap: break-word;
   line-height: 1.4;
+}
+
+/* iOS: prevent smart address popover + keep single-line */
+.status-addr{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-touch-callout: none;  /* no long-press bubble */
+  user-select: none;
+  pointer-events: none;         /* taps go to the strip, not the text */
 }
