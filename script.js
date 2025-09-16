@@ -515,6 +515,32 @@ window.addEventListener('resize', queueAlign);
   });
 })();
 
+// Only smooth-scroll in-page anchors; never hijack real links.
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a');
+  if (!a) return;
+
+  const href = a.getAttribute('href') || '';
+
+  // External / new-tab / explicit external: let the browser handle it.
+  if (
+    a.hasAttribute('data-ext') ||
+    a.target === '_blank' ||
+    /^https?:\/\//i.test(href)
+  ) {
+    return; // no preventDefault
+  }
+
+  // In-page anchor (e.g., #deals)
+  if (href.startsWith('#')) {
+    const target = document.querySelector(href);
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+});
+
 \\(() => {
   const btn = document.getElementById('searchBtn');
   if (!btn) return;
