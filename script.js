@@ -541,14 +541,12 @@ document.addEventListener('click', (e) => {
   }
 });
 
-\\(() => {
+(() => {
   const btn = document.getElementById('searchBtn');
   if (!btn) return;
   btn.addEventListener('click', () => {
-    window.open(
-      'https://www.leafly.com/dispensary-info/dutch-republic/menu',
-      '_blank',
-      'noopener'
-    );
+    document.getElementById('shop')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // If you add a filter input later, you can focus it here:
+    // document.getElementById('shopFilter')?.focus();
   });
 })();
