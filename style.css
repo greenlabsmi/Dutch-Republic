@@ -1495,11 +1495,8 @@ html, body { overflow-x: clip; }
 
 /* === Desktop: let JS place the panels next to their triggers === */
 @media (min-width:901px){
-  .menu-popover,
-  #hoursTip{
-    right:auto !important;   /* JS will set exact left/top */
-    left:auto !important;
-  }
+  .menu-popover{ right:12px !important; left:auto !important; }
+  #hoursTip{ right:88px !important; left:auto !important; }
 }
 
 /* ===== Loyalty Section Polish ===== */
