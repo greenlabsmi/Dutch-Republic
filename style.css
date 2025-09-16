@@ -1884,3 +1884,14 @@ html, body { overflow-x: clip; }
   user-select: none;
   pointer-events: none;         /* taps go to the strip, not the text */
 }
+
+/* Stop iOS data detectors + keep the strip tidy */
+.status-addr{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-touch-callout: none;
+  user-select: none;
+  pointer-events: none; /* so taps hit the strip, not the text */
+}
+.status-addr .zwsp{ display:inline-block; width:0; overflow:hidden; }
