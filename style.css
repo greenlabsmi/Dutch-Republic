@@ -1937,3 +1937,15 @@ html, body { overflow-x: clip; }
     text-shadow: 0 1px 0 rgba(0,0,0,.20);
   }
 }
+
+/* Gradient gold text style */
+.gold-text {
+  font-family: "Luminari", "Cinzel", serif;
+  font-weight: 900; /* extra bold */
+  background: linear-gradient(90deg, #9C6B1A, #F2C14E, #FFE27A, #F2C14E, #9C6B1A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  letter-spacing: 1px;
+}
