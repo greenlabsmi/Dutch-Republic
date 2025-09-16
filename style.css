@@ -1903,3 +1903,12 @@ html, body { overflow-x: clip; }
   overflow: hidden; 
 }
 
+.status-addr .sep {
+  display:inline-block;
+  width:0;
+  overflow:hidden;
+}
+.status-addr .sep::after {
+  content: ",";
+  display:inline;
+}
