@@ -1912,3 +1912,23 @@ html, body { overflow-x: clip; }
   content: ",";
   display:inline;
 }
+
+@keyframes foilShine { from{background-position:-40% 0} to{background-position:180% 0} }
+
+.sticky-tabs .stab{
+  position:relative;
+  transition: color .15s ease;
+}
+
+@media (hover:hover){
+  .sticky-tabs .stab:hover,
+  .sticky-tabs .stab:focus{
+    color: transparent; /* reveal the gradient */
+    background-image: linear-gradient(92deg,#9C6B1A 0%,#F2C14E 22%,#FFE27A 45%,#F2C14E 62%,#9C6B1A 100%);
+    background-size: 220% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: foilShine 3s linear infinite;
+    text-shadow: 0 1px 0 rgba(0,0,0,.20);
+  }
+}
