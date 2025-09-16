@@ -514,3 +514,15 @@ window.addEventListener('resize', queueAlign);
     pillBtn.click();
   });
 })();
+
+\\(() => {
+  const btn = document.getElementById('searchBtn');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    window.open(
+      'https://www.leafly.com/dispensary-info/dutch-republic/menu',
+      '_blank',
+      'noopener'
+    );
+  });
+})();
