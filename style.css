@@ -1810,3 +1810,33 @@ html, body { overflow-x: clip; }
 @media (max-width:520px){
   .btn-giant{ width:96%; padding:20px 18px; }
 }
+
+/* Prevent long addresses/links from overflowing rounded cards/bubbles */
+.hours-popover,
+.map-card,
+.status-strip {
+  box-sizing: border-box;
+}
+
+/* Let long strings wrap inside the bubble */
+.hours-popover a,
+.hours-popover .hours-note,
+.status-addr,
+.map-card .addr,
+.map-card .map-buttons a {
+  overflow-wrap: anywhere;   /* modern wrap */
+  word-break: break-word;    /* older fall-back */
+  white-space: normal;       /* in case something forced nowrap */
+}
+
+/* In flex rows, allow children to actually shrink so they don't overflow */
+.hours-popover *,
+.map-card *,
+.status-strip * {
+  min-width: 0;
+}
+
+/* Optional: cap the bubble width on desktop so lines wrap sooner */
+@media (min-width: 901px){
+  .hours-popover { max-width: 420px; }
+}
