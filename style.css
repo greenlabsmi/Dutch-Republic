@@ -1685,31 +1685,33 @@ header.site-header {
   .sticky-brand-name{ display:none; }
 }
 
-/* ===== Sticky nav balanced layout ===== */
+/* ===== Sticky nav balanced layout (refined) ===== */
 .sticky-nav__inner{
   display:flex;
   align-items:center;
-  padding:0 16px;              /* soft side breathing room */
+  justify-content:space-between;   /* spread items across the bar */
+  padding:0 24px;                  /* left/right breathing room */
 }
 
-/* Logo hugs the left */
+/* Logo left with a little cushion */
 .sticky-logo{
-  margin-right:auto;           /* small gap from the tabs */
+  flex:0 0 auto;
+  margin-right:24px;               /* space before tabs */
 }
 
-/* Tabs sit in the middle */
+/* Tabs centered */
 .sticky-tabs{
-  flex:1;                      /* take up remaining space */
+  flex:1;
   display:flex;
-  justify-content:center;      /* center horizontally */
-  gap:24px;                    /* space between links */
+  justify-content:center;
+  gap:20px;                        /* adjust for how airy you want */
 }
 
-/* Action buttons hug the right */
+/* Actions right */
 .sticky-actions{
-  order:2;
-  margin-left:auto;            /* push to far right */
+  flex:0 0 auto;
+  margin-left:24px;
   display:flex;
   align-items:center;
-  gap:12px;                    /* keep icons/buttons comfortably spaced */
+  gap:12px;
 }
