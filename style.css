@@ -1715,3 +1715,34 @@ header.site-header {
   align-items:center;
   gap:12px;
 }
+
+/* ===== Sticky nav balanced layout (refined) ===== */
+.sticky-nav__inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;   /* spread items across the bar */
+  padding:0 24px;                  /* left/right breathing room */
+}
+
+/* Logo left with a little cushion */
+.sticky-logo{
+  flex:0 0 auto;
+  margin-right:24px;               /* space before tabs */
+}
+
+/* Tabs centered */
+.sticky-tabs{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  gap:20px;                        /* adjust for how airy you want */
+}
+
+/* Actions right */
+.sticky-actions{
+  flex:0 0 auto;
+  margin-left:24px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
