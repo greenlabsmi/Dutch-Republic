@@ -33,16 +33,25 @@
     .icon-row .sep { opacity:.35; }
   </style>
 
-  <style>
+<style>
   .menu-embed { padding: 24px 0; }
   /* Optional pretty wrapper */
-  .embed-shell{
+  .embed-shell {
     border: 1px solid var(--line, #e7e8ec);
     border-radius: 14px;
     box-shadow: 0 6px 18px rgba(16,24,40,.08);
     overflow: hidden;
+    position: relative;
+    z-index: 1;
+    isolation: isolate; /* keeps clicks clean */
   }
-  #leafly-embed-wrapper{ min-height: 2000px; }
+  .embed-shell iframe {
+    display: block;
+    width: 100%;
+    min-height: 1600px;
+    border: 0;
+    border-radius: 12px;
+  }
 </style>
 </head>
 <body>
@@ -366,28 +375,37 @@
     </script>
 
 <script>
-(function(){
-  const menu  = document.getElementById('menu');
-  const mount = document.getElementById('leafly-embed-wrapper');
-  let loaded = false;
+/* Open/close the #menu section (iframe version) */
+(() => {
+  const menu = document.getElementById('menu');
+  if (!menu) return;
 
-  // keep menu hidden on initial load (also handled via 'hidden' in HTML)
-  if (menu) menu.hidden = true;
-
-  function loadLeafly() {
-    if (loaded || !mount) return;
-    const s = document.createElement('script');
-    s.id = 'leafly-embed-script';
-    s.src = 'https://web-embedded-menu.leafly.com/loader.js';
-    s.dataset.origin = 'https://web-embedded-menu.leafly.com';
-    s.dataset.slug = 'dutch-republic';
-    s.dataset.primary   = '#FFCD00';
-    s.dataset.secondary = '#2890DC';
-    s.dataset.deals     = '#CE300A';
-    mount.appendChild(s);
-    loaded = true;
+  function openMenu() {
+    menu.hidden = false;
+    menu.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
+  function closeMenu() { menu.hidden = true; }
 
+  // Open on: #menu links, data-leafly-src buttons, and the header search icon
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('a[href="#menu"], a[data-leafly-src], #searchBtn');
+    if (!trigger) return;
+    e.preventDefault();
+    openMenu();
+  });
+
+  // Hide when clicking Home / crest
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('a[href="#home"], .sticky-logo[href="#home"]')) closeMenu();
+  });
+
+  // Hide if navigating back to #home
+  window.addEventListener('hashchange', () => {
+    if (location.hash === '#home' || location.hash === '') closeMenu();
+  });
+})();
+</script>
+    
   function openMenu() {
     if (!menu) return;
     menu.hidden = false;
