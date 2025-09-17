@@ -2,7 +2,60 @@
 // Dutch District – main client script
 // ------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
-  
+
+
+// ===== Age Gate logic (uses #ageGate, #ageYes, #ageNo, #ageRemember) =====
+(function () {
+  const KEY = 'dr_age_until';
+  const gate = document.getElementById('ageGate');
+  if (!gate) return;
+
+  // Dev helpers:
+  // ?agegate=show  -> force-show every load
+  // ?agegate=clear -> clear stored acceptance
+  const sp = new URL(location.href).searchParams;
+  if (sp.get('agegate') === 'clear') localStorage.removeItem(KEY);
+  const forceShow = sp.get('agegate') === 'show';
+
+  const okUntil = Number(localStorage.getItem(KEY) || 0);
+  const sessionOK = sessionStorage.getItem(KEY) === '1';
+  const isOK = (okUntil > Date.now()) || sessionOK;
+
+  function show() {
+    gate.setAttribute('aria-hidden', 'false');
+    gate.style.display = 'flex';
+    document.body.classList.add('agegate--lock');
+  }
+  function hide() {
+    gate.setAttribute('aria-hidden', 'true');
+    gate.style.display = 'none';
+    document.body.classList.remove('agegate--lock');
+  }
+
+  const yes = document.getElementById('ageYes');
+  const no  = document.getElementById('ageNo');
+  const remember = document.getElementById('ageRemember');
+
+  yes?.addEventListener('click', () => {
+    if (remember?.checked) {
+      const THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
+      localStorage.setItem(KEY, String(Date.now() + THIRTY_DAYS));
+    } else {
+      sessionStorage.setItem(KEY, '1');
+    }
+    hide();
+  });
+
+  no?.addEventListener('click', () => {
+    // Send under-21 away (choose your destination)
+    location.href = 'https://www.google.com';
+  });
+
+  if (forceShow) show();
+  else if (isOK) hide();
+  else show();
+})();
+
     // Place a floating panel under a trigger (keeps it near the icon)
   function alignFloating(trigger, panel, opts = {}) {
     if (!trigger || !panel) return;
