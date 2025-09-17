@@ -1574,3 +1574,6 @@ body.agegate--lock{ overflow:hidden; }
 /* Force the same label on all viewports */
 .btn-order .label-desktop{ display:inline !important; }
 .btn-order .label-mobile{ display:none !important; }
+
+/* Tooltip should never block clicks on the pill */
+#hoursTip { pointer-events: none; }
