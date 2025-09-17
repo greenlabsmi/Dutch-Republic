@@ -431,33 +431,38 @@ window.addEventListener('resize', queueAlign);
     window.addEventListener('scroll', closePop, { passive: true });
     setInterval(paintPill, 60 * 1000); // keep fresh
   })();
+  
   // NEW: Hours pill tooltip (uses hoursNote text)
-  (function hoursTooltip(){
-    const btn = document.getElementById('hoursBtn');
-    const tip = document.getElementById('hoursTip');
-    const note = document.getElementById('hoursNote');
-    if (!btn || !tip) return;
-   const syncTip = () => {
-  tip.textContent = btn.dataset.tip || 'Store hours';
-};
-      // shorten the note ("We’re open until 9PM today." -> "Open until 9PM")
-      const raw = (note?.textContent || '').trim();
-      const short = raw
-        .replace(/^We’re\s*/i,'')
-        .replace(/\s*today\.?$/i,'')
-        .replace(/^We\s*/,'');
+(function hoursTooltip(){
+  const btn  = document.getElementById('hoursBtn');
+  const tip  = document.getElementById('hoursTip');
+  const note = document.getElementById('hoursNote');
+  if (!btn || !tip) return;
+
+  const syncTip = () => {
+    // prefer the live message the hours() code put on the button
+    tip.textContent = btn.dataset.tip || 'Store hours';
+    // fallback using note text if needed
+    if ((!tip.textContent || tip.textContent === 'Store hours') && note) {
+      const raw = (note.textContent || '').trim();
+      const short = raw.replace(/^We’re\s*/i,'')
+                       .replace(/\s*today\.?$/i,'')
+                       .replace(/^We\s*/,'');
       tip.textContent = short || 'Store hours';
-    };
-    const show = () => { syncTip(); tip.hidden = false; };
-    const hide = () => { tip.hidden = true; };
-    btn.addEventListener('mouseenter', show);
-    btn.addEventListener('mouseleave', hide);
-    btn.addEventListener('focus', show);
-    btn.addEventListener('blur', hide);
-    // keep the tooltip accurate as time passes
-    setInterval(syncTip, 60 * 1000);
-    syncTip();
-  })();
+    }
+  };
+
+  const show = () => { syncTip(); tip.hidden = false; };
+  const hide = () => { tip.hidden = true;  };
+
+  btn.addEventListener('mouseenter', show);
+  btn.addEventListener('mouseleave', hide);
+  btn.addEventListener('focus',      show);
+  btn.addEventListener('blur',       hide);
+
+  setInterval(syncTip, 60 * 1000);
+  syncTip();
+})();
 
   // ================= Maps (smart open) =================
 (function maps() {
