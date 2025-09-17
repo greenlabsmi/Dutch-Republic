@@ -1984,3 +1984,4 @@ html, body { overflow-x: clip; }
   }
 }
 
+#statusStrip{ display:none !important; }     /* remove the mobile status strip */
