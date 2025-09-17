@@ -1960,3 +1960,27 @@ html, body { overflow-x: clip; }
     text-shadow: 0 1px 0 rgba(0,0,0,.20);
   }
 }
+
+/* Gold foil only-on-hover text (black by default, foil on hover) */
+.foil-hover{
+  color:#111315;                       /* default: black */
+  font-family:"Luminari","Cinzel",serif;
+  font-weight:900;
+  letter-spacing:.02em;
+  transition:color .15s ease, background-position .15s linear;
+}
+
+/* Reveal foil gradient on hover/focus (desktop hover-capable only) */
+@media (hover:hover){
+  .foil-hover:hover,
+  .foil-hover:focus-visible{
+    color:transparent;                 /* hide black text */
+    -webkit-text-fill-color:transparent;
+    background-image:linear-gradient(92deg,#9C6B1A 0%,#F2C14E 22%,#FFE27A 45%,#F2C14E 62%,#9C6B1A 100%);
+    background-size:220% auto;
+    -webkit-background-clip:text;
+    background-clip:text;
+    text-shadow:0 1px 0 rgba(0,0,0,.20);
+  }
+}
+
