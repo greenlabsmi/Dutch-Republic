@@ -1985,3 +1985,74 @@ html, body { overflow-x: clip; }
 }
 
 #statusStrip{ display:none !important; }     /* remove the mobile status strip */
+
+/* ========== AGE GATE ========== */
+.agegate{
+  position:fixed; inset:0; z-index:9999;
+  display:none; align-items:center; justify-content:center;
+  background:#000;
+}
+.agegate[aria-hidden="false"]{ display:flex; }
+body.agegate--lock{ overflow:hidden; }
+
+.agegate__box{
+  width:min(92vw, 640px);
+  background: rgba(0,0,0,.55);
+  border:2px solid var(--gold, #D47B19);
+  border-radius:16px;
+  padding:28px 22px;
+  text-align:center;
+  box-shadow: 0 18px 60px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.04);
+  color:#fff;
+}
+
+.agegate__crest{ font-size:2rem; margin-bottom:10px; opacity:.9; }
+
+.agegate__title{
+  margin:0 0 6px;
+  font-family: "Cinzel","UnifrakturCook", serif;
+  font-weight:900;
+  font-size: clamp(28px, 4.2vw, 44px);
+  letter-spacing:.3px;
+  line-height:1.1;
+
+  /* Dutch Touch foil effect */
+  color:transparent;
+  -webkit-text-fill-color:transparent;
+  background-image: linear-gradient(92deg,#9C6B1A 0%,#F2C14E 22%,#FFE27A 45%,#F2C14E 62%,#9C6B1A 100%);
+  background-size:220% auto;
+  -webkit-background-clip:text; background-clip:text;
+  animation: foilShine 8s linear infinite;
+  text-shadow: 0 1px 0 rgba(0,0,0,.3);
+}
+
+.agegate__sub{
+  margin:0 0 16px; color:#EAEAEA; font-weight:600;
+}
+
+.agegate__actions{
+  display:flex; gap:10px; justify-content:center; margin:10px 0 8px;
+}
+.agegate__btn{ min-width:160px; font-weight:900; }
+
+.agegate__remember{
+  display:inline-flex; gap:8px; align-items:center; margin:6px 0 6px;
+  color:#d7d7d7; font-weight:600; user-select:none;
+}
+.agegate__legal{
+  margin:6px 0 0; color:#bcbcbc; font-size:.9rem;
+}
+
+/* Buttons look crisp on black */
+.agegate .btn.gold{ background:var(--gold); border-color:var(--gold); color:#111315; }
+.agegate .btn.outline{ background:transparent; border:2px solid #fff; color:#fff; }
+.agegate .btn.outline:hover{ background:#111; }
+
+@keyframes foilShine{ from{background-position:-40% 0} to{background-position:180% 0} }
+
+/* Accessibility: better focus on black */
+.agegate button:focus-visible,
+.agegate input:focus-visible{
+  outline:2px solid #fff; outline-offset:2px; border-radius:6px;
+}
+
