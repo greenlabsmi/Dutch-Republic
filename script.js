@@ -550,3 +550,42 @@ document.addEventListener('click', (e) => {
     // document.getElementById('shopFilter')?.focus();
   });
 })();
+
+/* === Age Gate === */
+.age-gate-overlay {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.4s ease;
+}
+.age-gate-box {
+  text-align: center;
+  padding: 32px;
+  background: #111;
+  border: 2px solid var(--gold, #D47B19);
+  border-radius: 14px;
+  max-width: 420px;
+  color: #fff;
+  font-family: "Luminari", Cinzel, serif;
+}
+.age-gate-title {
+  font-size: 2rem;
+  margin-bottom: 12px;
+  background: linear-gradient(92deg,#9C6B1A,#F2C14E,#FFE27A,#F2C14E,#9C6B1A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: foilShine 6s linear infinite;
+}
+.age-gate-text {
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+}
+.age-gate-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
