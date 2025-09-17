@@ -1484,7 +1484,13 @@ html, body { overflow-x: clip; }
   }
 }
 
-#statusStrip{ display:flex !important; }
+/* Default: hide on desktop */
+#statusStrip{ display:none !important; }
+
+/* Show on mobile (all mobile browsers) */
+@media (max-width:900px){
+  #statusStrip{ display:flex !important; }
+}
 
 /* ========== AGE GATE ========== */
 .agegate{
