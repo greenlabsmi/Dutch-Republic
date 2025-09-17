@@ -1694,8 +1694,7 @@ header.site-header {
 
 /* Logo hugs the left */
 .sticky-logo{
-  order:0;
-  margin-right:12px;           /* small gap from the tabs */
+  margin-right:auto;           /* small gap from the tabs */
 }
 
 /* Tabs sit in the middle */
