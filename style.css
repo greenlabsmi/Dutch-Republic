@@ -1601,14 +1601,6 @@ body.agegate--lock{ overflow:hidden; }
 /* belt & suspenders so children don’t force overflow */
 .hours-popover *{ min-width:0; }
 
-/* Let JS positioning win (don’t pin to the right) */
-.hours-popover{
-  right: auto !important;
-  left:  auto !important;
-  top:   auto !important;
-  margin-top: 0 !important;
-}
-
 /* When visible, nudge it a bit: left 12px, up 6px */
 .hours-popover:not([hidden]){
   transform: translate(-12px, -6px);
