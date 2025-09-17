@@ -1637,3 +1637,14 @@ header.site-header {
   top: 0;
   z-index: 9999; /* keeps nav above embeds */
 }
+
+/* Leafly: keep its surface topmost & isolated so clicks reach it */
+.embed-shell,
+#leafly-embed-wrapper{
+  position: relative;
+  z-index: 1;
+  isolation: isolate;      /* starts a new stacking context */
+}
+
+.leafly-overlay{ pointer-events:none; }   /* if you ever use one */
+.leafly-overlay .panel{ pointer-events:auto; }
