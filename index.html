@@ -404,50 +404,6 @@
     if (location.hash === '#home' || location.hash === '') closeMenu();
   });
 })();
-</script>
-    
-  function openMenu() {
-    if (!menu) return;
-    menu.hidden = false;
-    loadLeafly();
-    menu.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  function closeMenu() {
-    if (!menu) return;
-    menu.hidden = true;
-  }
-
-  // CLICKING THE SEARCH ICON → open in-page menu (no external tab)
-  const searchBtn = document.getElementById('searchBtn');
-  if (searchBtn) {
-    searchBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      openMenu();
-    });
-  }
-
-  // Open on "Shop Online" or any link to #menu (incl. category cards)
-  document.addEventListener('click', (e) => {
-    const trigger = e.target.closest('a[href="#menu"], a[data-leafly-src]');
-    if (!trigger) return;
-    e.preventDefault();
-    openMenu();
-  });
-
-  // Hide again when clicking Home / crest
-  document.addEventListener('click', (e) => {
-    if (e.target.closest('a[href="#home"], .sticky-logo[href="#home"]')) {
-      closeMenu();
-    }
-  });
-
-  // Hide if user navigates back to #home
-  window.addEventListener('hashchange', () => {
-    if (location.hash === '#home' || location.hash === '') closeMenu();
-  });
-})();
-</script>
     
   </section>
   <!-- ===== /Dutch Touch Genetics — Awards Rail ===== -->
