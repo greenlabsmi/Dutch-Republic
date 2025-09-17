@@ -1605,3 +1605,17 @@ body.agegate--lock{ overflow:hidden; }
 .hours-popover:not([hidden]){
   transform: translate(-12px, -6px);
 }
+
+/* DESKTOP: always show the lion crest */
+@media (min-width:901px){
+  .sticky-logo{ display:inline-flex !important; }       /* ensure visible */
+  .sticky-logo .brand-lion{
+    height: calc(var(--nav-h) - 8px);                   /* keep sized */
+    width: auto;
+  }
+}
+
+/* DESKTOP: breathing room between links and action buttons */
+@media (min-width:901px){
+  .sticky-tabs{ margin-right: 20px; }   /* tweak 12–28px to taste */
+}
