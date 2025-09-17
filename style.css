@@ -1570,3 +1570,7 @@ body.agegate--lock{ overflow:hidden; }
   .btn-order .label-desktop{ display:inline; }
   .btn-order .label-mobile{ display:none; }
 }
+
+/* Force the same label on all viewports */
+.btn-order .label-desktop{ display:inline !important; }
+.btn-order .label-mobile{ display:none !important; }
