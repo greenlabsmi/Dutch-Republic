@@ -312,26 +312,38 @@ function smartMapHref(address){
       const isOpen = hour >= open && hour < close;
       return { isOpen, openSoon, closingSoon, open, close, idx };
     }
-    function paintPill() {
+   function paintPill() {
   const s = statusNow();
   btn.classList.remove('state-open','state-soon','state-closed');
+
+  // build a clean tooltip message
+  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  let tip = '';
 
   if (s.isOpen && s.closingSoon) {
     btn.textContent = 'CLOSING SOON';
     btn.classList.add('state-soon');
-    if (statusDot) statusDot.className = 'status-dot is-soon';
+    tip = `Closes at ${fmt(s.close)} today`;
   } else if (!s.isOpen && s.openSoon) {
     btn.textContent = 'OPENING SOON';
     btn.classList.add('state-soon');
-    if (statusDot) statusDot.className = 'status-dot is-soon';
+    tip = `Opens at ${fmt(s.open)} today`;
   } else if (s.isOpen) {
     btn.textContent = 'OPEN';
     btn.classList.add('state-open');
-    if (statusDot) statusDot.className = 'status-dot is-open';
+    tip = `Open until ${fmt(s.close)} today`;
   } else {
     btn.textContent = 'CLOSED';
     btn.classList.add('state-closed');
-    if (statusDot) statusDot.className = 'status-dot is-closed';
+    const next = (s.idx + 1) % 7;
+    tip = `Opens ${days[next]} at ${fmt(HOURS[next].open)}`;
+  }
+
+  // expose message for the tooltip
+  btn.dataset.tip = tip;
+
+  if (statusDot) {
+    statusDot.className = 'status-dot ' + (s.isOpen ? 'is-open' : (s.openSoon || s.closingSoon ? 'is-soon' : 'is-closed'));
   }
 }
     
@@ -425,7 +437,9 @@ window.addEventListener('resize', queueAlign);
     const tip = document.getElementById('hoursTip');
     const note = document.getElementById('hoursNote');
     if (!btn || !tip) return;
-    const syncTip = () => {
+   const syncTip = () => {
+  tip.textContent = btn.dataset.tip || 'Store hours';
+};
       // shorten the note ("We’re open until 9PM today." -> "Open until 9PM")
       const raw = (note?.textContent || '').trim();
       const short = raw
