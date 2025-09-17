@@ -1619,3 +1619,15 @@ body.agegate--lock{ overflow:hidden; }
 @media (min-width:901px){
   .sticky-tabs{ margin-right: 20px; }   /* tweak 12–28px to taste */
 }
+/* Desktop: make sure the lion crest is visible and sized */
+@media (min-width:901px){
+  header.site-header.sticky-nav .sticky-logo{
+    display:inline-flex !important;
+    visibility:visible !important;
+    opacity:1 !important;
+  }
+  header.site-header.sticky-nav .sticky-logo .brand-lion{
+    height: calc(var(--nav-h) - 8px) !important;
+    width: auto !important;
+  }
+}
