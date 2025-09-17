@@ -1556,3 +1556,17 @@ body.agegate--lock{ overflow:hidden; }
   outline:2px solid #fff; outline-offset:2px; border-radius:6px;
 }
 
+/* Ensure the Order button is always visible in the header */
+.sticky-actions .btn-order { 
+  display: inline-flex !important; 
+  align-items: center; 
+  justify-content: center; 
+}
+
+/* Label swap already present, but keep a tiny guard */
+.btn-order .label-desktop{ display:none; }
+.btn-order .label-mobile{ display:inline; }
+@media (min-width:901px){
+  .btn-order .label-desktop{ display:inline; }
+  .btn-order .label-mobile{ display:none; }
+}
