@@ -1918,8 +1918,6 @@ html, body { overflow-x: clip; }
   display:inline;
 }
 
-@keyframes foilShine { from{background-position:-40% 0} to{background-position:180% 0} }
-
 .sticky-tabs .stab{
   position:relative;
   transition: color .15s ease;
@@ -1938,14 +1936,27 @@ html, body { overflow-x: clip; }
   }
 }
 
-/* Gradient gold text style */
-.gold-text {
+/* --- Gold foil only-on-hover text effect (matches nav) --- */
+.foil-hover {
+  color: #111315;                  /* black by default */
   font-family: "Luminari", "Cinzel", serif;
-  font-weight: 900; /* extra bold */
-  background: linear-gradient(90deg, #9C6B1A, #F2C14E, #FFE27A, #F2C14E, #9C6B1A);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
-  letter-spacing: 1px;
+  font-weight: 900;
+  letter-spacing: .02em;
+  transition: color .15s ease;
+}
+
+@keyframes foilShine { from{background-position:-40% 0} to{background-position:180% 0} }
+
+@media (hover:hover){
+  .foil-hover:hover,
+  .foil-hover:focus-visible {
+    color: transparent;            /* hide the black so the gradient shows */
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(92deg,#9C6B1A 0%,#F2C14E 22%,#FFE27A 45%,#F2C14E 62%,#9C6B1A 100%);
+    background-size: 220% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: foilShine 3s linear infinite;
+    text-shadow: 0 1px 0 rgba(0,0,0,.20);
+  }
 }
