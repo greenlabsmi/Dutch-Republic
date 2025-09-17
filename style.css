@@ -1746,3 +1746,42 @@ header.site-header {
   align-items:center;
   gap:12px;
 }
+
+/* --- Force typography to Cinzel where needed --- */
+:root{
+  --display-font: "Cinzel", Georgia, serif;
+  --ui-font: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif;
+}
+
+body{ font-family: var(--ui-font); }
+
+/* Wordmark / big headings (what you want in the screenshot) */
+.site-title,
+.brand,
+.wordmark,
+h1,h2,h3{
+  font-family: var(--display-font);
+  font-weight: 900;
+  letter-spacing:.02em;
+}
+
+/* NAV + pills + buttons */
+nav a,
+nav button,
+.nav a,
+.nav__link,
+.btn,
+.button,
+.cta,
+.pill,
+.shop-online,
+.shop-online a{
+  font-family: var(--display-font) !important;
+  font-weight: 700;
+}
+
+/* Nuke any leftover old-English assignment */
+*[style*="UnifrakturCook"],
+.old-english{
+  font-family: var(--display-font) !important;
+}
