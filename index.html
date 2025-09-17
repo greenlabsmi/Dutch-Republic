@@ -529,5 +529,35 @@
 <!-- Your existing JS bundle -->
 <script src="script.js"></script>
 
+  <!-- ========== AGE GATE (drop-in) ========== -->
+<div id="ageGate" class="agegate" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="agegate__box" role="document">
+    <div class="agegate__crest" aria-hidden="true">🦁</div>
+    <h1 class="agegate__title">Are you 21 or older?</h1>
+    <p class="agegate__sub">You must be of legal age to enter Dutch Republic.</p>
+
+    <div class="agegate__actions">
+      <button id="ageYes" class="btn gold agegate__btn">Yes — Enter</button>
+      <button id="ageNo"  class="btn outline agegate__btn">No</button>
+    </div>
+
+    <label class="agegate__remember">
+      <input id="ageRemember" type="checkbox" checked>
+      <span>Remember me for 30 days</span>
+    </label>
+
+    <p class="agegate__legal">By entering, you agree to our Terms & Privacy.</p>
+  </div>
+
+  <noscript>
+    <style>#ageGate{display:flex}</style>
+    <div class="agegate__box">
+      <h1 class="agegate__title">JavaScript required</h1>
+      <p class="agegate__sub">Please enable JavaScript to verify you are 21+.</p>
+    </div>
+  </noscript>
+</div>
+<!-- ========== /AGE GATE ========== -->
+
 </body>
 </html>
