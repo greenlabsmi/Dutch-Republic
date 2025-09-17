@@ -1651,3 +1651,36 @@ header.site-header {
 
 .leafly-overlay{ pointer-events:none; }   /* if you ever use one */
 .leafly-overlay .panel{ pointer-events:auto; }
+
+/* ===== Sticky logo: production-safe overrides ===== */
+:root { --nav-h: 60px; }  /* fallback in case it's not set somewhere */
+
+/* Layout + stacking so it always occupies space and sits above overlays */
+.sticky-nav__inner{ display:flex; align-items:center; gap:12px; }
+.sticky-logo{ display:flex; align-items:center; flex:0 0 auto; position:relative; z-index:2; }
+
+/* The crest image itself – fixed, visible, with a safe fallback */
+.sticky-logo .brand-lion{
+  display:block;
+  height:48px;                            /* hard size that always shows */
+  width:auto;
+  max-height:calc(var(--nav-h,60px) - 8px); /* still respects your nav height */
+  min-height:32px;                        /* prevents collapse */
+  opacity:1 !important;
+  visibility:visible !important;
+  filter:none !important;
+  mix-blend-mode:normal !important;
+  transition:none !important;             /* avoids flash-then-hide animations */
+}
+
+/* Ensure no sticky state hides it */
+.site-header.sticky-nav .sticky-logo,
+.site-header.sticky-nav.is-scrolled .sticky-logo{
+  opacity:1 !important;
+  visibility:visible !important;
+}
+
+/* Optional: keep mobile clean (show crest, hide big wordmark if needed) */
+@media (max-width:900px){
+  .sticky-brand-name{ display:none; }
+}
