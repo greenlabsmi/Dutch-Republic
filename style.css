@@ -1856,3 +1856,28 @@ nav button,
 .old-english{
   font-family: var(--display-font) !important;
 }
+
+/* === Visually center the nav as one group (desktop only) === */
+@media (min-width: 901px){
+  .sticky-nav__inner{
+    display: flex;
+    align-items: center;
+    justify-content: center;   /* center the trio as a pack */
+    gap: 28px;                 /* space between: [logo] – [links] – [icons] */
+    height: var(--nav-h);
+  }
+
+  /* stop the old edge pushers */
+  .sticky-logo{ margin-right: 0; margin-left: 8px; }
+  .sticky-actions{ margin-left: 0; }
+
+  /* prevent the center links from stretching the row */
+  .sticky-tabs{
+    flex: 0 0 auto;            /* remove flex:1 stretch */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;                 /* space between the text links */
+    white-space: nowrap;
+  }
+}
