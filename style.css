@@ -354,13 +354,39 @@ body:not(.show-sticky){
   content:""; position:absolute; left:0; right:0; bottom:0; height:28px;
   background:linear-gradient(to bottom, rgba(255,249,230,0), var(--deal-hue, #FFF9E6));
 }
-.deal-list{margin:8px 0 12px;padding-left:0;list-style:none}
-.deal-cat{margin-bottom:16px}
-.deal-cat + .deal-cat{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}
-.deal-cat-title{
-  font-weight:800; font-size:1.02rem; background:#fff;
-  padding:8px 10px; border-radius:10px; margin-bottom:8px; color:var(--ink); border:1px solid var(--line)
+/* Today's Deals header */
+.deal-title{
+  justify-self: center;
+  color: #2B2F33;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
+
+/* Category wrapper (adds top rule and spacing) */
+.deal-cat{
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+  margin-top: 12px;
+  font-family: 'Cinzel', serif;  /* Cinzel for category headings */
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Visible category title chip */
+.deal-cat-title{
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-size: 1.02rem;
+  background: #fff;
+  padding: 8px 10px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
 .deal-subgroup{margin:8px 0 12px}
 .deal-subtitle{
   font-weight:700; font-size:.96rem; color:var(--ink);
