@@ -622,14 +622,51 @@ document.addEventListener('click', (e) => {
   });
 })();
 
-// Simple auto-rotating carousel
-document.addEventListener("DOMContentLoaded", () => {
-  const track = document.querySelector(".carousel-track");
-  const slides = document.querySelectorAll(".carousel img");
-  let index = 0;
+// ===== Simple, robust carousel (auto + dots + arrows) =====
+(function simpleCarousel(){
+  const scroller = document.querySelector('[data-carousel]');
+  const dotsWrap = document.querySelector('[data-dots]');
+  if (!scroller || !dotsWrap) return;
 
-  setInterval(() => {
-    index = (index + 1) % slides.length;
-    track.style.transform = `translateX(-${index * 100}%)`;
-  }, 5000); // change every 5 seconds
-});
+  const slides = [...scroller.querySelectorAll('.slide')];
+  if (!slides.length) return;
+
+  let i = 0;
+  const INTERVAL = 5000;
+  let timer = null;
+
+  // Build dots
+  dotsWrap.innerHTML = '';
+  slides.forEach((_, idx) => {
+    const b = document.createElement('button');
+    if (idx === 0) b.classList.add('is-active');
+    b.addEventListener('click', () => { go(idx); restart(); });
+    dotsWrap.appendChild(b);
+  });
+
+  // Arrows
+  const prev = document.querySelector('.c-arrow.prev');
+  const next = document.querySelector('.c-arrow.next');
+  prev?.addEventListener('click', () => { go(i - 1); restart(); });
+  next?.addEventListener('click', () => { go(i + 1); restart(); });
+
+  // Core
+  function go(n){
+    i = (n + slides.length) % slides.length;
+    scroller.style.transform = `translateX(-${i * 100}%)`;
+    dotsWrap.querySelectorAll('button').forEach((d, idx) => {
+      d.classList.toggle('is-active', idx === i);
+    });
+  }
+  function start(){ timer = setInterval(() => go(i + 1), INTERVAL); }
+  function stop(){ if (timer) clearInterval(timer); timer = null; }
+  function restart(){ stop(); start(); }
+
+  // Pause on hover (desktop)
+  scroller.addEventListener('mouseenter', stop);
+  scroller.addEventListener('mouseleave', start);
+
+  // Init
+  go(0);
+  start();
+})();
