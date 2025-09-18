@@ -358,24 +358,22 @@ body:not(.show-sticky){
 .deal-title{
   justify-self: center;
   color: #2B2F33;
-  font-family: 'Cinzel', serif;
+  font-family: 'Cinzel', serif;   /* only header in Cinzel */
   font-weight: 700;
   letter-spacing: 0.5px;
 }
 
-/* Category wrapper (adds top rule and spacing) */
+/* Category wrapper (spacing + line only) */
 .deal-cat{
   border-top: 1px solid var(--line);
   padding-top: 12px;
   margin-top: 12px;
-  font-family: 'Cinzel', serif;  /* Cinzel for category headings */
-  font-weight: 700;
-  letter-spacing: 0.5px;
+  /* no font-family here so items stay in body font */
 }
 
 /* Visible category title chip */
 .deal-cat-title{
-  font-family: 'Cinzel', serif;
+  font-family: 'Cinzel', serif;   /* Cinzel only on the pill */
   font-weight: 700;
   letter-spacing: 0.5px;
   font-size: 1.02rem;
