@@ -326,6 +326,27 @@ body:not(.show-sticky){
 .dots button{width:8px;height:8px;border-radius:50%;border:0;background:#d0d4da}
 .dots button.is-active{background:#9aa3ae}
 
+/* ===== Carousel ===== */
+.carousel {
+  width: 100%;
+  max-width: 1600px;   /* keeps it contained on large screens */
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel img {
+  width: 100%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
 /* ========== Today’s Deals ========== */
 .deals-section{margin:18px 0}
 .deal-card{
