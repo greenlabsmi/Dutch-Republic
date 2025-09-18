@@ -621,3 +621,15 @@ document.addEventListener('click', (e) => {
     // document.getElementById('shopFilter')?.focus();
   });
 })();
+
+// Simple auto-rotating carousel
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.querySelector(".carousel-track");
+  const slides = document.querySelectorAll(".carousel img");
+  let index = 0;
+
+  setInterval(() => {
+    index = (index + 1) % slides.length;
+    track.style.transform = `translateX(-${index * 100}%)`;
+  }, 5000); // change every 5 seconds
+});
