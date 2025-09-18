@@ -577,10 +577,16 @@
 
 <footer class="site-footer">
   <div class="container footer-row">
-    <small>© <span id="year"></span> Dutch Republic. All rights reserved.</small>
-    <nav class="footer-links">
-      <a href="/privacy.html">Privacy Policy</a>
-      <a href="/terms.html">Terms of Service</a>
+    <div class="footer-brand">
+      <!-- optional tiny logo; remove if you don’t want it -->
+      <!-- <img src="logo-small.png" alt="Dutch Republic" class="footer-logo"> -->
+      <div class="footer-copy">© <span id="year"></span> Dutch Republic. All rights reserved.</div>
+    </div>
+
+    <nav class="footer-links" aria-label="Legal links">
+      <a href="terms.html">Terms of Service</a>
+      <span class="dot">•</span>
+      <a href="privacy.html">Privacy Policy</a>
     </nav>
   </div>
 </footer>
