@@ -1,6 +1,6 @@
 [
   {
-    "category": "🌿 Flower",
+    "category": "🌲 Flower",
     "groups": [
       {
         "title": "Ounces",
@@ -30,15 +30,15 @@
     ]
   },
   {
-    "category": "🚬 Pre-Rolls (Regular)",
-    "items": [
-      "Franklin Fields 1g Pre-Rolls - $5ea or 10/$35",
-      "Dutch Touch 1g Full Bud Pre-Rolls - $12ea - Excludes Mr. Clean ($20ea)",
-      "Dutch Touch 5pk Pre-Rolls - $30ea",
-      "Dutch Touch 25pk Pre-Rolls - $100ea - Excludes Mr. Clean ($110ea)",
-      "Dutch Touch 25pk 0.5g Pre-Rolls - $55ea - Excludes Mr. Clean"
-    ]
-  },
+  "category": "Pre-Rolls (Regular)",
+  "items": [
+    "Franklin Fields 1g Pre-Rolls - $5ea or 10/$35",
+    "Dutch Touch 1g Full Bud Pre-Rolls - $12ea - Excludes Mr. Clean ($20ea)",
+    "Dutch Touch 5pk Pre-Rolls - $30ea",
+    "Dutch Touch 25pk Pre-Rolls - $100ea - Excludes Mr. Clean ($110ea)",
+    "Dutch Touch 25pk 0.5g Pre-Rolls - $55ea - Excludes Mr. Clean"
+  ]
+},
   {
     "category": "💥 Pre-Rolls (Infused)",
     "items": [
@@ -53,7 +53,7 @@
     ]
   },
   {
-    "category": "📦 Disposables",
+    "category": "⚡️ Disposables",
     "items": [
       "Dutch Touch Genetics 1g Disposables - $20ea or 6/$110",
       "Franklin Fields 1g Live Resin Disposables - $30ea or 2/$50"
@@ -76,7 +76,7 @@
     ]
   },
   {
-    "category": "🛢 Concentrates (Resin, Extracts)",
+    "category": "🍯 Concentrates (Resin, Extracts)",
     "items": [
       "Greenco 1g Resin - $10ea or 3/$20",
       "Paradice 1g Resin - $10ea or 15/$100",
