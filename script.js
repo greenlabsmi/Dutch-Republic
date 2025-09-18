@@ -3,7 +3,6 @@
 // ------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
 
-
 // ===== Age Gate logic (uses #ageGate, #ageYes, #ageNo, #ageRemember) =====
 (function () {
   const KEY = 'dr_age_until';
@@ -220,14 +219,14 @@ document.querySelectorAll('.sticky-tabs .stab').forEach(t => {
           `).join('');
           return `
             <li class="deal-cat">
-               <div class="deal-cat-title"><i class="fa-solid fa-joint"></i> ${esc(cat.category)}</div>
+               <div class="deal-cat-title">${esc(cat.category)}</div>
               ${groups}
             </li>
           `;
         } else {
           return `
             <li class="deal-cat">
-               <div class="deal-cat-title"><i class="fa-solid fa-joint"></i> ${esc(cat.category)}</div>
+              <div class="deal-cat-title">${esc(cat.category)}</div>
               <ul class="deal-items">
                 ${(cat.items || []).map(it => `<li>${esc(it)}</li>`).join('')}
               </ul>
