@@ -1980,65 +1980,38 @@ nav button,
 }
 .footer-links{
 
-/* ===== Hero: contained card on desktop ===== */
-@media (min-width: 900px){
-  /* Center the hero section and give it top/bottom spacing */
-  .hero{
-    padding: 24px 0;                 /* space above/below the card */
-    background: transparent;         /* keep your page bg visible */
-  }
-
-  /* Make the slideshow a contained "card" */
-  .hero .slides{
-    width: min(1200px, 94vw);        /* hard cap + a little gutter */
-    margin: 0 auto;                  /* center it */
-    padding: 12px;                   /* inner white frame */
-    background: #fff;                /* white card like your example */
-    border: 1px solid var(--line, #e7e8ec);
-    border-radius: 18px;             /* slightly rounder than before */
-    box-shadow: 0 10px 28px rgba(16,24,40,.12);
-  }
-
-  /* Keep the actual image area nicely proportioned inside the card */
-  .hero .slide,
-  .hero .slide.is-active{ border-radius: 14px; }
-  .hero .slides{ aspect-ratio: auto; }        /* let card size itself */
-  .hero .slides .slide{
-    aspect-ratio: 16 / 6;                      /* image window ratio */
-    max-height: 520px;                         /* prevent giant heroes */
-  }
-
-  /* Tuck dots a bit above the card edge so they don’t sit on the border */
-  .hero .dots{ bottom: 18px; }
-  /* Narrow the invisible side click areas so they stay inside the card */
-  .hero .edge{ width: 8%; border-radius: 14px; }
-}
-
-/* --- HARD OVERRIDE: contain hero on desktop --- */
+/* === HARD OVERRIDE: contain the hero on desktop (ID-based) === */
 @media (min-width:900px){
-  section.hero{ padding:24px 0 !important; background:transparent !important; }
-
-  section.hero > .slides{
-    width:min(1200px,94vw) !important;
-    margin:0 auto !important;
-    padding:12px !important;
-    background:#fff !important;
-    border:1px solid var(--line, #e7e8ec) !important;
-    border-radius:18px !important;
-    box-shadow:0 10px 28px rgba(16,24,40,.12) !important;
+  #hero-slides{
+    width: min(1200px, 94vw) !important;
+    margin: 24px auto !important;        /* top/bottom space + centered */
+    padding: 12px !important;            /* white card frame */
+    background: #fff !important;
+    border: 1px solid var(--line, #e7e8ec) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 10px 28px rgba(16,24,40,.12) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    outline: 2px dashed #8aa2ff !important;  /* TEMP: visual proof */
   }
 
   /* image window inside the card */
-  section.hero > .slides .slide,
-  section.hero > .slides .slide.is-active{ border-radius:14px !important; }
+  #hero-slides .slide,
+  #hero-slides .slide.is-active{ border-radius:14px !important; }
 
-  section.hero > .slides .slide{
-    aspect-ratio:16/6 !important;
-    max-height:520px !important;
+  #hero-slides .slide{
+    position: absolute !important;
+    inset: 0 !important;
+    min-width: 0 !important;
+    aspect-ratio: 16 / 6 !important;
+    max-height: 520px !important;
+    opacity: 0; pointer-events: none;
+    transition: opacity .45s ease;
+    will-change: opacity;
   }
+  #hero-slides .slide.is-active{ opacity:1; pointer-events:auto; }
 
-  /* keep controls neat inside the card */
-  section.hero > .slides .dots{ bottom:18px !important; }
-  section.hero > .slides .edge{ width:8% !important; border-radius:14px !important; }
-section.hero > .slides{ outline:2px dashed #8aa2ff !important; }
+  #hero-slides .dots{ bottom: 18px !important; }
+  #hero-slides .edge{ width: 8% !important; border-radius: 14px !important; }
 }
+
