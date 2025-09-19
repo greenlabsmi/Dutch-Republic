@@ -343,8 +343,8 @@ body:not(.show-sticky){
 .hero .slides{ aspect-ratio:16/7; }
 @media (min-width:900px){
   .hero .slides{
-    aspect-ratio:16/4;               /* taller/wider hero on desktop */
-    max-height:640px;                 /* cap height; bump if you want taller */
+    aspect-ratio:16/6;               /* taller/wider hero on desktop */
+    max-height:800px;                 /* cap height; bump if you want taller */
   }
 }
 
