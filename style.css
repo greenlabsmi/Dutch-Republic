@@ -317,15 +317,6 @@ body:not(.show-sticky){
 .menu-overlay{ top: var(--menu-top); }
 .menu-popover{ top: var(--menu-top); }
 
-/* ========== Hero ========== */
-.hero{margin:14px 0; background:#000;}
-.slides{display:grid;grid-auto-flow:column;grid-auto-columns:100%;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:var(--radius)}
-.slide{scroll-snap-align:start}
-.slide img{width:100%;height:220px;object-fit:cover;border-radius:var(--radius)}
-.dots{display:flex;gap:6px;justify-content:center;margin-top:8px}
-.dots button{width:8px;height:8px;border-radius:50%;border:0;background:#d0d4da}
-.dots button.is-active{background:#9aa3ae}
-
 /* ===== HERO CAROUSEL — ONE BLOCK TO RULE THEM ALL ===== */
 .hero{ position:relative; }
 
