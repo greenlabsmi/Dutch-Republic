@@ -622,51 +622,97 @@ document.addEventListener('click', (e) => {
   });
 })();
 
-// ===== Simple, robust carousel (auto + dots + arrows) =====
-(function simpleCarousel(){
-  const scroller = document.querySelector('[data-carousel]');
-  const dotsWrap = document.querySelector('[data-dots]');
-  if (!scroller || !dotsWrap) return;
+/* Lightweight carousel controller (edges + dots + swipe + autoplay) */
+(function(){
+  const roots = document.querySelectorAll('[data-carousel]');
+  if (!roots.length) return;
+  roots.forEach(setup);
 
-  const slides = [...scroller.querySelectorAll('.slide')];
-  if (!slides.length) return;
-
-  let i = 0;
-  const INTERVAL = 5000;
-  let timer = null;
-
-  // Build dots
-  dotsWrap.innerHTML = '';
-  slides.forEach((_, idx) => {
-    const b = document.createElement('button');
-    if (idx === 0) b.classList.add('is-active');
-    b.addEventListener('click', () => { go(idx); restart(); });
-    dotsWrap.appendChild(b);
-  });
-
-  // Arrows
-  const prev = document.querySelector('.c-arrow.prev');
-  const next = document.querySelector('.c-arrow.next');
-  prev?.addEventListener('click', () => { go(i - 1); restart(); });
-  next?.addEventListener('click', () => { go(i + 1); restart(); });
-
-  // Core
-  function go(n){
-    i = (n + slides.length) % slides.length;
-    scroller.style.transform = `translateX(-${i * 100}%)`;
-    dotsWrap.querySelectorAll('button').forEach((d, idx) => {
-      d.classList.toggle('is-active', idx === i);
+  function setup(root){
+    // Collect slides; ignore empties (prevents black/blank frames)
+    let slides = [...root.querySelectorAll('.slide')].filter(s => {
+      const img = s.querySelector('img');
+      return img && img.getAttribute('src');
     });
+    if (!slides.length) return;
+
+    // Ensure first slide active
+    slides.forEach((s,i)=> s.classList.toggle('is-active', i===0));
+    let i = 0, N = slides.length;
+
+    // Build / locate dots
+    let dotsBar = root.querySelector('.dots');
+    if (!dotsBar){
+      dotsBar = document.createElement('div');
+      dotsBar.className = 'dots';
+      root.appendChild(dotsBar);
+    }
+    dotsBar.innerHTML = '';
+    const dots = slides.map((_,k)=>{
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', `Go to slide ${k+1}`);
+      if(k===0) b.setAttribute('aria-current', 'true');
+      b.addEventListener('click', ()=>go(k, true));
+      dotsBar.appendChild(b);
+      return b;
+    });
+
+    // Edge click targets (invisible)
+    let prevEdge = root.querySelector('.edge--prev');
+    let nextEdge = root.querySelector('.edge--next');
+    if (!prevEdge){
+      prevEdge = document.createElement('button');
+      prevEdge.className = 'edge edge--prev';
+      prevEdge.type = 'button';
+      prevEdge.setAttribute('aria-label','Previous');
+      root.appendChild(prevEdge);
+    }
+    if (!nextEdge){
+      nextEdge = document.createElement('button');
+      nextEdge.className = 'edge edge--next';
+      nextEdge.type = 'button';
+      nextEdge.setAttribute('aria-label','Next');
+      root.appendChild(nextEdge);
+    }
+    prevEdge.addEventListener('click', ()=>go(i-1, true));
+    nextEdge.addEventListener('click', ()=>go(i+1, true));
+
+    // Swipe (mobile)
+    let startX=null;
+    root.addEventListener('touchstart', e=>{ startX = e.touches[0].clientX; stop(); }, {passive:true});
+    root.addEventListener('touchend', e=>{
+      if(startX==null) return;
+      const dx = e.changedTouches[0].clientX - startX;
+      if(Math.abs(dx) > 40) go(dx<0 ? i+1 : i-1, true);
+      startX = null; start();
+    }, {passive:true});
+
+    // Autoplay
+    const delay = parseInt(root.dataset.autoplay || '7000', 10);
+    let timer;
+    function start(){ stop(); timer = setInterval(()=>go(i+1,false), delay); }
+    function stop(){ if(timer) { clearInterval(timer); timer=null; } }
+
+    // Pause on hover (desktop)
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+
+    // Init
+    start();
+
+    function go(n, user=false){
+      const prev = i;
+      i = ((n % N) + N) % N; // wrap both directions
+      if (i === prev) return;
+
+      slides[prev].classList.remove('is-active');
+      slides[i].classList.add('is-active');
+
+      if (dots[prev]) dots[prev].removeAttribute('aria-current');
+      if (dots[i])   dots[i].setAttribute('aria-current','true');
+
+      if (user){ stop(); start(); } // restart timer on user interaction
+    }
   }
-  function start(){ timer = setInterval(() => go(i + 1), INTERVAL); }
-  function stop(){ if (timer) clearInterval(timer); timer = null; }
-  function restart(){ stop(); start(); }
-
-  // Pause on hover (desktop)
-  scroller.addEventListener('mouseenter', stop);
-  scroller.addEventListener('mouseleave', start);
-
-  // Init
-  go(0);
-  start();
 })();
