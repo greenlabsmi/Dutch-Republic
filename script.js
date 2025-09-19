@@ -113,34 +113,7 @@ document.querySelectorAll('.sticky-tabs .stab').forEach(t => {
   // Year in footer
   const y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
-  // ================= Hero carousel =================
-  (function initCarousel() {
-    const scroller = document.querySelector('[data-carousel]');
-    const dotsWrap = document.querySelector('[data-dots]');
-    if (!scroller || !dotsWrap) return;
-    const slides = [...scroller.querySelectorAll('.slide')];
-    slides.forEach((_, i) => {
-      const b = document.createElement('button');
-      if (i === 0) b.classList.add('is-active');
-      b.addEventListener('click', () => {
-        scroller.scrollTo({ left: i * scroller.clientWidth, behavior: 'smooth' });
-      });
-      dotsWrap.appendChild(b);
-    });
-    const updateDots = () => {
-      const i = Math.round(scroller.scrollLeft / scroller.clientWidth);
-      dotsWrap.querySelectorAll('button').forEach((d, idx) => {
-        d.classList.toggle('is-active', idx === i);
-      });
-    };
-    scroller.addEventListener('scroll', () => requestAnimationFrame(updateDots), { passive: true });
-    // Auto-advance
-    let idx = 0;
-    setInterval(() => {
-      idx = (idx + 1) % slides.length;
-      scroller.scrollTo({ left: idx * scroller.clientWidth, behavior: 'smooth' });
-    }, 6000);
-  })();
+ 
   // Open external links in a new tab
   document.querySelectorAll('[data-ext]').forEach(a => {
     a.setAttribute('rel', 'noopener');
@@ -624,95 +597,104 @@ document.addEventListener('click', (e) => {
 
 /* Lightweight carousel controller (edges + dots + swipe + autoplay) */
 (function(){
-  const roots = document.querySelectorAll('[data-carousel]');
-  if (!roots.length) return;
-  roots.forEach(setup);
+  const root = document.getElementById('hero-slides');
+  if (!root) return;
 
-  function setup(root){
-    // Collect slides; ignore empties (prevents black/blank frames)
-    let slides = [...root.querySelectorAll('.slide')].filter(s => {
-      const img = s.querySelector('img');
-      return img && img.getAttribute('src');
-    });
-    if (!slides.length) return;
+  // Collect slides; ignore empties (prevents blank/black frames)
+  const slides = [...root.querySelectorAll('.slide')].filter(s => {
+    const img = s.querySelector('img');
+    return img && img.getAttribute('src');
+  });
+  const N = slides.length;
+  if (!N) return;
 
-    // Ensure first slide active
-    slides.forEach((s,i)=> s.classList.toggle('is-active', i===0));
-    let i = 0, N = slides.length;
+  // Initial state
+  let i = slides.findIndex(s => s.classList.contains('is-active'));
+  if (i < 0) i = 0;
+  slides.forEach((s, idx) => s.classList.toggle('is-active', idx === i));
 
-    // Build / locate dots
-    let dotsBar = root.querySelector('.dots');
-    if (!dotsBar){
-      dotsBar = document.createElement('div');
-      dotsBar.className = 'dots';
-      root.appendChild(dotsBar);
-    }
-    dotsBar.innerHTML = '';
-    const dots = slides.map((_,k)=>{
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.setAttribute('aria-label', `Go to slide ${k+1}`);
-      if(k===0) b.setAttribute('aria-current', 'true');
-      b.addEventListener('click', ()=>go(k, true));
-      dotsBar.appendChild(b);
-      return b;
-    });
+  // Dots
+  let dotsBar = root.querySelector('.dots');
+  if (!dotsBar){
+    dotsBar = document.createElement('div');
+    dotsBar.className = 'dots';
+    root.appendChild(dotsBar);
+  }
+  dotsBar.innerHTML = '';
+  const dots = slides.map((_, k) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', `Go to slide ${k+1}`);
+    if (k === i) b.setAttribute('aria-current','true');
+    b.addEventListener('click', () => go(k, true));
+    dotsBar.appendChild(b);
+    return b;
+  });
 
-    // Edge click targets (invisible)
-    let prevEdge = root.querySelector('.edge--prev');
-    let nextEdge = root.querySelector('.edge--next');
-    if (!prevEdge){
-      prevEdge = document.createElement('button');
-      prevEdge.className = 'edge edge--prev';
-      prevEdge.type = 'button';
-      prevEdge.setAttribute('aria-label','Previous');
-      root.appendChild(prevEdge);
-    }
-    if (!nextEdge){
-      nextEdge = document.createElement('button');
-      nextEdge.className = 'edge edge--next';
-      nextEdge.type = 'button';
-      nextEdge.setAttribute('aria-label','Next');
-      root.appendChild(nextEdge);
-    }
-    prevEdge.addEventListener('click', ()=>go(i-1, true));
-    nextEdge.addEventListener('click', ()=>go(i+1, true));
+  // Invisible edges
+  let prevEdge = root.querySelector('.edge--prev');
+  let nextEdge = root.querySelector('.edge--next');
+  if (!prevEdge){
+    prevEdge = document.createElement('button');
+    prevEdge.className = 'edge edge--prev';
+    prevEdge.type = 'button';
+    prevEdge.setAttribute('aria-label','Previous');
+    root.appendChild(prevEdge);
+  }
+  if (!nextEdge){
+    nextEdge = document.createElement('button');
+    nextEdge.className = 'edge edge--next';
+    nextEdge.type = 'button';
+    nextEdge.setAttribute('aria-label','Next');
+    root.appendChild(nextEdge);
+  }
+  prevEdge.addEventListener('click', () => go(i-1, true));
+  nextEdge.addEventListener('click', () => go(i+1, true));
 
-    // Swipe (mobile)
-    let startX=null;
-    root.addEventListener('touchstart', e=>{ startX = e.touches[0].clientX; stop(); }, {passive:true});
-    root.addEventListener('touchend', e=>{
-      if(startX==null) return;
-      const dx = e.changedTouches[0].clientX - startX;
-      if(Math.abs(dx) > 40) go(dx<0 ? i+1 : i-1, true);
-      startX = null; start();
-    }, {passive:true});
+  // Keyboard (left/right when focused anywhere in hero)
+  root.setAttribute('tabindex','0'); // allow focus for key events
+  root.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); go(i-1, true); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(i+1, true); }
+  });
 
-    // Autoplay
-    const delay = parseInt(root.dataset.autoplay || '7000', 10);
-    let timer;
-    function start(){ stop(); timer = setInterval(()=>go(i+1,false), delay); }
-    function stop(){ if(timer) { clearInterval(timer); timer=null; } }
+  // Touch swipe
+  let startX = null;
+  root.addEventListener('touchstart', e => { startX = e.touches[0].clientX; stop(); }, {passive:true});
+  root.addEventListener('touchend',   e => {
+    if (startX == null) return;
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 40) go(dx < 0 ? i+1 : i-1, true);
+    startX = null; start();
+  }, {passive:true});
 
-    // Pause on hover (desktop)
-    root.addEventListener('mouseenter', stop);
-    root.addEventListener('mouseleave', start);
+  // Autoplay (respect reduced motion)
+  const delay = parseInt(root.dataset.autoplay || '7000', 10);
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let timer = null;
+  function start(){ if (!prefersReduced) { stop(); timer = setInterval(() => go(i+1, false), delay); } }
+  function stop(){ if (timer) { clearInterval(timer); timer = null; } }
 
-    // Init
-    start();
+  // Pause on hover (desktop)
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', start);
 
-    function go(n, user=false){
-      const prev = i;
-      i = ((n % N) + N) % N; // wrap both directions
-      if (i === prev) return;
+  // Init
+  go(i, false);
+  start();
 
-      slides[prev].classList.remove('is-active');
-      slides[i].classList.add('is-active');
+  function go(n, user=false){
+    const prev = i;
+    i = ((n % N) + N) % N; // wrap
+    if (i === prev) return;
 
-      if (dots[prev]) dots[prev].removeAttribute('aria-current');
-      if (dots[i])   dots[i].setAttribute('aria-current','true');
+    slides[prev].classList.remove('is-active');
+    slides[i].classList.add('is-active');
 
-      if (user){ stop(); start(); } // restart timer on user interaction
-    }
+    if (dots[prev]) dots[prev].removeAttribute('aria-current');
+    if (dots[i])   dots[i].setAttribute('aria-current','true');
+
+    if (user){ stop(); start(); } // restart timer when user interacts
   }
 })();
+
