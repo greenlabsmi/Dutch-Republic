@@ -2040,4 +2040,5 @@ nav button,
   /* keep controls neat inside the card */
   section.hero > .slides .dots{ bottom:18px !important; }
   section.hero > .slides .edge{ width:8% !important; border-radius:14px !important; }
+section.hero > .slides{ outline:2px dashed #8aa2ff !important; }
 }
