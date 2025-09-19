@@ -203,17 +203,19 @@
   
   <!-- Hero (solid black background) -->
   <section class="hero" style="background:#000;">
-  <div class="slides" data-carousel>
-    <div class="slide is-active"><img src="carousel-1.png" alt="Dutch Republic Promo 1"></div>
-    <div class="slide"><img src="carousel-2.png" alt="Dutch Republic Promo 2"></div>
-    <div class="slide"><img src="carousel-3.png" alt="Dutch Republic Promo 3"></div>
+  <div class="slides" data-carousel data-autoplay="6000">
+    <!-- Invisible edge targets (no visible arrows) -->
+    <button class="edge edge--prev" aria-label="Previous"></button>
+    <button class="edge edge--next" aria-label="Next"></button>
+
+    <!-- Slides (your same filenames) -->
+    <div class="slide is-active"><img src="carousel-1.png" alt="Dutch Republic Promo 1" loading="lazy"></div>
+    <div class="slide"><img src="carousel-2.png" alt="Dutch Republic Promo 2" loading="lazy"></div>
+    <div class="slide"><img src="carousel-3.png" alt="Dutch Republic Promo 3" loading="lazy"></div>
+
+    <!-- Dots (JS fills these) -->
+    <div class="dots" aria-label="Slide navigation"></div>
   </div>
-
-  <div class="dots" data-dots></div>
-
-  <!-- NEW: subtle arrows -->
-  <button class="c-arrow prev" aria-label="Previous slide">‹</button>
-  <button class="c-arrow next" aria-label="Next slide">›</button>
 </section>
 
   <!-- Today’s Deals -->
