@@ -317,81 +317,6 @@ body:not(.show-sticky){
 .menu-overlay{ top: var(--menu-top); }
 .menu-popover{ top: var(--menu-top); }
 
-/* ===== HERO CAROUSEL — ONE BLOCK TO RULE THEM ALL ===== */
-.hero{ position:relative; }
-
-/* container + polish */
-.hero .slides{
-  position:relative !important;
-  display:block !important;          /* kill any old display:flex */
-  overflow:hidden !important;
-  border-radius:12px;
-  box-shadow:0 6px 18px rgba(0,0,0,.10);
-  background:#000;                    /* prevents flashes while images load */
-}
-
-/* sizing (tweak these two to taste) */
-.hero .slides{ aspect-ratio:16/7; }
-@media (min-width:900px){
-  .hero .slides{
-    aspect-ratio:16/6;               /* taller/wider hero on desktop */
-    max-height:800px;                 /* cap height; bump if you want taller */
-  }
-}
-
-/* slides (stacked, faded) */
-.hero .slide{
-  position:absolute !important; inset:0 !important;
-  min-width:0 !important;             /* neutralize old 100% rules */
-  opacity:0; pointer-events:none;
-  transition:opacity .45s ease;
-  will-change:opacity;
-}
-.hero .slide.is-active{ opacity:1; pointer-events:auto; }
-
-/* images */
-.hero .slide img{
-  width:100%; height:100%; display:block;
-  object-fit:cover;                    /* no black bars */
-}
-
-/* dots (JS toggles [aria-current="true"]) */
-.hero .dots{
-  position:absolute; left:50%; bottom:14px; transform:translateX(-50%);
-  display:flex; gap:10px; z-index:5;
-}
-.hero .dots button{
-  width:10px; height:10px; border-radius:50%;
-  border:1px solid rgba(255,255,255,.6);
-  background:rgba(255,255,255,.35);
-  opacity:.75; cursor:pointer;
-}
-.hero .dots button[aria-current="true"]{
-  background:#fff; border-color:#fff; opacity:1;
-}
-
-/* invisible side click areas (no visible arrows) */
-.hero .edge{
-  position:absolute; top:0; bottom:0; width:12%;
-  border:0; padding:0; background:transparent;
-  cursor:pointer; z-index:6; opacity:0;
-  -webkit-user-select:none; user-select:none;
-}
-.hero .edge.edge--prev{ left:0; }
-.hero .edge.edge--next{ right:0; }
-
-/* subtle hover cue on desktop (optional) */
-@media (hover:hover){
-  .hero .slides:hover .edge.edge--prev{
-    opacity:.08; background:linear-gradient(to right, rgba(0,0,0,.25), rgba(0,0,0,0));
-  }
-  .hero .slides:hover .edge.edge--next{
-    opacity:.08; background:linear-gradient(to left, rgba(0,0,0,.25), rgba(0,0,0,0));
-  }
-}
-
-/* nuke any legacy arrow styles if they still exist */
-.hero .nav-arrow, .hero .arrow, .hero .prev, .hero .next, .c-arrow{ display:none !important; }
 
 /* ========== Today’s Deals ========== */
 .deals-section{margin:18px 0}
@@ -1971,61 +1896,104 @@ nav button,
 }
 .footer-links{
 
-/* === HARD OVERRIDE: contain the hero on desktop (ID-based) === */
-@media (min-width:900px){
-  #hero-slides{
-    width: min(1200px, 94vw) !important;
-    margin: 24px auto !important;        /* top/bottom space + centered */
-    padding: 12px !important;            /* white card frame */
-    background: #fff !important;
-    border: 1px solid var(--line, #e7e8ec) !important;
-    border-radius: 18px !important;
-    box-shadow: 0 10px 28px rgba(16,24,40,.12) !important;
-    position: relative !important;
-    overflow: hidden !important;
-    outline: 2px dashed #8aa2ff !important;  /* TEMP: visual proof */
-  }
+/* ===================== HERO CAROUSEL (final, all-in-one) ===================== */
 
-  /* image window inside the card */
-  #hero-slides .slide,
-  #hero-slides .slide.is-active{ border-radius:14px !important; }
+/* Base hero wrapper */
+.hero{ position:relative; background:#000; }
 
-  #hero-slides .slide{
-    position: absolute !important;
-    inset: 0 !important;
-    min-width: 0 !important;
-    aspect-ratio: 16 / 6 !important;
-    max-height: 520px !important;
-    opacity: 0; pointer-events: none;
-    transition: opacity .45s ease;
-    will-change: opacity;
-  }
-  #hero-slides .slide.is-active{ opacity:1; pointer-events:auto; }
-
-  #hero-slides .dots{ bottom: 18px !important; }
-  #hero-slides .edge{ width: 8% !important; border-radius: 14px !important; }
+/* Kill any legacy grid/scroll-snap carousels */
+.hero .slides{
+  position:relative !important;
+  display:block !important;           /* override old display:grid/flex */
+  overflow:hidden !important;         /* no horizontal scroller */
+  overflow-x:hidden !important;
+  border-radius:12px;
+  box-shadow:0 6px 18px rgba(0,0,0,.10);
+  background:#000;                    /* hides flash while images load */
+  /* Give the slider its height on mobile */
+  aspect-ratio:16/7;                  /* tweak if you want taller/shorter on phones */
 }
-  
-/* ===== Contain hero like House of Dank ===== */
+
+/* Slides: stacked + fade */
+.hero .slide{
+  position:absolute !important; inset:0 !important;
+  min-width:0 !important;
+  opacity:0; pointer-events:none;
+  transition:opacity .45s ease;
+  will-change:opacity;
+}
+.hero .slide.is-active{ opacity:1; pointer-events:auto; }
+
+/* Images */
+.hero .slide img{
+  width:100%; height:100%; display:block;
+  object-fit:cover;
+}
+
+/* Dots (JS sets [aria-current="true"]) */
+.hero .dots{
+  position:absolute; left:50%; bottom:14px; transform:translateX(-50%);
+  display:flex; gap:10px; z-index:5;
+}
+.hero .dots button{
+  width:10px; height:10px; border-radius:50%;
+  border:1px solid rgba(255,255,255,.6);
+  background:rgba(255,255,255,.35);
+  opacity:.75; cursor:pointer;
+}
+.hero .dots button[aria-current="true"]{
+  background:#fff; border-color:#fff; opacity:1;
+}
+
+/* Invisible side-click areas (no visible arrows) */
+.hero .edge{
+  position:absolute; top:0; bottom:0; width:12%;
+  border:0; padding:0; background:transparent; cursor:pointer;
+  z-index:6; opacity:0; -webkit-user-select:none; user-select:none;
+}
+.hero .edge.edge--prev{ left:0; }
+.hero .edge.edge--next{ right:0; }
+
+/* Optional subtle hover cue on desktop */
+@media (hover:hover){
+  .hero .slides:hover .edge.edge--prev{
+    opacity:.08; background:linear-gradient(to right, rgba(0,0,0,.25), rgba(0,0,0,0));
+  }
+  .hero .slides:hover .edge.edge--next{
+    opacity:.08; background:linear-gradient(to left, rgba(0,0,0,.25), rgba(0,0,0,0));
+  }
+}
+
+/* Nuke any old visible arrow styles, if they exist */
+.hero .nav-arrow, .hero .arrow, .hero .prev, .hero .next, .c-arrow{ display:none !important; }
+
+/* ===================== Desktop: contained “card” look ===================== */
+/* Requires your HTML wrapper:
+   <section class="hero"><div class="hero-container"><div id="hero-slides" class="slides">… */
 @media (min-width:900px){
+  .hero{ padding:24px 0; background:transparent; }
+
+  /* White card wrapper (like House of Dank) */
   .hero-container{
-    max-width:1200px;      /* change to 1100px/1000px to make it narrower */
-    margin:0 auto;         /* center horizontally */
-    padding:20px;          /* white space around */
-    background:#fff;       /* white card look */
+    max-width:1200px;                 /* 1100/1000px if you want narrower */
+    margin:0 auto;
+    padding:20px;
+    background:#fff;
     border-radius:18px;
     box-shadow:0 10px 28px rgba(16,24,40,.12);
+    border:1px solid var(--line, #e7e8ec);
   }
 
+  /* The slideshow inside the card */
   #hero-slides{
     border-radius:14px;
     overflow:hidden;
+    background:#000;
+    aspect-ratio:16/6;                /* desktop height; adjust to taste */
+    max-height:560px;                 /* safety cap; raise/lower if needed */
+    width:100%;
   }
 
-  #hero-slides .slide img{
-    display:block;
-    width:100%;
-    height:auto;           /* let the full image show */
-    object-fit:cover;
-  }
+  .hero .dots{ bottom:18px; }
+  .hero .edge{ width:8%; border-radius:14px; }
 }
