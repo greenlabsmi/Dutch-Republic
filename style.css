@@ -2013,3 +2013,31 @@ nav button,
   /* Narrow the invisible side click areas so they stay inside the card */
   .hero .edge{ width: 8%; border-radius: 14px; }
 }
+
+/* --- HARD OVERRIDE: contain hero on desktop --- */
+@media (min-width:900px){
+  section.hero{ padding:24px 0 !important; background:transparent !important; }
+
+  section.hero > .slides{
+    width:min(1200px,94vw) !important;
+    margin:0 auto !important;
+    padding:12px !important;
+    background:#fff !important;
+    border:1px solid var(--line, #e7e8ec) !important;
+    border-radius:18px !important;
+    box-shadow:0 10px 28px rgba(16,24,40,.12) !important;
+  }
+
+  /* image window inside the card */
+  section.hero > .slides .slide,
+  section.hero > .slides .slide.is-active{ border-radius:14px !important; }
+
+  section.hero > .slides .slide{
+    aspect-ratio:16/6 !important;
+    max-height:520px !important;
+  }
+
+  /* keep controls neat inside the card */
+  section.hero > .slides .dots{ bottom:18px !important; }
+  section.hero > .slides .edge{ width:8% !important; border-radius:14px !important; }
+}
