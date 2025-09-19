@@ -2014,4 +2014,27 @@ nav button,
   #hero-slides .dots{ bottom: 18px !important; }
   #hero-slides .edge{ width: 8% !important; border-radius: 14px !important; }
 }
+  
+/* ===== Contain hero like House of Dank ===== */
+@media (min-width:900px){
+  .hero-container{
+    max-width:1200px;      /* change to 1100px/1000px to make it narrower */
+    margin:0 auto;         /* center horizontally */
+    padding:20px;          /* white space around */
+    background:#fff;       /* white card look */
+    border-radius:18px;
+    box-shadow:0 10px 28px rgba(16,24,40,.12);
+  }
 
+  #hero-slides{
+    border-radius:14px;
+    overflow:hidden;
+  }
+
+  #hero-slides .slide img{
+    display:block;
+    width:100%;
+    height:auto;           /* let the full image show */
+    object-fit:cover;
+  }
+}
