@@ -326,26 +326,81 @@ body:not(.show-sticky){
 .dots button{width:8px;height:8px;border-radius:50%;border:0;background:#d0d4da}
 .dots button.is-active{background:#9aa3ae}
 
-/* ===== Carousel ===== */
-.carousel {
-  width: 100%;
-  max-width: 1600px;   /* keeps it contained on large screens */
-  margin: 20px auto;
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+/* ===== HERO CAROUSEL — ONE BLOCK TO RULE THEM ALL ===== */
+.hero{ position:relative; }
+
+/* container + polish */
+.hero .slides{
+  position:relative !important;
+  display:block !important;          /* kill any old display:flex */
+  overflow:hidden !important;
+  border-radius:12px;
+  box-shadow:0 6px 18px rgba(0,0,0,.10);
+  background:#000;                    /* prevents flashes while images load */
 }
 
-.carousel-track {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
+/* sizing (tweak these two to taste) */
+.hero .slides{ aspect-ratio:16/7; }
+@media (min-width:900px){
+  .hero .slides{
+    aspect-ratio:16/4;               /* taller/wider hero on desktop */
+    max-height:640px;                 /* cap height; bump if you want taller */
+  }
 }
 
-.carousel img {
-  width: 100%;
-  flex-shrink: 0;
-  object-fit: cover;
+/* slides (stacked, faded) */
+.hero .slide{
+  position:absolute !important; inset:0 !important;
+  min-width:0 !important;             /* neutralize old 100% rules */
+  opacity:0; pointer-events:none;
+  transition:opacity .45s ease;
+  will-change:opacity;
 }
+.hero .slide.is-active{ opacity:1; pointer-events:auto; }
+
+/* images */
+.hero .slide img{
+  width:100%; height:100%; display:block;
+  object-fit:cover;                    /* no black bars */
+}
+
+/* dots (JS toggles [aria-current="true"]) */
+.hero .dots{
+  position:absolute; left:50%; bottom:14px; transform:translateX(-50%);
+  display:flex; gap:10px; z-index:5;
+}
+.hero .dots button{
+  width:10px; height:10px; border-radius:50%;
+  border:1px solid rgba(255,255,255,.6);
+  background:rgba(255,255,255,.35);
+  opacity:.75; cursor:pointer;
+}
+.hero .dots button[aria-current="true"]{
+  background:#fff; border-color:#fff; opacity:1;
+}
+
+/* invisible side click areas (no visible arrows) */
+.hero .edge{
+  position:absolute; top:0; bottom:0; width:12%;
+  border:0; padding:0; background:transparent;
+  cursor:pointer; z-index:6; opacity:0;
+  -webkit-user-select:none; user-select:none;
+}
+.hero .edge.edge--prev{ left:0; }
+.hero .edge.edge--next{ right:0; }
+
+/* subtle hover cue on desktop (optional) */
+@media (hover:hover){
+  .hero .slides:hover .edge.edge--prev{
+    opacity:.08; background:linear-gradient(to right, rgba(0,0,0,.25), rgba(0,0,0,0));
+  }
+  .hero .slides:hover .edge.edge--next{
+    opacity:.08; background:linear-gradient(to left, rgba(0,0,0,.25), rgba(0,0,0,0));
+  }
+}
+
+/* nuke any legacy arrow styles if they still exist */
+.hero .nav-arrow, .hero .arrow, .hero .prev, .hero .next, .c-arrow{ display:none !important; }
 
 /* ========== Today’s Deals ========== */
 .deals-section{margin:18px 0}
@@ -1924,80 +1979,3 @@ nav button,
   font-size: .95rem;
 }
 .footer-links{
-  
-/* ===== Hero Carousel (clean combined) ===== */
-.hero{ position:relative; }
-
-/* container + polish */
-.hero .slides{
-  position: relative;
-  overflow: hidden;
-  border-radius:12px;                          /* keep your polish */
-  box-shadow:0 6px 18px rgba(0,0,0,.10);       /* keep your polish */
-  background:#000;                             /* avoids black flashes during load */
-}
-
-/* sizing / aspect */
-.hero .slides{ aspect-ratio: 16 / 7; }
-@media (min-width:900px){
-  .hero .slides{
-    aspect-ratio: 16 / 5;                      /* wider on desktop */
-    max-height: 520px;                          /* adjust if you want shorter/taller */
-  }
-}
-
-/* slide states */
-.hero .slide{
-  position:absolute; inset:0;
-  opacity:0; pointer-events:none;
-  transition: opacity .45s ease;
-  will-change: opacity;
-}
-.hero .slide.is-active{ opacity:1; pointer-events:auto; }
-
-/* images */
-.hero .slide img{
-  width:100%; height:100%; display:block;
-  object-fit:cover;
-}
-
-/* dots (JS sets [aria-current="true"]) */
-.hero .dots{
-  position:absolute; left:50%; bottom:14px; transform:translateX(-50%);
-  display:flex; gap:10px; z-index:5;
-}
-.hero .dots button{
-  width:10px; height:10px; border-radius:50%;
-  border:1px solid rgba(255,255,255,.6);
-  background:rgba(255,255,255,.35);
-  opacity:.75; cursor:pointer;
-}
-.hero .dots button[aria-current="true"]{
-  background:#fff; border-color:#fff; opacity:1;
-}
-
-/* invisible edge click areas (no visible arrows) */
-.hero .edge{
-  position:absolute; top:0; bottom:0; width:12%;
-  border:0; padding:0; background:transparent; cursor:pointer;
-  z-index:6; opacity:0;                         /* fully invisible */
-}
-.hero .edge.edge--prev{ left:0; }
-.hero .edge.edge--next{ right:0; }
-
-/* optional subtle hover cue on desktop */
-@media (hover:hover){
-  .hero .slides:hover .edge.edge--prev{
-    opacity:.08; background:linear-gradient(to right, rgba(0,0,0,.25), rgba(0,0,0,0));
-  }
-  .hero .slides:hover .edge.edge--next{
-    opacity:.08; background:linear-gradient(to left,  rgba(0,0,0,.25), rgba(0,0,0,0));
-  }
-}
-
-/* nuke any legacy arrow styles if still present */
-.hero .nav-arrow,
-.hero .arrow,
-.hero .prev,
-.hero .next,
-.c-arrow{ display:none !important; }
