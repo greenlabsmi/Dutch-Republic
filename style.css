@@ -1980,7 +1980,7 @@ nav button,
   #hero-slides{
     border-radius:14px;
     overflow:hidden;
-    background:#fff;
+    background:#000;
     aspect-ratio:16/6;          /* desktop height feel; tweak to 16/5 or 16/7 */
     max-height:560px;           /* safety cap */
     width:100%;
