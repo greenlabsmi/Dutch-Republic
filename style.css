@@ -1989,3 +1989,10 @@ nav button,
   .hero .dots{ bottom:18px; }
   .hero .edge{ width:8%; border-radius:14px; }
 }
+
+/* Shift logo left on mobile only */
+@media (max-width: 900px) {
+  .sticky-logo {
+    margin-left: 8px;   /* adjust this number until it looks right */
+  }
+}
