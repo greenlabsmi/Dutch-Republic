@@ -2056,3 +2056,63 @@ nav button,
 @media (max-width: 900px){
   .about-grid{ grid-template-columns: 1fr; }
 }
+
+/* ==== About & Trophy (scoped, minimal) ==== */
+.about-section, .trophy-section{
+  padding: 56px 0;
+  background: var(--surface, #fff);
+  border-top: 1px solid var(--line, #e7e8ec);
+}
+
+.section-title{
+  margin: 0 0 16px 0;
+  font-family: Cinzel, ui-serif, Georgia, serif;
+  font-weight: 900;
+  letter-spacing: .3px;
+  font-size: clamp(22px, 2.6vw, 32px);
+}
+
+.about-grid{
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;   /* copy heavier than visual */
+  gap: 24px;
+}
+
+.about-copy p{ margin: 0 0 14px 0; }
+.about-copy .about-awards{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+
+.pill{
+  display:inline-block; padding:6px 10px; border-radius:999px;
+  background: var(--gold-tint, rgba(212,123,25,.08));
+  border:1px solid var(--line, #e7e8ec);
+  font-size: 12px; font-weight: 600;
+}
+
+.about-visual .video-wrapper{
+  position: relative; width: 100%; aspect-ratio: 16 / 9;
+}
+.about-visual .video-wrapper iframe,
+.about-visual video{ width:100%; height:100%; border:0; border-radius: var(--radius, 14px); }
+
+.about-card{
+  border:1px solid var(--line, #e7e8ec);
+  border-radius: var(--radius, 14px);
+  box-shadow: 0 8px 20px rgba(16,24,40,.06);
+  background: #fff;
+}
+.about-card-body{ padding:16px; }
+
+.trophy-section .comingsoon-card{
+  margin-top: 12px;
+  border:1px dashed var(--line, #e7e8ec);
+  border-radius: var(--radius, 14px);
+  padding:16px;
+  background: var(--deal-hue, #FFF9E6);
+}
+
+.muted{ color: var(--muted, #667085); }
+
+/* Mobile first */
+@media (max-width: 900px){
+  .about-grid{ grid-template-columns: 1fr; }
+}
