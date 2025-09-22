@@ -2187,3 +2187,72 @@ nav button,
   background: none !important;
   box-shadow: none !important;
 }
+
+/* ===== About + Trophy styling (on-brand, minimal) ===== */
+
+/* Bigger, centered title for these key sections */
+#about .section-title,
+#trophy .section-title{
+  text-align: center;
+  font-family: "Cinzel", serif;   /* matches site */
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+
+/* Subtle gold bar centered under the title (not a left dash) */
+#about .section-title::after,
+#trophy .section-title::after{
+  content:"";
+  display:block;
+  width: 80px;               /* adjust width as desired */
+  height: 3px;
+  margin: 10px auto 0;
+  background: var(--gold, #D47B19);
+  border-radius: 2px;
+  opacity: 0.9;
+}
+
+/* Responsive video: big, centered, with soft polish */
+.video-embed{
+  position: relative;
+  /* Center it and make it bigger without going edge-to-edge */
+  max-width: min(980px, 92vw);
+  margin: 20px auto;         /* centers in the section */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(16,24,40,.08);
+  background: #000;
+}
+
+/* Maintain 16:9 aspect ratio */
+.video-embed::before{
+  content:"";
+  display:block;
+  padding-top: 56.25%;
+}
+
+/* Fill the wrapper */
+.video-embed iframe,
+.video-embed video{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  border:0;
+}
+
+/* Small, centered disclaimer under the video */
+.video-disclaimer{
+  max-width: min(980px, 92vw);
+  margin: 8px auto 0;
+  font-size: 0.92rem;
+  color: var(--muted, #667085);
+  text-align: center;
+}
+
+/* Slightly tighten body copy in the About section for a premium feel */
+#about p{
+  max-width: 72ch;
+  margin-left: auto;
+  margin-right: auto;
+}
