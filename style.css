@@ -2188,60 +2188,81 @@ nav button,
   box-shadow: none !important;
 }
 
-/* ===== About + Trophy styling (on-brand, minimal) ===== */
+/* ================================
+   About + Trophy — Full-Width Band
+   (and restored gold underline)
+   ================================ */
 
-/* Bigger, centered title for these key sections */
+/* Band-style cream background across the page */
+#about,
+#trophy{
+  background: var(--deal-hue, #FFF9E6);
+  padding: 40px 0;                 /* space inside the band */
+  margin: 40px 0;                  /* space before/after band */
+}
+
+/* Keep the container transparent in band mode */
+#about .container,
+#trophy .container{
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+/* Strong, centered titles for these sections */
 #about .section-title,
 #trophy .section-title{
   text-align: center;
-  font-family: "Cinzel", serif;   /* matches site */
+  font-family: "Cinzel", serif;
   font-weight: 900;
   letter-spacing: 0.5px;
   line-height: 1.1;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  font-size: 2rem;
 }
 
-/* Subtle gold bar centered under the title (not a left dash) */
+/* Re-enable an underline just for About + Trophy (beats the global dash-killer) */
 #about .section-title::after,
 #trophy .section-title::after{
-  content:"";
-  display:block;
-  width: 80px;               /* adjust width as desired */
+  content: "" !important;
+  display: block !important;
+  width: 80px;
   height: 3px;
   margin: 10px auto 0;
   background: var(--gold, #D47B19);
   border-radius: 2px;
-  opacity: 0.9;
+  opacity: .9;
 }
 
-/* Responsive video: big, centered, with soft polish */
+/* Tidy body copy width for polish */
+#about p,
+#trophy p{
+  max-width: 72ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Video: larger, centered, responsive (click-to-play; no autoplay) */
 .video-embed{
   position: relative;
-  /* Center it and make it bigger without going edge-to-edge */
   max-width: min(980px, 92vw);
-  margin: 20px auto;         /* centers in the section */
+  margin: 24px auto;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 6px 18px rgba(16,24,40,.08);
   background: #000;
 }
-
-/* Maintain 16:9 aspect ratio */
 .video-embed::before{
   content:"";
   display:block;
-  padding-top: 56.25%;
+  padding-top:56.25%; /* 16:9 */
 }
-
-/* Fill the wrapper */
 .video-embed iframe,
 .video-embed video{
   position:absolute; inset:0;
   width:100%; height:100%;
   border:0;
 }
-
-/* Small, centered disclaimer under the video */
 .video-disclaimer{
   max-width: min(980px, 92vw);
   margin: 8px auto 0;
@@ -2250,9 +2271,8 @@ nav button,
   text-align: center;
 }
 
-/* Slightly tighten body copy in the About section for a premium feel */
-#about p{
-  max-width: 72ch;
-  margin-left: auto;
-  margin-right: auto;
+/* Slightly scale up headings on larger screens */
+@media (min-width: 900px){
+  #about .section-title,
+  #trophy .section-title{ font-size: 2.25rem; }
 }
