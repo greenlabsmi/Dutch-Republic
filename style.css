@@ -310,11 +310,29 @@ a{color:inherit;text-decoration:none}
 
 .menu-list{ display:flex; flex-direction:column; gap:6px }
 .menu-list .drawer-link{
-  display:block; padding:12px 10px; border-radius:10px;
-  border:1px solid var(--line); background:#fff;
-  font-weight:800; color:var(--ink);
+  display:block;
+  padding:14px 14px;
+  border-radius:12px;
+  border:2px solid var(--gold, #D47B19);   /* gold accent */
+  background:#fff;
+  font-family:"Cinzel", serif;
+  font-weight:900;
+  font-size:1.15rem;       /* bigger, stronger */
+  letter-spacing:0.6px;
+  text-align:center;       /* centered looks cleaner in a drawer */
+  color:var(--ink);
+  text-transform:uppercase;
+  transition: all 0.2s ease;
 }
-.menu-list .drawer-link:active{ background:#f7f7f7 }
+
+/* Hover/focus pop */
+.menu-list .drawer-link:hover,
+.menu-list .drawer-link:focus{
+  background:var(--gold, #D47B19);
+  color:#fff;
+  transform:translateY(-2px);
+  box-shadow:0 4px 14px rgba(0,0,0,.15);
+}
 
 /* --- Menu / overlay offsets for both page states --- */
 :root{
