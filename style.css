@@ -2189,14 +2189,14 @@ nav button,
 }
 
 /* ================================
-   About + Trophy — Full-Width Band
-   (and restored gold underline)
+   About + Trophy — White Background
+   (with restored gold underline)
    ================================ */
 
-/* Band-style cream background across the page */
+/* White background across the page */
 #about,
 #trophy{
-  background: var(--deal-hue, #000);
+  background: #fff;
   padding: 40px 0;                 /* space inside the band */
   margin: 40px 0;                  /* space before/after band */
 }
