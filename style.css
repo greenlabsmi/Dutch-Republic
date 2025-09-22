@@ -2146,26 +2146,25 @@ nav button,
 }
 /* (Intentionally not touching .deal-title, so the header stays as-is) */
 
-/* === Today’s Deals — remove orange dash on MOBILE ONLY (content only) === */
-@media (max-width: 900px){
-  /* Kill any left border / accent on subsection headings */
-  .deals-section .deal-subtitle{
-    border-left: 0 !important;
-    padding-left: 0 !important;
-    box-shadow: none !important;         /* in case it was an inset shadow */
-    background-image: none !important;   /* in case someone used a gradient strip */
-  }
-  /* In case the dash was drawn with a pseudo-element */
-  .deals-section .deal-subtitle::before,
-  .deals-section .deal-subtitle::after{
-    content: none !important;
-    border: 0 !important;
-    background: none !important;
-    box-shadow: none !important;
-  }
-  /* If an <hr> was styled as an orange dashed line inside the block */
-  .deals-section hr{
-    border: 0 !important;
-    height: 0 !important;
-  }
+/* === Today’s Deals — remove orange dash on ALL screens (content only) === */
+.deals-section .deal-subtitle{
+  border-left: 0 !important;
+  padding-left: 0 !important;
+  box-shadow: none !important;         /* in case it was an inset shadow */
+  background-image: none !important;   /* in case someone used a gradient strip */
+}
+
+/* In case the dash was drawn with a pseudo-element */
+.deals-section .deal-subtitle::before,
+.deals-section .deal-subtitle::after{
+  content: none !important;
+  border: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+/* If an <hr> was styled as an orange dashed line inside the block */
+.deals-section hr{
+  border: 0 !important;
+  height: 0 !important;
 }
