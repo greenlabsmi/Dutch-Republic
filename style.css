@@ -2196,7 +2196,7 @@ nav button,
 /* Band-style cream background across the page */
 #about,
 #trophy{
-  background: var(--deal-hue, #FFF9E6);
+  background: var(--deal-hue, #000);
   padding: 40px 0;                 /* space inside the band */
   margin: 40px 0;                  /* space before/after band */
 }
