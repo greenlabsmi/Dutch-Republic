@@ -585,16 +585,6 @@ document.addEventListener('click', (e) => {
   }
 });
 
-(() => {
-  const btn = document.getElementById('searchBtn');
-  if (!btn) return;
-  btn.addEventListener('click', () => {
-    document.getElementById('shop')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    // If you add a filter input later, you can focus it here:
-    // document.getElementById('shopFilter')?.focus();
-  });
-})();
-
 /* Lightweight carousel controller (edges + dots + swipe + autoplay) */
 (function(){
   const root = document.getElementById('hero-slides');
@@ -714,4 +704,26 @@ document.addEventListener('click', (e) => {
 
   document.querySelectorAll('a[href="#menu"], [data-leafly-src]')
     .forEach(el => el.addEventListener('click', openMenu));
+})();
+
+// ================= Embedded Leafly Menu (reveal on click + search) =================
+(function leaflyMenu(){
+  const menu  = document.getElementById('menu');
+  const frame = document.getElementById('leaflyFrame');
+  const url   = 'https://www.leafly.com/dispensary-info/dutch-republic/menu';
+  if (!menu || !frame) return;
+
+  function openMenu(e){
+    if (e) e.preventDefault();
+    if (menu.hasAttribute('hidden')) menu.removeAttribute('hidden');
+    if (!frame.src || frame.src === 'about:blank') frame.src = url;
+    menu.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // All shop triggers
+  document.querySelectorAll('a[href="#menu"], [data-leafly-src]')
+    .forEach(el => el.addEventListener('click', openMenu));
+
+  // Make the search icon behave the same way
+  document.getElementById('searchBtn')?.addEventListener('click', openMenu);
 })();
