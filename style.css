@@ -283,7 +283,7 @@ a{color:inherit;text-decoration:none}
 /* ===== Popover menu ===== */
 .menu-overlay{
   position: fixed;
-  top: var(--nav-h);
+ 
   left: 0; right: 0; bottom: 0;
   z-index: 59; background: transparent;
 }
