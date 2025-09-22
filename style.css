@@ -2307,10 +2307,3 @@ nav button,
 
 /* Leave the inner container transparent so the bar color shows through */
 .sticky-nav .container { background: transparent !important; }
-
-/* Ensure menu popover isn’t forced to the right by older CSS */
-.menu-popover {
-  position: fixed;     /* same strategy as JS */
-  left: auto;          /* let JS place it */
-  right: auto;         /* clear legacy rules */
-}
