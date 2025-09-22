@@ -2277,16 +2277,19 @@ nav button,
   #trophy .section-title{ font-size: 2.25rem; }
 }
 
-/* Remove accidental border/outline around the hero wordmark */
+/* Remove accidental border/outline around the hero wordmark (no bg changes here) */
 .brand-banner,
 .brand-banner .brand-title,
 .brand-banner .foil-svg-large {
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
-  background: transparent !important;
+  /* background: transparent !important;  <-- DELETE this line */
   border-radius: 0 !important;
 }
+
+/* Keep the hero banner solid black behind the SVG wordmark */
+.brand-banner { background: #000 !important; }
 
 /* Also kill focus rings on the wordmark link */
 .brand-banner .brand-title:focus,
