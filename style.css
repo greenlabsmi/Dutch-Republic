@@ -2401,3 +2401,42 @@ nav button,
 @media print{
   #legal::after{ display: none; }
 }
+
+/* === ABOUT title: black fill + gold outline (scoped) === */
+#about .section-title{
+  /* size + font */
+  font-family: "Cinzel", serif;
+  font-weight: 900;
+  font-size: clamp(40px, 5.2vw, 64px);
+  line-height: 1.05;
+  letter-spacing: .02em;
+  text-align: center;
+
+  /* FORCE a solid fill (undo any foil/clip rules) */
+  color: #111315 !important;
+  -webkit-text-fill-color: currentColor !important;
+  background: none !important;
+  -webkit-background-clip: border-box !important;
+
+  /* Gold outline via multi-direction text-shadow */
+  text-shadow:
+    1px 0   0 var(--gold, #D47B19),
+   -1px 0   0 var(--gold, #D47B19),
+    0   1px 0 var(--gold, #D47B19),
+    0  -1px 0 var(--gold, #D47B19),
+    1px 1px 0 var(--gold, #D47B19),
+   -1px -1px 0 var(--gold, #D47B19),
+    1px -1px 0 var(--gold, #D47B19),
+   -1px 1px 0 var(--gold, #D47B19);
+}
+
+/* Underline bar just for the About title */
+#about .section-title::after{
+  content: "";
+  display: block;
+  width: 120px;
+  height: 4px;
+  margin: 12px auto 0;
+  background: var(--gold, #D47B19);
+  border-radius: 2px;
+}
