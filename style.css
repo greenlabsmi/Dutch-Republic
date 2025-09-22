@@ -329,7 +329,6 @@ body:not(.show-sticky){
   :root{ --strip-h: 32px; }
 }
 .menu-overlay{ top: var(--menu-top); }
-.menu-popover{ top: var(--menu-top); }
 
 
 /* ========== Today’s Deals ========== */
