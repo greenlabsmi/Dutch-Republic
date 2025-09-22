@@ -380,7 +380,7 @@ body:not(.show-sticky){
 .deal-subgroup{margin:8px 0 12px}
 .deal-subtitle{
   font-weight:700; font-size:.96rem; color:var(--ink);
-  margin:6px 0 4px; padding-left:6px; border-left:3px solid var(--gold)
+  margin:6px 0 4px;
 }
 .deal-items{margin:0; padding-left:18px; color:var(--ink)}
 .deal-items li{margin:4px 0; line-height:1.45}
