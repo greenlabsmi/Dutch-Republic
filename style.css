@@ -2299,3 +2299,11 @@ nav button,
   box-shadow: none !important;
   border: none !important;
 }
+
+/* Reset sticky nav background to the lighter beige */
+.sticky-nav {
+  background: #EBDCC7 !important;  /* pick your original hex if different */
+}
+
+/* Leave the inner container transparent so the bar color shows through */
+.sticky-nav .container { background: transparent !important; }
