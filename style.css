@@ -2276,3 +2276,23 @@ nav button,
   #about .section-title,
   #trophy .section-title{ font-size: 2.25rem; }
 }
+
+/* Remove accidental border/outline around the hero wordmark */
+.brand-banner,
+.brand-banner .brand-title,
+.brand-banner .foil-svg-large {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+}
+
+/* Also kill focus rings on the wordmark link */
+.brand-banner .brand-title:focus,
+.brand-banner .brand-title:focus-visible,
+.brand-banner .brand-title:active {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
