@@ -2371,3 +2371,33 @@ nav button,
   background: linear-gradient(90deg, #9C6B1A, #FFD76E, #9C6B1A);
   border-radius: 2px;
 }
+
+/* ===== Terms page watermark ===== */
+#legal{
+  position: relative;
+  z-index: 0;                 /* create a stacking context */
+  background: #fff;
+}
+
+/* Gold lion watermark, centered and faint */
+#legal::after{
+  content: "";
+  position: absolute;
+  inset: 0;                   /* cover the whole container */
+  background: url("img/lion-solid-gold.svg") no-repeat center 35%;
+  background-size: min(60vw, 520px);
+  opacity: .06;               /* subtle! adjust 0.04–0.10 to taste */
+  pointer-events: none;       /* clicks pass through */
+  z-index: 0;
+}
+
+/* Keep the actual text above the watermark */
+#legal > *{
+  position: relative;
+  z-index: 1;
+}
+
+/* Don’t print the watermark */
+@media print{
+  #legal::after{ display: none; }
+}
