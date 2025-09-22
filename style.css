@@ -2118,3 +2118,30 @@ nav button,
 /* Make hash-targets land nicely below your sticky nav */
 .hash-offset, .hash-anchor { scroll-margin-top: var(--nav-h, 60px); }
 .hash-anchor { height: 0; line-height: 0; }
+
+/* === Today’s Deals — MOBILE-ONLY content alignment (not the title) === */
+@media (max-width: 900px){
+  /* Left-align the deal content */
+  .deals-section .deal-body,
+  .deals-section .deal-items,
+  .deals-section .deal-items li,
+  .deals-section .deal-subtitle,
+  .deals-section .deal-cat,
+  .deals-section .deal-note,
+  .deals-section .deal-actions {
+    text-align: left !important;
+  }
+
+  /* Remove the orange left rule (dashes) on mobile only */
+  .deals-section .deal-subtitle{
+    border-left: none !important;
+    padding-left: 0 !important;
+  }
+
+  /* Tidy list indent so bullets look normal */
+  .deals-section .deal-items{
+    margin: 0 0 0 1rem;
+    padding-left: 0;
+  }
+}
+/* (Intentionally not touching .deal-title, so the header stays as-is) */
