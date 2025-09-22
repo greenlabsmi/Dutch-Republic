@@ -688,24 +688,6 @@ document.addEventListener('click', (e) => {
   }
 })();
 
-// ================= Embedded Leafly Menu (reveal on click) =================
-(function leaflyMenu(){
-  const menu   = document.getElementById('menu');
-  const frame  = document.getElementById('leaflyFrame');
-  const url    = 'https://www.leafly.com/dispensary-info/dutch-republic/menu';
-  if (!menu || !frame) return;
-
-  function openMenu(e){
-    e.preventDefault();
-    if (menu.hasAttribute('hidden')) menu.removeAttribute('hidden');
-    if (!frame.src || frame.src === 'about:blank') frame.src = url;
-    menu.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  document.querySelectorAll('a[href="#menu"], [data-leafly-src]')
-    .forEach(el => el.addEventListener('click', openMenu));
-})();
-
 // ================= Embedded Leafly Menu (reveal on click + search) =================
 (function leaflyMenu(){
   const menu  = document.getElementById('menu');
