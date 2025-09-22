@@ -7,100 +7,155 @@
   <meta name="description" content="Terms of Service for Dutch Republic." />
   <meta name="theme-color" content="#ffffff" />
 
-  <!-- Fonts & Icons (match your main site) -->
+  <!-- Match site fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- Your main stylesheet -->
-  <link rel="stylesheet" href="style.css?v=dr-legal-001" />
+  <link rel="stylesheet" href="style.css?v=dr-legal-002" />
+
   <style>
-    /* Page-specific polish (optional) */
-    .legal-wrap{ max-width: 900px; margin: 40px auto; padding: 0 16px 64px; }
-    .legal-wrap h1{ font-family:'Cinzel', serif; font-weight:700; letter-spacing:.4px; }
-    .legal-wrap h2{ margin-top:28px; font-size:1.1rem; }
-    .legal-wrap p, .legal-wrap li{ color:var(--ink); }
-    .legal-meta{ color:var(--muted); font-size:.9rem; margin-top:6px; }
+    /* ===== Layout ===== */
+    body{ background:#fff; }
+    .legal-wrap{ max-width: 900px; margin: 40px auto 72px; padding: 0 16px; }
+    .legal-meta{ color: var(--muted, #667085); font-size: .92rem; margin: 6px 0 18px; }
+
+    /* ===== Watermark behind the terms ===== */
+    #legal{
+      position: relative;       /* creates stacking context */
+      z-index: 0;
+      background: #fff;
+    }
+    /* Adjust the URL if your SVG lives elsewhere */
+    #legal::after{
+      content: "";
+      position: absolute;
+      inset: 0;                 /* cover section */
+      background: url("img/lion-solid-gold.svg") no-repeat center 35%;
+      background-size: min(60vw, 520px);
+      opacity: .06;             /* subtle watermark; tweak .05–.10 */
+      pointer-events: none;     /* never blocks clicks/selection */
+      z-index: 0;
+    }
+    /* Ensure all content stays above */
+    #legal > *{ position: relative; z-index: 1; }
+
+    @media print{
+      #legal::after{ display:none; }   /* no watermark in print */
+    }
+
+    /* ===== Optional crest next to the H1 ===== */
+    .legal-title{
+      font-family: "Cinzel", serif;
+      font-weight: 900;
+      letter-spacing: .3px;
+      line-height: 1.1;
+      display: inline-block;
+      position: relative;
+      padding-right: 56px;   /* space for crest on the right */
+      margin: 0;
+    }
+    .legal-title::after{
+      content: "";
+      position: absolute;
+      right: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 44px; height: 44px;
+      background: url("Dutch_Touch_Lion_Logo.png") no-repeat center / contain;
+      opacity: .9;
+    }
+
+    /* Simple header/footer polish (keeps page self-contained) */
+    .site-header{ border-bottom:1px solid var(--line,#e7e8ec); background:#fff; }
+    .site-header .container{ padding:10px 16px; display:flex; align-items:center; gap:8px; }
+    .site-header .brand{ font-family:Cinzel,serif; font-weight:900; letter-spacing:.3px; }
+    .site-footer{ border-top:1px solid var(--line,#e7e8ec); background:#fff; padding:20px 0; }
+    .footer-row{ max-width:1080px; margin:0 auto; padding:0 16px; text-align:center; display:grid; gap:8px; }
+    .footer-links{ display:inline-flex; gap:10px; color:var(--muted,#667085); }
+    .footer-links a{ text-decoration:none; }
   </style>
 </head>
 <body>
 
-  <!-- Optional: reuse your header/sticky nav if you want -->
+  <!-- Minimal header (remove if your global header is injected here) -->
   <header class="site-header">
     <div class="container">
-      <a href="/" class="sticky-logo">
-        <img src="Dutch_Touch_Lion_Logo.png" alt="Dutch Republic Logo">
-        <span class="sticky-brand-name">Dutch Republic</span>
+      <a href="/" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;">
+        <img src="Dutch_Touch_Lion_Logo.png" alt="Dutch Republic" style="height:32px;width:auto;">
+        <span class="brand">Dutch Republic</span>
       </a>
     </div>
   </header>
 
   <main class="legal-wrap">
-    <h1>Terms of Service</h1>
-    <div class="legal-meta">Last updated: <!-- set today’s date --> September 2025</div>
+    <!-- IMPORTANT: all terms content stays inside #legal -->
+    <section id="legal" class="legal-doc">
+      <h1 class="legal-title">Terms of Service</h1>
+      <div class="legal-meta">Last updated: September 2025</div>
 
-    <p><strong>Introduction</strong><br>
-    These Website Standard Terms and Conditions (“Terms”) shall manage your use of our website, <strong>Dutch Republic</strong>, accessible at <strong>dutchrepublic.com</strong>. By using this Website, you agree to accept all Terms and Conditions written here. You must not use this Website if you disagree with any of these Terms.</p>
+      <h2>Introduction</h2>
+      <p>These Website Standard Terms and Conditions (“Terms”) govern your use of our website, <strong>Dutch Republic</strong>, accessible at <strong>dutchrepublic.com</strong>. By using this Website, you agree to accept all Terms and Conditions written here. You must not use this Website if you disagree with any of these Terms.</p>
 
-    <p>This Website is intended only for individuals <strong>21 years of age or older</strong> (or 18+ with valid Michigan medical marijuana patient status). By using this Website, you confirm that you meet this age requirement.</p>
+      <p>This Website is intended only for individuals <strong>21 years of age or older</strong> (or 18+ with valid Michigan medical marijuana patient status). By using this Website, you confirm that you meet this age requirement.</p>
 
-    <h2>Intellectual Property Rights</h2>
-    <p>Other than the content you own, under these Terms, <strong>Dutch Republic</strong> and/or its licensors own all intellectual property rights and materials contained in this Website. You are granted a limited license only for the purpose of viewing the material on this Website.</p>
+      <h2>Intellectual Property Rights</h2>
+      <p>Other than the content you own, under these Terms, <strong>Dutch Republic</strong> and/or its licensors own all intellectual property rights and materials contained in this Website. You are granted a limited license only for the purpose of viewing the material on this Website.</p>
 
-    <h2>Restrictions</h2>
-    <ul>
-      <li>publishing Website material in any other media;</li>
-      <li>selling, sublicensing, or otherwise commercializing Website material;</li>
-      <li>publicly performing or showing any Website material;</li>
-      <li>using this Website in any way that is damaging or could impair user access;</li>
-      <li>using this Website contrary to applicable laws and regulations;</li>
-      <li>engaging in data mining, scraping, or similar activities;</li>
-      <li>using this Website to engage in advertising or marketing without prior consent.</li>
-    </ul>
-    <p>Access to certain areas of this Website may be restricted, and <strong>Dutch Republic</strong> may further limit access at its sole discretion. Any user ID and password you create are confidential, and you must maintain confidentiality.</p>
+      <h2>Restrictions</h2>
+      <ul>
+        <li>publishing Website material in any other media;</li>
+        <li>selling, sublicensing, or otherwise commercializing Website material;</li>
+        <li>publicly performing or showing any Website material;</li>
+        <li>using this Website in any way that is damaging or could impair user access;</li>
+        <li>using this Website contrary to applicable laws and regulations;</li>
+        <li>engaging in data mining, scraping, or similar activities;</li>
+        <li>using this Website to engage in advertising or marketing without prior consent.</li>
+      </ul>
+      <p>Access to certain areas of this Website may be restricted, and <strong>Dutch Republic</strong> may further limit access at its sole discretion. Any user ID and password you create are confidential, and you must maintain confidentiality.</p>
 
-    <h2>Your Content</h2>
-    <p>“Your Content” shall mean any text, images, or material you choose to display on this Website (for example, product reviews or uploaded images). By displaying Your Content, you grant <strong>Dutch Republic</strong> a non-exclusive, worldwide, irrevocable, sublicensable license to use, reproduce, adapt, publish, translate, and distribute it in any media.</p>
-    <p>Your Content must be your own and must not infringe on third-party rights. <strong>Dutch Republic</strong> reserves the right to remove Your Content at any time without notice.</p>
+      <h2>Your Content</h2>
+      <p>“Your Content” means any text, images, or material you choose to display on this Website (for example, product reviews or uploaded images). By displaying Your Content, you grant <strong>Dutch Republic</strong> a non-exclusive, worldwide, irrevocable, sublicensable license to use, reproduce, adapt, publish, translate, and distribute it in any media.</p>
+      <p>Your Content must be your own and must not infringe third-party rights. <strong>Dutch Republic</strong> reserves the right to remove Your Content at any time without notice.</p>
 
-    <h2>No Warranties</h2>
-    <p>This Website is provided “as is,” and <strong>Dutch Republic</strong> makes no representations or warranties of any kind related to this Website or the materials contained on this Website. Nothing contained on this Website shall be interpreted as professional advice.</p>
+      <h2>No Warranties</h2>
+      <p>This Website is provided “as is,” and <strong>Dutch Republic</strong> makes no representations or warranties of any kind related to this Website or the materials contained on this Website. Nothing on this Website shall be interpreted as professional advice.</p>
 
-    <h2>Limitation of Liability</h2>
-    <p>In no event shall <strong>Dutch Republic</strong>, nor its officers, directors, employees, or affiliates, be held liable for anything arising out of or in any way connected with your use of this Website. <strong>Dutch Republic</strong> shall not be liable for any indirect, consequential, or special liability related to your use of this Website.</p>
+      <h2>Limitation of Liability</h2>
+      <p>In no event shall <strong>Dutch Republic</strong>, nor its officers, directors, employees, or affiliates, be held liable for anything arising out of or in any way connected with your use of this Website. <strong>Dutch Republic</strong> shall not be liable for any indirect, consequential, or special liability related to your use of this Website.</p>
 
-    <h2>Indemnification</h2>
-    <p>You hereby indemnify to the fullest extent <strong>Dutch Republic</strong> against any and all liabilities, costs, demands, causes of action, damages, and expenses arising in any way related to your breach of these Terms.</p>
+      <h2>Indemnification</h2>
+      <p>You hereby indemnify to the fullest extent <strong>Dutch Republic</strong> against any and all liabilities, costs, demands, causes of action, damages, and expenses arising in any way related to your breach of these Terms.</p>
 
-    <h2>Severability</h2>
-    <p>If any provision of these Terms is found invalid under applicable law, such provision shall be deleted without affecting the remaining provisions.</p>
+      <h2>Severability</h2>
+      <p>If any provision of these Terms is found invalid under applicable law, such provision shall be deleted without affecting the remaining provisions.</p>
 
-    <h2>Variation of Terms</h2>
-    <p><strong>Dutch Republic</strong> may revise these Terms at any time, and by using this Website you are expected to review these Terms regularly.</p>
+      <h2>Variation of Terms</h2>
+      <p><strong>Dutch Republic</strong> may revise these Terms at any time, and by using this Website you are expected to review these Terms regularly.</p>
 
-    <h2>Assignment</h2>
-    <p><strong>Dutch Republic</strong> may assign, transfer, or subcontract its rights and/or obligations under these Terms without notification. You are not permitted to assign, transfer, or subcontract your rights and/or obligations under these Terms.</p>
+      <h2>Assignment</h2>
+      <p><strong>Dutch Republic</strong> may assign, transfer, or subcontract its rights and/or obligations under these Terms without notification. You may not assign, transfer, or subcontract your rights and/or obligations under these Terms.</p>
 
-    <h2>Entire Agreement</h2>
-    <p>These Terms constitute the entire agreement between <strong>Dutch Republic</strong> and you in relation to your use of this Website and supersede all prior agreements and understandings.</p>
+      <h2>Entire Agreement</h2>
+      <p>These Terms constitute the entire agreement between <strong>Dutch Republic</strong> and you in relation to your use of this Website and supersede all prior agreements and understandings.</p>
 
-    <h2>Governing Law &amp; Jurisdiction</h2>
-    <p>These Terms will be governed by and interpreted in accordance with the laws of the <strong>State of Michigan</strong>, and you submit to the jurisdiction of the state and federal courts located in Michigan for the resolution of disputes.</p>
+      <h2>Governing Law &amp; Jurisdiction</h2>
+      <p>These Terms will be governed by and interpreted in accordance with the laws of the <strong>State of Michigan</strong>, and you submit to the jurisdiction of the state and federal courts located in Michigan for the resolution of disputes.</p>
+    </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-row">
+    <div class="footer-row">
       <small>© <span id="year"></span> Dutch Republic. All rights reserved.</small>
-      <nav class="footer-links">
-        <a href="/privacy.html">Privacy</a>
-        <a href="/terms.html" aria-current="page">Terms</a>
+      <nav class="footer-links" aria-label="Legal links">
+        <a href="terms.html" aria-current="page">Terms of Service</a>
+        <span aria-hidden="true">•</span>
+        <a href="privacy.html">Privacy Policy</a>
       </nav>
     </div>
   </footer>
 
   <script>
-    // keep the footer year current
+    // current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
-
