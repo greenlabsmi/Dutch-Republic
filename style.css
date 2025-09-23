@@ -307,19 +307,6 @@ a{color:inherit;text-decoration:none}
   padding: 10px;
 }
 
-/* Keep the thin gold underline under this one title only */
-#about .section-title::after{
-  content:"";
-  display:block;
-  width:80px;
-  height:3px;
-  margin:10px auto 0;
-  background: var(--gold, #D47B19);
-  border-radius:2px;
-  opacity:.9;
-}
-
-
 /* --- Menu / overlay offsets for both page states --- */
 :root{
   --banner-h: 96px;   /* .brand-banner min-height */
