@@ -452,26 +452,27 @@
 </style>
 
   
- <!-- ===== Loyalty (Dutch Republic) — Embedded Alpine form ===== -->
+<!-- ===== Loyalty (Dutch Republic) — Compact Embedded Form ===== -->
 <section id="loyalty" class="loyalty-section">
   <div class="container">
     <h2 class="section-title">Join Dutch Republic Loyalty</h2>
 
-    <!-- Scoped styles so nothing else gets touched -->
     <style>
-      .loy-embed-wrap{position:relative; width:100%; max-width:980px; margin:0 auto;}
+      /* Scoped to just this block */
+      .loy-embed-wrap{max-width:500px;margin:0 auto}
       .loy-embed-frame{
         width:100%;
-        height:800px;           /* adjust if you want it taller/shorter */
+        height:600px;                 /* desktop default */
         border:0;
-        border-radius:12px;
         display:block;
-        box-shadow:0 6px 18px rgba(16,24,40,.10);
+        border-radius:12px;
         background:#fff;
+        box-shadow:0 4px 12px rgba(0,0,0,.08);
       }
-      @media (max-width:700px){
-        .loy-embed-frame{ height:820px; } /* a bit more room on mobile */
-      }
+      @media (max-width:900px){ .loy-embed-frame{ height:660px; } }  /* tablet */
+      @media (max-width:600px){ .loy-embed-frame{ height:720px; } }  /* mobile */
+      /* Optional: give the section a gentle backdrop so the card pops */
+      /* .loyalty-section{ background:#fafafa; padding:40px 0; } */
     </style>
 
     <div class="loy-embed-wrap">
@@ -486,27 +487,6 @@
     </div>
   </div>
 </section>
-
-<!-- Optional: smooth-scroll any menu link pointing to #loyalty -->
-<script>
-(() => {
-  const target = document.getElementById('loyalty');
-  if (!target) return;
-
-  // make any of these link patterns scroll here:
-  const sel = 'a[href="#loyalty"], a[data-nav="loyalty"], a[data-target="loyalty"]';
-  document.querySelectorAll(sel).forEach(a => {
-    a.addEventListener('click', (e) => {
-      // if your existing nav JS already handles this, this will just no-op
-      try{
-        const isHash = a.getAttribute('href') === '#loyalty';
-        if (isHash) e.preventDefault();
-        target.scrollIntoView({behavior:'smooth', block:'start'});
-      }catch(_){}
-    });
-  });
-})();
-</script>
 
   <!-- Visit Us -->
   <section id="contact" class="contact contact--gold">
