@@ -2401,48 +2401,62 @@ nav button,
   #legal::after{ display: none; }
 }
 
-/* ===================== ABOUT: single, scoped title style ===================== */
-/* Centers the title and matches the width of the body copy (72ch) */
+/* ===================== ABOUT — Big outlined title (scoped) ===================== */
+/* Centers the title and matches the paragraph width (72ch) */
 #about .section-title{
   display:block;
-  margin: 0 auto 14px;        /* centers the element itself */
-  max-width: 72ch;            /* same width as the paragraphs */
+  margin: 0 auto 14px;        /* center the element */
+  max-width: 72ch;            /* align with body copy width */
   text-align: center;
 
   font-family: "Cinzel", serif;
   font-weight: 900;
   letter-spacing: .02em;
-  font-size: clamp(36px, 4.5vw, 56px);
-  line-height: 1.08;
+  font-size: clamp(48px, 5.8vw, 74px);   /* BIGGER */
+  line-height: 1.05;
 
-  /* solid black text — kill any gradients/foil from earlier styles */
+  /* solid black text — kill any foil/gradient carry-overs */
   color: #111315 !important;
   background: none !important;
   -webkit-text-fill-color: currentColor !important;
   -webkit-background-clip: border-box !important;
   -webkit-text-stroke: 0 !important;
-  text-shadow: none !important;
+
+  /* ORANGE/GOLD OUTLINE (crisp multi-direction glow) */
+  text-shadow:
+    1px 0   0 var(--gold, #D47B19),
+   -1px 0   0 var(--gold, #D47B19),
+    0   1px 0 var(--gold, #D47B19),
+    0  -1px 0 var(--gold, #D47B19),
+    1px 1px 0 var(--gold, #D47B19),
+   -1px -1px 0 var(--gold, #D47B19),
+    1px -1px 0 var(--gold, #D47B19),
+   -1px 1px 0 var(--gold, #D47B19);
 }
 
-/* Gold underline bar under just this title */
+/* Gold underline bar just for this title */
 #about .section-title::after{
   content: "";
   display: block;
-  width: 84px;
-  height: 3px;
-  margin: 10px auto 0;
+  width: 110px;
+  height: 4px;
+  margin: 12px auto 0;
   background: var(--gold, #D47B19);
   border-radius: 2px;
-  opacity: .9;
+  opacity: .95;
 }
 
-/* ===================== MENU DRAWER (neutral + stacked) ===================== */
-/* Safe defaults so it opens in a sensible place even before JS nudges it */
+/* ===================== MENU DRAWER — let JS place it under the icon ===================== */
+/* The JS (alignFloating) positions the panel under the hamburger. 
+   These rules REMOVE any default top/right that could fight alignment. */
 #navDrawer.menu-popover{
   position: fixed;
-  top: calc(var(--nav-h, 60px) + 8px);  /* sit under the nav by default */
-  right: 12px;                          /* hug the hamburger side */
   z-index: 61;
+
+  /* Let JS set left/top. Do not pre-position. */
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
 
   width: min(86vw, 320px);
   max-height: 70vh;
@@ -2456,7 +2470,7 @@ nav button,
 }
 #navDrawer[hidden]{ display:none; }
 
-/* Vertical list, no bullets */
+/* Clean stacked list */
 #navDrawer .menu-list{
   display: flex !important;
   flex-direction: column !important;
@@ -2464,46 +2478,45 @@ nav button,
   padding: 0;
   margin: 0;
 }
-#navDrawer .menu-list li{
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+#navDrawer .menu-list li{ list-style: none; margin:0; padding:0; }
 
-/* Links: neutral look, normal UI font/size */
+/* Neutral, readable links (no orange boxes) */
 #navDrawer .menu-list .drawer-link{
-  display: block !important;
-  padding: 12px 10px;
-  border-radius: 10px;
-  background: #fff;
-  border: 1px solid var(--line);
+  display:block !important;
+  padding:12px 10px;
+  border-radius:10px;
+  background:#fff;
+  border:1px solid var(--line);
 
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif;
-  font-weight: 700;
-  font-size: 15px;
-  letter-spacing: 0;
-  text-transform: none;
-  color: var(--ink);
+  font-weight:700;
+  font-size:15px;
+  letter-spacing:0;
+  text-transform:none;
+  color:var(--ink);
 
   transition: background .15s ease, box-shadow .15s ease, transform .08s ease;
 }
 #navDrawer .menu-list .drawer-link:hover{
-  background: #f8f8f8;
-  box-shadow: 0 4px 10px rgba(0,0,0,.08);
-  transform: translateY(-1px);
+  background:#f8f8f8;
+  box-shadow:0 4px 10px rgba(0,0,0,.08);
+  transform:translateY(-1px);
 }
 
-/* Overlay below the popover, covers the page */
+/* Overlay starts just under the sticky header; keeps pointer travel short */
+:root{ --strip-h: 0px; }            /* mobile status strip height if you use one */
+@media (max-width:900px){ :root{ --strip-h: 32px; } }
+
 #menuOverlay.menu-overlay{
   position: fixed;
-  top: var(--nav-h, 60px);     /* start below the sticky nav */
+  top: calc(var(--nav-h, 60px) + var(--strip-h, 0px));
   left: 0; right: 0; bottom: 0;
   z-index: 59;
   background: transparent;
 }
 #menuOverlay[hidden]{ display:none; }
 
-/* Desktop: JS may still re-position; keep a sensible anchor */
+/* Desktop fallback anchor (JS still fine-tunes under the icon) */
 @media (min-width:901px){
   #navDrawer.menu-popover{ right: 12px !important; left: auto !important; }
 }
