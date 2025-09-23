@@ -452,114 +452,60 @@
 </style>
 
   
- <!-- =========================
-     Loyalty (drop-in block)
-     ========================= -->
-<section id="loyalty" class="loyalty-section" aria-labelledby="loyalty-title">
+ <!-- ===== Loyalty (Dutch Republic) — Embedded Alpine form ===== -->
+<section id="loyalty" class="loyalty-section">
   <div class="container">
-    <h2 class="section-title" id="loyalty-title">Loyalty</h2>
+    <h2 class="section-title">Join Dutch Republic Loyalty</h2>
 
-    <form id="loyaltyForm" class="loyalty-card" action="#" method="post" onsubmit="return false;">
-      <!-- Step 1: email gate -->
-      <label class="loy-row loy-inline" for="loyEmail">
-        <input
-          id="loyEmail"
-          name="email"
-          type="email"
-          placeholder="Enter your email to join"
-          autocomplete="email"
-          required
-        />
-        <button id="loyStart" class="btn gold" type="button">Continue</button>
-      </label>
+    <!-- Scoped styles so nothing else gets touched -->
+    <style>
+      .loy-embed-wrap{position:relative; width:100%; max-width:980px; margin:0 auto;}
+      .loy-embed-frame{
+        width:100%;
+        height:800px;           /* adjust if you want it taller/shorter */
+        border:0;
+        border-radius:12px;
+        display:block;
+        box-shadow:0 6px 18px rgba(16,24,40,.10);
+        background:#fff;
+      }
+      @media (max-width:700px){
+        .loy-embed-frame{ height:820px; } /* a bit more room on mobile */
+      }
+    </style>
 
-      <!-- Step 2: extra details & actions -->
-      <div id="loyBody" class="loy-body" hidden>
-        <div class="loy-grid">
-          <label>First Name
-            <input name="firstName" type="text" autocomplete="given-name" />
-          </label>
-          <label>Last Name
-            <input name="lastName" type="text" autocomplete="family-name" />
-          </label>
-          <label>Mobile Phone
-            <input name="phone" type="tel" inputmode="tel" autocomplete="tel" />
-          </label>
-        </div>
-
-        <div class="loy-blurb">
-          Earn points on every purchase. Redeem for exclusive Dutch Republic rewards and drops.
-        </div>
-
-        <label class="loy-agree">
-          <input id="loyAgree" type="checkbox" required />
-          <span>
-            By signing up, I consent to receive marketing communications and agree to the program terms.
-            Standard messaging rates may apply. I confirm I am of legal age.
-          </span>
-        </label>
-
-        <div class="loy-actions">
-          <a class="btn gold"    href="https://your-loyalty-link" data-ext>Create Account</a>
-          <a class="btn outline" href="https://your-loyalty-link" data-ext>Sign In</a>
-        </div>
-
-        <!-- Noscript fallback (will open Alpine in a new tab) -->
-        <noscript>
-          <p><a class="btn gold" href="https://your-loyalty-link" target="_blank" rel="noopener">Open Loyalty</a></p>
-        </noscript>
-      </div>
-    </form>
+    <div class="loy-embed-wrap">
+      <iframe
+        class="loy-embed-frame"
+        src="https://lab.alpineiq.com/join/c/3149/110369?storeID=-1"
+        title="Dutch Republic Loyalty"
+        loading="lazy"
+        allow="accelerometer; encrypted-media; gyroscope"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
   </div>
 </section>
 
-<!-- Loyalty wiring (place near the end of <body>) -->
+<!-- Optional: smooth-scroll any menu link pointing to #loyalty -->
 <script>
-  // 🔗 Replace this with the REAL Dutch Republic Alpine wallet URL when you have it.
-  // Example (temporary): "https://lab.alpineiq.com/wallet/3149"
-  const LOYALTY_URL = "https://your-loyalty-link";
+(() => {
+  const target = document.getElementById('loyalty');
+  if (!target) return;
 
-  // Grab elements
-  const $email = document.querySelector('#loyEmail');
-  const $start = document.querySelector('#loyStart');
-  const $body  = document.querySelector('#loyBody');
-  const $links = document.querySelectorAll('.loy-actions a');
-  const $agree = document.querySelector('#loyAgree');
-
-  // Ensure external links open safely
-  document.querySelectorAll('[data-ext]').forEach(a => {
-    a.setAttribute('target', '_blank');
-    a.setAttribute('rel', 'noopener');
+  // make any of these link patterns scroll here:
+  const sel = 'a[href="#loyalty"], a[data-nav="loyalty"], a[data-target="loyalty"]';
+  document.querySelectorAll(sel).forEach(a => {
+    a.addEventListener('click', (e) => {
+      // if your existing nav JS already handles this, this will just no-op
+      try{
+        const isHash = a.getAttribute('href') === '#loyalty';
+        if (isHash) e.preventDefault();
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+      }catch(_){}
+    });
   });
-
-  // Build link to Alpine, optionally pre-filling the email (?email=…)
-  function updateLinks() {
-    const email = ($email?.value || '').trim();
-    const url = email ? `${LOYALTY_URL}?email=${encodeURIComponent(email)}` : LOYALTY_URL;
-    $links.forEach(a => a.href = url);
-  }
-
-  // Reveal step 2 and hydrate links
-  $start?.addEventListener('click', () => {
-    if (!$email.checkValidity()) { $email.reportValidity(); return; }
-    $body.hidden = false;
-    updateLinks();
-  });
-
-  // Keep links in sync as the user types
-  $email?.addEventListener('input', updateLinks);
-
-  // Prevent clicking the final actions without consent checkbox (UX safeguard)
-  document.querySelector('.loy-actions')?.addEventListener('click', (e) => {
-    if ($body.hidden) return; // still on step 1
-    if (!$agree?.checked) {
-      e.preventDefault();
-      $agree.focus();
-    }
-  });
-
-  // Initialize so buttons work even before Continue (uses base LOYALTY_URL)
-  updateLinks();
+})();
 </script>
 
   <!-- Visit Us -->
