@@ -3,6 +3,74 @@
 // ------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
 
+  document.addEventListener('DOMContentLoaded', () => {
+  const frame = document.getElementById('leaflyMenuIframe');
+  if (!frame) return;
+
+  // Base URLs to keep everything pinned to Dutch Republic
+  const BASE_MENU = 'https://www.leafly.com/dispensary-info/dutch-republic/menu';
+  const BASE_SEARCH = BASE_MENU; // Leafly search happens inside menu context
+  const BASE_CATEGORIES = BASE_MENU; // open menu; user taps category there
+  const BASE_BAG = 'https://www.leafly.com/bag';
+
+  // Build a URL for the action (you can customize if Leafly adds params)
+  function urlFor(action) {
+    const bust = (u) => u + (u.includes('?') ? '&' : '?') + 'r=' + Date.now();
+    switch (action) {
+      case 'search':     return bust(BASE_SEARCH);
+      case 'categories': return bust(BASE_CATEGORIES);
+      case 'bag':        return bust(BASE_BAG);
+      case 'menu':
+      default:           return bust(BASE_MENU);
+    }
+  }
+
+  // Open centered popup (works on desktop; on iOS it may appear as a sheet/tab)
+  function openPopup(href) {
+    const w = Math.min(520, Math.floor(window.innerWidth * 0.95));
+    const h = Math.min(820, Math.floor(window.innerHeight * 0.95));
+    const left = Math.max(0, Math.floor((screen.width - w) / 2));
+    const top  = Math.max(0, Math.floor((screen.height - h) / 2));
+    return window.open(
+      href,
+      'leaflyFlow',
+      `width=${w},height=${h},left=${left},top=${top},resizable=yes,scrollbars=yes`
+    );
+  }
+
+  // After popup closes, refresh iframe so it’s logged-in & on the right store
+  function refreshIframe() {
+    const src = frame.getAttribute('src');
+    frame.setAttribute('src', src.split('#')[0].replace(/([?&])r=\d+/, '') + (src.includes('?') ? '&' : '?') + 'r=' + Date.now());
+  }
+
+  // Delegate clicks from anything with data-leafly
+  document.addEventListener('click', (e) => {
+    const el = e.target.closest('[data-leafly]');
+    if (!el) return;
+
+    const action = el.getAttribute('data-leafly'); // menu | search | bag | categories
+    const href = urlFor(action);
+
+    // Prevent your page from navigating to #menu
+    e.preventDefault();
+
+    const popup = openPopup(href);
+    if (!popup) {
+      alert('Please allow popups for this site to complete the Leafly action.');
+      return;
+    }
+
+    // iOS/desktop: poll for close, then refresh iframe session
+    const poll = setInterval(() => {
+      if (popup.closed) {
+        clearInterval(poll);
+        refreshIframe();
+      }
+    }, 600);
+  });
+});
+
 // ===== Age Gate logic (uses #ageGate, #ageYes, #ageNo, #ageRemember) =====
 (function () {
   const KEY = 'dr_age_until';
