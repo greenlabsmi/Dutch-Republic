@@ -1700,7 +1700,7 @@ body.agegate--lock{ overflow:hidden; }
 header.site-header {
   position: sticky; 
   top: 0;
-  z-index: 9999; /* keeps nav above embeds */
+  z-index: 60; /* keeps nav above embeds */
 }
 
 /* Leafly: keep its surface topmost & isolated so clicks reach it */
