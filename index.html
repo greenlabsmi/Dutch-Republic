@@ -452,41 +452,85 @@
 </style>
 
   
-<!-- ===== Loyalty (Dutch Republic) — Compact Embedded Form with Border ===== -->
+<!-- ===== Dutch Republic Loyalty — Info + Signup ===== -->
 <section id="loyalty" class="loyalty-section">
   <div class="container">
-    <h2 class="section-title">Join Dutch Republic Loyalty</h2>
+    <h2 class="section-title">Dutch Republic Loyalty</h2>
 
     <style>
-      /* Scoped to just this block */
-      .loy-embed-wrap{max-width:500px;margin:0 auto}
-      .loy-embed-frame{
-        width:100%;
-        height:600px;                 /* desktop default */
-        border:2px solid #000;        /* black border */
-        display:block;
-        border-radius:12px;
-        background:#fff;
-        box-shadow:0 4px 12px rgba(0,0,0,.08);
+      /* Layout */
+      .loy-flex {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        align-items: stretch;
+        justify-content: center;
       }
-      @media (max-width:900px){ .loy-embed-frame{ height:660px; } }  /* tablet */
-      @media (max-width:600px){ .loy-embed-frame{ height:720px; } }  /* mobile */
-      /* Optional: gentle backdrop */
-      /* .loyalty-section{ background:#fafafa; padding:40px 0; } */
+      .loy-info, .loy-embed-wrap {
+        flex: 1 1 380px;          /* min width before wrapping */
+        max-width: 500px;
+      }
+
+      /* Info block */
+      .loy-info {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: var(--ink, #111);
+        background: #fafafa;
+        border: 2px solid #000;
+        border-radius: 12px;
+        padding: 20px 24px;
+        box-shadow: 0 4px 12px rgba(0,0,0,.06);
+      }
+      .loy-info h3 {
+        margin-top: 0;
+        font-size: 1.25rem;
+        color: var(--gold, #D47B19);
+      }
+
+      /* Iframe block */
+      .loy-embed-frame {
+        width: 100%;
+        height: 600px;
+        border: 2px solid #000;
+        border-radius: 12px;
+        background: #fff;
+        box-shadow: 0 4px 12px rgba(0,0,0,.08);
+        display: block;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 700px) {
+        .loy-info { font-size: 0.85rem; }
+        .loy-embed-frame { height: 680px; }
+      }
     </style>
 
-    <div class="loy-embed-wrap">
-      <iframe
-        class="loy-embed-frame"
-        src="https://lab.alpineiq.com/join/c/3149/110369?storeID=-1"
-        title="Dutch Republic Loyalty"
-        loading="lazy"
-        allow="accelerometer; encrypted-media; gyroscope"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
+    <div class="loy-flex">
+      <!-- Info panel -->
+      <div class="loy-info">
+        <h3>Join Our Dutch Rewards Club</h3>
+        <p><strong>Earn Big, Save More:</strong> Get 5% back on every purchase at Dutch Republic.</p>
+        <p>Your loyalty is not just appreciated — it’s rewarded. For every dollar you spend, earn <strong>5% back in credits</strong>. Redeem your credits dollar for dollar on future purchases. That’s right, <strong>1 credit = $1</strong>.</p>
+        <p>As a Dutch Rewards Club member, you’ll also get first access to <em>exclusive deals, events, and product launches</em>. Signing up takes less than a minute — your perks last much longer.</p>
+        <p><em>Welcome to a loyalty program designed to give back.</em></p>
+      </div>
+
+      <!-- Alpine embed -->
+      <div class="loy-embed-wrap">
+        <iframe
+          class="loy-embed-frame"
+          src="https://lab.alpineiq.com/join/c/3149/110369?storeID=-1"
+          title="Dutch Republic Loyalty"
+          loading="lazy"
+          allow="accelerometer; encrypted-media; gyroscope"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
     </div>
   </div>
 </section>
+
 
   <!-- Visit Us -->
   <section id="contact" class="contact contact--gold">
