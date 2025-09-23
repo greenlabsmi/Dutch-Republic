@@ -2431,3 +2431,8 @@ nav button,
 
 /* Optional: if you ever need the Leafly view to be shorter than a full screen,
    replace 100vh above with e.g. 80vh in both height formulas. */
+
+/* Keep normal padding on the heading container inside #menu */
+#menu > .container { 
+  padding: 0 16px !important; 
+}
