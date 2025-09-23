@@ -321,6 +321,7 @@ body:not(.show-sticky){
 }
 .menu-overlay{ top: var(--menu-top); }
 
+.visually-hidden{position:absolute!important;clip:rect(0 0 1px 1px);clip-path:inset(50%);height:1px;width:1px;overflow:hidden;white-space:nowrap}
 
 /* ========== Today’s Deals ========== */
 .deals-section{margin:18px 0}
