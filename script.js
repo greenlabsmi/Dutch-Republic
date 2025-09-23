@@ -659,12 +659,15 @@ document.addEventListener('click', (e) => {
     startX = null; start();
   }, {passive:true});
 
-  // Autoplay (respect reduced motion)
-  const delay = parseInt(root.dataset.autoplay || '7000', 10);
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let timer = null;
-  function start(){ if (!prefersReduced) { stop(); timer = setInterval(() => go(i+1, false), delay); } }
-  function stop(){ if (timer) { clearInterval(timer); timer = null; } }
+ // Autoplay (respect reduced motion unless you override)
+const delay = parseInt(root.dataset.autoplay || '7000', 10);
+const prefersReduced = root.hasAttribute('data-ignore-reduced-motion')
+  ? false
+  : window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let timer = null;
+function start(){ if (!prefersReduced) { stop(); timer = setInterval(() => go(i+1, false), delay); } }
+function stop(){ if (timer) { clearInterval(timer); timer = null; } }
 
   // Pause on hover (desktop)
   root.addEventListener('mouseenter', stop);
