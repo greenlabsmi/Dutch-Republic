@@ -2372,3 +2372,31 @@ nav button,
   background: transparent;
 }
 #menuOverlay[hidden]{ display:none; }
+
+/* === Simple Leafly embed (no crop, no full-bleed tricks) === */
+#menu { 
+  padding: 24px 0; 
+  /* land below sticky header when you click a #menu link */
+  scroll-margin-top: calc(var(--nav-h, 60px) + 8px);
+}
+
+#menu > .container { 
+  padding: 0 16px;            /* normal container padding for the heading */
+}
+
+#menu .leafly-embed { 
+  width: 100%; 
+  max-width: var(--container, 1080px); 
+  margin: 0 auto;             /* keep it centered like the rest of the site */
+  padding: 0;
+}
+
+#leaflyFrame {
+  display: block;
+  width: 100%;
+  height: 80vh;               /* nice tall view without taking the whole page */
+  min-height: 800px;          /* safety for short viewports */
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
