@@ -1121,18 +1121,6 @@ html, body { overflow-x: clip; }
   pointer-events:none;
 }
 
-/* === 2) Loyalty: stronger separation + on-brand controls === */
-:root{
-  --loyal-bg:#FFEFCB;   /* deeper than --deal-hue so it stands out */
-  --loyal-ring:#E9B15E; /* warm border tone */
-}
-
-#loyalty.loyalty-section{
-  background:var(--loyal-bg) !important;
-  padding:28px 0 !important;
-  border-top:1px solid var(--line);
-}
-
 .loyalty-card{
   background:#fff !important;
   border:2px solid var(--loyal-ring) !important;
