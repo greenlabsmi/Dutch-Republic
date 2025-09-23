@@ -635,6 +635,14 @@
   </noscript>
 </div>
 <!-- ========== /AGE GATE ========== -->
-
+<script>
+  (function () {
+    if (location.hash === '#menu') {
+      history.replaceState(null, '', location.pathname + location.search);
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      window.scrollTo(0, 0);
+    }
+  })();
+</script>
 </body>
 </html>
