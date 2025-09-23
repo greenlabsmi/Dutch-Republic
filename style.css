@@ -2401,92 +2401,62 @@ nav button,
   #legal::after{ display: none; }
 }
 
-/* === ABOUT title: black fill + gold outline (scoped) === */
+/* ===================== ABOUT: single, scoped title style ===================== */
+/* Centers the title and matches the width of the body copy (72ch) */
 #about .section-title{
-  /* size + font */
-  font-family: "Cinzel", serif;
-  font-weight: 900;
-  font-size: clamp(40px, 5.2vw, 64px);
-  line-height: 1.05;
-  letter-spacing: .02em;
+  display:block;
+  margin: 0 auto 14px;        /* centers the element itself */
+  max-width: 72ch;            /* same width as the paragraphs */
   text-align: center;
 
-  /* FORCE a solid fill (undo any foil/clip rules) */
-  color: #111315 !important;
-  -webkit-text-fill-color: currentColor !important;
-  background: none !important;
-  -webkit-background-clip: border-box !important;
+  font-family: "Cinzel", serif;
+  font-weight: 900;
+  letter-spacing: .02em;
+  font-size: clamp(36px, 4.5vw, 56px);
+  line-height: 1.08;
 
-  /* Gold outline via multi-direction text-shadow */
-  text-shadow:
-    1px 0   0 var(--gold, #D47B19),
-   -1px 0   0 var(--gold, #D47B19),
-    0   1px 0 var(--gold, #D47B19),
-    0  -1px 0 var(--gold, #D47B19),
-    1px 1px 0 var(--gold, #D47B19),
-   -1px -1px 0 var(--gold, #D47B19),
-    1px -1px 0 var(--gold, #D47B19),
-   -1px 1px 0 var(--gold, #D47B19);
+  /* solid black text — kill any gradients/foil from earlier styles */
+  color: #111315 !important;
+  background: none !important;
+  -webkit-text-fill-color: currentColor !important;
+  -webkit-background-clip: border-box !important;
+  -webkit-text-stroke: 0 !important;
+  text-shadow: none !important;
 }
 
-/* Underline bar just for the About title */
+/* Gold underline bar under just this title */
 #about .section-title::after{
   content: "";
   display: block;
-  width: 120px;
-  height: 4px;
-  margin: 12px auto 0;
-  background: var(--gold, #D47B19);
-  border-radius: 2px;
-}
-
-/* ===================== ABOUT TITLE (scoped) ===================== */
-/* Only affects the big "Dutch Republic" heading in the About section */
-#about .section-title{
-  text-align: center !important;
-  font-family: "Cinzel", serif;
-  font-weight: 900;
-  letter-spacing: .5px;
-  font-size: clamp(28px, 4.2vw, 48px);
-  line-height: 1.1;
-  margin: 0 auto 14px;
-  color: #111;                   /* keep text clean/black */
-  -webkit-text-stroke: 0 !important;
-  -webkit-text-fill-color: currentColor !important;
-  background: none !important;   /* kill any foil/gradient carryover */
-  text-shadow: none !important;
-}
-#about .section-title::after{
-  content:"";
-  display:block;
   width: 84px;
   height: 3px;
   margin: 10px auto 0;
-  background: var(--gold, #D47B19);  /* subtle gold underline */
+  background: var(--gold, #D47B19);
   border-radius: 2px;
   opacity: .9;
 }
 
 /* ===================== MENU DRAWER (neutral + stacked) ===================== */
-/* Scope to the popover so other .menu-list on the site won't be touched */
+/* Safe defaults so it opens in a sensible place even before JS nudges it */
 #navDrawer.menu-popover{
-  /* JS positions this; keep CSS from fighting it */
   position: fixed;
-  left: auto !important;
-  right: auto !important;
-  top: auto !important;
+  top: calc(var(--nav-h, 60px) + 8px);  /* sit under the nav by default */
+  right: 12px;                          /* hug the hamburger side */
+  z-index: 61;
+
   width: min(86vw, 320px);
   max-height: 70vh;
   overflow: auto;
+
+  background: #fff;
   border: 1px solid var(--line);
   border-radius: 12px;
-  background: #fff;
   box-shadow: 0 18px 40px rgba(16,24,40,.12);
   padding: 10px;
-  z-index: 61;
 }
 #navDrawer[hidden]{ display:none; }
 
+/* Vertical list, no bullets */
 #navDrawer .menu-list{
   display: flex !important;
   flex-direction: column !important;
@@ -2500,19 +2470,21 @@ nav button,
   padding: 0;
 }
 
-/* Links: no orange border, normal body font/size, stacked blocks */
+/* Links: neutral look, normal UI font/size */
 #navDrawer .menu-list .drawer-link{
   display: block !important;
   padding: 12px 10px;
   border-radius: 10px;
   background: #fff;
   border: 1px solid var(--line);
+
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif;
   font-weight: 700;
   font-size: 15px;
   letter-spacing: 0;
   text-transform: none;
   color: var(--ink);
+
   transition: background .15s ease, box-shadow .15s ease, transform .08s ease;
 }
 #navDrawer .menu-list .drawer-link:hover{
@@ -2521,16 +2493,17 @@ nav button,
   transform: translateY(-1px);
 }
 
-/* Make sure the overlay sits under the popover and covers the page */
+/* Overlay below the popover, covers the page */
 #menuOverlay.menu-overlay{
   position: fixed;
+  top: var(--nav-h, 60px);     /* start below the sticky nav */
   left: 0; right: 0; bottom: 0;
   z-index: 59;
   background: transparent;
 }
 #menuOverlay[hidden]{ display:none; }
 
-/* Desktop: allow JS to nudge the popover against the hamburger */
+/* Desktop: JS may still re-position; keep a sensible anchor */
 @media (min-width:901px){
   #navDrawer.menu-popover{ right: 12px !important; left: auto !important; }
 }
