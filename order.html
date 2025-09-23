@@ -15,17 +15,21 @@
     .brand a{margin-left:auto;text-decoration:none}
     .wrap{max-width:1080px;margin:0 auto;padding:10px 16px}
     .title{font-family:"Cinzel",serif;font-weight:900;text-align:center;margin:10px 0 0}
+
+    .actions-row{max-width:1080px;margin:8px auto 0;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;border:1px solid #111;font-weight:700;text-decoration:none;color:#111;background:#fff}
+    .btn.primary{background:#10e3a1;border-color:#10e3a1}
+    .btn.small{padding:8px 12px;font-weight:700}
+
     .leafly-embed{width:100%}
-    .leafly-embed iframe{width:100%;height:calc(100vh - 100px);min-height:70vh;border:0;display:block}
+    .leafly-embed iframe{width:100%;height:calc(100vh - 140px);min-height:70vh;border:0;display:block}
 
     /* fallback */
     .fallback {
-      max-width: 860px; margin: 24px auto; padding: 16px;
+      max-width: 860px; margin: 18px auto; padding: 14px 16px;
       border: 1px dashed #c9c9c9; border-radius: 10px; background:#fafafa; display:none;
     }
     .fallback .actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:10px; }
-    .btn { display:inline-block; padding:10px 14px; border-radius:10px; border:1px solid #111; font-weight:700; text-decoration:none; color:#111; }
-    .btn.primary { background:#10e3a1; border-color:#10e3a1; }
   </style>
 </head>
 <body>
@@ -41,6 +45,13 @@
     <h1 class="title">Shop Our Menu</h1>
   </div>
 
+  <!-- Always-visible escape hatches (works even if the iframe crashes/blocks) -->
+  <div class="actions-row" aria-label="Order actions">
+    <a id="openLeaflyTop" class="btn primary" target="_blank" rel="noopener"
+       href="https://www.leafly.com/dispensary-info/dutch-republic/menu">Open Full Menu</a>
+    <a class="btn small" target="_blank" rel="noopener" href="https://www.leafly.com/bag">View Bag / Checkout</a>
+  </div>
+
   <div class="leafly-embed">
     <iframe
       id="leaflyMenuIframe"
@@ -52,10 +63,10 @@
     </iframe>
   </div>
 
-  <!-- Fallback if the iframe is blocked -->
+  <!-- Fallback if the iframe is blocked or the Leafly app errors -->
   <div id="fallback" class="fallback" role="region" aria-live="polite" aria-label="Leafly menu fallback">
     <p>
-      If the embedded menu doesn’t appear (ad-blockers or network filters sometimes block it),
+      If the embedded menu doesn’t appear or shows an application error (common with ad-blockers or filtered DNS),
       open our menu directly on Leafly:
     </p>
     <div class="actions">
@@ -74,24 +85,26 @@
 
       // Add a tiny cache-buster so Leafly sees fresh session/auth
       frame.src = bust(menuURL);
+      const topLink = document.getElementById('openLeaflyTop');
+      const openLeafly = document.getElementById('openLeafly');
+      if (topLink)   topLink.href = bust(menuURL);
+      if (openLeafly) openLeafly.href = bust(menuURL);
 
       let loaded = false;
-      frame.addEventListener('load', () => {
-        loaded = true;
-        // If it loaded, keep fallback hidden
-        if (fallback) fallback.style.display = 'none';
-      });
+      frame.addEventListener('load', () => { loaded = true; });
 
-      // Watchdog: if the iframe hasn't fired 'load' soon, show the fallback
+      // Show fallback if the iframe never finishes loading (blocked)…
       setTimeout(() => {
-        if (!loaded && fallback) {
-          fallback.style.display = 'block';
-        }
+        if (!loaded && fallback) fallback.style.display = 'block';
       }, 6000);
 
-      // Ensure the fallback link also gets a fresh cache-bust
-      const openLeafly = document.getElementById('openLeafly');
-      if (openLeafly) openLeafly.href = bust(menuURL);
+      // …and also show fallback after a while even if it "loaded" but Leafly crashed inside.
+      // (We can't inspect cross-origin content; this is a pragmatic UX guard.)
+      setTimeout(() => {
+        if (fallback && fallback.style.display !== 'block') {
+          fallback.style.display = 'block';
+        }
+      }, 12000);
     })();
   </script>
 </body>
