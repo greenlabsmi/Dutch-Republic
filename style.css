@@ -1096,7 +1096,6 @@ html, body { overflow-x: clip; }
 
 /* === Desktop: let JS place the panels next to their triggers === */
 @media (min-width:901px){
-  .menu-popover{ right:12px !important; left:auto !important; }
   #hoursTip{ right:88px !important; left:auto !important; }
 }
 
@@ -2515,8 +2514,3 @@ nav button,
   background: transparent;
 }
 #menuOverlay[hidden]{ display:none; }
-
-/* Desktop fallback anchor (JS still fine-tunes under the icon) */
-@media (min-width:901px){
-  #navDrawer.menu-popover{ right: 12px !important; left: auto !important; }
-}
