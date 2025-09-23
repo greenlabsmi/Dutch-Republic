@@ -259,16 +259,17 @@ function smartMapHref(address){
     const note = document.getElementById('hoursNote');
     const statusDot = document.getElementById('hoursStatusDot');
     if (!btn || !pop || !ovl || !list || !note) return;
-    // Business hours (9–21 daily)
-    const HOURS = [
-      { d: 'Sunday',    open: 9, close: 21 },
-      { d: 'Monday',    open: 9, close: 21 },
-      { d: 'Tuesday',   open: 9, close: 21 },
-      { d: 'Wednesday', open: 9, close: 21 },
-      { d: 'Thursday',  open: 9, close: 21 },
-      { d: 'Friday',    open: 9, close: 21 },
-      { d: 'Saturday',  open: 9, close: 21 },
-    ];
+    // Business hours
+// Sun–Thu: 9am–8pm (close: 20), Fri–Sat: 9am–9pm (close: 21)
+const HOURS = [
+  { d: 'Sunday',    open: 9, close: 20 },
+  { d: 'Monday',    open: 9, close: 20 },
+  { d: 'Tuesday',   open: 9, close: 20 },
+  { d: 'Wednesday', open: 9, close: 20 },
+  { d: 'Thursday',  open: 9, close: 20 },
+  { d: 'Friday',    open: 9, close: 21 },
+  { d: 'Saturday',  open: 9, close: 21 },
+];
     function fmt(h) {
       const ampm = h >= 12 ? 'PM' : 'AM';
       const hr = ((h + 11) % 12) + 1;
