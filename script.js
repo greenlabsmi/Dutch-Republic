@@ -1,76 +1,8 @@
 // ------------------------------------------------------------
 // Dutch District – main client script
 // ------------------------------------------------------------
+
 document.addEventListener('DOMContentLoaded', () => {
-
-  // ===== Leafly popup auth/flow for iOS Safari + desktop =====
-  const leaflyFrame = document.getElementById('leaflyMenuIframe'); // <-- matches your updated iframe id
-  if (leaflyFrame) {
-    const BASE_MENU = 'https://www.leafly.com/dispensary-info/dutch-republic/menu';
-    const BASE_BAG  = 'https://www.leafly.com/bag';
-
-    const urlFor = (action) => {
-      const bust = (u) => u + (u.includes('?') ? '&' : '?') + 'r=' + Date.now();
-      switch (action) {
-        case 'search':     return bust(BASE_MENU);
-        case 'categories': return bust(BASE_MENU);
-        case 'bag':        return bust(BASE_BAG);
-        case 'menu':
-        default:           return bust(BASE_MENU);
-      }
-    };
-
-    function openPopup(href) {
-      const w = Math.min(520, Math.floor(window.innerWidth * 0.95));
-      const h = Math.min(820, Math.floor(window.innerHeight * 0.95));
-      const left = Math.max(0, Math.floor((screen.width - w) / 2));
-      const top  = Math.max(0, Math.floor((screen.height - h) / 2));
-      return window.open(
-        href,
-        'leaflyFlow',
-        `width=${w},height=${h},left=${left},top=${top},resizable=yes,scrollbars=yes`
-      );
-    }
-
-    function refreshIframe() {
-      const src = leaflyFrame.getAttribute('src') || BASE_MENU;
-      const cleaned = src.split('#')[0].replace(/([?&])r=\d+/, '');
-      leaflyFrame.setAttribute('src', cleaned + (cleaned.includes('?') ? '&' : '?') + 'r=' + Date.now());
-    }
-
-    // One delegate for anything marked data-leafly="menu|search|bag|categories"
-    document.addEventListener('click', (e) => {
-      const el = e.target.closest('[data-leafly]');
-      if (!el) return;
-
-      e.preventDefault(); // don’t jump to #menu; we’ll handle it
-
-      // If your #menu section is hidden, unhide it so the iframe is visible
-      const menuSection = document.getElementById('menu');
-      if (menuSection && menuSection.hasAttribute('hidden')) {
-        menuSection.removeAttribute('hidden');
-      }
-
-      const action = el.getAttribute('data-leafly');
-      const href   = urlFor(action);
-
-      const popup = openPopup(href);
-      if (!popup) {
-        alert('Please allow popups for this site to complete the Leafly action.');
-        return;
-      }
-
-      // When the popup closes, refresh the iframe to pick up auth + correct store
-      const poll = setInterval(() => {
-        if (popup.closed) {
-          clearInterval(poll);
-          refreshIframe();
-          // scroll the menu into view so users see it update
-          menuSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 600);
-    });
-  }
 
 // ===== Age Gate logic (uses #ageGate, #ageYes, #ageNo, #ageRemember) =====
 (function () {
@@ -760,3 +692,4 @@ function stop(){ if (timer) { clearInterval(timer); timer = null; } }
     if (user){ stop(); start(); } // restart timer when user interacts
   }
 })();
+});
