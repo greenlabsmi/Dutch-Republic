@@ -20,6 +20,16 @@
 
   <!-- Cache-bust your CSS -->
   <link rel="stylesheet" href="style.css?v=dr-037" />
+  
+<!-- Prevent landing on #menu when the page first loads -->
+<script>
+  // Stop the browser from auto-scrolling to #menu on initial load
+  if (location.hash === '#menu') {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    history.replaceState(null, '', location.pathname + location.search);
+    window.scrollTo(0, 0);
+  }
+</script>
 
   <!-- Minimal helper styles for the icon row so it looks great out of the box -->
   <style>
