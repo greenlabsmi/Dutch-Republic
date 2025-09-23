@@ -648,14 +648,30 @@
   </noscript>
 </div>
 <!-- ========== /AGE GATE ========== -->
+
 <script>
-  (function () {
-    if (location.hash === '#menu') {
-      history.replaceState(null, '', location.pathname + location.search);
-      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-      window.scrollTo(0, 0);
-    }
-  })();
+(function () {
+  // Prevent landing on #menu automatically
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  if (location.hash === '#menu') {
+    history.replaceState(null, '', location.pathname + location.search);
+    window.scrollTo(0, 0);
+  }
+
+  // Reveal the hidden menu when a trigger is clicked
+  function openMenu(e){
+    e.preventDefault();
+    const sec = document.getElementById('menu');
+    if (sec && sec.hasAttribute('hidden')) sec.removeAttribute('hidden');
+    sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Attach to Order Online, SHOP ONLINE, and Search
+  document.querySelectorAll('.js-open-menu, #searchBtn').forEach(el => {
+    el.addEventListener('click', openMenu);
+  });
+})();
 </script>
+
 </body>
 </html>
