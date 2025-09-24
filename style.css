@@ -269,7 +269,7 @@ a{color:inherit;text-decoration:none}
 .pill.state-open{ color:#047857; background:#ECFDF3; border-color:#D1FADF }
 .pill.state-soon{ color:#B45309; background:#FFF7ED; border-color:#FED7AA }
 .pill.state-closed{ color:#B91C1C; background:#FEF2F2; border-color:#FECACA }
-#hoursStatusDot{ display:none }
+StatusDot{ display:none }
 
 /* Hours tooltip */
 .tooltip{
@@ -280,19 +280,16 @@ a{color:inherit;text-decoration:none}
 #hoursTip{ right:88px; top:42px }
 @media (max-width:480px){ #hoursTip{ right:72px; top:38px } }
 
-/* ===== Popover menu ===== */
-.menu-overlay{
-  position: fixed;
- 
-  left: 0; right: 0; bottom: 0;
-  z-index: 59; background: transparent;
-}
-.menu-overlay[hidden]{ display:none }
-.menu-popover{
-  position: fixed;
-  z-index: 61;
+/* ===== Popover menu (anchored under Hours pill) ===== */
+.sticky-actions { position: relative; }  /* make button container the anchor */
 
-  width: min(86vw, 320px);
+.menu-popover{
+  position: absolute;        /* was: fixed */
+  top: calc(100% + 8px);     /* appear just below the pill */
+  right: 0;                  /* line up with right edge of pill */
+  left: auto;
+
+  width: min(92vw, 320px);   /* same size, but anchored */
   max-height: 70vh;
   overflow: auto;
   background: #fff;
