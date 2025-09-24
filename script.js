@@ -495,7 +495,6 @@ window.addEventListener('resize', queueAlign);
     reveal();
     nukeStart();
   });
-}
   })();
   // Clean up any old wishlist storage
   try { localStorage.removeItem('wishlist'); } catch (e) {}
