@@ -103,7 +103,7 @@ a{color:inherit;text-decoration:none}
   .brand-title .logo-text{ display:none !important; }
 }
 
-/* ========== Sticky nav (opaque) ========== */
+/* ========== Sticky  (opaque) ========== */
 .sticky-nav {
   position: sticky; 
   top: 0; 
@@ -1783,6 +1783,23 @@ header.site-header {
   display:flex;
   justify-content:center;
   gap:20px;                        /* adjust for how airy you want */
+}
+
+/* --- Nav above Leafly embed --- */
+.sticky-nav {
+  z-index: 9999; /* ensures nav/menu is always on top */
+}
+
+/* Leafly iframe stays behind */
+.leafly-embed,
+.leafly-embed iframe {
+  position: relative;
+  z-index: 1;
+}
+
+/* When hamburger menu is open, prevent clicks from leaking into iframe */
+body.menu-open .leafly-embed iframe {
+  pointer-events: none;
 }
 
 /* Actions right */
