@@ -712,4 +712,3 @@ function stop(){ if (timer) { clearInterval(timer); timer = null; } }
     if (user){ stop(); start(); } // restart timer when user interacts
   }
 })();
-});
