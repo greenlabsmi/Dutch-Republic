@@ -142,10 +142,13 @@ document.querySelectorAll('.sticky-tabs .stab').forEach(t => {
     openBtn.setAttribute('aria-expanded','false');
   };
 
-  openBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
+   openBtn.addEventListener('click', (e) => {
+-   e.stopPropagation();
++   e.preventDefault(); 
++   e.stopPropagation();
     (pop.hidden ? open() : close());
   });
+
   ovl.addEventListener('click', close);
 
   // Close when clicking any link inside
