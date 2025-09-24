@@ -169,7 +169,6 @@
 
 </div> <!-- closes .sticky-actions -->
     </div>
-  </div>
 </header>
 
 <!-- MOBILE status strip (thin banner under the sticky nav) -->
@@ -626,7 +625,7 @@
   </noscript>
 </div>
 <!-- ========== /AGE GATE ========== -->
-  <script>
+ <script>
 (function(){
   const menuSection = document.getElementById('menu');
   const wrapper = document.getElementById('leafly-embed-wrapper');
@@ -637,10 +636,8 @@
     const s = document.createElement('script');
     s.id = 'leafly-embed-script';
     s.src = 'https://web-embedded-menu.leafly.com/loader.js';
-    // Required data-* for official embed:
     s.dataset.origin = 'https://web-embedded-menu.leafly.com';
-    s.dataset.slug = 'dutch-republic';          // <-- your Leafly slug
-    // Optional theming (tweak anytime):
+    s.dataset.slug = 'dutch-republic';     // your Leafly slug
     s.dataset.primary = '#FFCD00';
     s.dataset.secondary = '#2890DC';
     s.dataset.deals = '#CE300A';
@@ -653,27 +650,19 @@
     menuSection.hidden = false;
     injectLeaflyEmbed();
 
-    // Close the hamburger/overlay if open (safe no-ops if they don't exist)
     const drawer = document.getElementById('navDrawer');
     const overlay = document.getElementById('menuOverlay');
     if (drawer && !drawer.hidden) drawer.hidden = true;
     if (overlay && !overlay.hidden) overlay.hidden = true;
 
-    // Scroll to the menu, with a small offset for your sticky header
     const top = menuSection.getBoundingClientRect().top + window.pageYOffset - 72;
     window.scrollTo({ top, behavior: 'smooth' });
   }
 
-  // Intercept all “shop” entry points:
-  // - Big SHOP button
-  // - Order Online button (sticky header)
-  // - Search icon (sticky header)
-  // - “Shop Categories” in hamburger
-  // Right now they all point to order.html in your markup — we hijack that.
+  // ✅ Edit 1: only hook *true* shop entry points (not the hamburger)
   const triggers = document.querySelectorAll(
-    'a[href="order.html"], a[href="#menu"], [data-open-menu]'
+    'a[href="order.html"], a[href="#menu"], .btn-order, .cta-shop a'
   );
-
   triggers.forEach(el => {
     el.addEventListener('click', (e) => {
       e.preventDefault();
@@ -681,7 +670,15 @@
     });
   });
 
-  // Deep link support: /#menu should open it immediately
+  // ✅ Add this: if the drawer has a “Shop Categories” link to #menu, make it open Leafly
+  document.querySelectorAll('#navDrawer a[href="#menu"]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      openMenu();
+    });
+  });
+
+  // Deep link support
   if (location.hash === '#menu') {
     openMenu();
   }
