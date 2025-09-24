@@ -2397,3 +2397,49 @@ nav button,
   border-radius: 0;
   box-shadow: none;
 }
+
+/* ===== SAFE OVERRIDES: keep hamburger/menu above carousel & anchor Hours ===== */
+
+/* 1) Header stays above page content */
+.sticky-nav{ position: sticky; top:0; z-index:3000 !important; overflow:visible; }
+.sticky-nav__inner, .sticky-actions{ overflow:visible; }
+
+/* 2) Your hamburger/menu panel sits above everything */
+#menu,
+.menu-popover,
+.nav-drawer,
+.hamburger-menu,
+.menu-panel{
+  z-index:4000 !important;   /* keep existing position: fixed/absolute as-is */
+}
+
+/* 3) Overlay sits just under the panel, above page content */
+.menu-overlay{
+  position: fixed;
+  inset: 0;
+  z-index:3990 !important;
+}
+
+/* 4) Anything that used to cover the menu goes below it */
+.hero,
+.slides,
+.embed-shell,
+#leafly-embed-wrapper,
+#leafly-embed-wrapper iframe,
+iframe[src*="leafly.com"]{
+  position: relative;
+  z-index:0 !important;
+}
+
+/* 5) Desktop-only: drop the Hours popover directly under the Hours pill */
+@media (min-width:901px){
+  .sticky-actions{ position:relative; } /* anchor for absolute child */
+
+  /* If your Hours popover uses a different class/id, add it here */
+  .sticky-actions .menu-popover{
+    position: absolute;         /* override any fixed */
+    top: calc(100% + 8px);      /* directly below the pill row */
+    right: 0;                   /* align with right edge of actions row */
+    left: auto;
+  }
+}
