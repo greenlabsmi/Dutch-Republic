@@ -3,6 +3,7 @@
 // ------------------------------------------------------------
 
 document.addEventListener('DOMContentLoaded', () => {
+  console.log('[dr] script booted');
 
 // ===== Age Gate logic (uses #ageGate, #ageYes, #ageNo, #ageRemember) =====
 (function () {
@@ -488,11 +489,13 @@ window.addEventListener('resize', queueAlign);
     email.addEventListener('focus', () => { reveal(); nukeStart(); }, { once: true });
     email.addEventListener('input', () => { reveal(); nukeStart(); }, { once: true });
     // Still support clicking the old button if they tap it first
-    start?.addEventListener('click', (e) => {
-      e.preventDefault();
-      reveal();
-      nukeStart();
-    });
+   if (start) {
+  start.addEventListener('click', (e) => {
+    e.preventDefault();
+    reveal();
+    nukeStart();
+  });
+}
   })();
   // Clean up any old wishlist storage
   try { localStorage.removeItem('wishlist'); } catch (e) {}
