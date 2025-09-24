@@ -226,7 +226,7 @@
  <!-- Hero (solid black background) -->
 <section class="hero" style="background:#000;">
   <div id="hero-container" class="hero-container">
-    <div id="hero-slides" class="slides" data-carousel data-autoplay="6000">
+    <div id="hero-slides" class="slides" data-carousel data-autoplay="6000" data-ignore-reduced-motion>
       <button class="edge edge--prev" aria-label="Previous"></button>
       <button class="edge edge--next" aria-label="Next"></button>
 
@@ -615,7 +615,7 @@
 </footer>
 
 <!-- Your existing JS bundle -->
-<script src="script.js?v=dr-033" defer></script>
+<script src="script.js?v=dr-037" defer></script>
 
   <!-- ========== AGE GATE (drop-in) ========== -->
 <div id="ageGate" class="agegate" aria-hidden="true" role="dialog" aria-modal="true">
@@ -646,7 +646,11 @@
   </noscript>
 </div>
 <!-- ========== /AGE GATE ========== -->
- <script>
+ </div>
+</footer>
+
+<!-- Inline Leafly opener -->
+<script>
 (function(){
   const menuSection = document.getElementById('menu');
   const wrapper = document.getElementById('leafly-embed-wrapper');
@@ -658,7 +662,7 @@
     s.id = 'leafly-embed-script';
     s.src = 'https://web-embedded-menu.leafly.com/loader.js';
     s.dataset.origin = 'https://web-embedded-menu.leafly.com';
-    s.dataset.slug = 'dutch-republic';     // your Leafly slug
+    s.dataset.slug = 'dutch-republic';
     s.dataset.primary = '#FFCD00';
     s.dataset.secondary = '#2890DC';
     s.dataset.deals = '#CE300A';
@@ -680,10 +684,10 @@
     window.scrollTo({ top, behavior: 'smooth' });
   }
 
-  // ✅ Edit 1: only hook *true* shop entry points (not the hamburger)
- const triggers = document.querySelectorAll(
-  'a[href="order.html"], a[href="#menu"], .btn-order, .cta-shop a'
-);
+  // only hook true shop entry points (not the hamburger)
+  const triggers = document.querySelectorAll(
+    'a[href="order.html"], a[href="#menu"], .btn-order, .cta-shop a'
+  );
 
   triggers.forEach(el => {
     el.addEventListener('click', (e) => {
@@ -692,7 +696,7 @@
     });
   });
 
-  // ✅ Add this: if the drawer has a “Shop Categories” link to #menu, make it open Leafly
+  // drawer “Shop Categories” → open Leafly
   document.querySelectorAll('#navDrawer a[href="#menu"]').forEach(el => {
     el.addEventListener('click', (e) => {
       e.preventDefault();
@@ -706,6 +710,7 @@
   }
 })();
 </script>
+
 
 </body>
 </html>
