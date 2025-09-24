@@ -142,12 +142,12 @@ document.querySelectorAll('.sticky-tabs .stab').forEach(t => {
     openBtn.setAttribute('aria-expanded','false');
   };
 
-   openBtn.addEventListener('click', (e) => {
--   e.stopPropagation();
-+   e.preventDefault(); 
-+   e.stopPropagation();
-    (pop.hidden ? open() : close());
-  });
+openBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  (pop.hidden ? open() : close());
+});
+;
 
   ovl.addEventListener('click', close);
 
@@ -175,7 +175,7 @@ document.querySelectorAll('.sticky-tabs .stab').forEach(t => {
     const card = document.querySelector('.deal-card');
     if (!body || !list || !card) return;
     // Fetch and render deals.json (must be at /deals.json)
-    fetch('deals.json', { cache: 'no-store' })
+   fetch('/Green-labs-site/deals.json', { cache: 'no-store' })
       .then(r => r.ok ? r.json() : Promise.reject(r.status))
       .then(data => renderDeals(list, data))
       .catch(() => { list.innerHTML = '<li>Deals unavailable right now.</li>'; });
@@ -566,6 +566,7 @@ window.addEventListener('resize', queueAlign);
 
 // Only smooth-scroll in-page anchors; never hijack real links.
 document.addEventListener('click', (e) => {
+  if (e.defaultPrevented) return;         // <-- add this line
   const a = e.target.closest('a');
   if (!a) return;
 
