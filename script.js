@@ -477,25 +477,30 @@ window.addEventListener('resize', queueAlign);
   }
 })();
   
-  // ================= Loyalty expand & remove "Continue" =================
-  (function loyalty() {
-    const start = document.getElementById('loyStart');
-    const body  = document.getElementById('loyBody');
-    const email = document.getElementById('loyEmail');
-    if (!body || !email) return;
-    const reveal = () => { if (body.hidden) body.hidden = false; };
-   const nukeStart = () => { if (start) start.remove(); };
-    // Reveal and remove button as soon as user interacts with email
-    email.addEventListener('focus', () => { reveal(); nukeStart(); }, { once: true });
-    email.addEventListener('input', () => { reveal(); nukeStart(); }, { once: true });
-    // Still support clicking the old button if they tap it first
-   if (start) {
-  start.addEventListener('click', (e) => {
-    e.preventDefault();
-    reveal();
-    nukeStart();
-  });
-  })();
+// ================= Loyalty expand & remove "Continue" =================
+(function loyalty() {
+  const start = document.getElementById('loyStart');
+  const body  = document.getElementById('loyBody');
+  const email = document.getElementById('loyEmail');
+  if (!body || !email) return;
+
+  function reveal()    { if (body.hidden) body.hidden = false; }
+  function nukeStart() { if (start) start.remove(); }
+
+  // Reveal and remove button as soon as user interacts with email
+  email.addEventListener('focus', () => { reveal(); nukeStart(); }, { once: true });
+  email.addEventListener('input', () => { reveal(); nukeStart(); }, { once: true });
+
+  // Still support clicking the old button if they tap it first
+  if (start) {
+    start.addEventListener('click', (e) => {
+      e.preventDefault();
+      reveal();
+      nukeStart();
+    });
+  }
+})();
+
   // Clean up any old wishlist storage
   try { localStorage.removeItem('wishlist'); } catch (e) {}
 });
