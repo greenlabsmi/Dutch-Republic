@@ -575,22 +575,25 @@ addrEl.removeAttribute('target');
 
 // Only smooth-scroll in-page anchors; never hijack real links.
 document.addEventListener('click', (e) => {
-  if (e.defaultPrevented) return;         // <-- add this line
+  if (e.defaultPrevented) return;
+
   const a = e.target.closest('a');
   if (!a) return;
 
   const href = a.getAttribute('href') || '';
 
-  // External / new-tab / explicit external: let the browser handle it.
+  // Never intercept external links, new tabs, nav drawer, or Leafly wrapper
   if (
     a.hasAttribute('data-ext') ||
     a.target === '_blank' ||
-    /^https?:\/\//i.test(href)
+    /^https?:\/\//i.test(href) ||
+    a.closest('#navDrawer') ||
+    a.closest('.menu-popover') ||
+    a.closest('#leafly-embed-wrapper')
   ) {
-    return; // no preventDefault
+    return;
   }
 
-  // In-page anchor (e.g., #deals)
   if (href.startsWith('#')) {
     const target = document.querySelector(href);
     if (target) {
