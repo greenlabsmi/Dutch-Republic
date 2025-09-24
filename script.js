@@ -36,8 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const no  = document.getElementById('ageNo');
   const remember = document.getElementById('ageRemember');
 
-  yes?.addEventListener('click', () => {
-    if (remember?.checked) {
+if (yes) {
+  yes.addEventListener('click', () => {
+    if (remember && remember.checked) {
       const THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
       localStorage.setItem(KEY, String(Date.now() + THIRTY_DAYS));
     } else {
@@ -45,11 +46,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     hide();
   });
-
-  no?.addEventListener('click', () => {
-    // Send under-21 away (choose your destination)
+}
+if (no) {
+  no.addEventListener('click', () => {
     location.href = 'https://www.google.com';
   });
+}
+
 
   if (forceShow) show();
   else if (isOK) hide();
@@ -60,8 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function alignFloating(trigger, panel, opts = {}) {
     if (!trigger || !panel) return;
     const r = trigger.getBoundingClientRect();
-    const gap   = opts.gap ?? 8;                 // space between trigger & panel
-    const align = opts.align ?? 'end';           // 'start' | 'center' | 'end'
+    const gap   = (opts && Object.prototype.hasOwnProperty.call(opts, 'gap')) ? opts.gap : 8;
+const align = (opts && Object.prototype.hasOwnProperty.call(opts, 'align')) ? opts.align : 'end';
+
 
     // make sure CSS "right" isn’t fighting us
     panel.style.position = 'fixed';
@@ -147,7 +151,6 @@ openBtn.addEventListener('click', (e) => {
   e.stopPropagation();
   (pop.hidden ? open() : close());
 });
-;
 
   ovl.addEventListener('click', close);
 
@@ -175,7 +178,7 @@ openBtn.addEventListener('click', (e) => {
     const card = document.querySelector('.deal-card');
     if (!body || !list || !card) return;
     // Fetch and render deals.json (must be at /deals.json)
-   fetch('/Green-labs-site/deals.json', { cache: 'no-store' })
+   fetch('deals.json', { cache: 'no-store' })
       .then(r => r.ok ? r.json() : Promise.reject(r.status))
       .then(data => renderDeals(list, data))
       .catch(() => { list.innerHTML = '<li>Deals unavailable right now.</li>'; });
@@ -238,10 +241,13 @@ openBtn.addEventListener('click', (e) => {
       }
     });
     // Close button still works
-    document.getElementById('closeDeals')?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      collapse();
-    });
+const closeBtn = document.getElementById('closeDeals');
+if (closeBtn) {
+  closeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    collapse();
+  });
+}
   })();
 
   // ---- Map helpers (use default maps app on phones) ----
@@ -477,7 +483,7 @@ window.addEventListener('resize', queueAlign);
     const email = document.getElementById('loyEmail');
     if (!body || !email) return;
     const reveal = () => { if (body.hidden) body.hidden = false; };
-    const nukeStart = () => { start?.remove(); };
+   const nukeStart = () => { if (start) start.remove(); };
     // Reveal and remove button as soon as user interacts with email
     email.addEventListener('focus', () => { reveal(); nukeStart(); }, { once: true });
     email.addEventListener('input', () => { reveal(); nukeStart(); }, { once: true });
@@ -503,7 +509,7 @@ window.addEventListener('resize', queueAlign);
   if (!strip || !pillBtn || !dot || !textEl) return;
 
   // Keep the address link from toggling the popover
-  addrEl?.addEventListener('click', (e) => e.stopPropagation());
+if (addrEl) { addrEl.addEventListener('click', (e) => e.stopPropagation()); }
 
   // Ensure address is set (safe even if already in HTML)
   const ADDRESS = '435 Blue Star Hwy, Douglas, MI 49406';
@@ -552,8 +558,8 @@ window.addEventListener('resize', queueAlign);
   if (!addrEl || !pillBtn) return;
 
   // If it's still an <a>, neutralize its navigation
-  addrEl.removeAttribute?.('href');
-  addrEl.removeAttribute?.('target');
+addrEl.removeAttribute('href');
+addrEl.removeAttribute('target');
 
   // Tap = open the same popover as the pill
   addrEl.style.cursor = 'pointer';
