@@ -51,7 +51,7 @@
   .embed-shell iframe {
   display: block;
   width: 100%;
-  min-height: 60vh;  /* was 1600px */
+  min-height: 1200px;  /* was 1600px */
   height: auto;      /* allow shrinking when Leafly cart is shorter */
   border: 0;
   border-radius: 12px;
@@ -70,10 +70,15 @@
     z-index: 0;
     display: block;
     width: 100%;
-    min-height: 60vh;
+    min-height: 1200px;
     height: auto;
     border: 0;
     border-radius: 12px;
+  }
+
+  /* Global safety net: catch any Leafly iframe */
+  iframe[src*="leafly.com"] {
+    min-height: 1200px !important;
   }
 </style>
 
