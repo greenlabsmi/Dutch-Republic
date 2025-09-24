@@ -6,7 +6,7 @@
         "title": "Ounces",
         "items": [
           "$40 OUNCES - Green Labs Outdoor Flower!",
-          "$50 OUNCES - Dutch Touch Genetics Shake - Buy 2 Ounces for $85",
+          "$50 OUNCES - Dutch Touch Genetics Shake - Buy 2 ounces for $85",
           "$125 OUNCES - Society C brand of Flower!",
           "$150 OUNCES - Pina Rita - Award Winning Cannabis Brand!",
           "$200 OUNCES - Clusterfunk, Space Hippy, and Death Star"
@@ -22,6 +22,7 @@
       {
         "title": "Eighths",
         "items": [
+          "$20 EIGHTHS - Society C Brand of Flower",
           "$25 EIGHTHS - Pina Rita and Fruit Brute",
           "$30 EIGHTHS - Space Hippy and Death Star (Dutch Touch Favorites)",
           "$40 EIGHTHS - Mr. Clean - (1st Place in Cannabis Cup)"
@@ -30,18 +31,20 @@
     ]
   },
   {
-  "category": "🪄 Pre-Rolls (Regular)",
-  "items": [
-    "Franklin Fields 1g Pre-Rolls - $5ea or 10/$35",
-    "Dutch Touch 1g Full Bud Pre-Rolls - $12ea - Excludes Mr. Clean ($20ea)",
-    "Dutch Touch 5pk Pre-Rolls - $30ea",
-    "Dutch Touch 25pk Pre-Rolls - $100ea - Excludes Mr. Clean ($110ea)",
-    "Dutch Touch 25pk 0.5g Pre-Rolls - $55ea - Excludes Mr. Clean"
-  ]
-},
+    "category": "🪄 Pre-Rolls (Regular)",
+    "items": [
+      "TreeTown 14pk Pre-Rolls - $25ea",
+      "TreeTown 28pk Pre-Rolls - $50ea",
+      "Franklin Fields 1g Pre-Rolls - $5ea or 10/$35",
+      "Dutch Touch 5pk Pre-Rolls - $30ea",
+      "Dutch Touch 25pk Pre-Rolls - $100ea - Excludes Mr. Clean ($110ea)",
+      "Dutch Touch 25pk 0.5g Pre-Rolls - $55ea - Excludes Mr. Clean"
+    ]
+  },
   {
     "category": "💥 Pre-Rolls (Infused)",
     "items": [
+      "Ripn 1g Infused Pre-Rolls - $5ea or 10/$40",
       "Fire Styxx - $7ea or 3/$20 or 10/$55",
       "Dutch Touch Genetics Donuts - $25ea or 2/$40"
     ]
@@ -68,8 +71,7 @@
       "TreeTown 200mg Ratio Gummies - $10ea",
       "Mojo 200mg Individually Wrapped Chocolates - $10ea",
       "Dutch Touch Genetics 200mg RSO Gummies - $10ea",
-      "CQ 100mg Ginger Ale and Cola - $15ea or 3/$40",
-      "Mary Jones 100mg Drinks - $15ea or 3/$40",
+      "Mary Jones & CQ 100mg Drinks (Ginger Ale, Cola) - $15ea or 3/$40",
       "Pleasantea Low Dose Tea’s - $5ea | Pleasantea High Dose Tea - 3/$20",
       "Sweet Justice 10mg Drinks - $7ea or 3/$20",
       "Highly Casual 5mg Seltzers - $5ea or 5/$20"
@@ -81,7 +83,9 @@
       "Greenco 1g Resin - $10ea or 3/$20",
       "Paradice 1g Resin - $10ea or 15/$100",
       "Dutch Jelly 1g Batter - $20ea",
-      "Tokyo 5g Resin - $30ea or 3/$90 (15 grams for $90)"
+      "Tokyo 5g Resin - $30ea or 3/$85 (15 grams for $85)",
+      "OLD SCHOOL HASH CO - $25 1g / $100 5g",
+      "RedBud Roots Hash Rosin - $25 a Gram"
     ]
   }
 ]
