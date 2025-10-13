@@ -5,30 +5,31 @@
       {
         "title": "Ounces",
         "items": [
-          "$40 OUNCES - Green Labs Outdoor Flower!",
+          "$40 OUNCES - Green Labs Outdoor Flower - Buy 2 ounces for $75",
           "$50 OUNCES - Dutch Touch Genetics Shake - Buy 2 ounces for $85",
-          "$100 OUNCES - Glue Bert, and Crunchberries Small Bud",
-          "$100 OUNCES - Simpler Daze",
+          "$100 OUNCES - Dutch Touch Small Bud ounce - Buy 2 for $175",
+          "$100 OUNCES - Simpler Daze ounce - Buy 2 for $175",
           "$125 OUNCES - Society C brand of Flower! Mix match Flavors",
           "$150 OUNCES - Pina Rita - Award Winning Cannabis Brand!",
-          "$200 OUNCES - Clusterfunk, Space Hippy, and Death Star",
+          "$200 OUNCES - Space Hippy, and Death Star",
+          "$225 OUNCES - Lilac Diesel, Mr. Clean, Lemon Wookie (Award Winners!)",
           "LEMON WOOKIE #4 IN STOCK!! 2ND PLACE IN BEST GRASS 2025"
         ]
       },
       {
         "title": "Half Ounces",
         "items": [
-          "$80 HALF OUNCES - Pina Rita",
-          "$100 HALF OUNCES - Clusterfunk, Space Hippy, Death Star"
+          "$80 HALF OUNCES - Pina Rita, 10K, Fruit Brute, Glue Bert",
+          "$100 HALF OUNCES - Space Hippy, Death Star, Big Smooth"
         ]
       },
       {
         "title": "Eighths",
         "items": [
-          "$20 EIGHTHS - Society C Brand of Flower",
-          "$25 EIGHTHS - Pina Rita and Fruit Brute",
-          "$30 EIGHTHS - Space Hippy and Death Star (Dutch Touch Favorites)",
-          "$40 EIGHTHS - Mr. Clean - (1st Place in Cannabis Cup)"
+          "$20 EIGHTHS - Society C Brand of Flower - 8/$125",
+          "$25 EIGHTHS - Pina Rita, Fruit Brute, 10K, Glue Bert",
+          "$30 EIGHTHS - Space Hippy, Death Star, Big Smooth, Clusterfunk",
+          "$40 EIGHTHS - Mr. Clean, Lemon Wookie, Lilac Diesel (Award Winners!)"
         ]
       }
     ]
@@ -38,6 +39,7 @@
     "items": [
       "TreeTown 28pk Pre-Rolls - $50ea",
       "Franklin Fields 1g Pre-Rolls - $5ea or 10/$35",
+      "Green Labs 1g Pre-Rolls - $5ea or 5/$20 & 10/$40",
       "Dutch Touch 5pk Pre-Rolls - $30ea",
       "Dutch Touch 25pk Pre-Rolls - $100ea - Excludes Mr. Clean ($110ea)",
       "Dutch Touch 25pk 0.5g Pre-Rolls - $55ea - Excludes Mr. Clean"
@@ -46,10 +48,17 @@
   {
     "category": "💥 Pre-Rolls (Infused)",
     "items": [
-      "Ripn 1g Infused Pre-Rolls - $5ea or 10/$40",
-      "Fire Styxx - $7ea or 3/$20 or 10/$55",
+      "Ripn 1g Infused Pre-Rolls - $5ea & 10/$40",
+      "Propaganda 1g Infused Pre-Rolls - $10ea or 3/$20 & 6/$40",
+      "Fire Styxx - $7ea or 3/$20 & 10/$55",
       "Dutch Touch Genetics Donuts - $25ea or 2/$40",
       "Baby Jeeters AUTUMN Flavor - $50 out the door"
+    ]
+  },
+  {
+    "category": "🩸 Tinctures",
+    "items": [
+      "TreeTown Tinctures - $20ea or 2/$30"
     ]
   },
   {
@@ -65,29 +74,38 @@
     "category": "⚡️ Disposables",
     "items": [
       "Dutch Touch Genetics 1g Disposables - $20ea or 6/$110",
+      "Franklin Fields Live Resin Disposable - $30ea or 2/$50",
       "Jeeter 1g Liquid Diamond Disposables - $25ea",
-      "Jeeter 1g Live Resin Disposables - $30ea"
+      "Jeeter 1g Live Resin Disposables - $30ea",
+      "710 EXOTIC ROSIN PEN IN STOCK!!"
     ]
   },
   {
-    "category": "🍬 Edibles & THC Beverages",
+    "category": "🍬 Edibles",
     "items": [
-      "Choice 200mg Gummies - $5ea or 10/$45",
+      "Choice 200mg Gummies - $5ea & 10/$45",
       "TreeTown Low Dose Sleep Gummies - $5ea",
-      "TreeTown 200mg Standard Gummies - $5ea",
-      "TreeTown 200mg Ratio Gummies - $10ea",
+      "TreeTown 200mg Standard Gummies - $5ea or 5/$20 & 10/$40",
       "TreeTown 200mg Brownies and Rice Crispy Treats - $10ea or 3/$25",
-      "Dutch Touch Genetics 200mg Grape RSO Gummies - $10ea or 5/$45",
+      "Dutch Touch Genetics 200mg RSO Gummies - $10ea or 5/$45",
+      "CannaMelt & True North Single High Dose Edibles - 3/$12 & 6/$20",
+      "Goody Bag 200mg Gummies - $7ea or 3/$20",
       "Good News Sleep and Daytime Gummies - $12ea or 3/$30",
       "Dream 100mg Caramels - $15ea or 3/$35 - Mix and Match with Pixel",
       "Pixel 200mg THC Nerds - $15ea or 3/$35 - Mix and Match with Dream Caramels",
-      "Wonder 200mg Low Dose Gummies - $20ea (Comes in Sleep, Relax Focus and Laugh)",
-      "Pleasantea Low Dose Tea’s - $5ea | Pleasantea High Dose Tea - 3/$20",
+      "Wonder 200mg Low Dose Gummies - $20ea (Relax, Focus)"
+    ]
+  },
+  {
+    "category": "🥤 THC Drinks",
+    "items": [
+      "Pleasantea High Dose Tea - $10ea or 3/$20",
       "Highly Casual 5mg Seltzers - $5ea or 5/$20",
       "Feels 10mg Seltzers - $5ea - Infused with Green Tea Leaf",
       "Sweet Justice 10mg Drinks - $7ea or 3/$20",
       "Armada Cannabis THC Apple Cider - $10ea or 3/$20",
-      "Mary Jones & CQ 100mg Drinks (Ginger Ale, Cola) - $15ea or 3/$40"
+      "Mary Jones & CQ 100mg Drinks (Ginger Ale, Cola) - $15ea or 3/$40",
+      "Tonic Fizz 10mg Seltzer - $5ea"
     ]
   },
   {
@@ -96,10 +114,11 @@
       "Greenco 1g Resin - $10ea or 3/$20",
       "Paradice 1g Resin - $10ea or 15/$100",
       "Dutch Jelly 1g Batter - $20ea",
+      "Dutch Touch 1g RSO Dart - $30ea or 5/$125",
       "Tokyo 5g Resin - $30ea or 3/$85 (15 grams for $85)",
       "OLD SCHOOL HASH CO - $25 1g / $100 5g",
-      "RedBud Roots Hash Rosin - $25 a Gram"
+      "RedBud Roots Hash Rosin - $25 a Gram",
+      "710 IN STOCK!!"
     ]
   }
 ]
-
