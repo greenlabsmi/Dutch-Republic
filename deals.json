@@ -1,36 +1,37 @@
 [
+  {
+  "category": "🎃 HALLOWEEN GRAND OPENING",
+  "groups": [
     {
-    "category": "🎃 HALLOWEEN GRAND OPENING",
-    "groups": [
-      {
-        "title": "🧡 $45 Grab Bags (Valued at $80)",
-        "items": [
-          "Goody Bag – Blue Raspberry 200mg Gummies",
-          "Mother Pucker – Live Resin 200mg Gummies",
-          "Wyld – Raspberry 100mg Gummies",
-          "Craft – Live Resin Cart Guava",
-          "Dutch Touch Genetics – ⅛ Dutch Breath",
-          "RIPN Infused Pre-Roll Black Cherry Fizz"
-        ]
-      },
-      {
-        "title": "🖤 $110 Grab Bags (Valued at $280)",
-        "items": [
-          "Dutch Touch Genetics – Smalls oz.",
-          "Dutch Touch Genetics – ⅛ Dutch Breath",
-          "Craft – Live Resin Cart Guava",
-          "Wyld – Raspberry 100mg Gummies",
-          "Mother Pucker – Live Resin 200mg Gummies",
-          "Goody Bag – Blue Raspberry 200mg Gummies",
-          "Tonic – Lemon Lime DRNK",
-          "Jeeter – Rosin Pre-Roll ×2",
-          "RIPN – Infused Pre-Roll Black Cherry Fizz",
-          "Jeeter Disposable"
-        ]
-      }
-    ],
-    "promo": true
-  },
+      "title": "🧡 $45 Grab Bags (Valued at $80)",
+      "items": [
+        "Goody Bag – Blue Raspberry 200mg Gummies",
+        "Mother Pucker – Live Resin 200mg Gummies",
+        "Wyld – Raspberry 100mg Gummies",
+        "Craft – Live Resin Cart Guava",
+        "Dutch Touch Genetics – ⅛ Dutch Breath",
+        "RIPN Infused Pre-Roll Black Cherry Fizz"
+      ]
+    },
+    {
+      "title": "🖤 $110 Grab Bags (Valued at $280)",
+      "items": [
+        "Dutch Touch Genetics – Smalls oz.",
+        "Dutch Touch Genetics – ⅛ Dutch Breath",
+        "Craft – Live Resin Cart Guava",
+        "Wyld – Raspberry 100mg Gummies",
+        "Mother Pucker – Live Resin 200mg Gummies",
+        "Goody Bag – Blue Raspberry 200mg Gummies",
+        "Tonic – Lemon Lime DRNK",
+        "Jeeter – Rosin Pre-Roll ×2",
+        "RIPN – Infused Pre-Roll Black Cherry Fizz",
+        "Jeeter Disposable"
+      ]
+    }
+  ],
+  "promo": true
+},
+
   
   {
     "category": "🌿 Flower",
