@@ -714,6 +714,46 @@
   }
 })();
 </script>
-  
+
+  <!-- Golden Confetti Effect -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+  window.addEventListener('load', () => {
+    // 🎊 Initial golden burst
+    confetti({
+      particleCount: 200,
+      spread: 120,
+      startVelocity: 45,
+      origin: { y: 0.6 },
+      colors: ['#FFD700', '#FFA500', '#FFB733', '#FFD000'] // gold + orange shades
+    });
+
+    // ✨ Gentle drizzle for a few seconds
+    const duration = 5 * 1000;
+    const end = Date.now() + duration;
+
+    (function frame() {
+      confetti({
+        particleCount: 5,
+        angle: 60,
+        spread: 60,
+        origin: { x: 0 },
+        colors: ['#FFD700', '#FFA500', '#FFB733', '#FFD000']
+      });
+      confetti({
+        particleCount: 5,
+        angle: 120,
+        spread: 60,
+        origin: { x: 1 },
+        colors: ['#FFD700', '#FFA500', '#FFB733', '#FFD000']
+      });
+
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
+      }
+    })();
+  });
+</script>
+
 </body>
 </html>
