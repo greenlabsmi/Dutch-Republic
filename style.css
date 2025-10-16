@@ -2460,3 +2460,66 @@ iframe[src*="leafly.com"]{
     left: auto;
   }
 }
+
+/* ================================
+ 🎃 HALLOWEEN PROMO STYLES (TEMPORARY)
+ 👻 Floating Ghost Animation Included
+================================ */
+
+.deals-category[data-category="🎃 HALLOWEEN GRAND OPENING"] {
+  background: linear-gradient(135deg, #ff7b00 0%, #ffb733 100%);
+  color: #000;
+  border: 2px solid #000;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: visible;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.deals-category[data-category="🎃 HALLOWEEN GRAND OPENING"] h2 {
+  font-family: "Cinzel", Georgia, serif;
+  color: #fff;
+  text-shadow: 2px 2px 4px #000;
+}
+
+.deals-category[data-category="🎃 HALLOWEEN GRAND OPENING"] .deals-group-title {
+  font-weight: bold;
+  color: #000;
+}
+
+.deals-category[data-category="🎃 HALLOWEEN GRAND OPENING"] li::before {
+  content: "🎃";
+  margin-right: 0.4rem;
+}
+
+/* 👻 Floating ghosts */
+.ghost {
+  position: absolute;
+  top: -50px;
+  width: 40px;
+  height: 40px;
+  background: url('https://cdn.jsdelivr.net/gh/greenlabsmj/Dutch-Republic/assets/ghost.png') no-repeat center/contain;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 9999;
+  animation: floatGhost 12s linear infinite, fadeGhost 12s ease-in-out infinite;
+}
+
+.ghost:nth-child(1) { left: 20%; animation-delay: 0s; }
+.ghost:nth-child(2) { left: 50%; animation-delay: 3s; }
+.ghost:nth-child(3) { left: 80%; animation-delay: 6s; }
+
+@keyframes floatGhost {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(200px) rotate(5deg); }
+  100% { transform: translateY(400px) rotate(-5deg); }
+}
+
+@keyframes fadeGhost {
+  0%, 100% { opacity: 0; }
+  20%, 80% { opacity: 0.8; }
+}
+
+/* ================================ */
+
