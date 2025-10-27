@@ -1,37 +1,5 @@
 [
   {
-    "category": "🎃 HALLOWEEN GRAND OPENING",
-    "groups": [
-      {
-        "title": "🧡 $45 Grab Bags (Valued at $80)",
-        "items": [
-          "Goody Bag – Blue Raspberry 200mg Gummies",
-          "Mother Pucker – Live Resin 200mg Gummies",
-          "Wyld – Raspberry 100mg Gummies",
-          "Craft – Live Resin Cart Guava",
-          "Dutch Touch Genetics – ⅛ Dutch Breath",
-          "RIPN Infused Pre-Roll Black Cherry Fizz"
-        ]
-      },
-      {
-        "title": "🖤 $110 Grab Bags (Valued at $280)",
-        "items": [
-          "Dutch Touch Genetics – Smalls oz.",
-          "Dutch Touch Genetics – ⅛ Dutch Breath",
-          "Craft – Live Resin Cart Guava",
-          "Wyld – Raspberry 100mg Gummies",
-          "Mother Pucker – Live Resin 200mg Gummies",
-          "Goody Bag – Blue Raspberry 200mg Gummies",
-          "Tonic – Lemon Lime DRNK",
-          "Jeeter – Rosin Pre-Roll ×2",
-          "RIPN – Infused Pre-Roll Black Cherry Fizz",
-          "Jeeter Disposable"
-        ]
-      }
-    ],
-    "promo": true
-  },
-  {
     "category": "🌿 Flower",
     "groups": [
       {
@@ -42,9 +10,8 @@
           "$100 OUNCES - Dutch Touch Small Bud ounce - Buy 2 for $175",
           "$100 OUNCES - Simpler Daze ounce - Buy 2 for $175",
           "$100 OUNCES - Plant Nerd Smalls! - Buy 2 for $175",
-          "$200 OUNCES - Space Hippy, and Death Star",
-          "$225 OUNCES - Lilac Diesel, Mr. Clean, Lemon Wookie (Award Winners!)",
-          "LEMON WOOKIE #4 IN STOCK!! 2ND PLACE IN BEST GRASS 2025"
+          "$200 OUNCES - Space Hippy & Death Star",
+          "$225 OUNCES - Lilac Diesel, Mr. Clean, Lemon Wookie#4 (Award Winners!)"
         ]
       },
       {
@@ -60,7 +27,7 @@
           "$20 EIGHTHS - Society C Brand of Flower - 8/$125",
           "$25 EIGHTHS - Pina Rita, Fruit Brute, 10K, Glue Bert",
           "$30 EIGHTHS - Space Hippy, Death Star, Big Smooth, Clusterfunk",
-          "$40 EIGHTHS - Mr. Clean, Lemon Wookie, Lilac Diesel (Award Winners!)"
+          "$40 EIGHTHS - Mr. Clean, Lemon Wookie#4, Lilac Diesel (Award Winners!)"
         ]
       }
     ]
@@ -74,7 +41,9 @@
       "Plant Nerd Full Flower 1.5g Hand Rolled Joint - $15ea or 2/$25",
       "Dutch Touch 5pk Pre-Rolls - $30ea",
       "Dutch Touch 25pk Pre-Rolls - $100ea - Excludes Mr. Clean ($110ea)",
-      "Dutch Touch 25pk 0.5g Pre-Rolls - $55ea - Excludes Mr. Clean"
+      "Dutch Touch 25pk 0.5g Pre-Rolls - $55ea - Excludes Mr. Clean",
+      "Paul Bunyon - $5ea",
+      "Buy a Hazy Daze 28pk (Get 1 Light Sky Farm Bubble Hash Pre-Roll)"
     ]
   },
   {
@@ -85,13 +54,19 @@
       "Fire Styxx - $7ea or 3/$20 & 10/$55",
       "Plant Nerd Full Flower 1.25g Infused Cannon - $15ea or 2/$25",
       "Dutch Touch Genetics Donuts - $25ea or 2/$40",
-      "Baby Jeeters AUTUMN Flavor - $50 Out the Door"
+      "Baby Jeeters AUTUMN Flavor - $50"
     ]
   },
   {
     "category": "🧪 Tinctures",
     "items": [
       "TreeTown Tinctures - $20ea or 2/$30"
+    ]
+  },
+  {
+    "category": "🌿 Topical",
+    "items": [
+      "Chill 'ON THE GO' - 2/$30"
     ]
   },
   {
@@ -120,6 +95,9 @@
       "Dream 100mg Caramels - $15ea or 3/$35 (Mix and Match with Pixel)",
       "Pixel 200mg THC Nerds - $15ea or 3/$35 (Mix and Match with Dream Caramels)",
       "Wonder 200mg Low Dose Gummies - $20ea (Relax & Focus)",
+      "True North 200mg Gummies - 4/$16 or 8/$30",
+      "True North 200mg Ratio Gummies - 4/$20",
+      "Moth Pucker Rosin & Resin Gummies - 3/$20",
       "Pleasantea High Dose Tea - $10ea or 3/$20",
       "Highly Casual 5mg Seltzers - $5ea or 5/$20",
       "Feels 10mg Seltzers - $5ea (Green Tea Infused)",
@@ -134,12 +112,12 @@
     "items": [
       "Greenco 1g Resin - $10ea or 3/$20",
       "Paradice 1g Resin - $10ea or 15/$100",
-      "Dutch 1g Rosin - $25ea OUT THE DOOR",
+      "Dutch Touch 1g Rosin - $25ea",
       "Dutch Jelly 1g Batter - $20ea",
       "Dutch Touch 1g RSO Dart - $30ea or 5/$125",
       "Tokyo 5g Resin - $30ea or 3/$85 (15 grams for $85)",
       "OLD SCHOOL HASH CO - $25 1g / $100 5g",
-      "RedBud Roots Hash Rosin - $25ea OUT THE DOOR",
+      "RedBud Roots Hash Rosin - $25ea",
       "710 IN STOCK!!"
     ]
   }
