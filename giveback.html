@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0B7D5A" />
+  <title>Community Giveback • Green Labs & Dutch Republic</title>
+
+  <meta name="description" content="Green Labs & Dutch Republic Giveback — supporting local families, pets, and communities through ongoing donation drives and outreach." />
+  <link rel="icon" href="assets/img/favicon.png" type="image/png" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green:#0B7D5A;
+      --green-dark:#056047;
+      --gold:#D4AF37;
+      --cream:#FAF6EE;
+      --ink:#111315;
+      --radius:14px;
+      --max:1080px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--cream);
+      color:var(--ink);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+    h1,h2,h3{font-family:"Cinzel",serif;letter-spacing:.02em;}
+    a{color:var(--green);text-decoration:none;}
+    a:hover{text-decoration:underline;}
+
+    /* Header */
+    header{
+      background:#fff;
+      border-bottom:1px solid #eee;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:40px;
+      padding:20px;
+      position:sticky;
+      top:0;
+      z-index:50;
+      box-shadow:0 2px 6px rgba(0,0,0,0.05);
+    }
+    header img{height:60px;}
+    header span{
+      font-family:"Cinzel",serif;
+      font-weight:900;
+      font-size:1.2rem;
+      color:var(--green);
+    }
+
+    /* Hero */
+    .hero{
+      position:relative;
+      text-align:center;
+      color:#fff;
+      padding:140px 20px 120px;
+      overflow:hidden;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg,var(--green-dark),var(--green));
+      background-size:300% 300%;
+      animation:gradientFlow 15s ease infinite;
+      z-index:-2;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:url('assets/img/foil-shimmer.png') center/cover no-repeat;
+      opacity:.25;
+      mix-blend-mode:soft-light;
+      animation:parallax 20s linear infinite alternate;
+      z-index:-1;
+    }
+    @keyframes gradientFlow{
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+    @keyframes parallax{
+      from{transform:translateY(0);}
+      to{transform:translateY(-40px);}
+    }
+    .hero h1{
+      font-size:clamp(42px,6vw,78px);
+      color:#fff;
+      text-shadow:0 2px 12px rgba(0,0,0,0.4);
+    }
+    .hero p{
+      max-width:720px;
+      margin:20px auto;
+      font-size:1.2rem;
+      opacity:.9;
+    }
+    .hero .cta{
+      display:inline-block;
+      margin-top:30px;
+      background:var(--gold);
+      color:#000;
+      padding:14px 30px;
+      border-radius:var(--radius);
+      font-weight:700;
+      text-transform:uppercase;
+      transition:all .3s ease;
+    }
+    .hero .cta:hover{background:#fff;color:var(--green);}
+
+    /* Sections */
+    section{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:100px 20px;
+      opacity:0;
+      transform:translateY(40px);
+      transition:all 1s ease;
+    }
+    section.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+    section:nth-child(even){background:#fff;border-radius:var(--radius);}
+    .section-title{
+      text-align:center;
+      font-size:2.2rem;
+      color:var(--green-dark);
+      margin-bottom:40px;
+      text-shadow:0 1px 4px rgba(0,0,0,0.05);
+    }
+
+    .split{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:40px;
+    }
+    .split img{
+      flex:1 1 300px;
+      max-width:420px;
+      border-radius:var(--radius);
+      box-shadow:0 4px 20px rgba(0,0,0,0.08);
+    }
+    .split div{flex:1 1 420px;}
+
+    /* Donation Grid */
+    .donate-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:30px;
+      margin-top:30px;
+    }
+    .donate-col{
+      background:#fff;
+      border:1px solid #eaeaea;
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.05);
+    }
+    .donate-col h3{color:var(--gold);margin-bottom:10px;}
+    .donate-col li{margin-bottom:6px;}
+
+    /* Partners */
+    .partners{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:30px;
+    }
+    .partner{
+      background:#fff;
+      border-radius:var(--radius);
+      padding:24px;
+      text-align:center;
+      box-shadow:0 2px 6px rgba(0,0,0,0.05);
+    }
+    .partner img{width:100px;margin-bottom:10px;}
+
+    /* Campaign block */
+    .campaign-block{
+      background:linear-gradient(180deg,#f9f9f9,#fff);
+      border-radius:var(--radius);
+      padding:60px 30px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.05);
+      margin-bottom:60px;
+    }
+    .campaign-block h2{color:var(--green);margin-bottom:20px;font-size:1.8rem;}
+
+    /* CTA footer */
+    .cta-footer{
+      background:var(--green);
+      color:#fff;
+      text-align:center;
+      padding:80px 20px;
+    }
+    .cta-footer h2{font-family:"Cinzel",serif;margin-bottom:20px;font-size:2rem;}
+    .cta-footer a{
+      display:inline-block;
+      background:var(--gold);
+      color:#000;
+      margin:10px;
+      padding:14px 28px;
+      border-radius:var(--radius);
+      font-weight:700;
+      text-transform:uppercase;
+      transition:all .3s ease;
+    }
+    .cta-footer a:hover{background:#fff;color:var(--green);}
+
+    footer{
+      background:#000;
+      color:#fff;
+      text-align:center;
+      padding:40px 20px;
+      font-size:.9rem;
+    }
+
+    /* Scroll-to-top */
+    #topBtn{
+      position:fixed;
+      bottom:25px;
+      right:25px;
+      background:var(--gold);
+      color:#000;
+      border:none;
+      border-radius:50%;
+      width:50px;
+      height:50px;
+      cursor:pointer;
+      box-shadow:0 4px 10px rgba(0,0,0,0.3);
+      font-size:24px;
+      transition:all .3s ease;
+      z-index:999;
+    }
+    #topBtn:hover{background:#fff;color:var(--green);}
+    #topBtn.hidden{opacity:0;pointer-events:none;}
+
+    @media(max-width:768px){
+      .split{flex-direction:column;text-align:center;}
+      .split img{margin:0 auto;}
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <img src="assets/img/greenlabs-logo.png" alt="Green Labs Logo">
+    <span>Community Giveback</span>
+    <img src="assets/img/dutchrepublic-logo.png" alt="Dutch Republic Logo">
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Cultivate Kindness</h1>
+    <p>Supporting local families, pets, and people — one drive at a time.<br>
+       A collaboration between Green Labs Provisions & Dutch Republic.</p>
+    <a href="#about" class="cta">Learn More</a>
+  </section>
+
+  <!-- Intro Bio -->
+  <section id="about">
+    <h2 class="section-title">Why We Give Back</h2>
+    <p style="max-width:720px;margin:0 auto;text-align:center;">
+      Cannabis culture is rooted in care, compassion, and community.
+      Through the <strong>Green Labs & Dutch Republic Giveback Program</strong>, we’re using our platform to do more than provide quality products — 
+      we’re creating connections and support systems for the people and animals who make our communities thrive.
+      Each campaign is a chance to grow good together.
+    </p>
+  </section>
+
+  <!-- Current Campaign -->
+  <section id="current-campaigns">
+    <h2 class="section-title">Current Campaigns</h2>
+
+    <div class="campaign-block">
+      <div class="split">
+        <img src="assets/img/basket.png" alt="Donation Basket">
+        <div>
+          <h2>Give & Get Baked — November Food & Necessities Drive</h2>
+          <p>This November, both Green Labs (Luna Pier) and Dutch Republic (Douglas) are joining forces to collect food, hygiene products, and pet supplies for families and shelters in need. Every donation earns a <strong>free preroll</strong> as our thank-you for helping us feed and support our community.</p>
+          <p style="margin-top:16px;">
+            <strong>Participating Locations:</strong><br>
+            <a href="https://www.google.com/maps?q=Green+Labs+Provisions+Luna+Pier" target="_blank">🌿 Green Labs Provisions — Luna Pier, MI</a><br>
+            <a href="https://www.google.com/maps?q=Dutch+Republic+Douglas" target="_blank">🦁 Dutch Republic — Douglas, MI</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="campaign-block" style="opacity:.7;">
+      <h2>🎄 Upcoming: High Spirits Holiday Toy Drive</h2>
+      <p>Launching December 5 — mystery bags, white elephant gifts, and community giving for the holiday season.</p>
+    </div>
+  </section>
+
+  <!-- Donation List -->
+  <section id="donations">
+    <h2 class="section-title">What to Donate</h2>
+    <div class="donate-grid">
+      <div class="donate-col">
+        <h3>🥫 Food Items</h3>
+        <ul>
+          <li>Canned goods (soups, fruits, veggies, beans)</li>
+          <li>Pasta, rice, cereal, boxed meals</li>
+          <li>Peanut butter & non-perishables</li>
+        </ul>
+      </div>
+      <div class="donate-col">
+        <h3>🧴 Hygiene Items</h3>
+        <ul>
+          <li>Soap, shampoo, deodorant</li>
+          <li>Toothpaste, toothbrushes</li>
+          <li>Feminine products, wipes, paper goods</li>
+        </ul>
+      </div>
+      <div class="donate-col">
+        <h3>🐾 Pet Items</h3>
+        <ul>
+          <li>Dog & cat food (dry or canned)</li>
+          <li>Treats, toys, collars, leashes</li>
+          <li>Blankets & bedding</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:24px;font-weight:600;text-align:center;">
+      💵 Cash donations also accepted — every $40 helps Aldi feed a family of 10.
+    </p>
+  </section>
+
+  <!-- Partners -->
+  <section id="partners">
+    <h2 class="section-title">Our Partners</h2>
+    <div class="partners">
+      <div class="partner">
+        <img src="assets/img/partner-mcop.png" alt="Monroe County Opportunity Program logo">
+        <h3>Monroe County Opportunity Program</h3>
+        <p>Providing local food and housing assistance to families across Monroe County.</p>
+        <a href="https://mcopinc.org/" target="_blank">Visit Website →</a>
+      </div>
+      <div class="partner">
+        <img src="assets/img/partner-foa.png" alt="Friends of Companion Animals logo">
+        <h3>Friends of Companion Animals</h3>
+        <p>Local no-kill shelter offering safe homes and care for cats and small pets in need.</p>
+        <a href="https://friendsofcompanionanimals.org/" target="_blank">Visit Website →</a>
+      </div>
+      <div class="partner">
+        <img src="assets/img/partner-aldi.png" alt="Aldi logo">
+        <h3>Aldi “Feed a Family” Boxes</h3>
+        <p>Every $40 feeds a family of ten this Thanksgiving. Join us in helping make that happen.</p>
+        <a href="https://www.aldi.us/" target="_blank">Visit Website →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Footer -->
+  <section class="cta-footer">
+    <h2>Get Involved</h2>
+    <a href="#donations">See What to Donate</a>
+    <a href="#partners">Meet Our Partners</a>
+    <a href="https://www.instagram.com/greenlabsmi/" target="_blank">Follow Green Labs</a>
+    <a href="https://www.instagram.com/dutchrepublicmi/" target="_blank">Follow Dutch Republic</a>
+  </section>
+
+  <footer>
+    <p>© 2025 Green Labs Provisions & Dutch Republic. All rights reserved.</p>
+    <p>Growing Good Together 🌿</p>
+  </footer>
+
+  <!-- Scroll-to-top Button -->
+  <button id="topBtn" class="hidden" aria-label="Scroll to top">🌿</button>
+
+  <!-- Scripts -->
+  <script>
+    const sections = document.querySelectorAll("section");
+    const revealOnScroll = () => {
+      const trigger = window.innerHeight * 0.85;
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if(top < trigger) sec.classList.add("visible");
+      });
+    };
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+
+    const topBtn=document.getElementById("topBtn");
+    window.addEventListener("scroll",()=>{
+      if(window.scrollY>400) topBtn.classList.remove("hidden");
+      else topBtn.classList.add("hidden");
+    });
+    topBtn.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
+  </script>
+
+</body>
+</html>
+
