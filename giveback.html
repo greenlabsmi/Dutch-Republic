@@ -8,8 +8,6 @@
 
   <meta name="description" content="Green Labs & Dutch Republic Giveback — supporting local families, pets, and communities through ongoing donation drives and outreach." />
   <link rel="icon" href="assets/img/favicon.png" type="image/png" />
-
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -31,34 +29,56 @@
       color:var(--ink);
       line-height:1.6;
       overflow-x:hidden;
-      position:relative;
     }
     h1,h2,h3{font-family:"Cinzel",serif;letter-spacing:.02em;}
     a{color:var(--green);text-decoration:none;}
     a:hover{text-decoration:underline;}
 
-    /* Header */
-    header{
-      background:linear-gradient(90deg,#F8EBD8,#FFF8EA);
+    /* Top Nav Bar */
+    nav{
+      background:linear-gradient(90deg,#FFF8EA,#F8EBD8);
       border-bottom:2px solid var(--gold);
+      position:sticky;
+      top:0;
+      z-index:100;
+      box-shadow:0 2px 6px rgba(0,0,0,0.05);
+    }
+    .nav-container{
       display:flex;
       justify-content:center;
       align-items:center;
-      gap:24px;
-      padding:16px 20px;
-      position:sticky;
-      top:0;
-      z-index:50;
-      box-shadow:0 2px 8px rgba(0,0,0,0.06);
+      flex-wrap:wrap;
+      gap:40px;
+      padding:10px 20px;
     }
-    header img{height:60px;}
-    header span{
-      font-family:"Cinzel",serif;
-      font-weight:900;
-      font-size:1.1rem;
+    .nav-container img{height:48px;}
+    .nav-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:24px;
+      font-weight:600;
+    }
+    .nav-links a{
       color:var(--autumn);
-      text-align:center;
-      text-shadow:0 1px 4px rgba(0,0,0,0.05);
+      transition:.2s ease;
+      text-transform:uppercase;
+      font-size:0.9rem;
+      position:relative;
+      padding-bottom:4px;
+    }
+    .nav-links a:hover,
+    .nav-links a.active{
+      color:var(--green);
+    }
+    .nav-links a.active::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:0;
+      width:100%;
+      height:2px;
+      background:var(--gold);
+      border-radius:2px;
     }
 
     /* Hero */
@@ -140,79 +160,6 @@
       text-shadow:0 1px 4px rgba(0,0,0,0.05);
     }
 
-    .split{
-      display:flex;
-      flex-wrap:wrap;
-      align-items:center;
-      gap:40px;
-    }
-    .split img{
-      flex:1 1 300px;
-      max-width:420px;
-      border-radius:var(--radius);
-      box-shadow:0 4px 20px rgba(0,0,0,0.08);
-    }
-    .split div{flex:1 1 420px;}
-
-    .donate-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:30px;
-      margin-top:30px;
-    }
-    .donate-col{
-      background:#fff;
-      border:1px solid #eaeaea;
-      border-radius:var(--radius);
-      padding:28px;
-      box-shadow:0 2px 6px rgba(0,0,0,0.05);
-    }
-    .donate-col h3{color:var(--gold);margin-bottom:10px;}
-    .donate-col li{margin-bottom:6px;}
-
-    .partners{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:30px;
-    }
-    .partner{
-      background:#fff;
-      border-radius:var(--radius);
-      padding:24px;
-      text-align:center;
-      box-shadow:0 2px 6px rgba(0,0,0,0.05);
-    }
-    .partner img{width:100px;margin-bottom:10px;}
-
-    .campaign-block{
-      background:linear-gradient(180deg,#f9f9f9,#fff);
-      border-radius:var(--radius);
-      padding:60px 30px;
-      box-shadow:0 2px 8px rgba(0,0,0,0.05);
-      margin-bottom:60px;
-    }
-    .campaign-block h2{color:var(--green);margin-bottom:20px;font-size:1.8rem;}
-
-    .cta-footer{
-      background:var(--green);
-      color:#fff;
-      text-align:center;
-      padding:80px 20px;
-    }
-    .cta-footer h2{font-family:"Cinzel",serif;margin-bottom:20px;font-size:2rem;}
-    .cta-footer a{
-      display:inline-block;
-      background:var(--gold);
-      color:#000;
-      margin:10px;
-      padding:14px 28px;
-      border-radius:var(--radius);
-      font-weight:700;
-      text-transform:uppercase;
-      transition:all .3s ease;
-    }
-    .cta-footer a:hover{background:#fff;color:var(--green);}
-
     footer{
       background:#000;
       color:#fff;
@@ -239,54 +186,68 @@
     }
     #topBtn:hover{background:#fff;color:var(--green);}
     #topBtn.hidden{opacity:0;pointer-events:none;}
-
-    @media(max-width:768px){
-      .split{flex-direction:column;text-align:center;}
-      .split img{margin:0 auto;}
-    }
-
-    /* Falling leaves */
-    .leaf{
-      position:fixed;
-      top:-10%;
-      width:32px;
-      height:32px;
-      background:url('assets/img/leaf-orange.png') no-repeat center/contain;
-      animation:fall linear infinite;
-      z-index:-3;
-      opacity:0.85;
-    }
-    @keyframes fall{
-      0%{transform:translateY(0) rotate(0deg);}
-      100%{transform:translateY(110vh) rotate(360deg);}
-    }
   </style>
 </head>
 
 <body>
-  <header>
-    <img src="assets/img/greenlabs-logo.png" alt="Green Labs Logo">
-    <span>Community Giveback<br><small style="font-weight:600;color:#0B7D5A;">Green Labs × Dutch Republic</small></span>
-    <img src="logo-dutch-republic.svg" alt="Dutch Republic Logo">
-  </header>
 
-  <section class="hero">
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <img src="assets/img/greenlabs-logo.png" alt="Green Labs Logo">
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#current-campaigns">Campaigns</a>
+        <a href="#donations">Donations</a>
+        <a href="#partners">Partners</a>
+        <a href="#cta">Get Involved</a>
+      </div>
+      <img src="logo-dutch-republic.svg" alt="Dutch Republic Logo">
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
     <h1>Cultivate Kindness</h1>
     <p>Supporting local families, pets, and people — one drive at a time.<br>
        A collaboration between Green Labs Provisions & Dutch Republic.</p>
     <a href="#about" class="cta">Learn More</a>
   </section>
 
-  <!-- === rest of your sections preserved exactly === -->
-  <!-- (about, current campaigns, donations, partners, CTA footer, etc.) -->
+  <!-- Other sections from your existing layout -->
+  <section id="about">
+    <h2 class="section-title">Why We Give Back</h2>
+    <p style="max-width:720px;margin:0 auto;text-align:center;">
+      Cannabis culture is rooted in care, compassion, and community.
+      Through the <strong>Green Labs & Dutch Republic Giveback Program</strong>, we’re using our platform to do more than provide quality products — 
+      we’re creating connections and support systems for the people and animals who make our communities thrive.
+      Each campaign is a chance to grow good together.
+    </p>
+  </section>
+
+  <!-- Current Campaigns -->
+  <section id="current-campaigns">
+    <h2 class="section-title">Current Campaigns</h2>
+    <!-- (your campaign content here) -->
+  </section>
+
+  <!-- Donation List -->
+  <section id="donations">
+    <h2 class="section-title">What to Donate</h2>
+    <!-- (your donation grid here) -->
+  </section>
+
+  <!-- Partners -->
+  <section id="partners">
+    <h2 class="section-title">Our Partners</h2>
+    <!-- (your partner grid here) -->
+  </section>
 
   <!-- CTA Footer -->
-  <section class="cta-footer">
-    <h2>Get Involved</h2>
-    <a href="#donations">See What to Donate</a>
-    <a href="#partners">Meet Our Partners</a>
-    <a href="https://www.instagram.com/greenlabsmi/" target="_blank">Follow Green Labs</a>
-    <a href="https://www.instagram.com/dutchrepublicmi/" target="_blank">Follow Dutch Republic</a>
+  <section id="cta" class="cta-footer" style="background:var(--green);color:#fff;text-align:center;padding:80px 20px;">
+    <h2 style="font-family:'Cinzel',serif;margin-bottom:20px;font-size:2rem;">Get Involved</h2>
+    <a href="#donations" style="display:inline-block;background:var(--gold);color:#000;margin:10px;padding:14px 28px;border-radius:var(--radius);font-weight:700;text-transform:uppercase;">See What to Donate</a>
+    <a href="#partners" style="display:inline-block;background:var(--gold);color:#000;margin:10px;padding:14px 28px;border-radius:var(--radius);font-weight:700;text-transform:uppercase;">Meet Our Partners</a>
   </section>
 
   <footer>
@@ -297,25 +258,29 @@
   <button id="topBtn" class="hidden" aria-label="Scroll to top">🍂</button>
 
   <script>
+    // Scroll reveal
     const sections=document.querySelectorAll("section");
     const reveal=()=>{const t=window.innerHeight*0.85;sections.forEach(s=>{if(s.getBoundingClientRect().top<t)s.classList.add("visible");});};
     window.addEventListener("scroll",reveal);reveal();
 
+    // Scroll to top button
     const topBtn=document.getElementById("topBtn");
     window.addEventListener("scroll",()=>{if(window.scrollY>400)topBtn.classList.remove("hidden");else topBtn.classList.add("hidden");});
     topBtn.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
 
-    // 🍁 Falling leaves generator
-    const leafColors=['assets/img/leaf-orange.png','assets/img/leaf-gold.png','assets/img/leaf-brown.png'];
-    for(let i=0;i<16;i++){
-      const leaf=document.createElement('div');
-      leaf.classList.add('leaf');
-      leaf.style.left=Math.random()*100+'%';
-      leaf.style.animationDuration=10+Math.random()*10+'s';
-      leaf.style.animationDelay=Math.random()*5+'s';
-      leaf.style.backgroundImage=`url(${leafColors[Math.floor(Math.random()*leafColors.length)]})`;
-      document.body.appendChild(leaf);
-    }
+    // Active nav link highlight
+    const navLinks=document.querySelectorAll(".nav-links a");
+    window.addEventListener("scroll",()=>{
+      let current="";
+      sections.forEach(sec=>{
+        const top=sec.offsetTop-120;
+        if(scrollY>=top){current=sec.id;}
+      });
+      navLinks.forEach(link=>{
+        link.classList.remove("active");
+        if(link.getAttribute("href")==="#"+current){link.classList.add("active");}
+      });
+    });
   </script>
 </body>
 </html>
