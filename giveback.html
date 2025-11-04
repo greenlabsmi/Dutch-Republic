@@ -98,6 +98,57 @@ nav{
   width:100%;height:2px;background:var(--gold);border-radius:2px;
 }
 
+    /* --- Nav Edge Blur --- */
+.nav-links {
+  position:relative;
+  display:flex;justify-content:center;
+  overflow-x:auto;white-space:nowrap;
+  gap:22px;padding:12px 16px;
+  scroll-behavior:smooth;
+  mask-image:linear-gradient(to right,transparent 0%,black 10%,black 90%,transparent 100%);
+  -webkit-mask-image:linear-gradient(to right,transparent 0%,black 10%,black 90%,transparent 100%);
+}
+
+/* --- Enhanced Logos & Particles --- */
+#intro-logos img {
+  height:90px;
+  opacity:0;
+  transform-origin:center;
+}
+.seed, .drop {
+  position:absolute;
+  width:6px;height:6px;
+  border-radius:50%;
+  pointer-events:none;
+}
+.seed { background:#C76B24; }   /* Dutch Republic copper seeds */
+.drop { background:#0B7D5A; }   /* Green Labs emerald droplets */
+
+/* --- Glow Pulse for "Cultivate Kindness" --- */
+@keyframes textGlow {
+  0% { text-shadow: 0 0 8px rgba(199,107,36,0.3), 0 0 16px rgba(11,125,90,0.3); }
+  50% { text-shadow: 0 0 18px rgba(199,107,36,0.6), 0 0 30px rgba(11,125,90,0.6); }
+  100% { text-shadow: 0 0 8px rgba(199,107,36,0.3), 0 0 16px rgba(11,125,90,0.3); }
+}
+    
+/* --- Nav Bar Shimmer Sweep (appears once) --- */
+@keyframes navShimmer {
+  0% {background-position:-200% 0;}
+  100% {background-position:200% 0;}
+}
+nav.shimmer-once::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.4) 50%,
+    rgba(255,255,255,0) 100%);
+  background-size:200% 100%;
+  animation:navShimmer 1.8s linear;
+  pointer-events:none;
+}
+
     /* Hero */
     .hero{
       position:relative;text-align:center;color:#fff;
@@ -553,22 +604,63 @@ nav{
   <button id="topBtn" class="hidden" aria-label="Scroll to top">🍂</button>
   
 <script>
-gsap.set("#glLogo",{x:"-120%",opacity:0});
-gsap.set("#drLogo",{x:"120%",opacity:0});
+// Initial positions
+gsap.set("#glLogo",{x:"-120%",opacity:0,scale:0.8});
+gsap.set("#drLogo",{x:"120%",opacity:0,scale:0.8});
 gsap.set("#growText",{scale:0.8,opacity:0});
 
+// Particle generator (seeds + droplets)
+function createParticles(type, count){
+  const banner=document.getElementById("intro-banner");
+  for(let i=0;i<count;i++){
+    const el=document.createElement("div");
+    el.className=type;
+    el.style.left= type==="seed"
+      ? `${70+Math.random()*25}%`
+      : `${5+Math.random()*25}%`;
+    el.style.top=`${40+Math.random()*40}%`;
+    banner.appendChild(el);
+    const xMove= type==="seed"? -120-Math.random()*60 : 120+Math.random()*60;
+    const yMove= type==="seed"? 50+Math.random()*50 : -50-Math.random()*50;
+    gsap.to(el,{
+      x:xMove,
+      y:yMove,
+      opacity:0,
+      duration:1.6+Math.random()*0.4,
+      ease:"power1.out",
+      onComplete:()=>el.remove()
+    });
+  }
+}
+
+// Timeline
 const tl=gsap.timeline({defaults:{ease:"power2.out"}});
 
-tl.to("#glLogo",{x:"0%",opacity:1,duration:0.8})
-  .to("#drLogo",{x:"0%",opacity:1,duration:0.8},"<")
-  .addLabel("logosIn")
-  // seeds and water represented by quick glow pulse
-  .to("#intro-banner",{background:"linear-gradient(180deg,#F5D4A4 0%,#FAF6EE 100%)",duration:0.8},"logosIn+=0.5")
-  .to("#growText",{opacity:1,scale:1,duration:0.8},"logosIn+=1.2")
-  // leaves drift for 2s then sunrise fade
-  .to("#intro-banner",{yPercent:-100,opacity:0,duration:1.5,delay:2.2,ease:"power1.inOut"})
-;
+tl.to("#glLogo",{x:"0%",opacity:1,scale:1.2,duration:0.8})
+  .to("#drLogo",{x:"0%",opacity:1,scale:1.2,duration:0.8},"<")
+  .add(()=>{
+    createParticles("seed",14);
+    createParticles("drop",14);
+  },"+=0.3")
+  .to("#intro-banner",{background:"linear-gradient(180deg,#F5D4A4 0%,#FAF6EE 100%)",duration:1.2},"-=0.4")
+  .to("#growText",{opacity:1,scale:1,duration:1},"-=0.4")
+  // 🌟 Add glow pulse before scroll
+  .to("#growText",{animation:"textGlow 1.5s ease-in-out",duration:1},"+=1.2")
+  // 🌅 Smooth scroll upward (removes empty space)
+  .add(()=>{
+    const banner=document.getElementById("intro-banner");
+    const h=banner.offsetHeight;
+    gsap.to(window,{scrollTo:{y:h},duration:1.2,ease:"power1.inOut"});
+  },"+=0.3")
+  // Fade banner out as scroll occurs + shimmer sweep on nav
+.to("#intro-banner",{opacity:0,duration:1,onComplete:()=>{
+    const nav=document.querySelector("nav");
+    nav.classList.add("shimmer-once");
+    // Remove the class after animation so it can replay cleanly if reloaded
+    setTimeout(()=>nav.classList.remove("shimmer-once"),2000);
+  }},"-=1");
 </script>
+
 
   <script>
     // reveal on scroll
