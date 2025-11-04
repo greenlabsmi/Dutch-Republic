@@ -40,7 +40,7 @@
     /* --- Intro Animation Banner --- */
 #intro-banner{
   position:relative;
-  height:280px;
+  height:220px;
   overflow:hidden;
   background:linear-gradient(180deg,#F6DCA7 0%,#F9E6C4 40%,#FAF6EE 100%);
   display:flex;
@@ -111,7 +111,7 @@ nav{
 
 /* --- Enhanced Logos & Particles --- */
 #intro-logos img {
-  height:90px;
+  height:70px;
   opacity:0;
   transform-origin:center;
 }
@@ -399,6 +399,45 @@ nav.shimmer-once::after {
     #topBtn:hover{background:#fff;color:var(--green);}
     #topBtn.hidden{opacity:0;pointer-events:none;}
 
+    /* --- Nav Wrapper with Logos --- */
+.nav-wrapper {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  max-width:var(--max);
+  margin:0 auto;
+  padding:0 16px;
+  position:relative;
+}
+
+.nav-logo img {
+  height:42px;
+  transition:transform .25s ease;
+}
+
+.nav-logo:hover img {
+  transform:scale(1.08);
+}
+
+.nav-links {
+  flex:1;
+  display:flex;
+  justify-content:center;
+  overflow-x:auto;
+  white-space:nowrap;
+  gap:22px;
+  padding:12px 16px;
+  scroll-behavior:smooth;
+  mask-image:linear-gradient(to right,transparent 0%,black 10%,black 90%,transparent 100%);
+  -webkit-mask-image:linear-gradient(to right,transparent 0%,black 10%,black 90%,transparent 100%);
+}
+
+/* Hide side logos on small screens for clean scroll */
+@media (max-width:768px){
+  .nav-logo{display:none;}
+  .nav-wrapper{justify-content:center;}
+}
+
     @media (max-width:620px){
       .campaign-body{flex-direction:column;}
       section{padding:80px 16px;}
@@ -418,12 +457,22 @@ nav.shimmer-once::after {
 
 <!-- Nav (no logos, scrollable links) -->
 <nav>
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#greenlabs">Green Labs</a>
-    <a href="#dutch">Dutch Republic</a>
-    <a href="#donations">Donations</a>
-    <a href="#past">Past Campaigns</a>
+  <div class="nav-wrapper">
+    <a href="https://greenlabsmi.com" target="_blank" class="nav-logo left">
+      <img src="assets/img/green-labs-logo.png" alt="Green Labs">
+    </a>
+
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#greenlabs">Green Labs</a>
+      <a href="#dutch">Dutch Republic</a>
+      <a href="#donations">Donations</a>
+      <a href="#past">Past Campaigns</a>
+    </div>
+
+    <a href="https://dutchrepublic.org" target="_blank" class="nav-logo right">
+      <img src="logo-dutch-republic.svg" alt="Dutch Republic">
+    </a>
   </div>
 </nav>
 
@@ -639,23 +688,23 @@ const tl=gsap.timeline({defaults:{ease:"power2.out"}});
 // logos bounce + rotate inward
 tl.to("#glLogo",{x:"-10%",rotation:-5,opacity:1,scale:1.1,duration:1.2,ease:"elastic.out(1,0.6)"})
   .to("#drLogo",{x:"10%",rotation:5,opacity:1,scale:1.1,duration:1.2,ease:"elastic.out(1,0.6)"},"<")
-  // bump together
-  .to(["#glLogo","#drLogo"],{x:"0%",rotation:0,scale:1.2,duration:0.4,ease:"back.out(1.7)"})
-  .to(["#glLogo","#drLogo"],{scale:1, x:(i)=>i===0?"-8%":"8%",duration:0.4},"+=0.1")
+  .to(["#glLogo","#drLogo"],{x:"0%",rotation:0,scale:1.2,duration:0.5,ease:"back.out(1.7)"})
+  .to(["#glLogo","#drLogo"],{scale:1,x:(i)=>i===0?"-8%":"8%",duration:0.5},"+=0.2")
 
-  // Dutch Republic drops golden seeds
-  .add(()=>createParticles("seed",14),">")
+  // 🌾 Step 1: Dutch Republic drops golden seeds
+  .add(()=>{
+    createParticles("seed",8); // reduced count for smoother performance
+  },"+=0.6")
 
-  // Green Labs spills emerald droplets after a short delay
-  .add(()=>createParticles("drop",14),"+=0.6")
+  // 💧 Step 2: Green Labs spills emerald droplets after seeds finish
+  .add(()=>{
+    createParticles("drop",8);
+  },"+=1.4")
 
-  // "Cultivate Kindness" grows up
-  .to("#growText",{y:0,opacity:1,scale:1,duration:1,ease:"power2.out"},">")
+  // ✨ Step 3: "Cultivate Kindness" grows upward last
+  .to("#growText",{y:0,opacity:1,scale:1,duration:1.2,ease:"power2.out"},"+=0.6")
 
-  // glow effect
-  .to("#growText",{animation:"textGlow 2s ease-in-out",duration:1},"+=0.8")
-
-  // sunrise fade + collapse upward
+  // 🌅 Step 4: Sunrise fade + smooth collapse
   .to("#intro-banner",{
     background:"linear-gradient(180deg,#FAE3B0 0%,#FAF6EE 100%)",
     duration:1.2,
@@ -664,17 +713,21 @@ tl.to("#glLogo",{x:"-10%",rotation:-5,opacity:1,scale:1.1,duration:1.2,ease:"ela
   .to("#intro-banner",{
     height:0,
     opacity:0,
-    duration:1.5,
+    marginBottom:0,
+    duration:1.8,
     ease:"power1.inOut",
     onStart:()=>{
-      document.querySelector("#intro-banner").style.overflow="hidden";
+      const banner=document.querySelector("#intro-banner");
+      banner.style.overflow="hidden";
     },
     onComplete:()=>{
+      document.querySelector("#intro-banner").style.display="none";
       const nav=document.querySelector("nav");
       nav.classList.add("shimmer-once");
       setTimeout(()=>nav.classList.remove("shimmer-once"),2000);
     }
   },"+=0.3");
+
 </script>
 
 
