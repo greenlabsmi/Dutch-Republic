@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#C76B24" />
   <title>Community Giveback • Green Labs & Dutch Republic</title>
-
   <meta name="description" content="Green Labs & Dutch Republic Giveback — supporting local families, pets, and communities through ongoing donation drives and outreach." />
   <link rel="icon" href="assets/img/favicon.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -34,198 +33,61 @@
     a{color:var(--green);text-decoration:none;}
     a:hover{text-decoration:underline;}
 
-    /* Nav */
     nav{
       background:linear-gradient(90deg,#FFF8EA,#F8EBD8);
       border-bottom:2px solid var(--gold);
-      position:sticky;
-      top:0;
-      z-index:100;
+      position:sticky;top:0;z-index:100;
       box-shadow:0 2px 6px rgba(0,0,0,0.05);
     }
-    .nav-container{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      flex-wrap:wrap;
-      gap:40px;
-      padding:10px 20px;
-    }
-    .nav-container img{height:48px;}
-    .nav-links{
-      display:flex;
-      flex-wrap:wrap;
-      gap:24px;
-      font-weight:600;
-    }
-    .nav-links a{
-      color:var(--autumn);
-      transition:.2s ease;
-      text-transform:uppercase;
-      font-size:0.9rem;
-      position:relative;
-      padding-bottom:4px;
-    }
-    .nav-links a:hover,
-    .nav-links a.active{color:var(--green);}
-    .nav-links a.active::after{
-      content:"";
-      position:absolute;
-      left:0;
-      bottom:0;
-      width:100%;
-      height:2px;
-      background:var(--gold);
-      border-radius:2px;
-    }
+    .nav-container{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:40px;padding:10px 20px;}
+    .nav-container img{height:48px;cursor:pointer;}
+    .nav-links{display:flex;flex-wrap:wrap;gap:24px;font-weight:600;}
+    .nav-links a{color:var(--autumn);transition:.2s ease;text-transform:uppercase;font-size:.9rem;position:relative;padding-bottom:4px;}
+    .nav-links a:hover,.nav-links a.active{color:var(--green);}
+    .nav-links a.active::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;background:var(--gold);border-radius:2px;}
 
-    /* Hero */
-    .hero{
-      position:relative;
-      text-align:center;
-      color:#fff;
-      padding:140px 20px 120px;
-      overflow:hidden;
-    }
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(135deg,#A85615,var(--autumn));
-      background-size:300% 300%;
-      animation:gradientFlow 18s ease infinite;
-      z-index:-2;
-    }
-    .hero::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:url('assets/img/foil-shimmer.png') center/cover no-repeat;
-      opacity:.25;
-      mix-blend-mode:soft-light;
-      animation:parallax 25s linear infinite alternate;
-      z-index:-1;
-    }
+    .hero{position:relative;text-align:center;color:#fff;padding:140px 20px 120px;overflow:hidden;}
+    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,#A85615,var(--autumn));background-size:300% 300%;animation:gradientFlow 18s ease infinite;z-index:-2;}
+    .hero::after{content:"";position:absolute;inset:0;background:url('assets/img/foil-shimmer.png') center/cover no-repeat;opacity:.25;mix-blend-mode:soft-light;animation:parallax 25s linear infinite alternate;z-index:-1;}
     @keyframes gradientFlow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
     @keyframes parallax{from{transform:translateY(0);}to{transform:translateY(-40px);}}
-    .hero h1{
-      font-size:clamp(42px,6vw,78px);
-      color:#fff;
-      text-shadow:0 2px 12px rgba(0,0,0,0.4);
-    }
-    .hero p{
-      max-width:720px;
-      margin:20px auto;
-      font-size:1.2rem;
-      opacity:.9;
-    }
-    .hero .cta{
-      display:inline-block;
-      margin-top:30px;
-      background:var(--gold);
-      color:#000;
-      padding:14px 30px;
-      border-radius:var(--radius);
-      font-weight:700;
-      text-transform:uppercase;
-      transition:all .3s ease;
-    }
+    .hero h1{font-size:clamp(42px,6vw,78px);color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.4);}
+    .hero p{max-width:720px;margin:20px auto;font-size:1.2rem;opacity:.9;}
+    .hero .cta{display:inline-block;margin-top:30px;background:var(--gold);color:#000;padding:14px 30px;border-radius:var(--radius);font-weight:700;text-transform:uppercase;transition:all .3s ease;}
     .hero .cta:hover{background:#fff;color:var(--green);}
 
-    /* Sections */
-    section{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:100px 20px;
-      opacity:0;
-      transform:translateY(40px);
-      transition:all 1s ease;
-      position:relative;
-      z-index:5;
-    }
+    section{max-width:var(--max);margin:0 auto;padding:100px 20px;opacity:0;transform:translateY(40px);transition:all 1s ease;position:relative;z-index:5;}
     section.visible{opacity:1;transform:translateY(0);}
-    .section-title{
-      text-align:center;
-      font-size:2.2rem;
-      color:var(--green-dark);
-      margin-bottom:40px;
-      text-shadow:0 1px 4px rgba(0,0,0,0.05);
-    }
+    .section-title{text-align:center;font-size:2.2rem;color:var(--green-dark);margin-bottom:40px;text-shadow:0 1px 4px rgba(0,0,0,0.05);}
 
-    /* Campaign Images */
-    .campaigns-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-      gap:40px;
-      justify-items:center;
-    }
-    .campaigns-grid img{
-      width:100%;
-      max-width:480px;
-      border-radius:var(--radius);
-      box-shadow:0 4px 20px rgba(0,0,0,0.1);
-      transition:transform .3s ease;
-    }
+    .joint-effort{text-align:center;max-width:800px;margin:0 auto 50px;}
+    .locations-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;margin-top:50px;}
+    .location-card{background:#fff;border:1px solid #eee;border-radius:var(--radius);padding:32px;text-align:left;box-shadow:0 2px 10px rgba(0,0,0,0.05);}
+    .location-card h3{color:var(--autumn);font-size:1.3rem;margin-bottom:10px;}
+    .location-card p{font-size:1rem;margin-bottom:10px;}
+    .about-buttons{margin-top:30px;display:flex;justify-content:center;flex-wrap:wrap;gap:16px;}
+    .about-buttons a{background:var(--gold);color:#000;padding:12px 24px;border-radius:var(--radius);font-weight:700;text-transform:uppercase;transition:all .3s ease;}
+    .about-buttons a:hover{background:#fff;color:var(--green);}
+
+    .campaigns-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px;justify-items:center;}
+    .campaigns-grid img{width:100%;max-width:480px;border-radius:var(--radius);box-shadow:0 4px 20px rgba(0,0,0,0.1);transition:transform .3s ease;}
     .campaigns-grid img:hover{transform:scale(1.02);}
 
-    /* Donation Lists */
-    .donate-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:30px;
-      margin-top:30px;
-    }
-    .donate-col{
-      background:#fff;
-      border:1px solid #eaeaea;
-      border-radius:var(--radius);
-      padding:28px;
-      box-shadow:0 2px 6px rgba(0,0,0,0.05);
-    }
+    .donate-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;margin-top:30px;}
+    .donate-col{background:#fff;border:1px solid #eaeaea;border-radius:var(--radius);padding:28px;box-shadow:0 2px 6px rgba(0,0,0,0.05);}
     .donate-col h3{color:var(--autumn);margin-bottom:10px;}
 
-    /* Floating Leaves */
-    .leaf-decor{
-      position:fixed;
-      top:0;left:0;width:100%;height:100%;
-      overflow:hidden;z-index:1;pointer-events:none;
-    }
+    .leaf-decor{position:fixed;top:0;left:0;width:100%;height:100%;overflow:hidden;z-index:1;pointer-events:none;}
     .leaf{position:absolute;width:60px;opacity:.8;animation:fall linear infinite;}
-    @keyframes fall{
-      0%{transform:translateY(-10%) rotate(0deg);opacity:.8;}
-      50%{transform:translateY(50vh) rotate(180deg);opacity:1;}
-      100%{transform:translateY(110vh) rotate(360deg);opacity:0;}
-    }
+    @keyframes fall{0%{transform:translateY(-10%) rotate(0deg);opacity:.8;}50%{transform:translateY(50vh) rotate(180deg);opacity:1;}100%{transform:translateY(110vh) rotate(360deg);opacity:0;}}
     .leaf1{left:10%;animation-duration:12s;animation-delay:0s;}
     .leaf2{left:35%;animation-duration:14s;animation-delay:4s;width:70px;}
     .leaf3{left:60%;animation-duration:16s;animation-delay:2s;width:55px;}
     .leaf4{left:80%;animation-duration:18s;animation-delay:6s;width:65px;}
     .leaf5{left:25%;animation-duration:20s;animation-delay:8s;width:50px;}
 
-    footer{
-      background:#000;
-      color:#fff;
-      text-align:center;
-      padding:40px 20px;
-      font-size:.9rem;
-    }
-
-    #topBtn{
-      position:fixed;
-      bottom:25px;
-      right:25px;
-      background:var(--gold);
-      color:#000;
-      border:none;
-      border-radius:50%;
-      width:50px;
-      height:50px;
-      cursor:pointer;
-      box-shadow:0 4px 10px rgba(0,0,0,0.3);
-      font-size:24px;
-      transition:all .3s ease;
-      z-index:999;
-    }
+    footer{background:#000;color:#fff;text-align:center;padding:40px 20px;font-size:.9rem;}
+    #topBtn{position:fixed;bottom:25px;right:25px;background:var(--gold);color:#000;border:none;border-radius:50%;width:50px;height:50px;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,0.3);font-size:24px;transition:all .3s ease;z-index:999;}
     #topBtn:hover{background:#fff;color:var(--green);}
     #topBtn.hidden{opacity:0;pointer-events:none;}
   </style>
@@ -233,7 +95,6 @@
 
 <body>
 
-  <!-- Floating Leaves -->
   <div class="leaf-decor">
     <img src="assets/img/leaf-gold.png" class="leaf leaf1" alt="">
     <img src="assets/img/leaf-red.png" class="leaf leaf2" alt="">
@@ -242,10 +103,9 @@
     <img src="assets/img/leaf-red.png" class="leaf leaf5" alt="">
   </div>
 
-  <!-- Nav -->
   <nav>
     <div class="nav-container">
-      <img src="assets/img/green-labs-logo.png" alt="Green Labs Logo">
+      <a href="https://greenlabsmi.com" target="_blank"><img src="assets/img/green-labs-logo.png" alt="Green Labs Logo"></a>
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#current-campaigns">Campaigns</a>
@@ -253,30 +113,38 @@
         <a href="#partners">Partners</a>
         <a href="#cta">Get Involved</a>
       </div>
-      <img src="logo-dutch-republic.svg" alt="Dutch Republic Logo">
+      <a href="https://dutchrepublic.org" target="_blank"><img src="logo-dutch-republic.svg" alt="Dutch Republic Logo"></a>
     </div>
   </nav>
 
-  <!-- Hero -->
   <section class="hero" id="hero">
     <h1>Cultivate Kindness</h1>
-    <p>Supporting local families, pets, and people — one drive at a time.<br>
-       A collaboration between Green Labs Provisions & Dutch Republic.</p>
+    <p>Supporting local families, pets, and people — one drive at a time.<br>A collaboration between Green Labs Provisions & Dutch Republic.</p>
     <a href="#about" class="cta">Learn More</a>
   </section>
 
-  <!-- About -->
   <section id="about">
-    <h2 class="section-title">Why We Give Back</h2>
-    <p style="max-width:720px;margin:0 auto;text-align:center;">
-      Cannabis culture is rooted in care, compassion, and community.
-      Through the <strong>Green Labs & Dutch Republic Giveback Program</strong>, we’re using our platform to do more than provide quality products — 
-      we’re creating connections and support systems for the people and animals who make our communities thrive.
-      Each campaign is a chance to grow good together.
-    </p>
+    <h2 class="section-title">A Joint Effort</h2>
+    <div class="joint-effort">
+      <p>Two communities, one mission. The Green Labs & Dutch Republic Giveback Program unites both dispensaries under a shared goal — to uplift the neighborhoods that support us. From food drives to pet rescues, beach cleanups to local outreach, our mission is to grow good together.</p>
+      <div class="about-buttons">
+        <a href="#luna-pier">Green Labs — Luna Pier</a>
+        <a href="#douglas">Dutch Republic — Douglas</a>
+      </div>
+    </div>
+    <div class="locations-grid">
+      <div class="location-card" id="luna-pier">
+        <h3>🌿 Green Labs — Luna Pier</h3>
+        <p>At our Luna Pier location, we focus on supporting our local community through ongoing food and book donations, volunteering for beach and park cleanups, park restoration projects, and community events. Together, we’re working to keep Luna Pier vibrant, clean, and connected.</p>
+      </div>
+      <div class="location-card" id="douglas">
+        <h3>🦁 Dutch Republic — Douglas</h3>
+        <p>Our West Michigan community outreach is just getting started! Stay tuned as we announce upcoming partnerships, local drives, and volunteer initiatives across Saugatuck and Douglas.</p>
+        <p><em>Image coming soon!</em></p>
+      </div>
+    </div>
   </section>
 
-  <!-- Campaigns -->
   <section id="current-campaigns">
     <h2 class="section-title">Current Campaigns</h2>
     <div class="campaigns-grid">
@@ -285,72 +153,26 @@
     </div>
   </section>
 
-  <!-- Donations -->
   <section id="donations">
     <h2 class="section-title">What to Donate</h2>
     <div class="donate-grid">
-      <div class="donate-col">
-        <h3>🥫 Food Items</h3>
-        <ul>
-          <li>Canned goods (soups, fruits, veggies, beans)</li>
-          <li>Pasta, rice, cereal, boxed meals</li>
-          <li>Peanut butter & non-perishables</li>
-        </ul>
-      </div>
-      <div class="donate-col">
-        <h3>🧴 Hygiene Items</h3>
-        <ul>
-          <li>Soap, shampoo, deodorant</li>
-          <li>Toothpaste, toothbrushes</li>
-          <li>Feminine products, wipes, paper goods</li>
-        </ul>
-      </div>
-      <div class="donate-col">
-        <h3>🐾 Pet Items</h3>
-        <ul>
-          <li>Dog & cat food (dry or canned)</li>
-          <li>Treats, toys, collars, leashes</li>
-          <li>Blankets & bedding</li>
-        </ul>
-      </div>
-      <div class="donate-col">
-        <h3>🚫 What NOT to Donate</h3>
-        <ul>
-          <li>Expired or opened food items</li>
-          <li>Homemade food or perishable goods</li>
-          <li>Used hygiene products</li>
-          <li>Heavily worn or soiled pet supplies</li>
-        </ul>
-      </div>
+      <div class="donate-col"><h3>🥫 Food Items</h3><ul><li>Canned goods (soups, fruits, veggies, beans)</li><li>Pasta, rice, cereal, boxed meals</li><li>Peanut butter & non-perishables</li></ul></div>
+      <div class="donate-col"><h3>🧴 Hygiene Items</h3><ul><li>Soap, shampoo, deodorant</li><li>Toothpaste, toothbrushes</li><li>Feminine products, wipes, paper goods</li></ul></div>
+      <div class="donate-col"><h3>🐾 Pet Items</h3><ul><li>Dog & cat food (dry or canned)</li><li>Treats, toys, collars, leashes</li><li>Blankets & bedding</li></ul></div>
+      <div class="donate-col"><h3>🚫 What NOT to Donate</h3><ul><li>Expired or opened food items</li><li>Homemade or perishable goods</li><li>Used hygiene products</li><li>Heavily worn pet supplies</li></ul></div>
     </div>
-    <p style="margin-top:24px;font-weight:600;text-align:center;">
-      💵 Cash donations also accepted — every $40 helps Aldi feed a family of 10.
-    </p>
+    <p style="margin-top:24px;font-weight:600;text-align:center;">💵 Cash donations also accepted — every $40 helps Aldi feed a family of 10.</p>
   </section>
 
-  <!-- Partners -->
   <section id="partners">
     <h2 class="section-title">Our Partners</h2>
     <div class="donate-grid">
-      <div class="donate-col">
-        <h3>Monroe County Opportunity Program</h3>
-        <p>Providing local food and housing assistance to families across Monroe County.</p>
-        <a href="https://www.monroecountyop.org/" target="_blank">Visit Website →</a>
-      </div>
-      <div class="donate-col">
-        <h3>Friends of Companion Animals</h3>
-        <p>Local no-kill shelter offering safe homes and care for cats and small pets in need.</p>
-        <a href="https://friendsofcompanionanimals.org/" target="_blank">Visit Website →</a>
-      </div>
-      <div class="donate-col">
-        <h3>Aldi “Feed a Family” Boxes</h3>
-        <p>Every $40 feeds a family of ten this Thanksgiving. Join us in helping make that happen.</p>
-        <a href="https://www.aldi.us/products/thanksgiving/feast-for-10/k/259" target="_blank">Visit Website →</a>
-      </div>
+      <div class="donate-col"><h3>Monroe County Opportunity Program</h3><p>Providing local food and housing assistance to families across Monroe County.</p><a href="https://www.monroecountyop.org/" target="_blank">Visit Website →</a></div>
+      <div class="donate-col"><h3>Friends of Companion Animals</h3><p>Local no-kill shelter offering safe homes and care for cats and small pets in need.</p><a href="https://friendsofcompanionanimals.org/" target="_blank">Visit Website →</a></div>
+      <div class="donate-col"><h3>Aldi “Feed a Family” Boxes</h3><p>Every $40 feeds a family of ten this Thanksgiving. Join us in helping make that happen.</p><a href="https://www.aldi.us/products/thanksgiving/feast-for-10/k/259" target="_blank">Visit Website →</a></div>
     </div>
   </section>
 
-  <!-- CTA -->
   <section id="cta" style="background:var(--green);color:#fff;text-align:center;padding:80px 20px;">
     <h2 style="font-family:'Cinzel',serif;margin-bottom:20px;font-size:2rem;">Get Involved</h2>
     <a href="#donations" style="display:inline-block;background:var(--gold);color:#000;margin:10px;padding:14px 28px;border-radius:var(--radius);font-weight:700;text-transform:uppercase;">See What to Donate</a>
@@ -365,29 +187,14 @@
   <button id="topBtn" class="hidden" aria-label="Scroll to top">🍂</button>
 
   <script>
-    // Reveal on scroll
     const sections=document.querySelectorAll("section");
     const reveal=()=>{const t=window.innerHeight*0.85;sections.forEach(s=>{if(s.getBoundingClientRect().top<t)s.classList.add("visible");});};
     window.addEventListener("scroll",reveal);reveal();
-
-    // Scroll to top
     const topBtn=document.getElementById("topBtn");
     window.addEventListener("scroll",()=>{if(window.scrollY>400)topBtn.classList.remove("hidden");else topBtn.classList.add("hidden");});
     topBtn.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
-
-    // Active nav link
     const navLinks=document.querySelectorAll(".nav-links a");
-    window.addEventListener("scroll",()=>{
-      let current="";
-      sections.forEach(sec=>{
-        const top=sec.offsetTop-120;
-        if(scrollY>=top){current=sec.id;}
-      });
-      navLinks.forEach(link=>{
-        link.classList.remove("active");
-        if(link.getAttribute("href")==="#"+current){link.classList.add("active");}
-      });
-    });
+    window.addEventListener("scroll",()=>{let current="";sections.forEach(sec=>{const top=sec.offsetTop-120;if(scrollY>=top){current=sec.id;}});navLinks.forEach(link=>{link.classList.remove("active");if(link.getAttribute("href")==="#"+current){link.classList.add("active");}});});
   </script>
 </body>
 </html>
