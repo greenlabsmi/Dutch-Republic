@@ -109,21 +109,6 @@ nav{
   -webkit-mask-image:linear-gradient(to right,transparent 0%,black 10%,black 90%,transparent 100%);
 }
 
-/* --- Enhanced Logos & Particles --- */
-#intro-logos img {
-  height:70px;
-  opacity:0;
-  transform-origin:center;
-}
-.seed, .drop {
-  position:absolute;
-  width:6px;height:6px;
-  border-radius:50%;
-  pointer-events:none;
-}
-.seed { background:#C76B24; }   /* Dutch Republic copper seeds */
-.drop { background:#0B7D5A; }   /* Green Labs emerald droplets */
-
 /* --- Glow Pulse for "Cultivate Kindness" --- */
 @keyframes textGlow {
   0% { text-shadow: 0 0 8px rgba(199,107,36,0.3), 0 0 16px rgba(11,125,90,0.3); }
@@ -661,56 +646,31 @@ nav.shimmer-once::after {
   <button id="topBtn" class="hidden" aria-label="Scroll to top">🍂</button>
   
 <script>
-  // --- Intro Animation: Seed + Water + Smooth Sunrise Fade --- //
-gsap.set("#glLogo",{x:"-140%",opacity:0,scale:0.8,rotation:-10});
-gsap.set("#drLogo",{x:"140%",opacity:0,scale:0.8,rotation:10});
-gsap.set("#growText",{y:100,opacity:0,scale:0.8}); // start lower
+  // --- Intro Animation: Logos Meet + Cultivate Kindness Grow --- //
+gsap.set("#glLogo",{x:"-120%",opacity:0,scale:0.8});
+gsap.set("#drLogo",{x:"120%",opacity:0,scale:0.8});
+gsap.set("#growText",{y:80,opacity:0,scale:0.9});
 
-function createParticles(type,count,spread){
-  const banner=document.getElementById("intro-banner");
-  for(let i=0;i<count;i++){
-    const el=document.createElement("div");
-    el.className=type;
-    const offset=(Math.random()*spread - spread/2);
-    el.style.left=`calc(50% + ${offset}px)`;
-    el.style.top= type==="seed" ? "35%" : "30%";
-    banner.appendChild(el);
-    const yMove= type==="seed"? 150+Math.random()*80 : 170+Math.random()*80;
-    const delay=Math.random()*0.3;
-    gsap.to(el,{
-      y:yMove,opacity:0,duration:2+Math.random()*0.5,delay:delay,
-      ease:"power1.inOut",
-      onComplete:()=>el.remove()
-    });
-  }
-}
+const tl = gsap.timeline({defaults:{ease:"power2.out"}});
 
-const tl=gsap.timeline({defaults:{ease:"power2.out"}});
+// 1️⃣ Logos slide in and meet in the middle
+tl.to("#glLogo",{x:"0%",opacity:1,scale:1.05,duration:1.4,ease:"elastic.out(1,0.6)"})
+  .to("#drLogo",{x:"0%",opacity:1,scale:1.05,duration:1.4,ease:"elastic.out(1,0.6)"},"<")
+  .to(["#glLogo","#drLogo"],{scale:1.1,duration:0.5,ease:"back.out(1.7)"})
+  .to(["#glLogo","#drLogo"],{scale:1,x:(i)=>i===0?"-18%":"18%",duration:0.7,ease:"power2.inOut"},"+=0.3")
 
-// 1️⃣ Logos slide + bounce inward
-tl.to("#glLogo",{x:"-10%",rotation:-5,opacity:1,scale:1.1,duration:1.4,ease:"elastic.out(1,0.6)"})
-  .to("#drLogo",{x:"10%",rotation:5,opacity:1,scale:1.1,duration:1.4,ease:"elastic.out(1,0.6)"},"<")
-  .to(["#glLogo","#drLogo"],{x:"0%",rotation:0,scale:1.2,duration:0.5,ease:"back.out(1.7)"})
-  .to(["#glLogo","#drLogo"],{scale:1,x:(i)=>i===0?"-8%":"8%",duration:0.5},"+=0.2")
+// 2️⃣ “Cultivate Kindness” grows between them
+  .to("#growText",{y:-20,opacity:1,scale:1.05,duration:1.4,ease:"power2.out"},"-=0.2")
 
-// 2️⃣ Dutch Republic drops golden seeds (spread wider)
-  .add(()=>createParticles("seed",16,240),"+=0.6")
+// 3️⃣ Gentle glow pulse
+  .to("#growText",{animation:"textGlow 2s ease-in-out",duration:1.5},"+=0.3")
 
-// 3️⃣ Green Labs sprinkles emerald droplets after seeds finish
-  .add(()=>createParticles("drop",14,240),"+=1.2")
-
-// 4️⃣ "Cultivate Kindness" rises up from below the logos
-  .to("#growText",{y:-40,opacity:1,scale:1,duration:1.4,ease:"power2.out"},"+=0.8")
-
-// 5️⃣ Gentle text glow pulse
-  .to("#growText",{animation:"textGlow 2s ease-in-out",duration:1},"+=0.6")
-
-// 6️⃣ Full sunrise fade + seamless upward collapse
+// 4️⃣ Smooth full fade upward
   .to("#intro-banner",{
     background:"linear-gradient(180deg,#FAE3B0 0%,#FAF6EE 100%)",
-    duration:1.5,
+    duration:1.2,
     ease:"power1.inOut"
-  },"+=0.8")
+  },"+=0.5")
   .to("#intro-banner",{
     height:0,
     opacity:0,
@@ -718,22 +678,17 @@ tl.to("#glLogo",{x:"-10%",rotation:-5,opacity:1,scale:1.1,duration:1.4,ease:"ela
     duration:2.2,
     ease:"power1.inOut",
     onStart:()=>{
-      const banner=document.querySelector("#intro-banner");
-      banner.style.overflow="hidden";
-    },
-    onUpdate:()=>{
-      // scroll nav into view as banner collapses for seamless transition
-      const progress = tl.progress();
-      if(progress>0.85) window.scrollTo({top:0,behavior:"smooth"});
+      document.querySelector("#intro-banner").style.overflow="hidden";
     },
     onComplete:()=>{
-      document.querySelector("#intro-banner").style.display="none";
+      const banner=document.querySelector("#intro-banner");
+      banner.style.display="none";
       const nav=document.querySelector("nav");
       nav.classList.add("shimmer-once");
       gsap.fromTo(".nav-logo",{opacity:0,y:-10},{opacity:1,y:0,duration:1,stagger:0.2,ease:"power2.out"});
       setTimeout(()=>nav.classList.remove("shimmer-once"),2000);
     }
-  },"+=0.4");
+  },"+=0.3");
 
 </script>
 
