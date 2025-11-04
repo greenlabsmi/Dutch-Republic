@@ -43,19 +43,30 @@
       box-shadow:0 2px 6px rgba(0,0,0,0.05);
     }
     .nav-container{
-      display:flex;flex-wrap:wrap;
-      justify-content:center;align-items:center;
-      gap:32px;padding:10px 16px;
+      max-width:1200px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:10px 16px;
     }
-    .nav-container img{height:42px;}
+    .nav-left,.nav-right{display:flex;align-items:center;gap:10px;}
+    .nav-left img,
+    .nav-right img{height:40px;cursor:pointer;}
     .nav-links{
-      display:flex;flex-wrap:wrap;gap:20px;
-      font-weight:600;justify-content:center;
+      display:flex;
+      gap:18px;
+      font-weight:600;
     }
     .nav-links a{
-      color:var(--autumn);transition:.2s ease;
-      text-transform:uppercase;font-size:0.85rem;
-      position:relative;padding-bottom:3px;
+      color:var(--autumn);
+      transition:.2s ease;
+      text-transform:uppercase;
+      font-size:0.8rem;
+      position:relative;
+      padding-bottom:3px;
+      white-space:nowrap;
     }
     .nav-links a:hover,
     .nav-links a.active{color:var(--green);}
@@ -63,6 +74,20 @@
       content:"";position:absolute;left:0;bottom:0;
       width:100%;height:2px;background:var(--gold);
       border-radius:2px;
+    }
+    @media (max-width:720px){
+      .nav-container{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+      .nav-links{
+        gap:14px;
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+      .nav-links a{
+        font-size:0.78rem;
+      }
     }
 
     /* Hero */
@@ -86,7 +111,6 @@
     }
     @keyframes gradientFlow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
     @keyframes parallax{from{transform:translateY(0);}to{transform:translateY(-40px);}}
-
     .hero h1{
       font-size:clamp(42px,6vw,78px);
       text-shadow:0 2px 12px rgba(0,0,0,0.4);
@@ -120,31 +144,119 @@
       margin-bottom:40px;text-shadow:0 1px 4px rgba(0,0,0,0.05);
     }
 
+    /* Joint buttons */
+    .brand-jump{
+      display:flex;
+      justify-content:center;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-top:36px;
+    }
+    .outline-btn{
+      display:inline-block;
+      border:2px solid var(--green);
+      color:var(--green);
+      border-radius:999px;
+      padding:10px 22px;
+      font-weight:600;
+      background:rgba(255,248,234,.3);
+      transition:.2s ease;
+      text-decoration:none;
+    }
+    .outline-btn:hover{background:#fff;}
+    .outline-btn.dutch{
+      border-color:var(--autumn);
+      color:var(--autumn);
+    }
+
+    /* shimmer divider */
+    .shimmer-divider{
+      height:6px;
+      background:linear-gradient(90deg,rgba(212,175,55,0) 0%,rgba(212,175,55,.6) 25%,rgba(212,175,55,.9) 50%,rgba(212,175,55,.4) 75%,rgba(212,175,55,0) 100%);
+      border-radius:999px;
+      margin:60px auto 40px;
+      max-width:480px;
+    }
+
     /* Brand sections */
     .brand-section{
       background:#fff;
       border-radius:var(--radius);
-      padding:50px 30px;margin-bottom:60px;
+      padding:50px 30px 45px;
+      margin-bottom:60px;
       box-shadow:0 4px 12px rgba(0,0,0,0.05);
     }
-    .brand-section.greenlabs{border-left:6px solid var(--green);}
-    .brand-section.dutch{border-left:6px solid var(--autumn);}
-    .brand-section h3{
-      font-size:1.6rem;margin-bottom:10px;
+    .brand-header{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      margin-bottom:18px;
+    }
+    .brand-header img{
+      height:46px;
+    }
+    .brand-title-wrap h3{
+      font-size:1.8rem;
+      color:var(--green-dark);
+      margin-bottom:4px;
+    }
+    .brand-title-wrap small{
+      display:block;
+      font-weight:500;
+      color:#666;
+      letter-spacing:.04em;
+    }
+    .brand-section.dutch .brand-title-wrap h3{
+      color:var(--autumn);
     }
 
-    /* Campaign grid */
-    .campaigns-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:30px;margin-top:20px;
+    /* Campaign cards inside brand */
+    .campaigns-stack{
+      display:flex;
+      flex-direction:column;
+      gap:24px;
+      margin-top:28px;
     }
-    .campaigns-grid img{
-      width:100%;border-radius:var(--radius);
+    .campaign-card{
+      background:#fff;
+      border:1px solid #f0e8dd;
+      border-radius:16px;
+      padding:18px 18px 20px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.03);
+    }
+    .campaign-card h4{
+      font-size:1.05rem;
+      margin-bottom:6px;
+      color:var(--ink);
+    }
+    .campaign-card small{
+      display:block;
+      margin-bottom:10px;
+      color:#999;
+      font-size:.75rem;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+    }
+    .campaign-body{
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+      align-items:flex-start;
+    }
+    .campaign-body img{
+      width:280px;
+      max-width:100%;
+      border-radius:14px;
       box-shadow:0 4px 14px rgba(0,0,0,0.08);
-      transition:transform .3s ease;
     }
-    .campaigns-grid img:hover{transform:scale(1.03);}
+    .campaign-text{
+      flex:1 1 240px;
+    }
+    .campaign-divider{
+      height:1px;
+      background:linear-gradient(90deg,rgba(212,175,55,.3),rgba(212,175,55,0));
+      margin:10px 0 0;
+    }
 
     /* Donation Lists */
     .donate-grid{
@@ -159,22 +271,49 @@
     }
     .donate-col h3{color:var(--autumn);margin-bottom:10px;}
 
-    /* Past Campaigns */
-    .past-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:30px;margin-top:30px;
+    /* Past Campaigns slider */
+    .past-wrapper{
+      position:relative;
     }
+    .past-slider{
+      display:flex;
+      gap:20px;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      padding-bottom:10px;
+    }
+    .past-slider::-webkit-scrollbar{height:6px;}
+    .past-slider::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.15);border-radius:999px;}
     .past-item{
-      background:#fff;border-radius:var(--radius);
-      padding:20px;text-align:center;
-      box-shadow:0 2px 8px rgba(0,0,0,0.08);
+      min-width:240px;
+      max-width:280px;
+      background:#fff;
+      border-radius:var(--radius);
+      padding:16px;
+      text-align:center;
+      box-shadow:0 2px 8px rgba(0,0,0,0.06);
+      scroll-snap-align:start;
     }
     .past-item img{
-      width:100%;border-radius:var(--radius);
-      margin-bottom:15px;
+      width:100%;border-radius:12px;margin-bottom:10px;
     }
-    .past-item p{font-size:0.95rem;color:#333;}
+    .past-arrow{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      background:#fff;
+      border:1px solid rgba(0,0,0,0.05);
+      border-radius:50%;
+      width:38px;height:38px;
+      display:flex;align-items:center;justify-content:center;
+      cursor:pointer;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    }
+    .past-arrow.left{left:-16px;}
+    .past-arrow.right{right:-16px;}
+    @media (max-width:900px){
+      .past-arrow{display:none;}
+    }
 
     footer{
       background:#000;color:#fff;
@@ -192,6 +331,11 @@
     }
     #topBtn:hover{background:#fff;color:var(--green);}
     #topBtn.hidden{opacity:0;pointer-events:none;}
+
+    @media (max-width:620px){
+      .campaign-body{flex-direction:column;}
+      section{padding:80px 16px;}
+    }
   </style>
 </head>
 
@@ -200,7 +344,9 @@
   <!-- Nav -->
   <nav>
     <div class="nav-container">
-      <img src="assets/img/green-labs-logo.png" alt="Green Labs Logo" onclick="window.open('https://greenlabsmi.com','_blank')" style="cursor:pointer;">
+      <div class="nav-left">
+        <img src="assets/img/green-labs-logo.png" alt="Green Labs Logo" onclick="window.open('https://greenlabsmi.com','_blank')">
+      </div>
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#greenlabs">Green Labs</a>
@@ -208,12 +354,14 @@
         <a href="#donations">Donations</a>
         <a href="#past">Past Campaigns</a>
       </div>
-      <img src="logo-dutch-republic.svg" alt="Dutch Republic Logo" onclick="window.open('https://dutchrepublic.org','_blank')" style="cursor:pointer;">
+      <div class="nav-right">
+        <img src="logo-dutch-republic.svg" alt="Dutch Republic Logo" onclick="window.open('https://dutchrepublic.org','_blank')">
+      </div>
     </div>
   </nav>
 
   <!-- Hero -->
-  <section class="hero">
+  <section class="hero" id="hero">
     <h1>Cultivate Kindness</h1>
     <p>Supporting local families, pets, and people — one drive at a time.<br>
        A collaboration between Green Labs Provisions & Dutch Republic.</p>
@@ -224,36 +372,102 @@
   <section id="about">
     <h2 class="section-title">A Joint Effort</h2>
     <p style="max-width:720px;margin:0 auto;text-align:center;">
-      Two communities, one mission. The Green Labs & Dutch Republic Giveback Program unites both dispensaries under a shared goal — to uplift the neighborhoods that support us. 
+      Two communities, one mission. The Green Labs & Dutch Republic Giveback Program unites both dispensaries under a shared goal — to uplift the neighborhoods that support us.
       From food drives to pet rescues, beach cleanups to local outreach, our mission is to grow good together.
     </p>
-    <div style="text-align:center;margin-top:40px;">
-      <a href="#greenlabs" class="cta" style="background:var(--green);color:#fff;margin:10px;">Green Labs — Luna Pier</a>
-      <a href="#dutch" class="cta" style="background:var(--autumn);color:#fff;margin:10px;">Dutch Republic — Douglas</a>
+    <div class="brand-jump">
+      <a href="#greenlabs" class="outline-btn">Green Labs — Luna Pier</a>
+      <a href="#dutch" class="outline-btn dutch">Dutch Republic — Douglas</a>
     </div>
   </section>
+
+  <div class="shimmer-divider"></div>
 
   <!-- Green Labs Section -->
   <section id="greenlabs">
     <div class="brand-section greenlabs">
-      <h2 class="section-title" style="color:var(--green-dark);">🌿 Green Labs — Luna Pier</h2>
-      <p>At our Luna Pier location, we focus on supporting our local community through ongoing food and book donations, volunteering at beach and park cleanups, and assisting with local restoration projects and community events.</p>
-      <div class="campaigns-grid">
-        <img src="assets/img/give-get-baked.png" alt="Give & Get Baked">
+      <div class="brand-header">
+        <img src="assets/img/green-labs-logo.png" alt="Green Labs">
+        <div class="brand-title-wrap">
+          <h3>Green Labs</h3>
+          <small>Luna Pier, Michigan</small>
+        </div>
       </div>
-      <p style="margin-top:15px;">In partnership with the <a href="https://www.monroecountyop.org/" target="_blank">Monroe County Opportunity Program</a> and <a href="https://friendsofcompanionanimals.org/" target="_blank">Friends of Companion Animals</a>.</p>
+      <p>
+        At our Luna Pier location, we focus on supporting our local community through ongoing food and book donations,
+        volunteering at beach and park cleanups, and assisting with local restoration projects and community events.
+      </p>
+
+      <div class="campaigns-stack">
+        <!-- Campaign 1 -->
+        <div class="campaign-card">
+          <h4>“Give & Get Baked” November Drive</h4>
+          <small>Green Labs • Community donations</small>
+          <div class="campaign-body">
+            <img src="assets/img/give-get-baked.png" alt="Give & Get Baked Flyer">
+            <div class="campaign-text">
+              <p>Bring in food, hygiene supplies, or pet items — get rewarded with a thank-you preroll. All donations go to local families and animal rescues.</p>
+              <p style="margin-top:6px;font-size:.85rem;">
+                Partners: <a href="https://www.monroecountyop.org/" target="_blank">Monroe County Opportunity Program</a>,
+                <a href="https://friendsofcompanionanimals.org/" target="_blank">Friends of Companion Animals</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- divider inside section -->
+        <div class="campaign-divider"></div>
+
+        <!-- Campaign 2 -->
+        <div class="campaign-card">
+          <h4>“Help Us Feed Local Families”</h4>
+          <small>Green Labs • Aldi “Feed a Family”</small>
+          <div class="campaign-body">
+            <img src="assets/img/aldi-feed-families.png" alt="Feed Local Families Flyer">
+            <div class="campaign-text">
+              <p>Every $40 box feeds up to 10 people for Thanksgiving. We’re collecting funds and goods to help Monroe County families celebrate together.</p>
+              <p style="margin-top:6px;font-size:.85rem;">
+                More on Aldi’s program: <a href="https://www.aldi.us/" target="_blank">Aldi US</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
+
+  <div class="shimmer-divider"></div>
 
   <!-- Dutch Republic Section -->
   <section id="dutch">
     <div class="brand-section dutch">
-      <h2 class="section-title" style="color:var(--autumn);">🦁 Dutch Republic — Douglas</h2>
-      <p>In Douglas, we’re proud to extend our community impact through food drives, winter clothing collections, and participation in local events that celebrate art, inclusion, and Michigan’s west coast spirit.</p>
-      <div class="campaigns-grid">
-        <img src="assets/img/aldi-feed-families.png" alt="Feed a Family">
+      <div class="brand-header">
+        <img src="logo-dutch-republic.svg" alt="Dutch Republic">
+        <div class="brand-title-wrap">
+          <h3>Dutch Republic</h3>
+          <small>Douglas, Michigan</small>
+        </div>
       </div>
-      <p style="margin-top:15px;">Partnering with <a href="https://www.aldi.us/products/thanksgiving/feast-for-10/k/259" target="_blank">Aldi’s “Feed a Family” program</a> and local outreach efforts.</p>
+      <p>
+        In Douglas, we’re proud to extend our community impact through food drives and seasonal collections, and by showing up for local events that celebrate the lakeshore community.
+        More drives and West Michigan partnerships coming soon.
+      </p>
+
+      <div class="campaigns-stack">
+        <div class="campaign-card">
+          <h4>Kindness Drive (Coming Soon)</h4>
+          <small>Dutch Republic • Local outreach</small>
+          <div class="campaign-body">
+            <img src="assets/img/dutch-republic-kindness.png" alt="Dutch Republic Kindness Drive (coming soon)">
+            <div class="campaign-text">
+              <p>This location will mirror our company-wide giveback model — collecting food, hygiene items, and pet supplies for nearby shelters and community orgs.</p>
+              <p style="margin-top:6px;font-size:.8rem;color:#999;">Flyer artwork will be added here once uploaded.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -261,25 +475,65 @@
   <section id="donations">
     <h2 class="section-title">What to Donate</h2>
     <div class="donate-grid">
-      <div class="donate-col"><h3>🥫 Food Items</h3><ul><li>Canned goods (soups, fruits, veggies, beans)</li><li>Pasta, rice, cereal, boxed meals</li><li>Peanut butter & non-perishables</li></ul></div>
-      <div class="donate-col"><h3>🧴 Hygiene Items</h3><ul><li>Soap, shampoo, deodorant</li><li>Toothpaste, toothbrushes</li><li>Feminine products, wipes, paper goods</li></ul></div>
-      <div class="donate-col"><h3>🐾 Pet Items</h3><ul><li>Dog & cat food (dry or canned)</li><li>Treats, toys, collars, leashes</li><li>Blankets & bedding</li></ul></div>
-      <div class="donate-col"><h3>🚫 What NOT to Donate</h3><ul><li>Expired or opened food items</li><li>Homemade or perishable goods</li><li>Used hygiene products</li><li>Heavily worn or soiled pet supplies</li></ul></div>
+      <div class="donate-col">
+        <h3>🥫 Food Items</h3>
+        <ul>
+          <li>Canned goods (soups, fruits, veggies, beans)</li>
+          <li>Pasta, rice, cereal, boxed meals</li>
+          <li>Peanut butter & non-perishables</li>
+        </ul>
+      </div>
+      <div class="donate-col">
+        <h3>🧴 Hygiene Items</h3>
+        <ul>
+          <li>Soap, shampoo, deodorant</li>
+          <li>Toothpaste, toothbrushes</li>
+          <li>Feminine products, wipes, paper goods</li>
+        </ul>
+      </div>
+      <div class="donate-col">
+        <h3>🐾 Pet Items</h3>
+        <ul>
+          <li>Dog & cat food (dry or canned)</li>
+          <li>Treats, toys, collars, leashes</li>
+          <li>Blankets & bedding</li>
+        </ul>
+      </div>
+      <div class="donate-col">
+        <h3>🚫 What NOT to Donate</h3>
+        <ul>
+          <li>Expired or opened food items</li>
+          <li>Homemade or perishable goods</li>
+          <li>Used hygiene products</li>
+          <li>Heavily worn or soiled pet supplies</li>
+        </ul>
+      </div>
     </div>
+    <p style="margin-top:24px;font-weight:600;text-align:center;">
+      💵 Cash donations also accepted — every $40 helps Aldi feed a family of 10.
+    </p>
   </section>
 
   <!-- Past Campaigns -->
   <section id="past">
     <h2 class="section-title">Past Campaigns</h2>
-    <div class="past-grid">
-      <div class="past-item">
-        <img src="assets/img/give-get-baked.png" alt="Give & Get Baked">
-        <p>Our “Give & Get Baked” drive raised hundreds of pounds of donations for Monroe County families in need.</p>
+    <div class="past-wrapper">
+      <div class="past-slider" id="pastSlider">
+        <div class="past-item">
+          <img src="assets/img/give-get-baked.png" alt="Give & Get Baked">
+          <p>“Give & Get Baked” raised hundreds of pounds of donations for Monroe County families.</p>
+        </div>
+        <div class="past-item">
+          <img src="assets/img/aldi-feed-families.png" alt="Feed Families">
+          <p>Our Thanksgiving food push helped provide full meals through the Aldi community program.</p>
+        </div>
+        <div class="past-item">
+          <img src="assets/img/give-get-baked.png" alt="Shelter Support">
+          <p>Pet food & supply drop-offs went to local rescues and no-kill shelters.</p>
+        </div>
       </div>
-      <div class="past-item">
-        <img src="assets/img/aldi-feed-families.png" alt="Feed Families">
-        <p>The “Feed a Family” Thanksgiving campaign provided over 50 meals through Aldi’s community partnership.</p>
-      </div>
+      <button class="past-arrow left" onclick="slidePast(-1)">‹</button>
+      <button class="past-arrow right" onclick="slidePast(1)">›</button>
     </div>
   </section>
 
@@ -291,19 +545,22 @@
   <button id="topBtn" class="hidden" aria-label="Scroll to top">🍂</button>
 
   <script>
+    // reveal on scroll
     const sections=document.querySelectorAll("section");
     const reveal=()=>{const t=window.innerHeight*0.85;sections.forEach(s=>{if(s.getBoundingClientRect().top<t)s.classList.add("visible");});};
     window.addEventListener("scroll",reveal);reveal();
 
+    // scroll to top
     const topBtn=document.getElementById("topBtn");
     window.addEventListener("scroll",()=>{if(window.scrollY>400)topBtn.classList.remove("hidden");else topBtn.classList.add("hidden");});
     topBtn.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
 
+    // active nav link
     const navLinks=document.querySelectorAll(".nav-links a");
     window.addEventListener("scroll",()=>{
       let current="";
       sections.forEach(sec=>{
-        const top=sec.offsetTop-120;
+        const top=sec.offsetTop-140;
         if(scrollY>=top){current=sec.id;}
       });
       navLinks.forEach(link=>{
@@ -311,6 +568,13 @@
         if(link.getAttribute("href")==="#"+current){link.classList.add("active");}
       });
     });
+
+    // past campaigns slider arrows
+    function slidePast(dir){
+      const slider=document.getElementById('pastSlider');
+      const amount=280; // px to scroll
+      slider.scrollBy({left:dir*amount,behavior:'smooth'});
+    }
   </script>
 </body>
 </html>
