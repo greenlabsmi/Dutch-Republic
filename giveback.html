@@ -42,7 +42,7 @@
   position:relative;
   height:280px;
   overflow:hidden;
-  background:linear-gradient(180deg,#F9E6C4 0%,#FAF6EE 100%);
+  background:linear-gradient(180deg,#F6DCA7 0%,#F9E6C4 40%,#FAF6EE 100%);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -311,11 +311,19 @@ nav.shimmer-once::after {
     .campaign-text{
       flex:1 1 240px;
     }
-    .campaign-divider{
-      height:1px;
-      background:linear-gradient(90deg,rgba(212,175,55,.3),rgba(212,175,55,0));
-      margin:10px 0 0;
-    }
+    
+   /* --- Campaign Divider Colors --- */
+.campaign-divider{
+  height:1px;
+  margin:10px 0 0;
+  border-radius:2px;
+}
+.campaign-divider.green{
+  background:linear-gradient(90deg,rgba(11,125,90,.6),rgba(11,125,90,0));
+}
+.campaign-divider.gold{
+  background:linear-gradient(90deg,rgba(212,175,55,.6),rgba(212,175,55,0));
+}
 
     /* Donation Lists */
     .donate-grid{
@@ -475,7 +483,7 @@ nav.shimmer-once::after {
         </div>
 
         <!-- divider inside section -->
-        <div class="campaign-divider"></div>
+        <div class="campaign-divider green"></div> 
 
         <!-- Campaign 2 -->
         <div class="campaign-card">
@@ -604,61 +612,69 @@ nav.shimmer-once::after {
   <button id="topBtn" class="hidden" aria-label="Scroll to top">🍂</button>
   
 <script>
-// Initial positions
-gsap.set("#glLogo",{x:"-120%",opacity:0,scale:0.8});
-gsap.set("#drLogo",{x:"120%",opacity:0,scale:0.8});
-gsap.set("#growText",{scale:0.8,opacity:0});
+// --- Intro Animation: Seed + Water + Sunrise Fade --- //
+gsap.set("#glLogo",{x:"-140%",opacity:0,scale:0.8,rotation:-10});
+gsap.set("#drLogo",{x:"140%",opacity:0,scale:0.8,rotation:10});
+gsap.set("#growText",{y:50,opacity:0,scale:0.8});
 
-// Particle generator (seeds + droplets)
-function createParticles(type, count){
+function createParticles(type,count){
   const banner=document.getElementById("intro-banner");
   for(let i=0;i<count;i++){
     const el=document.createElement("div");
     el.className=type;
-    el.style.left= type==="seed"
-      ? `${70+Math.random()*25}%`
-      : `${5+Math.random()*25}%`;
-    el.style.top=`${40+Math.random()*40}%`;
+    el.style.left=`${50+Math.random()*10-5}%`;
+    el.style.top=`${type==="seed"? "40%" : "30%"}`;
     banner.appendChild(el);
-    const xMove= type==="seed"? -120-Math.random()*60 : 120+Math.random()*60;
-    const yMove= type==="seed"? 50+Math.random()*50 : -50-Math.random()*50;
+    const yMove= type==="seed"? 120+Math.random()*60 : 140+Math.random()*60;
+    const delay=Math.random()*0.3;
     gsap.to(el,{
-      x:xMove,
-      y:yMove,
-      opacity:0,
-      duration:1.6+Math.random()*0.4,
-      ease:"power1.out",
-      onComplete:()=>el.remove()
+      y:yMove,opacity:0,duration:1.6+Math.random()*0.4,delay:delay,
+      ease:"power1.inOut",onComplete:()=>el.remove()
     });
   }
 }
 
-// Timeline
 const tl=gsap.timeline({defaults:{ease:"power2.out"}});
 
-tl.to("#glLogo",{x:"0%",opacity:1,scale:1.2,duration:0.8})
-  .to("#drLogo",{x:"0%",opacity:1,scale:1.2,duration:0.8},"<")
-  .add(()=>{
-    createParticles("seed",14);
-    createParticles("drop",14);
-  },"+=0.3")
-  .to("#intro-banner",{background:"linear-gradient(180deg,#F5D4A4 0%,#FAF6EE 100%)",duration:1.2},"-=0.4")
-  .to("#growText",{opacity:1,scale:1,duration:1},"-=0.4")
-  // 🌟 Add glow pulse before scroll
-  .to("#growText",{animation:"textGlow 1.5s ease-in-out",duration:1},"+=1.2")
-  // 🌅 Smooth scroll upward (removes empty space)
-  .add(()=>{
-    const banner=document.getElementById("intro-banner");
-    const h=banner.offsetHeight;
-    gsap.to(window,{scrollTo:{y:h},duration:1.2,ease:"power1.inOut"});
-  },"+=0.3")
-  // Fade banner out as scroll occurs + shimmer sweep on nav
-.to("#intro-banner",{opacity:0,duration:1,onComplete:()=>{
-    const nav=document.querySelector("nav");
-    nav.classList.add("shimmer-once");
-    // Remove the class after animation so it can replay cleanly if reloaded
-    setTimeout(()=>nav.classList.remove("shimmer-once"),2000);
-  }},"-=1");
+// logos bounce + rotate inward
+tl.to("#glLogo",{x:"-10%",rotation:-5,opacity:1,scale:1.1,duration:1.2,ease:"elastic.out(1,0.6)"})
+  .to("#drLogo",{x:"10%",rotation:5,opacity:1,scale:1.1,duration:1.2,ease:"elastic.out(1,0.6)"},"<")
+  // bump together
+  .to(["#glLogo","#drLogo"],{x:"0%",rotation:0,scale:1.2,duration:0.4,ease:"back.out(1.7)"})
+  .to(["#glLogo","#drLogo"],{scale:1, x:(i)=>i===0?"-8%":"8%",duration:0.4},"+=0.1")
+
+  // Dutch Republic drops golden seeds
+  .add(()=>createParticles("seed",14),">")
+
+  // Green Labs spills emerald droplets after a short delay
+  .add(()=>createParticles("drop",14),"+=0.6")
+
+  // "Cultivate Kindness" grows up
+  .to("#growText",{y:0,opacity:1,scale:1,duration:1,ease:"power2.out"},">")
+
+  // glow effect
+  .to("#growText",{animation:"textGlow 2s ease-in-out",duration:1},"+=0.8")
+
+  // sunrise fade + collapse upward
+  .to("#intro-banner",{
+    background:"linear-gradient(180deg,#FAE3B0 0%,#FAF6EE 100%)",
+    duration:1.2,
+    ease:"power1.inOut"
+  },"+=0.6")
+  .to("#intro-banner",{
+    height:0,
+    opacity:0,
+    duration:1.5,
+    ease:"power1.inOut",
+    onStart:()=>{
+      document.querySelector("#intro-banner").style.overflow="hidden";
+    },
+    onComplete:()=>{
+      const nav=document.querySelector("nav");
+      nav.classList.add("shimmer-once");
+      setTimeout(()=>nav.classList.remove("shimmer-once"),2000);
+    }
+  },"+=0.3");
 </script>
 
 
