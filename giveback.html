@@ -37,22 +37,27 @@
     a{color:var(--green);text-decoration:none;}
     a:hover{text-decoration:underline;}
 
- /* Keep "Cultivate Kindness" on one line — all devices */
-#growText, .hero-title, .banner-title, h1 {
+/* Keep "Cultivate Kindness" one line and fully visible on mobile */
+#growText {
   white-space: nowrap;
   display: inline-block;
   font-family: "Cinzel", serif;
   font-weight: 900;
-  letter-spacing: .02em;
+  letter-spacing: .015em;
   text-align: center;
-  line-height: 1.1;
-  font-size: clamp(26px, 4.8vw, 58px);
+  line-height: 1.05;
+  font-size: clamp(22px, 4.5vw, 54px);
+  max-width: 95vw;         /* keeps within screen width */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Extra safeguard for ultra-small devices */
-@media (max-width: 380px) {
-  #growText, .hero-title, .banner-title, h1 {
-    font-size: 5.5vw;
+/* fine-tune for very small screens */
+@media (max-width: 400px) {
+  #growText {
+    font-size: 5vw;
+    max-width: 90vw;
+    letter-spacing: .01em;
   }
 }
 
