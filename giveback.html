@@ -462,21 +462,10 @@ body.leaves-on .leaf {
 }
 
 @keyframes fall {
-  0% {
-    transform: translateY(-5vh) rotate(0deg); /* start just below nav bar */
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.5;
-  }
-  50% {
-    transform: translateY(50vh) rotate(180deg);
-    opacity: 0.9;
-  }
-  100% {
-    transform: translateY(110vh) rotate(360deg);
-    opacity: 0;
-  }
+  0%   { transform: translateY(-10vh) rotate(0deg);   opacity: 0; }
+  10%  { opacity: 0.5; }
+  50%  { transform: translateY(60vh) rotate(180deg);  opacity: 0.9; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
 }
 
 /* optional gentle breeze sway */
@@ -1137,13 +1126,6 @@ document.body.classList.add("leaves-on");
     slider.scrollBy({ left: dir * amount, behavior: "smooth" });
   }
   window.slidePast = slidePast; // so the buttons can call it
-
-    // leaves: start immediately from nav bar on load
-window.addEventListener("load", () => {
-  const leaves = document.querySelector(".leaf-decor");
-  document.body.classList.add("leaves-on");
-  if (leaves) leaves.style.opacity = "1";
-});
 
 </script>
 
