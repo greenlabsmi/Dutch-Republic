@@ -684,12 +684,17 @@ tl.to("#glLogo",{x:"-10%",opacity:1,scale:1.2,duration:1.4,ease:"power3.out"})
   ease:"power1.inOut"
 }, "+=0.2")
 
-  // fade logos away
-  .to(["#glLogo","#drLogo"],{
-    opacity:0,
-    duration:0.6,
-    ease:"power1.inOut"
-  },"+=0.1")
+ // linger, then fade logos away more slowly
+.to(["#glLogo","#drLogo"],{
+  opacity:1,
+  duration:0.8
+},"+=0.3") // <-- small pause (they linger visible with the text)
+.to(["#glLogo","#drLogo"],{
+  opacity:0,
+  duration:1.4, // <-- slower fade
+  ease:"power1.inOut"
+})
+
   // show the text
   .to("#growText",{
     opacity:1,
