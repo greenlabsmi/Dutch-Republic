@@ -689,14 +689,19 @@ footer {
 </head>
 
 <body>
-<!-- ========== AGE GATE OVERLAY (Cultivate Kindness x Dutch Republic) ========== -->
+  
+<!-- ========== AGE GATE OVERLAY (Growing Good Together x Dutch Republic) ========== -->
 <div id="age-gate-overlay">
   <div class="age-gate-content">
-    <h1 class="shimmer">Give Back. Grown Up.</h1>
-    <p>Our Cultivate Kindness campaign supports local families, shelters, and food drives.  
-    Michigan law requires all visitors to be 21 or older — please confirm your age to continue.</p>
+    <div class="age-logos">
+      <img src="assets/img/green-labs-logo.png" alt="Green Labs" class="logo-left">
+      <img src="logo-dutch-republic.svg" alt="Dutch Republic" class="logo-right">
+    </div>
+    <h1 class="shimmer">Growing Good Together</h1>
+    <p>A joint effort by Green Labs & Dutch Republic.<br>
+    Please confirm you’re 21 or older to continue.</p>
     <div class="age-gate-buttons">
-      <button id="age-yes">I’m 21+ — Let’s Give Back</button>
+      <button id="age-yes">I’m 21+ — Enter</button>
       <button id="age-no">Not Yet</button>
     </div>
   </div>
@@ -716,17 +721,39 @@ footer {
     transition: opacity 0.6s ease;
     font-family: 'Cinzel', serif;
   }
-  #age-gate-overlay.hidden {opacity:0;pointer-events:none;}
+  #age-gate-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
 
   .age-gate-content {
     text-align: center;
-    max-width: 520px;
-    background: rgba(255,255,255,0.8);
+    max-width: 540px;
+    background: rgba(255,255,255,0.82);
     border: 1px solid rgba(199,107,36,0.3);
     border-radius: 14px;
-    padding: 40px 24px;
+    padding: 46px 28px;
     box-shadow: 0 6px 18px rgba(0,0,0,0.12);
     animation: fadeInUp 0.9s ease;
+  }
+
+  /* ===== LOGOS ===== */
+  .age-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 18px;
+  }
+  .age-logos img {
+    height: 60px;
+    max-width: 120px;
+    opacity: 0.9;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .age-logos img:hover {
+    opacity: 1;
+    transform: scale(1.05);
   }
 
   /* ===== SHIMMER TEXT EFFECT ===== */
@@ -734,12 +761,13 @@ footer {
     font-size: 2.2rem;
     font-weight: 900;
     color: #C76B24;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
     background: linear-gradient(90deg, #C76B24, #FFD7A1, #C76B24);
     background-size: 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: shimmerMove 3.5s infinite linear;
+    letter-spacing: 0.5px;
   }
   @keyframes shimmerMove {
     0% { background-position: 0% 50%; }
@@ -760,11 +788,12 @@ footer {
     font-size: 1rem;
     border: none;
     border-radius: 8px;
-    padding: 10px 20px;
+    padding: 10px 22px;
     cursor: pointer;
     margin: 0 8px;
     transition: all 0.3s ease;
   }
+
   #age-yes {
     background: #C76B24;
     color: white;
@@ -785,10 +814,34 @@ footer {
   }
 
   @keyframes fadeInUp {
-    from {opacity: 0; transform: translateY(20px);}
-    to {opacity: 1; transform: translateY(0);}
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const overlay = document.getElementById('age-gate-overlay');
+    const yesBtn = document.getElementById('age-yes');
+    const noBtn = document.getElementById('age-no');
+
+    // Skip if user already confirmed
+    if (localStorage.getItem('ageVerified') === 'true') {
+      overlay.classList.add('hidden');
+      return;
+    }
+
+    yesBtn.addEventListener('click', () => {
+      localStorage.setItem('ageVerified', 'true');
+      overlay.classList.add('hidden');
+    });
+
+    noBtn.addEventListener('click', () => {
+      alert('Thanks for visiting — come back when you’re 21.');
+      window.location.href = 'https://www.google.com';
+    });
+  });
+</script>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
