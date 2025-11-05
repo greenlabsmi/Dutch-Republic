@@ -1079,45 +1079,64 @@ window.addEventListener("load", () => {
 </script>
 
   <script>
-    // reveal on scroll
-    const sections=document.querySelectorAll("section");
-    const reveal=()=>{const t=window.innerHeight*0.85;sections.forEach(s=>{if(s.getBoundingClientRect().top<t)s.classList.add("visible");});};
-    window.addEventListener("scroll",reveal);reveal();
-
-    // scroll to top
-    const topBtn=document.getElementById("topBtn");
-    window.addEventListener("scroll",()=>{if(window.scrollY>400)topBtn.classList.remove("hidden");else topBtn.classList.add("hidden");});
-    topBtn.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
-
-    // active nav link
-    const navLinks=document.querySelectorAll(".nav-links a");
-    window.addEventListener("scroll",()=>{
-      let current="";
-      sections.forEach(sec=>{
-        const top=sec.offsetTop-140;
-        if(scrollY>=top){current=sec.id;}
-      });
-      navLinks.forEach(link=>{
-        link.classList.remove("active");
-        if(link.getAttribute("href")==="#"+current){link.classList.add("active");}
-      });
+  // reveal on scroll
+  const sections = document.querySelectorAll("section");
+  const reveal = () => {
+    const t = window.innerHeight * 0.85;
+    sections.forEach(s => {
+      if (s.getBoundingClientRect().top < t) s.classList.add("visible");
     });
+  };
+  window.addEventListener("scroll", reveal);
+  reveal();
 
-    // past campaigns slider arrows
-    function slidePast(dir){
-      const slider=document.getElementById('pastSlider');
-      const amount=280; // px to scroll
-      slider.scrollBy({left:dir*amount,behavior:'smooth'});
-    }
-  </script>
-  <script>
-window.addEventListener("load", () => {
-  const leaves = document.querySelector(".leaf-decor");
-  setTimeout(() => {
-    document.body.classList.add("leaves-on");
-    leaves.style.opacity = "1";
-  }, 2200); // slight delay for smooth fade after banner collapse
-});
+  // scroll to top
+  const topBtn = document.getElementById("topBtn");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 400) topBtn.classList.remove("hidden");
+    else topBtn.classList.add("hidden");
+  });
+  topBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+  // active nav link
+  const navLinks = document.querySelectorAll(".nav-links a");
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach(sec => {
+      const top = sec.offsetTop - 140;
+      if (scrollY >= top) current = sec.id;
+    });
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === "#" + current) link.classList.add("active");
+    });
+  });
+
+  // past campaigns slider arrows
+  function slidePast(dir) {
+    const slider = document.getElementById("pastSlider");
+    const amount = 280; // px to scroll
+    slider.scrollBy({ left: dir * amount, behavior: "smooth" });
+  }
+  window.slidePast = slidePast; // so the buttons can call it
+
+  // leaves: fade in after intro, but also guarantee after 3s
+  window.addEventListener("load", () => {
+    const leaves = document.querySelector(".leaf-decor");
+    // main timing (after intro collapse)
+    setTimeout(() => {
+      document.body.classList.add("leaves-on");
+      if (leaves) leaves.style.opacity = "1";
+    }, 2200);
+
+    // hard fallback in case GSAP timing changes
+    setTimeout(() => {
+      if (!document.body.classList.contains("leaves-on")) {
+        document.body.classList.add("leaves-on");
+        if (leaves) leaves.style.opacity = "1";
+      }
+    }, 3000);
+  });
 </script>
 
 </body>
