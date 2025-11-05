@@ -79,6 +79,8 @@
   justify-content:center;
   flex-direction:column;
   z-index:200;
+  transition: opacity 1.6s ease, height 1.6s ease, padding 1.6s ease, margin 1.6s ease;
+
 }
 #intro-banner canvas{position:absolute;inset:0;}
 #intro-banner h1{
@@ -777,23 +779,32 @@ nav.shimmer-once::after {
         ease:"power1.inOut"
       },"+=0.35")
       // fade banner away cleanly
-      .to("#intro-banner",{
-        opacity:0,
-        height:0,
-        paddingTop:0,
-        paddingBottom:0,
-        marginBottom:0,
-        duration:1.6,
-        ease:"power1.inOut",
-        onStart:()=>document.querySelector("#intro-banner").style.overflow="hidden",
-        onComplete:()=>{
-          document.querySelector("#intro-banner").style.display="none";
-          const nav=document.querySelector("nav");
-          nav.classList.add("shimmer-once");
-          gsap.fromTo(".nav-logo",{opacity:0,y:-10},{opacity:1,y:0,duration:1,stagger:0.2});
-          setTimeout(()=>nav.classList.remove("shimmer-once"),2000);
-        }
-      },"+=0.1");
+      .to("#intro-banner", {
+  opacity: 0,
+  height: 0,
+  paddingTop: 0,
+  paddingBottom: 0,
+  marginBottom: 0,
+  duration: 1.8,
+  ease: "power2.inOut",
+  onStart: () => {
+    const banner = document.querySelector("#intro-banner");
+    banner.style.overflow = "hidden";
+  },
+  onUpdate: () => {
+    const banner = document.querySelector("#intro-banner");
+    // progressively collapse for a smoother feel
+    banner.style.height = `${banner.offsetHeight * 0.98}px`;
+  },
+  onComplete: () => {
+    const banner = document.querySelector("#intro-banner");
+    banner.style.display = "none";
+    const nav = document.querySelector("nav");
+    nav.classList.add("shimmer-once");
+    gsap.fromTo(".nav-logo", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 1, stagger: 0.2 });
+    setTimeout(() => nav.classList.remove("shimmer-once"), 2000);
+  }
+}, "+=0.1");
 
   } else {
     // =========================
@@ -821,23 +832,32 @@ nav.shimmer-once::after {
         duration:0.7
       })
       // and fade banner
-      .to("#intro-banner",{
-        opacity:0,
-        height:0,
-        paddingTop:0,
-        paddingBottom:0,
-        marginBottom:0,
-        duration:1.4,
-        ease:"power1.inOut",
-        onStart:()=>document.querySelector("#intro-banner").style.overflow="hidden",
-        onComplete:()=>{
-          document.querySelector("#intro-banner").style.display="none";
-          const nav=document.querySelector("nav");
-          nav.classList.add("shimmer-once");
-          gsap.fromTo(".nav-logo",{opacity:0,y:-10},{opacity:1,y:0,duration:1,stagger:0.2});
-          setTimeout(()=>nav.classList.remove("shimmer-once"),2000);
-        }
-      },"+=0.1");
+      .to("#intro-banner", {
+  opacity: 0,
+  height: 0,
+  paddingTop: 0,
+  paddingBottom: 0,
+  marginBottom: 0,
+  duration: 1.8,
+  ease: "power2.inOut",
+  onStart: () => {
+    const banner = document.querySelector("#intro-banner");
+    banner.style.overflow = "hidden";
+  },
+  onUpdate: () => {
+    const banner = document.querySelector("#intro-banner");
+    // progressively collapse for a smoother feel
+    banner.style.height = `${banner.offsetHeight * 0.98}px`;
+  },
+  onComplete: () => {
+    const banner = document.querySelector("#intro-banner");
+    banner.style.display = "none";
+    const nav = document.querySelector("nav");
+    nav.classList.add("shimmer-once");
+    gsap.fromTo(".nav-logo", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 1, stagger: 0.2 });
+    setTimeout(() => nav.classList.remove("shimmer-once"), 2000);
+  }
+}, "+=0.1");
   }
 </script>
 
