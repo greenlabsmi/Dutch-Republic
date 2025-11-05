@@ -439,9 +439,9 @@ nav.shimmer-once::after {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  z-index: 80; /* ABOVE nav (100) and intro (200) */
+  z-index: 0; /* places behind text but above background */
   pointer-events: none;
-  opacity: 0; /* hidden initially */
+  opacity: 0;
   transition: opacity 1.4s ease;
 }
 
@@ -1067,6 +1067,15 @@ document.body.classList.add("leaves-on");
     // optional: crossfade hero slightly early
     .to("#hero", { opacity: 1, duration: 1.2, ease: "power1.inOut" }, "-=0.8");
 }
+  // Safety fallback if intro skipped or quick refresh
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    if (!document.body.classList.contains("leaves-on")) {
+      document.body.classList.add("leaves-on");
+    }
+  }, 3000);
+});
+
 </script>
 
   <script>
@@ -1101,5 +1110,15 @@ document.body.classList.add("leaves-on");
       slider.scrollBy({left:dir*amount,behavior:'smooth'});
     }
   </script>
+  <script>
+window.addEventListener("load", () => {
+  const leaves = document.querySelector(".leaf-decor");
+  setTimeout(() => {
+    document.body.classList.add("leaves-on");
+    leaves.style.opacity = "1";
+  }, 2200); // slight delay for smooth fade after banner collapse
+});
+</script>
+
 </body>
 </html>
