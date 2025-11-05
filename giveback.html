@@ -481,7 +481,10 @@ body.leaves-on .leaf {
   animation-play-state: running; /* we turn this on in JS */
 }
 
-    footer {
+  /* =====================
+   Footer Styling (Logos + Center Text)
+   ===================== */
+footer {
   background: #000;
   color: #fff;
   text-align: center;
@@ -493,12 +496,13 @@ body.leaves-on .leaf {
 
 .footer-inner {
   display: flex;
-  align-items: flex-end; /* aligns bottoms of logos and text evenly */
+  align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 16px;
   max-width: 1080px;
   margin: 0 auto;
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* keep side-by-side on desktop */
+  text-align: center;
 }
 
 .footer-text {
@@ -508,6 +512,7 @@ body.leaves-on .leaf {
 
 .footer-text p {
   margin: 4px 0;
+  line-height: 1.4;
 }
 
 .footer-logo img {
@@ -522,14 +527,55 @@ body.leaves-on .leaf {
   transform: scale(1.08);
 }
 
-@media (max-width: 620px) {
+/* --- Responsive Footer Behavior --- */
+@media (max-width: 768px) {
   .footer-inner {
-    flex-direction: column;
-    gap: 10px;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap; /* stack on smaller screens */
   }
+
+  .footer-logo {
+    flex: 0 0 auto;
+    order: 1;
+  }
+
+  .footer-text {
+    flex-basis: 100%;
+    order: 2;
+    text-align: center;
+    margin-top: 6px;
+  }
+
   .footer-logo img {
     height: 36px;
   }
+}
+
+/* --- Scroll to Top Button & Footer Layer Control --- */
+#topBtn {
+  position: fixed;
+  right: 25px;
+  bottom: clamp(20px, 3vh, 40px);
+  background: var(--gold);
+  color: #000;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  font-size: 24px;
+  transition: all 0.3s ease;
+  z-index: 99; /* ensures it's above content but below footer */
+}
+
+#topBtn:hover { background: #fff; color: var(--green); }
+#topBtn.hidden { opacity: 0; pointer-events: none; }
+
+/* Keep footer above the scroll-to-top button */
+footer {
+  z-index: 100;
 }
 
  #topBtn {
