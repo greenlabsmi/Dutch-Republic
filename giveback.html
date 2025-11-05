@@ -37,6 +37,32 @@
     a{color:var(--green);text-decoration:none;}
     a:hover{text-decoration:underline;}
 
+ /* Keep "Cultivate Kindness" on one line — all devices */
+#growText, .hero-title, .banner-title, h1 {
+  white-space: nowrap;
+  display: inline-block;
+  font-family: "Cinzel", serif;
+  font-weight: 900;
+  letter-spacing: .02em;
+  text-align: center;
+  line-height: 1.1;
+  font-size: clamp(26px, 4.8vw, 58px);
+}
+
+/* Extra safeguard for ultra-small devices */
+@media (max-width: 380px) {
+  #growText, .hero-title, .banner-title, h1 {
+    font-size: 5.5vw;
+  }
+}
+
+/* Optional: tighten mobile spacing */
+@media (max-width: 480px) {
+  .hero-title, .banner-title, h1 {
+    font-size: 7vw; /* slightly smaller on tiny screens */
+  }
+}
+
     /* --- Intro Animation Banner --- */
 #intro-banner{
   position:relative;
