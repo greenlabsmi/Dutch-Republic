@@ -51,6 +51,8 @@
 }
 #intro-banner canvas{position:absolute;inset:0;}
 #intro-banner h1{
+  position:relative;
+  z-index:3;
   font-family:'Pacifico',cursive;
   font-size:2.4rem;
   color:var(--autumn);
@@ -58,7 +60,7 @@
   background:linear-gradient(90deg,#0B7D5A,#D4AF37,#C76B24);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-  animation:shimmerText 4s linear infinite;
+  overflow:hidden;
 }
 @keyframes shimmerText{
   from{background-position:-200% 0;}
