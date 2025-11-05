@@ -113,9 +113,10 @@
   position:absolute;
   inset:0;
   display:flex;
-  justify-content:space-between;
+  justify-content:center;   /* centers them as a pair */
   align-items:center;
-  padding:0 5vw;        /* less constricting than 40px */
+  gap:10vw;                 /* keeps some breathing room */
+  padding:0 5vw;
   z-index:2;
 }
 
@@ -534,12 +535,13 @@ body.leaves-on .leaf {
 
 <body>
   <!-- Floating Leaves -->
+<!-- Floating Leaves -->
 <div class="leaf-decor">
-  <img src="assets/img/leaf-gold.png" class="leaf leaf1" alt="">
-  <img src="assets/img/leaf-red.png" class="leaf leaf2" alt="">
-  <img src="assets/img/leaf-brown.png" class="leaf leaf3" alt="">
-  <img src="assets/img/leaf-gold.png" class="leaf leaf4" alt="">
-  <img src="assets/img/leaf-red.png" class="leaf leaf5" alt="">
+  <img src="assets/img/leaf-gold.png" class="leaf leaf1" alt="" aria-hidden="true">
+  <img src="assets/img/leaf-red.png" class="leaf leaf2" alt="" aria-hidden="true">
+  <img src="assets/img/leaf-brown.png" class="leaf leaf3" alt="" aria-hidden="true">
+  <img src="assets/img/leaf-gold.png" class="leaf leaf4" alt="" aria-hidden="true">
+  <img src="assets/img/leaf-red.png" class="leaf leaf5" alt="" aria-hidden="true">
 </div>
 
 <!-- Intro Banner -->
@@ -816,7 +818,9 @@ body.leaves-on .leaf {
         banner.style.display = "none";
 
         // start leaves AFTER intro is done
+setTimeout(() => {
   document.body.classList.add("leaves-on");
+}, 800);
         
         const nav = document.querySelector("nav");
         nav.classList.add("shimmer-once");
