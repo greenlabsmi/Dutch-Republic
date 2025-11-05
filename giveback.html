@@ -430,7 +430,7 @@ nav.shimmer-once::after {
     }
 
 /* =====================
-   Floating Leaves (Classic Style)
+   Floating Leaves (Fixed)
    ===================== */
 .leaf-decor {
   position: fixed;
@@ -439,14 +439,14 @@ nav.shimmer-once::after {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  z-index: 5;
+  z-index: 80; /* ABOVE nav (100) and intro (200) */
   pointer-events: none;
-  opacity: 0;                  /* hidden initially */
+  opacity: 0; /* hidden initially */
   transition: opacity 1.4s ease;
 }
 
 body.leaves-on .leaf-decor {
-  opacity: 1;                  /* fade in once intro finishes */
+  opacity: 1; /* fade in once intro finishes */
 }
 
 .leaf {
@@ -454,6 +454,11 @@ body.leaves-on .leaf-decor {
   width: 60px;
   opacity: 0.8;
   animation: fall linear infinite;
+  animation-play-state: paused; /* don't start yet */
+}
+
+body.leaves-on .leaf {
+  animation-play-state: running; /* start after intro */
 }
 
 @keyframes fall {
@@ -497,22 +502,23 @@ footer {
 .footer-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
   max-width: 1080px;
   margin: 0 auto;
-  flex-wrap: nowrap; /* keep side-by-side on desktop */
   text-align: center;
 }
 
 .footer-text {
-  flex: 1 1 auto;
-  min-width: 260px;
+  flex-basis: 100%;
+  order: 1;
+  margin-bottom: 10px;
 }
 
-.footer-text p {
-  margin: 4px 0;
-  line-height: 1.4;
+.footer-logo {
+  flex: 0 0 auto;
+  order: 2;
 }
 
 .footer-logo img {
@@ -521,6 +527,29 @@ footer {
   opacity: 0.9;
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
+
+.footer-logo:hover img {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+@media (min-width: 768px) {
+  .footer-inner {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-text {
+    flex: 1;
+    order: 0;
+    margin: 0 20px;
+  }
+
+  .footer-logo {
+    order: 0;
+  }
+}
+
 
 .footer-logo:hover img {
   opacity: 1;
