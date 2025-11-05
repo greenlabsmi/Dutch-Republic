@@ -113,20 +113,26 @@
   position:absolute;
   inset:0;
   display:flex;
-  justify-content:center;   /* centers them as a pair */
+  justify-content:space-between;  /* logos to left/right */
   align-items:center;
-  gap:10vw;                 /* keeps some breathing room */
-  padding:0 5vw;
+  padding:0 6vw;                  /* nice even margin */
   z-index:2;
 }
 
 #intro-logos img {
-  height:120px;         /* <-- this is the big change */
-  max-height:40vh;      /* keeps it reasonable on short screens */
+  height:120px;
+  max-height:40vh;
   opacity:0;
   transform-origin:center;
 }
 
+/* On smaller screens, center them again */
+@media (max-width: 768px) {
+  #intro-logos {
+    justify-content:center;
+    gap:10vw;
+  }
+}
 
 /* --- New Simple Nav (link-only) --- */
 nav{
@@ -435,6 +441,12 @@ nav.shimmer-once::after {
   overflow: hidden;
   z-index: 5;
   pointer-events: none;
+  opacity: 0;                  /* hidden initially */
+  transition: opacity 1.4s ease;
+}
+
+body.leaves-on .leaf-decor {
+  opacity: 1;                  /* fade in once intro finishes */
 }
 
 .leaf {
