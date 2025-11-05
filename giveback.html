@@ -449,21 +449,18 @@ body.leaves-on .leaf-decor {
   opacity: 1;
 }
 
-/* Base leaf setup */
 .leaf {
   position: absolute;
   width: 60px;
   opacity: 0.8;
-  animation: fall 16s linear infinite, fallDrift 6s ease-in-out infinite alternate;
+  animation: fall 16s linear infinite;
   animation-play-state: paused;
 }
 
-/* Activate on body class */
 body.leaves-on .leaf {
   animation-play-state: running;
 }
 
-/* Falling motion */
 @keyframes fall {
   0%   { transform: translateY(-10vh) rotate(0deg);   opacity: 0; }
   10%  { opacity: 0.5; }
@@ -471,18 +468,11 @@ body.leaves-on .leaf {
   100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
 }
 
-/* Gentle side drift */
-@keyframes fallDrift {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(15px); }
-}
-
-/* Individual leaf timing */
-.leaf1 { left: 10%; animation-duration: 12s, 5s; animation-delay: 0s, 0s; }
-.leaf2 { left: 35%; animation-duration: 14s, 6s; animation-delay: 2s, 1s; width: 70px; }
-.leaf3 { left: 60%; animation-duration: 16s, 7s; animation-delay: 1s, 2s; width: 55px; }
-.leaf4 { left: 80%; animation-duration: 18s, 8s; animation-delay: 3s, 3s; width: 65px; }
-.leaf5 { left: 25%; animation-duration: 20s, 9s; animation-delay: 4s, 4s; width: 50px; }
+.leaf1 { left: 10%; animation-duration: 12s; animation-delay: 0s; }
+.leaf2 { left: 35%; animation-duration: 14s; animation-delay: 2s; width: 70px; }
+.leaf3 { left: 60%; animation-duration: 16s; animation-delay: 1s; width: 55px; }
+.leaf4 { left: 80%; animation-duration: 18s; animation-delay: 3s; width: 65px; }
+.leaf5 { left: 25%; animation-duration: 20s; animation-delay: 4s; width: 50px; }
 
 @media (max-width: 600px) {
   .leaf { width: 36px; opacity: 0.7; }
