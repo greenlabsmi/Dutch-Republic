@@ -46,13 +46,13 @@
   letter-spacing: .015em;
   text-align: center;
   line-height: 1.05;
-  font-size: clamp(16px, 5.5vw, 52px);
-  max-width: 94vw;
-  margin: 0 3vw; /* prevents edge clipping */
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: clamp(15px, 5.2vw, 48px);
+  max-width: 100vw;              /* let it breathe edge to edge */
+  padding: 0 4vw;                /* soft buffer instead of margin */
+  overflow: visible !important;  /* do NOT clip */
+  text-overflow: unset !important;
+  word-break: keep-all;
 }
-
 
 /* fine-tune for very small screens */
 @media (max-width: 430px) {
