@@ -40,7 +40,7 @@
     /* --- Intro Animation Banner --- */
 #intro-banner{
   position:relative;
-  height:220px;
+  height:260px;
   overflow:hidden;
   background:linear-gradient(180deg,#F6DCA7 0%,#F9E6C4 40%,#FAF6EE 100%);
   display:flex;
@@ -64,13 +64,23 @@
   from{background-position:-200% 0;}
   to{background-position:200% 0;}
 }
-#intro-logos{
-  position:absolute;top:0;left:0;right:0;
-  display:flex;justify-content:space-between;
+#intro-logos {
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:space-between;
   align-items:center;
-  padding:0 40px;margin-top:40px;
+  padding:0 5vw;        /* less constricting than 40px */
+  z-index:2;
 }
-#intro-logos img{height:60px;opacity:0;}
+
+#intro-logos img {
+  height:120px;         /* <-- this is the big change */
+  max-height:40vh;      /* keeps it reasonable on short screens */
+  opacity:0;
+  transform-origin:center;
+}
+
 
 /* --- New Simple Nav (link-only) --- */
 nav{
@@ -646,50 +656,52 @@ nav.shimmer-once::after {
   <button id="topBtn" class="hidden" aria-label="Scroll to top">🍂</button>
   
 <script>
-  // --- Intro Animation: Logos Meet + Cultivate Kindness Grow --- //
-gsap.set("#glLogo",{x:"-120%",opacity:0,scale:0.8});
-gsap.set("#drLogo",{x:"120%",opacity:0,scale:0.8});
-gsap.set("#growText",{y:80,opacity:0,scale:0.9});
+// --- Intro Animation: Logos bump, then reveal text --- //
+gsap.set("#glLogo",{x:"-160%",opacity:0,scale:0.9});
+gsap.set("#drLogo",{x:"160%",opacity:0,scale:0.9});
+gsap.set("#growText",{opacity:0,scale:0.9});
 
 const tl = gsap.timeline({defaults:{ease:"power2.out"}});
 
-// 1️⃣ Logos slide in and meet in the middle
-tl.to("#glLogo",{x:"0%",opacity:1,scale:1.05,duration:1.4,ease:"elastic.out(1,0.6)"})
-  .to("#drLogo",{x:"0%",opacity:1,scale:1.05,duration:1.4,ease:"elastic.out(1,0.6)"},"<")
-  .to(["#glLogo","#drLogo"],{scale:1.1,duration:0.5,ease:"back.out(1.7)"})
-  .to(["#glLogo","#drLogo"],{scale:1,x:(i)=>i===0?"-18%":"18%",duration:0.7,ease:"power2.inOut"},"+=0.3")
-
-// 2️⃣ “Cultivate Kindness” grows between them
-  .to("#growText",{y:-20,opacity:1,scale:1.05,duration:1.4,ease:"power2.out"},"-=0.2")
-
-// 3️⃣ Gentle glow pulse
-  .to("#growText",{animation:"textGlow 2s ease-in-out",duration:1.5},"+=0.3")
-
-// 4️⃣ Smooth full fade upward
-  .to("#intro-banner",{
-    background:"linear-gradient(180deg,#FAE3B0 0%,#FAF6EE 100%)",
-    duration:1.2,
+// logos come in big
+tl.to("#glLogo",{x:"-10%",opacity:1,scale:1.2,duration:1.4,ease:"power3.out"})
+  .to("#drLogo",{x:"10%",opacity:1,scale:1.2,duration:1.4,ease:"power3.out"},"<")
+  // bump closer
+  .to(["#glLogo","#drLogo"],{
+    x:(i)=>i===0?"-4%":"4%",
+    scale:1.25,
+    duration:0.5,
     ease:"power1.inOut"
-  },"+=0.5")
-  .to("#intro-banner",{
-    height:0,
+  },"+=0.2")
+  // fade logos away
+  .to(["#glLogo","#drLogo"],{
     opacity:0,
+    duration:0.6,
+    ease:"power1.inOut"
+  },"+=0.1")
+  // show the text
+  .to("#growText",{
+    opacity:1,
+    scale:1,
+    duration:1,
+    ease:"power2.out"
+  },"-=0.2")
+  // fade banner out
+  .to("#intro-banner",{
+    opacity:0,
+    height:0,
     marginBottom:0,
-    duration:2.2,
+    duration:2,
     ease:"power1.inOut",
-    onStart:()=>{
-      document.querySelector("#intro-banner").style.overflow="hidden";
-    },
+    onStart:()=>document.querySelector("#intro-banner").style.overflow="hidden",
     onComplete:()=>{
-      const banner=document.querySelector("#intro-banner");
-      banner.style.display="none";
+      document.querySelector("#intro-banner").style.display="none";
       const nav=document.querySelector("nav");
       nav.classList.add("shimmer-once");
-      gsap.fromTo(".nav-logo",{opacity:0,y:-10},{opacity:1,y:0,duration:1,stagger:0.2,ease:"power2.out"});
+      gsap.fromTo(".nav-logo",{opacity:0,y:-10},{opacity:1,y:0,duration:1,stagger:0.2});
       setTimeout(()=>nav.classList.remove("shimmer-once"),2000);
     }
-  },"+=0.3");
-
+  },"+=0.6");
 </script>
 
 
