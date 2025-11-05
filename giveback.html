@@ -668,13 +668,15 @@ const tl = gsap.timeline({defaults:{ease:"power2.out"}});
 // logos come in big
 tl.to("#glLogo",{x:"-10%",opacity:1,scale:1.2,duration:1.4,ease:"power3.out"})
   .to("#drLogo",{x:"10%",opacity:1,scale:1.2,duration:1.4,ease:"power3.out"},"<")
-  // bump closer
-  .to(["#glLogo","#drLogo"],{
-    x:(i)=>i===0?"-4%":"4%",
-    scale:1.25,
-    duration:0.5,
-    ease:"power1.inOut"
-  },"+=0.2")
+ 
+  // bump closer (tighter meeting point)
+.to(["#glLogo","#drLogo"], {
+  x:(i)=> i === 0 ? "-2%" : "2%",   // <-- tighter distance
+  scale:1.25,
+  duration:0.5,
+  ease:"power1.inOut"
+}, "+=0.2")
+
   // fade logos away
   .to(["#glLogo","#drLogo"],{
     opacity:0,
