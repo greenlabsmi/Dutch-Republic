@@ -493,7 +493,7 @@ body.leaves-on .leaf {
 
 .footer-inner {
   display: flex;
-  align-items: center;
+  align-items: flex-end; /* aligns bottoms of logos and text evenly */
   justify-content: space-between;
   gap: 12px;
   max-width: 1080px;
@@ -532,7 +532,7 @@ body.leaves-on .leaf {
   }
 }
 
-    #topBtn {
+ #topBtn {
   position: fixed;
   right: 25px;
   bottom: clamp(20px, 3vh, 40px);
@@ -546,14 +546,22 @@ body.leaves-on .leaf {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   font-size: 24px;
   transition: all 0.3s ease;
-  z-index: 999;
+  z-index: 99; /* ensure it stays above content but below footer */
+}
+
+/* ensure footer always sits above top button */
+footer {
+  z-index: 100;
 }
 
 /* Prevent top button from overlapping the footer */
 body {
   position: relative;
   min-height: 100vh;
-  padding-bottom: 120px; /* reserve footer space */
+}
+
+main, section, .hero {
+  padding-bottom: 120px; /* ensure button doesn't overlap footer */
 }
 
 footer {
