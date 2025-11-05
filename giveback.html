@@ -446,6 +446,18 @@ nav.shimmer-once::after {
       .campaign-body{flex-direction:column;}
       section{padding:80px 16px;}
     }
+
+    .leaf {
+  position:absolute;
+  width:8px;
+  height:14px;
+  background:linear-gradient(160deg, #C76B24 0%, #F4C68B 100%);
+  border-radius:999px 999px 999px 0;
+  opacity:0.9;
+  pointer-events:none;
+  z-index:1; /* under the logos, above bg */
+}
+
   </style>
 </head>
 
@@ -663,7 +675,30 @@ nav.shimmer-once::after {
   </footer>
 
   <button id="topBtn" class="hidden" aria-label="Scroll to top">🍂</button>
-  
+
+  <script>
+function createLeaves(count = 10) {
+  const banner = document.getElementById("intro-banner");
+  for (let i = 0; i < count; i++) {
+    const leaf = document.createElement("div");
+    leaf.className = "leaf";
+    // start somewhere across the banner
+    leaf.style.left = (20 + Math.random() * 60) + "%";
+    leaf.style.top = "-30px";
+    banner.appendChild(leaf);
+
+    gsap.to(leaf, {
+      y: 260 + Math.random() * 80,   // fall down
+      x: (Math.random() * 80) - 40,  // drift a bit
+      rotation: Math.random() * 160,
+      duration: 3 + Math.random() * 1.5,
+      ease: "power1.inOut",
+      onComplete: () => leaf.remove()
+    });
+  }
+}
+</script>
+
 <script>
   // check screen size first
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
@@ -688,6 +723,8 @@ nav.shimmer-once::after {
         x:(i)=>i===0?"-4%":"4%",
         duration:0.35
       },"+=0.1")
+      .add(() => createLeaves(10))
+
       // ⬇️ show text WHILE logos are still visible
       .to("#growText",{
         opacity:1,
@@ -733,6 +770,7 @@ nav.shimmer-once::after {
         x:(i)=>i===0?"-4%":"4%",
         duration:0.3
       },"+=0.05")
+      .add(() => createLeaves(8))
       // on mobile: fade logos first
       .to(["#glLogo","#drLogo"],{
         opacity:0,
