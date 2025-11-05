@@ -10,6 +10,9 @@
   <link rel="icon" href="assets/img/favicon.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  
+  <meta http-equiv="Cache-Control" content="max-age=86400, must-revalidate" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
   <style>
@@ -70,24 +73,23 @@
 }
 
     /* --- Intro Animation Banner --- */
-#intro-banner{
-  position:relative;
-  height:260px;
-  overflow:hidden;
-  background:linear-gradient(180deg,#F6DCA7 0%,#F9E6C4 40%,#FAF6EE 100%);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  z-index:200;
+#intro-banner {
+  position: relative;
+  height: clamp(240px, 28vh, 300px); /* allows flexible height on short phones */
+  overflow: visible;
+  background: linear-gradient(180deg, #F6DCA7 0%, #F9E6C4 40%, #FAF6EE 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 200;
   transition: opacity 1.6s ease, height 1.6s ease, padding 1.6s ease, margin 1.6s ease;
-
 }
 #intro-banner canvas{position:absolute;inset:0;}
 #intro-banner h1{
   font-family:"Cinzel", serif;                 /* match hero */
   font-weight:900;
-  font-size:2.6rem;
+  font-size: clamp(1.8rem, 6vw, 2.8rem);
   color:var(--autumn);
   opacity:0;
   /* just green → warm orange */
@@ -442,8 +444,9 @@ nav.shimmer-once::after {
 }
 
 @keyframes fall {
-  0% { transform: translateY(-10%) rotate(0deg); opacity: 0.8; }
-  50% { transform: translateY(50vh) rotate(180deg); opacity: 1; }
+  0% { transform: translateY(-10%) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.4; }
+  50% { transform: translateY(50vh) rotate(180deg); opacity: 0.9; }
   100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
 }
 
@@ -452,6 +455,18 @@ nav.shimmer-once::after {
 .leaf3 { left: 60%; animation-duration: 16s; animation-delay: 2s; width: 55px; }
 .leaf4 { left: 80%; animation-duration: 18s; animation-delay: 6s; width: 65px; }
 .leaf5 { left: 25%; animation-duration: 20s; animation-delay: 8s; width: 50px; }
+
+.leaf {
+  position: absolute;
+  width: 60px;
+  opacity: 0.8;
+  animation: fall linear infinite;
+  animation-play-state: paused; /* don't start yet */
+}
+
+body.leaves-on .leaf {
+  animation-play-state: running; /* we turn this on in JS */
+}
 
     footer{
       background:#000;color:#fff;
@@ -800,6 +815,9 @@ nav.shimmer-once::after {
         banner.style.marginBottom = "0";
         banner.style.display = "none";
 
+        // start leaves AFTER intro is done
+  document.body.classList.add("leaves-on");
+        
         const nav = document.querySelector("nav");
         nav.classList.add("shimmer-once");
         gsap.fromTo(".nav-logo", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 1, stagger: 0.2 });
@@ -856,6 +874,9 @@ nav.shimmer-once::after {
         banner.style.paddingBottom = "0";
         banner.style.marginBottom = "0";
         banner.style.display = "none";
+
+        // start leaves AFTER intro is done
+document.body.classList.add("leaves-on");
 
         const nav = document.querySelector("nav");
         nav.classList.add("shimmer-once");
