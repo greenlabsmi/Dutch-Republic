@@ -46,11 +46,13 @@
   letter-spacing: .015em;
   text-align: center;
   line-height: 1.05;
-  font-size: clamp(18px, 6vw, 52px); /* smaller floor & flexible ceiling */
-  max-width: 96vw;
+  font-size: clamp(16px, 5.5vw, 52px);
+  max-width: 94vw;
+  margin: 0 3vw; /* prevents edge clipping */
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 
 /* fine-tune for very small screens */
 @media (max-width: 430px) {
@@ -749,115 +751,122 @@ nav.shimmer-once::after {
   gsap.set("#growText",{opacity:0,scale:0.9});
 
   if (!isMobile) {
-    // =========================
-    // DESKTOP FLOW
-    // =========================
-    const tl = gsap.timeline({defaults:{ease:"power2.out"}});
+  // =========================
+  // DESKTOP FLOW
+  // =========================
+  const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
 
-    tl
-      // logos come in
-      .to("#glLogo",{x:"-10%",opacity:1,scale:1.2,duration:1.2,ease:"power3.out"})
-      .to("#drLogo",{x:"10%",opacity:1,scale:1.2,duration:1.2,ease:"power3.out"},"<")
-      // bump closer
-      .to(["#glLogo","#drLogo"],{
-        x:(i)=>i===0?"-4%":"4%",
-        duration:0.35
-      },"+=0.1")
+  tl
+    // logos come in
+    .to("#glLogo", { x: "-10%", opacity: 1, scale: 1.2, duration: 1.2, ease: "power3.out" })
+    .to("#drLogo", { x: "10%", opacity: 1, scale: 1.2, duration: 1.2, ease: "power3.out" }, "<")
 
-      // ⬇️ show text WHILE logos are still visible
-      .to("#growText",{
-        opacity:1,
-        scale:1,
-        duration:0.7,
-        ease:"power2.out"
-      },"-=0.05")
-      // now let the logos hang for a sec
-      .to(["#glLogo","#drLogo"],{
-        opacity:0,
-        duration:1,
-        ease:"power1.inOut"
-      },"+=0.35")
-      // fade banner away cleanly
-      .to("#intro-banner", {
-  opacity: 0,
-  height: 0,
-  paddingTop: 0,
-  paddingBottom: 0,
-  marginBottom: 0,
-  duration: 1.8,
-  ease: "power2.inOut",
-  onStart: () => {
-    const banner = document.querySelector("#intro-banner");
-    banner.style.overflow = "hidden";
-  },
-  onUpdate: () => {
-    const banner = document.querySelector("#intro-banner");
-    // progressively collapse for a smoother feel
-    banner.style.height = `${banner.offsetHeight * 0.98}px`;
-  },
-  onComplete: () => {
-    const banner = document.querySelector("#intro-banner");
-    banner.style.display = "none";
-    const nav = document.querySelector("nav");
-    nav.classList.add("shimmer-once");
-    gsap.fromTo(".nav-logo", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 1, stagger: 0.2 });
-    setTimeout(() => nav.classList.remove("shimmer-once"), 2000);
-  }
-}, "+=0.1");
+    // bump closer
+    .to(["#glLogo", "#drLogo"], {
+      x: (i) => (i === 0 ? "-4%" : "4%"),
+      duration: 0.35
+    }, "+=0.1")
 
-  } else {
-    // =========================
-    // MOBILE FLOW
-    // =========================
-    const tl = gsap.timeline({defaults:{ease:"power2.out"}});
+    // show text while logos are still visible
+    .to("#growText", {
+      opacity: 1,
+      scale: 1,
+      duration: 0.7,
+      ease: "power2.out"
+    }, "-=0.05")
 
-    tl
-      .to("#glLogo",{x:"-10%",opacity:1,scale:1.15,duration:1,ease:"power3.out"})
-      .to("#drLogo",{x:"10%",opacity:1,scale:1.15,duration:1,ease:"power3.out"},"<")
-      .to(["#glLogo","#drLogo"],{
-        x:(i)=>i===0?"-4%":"4%",
-        duration:0.3
-      },"+=0.05")
+    // fade logos out
+    .to(["#glLogo", "#drLogo"], {
+      opacity: 0,
+      duration: 1,
+      ease: "power1.inOut"
+    }, "+=0.35")
 
-      // on mobile: fade logos first
-      .to(["#glLogo","#drLogo"],{
-        opacity:0,
-        duration:0.7
-      },"+=0.15")
-      // then show text
-      .to("#growText",{
-        opacity:1,
-        scale:1,
-        duration:0.7
-      })
-      // and fade banner
-      .to("#intro-banner", {
-  opacity: 0,
-  height: 0,
-  paddingTop: 0,
-  paddingBottom: 0,
-  marginBottom: 0,
-  duration: 1.8,
-  ease: "power2.inOut",
-  onStart: () => {
-    const banner = document.querySelector("#intro-banner");
-    banner.style.overflow = "hidden";
-  },
-  onUpdate: () => {
-    const banner = document.querySelector("#intro-banner");
-    // progressively collapse for a smoother feel
-    banner.style.height = `${banner.offsetHeight * 0.98}px`;
-  },
-  onComplete: () => {
-    const banner = document.querySelector("#intro-banner");
-    banner.style.display = "none";
-    const nav = document.querySelector("nav");
-    nav.classList.add("shimmer-once");
-    gsap.fromTo(".nav-logo", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 1, stagger: 0.2 });
-    setTimeout(() => nav.classList.remove("shimmer-once"), 2000);
-  }
-}, "+=0.1");
-  }
+    // fade banner away cleanly
+    .to("#intro-banner", {
+      opacity: 0,
+      duration: 1.8,
+      ease: "power3.inOut",
+      onStart: () => {
+        const banner = document.querySelector("#intro-banner");
+        banner.style.overflow = "hidden";
+        banner.style.transition = "height 1.8s ease, padding 1.8s ease, margin 1.8s ease";
+      },
+      onComplete: () => {
+        const banner = document.querySelector("#intro-banner");
+        banner.style.height = "0";
+        banner.style.paddingTop = "0";
+        banner.style.paddingBottom = "0";
+        banner.style.marginBottom = "0";
+        banner.style.display = "none";
+
+        const nav = document.querySelector("nav");
+        nav.classList.add("shimmer-once");
+        gsap.fromTo(".nav-logo", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 1, stagger: 0.2 });
+        setTimeout(() => nav.classList.remove("shimmer-once"), 2000);
+      }
+    }, "+=0.1")
+
+    // optional: crossfade hero slightly early
+    .to("#hero", { opacity: 1, duration: 1.2, ease: "power1.inOut" }, "-=0.8");
+
+} else {
+  // =========================
+  // MOBILE FLOW
+  // =========================
+  const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+
+  tl
+    .to("#glLogo", { x: "-10%", opacity: 1, scale: 1.15, duration: 1, ease: "power3.out" })
+    .to("#drLogo", { x: "10%", opacity: 1, scale: 1.15, duration: 1, ease: "power3.out" }, "<")
+
+    // bump closer slightly
+    .to(["#glLogo", "#drLogo"], {
+      x: (i) => (i === 0 ? "-4%" : "4%"),
+      duration: 0.3
+    }, "+=0.05")
+
+    // fade logos out first on mobile
+    .to(["#glLogo", "#drLogo"], {
+      opacity: 0,
+      duration: 0.7
+    }, "+=0.15")
+
+    // then show text
+    .to("#growText", {
+      opacity: 1,
+      scale: 1,
+      duration: 0.7
+    })
+
+    // fade banner away cleanly
+    .to("#intro-banner", {
+      opacity: 0,
+      duration: 1.8,
+      ease: "power3.inOut",
+      onStart: () => {
+        const banner = document.querySelector("#intro-banner");
+        banner.style.overflow = "hidden";
+        banner.style.transition = "height 1.8s ease, padding 1.8s ease, margin 1.8s ease";
+      },
+      onComplete: () => {
+        const banner = document.querySelector("#intro-banner");
+        banner.style.height = "0";
+        banner.style.paddingTop = "0";
+        banner.style.paddingBottom = "0";
+        banner.style.marginBottom = "0";
+        banner.style.display = "none";
+
+        const nav = document.querySelector("nav");
+        nav.classList.add("shimmer-once");
+        gsap.fromTo(".nav-logo", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 1, stagger: 0.2 });
+        setTimeout(() => nav.classList.remove("shimmer-once"), 2000);
+      }
+    }, "+=0.1")
+
+    // optional: crossfade hero slightly early
+    .to("#hero", { opacity: 1, duration: 1.2, ease: "power1.inOut" }, "-=0.8");
+}
 </script>
 
   <script>
