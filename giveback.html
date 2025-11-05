@@ -51,17 +51,24 @@
 }
 #intro-banner canvas{position:absolute;inset:0;}
 #intro-banner h1{
-  position:relative;
-  z-index:3;
-  font-family:'Pacifico',cursive;
-  font-size:2.4rem;
+  font-family:"Cinzel", serif;                 /* match hero */
+  font-weight:900;
+  font-size:2.6rem;
   color:var(--autumn);
   opacity:0;
-  background:linear-gradient(90deg,#0B7D5A,#D4AF37,#C76B24);
+  /* just green → warm orange */
+  background:linear-gradient(90deg,
+    #0B7D5A 0%,
+    #2F8A62 35%,   /* soft bridge so it’s not harsh */
+    #C76B24 100%
+  );
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-  overflow:hidden;
+  /* if you want it calmer, drop the shimmer: */
+  /* animation:none; */
+  animation:shimmerText 4s linear infinite;    /* ← or delete this line to stop shimmering */
 }
+
 @keyframes shimmerText{
   from{background-position:-200% 0;}
   to{background-position:200% 0;}
@@ -692,20 +699,26 @@ tl.to("#glLogo",{x:"-10%",opacity:1,scale:1.2,duration:1.4,ease:"power3.out"})
   },"-=0.2")
   // fade banner out
   .to("#intro-banner",{
-    opacity:0,
-    height:0,
-    marginBottom:0,
-    duration:2,
-    ease:"power1.inOut",
-    onStart:()=>document.querySelector("#intro-banner").style.overflow="hidden",
-    onComplete:()=>{
-      document.querySelector("#intro-banner").style.display="none";
-      const nav=document.querySelector("nav");
-      nav.classList.add("shimmer-once");
-      gsap.fromTo(".nav-logo",{opacity:0,y:-10},{opacity:1,y:0,duration:1,stagger:0.2});
-      setTimeout(()=>nav.classList.remove("shimmer-once"),2000);
-    }
-  },"+=0.6");
+  opacity:0,
+  height:0,
+  paddingTop:0,
+  paddingBottom:0,          // ← this is the important part
+  marginBottom:0,
+  duration:2,
+  ease:"power1.inOut",
+  onStart:()=>{
+    document.querySelector("#intro-banner").style.overflow="hidden";
+  },
+  onComplete:()=>{
+    const banner = document.querySelector("#intro-banner");
+    banner.style.display = "none";
+    const nav = document.querySelector("nav");
+    nav.classList.add("shimmer-once");
+    gsap.fromTo(".nav-logo",{opacity:0,y:-10},{opacity:1,y:0,duration:1,stagger:0.2});
+    setTimeout(()=>nav.classList.remove("shimmer-once"),2000);
+  }
+}, "+=0.6");
+
 </script>
 
 
