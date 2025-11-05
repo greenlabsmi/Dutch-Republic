@@ -481,22 +481,89 @@ body.leaves-on .leaf {
   animation-play-state: running; /* we turn this on in JS */
 }
 
-    footer{
-      background:#000;color:#fff;
-      text-align:center;padding:40px 20px;
-      font-size:.9rem;
-    }
+    footer {
+  background: #000;
+  color: #fff;
+  text-align: center;
+  padding: 28px 16px;
+  font-size: 0.9rem;
+  position: relative;
+  z-index: 10;
+}
 
-    #topBtn{
-      position:fixed;bottom:25px;right:25px;
-      background:var(--gold);color:#000;
-      border:none;border-radius:50%;
-      width:50px;height:50px;cursor:pointer;
-      box-shadow:0 4px 10px rgba(0,0,0,0.3);
-      font-size:24px;transition:all .3s ease;z-index:999;
-    }
-    #topBtn:hover{background:#fff;color:var(--green);}
-    #topBtn.hidden{opacity:0;pointer-events:none;}
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  max-width: 1080px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.footer-text {
+  flex: 1 1 auto;
+  min-width: 260px;
+}
+
+.footer-text p {
+  margin: 4px 0;
+}
+
+.footer-logo img {
+  height: 42px;
+  width: auto;
+  opacity: 0.9;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.footer-logo:hover img {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+@media (max-width: 620px) {
+  .footer-inner {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer-logo img {
+    height: 36px;
+  }
+}
+
+    #topBtn {
+  position: fixed;
+  right: 25px;
+  bottom: clamp(20px, 3vh, 40px);
+  background: var(--gold);
+  color: #000;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  font-size: 24px;
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+/* Prevent top button from overlapping the footer */
+body {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 120px; /* reserve footer space */
+}
+
+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+#topBtn:hover { background: #fff; color: var(--green); }
+#topBtn.hidden { opacity: 0; pointer-events: none; }
 
     /* --- Nav Wrapper with Logos --- */
 .nav-wrapper {
@@ -763,10 +830,23 @@ body.leaves-on .leaf {
     </div>
   </section>
 
-  <footer>
-    <p>© 2025 Green Labs Provisions & Dutch Republic. All rights reserved.</p>
-    <p>Growing Good Together 🌿</p>
+    <footer>
+    <div class="footer-inner">
+      <a href="https://www.instagram.com/greenlabsmi" target="_blank" class="footer-logo">
+        <img src="assets/img/green-labs-logo.png" alt="Green Labs">
+      </a>
+
+      <div class="footer-text">
+        <p>© 2025 Green Labs Provisions & Dutch Republic. All rights reserved.</p>
+        <p>Growing Good Together 🌿</p>
+      </div>
+
+      <a href="https://www.instagram.com/dutchrepublicmi" target="_blank" class="footer-logo">
+        <img src="logo-dutch-republic.svg" alt="Dutch Republic">
+      </a>
+    </div>
   </footer>
+
 
   <button id="topBtn" class="hidden" aria-label="Scroll to top">🍂</button>
 
