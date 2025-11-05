@@ -462,10 +462,36 @@ body.leaves-on .leaf {
 }
 
 @keyframes fall {
-  0% { transform: translateY(-10%) rotate(0deg); opacity: 0; }
-  10% { opacity: 0.4; }
-  50% { transform: translateY(50vh) rotate(180deg); opacity: 0.9; }
-  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+  0% {
+    transform: translateY(-5vh) rotate(0deg); /* start just below nav bar */
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(50vh) rotate(180deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* optional gentle breeze sway */
+@keyframes fallDrift {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(15px); }
+}
+
+/* apply both animations together */
+body.leaves-on .leaf {
+  animation-name: fall, fallDrift;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: infinite, infinite;
+  animation-direction: normal, alternate;
+  animation-play-state: running; /* start once leaves-on is active */
 }
 
 .leaf1 { left: 10%; animation-duration: 12s; animation-delay: 0s; }
@@ -1067,14 +1093,6 @@ document.body.classList.add("leaves-on");
     // optional: crossfade hero slightly early
     .to("#hero", { opacity: 1, duration: 1.2, ease: "power1.inOut" }, "-=0.8");
 }
-  // Safety fallback if intro skipped or quick refresh
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    if (!document.body.classList.contains("leaves-on")) {
-      document.body.classList.add("leaves-on");
-    }
-  }, 3000);
-});
 
 </script>
 
@@ -1120,23 +1138,13 @@ window.addEventListener("load", () => {
   }
   window.slidePast = slidePast; // so the buttons can call it
 
-  // leaves: fade in after intro, but also guarantee after 3s
-  window.addEventListener("load", () => {
-    const leaves = document.querySelector(".leaf-decor");
-    // main timing (after intro collapse)
-    setTimeout(() => {
-      document.body.classList.add("leaves-on");
-      if (leaves) leaves.style.opacity = "1";
-    }, 2200);
+    // leaves: start immediately from nav bar on load
+window.addEventListener("load", () => {
+  const leaves = document.querySelector(".leaf-decor");
+  document.body.classList.add("leaves-on");
+  if (leaves) leaves.style.opacity = "1";
+});
 
-    // hard fallback in case GSAP timing changes
-    setTimeout(() => {
-      if (!document.body.classList.contains("leaves-on")) {
-        document.body.classList.add("leaves-on");
-        if (leaves) leaves.style.opacity = "1";
-      }
-    }, 3000);
-  });
 </script>
 
 </body>
