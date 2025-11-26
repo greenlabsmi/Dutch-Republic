@@ -229,17 +229,19 @@
 
 <main id="home">
   
- <!-- Hero (solid black background) -->
+<!-- Hero (solid black background) -->
 <section class="hero" style="background:#000;">
   <div id="hero-container" class="hero-container">
     <div id="hero-slides" class="slides" data-carousel data-autoplay="6000" data-ignore-reduced-motion>
       <button class="edge edge--prev" aria-label="Previous"></button>
       <button class="edge edge--next" aria-label="Next"></button>
 
+      <!-- ORDER: 4 → 5 (NEW) → 1 → 2 → 3 -->
       <div class="slide is-active"><img src="carousel-4.png" alt=""></div>
-<div class="slide"><img src="carousel-1.png" alt=""></div>
-<div class="slide"><img src="carousel-2.png" alt=""></div>
-<div class="slide"><img src="carousel-3.png" alt=""></div>
+      <div class="slide"><img src="carousel-5.png" alt=""></div>
+      <div class="slide"><img src="carousel-1.png" alt=""></div>
+      <div class="slide"><img src="carousel-2.png" alt=""></div>
+      <div class="slide"><img src="carousel-3.png" alt=""></div>
 
       <div class="dots" aria-label="Slide navigation"></div>
     </div>
