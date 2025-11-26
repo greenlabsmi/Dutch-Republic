@@ -2,47 +2,75 @@
   {
     "category": "🎁 Green Wednesday & Black Friday Specials",
     "promo": true,
-    "items": [
-      "💚 $60 GRAB BAGS — Limited quantities!",
-      "🟩 $5 Mother Puckers",
-      "🟩 $5 Goody Bag Gummies",
-      "🟩 $6 Smokies Gummies",
-      "🟩 $7 TreeTown Baked Goods",
-      "🟩 $10 Pixels",
-      "🟩 $12 Dream Edibles",
-      "🟩 $15 Kiva Bar",
-      "🟩 20% OFF Wyld",
-      "🟩 20% OFF Wana",
-
-      "🍹 DRINKS:",
-      "BOGO Yield",
-      "$8 Tonic",
-
-      "🪄 PRE-ROLLS:",
-      "BOGO Cannarillo",
-      "$3 Hazy Daze",
-      "$3 Paul Bunyan",
-
-      "💥 INFUSED PRE-ROLLS:",
-      "$3 Ripn",
-      "$5 Fire Styxx",
-      "$40 Cashed Packs",
-
-      "💨 CARTS & DISPOSABLES:",
-      "BOGO Craft Live Resin Cart",
-      "$10 True North Cart",
-      "$15 HashHouse Cart",
-      "3/$25 Mozey Cart",
-      "$15 Crude Boys Big Ripper",
-      "3/$50 Mozey Disposable",
-
-      "🌿 TOPICAL:",
-      "50% OFF Chill Products",
-
-      "🍯 CONCENTRATES:",
-      "20% OFF 710",
-      "$18 Rooted & Zooted Rosin",
-      "$20 Redbud Roots Rosin"
+    "groups": [
+      {
+        "title": "🔥 Grab Bags",
+        "items": [
+          "$60 Grab Bags — Limited quantities!"
+        ]
+      },
+      {
+        "title": "🍬 Edibles",
+        "items": [
+          "$5 Mother Puckers",
+          "$5 Goody Bag Gummies",
+          "$6 Smokies Gummies",
+          "$7 TreeTown Baked Goods",
+          "$10 Pixels",
+          "$12 Dream Edibles",
+          "$15 Kiva Bar",
+          "20% OFF Wyld",
+          "20% OFF Wana"
+        ]
+      },
+      {
+        "title": "🥤 Drinks",
+        "items": [
+          "BOGO Yield",
+          "$8 Tonic"
+        ]
+      },
+      {
+        "title": "🪄 Pre-Rolls",
+        "items": [
+          "BOGO Cannarillo",
+          "$3 Hazy Daze",
+          "$3 Paul Bunyan"
+        ]
+      },
+      {
+        "title": "💥 Infused Pre-Rolls",
+        "items": [
+          "$3 Ripn",
+          "$5 Fire Styxx",
+          "$40 Cashed Packs"
+        ]
+      },
+      {
+        "title": "💨 Carts & Disposables",
+        "items": [
+          "BOGO Craft Live Resin Cart",
+          "$10 True North Cart",
+          "$15 HashHouse Cart",
+          "3/$25 Mozey Cart",
+          "$15 Crude Boys Big Ripper",
+          "3/$50 Mozey Disposable"
+        ]
+      },
+      {
+        "title": "🌿 Topical",
+        "items": [
+          "50% OFF Chill Products"
+        ]
+      },
+      {
+        "title": "🍯 Concentrates",
+        "items": [
+          "20% OFF 710",
+          "$18 Rooted & Zooted Rosin",
+          "$20 Redbud Roots Rosin"
+        ]
+      }
     ]
   },
 
