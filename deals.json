@@ -1,9 +1,48 @@
 [
   {
-    "category": "🎁 Upcoming Specials",
+    "category": "🎁 Green Wednesday & Black Friday Specials",
     "promo": true,
     "items": [
-      "🛍️ Be on the lookout for our **Green Wednesday** and **Black Friday** Grab Bags — packed with exclusive deals and limited-edition drops!"
+      "💚 $60 GRAB BAGS — Limited quantities!",
+      "🟩 $5 Mother Puckers",
+      "🟩 $5 Goody Bag Gummies",
+      "🟩 $6 Smokies Gummies",
+      "🟩 $7 TreeTown Baked Goods",
+      "🟩 $10 Pixels",
+      "🟩 $12 Dream Edibles",
+      "🟩 $15 Kiva Bar",
+      "🟩 20% OFF Wyld",
+      "🟩 20% OFF Wana",
+
+      "🍹 DRINKS:",
+      "BOGO Yield",
+      "$8 Tonic",
+
+      "🪄 PRE-ROLLS:",
+      "BOGO Cannarillo",
+      "$3 Hazy Daze",
+      "$3 Paul Bunyan",
+
+      "💥 INFUSED PRE-ROLLS:",
+      "$3 Ripn",
+      "$5 Fire Styxx",
+      "$40 Cashed Packs",
+
+      "💨 CARTS & DISPOSABLES:",
+      "BOGO Craft Live Resin Cart",
+      "$10 True North Cart",
+      "$15 HashHouse Cart",
+      "3/$25 Mozey Cart",
+      "$15 Crude Boys Big Ripper",
+      "3/$50 Mozey Disposable",
+
+      "🌿 TOPICAL:",
+      "50% OFF Chill Products",
+
+      "🍯 CONCENTRATES:",
+      "20% OFF 710",
+      "$18 Rooted & Zooted Rosin",
+      "$20 Redbud Roots Rosin"
     ]
   },
 
@@ -13,8 +52,8 @@
       {
         "title": "Ounces",
         "items": [
-          "$40 OUNCES - Green Labs Outdoor Flower - Buy 2 ounces for $75",
-          "$50 OUNCES - Dutch Touch Genetics Shake - Buy 2 ounces for $85",
+          "$40 OUNCES - Green Labs Outdoor Flower - Buy 2 for $75",
+          "$50 OUNCES - Dutch Touch Genetics Shake - Buy 2 for $85",
           "$75 OUNCES - Dutch Touch Clusterfunk smalls",
           "$100 OUNCES - Dutch Touch Small Bud ounce - Buy 2 for $175",
           "$100 OUNCES - Simpler Daze ounce - Buy 2 for $175",
@@ -45,13 +84,13 @@
   {
     "category": "🪄 Pre-Rolls (Regular)",
     "items": [
-      "TreeTown 28pk Pre-Rolls - $50ea",
+      "TreeTown 28pk - $50ea",
       "Green Labs 1g Pre-Rolls - $5ea or 5/$20 & 10/$40",
       "Craft Full Flower Cannarillo’s - $12ea or 2/$20",
-      "Plant Nerd Full Flower 1.5g Hand Rolled Joint - $15ea or 2/$25",
-      "Dutch Touch 5pk Pre-Rolls - $30ea",
-      "Dutch Touch 25pk Pre-Rolls - $100ea (Mr. Clean $110ea)",
-      "Dutch Touch 25pk 0.5g Pre-Rolls - $55ea (Excludes Mr. Clean)",
+      "Plant Nerd 1.5g Hand Rolled Joint - $15ea or 2/$25",
+      "Dutch Touch 5pk - $30ea",
+      "Dutch Touch 25pk - $100ea (Excludes Mr. Clean: $110)",
+      "Dutch Touch 25pk 0.5g - $55ea (Excludes Mr. Clean)",
       "Paul Bunyon - $5ea",
       "Buy a Hazy Daze 28pk (Get 1 Light Sky Farm Bubble Hash Pre-Roll)"
     ]
@@ -60,8 +99,8 @@
   {
     "category": "💥 Pre-Rolls (Infused)",
     "items": [
-      "Ripin 1g Infused Pre-Rolls - $5ea & 10/$40",
-      "Propaganda 1g Infused Pre-Roll - $10ea or 3/$20 & 6/$40",
+      "Ripin 1g Infused - $5ea & 10/$40",
+      "Propaganda 1g - $10ea or 3/$20 & 6/$40",
       "Fire Styxx - $7ea or 3/$20 & 10/$55",
       "Plant Nerd Full Flower 1.25g Cannon - $15ea or 2/$25",
       "Dutch Touch Genetics Donuts - $25ea or 2/$40",
@@ -100,7 +139,7 @@
   },
 
   {
-    "category": "🍬 Edibles",
+    "category": "🍬 Edibles & THC Beverages",
     "items": [
       "Choice 200mg Gummies - $5ea & 10/$45",
       "TreeTown 200mg Standard Gummies - $5ea or 5/$20 & 10/$40",
@@ -109,21 +148,15 @@
       "CannaMelt - $3.50ea",
       "Goody Bag 200mg Gummies - $7ea or 3/$20",
       "Good News Sleep & Daytime Gummies - $12ea or 3/$30",
-      "Dream 100mg Caramels - $15ea or 3/$35 (Mix & Match with Pixel)",
-      "Pixel 200mg THC Nerds - $15ea or 3/$35 (Mix & Match with Dream Caramels)",
-      "True North 200mg One-Hitter Gummies - $5ea",
-      "True North 200mg Ratio Gummies - 4/$20"
-    ]
-  },
-
-  {
-    "category": "🥤 THC Drinks",
-    "items": [
+      "Dream 100mg Caramels - $15ea or 3/$35 (Mix & Match Pixel)",
+      "Pixel 200mg THC Nerds - $15ea or 3/$35 (Mix & Match Dream Caramels)",
+      "True North 200mg One Hitter Gummies - $5ea",
+      "True North 200mg Ratio Gummies - 4/$20",
       "Pleasantea High Dose Tea - $10ea or 3/$20",
       "Highly Casual 5mg Seltzers - $5ea or 5/$20",
-      "Feels 10mg Seltzers - $5ea (Infused with Green Tea Leaf)",
+      "Feels 10mg Seltzers - $5ea",
       "Sweet Justice 10mg Drinks - $7ea or 3/$20",
-      "Armada Cannabis THC Apple Cider - $10ea or 3/$20",
+      "Armada THC Apple Cider - $10ea or 3/$20",
       "Mary Jones & CQ 100mg Drinks - $15ea or 3/$40",
       "Tonic Fizz 10mg Seltzer - $5ea"
     ]
@@ -137,7 +170,7 @@
       "Dutch Touch 1g Rosin - $25ea",
       "Dutch Jelly 1g Batter - $20ea",
       "Dutch Touch 1g RSO Dart - $30ea or 5/$125",
-      "Tokyo 5g Resin - $30ea or 3/$85 (15g for $85)",
+      "Tokyo 5g Resin - $30ea or 3/$85 (15 grams for $85)",
       "OLD SCHOOL HASH CO - $25 1g / $100 5g",
       "RedBud Roots Hash Rosin - $25ea",
       "710 IN STOCK!!"
