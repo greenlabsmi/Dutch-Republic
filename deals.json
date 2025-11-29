@@ -1,81 +1,15 @@
 [
   {
-    "category": "🎁 Green Wednesday & Black Friday Specials",
-    "promo": true,
-    "groups": [
-      {
-        "title": "🔥 Grab Bags",
-        "items": [
-          "$60 Grab Bags — Limited quantities!"
-        ]
-      },
-      {
-        "title": "🍬 Edibles",
-        "items": [
-          "$5 Mother Puckers",
-          "$5 Goody Bag Gummies",
-          "$6 Smokies Gummies",
-          "$7 TreeTown Baked Goods",
-          "$10 Pixels",
-          "$12 Dream Edibles",
-          "$15 Kiva Bar",
-          "20% OFF Wyld",
-          "20% OFF Wana"
-        ]
-      },
-      {
-        "title": "🥤 Drinks",
-        "items": [
-          "BOGO Yield",
-          "$8 Tonic"
-        ]
-      },
-      {
-        "title": "🪄 Pre-Rolls",
-        "items": [
-          "BOGO Cannarillo",
-          "$3 Hazy Daze",
-          "$3 Paul Bunyan"
-        ]
-      },
-      {
-        "title": "💥 Infused Pre-Rolls",
-        "items": [
-          "$3 Ripn",
-          "$5 Fire Styxx",
-          "$40 Cashed Packs"
-        ]
-      },
-      {
-        "title": "💨 Carts & Disposables",
-        "items": [
-          "BOGO Craft Live Resin Cart",
-          "$10 True North Cart",
-          "$15 HashHouse Cart",
-          "3/$25 Mozey Cart",
-          "$15 Crude Boys Big Ripper",
-          "3/$50 Mozey Disposable"
-        ]
-      },
-      {
-        "title": "🌿 Topical",
-        "items": [
-          "50% OFF Chill Products"
-        ]
-      },
-      {
-        "title": "🍯 Concentrates",
-        "items": [
-          "20% OFF 710",
-          "$18 Rooted & Zooted Rosin",
-          "$20 Redbud Roots Rosin"
-        ]
-      }
+    "category": "🔥 Featured Deals",
+    "promo": false,
+    "items": [
+      "$60 Grab Bags — Limited quantities!"
     ]
   },
 
   {
     "category": "🌿 Flower",
+    "promo": false,
     "groups": [
       {
         "title": "Ounces",
@@ -111,6 +45,7 @@
 
   {
     "category": "🪄 Pre-Rolls (Regular)",
+    "promo": false,
     "items": [
       "TreeTown 28pk - $50ea",
       "Green Labs 1g Pre-Rolls - $5ea or 5/$20 & 10/$40",
@@ -126,6 +61,7 @@
 
   {
     "category": "💥 Pre-Rolls (Infused)",
+    "promo": false,
     "items": [
       "Ripin 1g Infused - $5ea & 10/$40",
       "Propaganda 1g - $10ea or 3/$20 & 6/$40",
@@ -138,6 +74,7 @@
 
   {
     "category": "🧪 Tinctures",
+    "promo": false,
     "items": [
       "TreeTown Tinctures - $20ea or 2/$30"
     ]
@@ -145,6 +82,7 @@
 
   {
     "category": "🌿 Topical",
+    "promo": false,
     "items": [
       "Chill 'ON THE GO' - 2/$30",
       "Chill Subzero Roll-On - 2/$80"
@@ -153,6 +91,7 @@
 
   {
     "category": "💨 Vape Cartridges & Disposables",
+    "promo": false,
     "items": [
       "Crude Boys & Drip 1g Cartridges - $10ea or 15/$100",
       "Crude Boys 2G Big Ripper Disposable - $20ea",
@@ -168,6 +107,7 @@
 
   {
     "category": "🍬 Edibles & THC Beverages",
+    "promo": false,
     "items": [
       "Choice 200mg Gummies - $5ea & 10/$45",
       "TreeTown 200mg Standard Gummies - $5ea or 5/$20 & 10/$40",
@@ -192,6 +132,7 @@
 
   {
     "category": "🍯 Concentrates (Resin, Extracts, Hash)",
+    "promo": false,
     "items": [
       "Greenco 1g Resin - $10ea or 3/$20",
       "Paradice 1g Resin - $10ea or 15/$100",
