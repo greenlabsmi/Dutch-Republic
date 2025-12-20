@@ -1,82 +1,69 @@
 [
-
   {
-    "category": "🌿 Flower",
+    "category": "WEEKLY DEALS",
+    "promo": false,
     "groups": [
       {
-        "title": "Ounces",
+        "title": "🌿 Flower",
         "items": [
-          "$50 OUNCES - Dutch Touch Genetics Shake - Buy 2 for $85",
+          "$50 OUNCES - Dutch Touch Genetics Shake - Buy 2 ounces for $85",
           "$75 OUNCES - Dutch Touch Clusterfunk smalls",
           "$100 OUNCES - Dutch Touch Small Bud ounce - Buy 2 for $175",
           "$100 OUNCES - Simpler Daze ounce - Buy 2 for $175",
-          "$100 OUNCES - Plant Nerd Smalls - Buy 2 for $175",
+          "$100 OUNCES - Plant Nerd Smalls! Buy 2 for $175",
           "$200 OUNCES - Space Hippy & Death Star",
-          "$225 OUNCES - Lilac Diesel, Mr. Clean, Lemon Wookie#4 (Award Winners!)"
-        ]
-      },
-      {
-        "title": "Half Ounces",
-        "items": [
+          "$225 OUNCES - Lilac Diesel, Mr. Clean, Lemon Wookie#4 (Award Winners!)",
           "$80 HALF OUNCES - Pina Rita, 10K, Fruit Brute, Glue Bert",
-          "$100 HALF OUNCES - Space Hippy, Death Star, Big Smooth"
-        ]
-      },
-      {
-        "title": "Eighths",
-        "items": [
+          "$100 HALF OUNCES - Space Hippy, Death Star, Big Smooth",
           "$20 EIGHTHS - Society C Brand of Flower - 8/$125",
           "$25 EIGHTHS - Pina Rita, Fruit Brute, 10K, Glue Bert",
           "$30 EIGHTHS - Space Hippy, Death Star, Big Smooth, Clusterfunk",
           "$40 EIGHTHS - Mr. Clean, Lemon Wookie#4, Lilac Diesel (Award Winners!)"
+        ]
+      },
+      {
+        "title": "🪄 Pre-Rolls",
+        "items": [
+          "TreeTown 28pk - $50ea",
+          "Green Labs 1g - $5ea or 5/$20 & 10/$40",
+          "Craft Full Flower Cannarillo’s - $12ea or 2/$20",
+          "Plant Nerd Full Flower 1.5g Hand Rolled Joint - $15ea or 2/$25",
+          "Dutch Touch 5pk - $30ea",
+          "Dutch Touch 25pk - $100ea (Excludes Mr. Clean $110ea)",
+          "Dutch Touch 25pk 0.5g Pre-Rolls - $55ea (Excludes Mr. Clean)",
+          "Paul Bunyon & Hazy Daze - 5/$20 or 10/$35",
+          "Buy a Hazy Daze 28pk (Get 1 Light Sky Farm Bubble Hash Pre-Roll)"
+        ]
+      },
+      {
+        "title": "💥 Infused Pre-Rolls",
+        "items": [
+          "Ripin 1g - $5ea or 10/$30",
+          "Propaganda 1g - $10ea or 3/$20 & 6/$40",
+          "Fire Styxx - $7ea or 3/$20 & 10/$55",
+          "Plant Nerd Full Flower 1.25g Cannon - $15ea or 2/$25",
+          "Dutch Touch Genetics Donuts - $25ea or 2/$40"
+        ]
+      },
+      {
+        "title": "🧪 Tinctures",
+        "items": [
+          "TreeTown Tinctures - $20ea or 2/$30"
+        ]
+      },
+      {
+        "title": "🌿 Topical",
+        "items": [
+          "Chill ON THE GO - 2/$30",
+          "Chill Subzero Roll-On - 2/$80"
         ]
       }
     ]
   },
 
   {
-    "category": "🪄 Pre-Rolls",
-    "items": [
-      "TreeTown 28pk - $50ea",
-      "Green Labs 1g - $5ea or 5/$20 & 10/$40",
-      "Craft Full Flower Cannarillo’s - $12ea or 2/$20",
-      "Plant Nerd Full Flower 1.5g Hand Rolled Joint - $15ea or 2/$25",
-      "Dutch Touch 5pk - $30ea",
-      "Dutch Touch 25pk - $100ea (Excludes Mr. Clean: $110)",
-      "Dutch Touch 25pk 0.5g - $55ea (Excludes Mr. Clean)",
-      "Paul Bunyon & Hazy Daze - 5/$20 or 10/$35",
-      "Buy a Hazy Daze 28pk (Get 1 Light Sky Farm Bubble Hash Pre-Roll)"
-    ]
-  },
-
-  {
-    "category": "💥 Infused Pre-Rolls",
-    "items": [
-      "Ripin 1g - $5ea or 10/$30",
-      "Propaganda 1g - $10ea or 3/$20 & 6/$40",
-      "Fire Styxx - $7ea or 3/$20 & 10/$55",
-      "Plant Nerd Full Flower 1.25g Cannon - $15ea or 2/$25",
-      "Dutch Touch Genetics Donuts - $25ea or 2/$40"
-    ]
-  },
-
-  {
-    "category": "🧪 Tinctures",
-    "items": [
-      "TreeTown Tinctures - $20ea or 2/$30"
-    ]
-  },
-
-  {
-    "category": "🌿 Topical",
-    "items": [
-      "Chill ON THE GO - 2/$30",
-      "Chill Subzero Roll-On - 2/$80"
-    ]
-  },
-
-  {
-    "category": "💨 Vape Cartridges & Disposables",
+    "category": "💨 Vapes & Disposables",
+    "promo": false,
     "items": [
       "Crude Boys & Drip 1g Cartridges - $10ea or 15/$100",
       "Crude Boys 2G Big Ripper Disposable - $20ea",
@@ -91,31 +78,40 @@
   },
 
   {
-    "category": "🍬 Edibles & THC Beverages",
+    "category": "🍬 Edibles",
+    "promo": false,
     "items": [
       "Dutch Touch Genetics 200mg RSO Gummy - $10ea or 5/$45",
       "Dutch Touch Genetics Standard Gummies - 3/$25",
       "Choice 200mg Gummies - $5ea or 10/$45",
       "TreeTown 200mg Standard Gummies - $5ea or 5/$20 & 10/$40",
       "TreeTown 200mg Brownies & Rice Crispy Treats - $10ea or 3/$25",
-      "Petra Mints - $15ea",
-      "PC Pure Mints - $20ea",
+      "Petra Mints - $15",
+      "PC Pure Mints - $20",
       "CannaMelt - $3.50ea",
       "Goody Bag 200mg Gummies - $7ea or 3/$20",
       "Good News Sleep & Daytime Gummies - $12ea or 3/$30",
       "Dream 100mg Caramels - $15ea or 3/$35 (Mix & Match Pixel)",
       "Pixel 200mg THC Nerds - $15ea or 3/$35 (Mix & Match Dream)",
       "True North 200mg One Hitter Gummies - $5ea",
-      "True North 200mg Ratio Gummies - 4/$20",
+      "True North 200mg Ratio Gummies - 4/$20"
+    ]
+  },
+
+  {
+    "category": "🥤 THC Drinks",
+    "promo": false,
+    "items": [
       "Pleasantea High Dose Tea - $10ea or 3/$20",
       "Sweet Justice 10mg Drinks - $7ea or 3/$20",
-      "Mary Jones & CQ 100mg Drinks - $15ea or 3/$40",
+      "Mary Jones & CQ 100mg Ginger Ale & Cola - $15ea or 3/$40",
       "Tonic Fizz 10mg Seltzer - $5ea"
     ]
   },
 
   {
     "category": "🍯 Concentrates",
+    "promo": false,
     "items": [
       "Greenco 1g Resin - $10ea or 3/$20",
       "Paradice 1g Resin - $10ea or 15/$100",
@@ -123,9 +119,9 @@
       "Dutch Jelly 1g Batter - $20ea",
       "Dutch Touch 1g RSO Dart - $30ea or 5/$125",
       "Tokyo 5g Resin - $30ea or 3/$85",
-      "Old School Hash Co - $25 1g or $100 5g",
-      "Redbud Roots Hash Rosin - $25ea",
-      "710 In Stock"
+      "OLD SCHOOL HASH CO - $25 1g / $100 5g",
+      "RedBud Roots Hash Rosin - $25ea",
+      "710 IN STOCK!!"
     ]
   }
 ]
