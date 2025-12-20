@@ -2521,5 +2521,79 @@ iframe[src*="leafly.com"]{
   20%, 80% { opacity: 0.8; }
 }
 
-/* ================================ */
+/* =====================================================
+   Drive Thru Status Banner (Sticky, Subtle Shimmer)
+   ===================================================== */
+
+.drive-thru-banner{
+  position: sticky;
+  top: var(--nav-h, 60px);
+  z-index: 2500;                 /* below nav (3000+), above content */
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #000;
+  border-bottom: 1px solid rgba(212,123,25,.45);
+
+  box-shadow: 0 4px 12px rgba(0,0,0,.35);
+}
+
+/* Text */
+.drive-thru-text{
+  font-family: "Cinzel", serif;
+  font-weight: 900;
+  font-size: 0.9rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+
+  /* Default: solid gold */
+  color: #D47B19;
+
+  /* Foil shimmer setup */
+  background-image: linear-gradient(
+    92deg,
+    #9C6B1A 0%,
+    #F2C14E 22%,
+    #FFE27A 45%,
+    #F2C14E 62%,
+    #9C6B1A 100%
+  );
+  background-size: 220% auto;
+  background-position: -40% 0;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: driveThruShine 8s linear infinite;
+}
+
+/* Slow, subtle shimmer */
+@keyframes driveThruShine{
+  from { background-position: -40% 0; }
+  to   { background-position: 180% 0; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .drive-thru-text{
+    animation: none;
+    -webkit-text-fill-color: #D47B19;
+    background: none;
+  }
+}
+
+/* Mobile tweaks */
+@media (max-width: 900px){
+  .drive-thru-banner{
+    height: 30px;
+  }
+  .drive-thru-text{
+    font-size: 0.78rem;
+    letter-spacing: .14em;
+  }
+}
+
 
