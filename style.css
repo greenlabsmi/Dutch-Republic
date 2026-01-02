@@ -1897,7 +1897,7 @@ nav button,
 }
 .footer-links{
 }
-/* ===================== HERO CAROUSEL (final, all-in-one) ===================== */
+/* ===================== HERO CAROUSEL ===================== */
 
 /* Base hero wrapper */
 .hero{ position:relative; background:#000; }
@@ -1905,11 +1905,14 @@ nav button,
 /* Core slider container */
 .hero .slides{
   position:relative;
-  display:block;               /* ensure no old grid/flex scroller survives */
+  display:block;
   overflow:hidden;
   border-radius:12px;
   box-shadow:0 6px 18px rgba(0,0,0,.10);
   background:#000;
+
+  /* ✅ KEY: give the absolute slides a real height */
+  aspect-ratio:16/7;
 }
 
 /* Slides: stacked + fade */
@@ -1918,16 +1921,21 @@ nav button,
   opacity:0; pointer-events:none;
   transition:opacity .45s ease;
   will-change:opacity;
+
+  /* ✅ Center the image inside the slide box */
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 .hero .slide.is-active{ opacity:1; pointer-events:auto; }
 
-/* Images (contain, but NO forced vertical fill = less top/bottom bars) */
+/* Images (contain, minimal bars, no crop) */
 .hero .slide img{
   width:100%;
-  height:auto;                 /* IMPORTANT: was height:100% */
+  height:100%;
   display:block;
-  object-fit:contain;          /* Option A: never crop */
-  background:#000;             /* ensures clean letterbox bars */
+  object-fit:contain;
+  background:#000;
 }
 
 /* Dots (JS toggles [aria-current="true"]) */
@@ -1962,16 +1970,14 @@ nav button,
   }
 }
 
-/* Kill any old visible arrow styles */
 .hero .nav-arrow, .hero .arrow, .hero .prev, .hero .next, .c-arrow{ display:none !important; }
 
 /* ===================== Desktop: contained “card” look ===================== */
 @media (min-width:900px){
-  .hero{ padding:24px 0; background:transparent; }
+  .hero{ padding:0; background:transparent; } /* ✅ no extra top/bottom black padding */
 
-  /* white card wrapper (this is your <div class="hero-container" id="hero-container">) */
   .hero-container{
-    max-width:1200px;           /* 1100/1000px if you want narrower */
+    max-width:1200px;
     margin:0 auto;
     padding:20px;
     background:transparent;
@@ -1979,17 +1985,14 @@ nav button,
     box-shadow:0 10px 28px rgba(16,24,40,.12);
   }
 
-  /* IMPORTANT: remove forced height/ratio so hero hugs the image */
   #hero-slides{
     border-radius:14px;
     overflow:hidden;
     background:#000;
     width:100%;
 
-    aspect-ratio:auto;         /* was forcing letterbox */
-    height:auto;               /* was calc(100vh - 220px) */
-    min-height:0;              /* was 520px */
-    max-height:none;           /* was 780px */
+    /* ✅ Desktop ratio (slightly taller reduces top/bottom bars) */
+    aspect-ratio:16/6;
   }
 
   .hero .dots{ bottom:18px; }
@@ -1998,12 +2001,11 @@ nav button,
 
 /* Shift logo left on mobile only */
 @media (max-width: 900px) {
-  .sticky-logo {
-    margin-left: 8px;   /* adjust this number until it looks right */
-  }
+  .sticky-logo { margin-left: 8px; }
 }
 
-/* ==== About & Trophy (scoped, minimal) ==== */
+
+/* ==== About & Trophy ==== */
 .about-section, .trophy-section{
   padding: 56px 0;
   background: var(--surface, #fff);
