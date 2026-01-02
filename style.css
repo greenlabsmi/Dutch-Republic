@@ -1910,7 +1910,6 @@ nav button,
   border-radius:12px;
   box-shadow:0 6px 18px rgba(0,0,0,.10);
   background:#000;
-  aspect-ratio:16/7;           /* mobile/tablet height; tweak to taste */
 }
 
 /* Slides: stacked + fade */
@@ -1922,11 +1921,13 @@ nav button,
 }
 .hero .slide.is-active{ opacity:1; pointer-events:auto; }
 
-/* Images */
+/* Images (contain, but NO forced vertical fill = less top/bottom bars) */
 .hero .slide img{
-  width:100%; height:100%; display:block;
-  object-fit:contain;           /* Option A: never crop */
-  background:#000;              /* ensures clean letterbox bars */
+  width:100%;
+  height:auto;                 /* IMPORTANT: was height:100% */
+  display:block;
+  object-fit:contain;          /* Option A: never crop */
+  background:#000;             /* ensures clean letterbox bars */
 }
 
 /* Dots (JS toggles [aria-current="true"]) */
@@ -1978,18 +1979,18 @@ nav button,
     box-shadow:0 10px 28px rgba(16,24,40,.12);
   }
 
+  /* IMPORTANT: remove forced height/ratio so hero hugs the image */
   #hero-slides{
-  border-radius:14px;
-  overflow:hidden;
-  background:#000;
-  width:100%;
+    border-radius:14px;
+    overflow:hidden;
+    background:#000;
+    width:100%;
 
-  /* Bigger hero (still contained in your 1200px card) */
-  aspect-ratio:auto; 
-  height: calc(100vh - 220px); /* adjust if needed */
-  min-height: 520px;
-  max-height: 780px;
-}
+    aspect-ratio:auto;         /* was forcing letterbox */
+    height:auto;               /* was calc(100vh - 220px) */
+    min-height:0;              /* was 520px */
+    max-height:none;           /* was 780px */
+  }
 
   .hero .dots{ bottom:18px; }
   .hero .edge{ width:8%; border-radius:14px; }
