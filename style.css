@@ -1925,7 +1925,8 @@ nav button,
 /* Images */
 .hero .slide img{
   width:100%; height:100%; display:block;
-  object-fit:cover;
+  object-fit:contain;           /* Option A: never crop */
+  background:#000;              /* ensures clean letterbox bars */
 }
 
 /* Dots (JS toggles [aria-current="true"]) */
@@ -1977,15 +1978,18 @@ nav button,
     box-shadow:0 10px 28px rgba(16,24,40,.12);
   }
 
-  /* slideshow inside the card */
   #hero-slides{
-    border-radius:14px;
-    overflow:hidden;
-    background:#000;
-    aspect-ratio:16/6;          /* desktop height feel; tweak to 16/5 or 16/7 */
-    max-height:560px;           /* safety cap */
-    width:100%;
-  }
+  border-radius:14px;
+  overflow:hidden;
+  background:#000;
+  width:100%;
+
+  /* Bigger hero (still contained in your 1200px card) */
+  aspect-ratio:auto; 
+  height: calc(100vh - 220px); /* adjust if needed */
+  min-height: 520px;
+  max-height: 780px;
+}
 
   .hero .dots{ bottom:18px; }
   .hero .edge{ width:8%; border-radius:14px; }
