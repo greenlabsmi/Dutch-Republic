@@ -1969,14 +1969,14 @@ nav button,
 @media (min-width:900px){
   .hero{ padding:24px 0; background:transparent; }
 
-  .hero-container{
-    max-width:1200px;
-    margin:0 auto;
-    padding:20px;
-    background:transparent;
-    border-radius:18px;
-    box-shadow:0 10px 28px rgba(16,24,40,.12);
-  }
+.hero-container{
+  max-width:none;        /* full width */
+  margin:0;
+  padding:0;             /* remove white frame spacing */
+  background:transparent;
+  border-radius:0;
+  box-shadow:none;
+}
 
   #hero-slides{
     border-radius:14px;
