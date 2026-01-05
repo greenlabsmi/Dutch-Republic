@@ -6,11 +6,10 @@
       {
         "title": "Ounces",
         "items": [
-          "$50 OUNCES - Dutch Touch Genetics Shake - Buy 2 ounces for $85",
+          "$40 OUNCES - Dutch Touch Genetics Shake",
           "$75 OUNCES - Dutch Touch GlueBert smalls",
-          "$100 OUNCES - Dutch Touch Small Bud ounce - Buy 2 for $175",
-          "$100 OUNCES - Simpler Daze ounce - Buy 2 for $175",
-          "$100 OUNCES - Plant Nerd Smalls! Buy 2 for $175",
+          "$100 OUNCES - Dutch Touch 10K Big Buds (GREAT DEAL)",
+          "$100 OUNCES - Plant Nerd Smalls",
           "$200 OUNCES - Space Hippy & Death Star",
           "$225 OUNCES - Lilac Diesel, Mr. Clean, Lemon Wookie#4 (Award Winners!)"
         ]
@@ -27,8 +26,8 @@
         "items": [
           "$20 EIGHTHS - Society C Brand of Flower - 8/$125",
           "$25 EIGHTHS - Pina Rita, Fruit Brute, 10K, Glue Bert",
-          "$30 EIGHTHS - Space Hippy, Death Star, Big Smooth, Clusterfunk",
-          "$40 EIGHTHS - Mr. Clean, Lemon Wookie#4, Lilac Diesel (Award Winners!)"
+          "$30 EIGHTHS - Death Star, Big Smooth, Clusterfunk",
+          "$40 EIGHTHS - Lilac Diesel (Award Winner!)"
         ]
       }
     ]
@@ -37,7 +36,6 @@
     "category": "🪄 Pre-Rolls",
     "promo": false,
     "items": [
-      "TreeTown 28pk - $50ea",
       "Green Labs 1g - $5ea or 5/$20 & 10/$40",
       "Craft Full Flower Cannarillo’s - $12ea or 2/$20",
       "Plant Nerd Full Flower 1.5g Hand Rolled Joint - $15ea or 2/$25",
@@ -45,7 +43,7 @@
       "Dutch Touch 25pk - $100ea (Excludes Mr. Clean $110ea)",
       "Dutch Touch 25pk 0.5g Pre-Rolls - $55ea (Excludes Mr. Clean)",
       "Paul Bunyon & Hazy Daze - 5/$20 or 10/$35",
-      "Buy a Hazy Daze 28pk (Get 1 Light Sky Farm Bubble Hash Pre-Roll)"
+      "Hazy Daze 28pk (1OZ) - $45"
     ]
   },
   {
@@ -55,8 +53,7 @@
       "Ripin 1g - $5ea or 10/$30",
       "Propaganda 1g - $10ea or 3/$20 & 6/$40",
       "Fire Styxx - $7ea or 3/$20 & 10/$55",
-      "Plant Nerd Full Flower 1.25g Cannon - $15ea or 2/$25",
-      "Dutch Touch Genetics Donuts - $25ea or 2/$40"
+      "Dutch Touch Genetics Rosin Donuts - $25ea or 2/$40"
     ]
   },
   {
@@ -70,8 +67,7 @@
       "Redbud Roots 0.5g Hash Rosin Cartridges - $20ea or 3/$50",
       "Craft Live Resin 510 Cart - $12 or 2/$20 & 6/$60",
       "Dutch Touch Genetics 1g Disposables - 3/$55 or 6/$110",
-      "Monster Cart Live Resin - $10",
-      "Chief Rosin Disposable - $25 or 3/$60"
+      "Monster Cart Live Resin - $10"
     ]
   },
   {
@@ -87,11 +83,13 @@
       "PC Pure Mints - $20",
       "CannaMelt - $3.50 each",
       "Goody Bag 200mg Gummies - $7 or 3/$20",
-      "Good News Sleep and Daytime Gummies - $12ea or 3/$30",
+      "Good News Gummies - $12ea or 3/$30",
       "Dream 100mg Caramels - $15ea or 3/$35 - Mix and Match with Pixel",
       "Pixel 200mg THC Nerds - $15ea or 3/$35 - Mix and Match with Dream Caramels",
       "True North 200mg One Hitter Gummies - $5",
-      "True North 200mg Gummies Ratio - 4/$20"
+      "True North 200mg Gummies Ratio - 4/$20",
+      "Mother Pucker 200mg Rosin and Resin Gummies - 3/$20",
+      "Smokiez 200mg Gummies - 5/$40"
     ]
   },
   {
@@ -100,7 +98,7 @@
     "items": [
       "Pleasantea High Dose Tea - $10ea or 3/$20",
       "Sweet Justice 10mg Drinks - $7ea or 3/$20",
-      "Mary Jones and CQ 100mg Ginger Ale and Cola - $15ea or 3/$40",
+      "CQ 100mg Ginger Ale and Cola - $15ea or 3/$40",
       "Tonic Fizz 10mg seltzer - $5ea"
     ]
   },
@@ -114,16 +112,17 @@
       "Dutch Jelly 1g Batter - $20",
       "Dutch Touch 1g RSO Dart - $30ea or 5/$125",
       "Tokyo 5g Resin - $30ea or 3/$85 - (15grams for $85)",
-      "OLD SCHOOL HASH CO - $25 1Gram / $100 5Gram",
+      "OLD SCHOOL HASH CO - $20 Bubble Hash or 2/$35",
       "RedBud Roots HASH ROSIN - $25 A GRAM",
-      "710 IN STOCK!!"
+      "710 IN STOCK!!",
+      "Mr.Clean & Death Star AWARD WINNING RSO $25"
     ]
   },
   {
     "category": "🧪 Tinctures",
     "promo": false,
     "items": [
-      "TreeTown Tinctures - $20ea or 2/$30"
+      "TreeTown Tinctures - $20ea or 2/$3"
     ]
   },
   {
@@ -131,7 +130,8 @@
     "promo": false,
     "items": [
       "Chill ON THE GO - 2/$30",
-      "Chill Subzero roll on - 2/$80"
+      "Chill Subzero roll on - 2/$80",
+      "Chill Medicated Rub 2000 MG THC 2000 MG CBD - $110"
     ]
   }
 ]
