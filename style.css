@@ -225,7 +225,7 @@ a{color:inherit;text-decoration:none}
   :root{ --nav-h:76px; }               /* taller bar */
   .sticky-brand-name{ font-size:1.42rem; letter-spacing:.4px; }
   .sticky-logo .brand-lion{ height:calc(var(--nav-h) - 8px); }
-  .sticky-tabs{ display:flex !important; align-items:center; gap:20px; white-space:nowrap; overflow:visible; }
+    .sticky-tabs{ display:flex !important; align-items:center; gap:42px; white-space:nowrap; overflow:visible; }
   .sticky-tabs .stab{ display:inline-flex; align-items:center; padding:0; border:0; background:transparent; }
 }
 
