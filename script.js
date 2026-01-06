@@ -273,10 +273,10 @@ function smartMapHref(address){
     // Business hours
 // Sun–Thu: 9am–8pm (close: 20), Fri–Sat: 9am–9pm (close: 21)
 const HOURS = [
-  { d: 'Sunday',    open: 9, close: 20 },
-  { d: 'Monday',    open: 9, close: 20 },
-  { d: 'Tuesday',   open: 9, close: 20 },
-  { d: 'Wednesday', open: 9, close: 20 },
+  { d: 'Sunday',    open: 9, close: 19 },
+  { d: 'Monday',    open: 9, close: 19 },
+  { d: 'Tuesday',   open: 9, close: 19 },
+  { d: 'Wednesday', open: 9, close: 19 },
   { d: 'Thursday',  open: 9, close: 20 },
   { d: 'Friday',    open: 9, close: 21 },
   { d: 'Saturday',  open: 9, close: 21 },
