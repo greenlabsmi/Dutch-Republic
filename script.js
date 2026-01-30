@@ -370,6 +370,59 @@ function renderHours() {
   }
 }
 
+    (function initContactHours(){
+  const previewEl = document.getElementById('contactHoursPreview');
+  const listEl = document.getElementById('contactHoursList');
+  const btn = document.getElementById('hoursBtnContact');
+
+  if (!previewEl || !listEl || !btn) return;
+
+  // Helpers
+  const dayIndexFromName = (name) => (
+    ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'].indexOf(name)
+  );
+
+  const formatTime = (h) => {
+    const suffix = h >= 12 ? 'pm' : 'am';
+    const hr12 = ((h + 11) % 12) + 1;
+    return `${hr12}${suffix}`;
+  };
+
+  const formatRange = (open, close) => {
+    if (open == null || close == null) return 'Closed';
+    return `${formatTime(open)}–${formatTime(close)}`;
+  };
+
+  // Find today's entry
+  const todayIdx = new Date().getDay(); // 0=Sun
+  const todayName = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][todayIdx];
+  const today = HOURS.find(x => x.d === todayName);
+
+  const todayText = today ? formatRange(today.open, today.close) : '—';
+  previewEl.textContent = `Today: ${todayText}`;
+
+  // Build weekly list HTML
+  const rows = HOURS.map(h => {
+    const isToday = dayIndexFromName(h.d) === todayIdx;
+    const range = formatRange(h.open, h.close);
+    return `
+      <div class="hours-card__row">
+        <span class="${isToday ? '' : 'muted'}">${h.d}</span>
+        <span class="${isToday ? '' : 'muted'}">${range}</span>
+      </div>
+    `;
+  }).join('');
+
+  listEl.innerHTML = rows;
+
+  // Toggle open/close
+  btn.addEventListener('click', () => {
+    const isHidden = listEl.hidden;
+    listEl.hidden = !isHidden;
+    btn.textContent = isHidden ? 'Hide hours' : 'View hours';
+  });
+})();
+
 /* ---------- Popover alignment to the mobile status strip ---------- */
 /* Anchors the hours popover so its top edge sits flush with the
    bottom of the thin "status strip" (Open/Closed + address). */
