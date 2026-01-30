@@ -475,7 +475,7 @@ function alignHoursPopover() {
   const rect = anchor.getBoundingClientRect(); // viewport coords for position:fixed anchor
 
   // Nudge DOWN so the sticky bar never hides the top of the popover
- const OFFSET = Math.max(24, anchor.offsetHeight * 0.2);
+ const OFFSET = Math.max(26, anchor.offsetHeight * 0.2);
 
   const top = rect.bottom + OFFSET;
 
