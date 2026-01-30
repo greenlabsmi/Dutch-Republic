@@ -2591,4 +2591,45 @@ iframe[src*="leafly.com"]{
   }
 }
 
+/* ===== Visit Us: Hours block ===== */
+.hours-card{
+  margin-top: 10px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+.hours-card__head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.hours-card__preview{
+  margin-top: 6px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.hours-card__list{
+  margin-top: 8px;
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+  font-size: 0.95rem;
+}
+
+.hours-card__row{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding: 4px 0;
+  font-weight:600;
+}
+
+.hours-card__row .muted{
+  color: var(--muted);
+  font-weight:700;
+}
 
