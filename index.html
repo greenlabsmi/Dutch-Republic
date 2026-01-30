@@ -588,6 +588,22 @@
             </div>
           </div>
 
+          <!-- Hours (desktop + mobile) -->
+<div class="hours-card" aria-label="Store hours">
+  <div class="hours-card__head">
+    <strong>Hours</strong>
+    <button id="hoursBtnContact" class="btn small outline" type="button">View hours</button>
+  </div>
+
+  <div id="contactHoursPreview" class="hours-card__preview">
+    <!-- JS will render a short line like "Today: 10am–7pm" or "Today: Closed" -->
+  </div>
+
+  <div id="contactHoursList" class="hours-card__list" hidden>
+    <!-- JS will render the full weekly list here -->
+  </div>
+</div>
+
           <ul class="contact-list">
             <li class="contact-item">
               <strong>Phone</strong> <a href="tel:+12694404221">(269) 440-4221</a>
