@@ -450,31 +450,46 @@ const formatTime = (h) => {
 /* Anchors the hours popover so its top edge sits flush with the
    bottom of the thin "status strip" (Open/Closed + address). */
 function alignHoursPopover() {
-  // Prefer the mobile status strip when it's visible; otherwise use the sticky nav/site header
+  // Prefer the mobile status strip when it's visible; otherwise use the Drive Thru bar,
+  // then sticky nav/site header as a fallback.
+
   const strip = document.getElementById('statusStrip');
   const stripVisible = strip && getComputedStyle(strip).display !== 'none';
 
+  // Try to grab the real Drive Thru sticky banner element (edit these selectors if needed)
+  const driveThruBar =
+    document.getElementById('driveThruBar') ||
+    document.getElementById('driveThruSticky') ||
+    document.querySelector('.drive-thru-bar') ||
+    document.querySelector('.drive-thru-sticky') ||
+    document.querySelector('.sticky-banner');
+
   const anchor =
     (stripVisible && strip) ||
+    driveThruBar ||
     document.querySelector('.sticky-nav') ||
     document.querySelector('.site-header');
 
   if (!anchor) return;
 
   const rect = anchor.getBoundingClientRect(); // viewport coords for position:fixed anchor
-  const top = rect.bottom;                      // sit flush under the bar
+
+  // Nudge DOWN so the sticky bar never hides the top of the popover
+  const OFFSET = 10; // bump to 12–16 if you still see clipping
+  const top = rect.bottom + OFFSET;
 
   // Position the fixed popover in viewport space
-  pop.style.top = `${top}px`;
-  pop.style.right = '16px';                     // keep your existing horizontal snap
+  pop.style.top = `${Math.round(top)}px`;
+  pop.style.right = '16px'; // keep your existing horizontal snap
 }
 
 function openPop() {
   pop.hidden = false;
-  ovl.hidden  = false;
+  ovl.hidden = false;
   btn.setAttribute('aria-expanded', 'true');
-  alignHoursPopover();        // <- make sure it’s aligned when opened
+  alignHoursPopover(); // align when opened
 }
+
 
 /* Keep alignment while the page moves/resizes */
 let alignRaf = null;
