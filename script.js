@@ -404,11 +404,12 @@ function renderHours() {
     ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'].indexOf(name)
   );
 
-  const formatTime = (h) => {
-    const suffix = h >= 12 ? 'pm' : 'am';
-    const hr12 = ((h + 11) % 12) + 1;
-    return `${hr12}${suffix}`;
-  };
+const formatTime = (h) => {
+  if (h == null || Number.isNaN(h)) return '—';
+  const suffix = h >= 12 ? 'pm' : 'am';
+  const hr12 = ((h + 11) % 12) + 1;
+  return `${hr12}${suffix}`;
+};
 
   const formatRange = (open, close) => {
     if (open == null || close == null) return 'Closed';
