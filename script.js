@@ -284,21 +284,32 @@ const HOURS = [
   { d: 'Saturday',  open: 10, close: 19 },
 ];
 
-    function fmt(h) {
-      const ampm = h >= 12 ? 'PM' : 'AM';
-      const hr = ((h + 11) % 12) + 1;
-      return `${hr}${ampm}`;
-    }
-    function statusNow() {
-      const now = new Date();
-      const idx = now.getDay();
-      const hour = now.getHours() + now.getMinutes() / 60;
-      const { open, close } = HOURS[idx];
-      const openSoon = hour >= open - 0.5 && hour < open;
-      const closingSoon = hour >= close - 0.5 && hour < close;
-      const isOpen = hour >= open && hour < close;
-      return { isOpen, openSoon, closingSoon, open, close, idx };
-    }
+function fmt(h) {
+  if (h == null || Number.isNaN(h)) return '—';
+  const ampm = h >= 12 ? 'PM' : 'AM';
+  const hr = ((h + 11) % 12) + 1;
+  return `${hr}${ampm}`;
+}
+
+function statusNow() {
+  const now = new Date();
+  const idx = now.getDay();
+  const hour = now.getHours() + now.getMinutes() / 60;
+
+  const { open, close } = HOURS[idx];
+
+  // CLOSED day
+  if (open == null || close == null) {
+    return { isOpen:false, openSoon:false, closingSoon:false, open:null, close:null, idx, closedToday:true };
+  }
+
+  const openSoon = hour >= open - 0.5 && hour < open;
+  const closingSoon = hour >= close - 0.5 && hour < close;
+  const isOpen = hour >= open && hour < close;
+
+  return { isOpen, openSoon, closingSoon, open, close, idx, closedToday:false };
+}
+
    function paintPill() {
   const s = statusNow();
   btn.classList.remove('state-open','state-soon','state-closed');
@@ -319,12 +330,21 @@ const HOURS = [
     btn.textContent = 'OPEN';
     btn.classList.add('state-open');
     tip = `Open until ${fmt(s.close)} today`;
+ 
   } else {
-    btn.textContent = 'CLOSED';
-    btn.classList.add('state-closed');
-    const next = (s.idx + 1) % 7;
-    tip = `Opens ${days[next]} at ${fmt(HOURS[next].open)}`;
+  btn.textContent = 'CLOSED';
+  btn.classList.add('state-closed');
+
+  // Find next open day (skips closed days)
+  let next = (s.idx + 1) % 7;
+  for (let k = 0; k < 7; k++) {
+    const cand = HOURS[next];
+    if (cand && cand.open != null && cand.close != null) break;
+    next = (next + 1) % 7;
   }
+
+  tip = `Opens ${days[next]} at ${fmt(HOURS[next].open)}`;
+}
 
   // expose message for the tooltip
   btn.dataset.tip = tip;
@@ -336,12 +356,18 @@ const HOURS = [
     
 function renderHours() {
   const today = new Date().getDay();
-  list.innerHTML = HOURS.map((h, i) => `
-    <li class="${i === today ? 'is-today' : ''}">
-      <span>${h.d}</span>
-      <span>${fmt(h.open)} – ${fmt(h.close)}</span>
-    </li>
-  `).join('');
+  list.innerHTML = HOURS.map((h, i) => {
+    const range = (h.open == null || h.close == null)
+      ? 'Closed'
+      : `${fmt(h.open)} – ${fmt(h.close)}`;
+
+    return `
+      <li class="${i === today ? 'is-today' : ''}">
+        <span>${h.d}</span>
+        <span>${range}</span>
+      </li>
+    `;
+  }).join('');
 
   // Use the global smartMapHref helper
   const addr = "435 Blue Star Hwy, Douglas, MI 49406";
