@@ -271,21 +271,17 @@ function smartMapHref(address){
     const statusDot = document.getElementById('hoursStatusDot');
     if (!btn || !pop || !ovl || !list || !note) return;
 
-    // Business hours
-// Closed: Tuesday & Wednesday
+// Business hours
+// Closed: Tue + Wed
 // Open: 10am–7pm all other days
-
 const HOURS = [
-  { d: 'Sunday',    open: 10,   close: 19 },
-  { d: 'Monday',    open: 10,   close: 19 },
-
-  // CLOSED
-  { d: 'Tuesday',   open: null, close: null },
-  { d: 'Wednesday', open: null, close: null },
-
-  { d: 'Thursday',  open: 10,   close: 19 },
-  { d: 'Friday',    open: 10,   close: 19 },
-  { d: 'Saturday',  open: 10,   close: 19 },
+  { d: 'Sunday',    open: 10, close: 19 },
+  { d: 'Monday',    open: 10, close: 19 },
+  { d: 'Tuesday',   open: null, close: null }, // CLOSED
+  { d: 'Wednesday', open: null, close: null }, // CLOSED
+  { d: 'Thursday',  open: 10, close: 19 },
+  { d: 'Friday',    open: 10, close: 19 },
+  { d: 'Saturday',  open: 10, close: 19 },
 ];
 
     function fmt(h) {
