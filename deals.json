@@ -9,6 +9,7 @@
           "$40 OUNCES - Shake",
           "$75 OUNCES - GlueBert smalls",
           "$100 OUNCES - 10K Big Buds",
+          "$100 OUNCES - Popcorn Buds",
           "$200 OUNCES - Space Hippy & Death Star",
           "$225 OUNCES - Lilac Diesel, Mr. Clean, Lemon Wookie#4 (Award Winners!)"
         ]
@@ -24,6 +25,7 @@
         "title": "Eighths",
         "items": [
           "$20 EIGHTHS - Society C Brand of Flower - 8/$125",
+          "$20 EIGHTHS - Society C Runtz",
           "$25 EIGHTHS - Pina Rita, Fruit Brute, 10K, Glue Bert",
           "$30 EIGHTHS - Death Star, Big Smooth, Clusterfunk",
           "$40 EIGHTHS - Lilac Diesel"
@@ -69,7 +71,7 @@
     "promo": false,
     "items": [
       "Chill ON THE GO - 2/$30",
-      "Chill Subzero Roll-On - 2/$80",
+      "Chill Subzero roll on - 2/$80",
       "Chill Medicated Rub 2000 MG THC 2000 MG CBD - $110"
     ]
   },
@@ -81,7 +83,7 @@
       "Dutch Touch Genetics 1g Disposables - 3/$55 or 6/$110",
       "Mozey Disposable - $20 or 2/$30",
       "Mozey Cartridges - $10 or 10/$90",
-      "Crude Boys and Drip 1g Cartridges - $10 or 15/$100",
+      "Crude Boys and Drip 1g Cartridges - $10 or 15/$110",
       "Redbud Roots 1g Full Spectrum Cartridges - $12 or 3/$35",
       "True North Fusion 1g Full Spectrum Cartridges - $15 or 3/$40",
       "Redbud Roots 0.5g Hash Rosin Cartridges - $20 or 3/$50",
@@ -96,7 +98,7 @@
       "Pleasantea High Dose Tea - $10 or 3/$20",
       "Sweet Justice 10mg Drinks - $7 or 3/$20",
       "CQ 100mg Ginger Ale and Cola - $15 or 3/$40",
-      "Tonic Fizz 10mg Seltzer - $5",
+      "Tonic Fizz 10mg seltzer - $5",
       "Armada Sparkling Sweet Apple Cider - $10",
       "Armada Triple Jam - $15"
     ]
@@ -120,23 +122,21 @@
     "promo": false,
     "items": [
       "Dutch Touch Genetics 200mg RSO Gummy - $10 or 5/$45",
-      "Dutch Touch Genetics Standard Gummies - 3/$25",
-      "Wyld Gummies - 25% OFF all January",
-      "Choice 200mg Gummies - $5 or 10/$45",
+      "Dutch Touch Genetics Standard Gummies - 4/$30",
+      "Choice 200mg Gummies - $5 & 10/$45",
       "TreeTown 200mg Standard Gummies - $5 or 5/$20 & 10/$40",
       "TreeTown 200mg Brownies and Rice Crispy Treats - $10 or 3/$25",
       "Petra Mints - $15",
       "PC Pure Mints - $20",
       "CannaMelt - $4",
-      "Goody Bag 200mg Gummies - $7 or 3/$20",
+      "Goody Bag 200mg Gummies - $7 or 3/$20 or 10/$60",
       "Good News Gummies - $12 or 3/$30",
       "Dream 100mg - $15 or 3/$35",
       "Pixil 200mg - $15 or 3/$35",
-      "True North 200mg One Hitter Gummies - $5",
-      "True North 200mg Gummies Ratio - 4/$20",
-      "Mother Pucker 200mg Rosin and Resin Gummies - 3/$20",
-      "Smokiez 200mg Gummies - 5/$40",
-      "Kiva Bars - $25 or 2/$45"
+      "ALL True North Gummies - $5 or 10/$45",
+      "Mother Pucker 200mg Rosin and Resin Gummies - $5 or 10/$55",
+      "Smokiez 200mg Gummies - 10/$75",
+      "KIVA BARS - $25 or 2/$45"
     ]
   }
 ]
