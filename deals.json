@@ -7,7 +7,6 @@
         "title": "Ounces",
         "items": [
           "$40 OUNCES - Shake",
-          "$75 OUNCES - GlueBert smalls",
           "$100 OUNCES - 10K Big Buds",
           "$100 OUNCES - Popcorn Buds",
           "$200 OUNCES - Space Hippy & Death Star",
@@ -17,16 +16,14 @@
       {
         "title": "Half Ounces",
         "items": [
-          "$80 HALF OUNCES - Pina Rita, 10K, Fruit Brute, Glue Bert",
-          "$100 HALF OUNCES - Space Hippy, Death Star, Big Smooth"
+          "$80 HALF OUNCES - Pina Rita, 10K , Fruit Brute, Glue Bert",
+          "$100 HALF OUNCES - Purple Lambo, Big Smooth, Dutch Breath, Orange Kush Cake"
         ]
       },
       {
         "title": "Eighths",
         "items": [
-          "$20 EIGHTHS - Society C Brand of Flower - 8/$125",
-          "$20 EIGHTHS - Society C Runtz",
-          "$25 EIGHTHS - Pina Rita, Fruit Brute, 10K, Glue Bert",
+          "$25 EIGHTHS - Pina Rita, Fruit Brute, 10K , Glue Bert",
           "$30 EIGHTHS - Death Star, Big Smooth, Clusterfunk",
           "$40 EIGHTHS - Lilac Diesel"
         ]
@@ -51,7 +48,8 @@
     "category": "💥 Infused Pre-Rolls",
     "promo": false,
     "items": [
-      "Ripin 1g - $5 or 10/$30",
+      "Buy a Baby Jeeter 5 pack and Receive a 0.5g Jeeter for free! - $45",
+      "RipN 1g - $5 or 10/$30",
       "Propaganda 1g - $10ea or 3/$20 & 6/$40",
       "Fire Styxx - $7 or 3/$20 & 10/$55",
       "Dutch Touch Genetics Rosin Donuts - $25 or 2/$40",
@@ -79,6 +77,8 @@
     "category": "💨 Vapes & Disposables",
     "promo": false,
     "items": [
+      "Jeeter AIO Liquid Diamonds 1 gram - $25",
+      "Jeeter AIO Live Resin 1 gram - $30",
       "Crude Boys 2G Big Ripper Disposable - $20",
       "Dutch Touch Genetics 1g Disposables - 3/$55 or 6/$110",
       "Mozey Disposable - $20 or 2/$30",
@@ -96,9 +96,8 @@
     "promo": false,
     "items": [
       "Pleasantea High Dose Tea - $10 or 3/$20",
-      "Sweet Justice 10mg Drinks - $7 or 3/$20",
       "CQ 100mg Ginger Ale and Cola - $15 or 3/$40",
-      "Tonic Fizz 10mg seltzer - $5",
+      "Tonic 100mg - $10",
       "Armada Sparkling Sweet Apple Cider - $10",
       "Armada Triple Jam - $15"
     ]
@@ -113,8 +112,7 @@
       "Dutch Jelly 1g Batter - $20",
       "Tokyo 5g Resin - $30 or 3/$85 (15 grams for $85)",
       "OLD SCHOOL HASH CO - $20 Bubble Hash or 2/$35",
-      "RedBud Roots Hash Rosin - $25",
-      "710 IN STOCK!!"
+      "RedBud Roots Hash Rosin - $25"
     ]
   },
   {
@@ -125,7 +123,7 @@
       "Dutch Touch Genetics Standard Gummies - 4/$30",
       "Choice 200mg Gummies - $5 & 10/$45",
       "TreeTown 200mg Standard Gummies - $5 or 5/$20 & 10/$40",
-      "TreeTown 200mg Brownies and Rice Crispy Treats - $10 or 3/$25",
+      "TreeTown 200mg Rice Crispy Treats - $10 or 3/$25",
       "Petra Mints - $15",
       "PC Pure Mints - $20",
       "CannaMelt - $4",
