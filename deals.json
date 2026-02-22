@@ -16,18 +16,57 @@
       {
         "title": "Half Ounces",
         "items": [
-          "$80 HALF OUNCES - Pina Rita, 10K , Fruit Brute, Glue Bert",
+          "$80 HALF OUNCES - Pina Rita, 10K, Fruit Brute, Glue Bert",
           "$100 HALF OUNCES - Purple Lambo, Big Smooth, Dutch Breath, Orange Kush Cake"
         ]
       },
       {
         "title": "Eighths",
         "items": [
-          "$25 EIGHTHS - Pina Rita, Fruit Brute, 10K , Glue Bert",
+          "$25 EIGHTHS - Pina Rita, Fruit Brute, 10K, Glue Bert",
           "$30 EIGHTHS - Death Star, Big Smooth, Clusterfunk",
           "$40 EIGHTHS - Lilac Diesel"
         ]
       }
+    ]
+  },
+  {
+    "category": "🍬 Edibles",
+    "promo": false,
+    "items": [
+      "Dutch Touch Genetics 200mg RSO Gummy - $10 or 5/$45",
+      "Dutch Touch Genetics Standard Gummies - 4/$30",
+      "Choice 200mg Gummies - $5 & 10/$45",
+      "TreeTown 200mg Standard Gummies - $5 or 5/$20 & 10/$40",
+      "Petra Mints - $15",
+      "PC Pure Mints - $20",
+      "CannaMelt - $5",
+      "Goody Bag 200mg Gummies - $7 or 3/$20 or 10/$60",
+      "Good News Gummies - $12 or 3/$30",
+      "Dream 100mg - $15 or 3/$35",
+      "Pixil 200mg - $15 or 3/$35",
+      "ALL True North Gummies - $5 or 10/$45",
+      "Mother Pucker 200mg Rosin and Resin Gummies - $5 or 10/$55",
+      "Smokiez 200mg Gummies - 10/$75",
+      "KIVA BARS - $25 or 2/$45"
+    ]
+  },
+  {
+    "category": "💨 Vapes & Disposables",
+    "promo": false,
+    "items": [
+      "Jeeter AIO Liquid Diamonds 1g - $25",
+      "Jeeter AIO Live Resin 1g - $30",
+      "Crude Boys 2G Big Ripper Disposable - $20",
+      "Dutch Touch Genetics 1g Disposables - 3/$55 or 6/$110",
+      "Mozey Disposable - $20 or 2/$30",
+      "Mozey Cartridges - $10 or 10/$90",
+      "Crude Boys and Drip 1g Cartridges - $10 or 15/$110",
+      "Redbud Roots 1g Full Spectrum Cartridges - $12 or 3/$35",
+      "True North Fusion 1g Full Spectrum Cartridges - $15 or 3/$40",
+      "Redbud Roots 0.5g Hash Rosin Cartridges - $20 or 3/$50",
+      "Craft Live Resin 510 Cart - $12 or 2/$20 & 6/$60",
+      "Monster Cart Live Resin - $10"
     ]
   },
   {
@@ -57,6 +96,22 @@
     ]
   },
   {
+    "category": "🍯 Concentrates",
+    "promo": false,
+    "items": [
+      "Greenco 1g Resin - $10 or 3/$20",
+      "Paradice 1g Resin - $10 or 15/$100",
+      "Dutch Touch 1g Rosin - $25",
+      "Dutch Jelly 1g Batter - $20",
+      "Tokyo 5g Resin - $30 or 3/$85 (15 grams for $85)",
+      "OLD SCHOOL HASH CO - $20 Bubble Hash or 2/$35",
+      "RedBud Roots Hash Rosin - $25",
+      "Pelle Polare 1g Live Hash Rosin 90U - $50",
+      "Pelle Polare 3g Live Hash Rosin Full Spectrum - $100",
+      "Pelle Polare Hashcoin - Melted Guava - $40"
+    ]
+  },
+  {
     "category": "🧪 Tinctures",
     "promo": false,
     "items": [
@@ -69,26 +124,8 @@
     "promo": false,
     "items": [
       "Chill ON THE GO - 2/$30",
-      "Chill Subzero roll on - 2/$80",
+      "Chill Subzero Roll-On - 2/$80",
       "Chill Medicated Rub 2000 MG THC 2000 MG CBD - $110"
-    ]
-  },
-  {
-    "category": "💨 Vapes & Disposables",
-    "promo": false,
-    "items": [
-      "Jeeter AIO Liquid Diamonds 1 gram - $25",
-      "Jeeter AIO Live Resin 1 gram - $30",
-      "Crude Boys 2G Big Ripper Disposable - $20",
-      "Dutch Touch Genetics 1g Disposables - 3/$55 or 6/$110",
-      "Mozey Disposable - $20 or 2/$30",
-      "Mozey Cartridges - $10 or 10/$90",
-      "Crude Boys and Drip 1g Cartridges - $10 or 15/$110",
-      "Redbud Roots 1g Full Spectrum Cartridges - $12 or 3/$35",
-      "True North Fusion 1g Full Spectrum Cartridges - $15 or 3/$40",
-      "Redbud Roots 0.5g Hash Rosin Cartridges - $20 or 3/$50",
-      "Craft Live Resin 510 Cart - $12 or 2/$20 & 6/$60",
-      "Monster Cart Live Resin - $10"
     ]
   },
   {
@@ -97,44 +134,9 @@
     "items": [
       "Pleasantea High Dose Tea - $10 or 3/$20",
       "CQ 100mg Ginger Ale and Cola - $15 or 3/$40",
-      "Tonic 100mg - $10",
       "Armada Sparkling Sweet Apple Cider - $10",
-      "Armada Triple Jam - $15"
-    ]
-  },
-  {
-    "category": "🍯 Concentrates",
-    "promo": false,
-    "items": [
-      "Greenco 1g Resin - $10 or 3/$20",
-      "Paradice 1g Resin - $10 or 15/$100",
-      "Dutch Touch 1g Rosin - $25",
-      "Dutch Jelly 1g Batter - $20",
-      "Tokyo 5g Resin - $30 or 3/$85 (15 grams for $85)",
-      "OLD SCHOOL HASH CO - $20 Bubble Hash or 2/$35",
-      "RedBud Roots Hash Rosin - $25"
-    ]
-  },
-  {
-    "category": "🍬 Edibles",
-    "promo": false,
-    "items": [
-      "Dutch Touch Genetics 200mg RSO Gummy - $10 or 5/$45",
-      "Dutch Touch Genetics Standard Gummies - 4/$30",
-      "Choice 200mg Gummies - $5 & 10/$45",
-      "TreeTown 200mg Standard Gummies - $5 or 5/$20 & 10/$40",
-      "TreeTown 200mg Rice Crispy Treats - $10 or 3/$25",
-      "Petra Mints - $15",
-      "PC Pure Mints - $20",
-      "CannaMelt - $4",
-      "Goody Bag 200mg Gummies - $7 or 3/$20 or 10/$60",
-      "Good News Gummies - $12 or 3/$30",
-      "Dream 100mg - $15 or 3/$35",
-      "Pixil 200mg - $15 or 3/$35",
-      "ALL True North Gummies - $5 or 10/$45",
-      "Mother Pucker 200mg Rosin and Resin Gummies - $5 or 10/$55",
-      "Smokiez 200mg Gummies - 10/$75",
-      "KIVA BARS - $25 or 2/$45"
+      "Armada Triple Jam - $15",
+      "Tonic 100mg - $10"
     ]
   }
 ]
