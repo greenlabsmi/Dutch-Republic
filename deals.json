@@ -4,16 +4,17 @@
     "promo": false,
     "items": [
       "$40 OUNCES - Shake",
+      "$90 OUNCES - Cresco (Envious, Canal Street Runtz, Rainbow De Uva)",
       "$100 OUNCES - 10K Big Buds",
+      "$100 OUNCES - Popcorn Buds",
       "$200 OUNCES - Space Hippy & Death Star",
       "$225 OUNCES - Lilac Diesel, Mr. Clean (Award Winners!)",
       "$80 HALF OUNCES - Pina Rita, 10K, Fruit Brute, Glue Bert",
       "$100 HALF OUNCES - Purple Lambo, Big Smooth, Dutch Breath, Orange Kush Cake",
-      "$125 HALF OUNCES - Lilac Diesel, Lemon Wookie",
+      "$125 HALF OUNCES - Lilac Diesel",
       "$25 EIGHTHS - Pina Rita, Fruit Brute, 10K, Glue Bert, Secret Chief, Orange Kush Cake, Thug Life, Old Widow",
       "$30 EIGHTHS - Death Star, Big Smooth, Clusterfunk, Sin City Grapes, Angelica, Dutch Breath, Old Widow",
-      "$40 EIGHTHS - Lilac Diesel",
-      "$100 OUNCES - Popcorn Buds"
+      "$40 EIGHTHS - Lilac Diesel"
     ]
   },
   {
@@ -22,10 +23,10 @@
     "items": [
       "$10 or 5/$45 - Dutch Touch Genetics 200mg RSO Gummy",
       "4/$30 - Dutch Touch Genetics Standard Gummies",
+      "$5 or 10/$45 - Platinum 200mg Gummies",
       "$5 or 5/$20 or 10/$40 - TreeTown 200mg HIGH DOSE Gummies",
       "$15 - Petra Mints",
       "$20 - PC Pure Mints",
-      "$5 - CannaMelt",
       "$7 or 3/$20 or 10/$60 - Goody Bag 200mg Gummies",
       "$12 or 3/$30 - Good News Gummies",
       "$15 or 3/$35 - Dream 100mg",
@@ -33,6 +34,7 @@
       "$5 or 10/$45 - ALL True North Gummies",
       "5/$40 or 10/$75 - Smokiez 200mg Gummies",
       "$10 or 3/$20 or 6/$35 - Cannabis PM LOW DOSE Gummies",
+      "$20 - Wonder Gummies (Laugh, Focus, Relax, Sleep)",
       "$25 or 2/$45 - KIVA BARS"
     ]
   },
@@ -46,7 +48,7 @@
       "$20 - Crude Boys 2G Big Ripper Disposable",
       "$20 or 2/$30 - Mozey Disposable",
       "$20 or 2/$35 - Platinum Vape 2g AIO Disposable",
-      "$10 or 15/$110 - Platinum Vape 1g Cartridge",
+      "$10 or 5/$40 or 15/$110 - Platinum Vape 1g Cartridge",
       "$10 or 10/$90 - Mozey 1g Cartridge",
       "$10 or 15/$110 - Crude Boys & Drip 1g Cartridge",
       "$12 or 3/$35 - Redbud Roots 1g Full Spectrum Cartridge",
@@ -64,7 +66,6 @@
       "$100 - Dutch Touch 25pk",
       "$30 - Dutch Touch 5pk",
       "$5 or 5/$20 or 10/$40 - Green Labs 1g",
-      "$12 or 2/$20 - Craft Full Flower Cannarillo’s",
       "5/$20 or 10/$35 - Paul Bunyan & Hazy Daze",
       "$45 - Hazy Daze 28pk"
     ]
@@ -125,6 +126,21 @@
       "$10 - Armada Sparkling Sweet Apple Cider",
       "$15 - Armada Triple Jam",
       "$10 - Tonic 100mg"
+    ]
+  },
+  {
+    "category": "🛍 Merch & Accessories",
+    "promo": false,
+    "items": [
+      "$45 - Green Labs or Dutch Touch Genetics Hoodies",
+      "$30 - #KeepItDutch Beanie",
+      "$25 - Green Labs or Dutch Touch Genetics T-Shirt",
+      "$20 - Green Labs Beanie",
+      "$10 - Dutch Touch Genetics Bowl",
+      "$10 - Dutch Touch Genetics 4pc Metal Grinder",
+      "$5 - Dutch Touch Genetics Rolling Tray",
+      "$3 - Dutch Touch Genetics Ashtray",
+      "$3 - Dutch Touch Genetics Rolling Papers & Tips"
     ]
   }
 ]
