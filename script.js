@@ -275,13 +275,13 @@ function smartMapHref(address){
 // Closed: Tue + Wed
 // Open: 10am–7pm all other days
 const HOURS = [
-  { d: 'Sunday',    open: 10, close: 19 },
-  { d: 'Monday',    open: 10, close: 19 },
-  { d: 'Tuesday',   open: null, close: null }, // CLOSED
-  { d: 'Wednesday', open: null, close: null }, // CLOSED
-  { d: 'Thursday',  open: 10, close: 19 },
-  { d: 'Friday',    open: 10, close: 19 },
-  { d: 'Saturday',  open: 10, close: 19 },
+  { d: 'Sunday',    open: 10, close: 20 },
+  { d: 'Monday',    open: 10, close: 20 },
+  { d: 'Tuesday',   open: 10, close: 20 },
+  { d: 'Wednesday', open: 10, close: 20 },
+  { d: 'Thursday',  open: 10, close: 20 },
+  { d: 'Friday',    open: 10, close: 21 },
+  { d: 'Saturday',  open: 10, close: 21 },
 ];
 
 function fmt(h) {
