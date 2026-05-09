@@ -13,10 +13,8 @@
   <meta property="og:type" content="website">
 
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <link rel="stylesheet" href="style.css?v=dr-v2-002" />
+  <link rel="stylesheet" href="style.css?v=dr-v3-001" />
 
   <style>
     /* Leafly Embed Safety Net */
@@ -29,47 +27,20 @@
 </head>
 <body class="dark-theme">
 
-<header class="brand-banner" role="banner">
-  <h1 class="visually-hidden">Dutch Republic — Premium Cannabis</h1>
-  <a class="brand-title" href="#home" aria-label="Dutch Republic">
-    <svg class="foil-svg-large" viewBox="0 0 1200 180" role="img" aria-label="Dutch Republic" preserveAspectRatio="xMidYMid meet" style="display:block; width:min(92vw, 980px); height:auto;">
-      <defs>
-        <linearGradient id="foilGradLarge" x1="-40%" y1="0%" x2="180%" y2="0%">
-          <stop offset="0%"   stop-color="#9C6B1A"/>
-          <stop offset="22%"  stop-color="#F2C14E"/>
-          <stop offset="45%"  stop-color="#FFE27A"/>
-          <stop offset="62%"  stop-color="#F2C14E"/>
-          <stop offset="100%" stop-color="#9C6B1A"/>
-          <animate attributeName="x1" values="-40%;0%;-40%" dur="12s" repeatCount="indefinite"/>
-          <animate attributeName="x2" values="180%;220%;180%" dur="12s" repeatCount="indefinite"/>
-        </linearGradient>
-      </defs>
-      <text x="50%" y="68%" text-anchor="middle" font-family="Cinzel, serif" font-weight="900" font-size="120" fill="url(#foilGradLarge)">
-        DUTCH REPUBLIC
-      </text>
-    </svg>
-  </a>
-</header>
-  
 <header class="site-header sticky-nav">
   <div class="container sticky-nav__inner">
-    
     <a class="sticky-logo" href="#home" aria-label="Home">
       <img class="brand-lion" src="logo-dutch-republic.svg" alt="Dutch Republic crest" />
     </a>
-
-    <div class="sticky-brand-name" aria-hidden="false">
-      <svg class="foil-svg-small" viewBox="0 0 600 90" role="img" aria-label="Dutch Republic" preserveAspectRatio="xMidYMid meet">
-        <text x="50%" y="68%" text-anchor="middle" font-family="Cinzel, serif" font-weight="900" font-size="48" fill="url(#foilGradLarge)">
-          Dutch Republic
-        </text>
-      </svg>
+    
+    <div class="sticky-brand-name" aria-hidden="false" style="color: var(--gold); font-family: 'Cinzel'; font-weight: 900; font-size: 20px;">
+      DUTCH REPUBLIC
     </div>
 
     <ul class="sticky-tabs site-nav nav-links" aria-label="Primary">
       <li class="only-desktop"><a class="stab" href="#home">Home</a></li>
-      <li><a class="stab" href="#menu">Menu</a></li>
-      <li><a class="stab" href="#education">Learn</a></li>
+      <li><a class="stab" href="#menu">Shop Menu</a></li>
+      <li><a class="stab" href="#deals">Deals</a></li>
       <li><a class="stab" href="#trophy">Trophies</a></li>
       <li><a class="stab" href="#contact">Visit</a></li>
     </ul>
@@ -101,6 +72,7 @@
 <aside id="navDrawer" class="drawer" role="dialog" aria-modal="false" hidden>
   <nav class="drawer__nav" aria-label="Site">
     <a class="drawer__link" href="#menu">Shop Menu</a>
+    <a class="drawer__link" href="#deals">Today's Deals</a>
     <a class="drawer__link" href="#education">Education Hub</a>
     <a class="drawer__link" href="#trophy">Trophy Room</a>
     <a class="drawer__link" href="#contact">Visit & Map</a>
@@ -109,36 +81,79 @@
 </aside>
 
 <main id="home">
-  
-  <section class="hero">
-    <div id="hero-container" class="hero-container">
-      <div id="hero-slides" class="slides" data-carousel data-autoplay="6000">
-        <button class="edge edge--prev" aria-label="Previous"></button>
-        <button class="edge edge--next" aria-label="Next"></button>
-        <div class="slide is-active"><img src="carousel-1.png" alt="Dutch Republic Welcome"></div>
-        <div class="slide"><img src="carousel-2.png" alt="Premium Cannabis"></div>
-        <div class="slide"><img src="carousel-8.png" alt="Dutch Touch Genetics"></div>
-        <div class="slide"><img src="carousel-5.png" alt="Award Winning Strains"></div>
-        <div class="dots" aria-label="Slide navigation"></div>
+
+  <section class="hero center" style="padding: 60px 20px 40px; background: #000; border-bottom: 1px solid #222;">
+    <h2 style="color: var(--gold); font-size: 12px; letter-spacing: 3px; font-family: 'Inter'; font-weight: 900; margin-bottom: 10px;">CRAFT CANNABIS & CURATED BRANDS</h2>
+    <h1 style="font-family: 'Cinzel'; font-size: clamp(32px, 6vw, 64px); color: #fff; margin: 0 0 20px; line-height: 1.1;">The Standard of<br>Michigan Cannabis.</h1>
+    <p style="color: #aaa; max-width: 600px; margin: 0 auto; line-height: 1.6;">Home to our award-winning Dutch Touch Genetics, plus a hand-picked menu of the state’s most trusted brands. Fresh drops, daily deals, and expert guidance for every type of shopper.</p>
+  </section>
+
+  <section style="padding: 30px 20px; background: #050505;">
+    <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+      <div style="background: #111; padding: 24px; border-radius: 12px; border: 1px solid #222; text-align: left;">
+        <h3 style="color: var(--gold); margin: 0 0 10px; font-size: 18px;">🧪 Education First</h3>
+        <p style="color: #aaa; font-size: 14px; margin: 0; line-height: 1.5;">Expert advice, zero pressure. We help you navigate terpenes to find your perfect effect.</p>
+      </div>
+      <div style="background: #111; padding: 24px; border-radius: 12px; border: 1px solid #222; text-align: left;">
+        <h3 style="color: var(--gold); margin: 0 0 10px; font-size: 18px;">🦁 Premium Quality</h3>
+        <p style="color: #aaa; font-size: 14px; margin: 0; line-height: 1.5;">See the quality. Smell the freshness. Michigan's best curated lineup.</p>
+      </div>
+      <div style="background: #111; padding: 24px; border-radius: 12px; border: 1px solid #222; text-align: left;">
+        <h3 style="color: var(--gold); margin: 0 0 10px; font-size: 18px;">🏆 DTG Standard</h3>
+        <p style="color: #aaa; font-size: 14px; margin: 0; line-height: 1.5;">Award-winning genetics and consistency you can always trust.</p>
       </div>
     </div>
   </section>
 
-  <section id="shop" class="cta-shop center" style="padding: 40px 20px;">
-    <h2 class="section-title" style="margin-bottom: 20px;">The Standard of Michigan Cannabis.</h2>
-    <p style="color: #aaa; max-width: 600px; margin: 0 auto 30px;">Home to our award-winning Dutch Touch Genetics, plus a hand-picked menu of the state’s most trusted brands. Daily deals, fresh drops, and expert guidance for every type of shopper.</p>
-    <a class="btn btn-giant gold" href="#menu" style="font-size: 20px; padding: 15px 40px;">SHOP ONLINE</a>
+  <section style="padding: 40px 20px; background: #050505;">
+    <div class="container">
+      <h2 style="font-family: 'Cinzel'; color: #fff; margin: 0 0 5px; font-size: 28px;">Today’s Highlights</h2>
+      <p style="color: #aaa; margin-bottom: 25px;">Standout strains, fresh drops, and unbeatable daily deals.</p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px;">
+         <div style="background: #111; padding: 24px; border-radius: 12px; border: 1px solid #333;">
+            <div style="font-size: 11px; color: var(--gold); font-weight: 900; letter-spacing: 1px; margin-bottom: 5px;">VAPES</div>
+            <h3 style="color: #fff; margin: 0 0 5px; font-size: 20px;">Mix & Match 1G Carts</h3>
+            <div style="color: var(--emerald); font-weight: 800; margin-bottom: 10px;">5 for $35 + TAX</div>
+            <p style="color: #888; font-size: 13px; margin: 0;">Superfire · Crude Boys · Drip · Daily Dose</p>
+         </div>
+         <div style="background: #111; padding: 24px; border-radius: 12px; border: 1px solid #333;">
+            <div style="font-size: 11px; color: var(--gold); font-weight: 900; letter-spacing: 1px; margin-bottom: 5px;">FLOWER</div>
+            <h3 style="color: #fff; margin: 0 0 5px; font-size: 20px;">DTG Ounce Special</h3>
+            <div style="color: var(--emerald); font-weight: 800; margin-bottom: 10px;">$74 + TAX</div>
+            <p style="color: #888; font-size: 13px; margin: 0;">Premium Dutch Touch Pre-Pack Flower</p>
+         </div>
+         <div style="background: #111; padding: 24px; border-radius: 12px; border: 1px solid #333;">
+            <div style="font-size: 11px; color: var(--gold); font-weight: 900; letter-spacing: 1px; margin-bottom: 5px;">VAPES</div>
+            <h3 style="color: #fff; margin: 0 0 5px; font-size: 20px;">DTG 1G Disposables</h3>
+            <div style="color: var(--emerald); font-weight: 800; margin-bottom: 10px;">3 for $45 + TAX</div>
+            <p style="color: #888; font-size: 13px; margin: 0;">Full Gram All-in-Ones</p>
+         </div>
+      </div>
+    </div>
   </section>
 
-  <section id="deals-banner" style="padding: 20px 20px 0; background: #050505;">
-    <div class="container" style="max-width: 1000px; margin: 0 auto;">
-      <a href="#menu" style="display: block; position: relative; border-radius: 16px; overflow: hidden; border: 1px solid #333; transition: transform 0.2s ease;">
-        <img src="carousel-4.png" alt="Today's Deals" style="width: 100%; display: block; border-radius: 16px;">
-        <div style="position: absolute; bottom: 20px; right: 20px; background: var(--gold); color: #000; padding: 10px 24px; font-weight: 900; border-radius: 50px; font-family: 'Inter', sans-serif; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
-          SHOP DEALS ⇢
+  <section id="deals" style="padding: 20px 20px 40px; background: #050505;">
+    <div class="container">
+      <div class="deal-card" aria-expanded="false" style="background: #111; border: 2px solid var(--gold); border-radius: 12px; cursor: pointer; transition: all 0.2s;">
+        <div style="padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; background: rgba(214, 163, 74, 0.05); border-radius: 10px;">
+           <h2 style="margin: 0; font-family: 'Cinzel'; color: var(--gold); font-size: 22px;">TODAY'S DEALS ▾</h2>
+           <span class="chev" style="color: var(--gold); font-size: 14px;">(Tap to view)</span>
         </div>
-      </a>
+        <div id="dealBody" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; padding: 0 16px;">
+           <ul id="dealList" style="list-style: none; padding: 0; margin: 0;">
+             <li style="padding: 20px; text-align: center; color: #aaa;">Loading deals...</li>
+           </ul>
+           <div style="text-align: center; padding: 20px 0;">
+              <button id="closeDeals" class="btn outline" style="width: 100%;">Close Deals</button>
+           </div>
+        </div>
+      </div>
     </div>
+  </section>
+
+  <section id="shop" class="cta-shop center" style="padding: 20px; background: #050505;">
+    <a class="btn btn-giant gold" href="#menu" style="font-size: 24px; padding: 20px 50px; border-radius: 16px;">SHOP ONLINE NOW</a>
   </section>
 
   <section id="menu" class="menu-embed" hidden>
@@ -148,32 +163,47 @@
     <div id="leafly-embed-wrapper" style="width:100%;min-height:70vh;"></div>
   </section>
 
-  <section id="education" class="edu-section" style="padding: 60px 0; background: #0a0a0a; border-top: 1px solid #222;">
+  <section id="trophy" class="trophy-section" style="padding: 60px 0; background: #0a0a0a; border-top: 1px solid #222;">
     <div class="container">
       <div class="center" style="margin-bottom: 40px;">
-        <span class="deli-subtitle">DUTCH REPUBLIC GUIDE</span>
-        <h2 class="section-title">Not sure what to buy? Start here.</h2>
-        <p style="color: #aaa; max-width: 600px; margin: 10px auto;">You don't need to know every strain, terpene, or product type to shop well. A few simple ideas can make your experience way better.</p>
+        <span class="deli-subtitle">AWARD WINNING GENETICS</span>
+        <h2 class="section-title">The Trophy Room</h2>
+        <p style="color: #aaa;">Michigan's finest craft cannabis by Dutch Touch Genetics.</p>
       </div>
 
-      <div class="edu-grid" style="display: grid; gap: 30px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-        
-        <div class="edu-card" style="background: #111; padding: 30px; border-radius: 12px; border: 1px solid #222;">
-          <h3 style="color: var(--gold); font-family: 'Cinzel'; font-size: 24px; margin-top: 0;">What are terpenes?</h3>
-          <p style="color: #ccc; font-size: 14px; line-height: 1.6;">They are the natural aromatic compounds responsible for the smell and flavor of a strain, but they also help influence how that product tends to feel. It's why two products with similar THC percentages can create very different experiences.</p>
-          <ul style="color: #aaa; font-size: 13px; padding-left: 15px; margin-top: 15px;">
-            <li><strong>Myrcene:</strong> Relaxing & Calm</li>
-            <li><strong>Limonene:</strong> Bright & Uplifting</li>
-            <li><strong>Linalool:</strong> Soothing & Grounding</li>
-          </ul>
+      <div class="trophy-grid" style="display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+        <div class="trophy-card" style="background: #111; border: 1px solid #333; border-radius: 12px; padding: 20px; display: flex; align-items: center; gap: 20px;">
+          <div style="font-size: 40px;">🏆</div>
+          <div>
+            <h3 style="color: #fff; margin: 0 0 5px; font-family: 'Cinzel';">Mr. Clean</h3>
+            <p style="color: var(--gold); font-size: 12px; margin: 0 0 5px; font-weight: bold;">1st Place Sativa — High Times</p>
+            <p style="color: #888; font-size: 12px; margin: 0; line-height: 1.4;">Strong citrus, sour, earthy, and skunky. Known for high, energetic, and creative effects.</p>
+          </div>
         </div>
-
-        <div class="edu-card" style="background: #111; padding: 30px; border-radius: 12px; border: 1px solid #222;">
-          <h3 style="color: var(--gold); font-family: 'Cinzel'; font-size: 24px; margin-top: 0;">What is my dose?</h3>
-          <p style="color: #ccc; font-size: 14px; line-height: 1.6;">There is no perfect number that works for everyone. Tolerance, mood, environment, food, and body chemistry all matter. Start small. You can always take more. You can never take less.</p>
-          <p style="color: #ccc; font-size: 14px; line-height: 1.6; margin-top: 10px;"><strong>Edible Timing:</strong> Most take 30–90 minutes to begin, peak around 2–3 hours, and can last 4–8 hours.</p>
+        <div class="trophy-card" style="background: #111; border: 1px solid #333; border-radius: 12px; padding: 20px; display: flex; align-items: center; gap: 20px;">
+          <div style="font-size: 40px;">🥈</div>
+          <div>
+            <h3 style="color: #fff; margin: 0 0 5px; font-family: 'Cinzel';">Lemon Wookie #4</h3>
+            <p style="color: var(--gold); font-size: 12px; margin: 0 0 5px; font-weight: bold;">2nd Place — Best in Grass</p>
+            <p style="color: #888; font-size: 12px; margin: 0; line-height: 1.4;">Sharp lemon and diesel funk with energetic daytime vibes.</p>
+          </div>
         </div>
-
+        <div class="trophy-card" style="background: #111; border: 1px solid #333; border-radius: 12px; padding: 20px; display: flex; align-items: center; gap: 20px;">
+          <div style="font-size: 40px;">🥉</div>
+          <div>
+            <h3 style="color: #fff; margin: 0 0 5px; font-family: 'Cinzel';">Death By Funk</h3>
+            <p style="color: var(--gold); font-size: 12px; margin: 0 0 5px; font-weight: bold;">3rd Place Indica — Best in Grass</p>
+            <p style="color: #888; font-size: 12px; margin: 0; line-height: 1.4;">Deep notes of oil and fuelly funk. A powerful buzz that can make you feel relaxed and euphoric.</p>
+          </div>
+        </div>
+        <div class="trophy-card" style="background: #111; border: 1px solid #333; border-radius: 12px; padding: 20px; display: flex; align-items: center; gap: 20px;">
+          <div style="font-size: 40px;">🥇</div>
+          <div>
+            <h3 style="color: #fff; margin: 0 0 5px; font-family: 'Cinzel';">Angelica RSO</h3>
+            <p style="color: var(--gold); font-size: 12px; margin: 0 0 5px; font-weight: bold;">1st Place RSO — High Times</p>
+            <p style="color: #888; font-size: 12px; margin: 0; line-height: 1.4;">Flavor notes of lemon, hash, incense, and menthol to flood your senses.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -184,52 +214,29 @@
     <p style="color: #aaa; max-width: 500px; margin: 0 auto; line-height: 1.6;">We are currently finalizing our online store for exclusive merch and apparel. Check back soon for the official drop.</p>
   </section>
 
-  <section id="trophy" class="trophy-section" style="padding: 60px 0; background: #050505;">
+  <section id="education" class="edu-section" style="padding: 60px 0; background: #050505;">
     <div class="container">
       <div class="center" style="margin-bottom: 40px;">
-        <span class="deli-subtitle">AWARD WINNING GENETICS</span>
-        <h2 class="section-title">The Trophy Room</h2>
-        <p style="color: #aaa;">Michigan's finest craft cannabis by Dutch Touch Genetics.</p>
+        <span class="deli-subtitle">DUTCH REPUBLIC GUIDE</span>
+        <h2 class="section-title">Not sure what to buy? Start here.</h2>
+        <p style="color: #aaa; max-width: 600px; margin: 10px auto;">You don't need to know every strain, terpene, or product type to shop well. A few simple ideas can make your experience way better.</p>
       </div>
 
-      <div class="trophy-grid" style="display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-        
-        <div class="trophy-card" style="background: #111; border: 1px solid #333; border-radius: 12px; padding: 20px; display: flex; align-items: center; gap: 20px;">
-          <div style="font-size: 40px;">🏆</div>
-          <div>
-            <h3 style="color: #fff; margin: 0 0 5px; font-family: 'Cinzel';">Mr. Clean</h3>
-            <p style="color: var(--gold); font-size: 12px; margin: 0 0 5px; font-weight: bold;">1st Place Sativa — High Times</p>
-            <p style="color: #888; font-size: 12px; margin: 0; line-height: 1.4;">Strong citrus, sour, earthy, and skunky. Known for high, energetic, and creative effects.</p>
-          </div>
+      <div class="edu-grid" style="display: grid; gap: 30px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+        <div class="edu-card" style="background: #111; padding: 30px; border-radius: 12px; border: 1px solid #222;">
+          <h3 style="color: var(--gold); font-family: 'Cinzel'; font-size: 24px; margin-top: 0;">What are terpenes?</h3>
+          <p style="color: #ccc; font-size: 14px; line-height: 1.6;">They are the natural aromatic compounds responsible for the smell and flavor of a strain, but they also help influence how that product tends to feel. It's why two products with similar THC percentages can create very different experiences.</p>
+          <ul style="color: #aaa; font-size: 13px; padding-left: 15px; margin-top: 15px;">
+            <li><strong>Myrcene:</strong> Relaxing & Calm</li>
+            <li><strong>Limonene:</strong> Bright & Uplifting</li>
+            <li><strong>Linalool:</strong> Soothing & Grounding</li>
+          </ul>
         </div>
-
-        <div class="trophy-card" style="background: #111; border: 1px solid #333; border-radius: 12px; padding: 20px; display: flex; align-items: center; gap: 20px;">
-          <div style="font-size: 40px;">🥈</div>
-          <div>
-            <h3 style="color: #fff; margin: 0 0 5px; font-family: 'Cinzel';">Lemon Wookie #4</h3>
-            <p style="color: var(--gold); font-size: 12px; margin: 0 0 5px; font-weight: bold;">2nd Place — Best in Grass</p>
-            <p style="color: #888; font-size: 12px; margin: 0; line-height: 1.4;">Sharp lemon and diesel funk with energetic daytime vibes.</p>
-          </div>
+        <div class="edu-card" style="background: #111; padding: 30px; border-radius: 12px; border: 1px solid #222;">
+          <h3 style="color: var(--gold); font-family: 'Cinzel'; font-size: 24px; margin-top: 0;">What is my dose?</h3>
+          <p style="color: #ccc; font-size: 14px; line-height: 1.6;">There is no perfect number that works for everyone. Tolerance, mood, environment, food, and body chemistry all matter. Start small. You can always take more. You can never take less.</p>
+          <p style="color: #ccc; font-size: 14px; line-height: 1.6; margin-top: 10px;"><strong>Edible Timing:</strong> Most take 30–90 minutes to begin, peak around 2–3 hours, and can last 4–8 hours.</p>
         </div>
-
-        <div class="trophy-card" style="background: #111; border: 1px solid #333; border-radius: 12px; padding: 20px; display: flex; align-items: center; gap: 20px;">
-          <div style="font-size: 40px;">🥉</div>
-          <div>
-            <h3 style="color: #fff; margin: 0 0 5px; font-family: 'Cinzel';">Death By Funk</h3>
-            <p style="color: var(--gold); font-size: 12px; margin: 0 0 5px; font-weight: bold;">3rd Place Indica — Best in Grass</p>
-            <p style="color: #888; font-size: 12px; margin: 0; line-height: 1.4;">Deep notes of oil and fuelly funk. A powerful buzz that can make you feel relaxed and euphoric.</p>
-          </div>
-        </div>
-
-        <div class="trophy-card" style="background: #111; border: 1px solid #333; border-radius: 12px; padding: 20px; display: flex; align-items: center; gap: 20px;">
-          <div style="font-size: 40px;">🥇</div>
-          <div>
-            <h3 style="color: #fff; margin: 0 0 5px; font-family: 'Cinzel';">Angelica RSO</h3>
-            <p style="color: var(--gold); font-size: 12px; margin: 0 0 5px; font-weight: bold;">1st Place RSO — High Times</p>
-            <p style="color: #888; font-size: 12px; margin: 0; line-height: 1.4;">Flavor notes of lemon, hash, incense, and menthol to flood your senses.</p>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
@@ -239,28 +246,25 @@
       <div class="contact-col" style="max-width: 600px; margin: 0 auto; text-align: center;">
         <h2 class="section-title">Visit Us — Dutch Republic</h2>
         <p style="color: #aaa; margin-bottom: 30px;">Step into the newest chapter of Dutch Touch Genetics. Located in Douglas, Michigan.</p>
-
         <div class="map-card" style="background: #050505; border: 1px solid #333; border-radius: 16px; overflow: hidden; text-align: left;">
           <div class="map-link" aria-label="Map preview">
             <iframe title="Map — Dutch Republic" width="100%" height="250" style="border:0; display:block" loading="lazy" src="https://maps.google.com/maps?q=435+Blue+Star+Hwy,+Douglas,+MI+49406&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
           </div>
-
           <div class="map-actions" style="padding: 20px;">
             <div class="addr" style="color: #fff; font-size: 16px; margin-bottom: 15px;">
               <strong>435 Blue Star Hwy</strong><br/><span style="color:#aaa;">Douglas, MI, 49406</span>
             </div>
-            
             <ul class="contact-list" style="list-style: none; padding: 0; margin: 0 0 20px 0; color: #aaa; font-size: 14px;">
               <li style="margin-bottom: 8px;"><strong style="color:#fff;">Phone:</strong> <a href="tel:+12694404221" style="color: var(--gold);">(269) 440-4221</a></li>
               <li style="margin-bottom: 8px;"><strong style="color:#fff;">Email:</strong> <a href="mailto:nick@dutchrepublic.org" style="color: var(--gold);">Nick@dutchrepublic.org</a></li>
             </ul>
-
             <button id="openMapsSmart" class="btn full-width gold" type="button" style="width: 100%; padding: 12px; font-size: 16px;">Open in Maps</button>
           </div>
         </div>
       </div>
     </div>
   </section>
+
 </main>
 
 <footer class="site-footer" style="background: #000; border-top: 1px solid #222; padding: 40px 0; text-align: center;">
@@ -279,7 +283,7 @@
   </div>
 </footer>
 
-<script src="script.js?v=dr-v2-002" defer></script>
+<script src="script.js?v=dr-v3-001" defer></script>
 
 <div id="ageGate" class="agegate" aria-hidden="true" role="dialog" aria-modal="true" style="background: #000;">
   <div class="agegate__box" role="document" style="background: #111; border: 1px solid var(--gold);">
@@ -299,41 +303,7 @@
 </div>
 
 <script>
-(function(){
-  const menuSection = document.getElementById('menu');
-  const wrapper = document.getElementById('leafly-embed-wrapper');
-  let embedLoaded = false;
-
-  function injectLeaflyEmbed(){
-    if (embedLoaded || !wrapper) return;
-    const s = document.createElement('script');
-    s.id = 'leafly-embed-script';
-    s.src = 'https://web-embedded-menu.leafly.com/loader.js';
-    s.dataset.origin = 'https://web-embedded-menu.leafly.com';
-    s.dataset.slug = 'dutch-republic';
-    s.dataset.primary = '#D6A34A'; 
-    s.dataset.secondary = '#2ef8bb'; 
-    s.dataset.deals = '#CE300A';
-    wrapper.appendChild(s);
-    embedLoaded = true;
-  }
-
-  function openMenu(){
-    if (!menuSection) return;
-    menuSection.hidden = false;
-    injectLeaflyEmbed();
-    const top = menuSection.getBoundingClientRect().top + window.pageYOffset - 72;
-    window.scrollTo({ top, behavior: 'smooth' });
-  }
-
-  document.querySelectorAll('a[href="#menu"], .btn-order').forEach(el => {
-    el.addEventListener('click', (e) => {
-      e.preventDefault();
-      openMenu();
-    });
-  });
-})();
+(function(){const menuSection = document.getElementById('menu'); const wrapper = document.getElementById('leafly-embed-wrapper'); let embedLoaded = false; function injectLeaflyEmbed(){if (embedLoaded || !wrapper) return; const s = document.createElement('script'); s.id = 'leafly-embed-script'; s.src = 'https://web-embedded-menu.leafly.com/loader.js'; s.dataset.origin = 'https://web-embedded-menu.leafly.com'; s.dataset.slug = 'dutch-republic'; s.dataset.primary = '#D6A34A'; s.dataset.secondary = '#2ef8bb'; s.dataset.deals = '#CE300A'; wrapper.appendChild(s); embedLoaded = true; } function openMenu(){if (!menuSection) return; menuSection.hidden = false; injectLeaflyEmbed(); const top = menuSection.getBoundingClientRect().top + window.pageYOffset - 72; window.scrollTo({ top, behavior: 'smooth' }); } document.querySelectorAll('a[href="#menu"], .btn-order').forEach(el => {el.addEventListener('click', (e) => {e.preventDefault(); openMenu(); }); }); })();
 </script>
-
 </body>
 </html>
