@@ -811,3 +811,123 @@ function stop(){ if (timer) { clearInterval(timer); timer = null; } }
     if (user){ stop(); start(); } // restart timer when user interacts
   }
 })();
+
+
+// --- BEST IN GRASS PROMO POP-UP (ANIMATED GRADIENT EDITION) ---
+setTimeout(() => {
+    // Inject custom CSS animations for the flowing gradient feel
+    if (!document.getElementById('big-styles')) {
+        const style = document.createElement('style');
+        style.id = 'big-styles';
+        style.innerHTML = `
+            @keyframes awardDrop {
+                0% { transform: scale(0.8) translateY(-40px); opacity: 0; }
+                50% { transform: scale(1.02) translateY(5px); opacity: 1; }
+                100% { transform: scale(1) translateY(0); opacity: 1; }
+            }
+            @keyframes bigGradientFlow {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+            }
+            /* The flowing text effect - Slowed down to 24s */
+            .big-gradient-text {
+                background: linear-gradient(90deg, #00e5ff, #bd00ff, #ff00a0, #00e5ff);
+                background-size: 300% 300%;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                animation: bigGradientFlow 24s ease infinite; 
+            }
+            /* The flowing background effect - Slowed down to 24s */
+            .big-gradient-bg {
+                background: linear-gradient(90deg, #00e5ff, #bd00ff, #ff00a0, #00e5ff);
+                background-size: 300% 300%;
+                animation: bigGradientFlow 24s ease infinite;
+            }
+            /* The glowing animated border trick - Slowed down to 24s */
+            .big-gradient-border {
+                position: relative;
+                border-radius: 24px;
+                background: #0b0d0c; 
+                background-clip: padding-box;
+                border: 3px solid transparent; 
+            }
+            .big-gradient-border::before {
+                content: '';
+                position: absolute;
+                inset: -3px;
+                border-radius: 26px;
+                z-index: -1;
+                background: linear-gradient(90deg, #00e5ff, #bd00ff, #ff00a0, #00e5ff);
+                background-size: 300% 300%;
+                animation: bigGradientFlow 24s ease infinite;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    const bigPopup = document.createElement('div');
+    bigPopup.id = 'big-promo-popup';
+    // The dark overlay background wrapper
+    bigPopup.style = "position:fixed; inset:0; z-index:10000; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.85); backdrop-filter:blur(4px);";
+    
+    bigPopup.innerHTML = `
+        <div class="big-gradient-border" style="position:relative; width:90%; max-width:520px; padding:35px 25px; text-align:center; box-shadow: 0 40px 100px rgba(0,0,0,0.8), 0 0 50px rgba(189, 0, 255, 0.2); animation: awardDrop 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;">
+            
+            <button id="close-big" style="position:absolute; top:-15px; right:-15px; width:38px; height:38px; background:#D6A34A; color:#000; font-family:Arial, sans-serif; font-size:26px; border:2px solid #000; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 10px rgba(0,0,0,0.6); z-index: 10000; transition: transform 0.2s ease, background 0.2s ease;">&times;</button>
+            
+            <div class="big-gradient-bg" style="display:inline-block; font-size:14px; font-weight:950; letter-spacing:0.15em; color:#fff; padding:6px 20px; border-radius:999px; margin-bottom:18px; box-shadow: 0 4px 15px rgba(189, 0, 255, 0.4);">
+                MAY 9TH EXCLUSIVE
+            </div>
+            
+            <div style="background: rgba(0,0,0,0.6); backdrop-filter: blur(12px); border-radius: 18px; padding: 24px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.06); box-shadow: 0 10px 30px rgba(0,0,0,0.4);">
+                <h2 style="font-family:'Cinzel', serif; font-size:36px; font-weight:900; color:#fff; margin:0 0 12px; line-height:1.1;">Best In Grass</h2>
+                <p style="color:rgba(255,255,255,0.95); font-size:16px; font-weight:800; line-height:1.5; margin:0;">
+                   Judge Kits Are Almost Gone! Start Judging Now!<br>
+                    <span style="font-weight:600; font-size: 14px; color: rgba(255,255,255,0.75); display:block; margin-top:8px;">Put your lungs where your mouth is. Grab an official judge kit and tell the rest of Michigan what's actually good. Kits are IN-STORE ONLY while supplies last.</span>
+                </p>
+            </div>
+            
+            <div style="background: rgba(0,0,0,0.75); border: 1px solid rgba(189, 0, 255, 0.3); padding: 18px; border-radius: 16px; margin-bottom: 24px; box-shadow: inset 0 0 20px rgba(189,0,255,0.05), 0 10px 20px rgba(0,0,0,0.5);">
+                <div class="big-gradient-text" style="font-size:13px; font-weight:900; letter-spacing:0.1em; margin-bottom:6px;">🔥 SPECIAL EVENT PRICING 🔥</div>
+                <div style="color:#fff; font-family:'Cinzel', serif; font-size:18px; font-weight:900; line-height:1.3; text-shadow: 0 2px 8px rgba(0,0,0,0.8);">
+                    Exclusive Deli Deals, Fresh Drops,<br>& Elite Discounts All Day
+                </div>
+            </div>
+            
+            <button id="btn-big-shop" class="btn big-gradient-bg" style="width:100%; font-size:16px; padding:14px 0; color:#fff; border:none; box-shadow: 0 10px 30px rgba(189,0,255,0.4); font-weight: 950; border-radius: 999px; cursor: pointer; transition: 0.2s; letter-spacing: 0.05em;">VIEW COMPETITION DETAILS</button>
+
+            <p style="color:rgba(255,255,255,0.4); font-size:12px; font-style:italic; margin:16px 0 0;">Ask your budtender for more details.</p>
+        </div>
+    `;
+    document.body.appendChild(bigPopup);
+    
+    // Hover effects for the new Gold X
+    const closeBtn = document.getElementById('close-big');
+    closeBtn.onmouseover = () => { closeBtn.style.transform = 'scale(1.1)'; closeBtn.style.background = '#fff'; };
+    closeBtn.onmouseout = () => { closeBtn.style.transform = 'scale(1)'; closeBtn.style.background = '#D6A34A'; };
+
+    const shopBtn = document.getElementById('btn-big-shop');
+    shopBtn.onmouseover = () => { shopBtn.style.transform = 'translateY(-3px)'; shopBtn.style.boxShadow = '0 15px 40px rgba(189,0,255,0.6)'; };
+    shopBtn.onmouseout = () => { shopBtn.style.transform = 'translateY(0)'; shopBtn.style.boxShadow = '0 10px 30px rgba(189,0,255,0.4)'; };
+    
+    // Click handlers
+    const closePopup = () => {
+        bigPopup.remove();
+    };
+    closeBtn.onclick = closePopup;
+
+    // CLICK OUTSIDE TO CLOSE LOGIC
+    bigPopup.onclick = (e) => {
+        // Only trigger the close function if they clicked the dark background overlay, not the ad box
+        if (e.target === bigPopup) {
+            closePopup();
+        }
+    };
+    
+    // Linking directly to the Best in Grass official site!
+    shopBtn.onclick = () => {
+        closePopup();
+        window.open('https://bestingrass.io/competitions/michigan-2026/', '_blank');
+    };
+}, 15000);
