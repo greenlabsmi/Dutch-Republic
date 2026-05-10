@@ -855,3 +855,60 @@ section { scroll-margin-top: calc(var(--nav-h) + 20px); }
 
 /* Safe overrides to ensure Leafly renders properly on Dark Mode */
 #leafly-embed-wrapper iframe { display: block; width: 100%; min-height: 1200px !important; height: auto; border: 0; border-radius: 12px; box-shadow: 0 16px 40px rgba(0,0,0,0.8); background: #ffffff; }
+
+/* =========================================================
+   IMAGE-FREE CINEMATIC HIGHLIGHT CARDS
+========================================================= */
+
+/* Strip out any empty image links so the colors show through */
+#todays-highlights .thMedia {
+  background-image: none !important; 
+}
+
+/* 1. The Hero Card (Deep Emerald & Gold) */
+#todays-highlights .thHero .thMedia {
+  background: radial-gradient(circle at top right, rgba(214, 163, 74, 0.4), transparent 60%),
+              linear-gradient(135deg, #050505 0%, #0B7D5A 100%) !important;
+}
+
+/* 2. Left Mid Card (Rich Amethyst) */
+#todays-highlights .thGrid2 > a:nth-child(1) .thMedia {
+  background: linear-gradient(135deg, #111 0%, #4a1942 100%) !important;
+}
+
+/* 3. Right Mid Card (Burnt Crimson) */
+#todays-highlights .thGrid2 > a:nth-child(2) .thMedia {
+  background: linear-gradient(135deg, #111 0%, #66101F 100%) !important;
+}
+
+/* 4. Scroll Cards (Vibrant Jewel Tones) */
+#todays-highlights .thRow > a:nth-child(1) .thMedia {
+  background: linear-gradient(135deg, #000 0%, #004e89 100%) !important; /* Sapphire */
+}
+#todays-highlights .thRow > a:nth-child(2) .thMedia {
+  background: linear-gradient(135deg, #000 0%, #8A5B10 100%) !important; /* Bronze */
+}
+#todays-highlights .thRow > a:nth-child(3) .thMedia {
+  background: linear-gradient(135deg, #000 0%, #0f5c44 100%) !important; /* Forest */
+}
+#todays-highlights .thRow > a:nth-child(4) .thMedia {
+  background: linear-gradient(135deg, #000 0%, #7b2cbf 100%) !important; /* Royal Purple */
+}
+
+/* Add a faint carbon-fiber texture to all cards so they look premium */
+#todays-highlights .thMedia::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.15;
+  background-image: repeating-linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000), 
+                    repeating-linear-gradient(45deg, #000 25%, #111 25%, #111 75%, #000 75%, #000);
+  background-position: 0 0, 2px 2px;
+  background-size: 4px 4px;
+  pointer-events: none;
+}
+
+/* Lighten the shadows slightly since there's no photo to darken */
+#todays-highlights .thOverlay {
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 100%) !important;
+}
