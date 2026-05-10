@@ -623,7 +623,7 @@ function renderDealsDropdown(data) {
       `;
     }).join('') + `
 <div class="drTaxBanner">
-        <strong>Pricing Update:</strong> All prices are shown <strong>Pre-Tax</strong>. Recreational orders include a 16% state tax.
+        <strong>Pricing Update:</strong> All prices are shown <strong>Out The Door (Tax Included)</strong>.
       </div>`;
     
     if (jumpWrap) {
@@ -672,7 +672,7 @@ function renderHighlightsFromConfig(data, mount) {
       const shopClick = `event.preventDefault(); const nav = document.querySelector('[data-open-shop=\\'rec\\']') || document.querySelector('[data-open-shop]'); if(nav) nav.click();`;
 
       if (type === 'mini') {
-        const smartTitle = esc(it.title).replace(/(\d+\s+for\s+\$\d+|\$\d+)/gi, '<span style="color: #D6A34A; display: block; font-size: 19px; margin-top: 4px; font-weight: 950; text-shadow: 0 2px 10px rgba(0,0,0,1);">$1</span>');
+        const smartTitle = esc(it.title).replace(/(\d+\s+for\s+\$\d+|\$\d+)/gi, '<span style="color: #D6A34A; display: block; font-size: 26px; margin-top: 4px; font-weight: 950; text-shadow: 0 2px 10px rgba(0,0,0,1);">$1</span>');
         return `
           <a href="#shop" class="thCard ${sizeClass}" onclick="${shopClick}">
             <div class="thMedia" style="background-image:url('${esc(img)}')"></div>
@@ -690,7 +690,7 @@ function renderHighlightsFromConfig(data, mount) {
           <div class="thContent">
             ${it.tag ? `<div class="thPill ${pillClass}">${esc(it.tag)}</div>` : ''}
             <h3 class="thH3">${esc(it.title)}</h3>
-            ${it.price ? `<div class="thPrice">${esc(it.price)} <span class="thTaxTag">+ TAX</span></div>` : ''}
+            ${it.price ? `<div class="thPrice">${esc(it.price)} <span class="thTaxTag">TAX INCLUDED</span></div>` : ''}
             ${it.details ? `<div class="thDetails">${esc(it.details)}</div>` : ''}
             <div class="thCta">Shop Deal →</div>
           </div>
