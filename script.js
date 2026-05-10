@@ -1140,8 +1140,8 @@ setTimeout(() => {
         }
     };
     
-    shopBtn.onclick = () => {
+  shopBtn.onclick = () => {
         closePopup();
         window.open('https://bestingrass.io/competitions/michigan-2026/', '_blank');
     };
-}, 15000);
+}, 15000); // This closes the setTimeout and the code block.
