@@ -159,26 +159,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- 6. TROPHY ROOM (NO LIMIT & CUSTOM SORT) ---
+    // --- 6. TROPHY ROOM ---
     (async function initStrains() {
         try {
             const r = await fetch('https://dutchtouchgenetics.com/strains.json');
             const list = await r.json();
-            
-            // Define the specific starting order
             const priorityOrder = ["Mr. Clean", "Lemon Wookie #4", "Lilac Diesel"];
-            
-            // Filter for only award winners and sort them
             const sortedAwards = list
                 .filter(s => s.award === true)
                 .sort((a, b) => {
                     let idxA = priorityOrder.indexOf(a.name);
                     let idxB = priorityOrder.indexOf(b.name);
-                    if (idxA === -1) idxA = 999; // Move others to the back
+                    if (idxA === -1) idxA = 999;
                     if (idxB === -1) idxB = 999;
                     return idxA - idxB;
                 });
-
             const mount = document.getElementById('current-strains');
             if (mount) {
                 mount.innerHTML = sortedAwards.map(s => `
@@ -233,7 +228,6 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             document.head.appendChild(style);
         }
-
         const bigPopup = document.createElement('div');
         bigPopup.id = 'big-promo-popup';
         bigPopup.style = "position:fixed; inset:0; z-index:10000; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.85); backdrop-filter:blur(4px);";
@@ -249,17 +243,35 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
         document.body.appendChild(bigPopup);
-        
         const closeBtn = document.getElementById('close-big');
         const shopBtn = document.getElementById('btn-big-shop');
         const closePopup = () => bigPopup.remove();
-        
         closeBtn.onclick = closePopup;
         bigPopup.onclick = (e) => { if (e.target === bigPopup) closePopup(); };
-        shopBtn.onclick = () => {
-            closePopup();
-            window.open('https://bestingrass.io/competitions/michigan-2026/', '_blank');
-        };
+        shopBtn.onclick = () => { closePopup(); window.open('https://bestingrass.io/competitions/michigan-2026/', '_blank'); };
     }, 15000);
+
+    // --- 9. EDUCATION LOGIC (GUIDE CARDS) ---
+    document.querySelectorAll('[data-guide-card]').forEach(card => {
+        const toggle = card.querySelector('.guideCard__toggle');
+        if (toggle) {
+            toggle.addEventListener('click', () => {
+                const isOpen = card.classList.contains('is-open');
+                
+                // Close all other open cards first
+                document.querySelectorAll('[data-guide-card].is-open').forEach(openCard => {
+                    if (openCard !== card) openCard.classList.remove('is-open');
+                });
+
+                // Toggle the clicked card
+                card.classList.toggle('is-open');
+                
+                // If opening, smooth scroll to it
+                if (!isOpen) {
+                    setTimeout(() => smoothTo(card), 400);
+                }
+            });
+        }
+    });
 
 });
