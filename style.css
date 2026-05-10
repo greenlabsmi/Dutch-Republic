@@ -578,65 +578,178 @@ body.is-scrolled .status-strip {
 }
 
 /* =========================================================
-   TODAYS HIGHLIGHTS (DARK MODE)
+   TODAYS HIGHLIGHTS (OPTIMIZED)
 ========================================================= */
-#todays-highlights.thSection{ background: #050505 !important; padding: 56px 0 16px; border-top: 1px solid #222 !important; border-bottom: 1px solid #222 !important; overflow-x: clip; }
-#todays-highlights .thHeader{ position: relative; padding-left: 14px; margin-bottom:18px; }
-#todays-highlights .thHeader::before{ content:""; position:absolute; left:0; top:6px; bottom:6px; width:4px; border-radius:99px; background: var(--gold) !important; box-shadow: 0 0 0 3px rgba(214,163,74,.1) !important; }
-#todays-highlights .thWrap{ width:min(1100px, calc(100% - 32px)); margin:0 auto; }
-#todays-highlights .thTitle{ margin:0; font-size:28px; line-height:1.1; letter-spacing:-0.02em; color: #fff !important; }
-#todays-highlights .thSub{ margin:8px 0 0; color: #aaa !important; font-size:14px; line-height:1.4; }
-
-#todays-highlights .thCard{ position:relative; display:block; border-radius:24px; overflow:hidden; text-decoration:none; color:inherit; background: #111 !important; border: 1px solid #333 !important; box-shadow: 0 10px 26px rgba(0,0,0,.5); transform:translateY(0); transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
-@media (hover:hover) and (pointer:fine){
-  #todays-highlights .thCard:hover { transform: translateY(-6px); border-color: var(--gold) !important; box-shadow: 0 18px 40px rgba(0,0,0,.8); }
-  #todays-highlights .thCard:hover .thMedia { transform: scale(1.04); }
+#todays-highlights.thSection { 
+    background: #050505 !important; 
+    padding: 56px 0 16px; 
+    border-top: 1px solid #222 !important; 
+    border-bottom: 1px solid #222 !important; 
+    overflow-x: clip; 
 }
 
-#todays-highlights .thMedia { position: absolute; inset: 0; background-size: cover; background-position: right center; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); will-change: transform; }
-#todays-highlights .thOverlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.2) 62%, rgba(0,0,0,0.9) 100%); }
-#todays-highlights .thContent{ position:relative; z-index:2; padding:18px 18px 16px; }
+#todays-highlights .thHeader { 
+    position: relative; 
+    padding-left: 14px; 
+    margin-bottom: 18px; 
+}
 
-#todays-highlights .thHero{ height:460px; }
-#todays-highlights .thMid{ height:230px; border-radius:20px; }
-#todays-highlights .thMini{ height: 215px; width: 280px; border-radius: 18px; flex: 0 0 auto; }
-#todays-highlights .thMini .thMedia { background-position: center; background-size: cover; background-repeat: no-repeat; }
+#todays-highlights .thHeader::before { 
+    content: ""; 
+    position: absolute; 
+    left: 0; 
+    top: 6px; 
+    bottom: 6px; 
+    width: 4px; 
+    border-radius: 99px; 
+    background: var(--gold) !important; 
+    box-shadow: 0 0 0 3px rgba(214, 163, 74, .1) !important; 
+}
 
-#todays-highlights .thPill{ display:inline-flex; align-items:center; gap:8px; font-size:12px; letter-spacing:.08em; font-weight:800; padding:8px 10px; border-radius:999px; background: rgba(214,163,74,.1) !important; color: var(--gold) !important; margin-bottom:10px; }
-#todays-highlights .thH3{ margin:0 0 6px; font-size:26px; line-height:1.08; letter-spacing:-0.02em; color: #ffffff; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
-#todays-highlights .thPrice{ font-weight:900; font-size:34px; line-height:1; color: var(--gold) !important; margin:0 0 6px; }
-#todays-highlights .thDetails { font-size: 13px; color: #ccc !important; text-shadow: 0 1px 5px rgba(0,0,0,0.8); }
-#todays-highlights .thCta{ margin-top:12px; font-size:15px; font-weight:900; color: var(--gold) !important; display:inline-flex; align-items:center; gap:8px; text-decoration:underline; text-underline-offset:4px; }
+#todays-highlights .thWrap { 
+    width: min(1100px, calc(100% - 32px)); 
+    margin: 0 auto; 
+}
 
-#todays-highlights .thGrid2{ display:grid; grid-template-columns:1fr; gap:14px; margin-top:14px; }
-@media (min-width: 900px){ #todays-highlights .thGrid2{ grid-template-columns:1fr 1fr; gap:16px; } #todays-highlights .thHero{ height:440px; } }
+#todays-highlights .thTitle { 
+    margin: 0; 
+    font-size: 28px; 
+    line-height: 1.1; 
+    letter-spacing: -0.02em; 
+    color: #fff !important; 
+}
 
-#todays-highlights .thRowWrap{ margin-top:16px; background: transparent; padding: 0; border-radius: 0; box-shadow: none; border: none; }
-#todays-highlights .thRowTitle{ display: none; }
-#todays-highlights .thRow { display: flex !important; flex-wrap: nowrap !important; justify-content: flex-start !important; overflow-x: auto !important; width: 100% !important; max-width: 100vw !important; padding-left: 20px !important; padding-right: 60px !important; margin-left: 0 !important; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch !important; padding-bottom: 24px !important; margin-bottom: 40px !important; scrollbar-width: auto !important; }
-#todays-highlights .thRow > .thCard{ scroll-snap-align:start; }
-#todays-highlights .thContent--mini{ padding:14px; }
-#todays-highlights .thMiniTitle{ font-size:18px; font-weight:900; line-height:1.1; color: #fff !important; }
-#todays-highlights .thMini { flex: 0 0 auto !important; }
+#todays-highlights .thSub { 
+    margin: 8px 0 0; 
+    color: #aaa !important; 
+    font-size: 14px; 
+    line-height: 1.4; 
+}
 
-#todays-highlights .thHero .thContent{ position:absolute; inset: 0; display:flex; flex-direction: column; align-items:center; text-align:center; padding: 24px; z-index: 2; }
-#todays-highlights .thHero .thPill{ margin-top: 10px; }
-#todays-highlights .thHero .thH3{ margin: 10px 0 0; font-size: clamp(34px, 6vw, 56px); line-height: 1.06; color:#fff; text-shadow: 0 10px 32px rgba(0,0,0,.8); max-width: 900px; }
-#todays-highlights .thHero .thPrice{ margin: 12px 0 0; font-size: clamp(54px, 10vw, 90px); font-weight: 950; color: var(--gold) !important; text-shadow: 0 10px 30px rgba(0,0,0,.8), 0 0 18px rgba(214,163,74,.28) !important; }
-#todays-highlights .thHero .thDetails{ margin-top: auto; padding-top: 18px; font-size: 16px; font-weight: 800; color: rgba(255,255,255,.88); text-shadow: 0 8px 24px rgba(0,0,0,.8); }
-#todays-highlights .thHero .thCta{ margin-top: 10px; font-size: 18px; font-weight: 950; color: #fff; text-decoration: underline; text-underline-offset: 4px; text-shadow: 0 8px 24px rgba(0,0,0,.8); }
+/* --- Card Base --- */
+#todays-highlights .thCard { 
+    position: relative; 
+    display: block; 
+    border-radius: 24px; 
+    overflow: hidden; 
+    text-decoration: none; 
+    color: inherit; 
+    background: #111 !important; 
+    border: 1px solid #333 !important; 
+    box-shadow: 0 10px 26px rgba(0, 0, 0, .5); 
+    transform: translateY(0); 
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; 
+}
 
-@media (max-width:420px){ #todays-highlights .thHero .thContent{ margin: 0; padding: 18px 18px 20px; } }
-@media (max-width:520px){ #todays-highlights .thHero{ height: 360px; } }
+@media (hover: hover) and (pointer: fine) {
+    #todays-highlights .thCard:hover { 
+        transform: translateY(-6px); 
+        border-color: var(--gold) !important; 
+        box-shadow: 0 18px 40px rgba(0, 0, 0, .8); 
+    }
+    #todays-highlights .thCard:hover .thMedia { 
+        transform: scale(1.04); 
+    }
+}
 
-#todays-highlights .thReveal{ opacity:0; transform:translateY(18px); transition:opacity .55s ease, transform .55s ease; }
-#todays-highlights .thReveal.is-in{ opacity:1; transform:translateY(0); }
+#todays-highlights .thMedia { 
+    position: absolute; 
+    inset: 0; 
+    background-size: cover; 
+    background-position: center; /* Fixed: centered for better focus */
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+    will-change: transform; 
+}
 
-#todays-highlights .thRow::-webkit-scrollbar { height: 8px; display: block !important; -webkit-appearance: none !important; }
-#todays-highlights .thRow::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.15); border-radius: 10px; margin: 0 4vw; }
-#todays-highlights .thRow::-webkit-scrollbar-thumb { background: rgba(214, 163, 74, 0.4) !important; border-radius: 10px; transition: background 0.3s ease; }
-#todays-highlights .thRow:hover::-webkit-scrollbar-thumb { background: rgba(214, 163, 74, 1) !important; }
+#todays-highlights .thOverlay { 
+    position: absolute; 
+    inset: 0; 
+    background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.8) 100%); 
+}
 
+#todays-highlights .thContent { 
+    position: relative; 
+    z-index: 2; 
+    padding: 18px 18px 16px; 
+}
+
+/* --- Fixed Hero Box (Reduced Size) --- */
+#todays-highlights .thHero { 
+    height: 320px; /* Base height */
+}
+
+#todays-highlights .thHero .thH3 {
+    font-size: clamp(26px, 5vw, 38px); /* Responsive title size */
+    margin: 5px 0 0;
+}
+
+#todays-highlights .thHero .thPrice {
+    font-size: clamp(42px, 8vw, 62px); /* Responsive price size */
+    margin: 2px 0 0;
+}
+
+#todays-highlights .thMid { height: 230px; border-radius: 20px; }
+
+/* --- Fixed Mini Tiles --- */
+#todays-highlights .thMini { 
+    height: 190px; 
+    width: 220px; /* Tighter tiles for better scroll feel */
+    border-radius: 18px; 
+    flex: 0 0 auto !important; 
+}
+
+/* --- Row Scroll (Fix for images being shoved/out of focus) --- */
+#todays-highlights .thRow { 
+    display: flex !important; 
+    flex-wrap: nowrap !important; 
+    justify-content: flex-start !important; 
+    overflow-x: auto !important; 
+    gap: 15px;
+    padding: 0 20px 20px !important; 
+    mask-image: none !important; /* Explicitly removed masks causing focus issues */
+    -webkit-mask-image: none !important;
+    scroll-snap-type: x mandatory; 
+    -webkit-overflow-scrolling: touch !important; 
+}
+
+#todays-highlights .thRowWrap { margin-top: 16px; background: transparent; }
+#todays-highlights .thRowTitle { display: none; }
+#todays-highlights .thRow > .thCard { scroll-snap-align: start; }
+
+/* --- Typography & Details --- */
+#todays-highlights .thPill { 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 8px; 
+    font-size: 11px; 
+    letter-spacing: .08em; 
+    font-weight: 800; 
+    padding: 6px 10px; 
+    border-radius: 999px; 
+    background: rgba(214, 163, 74, .1) !important; 
+    color: var(--gold) !important; 
+    margin-bottom: 8px; 
+}
+
+#todays-highlights .thH3 { margin: 0 0 4px; color: #ffffff; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+#todays-highlights .thPrice { font-weight: 900; color: var(--gold) !important; margin: 0; }
+#todays-highlights .thDetails { font-size: 13px; color: #ccc !important; }
+
+/* --- Responsive Adjustments --- */
+@media (min-width: 900px) { 
+    #todays-highlights .thGrid2 { grid-template-columns: 1fr 1fr; gap: 16px; } 
+    #todays-highlights .thHero { height: 380px; } /* Desktop Hero Height */
+}
+
+@media (max-width: 520px) { 
+    #todays-highlights .thHero { height: 340px; } 
+    #todays-highlights .thMini { width: 200px; height: 180px; }
+}
+
+/* --- Scrollbar Styling --- */
+#todays-highlights .thRow::-webkit-scrollbar { height: 6px; display: block !important; }
+#todays-highlights .thRow::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.15); border-radius: 10px; }
+#todays-highlights .thRow::-webkit-scrollbar-thumb { background: rgba(214, 163, 74, 0.4) !important; border-radius: 10px; }
 @media (max-width: 640px) {
   #todays-highlights .thMini { width: 240px; height: 180px; }
   #todays-highlights .thRow { -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%); mask-image: linear-gradient(to right, black 85%, transparent 100%); padding-right: 50px !important; }
