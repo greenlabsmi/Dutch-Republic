@@ -77,8 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const prefersReduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // FIXED: Syntax error removed, properly escaping quotes
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({
-      '&': '&', '<': '<', '>': '>', '"': '"', "'": '''
+      '&': '&', '<': '<', '>': '>', '"': '&quot;', "'": '&#39;'
   }[c]));
 
   function fixAssetPath(p) {
@@ -101,28 +102,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-// ===== MASTER SCROLL INTERCEPTOR =====
-document.addEventListener('click', (e) => {
-  const link = e.target.closest('a[href^="#"]');
-  const scrollBtn = e.target.closest('[data-scroll]');
-  
-  let targetSelector = null;
-  if (scrollBtn) {
-    targetSelector = scrollBtn.getAttribute('data-scroll');
-  } else if (link) {
-    targetSelector = link.getAttribute('href');
-  }
-
-  if (targetSelector && targetSelector !== '#') {
-    const targetEl = document.querySelector(targetSelector);
-    if (targetEl) {
-      e.preventDefault(); 
-      smoothTo(targetEl);
+  // ===== MASTER SCROLL INTERCEPTOR =====
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href^="#"]');
+    const scrollBtn = e.target.closest('[data-scroll]');
+    
+    let targetSelector = null;
+    if (scrollBtn) {
+      targetSelector = scrollBtn.getAttribute('data-scroll');
+    } else if (link) {
+      targetSelector = link.getAttribute('href');
     }
-  }
-});
 
-// ===== SMART STICKY HEADER TRIGGER =====
+    if (targetSelector && targetSelector !== '#') {
+      const targetEl = document.querySelector(targetSelector);
+      if (targetEl) {
+        e.preventDefault(); 
+        smoothTo(targetEl);
+      }
+    }
+  });
+
+  // ===== SMART STICKY HEADER TRIGGER =====
   const handleSmartScroll = () => {
       if (window.scrollY > 50) {
           document.body.classList.add('is-scrolled');
@@ -132,7 +133,7 @@ document.addEventListener('click', (e) => {
   };
   window.addEventListener('scroll', handleSmartScroll, { passive: true });
 
-// ===== SCROLL REVEAL ANIMATIONS =====
+  // ===== SCROLL REVEAL ANIMATIONS =====
   const revealOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
   const revealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
@@ -144,6 +145,9 @@ document.addEventListener('click', (e) => {
   }, revealOptions);
 
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+}); // FIXED: Added missing closing bracket here!
+
 
 // ===== SMART NATIVE MAPS ROUTER =====
 document.addEventListener('DOMContentLoaded', () => {
@@ -158,20 +162,25 @@ document.addEventListener('DOMContentLoaded', () => {
       link.removeAttribute('target');
     }
   });
-});
 
-  $$('[data-scroll]').forEach(btn => {
+  document.querySelectorAll('[data-scroll]').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       const target = btn.getAttribute('data-scroll');
-      const el = target ? $(target) : null;
-      if (el) smoothTo(el);
+      const el = target ? document.querySelector(target) : null;
+      if (el) {
+          const stickyH = 70;
+          const stripOffset = window.pageYOffset < 50 ? 34 : 0;
+          const yPos = el.getBoundingClientRect().top + window.pageYOffset - (stickyH + 20) - stripOffset;
+          window.scrollTo({ top: Math.max(0, yPos), behavior: 'smooth' });
+      }
     });
   });
 
   (function reveal() {
-    const items = $$('.reveal');
+    const items = document.querySelectorAll('.reveal');
     if (!items.length) return;
+    const prefersReduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduce) {
       items.forEach(el => el.classList.add('is-in'));
       return;
@@ -192,6 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const root = document.getElementById('todays-highlights');
     if (!root) return;
     const revealEls = Array.from(root.querySelectorAll('.thReveal'));
+    const prefersReduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (!prefersReduce && revealEls.length) {
       const io = new IntersectionObserver((entries) => {
@@ -208,37 +218,16 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       revealEls.forEach(el => el.classList.add('is-in'));
     }
-
-    if (prefersReduce) return;
-    const heroParallax = root.querySelector('.thHero .thParallax');
-    if (!heroParallax) return;
-
-    let ticking = false;
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        const rect = root.getBoundingClientRect();
-        const vh = window.innerHeight || 800;
-        const inRange = rect.top < vh * 1.2 && rect.bottom > -vh * 0.2;
-        if (inRange) {
-          const progress = (vh - rect.top) / (vh + rect.height);
-          const offset = (progress - 0.5) * 18;
-          heroParallax.style.transform = `translateY(${offset.toFixed(2)}px)`;
-        }
-        ticking = false;
-      });
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    onScroll();
   }
 
   // ===== Deals open helper =====
-  const dealsDrop = $('#dealsDrop');
+  const dealsDrop = document.getElementById('dealsDrop');
   function openDeals(scrollAlso) {
-    const dealsSection = $('#deals');
-    if (scrollAlso && dealsSection) smoothTo(dealsSection);
+    const dealsSection = document.getElementById('deals');
+    if (scrollAlso && dealsSection) {
+        const yPos = dealsSection.getBoundingClientRect().top + window.pageYOffset - 90;
+        window.scrollTo({ top: Math.max(0, yPos), behavior: 'smooth' });
+    }
     setTimeout(() => {
       if (dealsDrop) dealsDrop.open = true;
     }, 220);
@@ -295,7 +284,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
   }
 
-  // Auto-open menu if the page just refreshed to swap Rec/Med
   window.addEventListener('DOMContentLoaded', () => {
       if (window.location.hash === '#shop-med') {
           openShop(true, 'med');
@@ -336,11 +324,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ===== Drawer =====
   (function drawer() {
-    const openBtns = $$('[data-open-menu]');
-    const closeBtn = $('[data-close-menu]');
-    const drawer = $('#navDrawer');
-    const ovl = $('#menuOverlay');
-    const links = drawer ? $$('.drawer__link', drawer) : [];
+    const openBtns = document.querySelectorAll('[data-open-menu]');
+    const closeBtn = document.querySelector('[data-close-menu]');
+    const drawer = document.getElementById('navDrawer');
+    const ovl = document.getElementById('menuOverlay');
+    const links = drawer ? document.querySelectorAll('.drawer__link') : [];
 
     if (!openBtns.length || !drawer || !ovl) return;
 
@@ -392,17 +380,20 @@ document.addEventListener('DOMContentLoaded', () => {
       const hash = btn.getAttribute('data-scroll');
       if (hash) {
         close();
-        const el = $(hash);
-        if (el) smoothTo(el);
+        const el = document.querySelector(hash);
+        if (el) {
+            const yPos = el.getBoundingClientRect().top + window.pageYOffset - 90;
+            window.scrollTo({ top: Math.max(0, yPos), behavior: 'smooth' });
+        }
       }
     });
   })();
 
   // ===== Deals + Highlights render (from deals.json) =====
   (function loadDeals() {
-    const dealList = $('#dealList');
-    const tilesWrap = $('#dealTiles');
-    const highlightsMount = $('#highlightsMount');
+    const dealList = document.getElementById('dealList');
+    const tilesWrap = document.getElementById('dealTiles');
+    const highlightsMount = document.getElementById('highlightsMount');
 
     if (!dealList) {
       console.warn('Missing #dealList in HTML. Deals dropdown cannot render.');
@@ -410,6 +401,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const url = `./deals.json?v=${Date.now()}`;
+
+    // FIXED: Escaping function inside loadDeals logic
+    const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({
+        '&': '&', '<': '<', '>': '>', '"': '&quot;', "'": '&#39;'
+    }[c]));
 
     fetch(url, { cache: 'no-store' })
       .then(async (r) => {
@@ -503,7 +499,8 @@ function bindDealJumpChips() {
       
       wrap.querySelectorAll('.drJumpChip').forEach(chip => chip.classList.remove('is-active'));
       btn.classList.add('is-active');
-      smoothTo(target); 
+      const yPos = target.getBoundingClientRect().top + window.pageYOffset - 90;
+      window.scrollTo({ top: Math.max(0, yPos), behavior: 'smooth' }); 
     });
   });
 }
@@ -573,7 +570,8 @@ function bindDealBackTop() {
         e.preventDefault();
         e.stopPropagation(); 
         const dealsDropTarget = document.getElementById('dealsDrop');
-        smoothTo(dealsDropTarget); 
+        const yPos = dealsDropTarget.getBoundingClientRect().top + window.pageYOffset - 90;
+        window.scrollTo({ top: Math.max(0, yPos), behavior: 'smooth' });
     });
 }
 
@@ -648,7 +646,6 @@ function renderDealsDropdown(data) {
     bindDealSearch();
     bindDealBackTop();
   }
-})();
 
 function renderHighlightsFromConfig(data, mount) {
     if (!data || !data.items || !data.layout) return;
@@ -658,10 +655,6 @@ function renderHighlightsFromConfig(data, mount) {
     const midL = layout.mid ? items[layout.mid[0]] : null;
     const midR = layout.mid ? items[layout.mid[1]] : null;
     const scrollIds = layout.scroll || [];
-
-    const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({
-      '&': '&', '<': '<', '>': '>', '"': '"', "'": '''
-    }[c]));
 
     const cardHTML = (it, type) => {
       if (!it) return '';
@@ -713,7 +706,7 @@ function renderHighlightsFromConfig(data, mount) {
         </div>
     `;
 }
-});
+})(); // FIXED: Added missing closing bracket here to finish Deals block!
 
 document.addEventListener('DOMContentLoaded', () => {
   // ===== DEALS DROPDOWN LOGIC =====
