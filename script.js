@@ -671,14 +671,14 @@ function renderHighlightsFromConfig(data, mount) {
 
       const shopClick = `event.preventDefault(); const nav = document.querySelector('[data-open-shop=\\'rec\\']') || document.querySelector('[data-open-shop]'); if(nav) nav.click();`;
 
-      if (type === 'mini') {
-        const smartTitle = esc(it.title).replace(/(\d+\s+for\s+\$\d+|\$\d+)/gi, '<span style="color: #D6A34A; display: block; font-size: 26px; margin-top: 4px; font-weight: 950; text-shadow: 0 2px 10px rgba(0,0,0,1);">$1</span>');
+     if (type === 'mini') {
         return `
           <a href="#shop" class="thCard ${sizeClass}" onclick="${shopClick}">
             <div class="thMedia" style="background-image:url('${esc(img)}')"></div>
             <div class="thOverlay" style="background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 45%, rgba(0,0,0,0.3) 65%, rgba(0,0,0,0.9) 100%);"></div>
-            <div class="thContent thContent--mini" style="position:absolute; bottom:0; width:100%; padding: 16px; box-sizing: border-box;">
-              <div class="thMiniTitle" style="color:#fff; font-weight: 800; font-size: 15px; line-height: 1.2; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">${smartTitle}</div>
+            <div class="thContent thContent--mini" style="position:absolute; bottom:0; width:100%; height: 100%; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;">
+              <div class="thMiniTitle" style="color:#fff; font-weight: 800; font-size: 20px; line-height: 1.2; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">${esc(it.title)}</div>
+              ${it.price ? `<div style="color: #D6A34A; display: block; font-size: 26px; margin-top: 6px; font-weight: 950; text-shadow: 0 2px 10px rgba(0,0,0,1);">${esc(it.price)}</div>` : ''}
             </div>
           </a>
         `;
