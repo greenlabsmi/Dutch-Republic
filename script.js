@@ -66,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     [document.querySelector('[data-close-menu]'), ovl].forEach(el => el?.addEventListener('click', closeDrawer));
 
-    // Intercept all scroll and nav links
     document.addEventListener('click', (e) => {
         const link = e.target.closest('a[href^="#"], [data-scroll]');
         if (!link) return;
@@ -138,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch(e) { console.error('Deals error:', e); }
     })();
 
-    // --- Enhanced Click-to-Open Logic & Search ---
     const dealsDrop = document.getElementById('dealsDrop');
     dealsDrop?.addEventListener('click', (e) => {
         if (!dealsDrop.classList.contains('is-fully-open')) {
@@ -161,16 +159,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- 6. TROPHY ROOM ---
+    // --- 6. TROPHY ROOM (NO LIMIT & CUSTOM SORT) ---
     (async function initStrains() {
         try {
             const r = await fetch('https://dutchtouchgenetics.com/strains.json');
             const list = await r.json();
-            const featured = list.filter(s => s.award === true).slice(0, 4);
+            
+            // Define the specific starting order
+            const priorityOrder = ["Mr. Clean", "Lemon Wookie #4", "Lilac Diesel"];
+            
+            // Filter for only award winners and sort them
+            const sortedAwards = list
+                .filter(s => s.award === true)
+                .sort((a, b) => {
+                    let idxA = priorityOrder.indexOf(a.name);
+                    let idxB = priorityOrder.indexOf(b.name);
+                    if (idxA === -1) idxA = 999; // Move others to the back
+                    if (idxB === -1) idxB = 999;
+                    return idxA - idxB;
+                });
+
             const mount = document.getElementById('current-strains');
             if (mount) {
-                mount.innerHTML = featured.map(s => `
+                mount.innerHTML = sortedAwards.map(s => `
                     <article class="strain-card">
+                        <div class="award-badge-corner">AWARD WINNER</div>
                         <div class="strain-card-inner">
                             <div class="strain-image" style="background-image: url('https://dutchtouchgenetics.com/${s.image}')"></div>
                             <h3 class="strain-name">${esc(s.name)}</h3>
@@ -249,4 +262,4 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }, 15000);
 
-}); // THE FINAL CLOSING BRACKET
+});
