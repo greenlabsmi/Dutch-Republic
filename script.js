@@ -141,23 +141,32 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch(e) { console.error('Deals error:', e); }
     })();
 
-    // Dropdown & Search Logic
-    const dealsDrop = document.getElementById('dealsDrop');
-    document.querySelector('.drDrop__summary')?.addEventListener('click', (e) => {
-        e.preventDefault();
-        dealsDrop.classList.toggle('is-fully-open');
-    });
+    // --- Enhanced Click-to-Open Logic & Search ---
+const dealsDrop = document.getElementById('dealsDrop');
 
-    document.getElementById('dealSearch')?.addEventListener('input', (e) => {
-        const q = e.target.value.toLowerCase();
-        document.querySelectorAll('[data-line]').forEach(line => {
-            line.style.display = line.textContent.toLowerCase().includes(q) ? 'grid' : 'none';
-        });
-        document.querySelectorAll('[data-category-block]').forEach(cat => {
-            const hasMatch = Array.from(cat.querySelectorAll('[data-line]')).some(l => l.style.display !== 'none');
-            cat.style.display = hasMatch ? 'block' : 'none';
-        });
+dealsDrop?.addEventListener('click', (e) => {
+    // If it's closed, clicking ANYWHERE on the container opens it
+    if (!dealsDrop.classList.contains('is-fully-open')) {
+        dealsDrop.classList.add('is-fully-open');
+        return;
+    }
+
+    // If it's already open, only the "Summary" header or Chevron should close it
+    if (e.target.closest('.drDrop__summary')) {
+        dealsDrop.classList.remove('is-fully-open');
+    }
+});
+
+document.getElementById('dealSearch')?.addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase();
+    document.querySelectorAll('[data-line]').forEach(line => {
+        line.style.display = line.textContent.toLowerCase().includes(q) ? 'grid' : 'none';
     });
+    document.querySelectorAll('[data-category-block]').forEach(cat => {
+        const hasMatch = Array.from(cat.querySelectorAll('[data-line]')).some(l => l.style.display !== 'none');
+        cat.style.display = hasMatch ? 'block' : 'none';
+    });
+});
 
     // --- 6. TROPHY ROOM ---
     (async function initStrains() {
