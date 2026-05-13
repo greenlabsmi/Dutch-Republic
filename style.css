@@ -94,6 +94,67 @@ img{ max-width:100%; display:block; }
 }
 
 /* =========================================================
+   MAIN NAVIGATION (TOPBAR)
+========================================================= */
+.topbar {
+  background: var(--bg);
+  border-bottom: 1px solid var(--line2);
+  position: relative;
+  z-index: 100;
+}
+
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px; /* Matches Green Labs header height */
+}
+
+.topbar-logo {
+  height: 38px; /* Matches Green Labs logo size */
+  width: auto;
+  object-fit: contain;
+}
+
+.topbar-nav {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.topbar-nav a {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink);
+  transition: color 0.2s ease;
+}
+
+.topbar-nav a:hover {
+  color: var(--brand); /* Turns Dutch Gold on hover */
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  color: var(--ink);
+  font-size: 24px;
+  cursor: pointer;
+  display: none; /* Hidden on desktop */
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .topbar-nav { 
+    display: none; 
+  }
+  .menu-toggle { 
+    display: block; 
+  }
+}
+
+/* =========================================================
    Topbar (NOT sticky)
 ========================================================= */
 .topbar{
