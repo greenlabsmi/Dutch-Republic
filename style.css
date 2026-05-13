@@ -60,6 +60,39 @@ img{ max-width:100%; display:block; }
   padding-right: max(18px, env(safe-area-inset-right));
 }
 
+/* --- TOP BRAND BAR --- */
+.top-brand-bar {
+  background-color: #050505; /* Deep carbon background */
+  color: #ffffff;
+  font-size: 12px;
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  border-bottom: 1px solid rgba(214, 163, 74, 0.2); /* Subtle gold border */
+  font-family: sans-serif; /* Matches the clean, readable style of Green Labs */
+}
+
+.top-brand-bar .brand-icon {
+  color: #D6A34A; /* Dutch Gold */
+  font-size: 14px;
+}
+
+.top-brand-bar .brand-name {
+  font-family: 'Cinzel', serif; /* Your premium typography */
+  font-weight: 900;
+  color: #D6A34A; 
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.top-brand-bar .brand-tagline {
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.05em;
+  margin-left: 4px;
+}
+
 /* =========================================================
    Topbar (NOT sticky)
 ========================================================= */
