@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const dest = encodeURIComponent("435 Blue Star Hwy, Douglas, MI 49406");
             const isApple = /iPad|iPhone|iPod|Mac/.test(navigator.userAgent);
-            window.open(isApple ? `https://maps.apple.com/?daddr=${dest}` : `https://www.google.com/maps/dir/?api=1&destination=${dest}`, '_blank');
+            window.open(isApple ? `https://maps.apple.com/?daddr=${dest}` : `https://maps.google.com/?daddr=${dest}`, '_blank');
         });
     });
 
@@ -239,37 +239,4 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h2 style="font-family:'Cinzel', serif; font-size:36px; font-weight:900; color:#fff; margin:0 0 12px; line-height:1.1;">Best In Grass</h2>
                     <p style="color:rgba(255,255,255,0.95); font-size:16px; font-weight:800; line-height:1.5; margin:0;">Judge Kits Have Arrived! Start Judging Now!<br><span style="font-weight:600; font-size: 14px; color: rgba(255,255,255,0.75); display:block; margin-top:8px;">Grab an official kit in-store only.</span></p>
                 </div>
-                <button id="btn-big-shop" class="btn big-gradient-bg" style="width:100%; font-size:16px; padding:14px 0; color:#050505; border:none; box-shadow: 0 10px 30px rgba(214, 163, 74, 0.4); font-weight: 950; border-radius: 999px; cursor: pointer; transition: 0.2s; letter-spacing: 0.05em;">VIEW COMPETITION DETAILS</button>
-            </div>
-        `;
-        document.body.appendChild(bigPopup);
-        const closeBtn = document.getElementById('close-big');
-        const shopBtn = document.getElementById('btn-big-shop');
-        const closePopup = () => bigPopup.remove();
-        closeBtn.onclick = closePopup;
-        bigPopup.onclick = (e) => { if (e.target === bigPopup) closePopup(); };
-        shopBtn.onclick = () => { closePopup(); window.open('https://bestingrass.io/competitions/michigan-2026/', '_blank'); };
-    }, 15000);
-
-    // --- 9. EDUCATION LOGIC (GUIDE CARDS) ---
-    document.querySelectorAll('[data-guide-card]').forEach(card => {
-        const toggle = card.querySelector('.guideCard__toggle');
-        if (toggle) {
-            toggle.addEventListener('click', () => {
-                const isOpen = card.classList.contains('is-open');
-                
-                // Close all other open cards first
-                document.querySelectorAll('[data-guide-card].is-open').forEach(openCard => {
-                    if (openCard !== card) openCard.classList.remove('is-open');
-                });
-
-                // Toggle the clicked card
-                card.classList.toggle('is-open');
-                
-                // If opening, smooth scroll to it
-                if (!isOpen) {
-                    setTimeout(() => smoothTo(card), 400);
-                }
-            });
-        }
-    });
+                <button id="btn-big-shop" class="btn big-gradient-bg" style="width:100%; font-size:16px; padding:14px 0; color:#050505; border:none; box-shadow: 0
