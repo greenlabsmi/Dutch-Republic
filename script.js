@@ -105,13 +105,21 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (dealList && data.deals) {
-                dealList.innerHTML = data.deals.map(cat => `
-                    <section class="drCat" id="cat-${cat.category.replace(/[^a-z0-9]/gi, '')}" data-category-block>
-                        <div class="drCat__head"><h3 class="drCat__title">${esc(cat.category)}</h3></div>
-                        <div class="drLines">${(cat.items || []).map(line => `<div class="drLine" data-line><div class="drLine__text">${esc(line)}</div></div>`).join('')}</div>
-                    </section>
-                `).join('') + `<div class="drTaxBanner"><strong>Pricing Update:</strong> All prices are <strong>Out The Door (Tax Included)</strong>.</div>`;
-            }
+    // 1. Identify and extract the highlights category first
+    const highlightsCat = data.deals.find(c => c.category === "Highlights");
+    const otherCats = data.deals.filter(c => c.category !== "Highlights");
+
+    // 2. Build the new ordered list
+    const sortedCategories = highlightsCat ? [highlightsCat, ...otherCats] : otherCats;
+
+    // 3. Render
+    dealList.innerHTML = sortedCategories.map(cat => `
+        <section class="drCat" id="cat-${cat.category.replace(/[^a-z0-9]/gi, '')}" data-category-block>
+            <div class="drCat__head"><h3 class="drCat__title">${esc(cat.category)}</h3></div>
+            <div class="drLines">${(cat.items || []).map(line => `<div class="drLine" data-line><div class="drLine__text">${esc(line)}</div></div>`).join('')}</div>
+        </section>
+    `).join('') + `<div class="drTaxBanner"><strong>Pricing Update:</strong> All prices are <strong>Out The Door (Tax Included)</strong>.</div>`;
+}
 
             const hMount = document.getElementById('highlightsMount');
             if (hMount && data.highlights) {
