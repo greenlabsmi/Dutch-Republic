@@ -199,44 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
             window.open(isApple ? `https://maps.apple.com/?daddr=${dest}` : `https://maps.google.com/?daddr=${dest}`, '_blank');
         });
     });
-
-    // --- 8. BEST IN GRASS PROMO ---
-    setTimeout(() => {
-        if (!document.getElementById('big-styles')) {
-            const style = document.createElement('style');
-            style.id = 'big-styles';
-            style.innerHTML = `
-                @keyframes awardDrop { 0% { transform: scale(0.8) translateY(-40px); opacity: 0; } 50% { transform: scale(1.02) translateY(5px); opacity: 1; } 100% { transform: scale(1) translateY(0); opacity: 1; } }
-                @keyframes goldGradientFlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-                .big-gradient-text { background: linear-gradient(90deg, #D6A34A, #f2c14e, #B8860B, #D6A34A); background-size: 300% 300%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: goldGradientFlow 8s ease infinite; }
-                .big-gradient-bg { background: linear-gradient(90deg, #D6A34A, #f2c14e, #B8860B, #D6A34A); background-size: 300% 300%; animation: goldGradientFlow 8s ease infinite; }
-                .big-gradient-border { position: relative; border-radius: 24px; background: #050505; background-clip: padding-box; border: 3px solid transparent; }
-                .big-gradient-border::before { content: ''; position: absolute; inset: -3px; border-radius: 26px; z-index: -1; background: linear-gradient(90deg, #D6A34A, #f2c14e, #B8860B, #D6A34A); background-size: 300% 300%; animation: goldGradientFlow 8s ease infinite; }
-            `;
-            document.head.appendChild(style);
-        }
-        const bigPopup = document.createElement('div');
-        bigPopup.id = 'big-promo-popup';
-        bigPopup.style = "position:fixed; inset:0; z-index:10000; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.85); backdrop-filter:blur(4px);";
-        bigPopup.innerHTML = `
-            <div class="big-gradient-border" style="position:relative; width:90%; max-width:520px; padding:35px 25px; text-align:center; box-shadow: 0 40px 100px rgba(0,0,0,0.8), 0 0 50px rgba(214, 163, 74, 0.2); animation: awardDrop 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;">
-                <button id="close-big" style="position:absolute; top:-15px; right:-15px; width:38px; height:38px; background:#D6A34A; color:#050505; font-family:Arial, sans-serif; font-size:26px; border:2px solid #050505; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 10px rgba(0,0,0,0.6); z-index: 10000; transition: transform 0.2s ease, background 0.2s ease;">×</button>
-                <div class="big-gradient-bg" style="display:inline-block; font-size:14px; font-weight:950; letter-spacing:0.15em; color:#050505; padding:6px 20px; border-radius:999px; margin-bottom:18px; box-shadow: 0 4px 15px rgba(214, 163, 74, 0.4);">MAY 9TH EXCLUSIVE</div>
-                <div style="background: rgba(0,0,0,0.6); backdrop-filter: blur(12px); border-radius: 18px; padding: 24px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.06); box-shadow: 0 10px 30px rgba(0,0,0,0.4);">
-                    <h2 style="font-family:'Cinzel', serif; font-size:36px; font-weight:900; color:#fff; margin:0 0 12px; line-height:1.1;">Best In Grass</h2>
-                    <p style="color:rgba(255,255,255,0.95); font-size:16px; font-weight:800; line-height:1.5; margin:0;">Judge Kits Have Arrived! Start Judging Now!<br><span style="font-weight:600; font-size: 14px; color: rgba(255,255,255,0.75); display:block; margin-top:8px;">Grab an official kit in-store only.</span></p>
-                </div>
-                <button id="btn-big-shop" class="btn big-gradient-bg" style="width:100%; font-size:16px; padding:14px 0; color:#050505; border:none; box-shadow: 0 10px 30px rgba(214, 163, 74, 0.4); font-weight: 950; border-radius: 999px; cursor: pointer; transition: 0.2s; letter-spacing: 0.05em;">VIEW COMPETITION DETAILS</button>
-            </div>
-        `;
-        document.body.appendChild(bigPopup);
-        const closeBtn = document.getElementById('close-big');
-        const shopBtn = document.getElementById('btn-big-shop');
-        const closePopup = () => bigPopup.remove();
-        closeBtn.onclick = closePopup;
-        bigPopup.onclick = (e) => { if (e.target === bigPopup) closePopup(); };
-        shopBtn.onclick = () => { closePopup(); window.open('https://bestingrass.io/competitions/michigan-2026/', '_blank'); };
-    }, 15000);
+    
 
     // --- 9. EDUCATION LOGIC (GUIDE CARDS) ---
     document.querySelectorAll('[data-guide-card]').forEach(card => {
