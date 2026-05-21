@@ -1135,3 +1135,18 @@ section { scroll-margin-top: calc(var(--nav-h) + 20px); }
   margin: 0;
   text-shadow: 0 2px 8px rgba(0,0,0,0.8);
 }
+
+/* Remove constraints from the link container */
+.hero-memorial-link {
+    display: block;
+    width: 100%;
+    line-height: 0; /* Removes the tiny default space below inline elements */
+}
+
+/* Ensure the image controls the height of the link */
+.hero-memorial-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
