@@ -121,28 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `).join('') + `<div class="drTaxBanner"><strong>Pricing Update:</strong> All prices are <strong>Out The Door (Tax Included)</strong>.</div>`;
 }
 
-            const hMount = document.getElementById('highlightsMount');
-            if (hMount && data.highlights) {
-                const renderH = (id, type) => {
-                    const it = data.highlights.items[id];
-                    if (!it) return '';
-                    const isMini = type === 'mini';
-                    return `
-                        <a href="#shop" class="thCard th${type.charAt(0).toUpperCase() + type.slice(1)}" onclick="event.preventDefault(); document.querySelector('[data-open-shop]').click();">
-                            <div class="thMedia"></div><div class="thOverlay"></div>
-                            <div class="thContent" style="position:absolute; bottom:0; width:100%; height:100%; padding:24px; display:flex; flex-direction:column; justify-content:center;">
-                                <div class="thMiniTitle" style="color:#fff; font-weight:800; font-size:${isMini ? '20px' : '22px'};">${esc(it.title)}</div>
-                                <div style="color:#D6A34A; font-size:${isMini ? '28px' : '48px'}; font-weight:950;">${esc(it.price)}</div>
-                                ${!isMini && it.details ? `<div style="color:#aaa;">${esc(it.details)}</div>` : ''}
-                            </div>
-                        </a>`;
-                };
-                const h = data.highlights;
-                hMount.innerHTML = renderH(h.layout.hero, 'hero') + 
-                    `<div class="thGrid2">${h.layout.mid.map(id => renderH(id, 'mid')).join('')}</div>` +
-                    `<div class="thRowWrap"><div class="thRowTitle">More deals</div><div class="thRow">${h.layout.scroll.map(id => renderH(id, 'mini')).join('')}</div></div>`;
-            }
-        } catch(e) { console.error('Deals error:', e); }
+          } catch(e) { console.error('Deals error:', e); }
     })();
 
     const dealsDrop = document.getElementById('dealsDrop');
