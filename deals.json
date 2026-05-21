@@ -1,61 +1,18 @@
 {
-  "highlights": {
-    "layout": {
-      "hero": "item_1",
-      "mid": [
-        "item_2",
-        "item_3"
-      ],
-      "scroll": [
-        "item_4",
-        "item_5",
-        "item_6",
-        "item_7"
+  "deals": [
+    {
+      "category": "Highlights",
+      "promo": true,
+      "items": [
+        "10K Big Buds Ounce - $100",
+        "Platinum Vape 1G Carts - 15 for $110",
+        "DTG 1G Disposables - 3 for $55",
+        "Platinum 200mg Gummies - 10 for $45",
+        "Baby Jeeter's (5pk) - $45 + Free 0.5g",
+        "Paradice 1G Resin - 15 for $100",
+        "DTG 200mg RSO Gummy - 5 for $45"
       ]
     },
-    "items": {
-      "item_1": {
-        "tag": "FLOWER",
-        "title": "10K Big Buds Ounce",
-        "price": "$100",
-        "details": "Premium Dutch Touch Deli Flower"
-      },
-      "item_2": {
-        "tag": "VAPES",
-        "title": "Platinum Vape 1G Carts",
-        "price": "15 for $110",
-        "details": "Or 5 for $40"
-      },
-      "item_3": {
-        "tag": "VAPES",
-        "title": "DTG 1G Disposables",
-        "price": "3 for $55",
-        "details": "Full Gram All-in-Ones"
-      },
-      "item_4": {
-        "tag": "EDIBLES",
-        "title": "Platinum 200mg Gummies",
-        "price": "10 for $45"
-      },
-      "item_5": {
-        "tag": "PRE-ROLLS",
-        "title": "Baby Jeeter's (5pk)",
-        "price": "$45 + Free 0.5g",
-        "details": "Buy a 5pk, get a 0.5g free!"
-      },
-      "item_6": {
-        "tag": "CONCENTRATES",
-        "title": "Paradice 1G Resin",
-        "price": "15 for $100"
-      },
-      "item_7": {
-        "tag": "EDIBLES",
-        "title": "DTG 200mg RSO Gummy",
-        "price": "5 for $45"
-      }
-    }
-  },
-  "deals": [
     {
       "category": "🌿 Flower",
       "promo": false,
