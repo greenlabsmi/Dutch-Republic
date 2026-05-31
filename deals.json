@@ -17,7 +17,7 @@
       "category": "🌿 Flower",
       "promo": false,
       "items": [
-        "30% OFF Selected Flower (10K, Clusterfunk, Dutch Breath, Fruit Brute, Glue Bert)[cite: 1]",
+        "30% OFF Selected Flower (10K, Clusterfunk, Dutch Breath, Fruit Brute, Glue Bert)",
         "$40 OUNCES - Shake",
         "$90 Cresco OZ's",
         "$100 OUNCES - 10K Big Buds",
@@ -40,9 +40,7 @@
         "$10 or 5/$45 - Dutch Touch Genetics 200mg RSO Gummy",
         "$10 or 4/$30 - Dutch Touch Genetics Standard Gummies",
         "$5 or 10/$45 - Platinum 200mg Gummies",
-        "$5 or 5/$20 or 10/$40 - 200mg TreeTown HIGH DOSE Gummies",
-        "$15 - Petra Mints",
-        "$20 - PC Pure Mints",
+        "$5 or 5/$20 or 10/$40 - TreeTown HIGH DOSE 200mg Gummies",
         "$7 or 3/$20 or 10/$60 - Goody Bag 200mg Gummies",
         "$15 or 3/$35 - Dream 100mg",
         "$15 or 3/$35 - Pixil 200mg",
@@ -53,7 +51,7 @@
         "5/$40 or 10/$75 - Smokiez 200mg Gummies",
         "$10 or 3/$20 or 6/$35 - Cannabis PM LOW DOSE Gummies",
         "$25 or 2/$45 - KIVA BARS",
-        "$20 - Wonder (Laugh, Focus, Relax, Sleep)",
+        "$20 - Wonder Gummies 200mg (Focus, Laugh, Relax, Sleep)",
         "$10 or 5/$40 or 10/$60 - VOODOO 200mg Gummies",
         "$20 - Wana Gummies",
         "$25 - Wyld Fruit Gummies HIGH DOSE",
@@ -61,29 +59,41 @@
       ]
     },
     {
-      "category": "💨 Vapes & Disposables",
+      "category": "💨 Vapes",
       "promo": false,
-      "items": [
-        "3/$55 or 6/$110 - Dutch Touch Genetics 1g Disposable",
-        "$25 - Jeeter AIO Liquid Diamonds 1g",
-        "$30 - Jeeter AIO Live Resin 1g",
-        "$20 - Crude Boys 2G Big Ripper Disposable",
-        "$15 - Mozey 1g Disposable[cite: 1]",
-        "$20 or 2/$35 - Platinum Vape 2g Disposable",
-        "$20 or 2/$35 - VOODOO 1g Live Resin Disposable",
-        "$10 or 5/$45 or 10/$70 - VOODOO 510 1g Cartridge",
-        "$10 or 5/$40 or 15/$110 - Platinum Vape 510 1g Cartridge",
-        "$10 or 10/$90 - Mozey 1g Cartridge",
-        "$10 or 15/$110 - Crude Boys and Drip 1g Cartridge",
-        "$12 or 3/$35 - Redbud Roots 1g Full Spectrum Cartridge",
-        "$15 or 3/$40 - True North Fusion 1g Full Spectrum Cartridge",
-        "$20 or 3/$50 - Redbud Roots 0.5g Hash Rosin Cartridge",
-        "$12 or 2/$20 or 6/$60 - Craft 1g Live Resin 510 Cart",
-        "$10 - Monster 1g Cartridge Live Resin",
-        "$20 - VapinApe 1g POD[cite: 1]",
-        "$50 - VapinApe 1g Variety 3pk[cite: 1]",
-        "$50 - VapinApe Live Resin 1g Variety 2pk (LSF)[cite: 1]",
-        "$40 - VapinApe Live Hash Rosin .5g[cite: 1]"
+      "groups": [
+        {
+          "title": "510 Cartridges",
+          "items": [
+            "$10 or 5/$45 or 10/$70 - VOODOO 510 1g",
+            "$10 or 5/$40 or 15/$110 - Platinum Vape 510 1g",
+            "$10 or 10/$90 - Mozey 1g Cartridge",
+            "$10 or 15/$110 - Crude Boys and Drip 1g",
+            "$12 or 3/$35 - Redbud Roots 1g Full Spectrum",
+            "$15 or 3/$40 - True North Fusion 1g Full Spectrum",
+            "$20 or 3/$50 - Redbud Roots 0.5g Hash Rosin",
+            "$12 or 2/$20 or 6/$60 - Craft 1g Live Resin 510 Cart",
+            "$10 - Monster 1g Cartridge Live Resin"
+          ]
+        },
+        {
+          "title": "Disposables",
+          "items": [
+            "3/$55 or 6/$110 - Dutch Touch Genetics 1g Disposable",
+            "$25 - Jeeter AIO Liquid Diamonds 1g",
+            "$30 - Jeeter AIO Live Resin 1g",
+            "$20 - Crude Boys 2G Big Ripper Disposable",
+            "$15 - Mozey 1g",
+            "$20 or 2/$35 - Platinum Vape 2g",
+            "$20 or 2/$35 - VOODOO 1g Live Resin",
+            "$30 or 2/$50 - VapinApe 2g",
+            "$40 - Polare 90U Hash Rosin .5g",
+            "$20 - VapinApe 1g POD",
+            "$50 - VapinApe 1g Variety 3pk",
+            "$50 - VapinApe Live Resin 1g Variety 2pk (LSF)",
+            "$40 - VapinApe Live Hash Rosin .5g"
+          ]
+        }
       ]
     },
     {
@@ -92,12 +102,12 @@
       "items": [
         "$100 - Dutch Touch 1g 25pk",
         "$30 - Dutch Touch Dog Walkers 5pk",
-        "$70 - Dutch Touch Dog Walkers 25pk[cite: 1]",
+        "$70 - Dutch Touch Dog Walkers 25pk",
         "$5 or 5/$20 or 10/$40 - Green Labs 1g",
         "$10 or 3/$25 - Giving Tree",
-        "$5/$20 or 10/$35 - Paul Bunyan & Hazy Daze",
+        "5/$20 or 10/$35 - Paul Bunyan 1g",
         "$45 - Hazy Daze 28pk",
-        "$12 or 2/$20 - Cannarillo Full Flower 1g[cite: 1]"
+        "$12 or 2/$20 - Cannarillo Full Flower 1g"
       ]
     },
     {
@@ -110,9 +120,9 @@
         "$5 or 10/$35 - Grasshopper 1g",
         "$20 - Grasshopper 5pk 1g",
         "$60 - Cashed Out Live Resin Joints 15pk",
-        "$10 or 3/$25 - Craft Hydroponics 1g Cured Live Resin[cite: 1]",
-        "$15 or 2/$25 or 3/$35 - Plant Nerd Jelly Roll 1.25g[cite: 1]",
-        "$35 or 2/$60 - Plant Nerd Infused .7g 5pk[cite: 1]"
+        "$10 or 3/$25 - Craft Hydroponics 1g Cured Live Resin",
+        "$15 or 2/$25 or 3/$35 - Plant Nerd Jelly Roll 1.25g",
+        "$35 or 2/$60 - Plant Nerd Infused .7g 5pk"
       ]
     },
     {
@@ -148,7 +158,7 @@
         "$25 or 2/$30 - Chill “ON THE GO” Extreme X Body Rub 250THC 250 CBD",
         "$20 - Chill “ON THE GO” Vanilla Lust Body Rub 75:75 THC:CBD",
         "$35 - Chill Medicated 2000 MG CBD Outback Sandalwood",
-        "$50 or 2/$80 - Chill Subzero roll on",
+        "$50 or 2/$80 - Chill Subzero Roll On",
         "$110 - Chill Medicated Rub 2000 MG THC 2000 MG CBD"
       ]
     },
@@ -179,7 +189,7 @@
         "$30 - #KeepItDutch Beanie",
         "$25 - Dutch Touch Genetics T-Shirt",
         "$10 - Dutch Touch Genetics Bowl",
-        "$15 - Dutch Touch Genetics 4pc Metal Grinder[cite: 1]",
+        "$15 - Dutch Touch Genetics 4pc Metal Grinder",
         "$5 - Dutch Touch Genetics Rolling Tray",
         "$3 - Dutch Touch Genetics Ashtray",
         "$3 - Dutch Touch Genetics Rolling Papers & Tips"
