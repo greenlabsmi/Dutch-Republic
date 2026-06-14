@@ -1075,7 +1075,7 @@ section { scroll-margin-top: calc(var(--nav-h) + 20px); }
 
     .hero__media {
         display: block; /* Ensures it shows on desktop */
-        height: 520px;
+        height: auto; /* Changed from fixed 520px to allow image flexibility */
     }
 
     .hero__img {
@@ -1087,27 +1087,11 @@ section { scroll-margin-top: calc(var(--nav-h) + 20px); }
 @media (max-width: 899px) {
     .hero__media {
         margin-top: 30px;
-        height: 300px;
+        height: auto; /* Changed from fixed 300px to adapt to image aspect ratio */
     }
 }
 
-/* --- HERO IMAGE OVERLAY TEXT & BADGES --- */
-.hero__sold-out {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: #D6A34A; /* Dutch Gold */
-  color: #050505;
-  font-family: 'Cinzel', serif;
-  font-size: 13px;
-  font-weight: 900;
-  padding: 6px 14px;
-  border-radius: 6px;
-  letter-spacing: 0.1em;
-  z-index: 5;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-}
-
+/* --- HERO IMAGE OVERLAY TEXT --- */
 .tile-elegant-text {
   position: absolute;
   bottom: 0;
@@ -1137,16 +1121,16 @@ section { scroll-margin-top: calc(var(--nav-h) + 20px); }
 }
 
 /* Remove constraints from the link container */
-.hero-memorial-link {
+.hero-sale-link {
     display: block;
     width: 100%;
     line-height: 0; /* Removes the tiny default space below inline elements */
 }
 
-/* Ensure the image controls the height of the link */
-.hero-memorial-img {
+/* Ensure the image fills the container fully without being 'contained' */
+.hero-sale-img {
     display: block;
     width: 100%;
     height: auto;
-    object-fit: contain;
+    object-fit: cover; /* Changed to 'cover' for full-bleed look */
 }
