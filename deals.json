@@ -1,36 +1,37 @@
 {
   "deals": [
     {
+      "category": "🔥 Flower Blowout Sale",
+      "promo": true,
+      "items": [
+        "1/8 - $18",
+        "1/4 - $30",
+        "1/2 - $40",
+        "1oz - $70"
+      ]
+    },
+    {
       "category": "Highlights",
       "promo": true,
       "items": [
-        "10K Big Buds Ounce - $100",
-        "Platinum Vape 1G Carts - 15 for $110",
-        "DTG 1G Disposables - 3 for $55",
-        "Platinum 200mg Gummies - 10 for $45",
-        "Baby Jeeter's (5pk) - $45 + Free 0.5g",
-        "Paradice 1G Resin - 15 for $100",
-        "DTG 200mg RSO Gummy - 5 for $45"
+        "$18 Eighths - Flower Blowout Sale",
+        "$70 Ounces - Flower Blowout Sale",
+        "$120 - Lemon Wookie 1oz",
+        "3/$55 or 6/$110 - Dutch Touch Genetics 1g Disposables",
+        "$25 or 2/$40 - Dutch Touch Genetics Rosin Donuts",
+        "$25 - Dutch Touch 1g Rosin",
+        "$150 - Dutch Touch 14g Big Baller Jar",
+        "$10 or 5/$45 - Dutch Touch Genetics 200mg RSO Gummy"
       ]
     },
     {
       "category": "🌿 Flower",
       "promo": false,
       "items": [
-        "30% OFF Selected Flower (10K, Clusterfunk, Dutch Breath, Fruit Brute, Glue Bert)",
-        "$40 OUNCES - Shake",
-        "$90 Cresco OZ's",
-        "$100 OUNCES - 10K Big Buds",
-        "$200 OUNCES - Space Hippy & Death Star",
-        "$225 OUNCES - Lilac Diesel, Mr. Clean <-Award Winners!",
-        "$80 HALF OUNCES - Pina Rita, 10K, Fruit Brute, Glue Bert",
-        "$100 HALF OUNCES - Purple Lambo, Big Smooth, Dutch Breath, Orange Kush Cake",
-        "$125 HALF OUNCES - Lilac Diesel",
-        "$25 EIGHTHS - Pina Rita, Fruit Brute, 10K, Glue Bert, Secret Chief, Orange Kush Cake, Thug Life, Old Widow",
-        "$30 EIGHTHS - Death Star, Big Smooth, Clusterfunk, Sin City Grapes, Angelica, Dutch Breath, Old Widow",
-        "$40 EIGHTHS - Lilac Diesel",
-        "$25 OR 4/$80 - GIVING TREE 8TH",
-        "$60 OR 2/$100 - LIGHT SKY FARM 1/2OZ"
+        "$25 or 3/$70 - Giving Tree 8th",
+        "$60 or 2/$100 - Light Sky Farm 1/2oz",
+        "$40 or 2/$70 - Dutch Delight OZ’s",
+        "$120 - Lemon Wookie 1oz"
       ]
     },
     {
@@ -42,20 +43,22 @@
         "$5 or 10/$45 - Platinum 200mg Gummies",
         "$5 or 5/$20 or 10/$40 - TreeTown HIGH DOSE 200mg Gummies",
         "$7 or 3/$20 or 10/$60 - Goody Bag 200mg Gummies",
-        "$15 or 3/$35 - Dream 100mg",
+        "$10 - Dream 100mg",
         "$15 or 3/$35 - Pixil 200mg",
         "$5 or 10/$45 - ALL True North Gummies",
         "$5 or 10/$45 - Choice Chews 200mg Gummies",
+        "$10 or 5/$40 or 10/$75 - Smokiez 200mg Gummies",
         "$10 - Dork Clusters 200mg",
         "$10 or 10/$55 - Mother Pucker Live Resin 200mg Gummies",
-        "5/$40 or 10/$75 - Smokiez 200mg Gummies",
         "$10 or 3/$20 or 6/$35 - Cannabis PM LOW DOSE Gummies",
-        "$25 or 2/$45 - KIVA BARS",
-        "$20 - Wonder Gummies 200mg (Focus, Laugh, Relax, Sleep)",
         "$10 or 5/$40 or 10/$60 - VOODOO 200mg Gummies",
-        "$20 - Wana Gummies",
+        "$20 - Petra Mints",
+        "$20 - Wonder Gummies 200mg Focus, Laugh, Relax, Sleep",
+        "$25 - Wana Gummies",
+        "$15 - Wyld Fruit Gummies LOW DOSE",
         "$25 - Wyld Fruit Gummies HIGH DOSE",
-        "$15 - Wyld Fruit Gummies LOW DOSE"
+        "$25 or 2/$45 - KIVA Chocolate Bars",
+        "$25 - CAMINO"
       ]
     },
     {
@@ -68,61 +71,65 @@
             "$10 or 5/$45 or 10/$70 - VOODOO 510 1g",
             "$10 or 5/$40 or 15/$110 - Platinum Vape 510 1g",
             "$10 or 10/$90 - Mozey 1g Cartridge",
-            "$10 or 15/$110 - Crude Boys and Drip 1g",
+            "$10 or 5/$45 or 10/$80 or 15/$110 - Crude Boys and Drip 1g",
             "$12 or 3/$35 - Redbud Roots 1g Full Spectrum",
             "$15 or 3/$40 - True North Fusion 1g Full Spectrum",
             "$20 or 3/$50 - Redbud Roots 0.5g Hash Rosin",
             "$12 or 2/$20 or 6/$60 - Craft 1g Live Resin 510 Cart",
-            "$10 - Monster 1g Cartridge Live Resin"
+            "$10 - Monster 1g Cartridge Live Resin",
+            "$20 - VapinApe 1g POD comes with battery",
+            "$50 - VapinApe 1g Variety 3pk",
+            "$50 - VapinApe Live Resin 1g Variety 2pk LSF",
+            "$40 - VapinApe Live Hash Rosin .5g"
           ]
         },
         {
           "title": "Disposables",
           "items": [
-            "3/$55 or 6/$110 - Dutch Touch Genetics 1g Disposable",
+            "3/$55 or 6/$110 - Dutch Touch Genetics 1g",
             "$25 - Jeeter AIO Liquid Diamonds 1g",
             "$30 - Jeeter AIO Live Resin 1g",
-            "$20 - Crude Boys 2G Big Ripper Disposable",
+            "$20 or 2/$35 - Crude Boys 2G Big Ripper",
             "$15 - Mozey 1g",
             "$20 or 2/$35 - Platinum Vape 2g",
-            "$20 or 2/$35 - VOODOO 1g Live Resin",
             "$30 or 2/$50 - VapinApe 2g",
-            "$40 - Polare 90U Hash Rosin .5g",
-            "$20 - VapinApe 1g POD",
-            "$50 - VapinApe 1g Variety 3pk",
-            "$50 - VapinApe Live Resin 1g Variety 2pk (LSF)",
-            "$40 - VapinApe Live Hash Rosin .5g"
+            "$30 or 2/$50 - DRIP 3g",
+            "$40 - Polare 90U Hash Rosin .5g"
           ]
         }
       ]
     },
     {
-      "category": "🪄 Pre-Rolls",
+      "category": "🪄 Non-Infused Pre-Rolls",
       "promo": false,
       "items": [
         "$100 - Dutch Touch 1g 25pk",
         "$30 - Dutch Touch Dog Walkers 5pk",
         "$70 - Dutch Touch Dog Walkers 25pk",
-        "$5 or 5/$20 or 10/$40 - Green Labs 1g",
-        "$10 or 3/$25 - Giving Tree",
-        "5/$20 or 10/$35 - Paul Bunyan 1g",
+        "$5 or 5/$20 or 10/$35 - Hazy Daze 1g",
         "$45 - Hazy Daze 28pk",
-        "$12 or 2/$20 - Cannarillo Full Flower 1g"
+        "$5 or 5/$20 or 10/$40 - Green Labs 1g",
+        "$10 or 3/$25 - Giving Tree 1g",
+        "$10 or 3/$25 or 6/$45 - Light Sky Farms 1g",
+        "$12 or 2/$20 - Cannarillo Full Flower 1g",
+        "5/$20 or 10/$35 - Paul Bunyan 1g"
       ]
     },
     {
       "category": "💥 Infused Pre-Rolls",
       "promo": false,
       "items": [
-        "$45 - Baby Jeeters 5pk",
         "$25 or 2/$40 - Dutch Touch Genetics Rosin Donuts",
         "$5 or 10/$30 - RipN 1g",
+        "$45 or 2/$80 - Baby Jeeters 5pk",
+        "$60 - Cashed Out Live Resin Joints 15pk",
+        "$7 or 10/$55 - Fire Styxx",
         "$5 or 10/$35 - Grasshopper 1g",
         "$20 - Grasshopper 5pk 1g",
-        "$60 - Cashed Out Live Resin Joints 15pk",
         "$10 or 3/$25 - Craft Hydroponics 1g Cured Live Resin",
         "$15 or 2/$25 or 3/$35 - Plant Nerd Jelly Roll 1.25g",
-        "$35 or 2/$60 - Plant Nerd Infused .7g 5pk"
+        "$35 or 2/$60 - Plant Nerd Infused .7g 5pk",
+        "$40 or 2/$70 - Light Sky Farms Bubble Hash .7g 5pk"
       ]
     },
     {
@@ -135,12 +142,10 @@
         "$10 or 3/$20 - Greenco 1g Resin",
         "$10 or 3/$25 - Craft Sugar 1g",
         "$20 - Rooted & Zooted",
-        "$20 or 2/$35 - OLD SCHOOL HASH CO",
-        "$25 - RedBud Roots HASH ROSIN",
-        "$50 - Polare 1g Live Hash Rosin 90U",
+        "$50 or 2/$95 - Polare 90U Rosin",
         "$100 - Polare 3g Live Hash Rosin Full Spectrum",
-        "$40 - Polare Hashcoin 2g - Melted Guava",
-        "$40 - Light Sky Farms 1g Live Rosin"
+        "$40 - Polare Hashcoin 2g",
+        "$40 or 2/$75 or 3/$100 - Light Sky Farms 1g Live Rosin"
       ]
     },
     {
@@ -152,12 +157,12 @@
       ]
     },
     {
-      "category": "🌿 Topical",
+      "category": "🌿 Topicals",
       "promo": false,
       "items": [
-        "$25 or 2/$30 - Chill “ON THE GO” Extreme X Body Rub 250THC 250 CBD",
-        "$20 - Chill “ON THE GO” Vanilla Lust Body Rub 75:75 THC:CBD",
-        "$35 - Chill Medicated 2000 MG CBD Outback Sandalwood",
+        "$25 or 2/$30 - Chill “ON THE GO” Extreme X Body Rub - 250THC 250 CBD",
+        "$20 - Chill “ON THE GO” Vanilla Lust Body Rub - 75:75 THC:CBD",
+        "$35 - Chill Medicated 2000mg CBD Outback Sandalwood",
         "$50 or 2/$80 - Chill Subzero Roll On",
         "$110 - Chill Medicated Rub 2000 MG THC 2000 MG CBD"
       ]
@@ -169,12 +174,12 @@
         "$6 - Highly Casual 5mg",
         "$10 - Feels 10mg",
         "$10 - Cold Brew",
-        "$6 - Pleasantea LOW DOSE",
-        "$10 or 3/$20 - Pleasantea HIGH DOSE",
-        "$15 or 3/$40 - CQ 100mg Ginger Ale and Cola",
-        "$15 - Best Dirty Lemonade",
-        "$10 - Armada Sparkling Sweet Apple Cider",
+        "$10 - Pleasantea LOW DOSE",
+        "$15 - Pleasantea HIGH DOSE",
+        "$15 or 3/$40 - CQ 100mg Ginger Ale & Cola",
+        "$15 - Armada Sparkling Sweet Apple Cider",
         "$15 - Armada Triple Jam",
+        "$15 - Best Dirty Lemonade",
         "$20 - Uncle Arnies Night Cap Syrup",
         "$20 - CQ Soothing Syrup",
         "$20 - Mary Jones",
