@@ -1134,3 +1134,54 @@ section { scroll-margin-top: calc(var(--nav-h) + 20px); }
     height: auto;
     object-fit: cover; /* Changed to 'cover' for full-bleed look */
 }
+
+/* =========================================================
+   DUTCH DELI COMING SOON NAV STRIP
+   Paste at bottom of CSS
+========================================================= */
+
+body::before {
+  content: "THE DUTCH DELI COMING SOON   ✦   FRESH DUTCH TOUCH GENETICS FLOWER   ✦   WEIGHED RIGHT IN FRONT OF YOU   ✦   THE DUTCH DELI COMING SOON   ✦   FRESH DUTCH TOUCH GENETICS FLOWER   ✦   WEIGHED RIGHT IN FRONT OF YOU";
+  position: fixed;
+  top: var(--stickyH);
+  left: 0;
+  z-index: 9998;
+  width: 200%;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+
+  background: linear-gradient(90deg, #050505, rgba(214,163,74,.18), #050505);
+  border-top: 1px solid rgba(214,163,74,.22);
+  border-bottom: 1px solid rgba(214,163,74,.22);
+
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+
+  padding-left: 18px;
+  animation: dutchDeliTicker 24s linear infinite;
+  box-shadow: 0 8px 24px rgba(0,0,0,.35);
+}
+
+body {
+  padding-top: 34px;
+}
+
+@keyframes dutchDeliTicker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before {
+    animation: none;
+  }
+}
