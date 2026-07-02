@@ -1150,7 +1150,7 @@ section { scroll-margin-top: calc(var(--nav-h) + 20px); }
   align-items: center;
   white-space: nowrap;
   position: relative;
-  z-index: 50;
+  z-index: 20;
 }
 
 .deli-coming-track {
@@ -1158,8 +1158,7 @@ section { scroll-margin-top: calc(var(--nav-h) + 20px); }
   align-items: center;
   gap: 38px;
   min-width: max-content;
-  animation: dutchDeliMarquee 24s linear infinite;
-  padding-left: 100%;
+  animation: dutchDeliMarquee 28s linear infinite;
 }
 
 .deli-coming-track span {
@@ -1181,13 +1180,6 @@ section { scroll-margin-top: calc(var(--nav-h) + 20px); }
     transform: translateX(0);
   }
   to {
-    transform: translateX(-100%);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .deli-coming-track {
-    animation: none;
-    padding-left: 18px;
+    transform: translateX(-50%);
   }
 }
