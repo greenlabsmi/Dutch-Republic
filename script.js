@@ -626,10 +626,6 @@ function updateDeliArrowVisibility() {
         return;
     }
 
-    /*
-     * Some browsers report fractional scroll values.
-     * Clamp them into a predictable positive number.
-     */
     const currentScrollLeft = Math.max(
         0,
         Math.round(deliCarousel.scrollLeft)
@@ -643,10 +639,6 @@ function updateDeliArrowVisibility() {
         )
     );
 
-    /*
-     * Slight tolerance prevents sub-pixel layout differences
-     * from leaving an arrow visible at either edge.
-     */
     const edgeTolerance = 8;
 
     const canScrollLeft =
@@ -686,10 +678,6 @@ function updateDeliArrowVisibility() {
         canScrollRight ? 0 : -1;
 }
 
-/**
- * Prevents the scroll event from running the layout check
- * dozens of times during one smooth movement.
- */
 function queueDeliArrowUpdate() {
     if (deliArrowFrame) {
         cancelAnimationFrame(deliArrowFrame);
@@ -740,10 +728,6 @@ window.addEventListener(
     queueDeliArrowUpdate
 );
 
-/*
- * Force the carousel to its actual starting boundary after
- * CSS, snapping and image layout have fully initialized.
- */
 requestAnimationFrame(() => {
     if (deliCarousel) {
         deliCarousel.scrollLeft = 0;
