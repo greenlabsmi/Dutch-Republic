@@ -2236,3 +2236,9 @@ section { scroll-margin-top: calc(var(--nav-h) + 20px); }
     border-color 0.2s ease,
     box-shadow 0.2s ease;
 }
+
+#dutch-deli .deli-arrow:disabled {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
