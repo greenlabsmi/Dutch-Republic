@@ -1,39 +1,4 @@
 {
-  "deli_board": [
-    {
-      "tier": "PREMIUM",
-      "key": "premium",
-      "label": "DTG Trophy Room",
-      "tagline": "Award-Winning Genetics",
-      "color": "#D6A34A",
-      "prices": [
-        ["1g", "$10"],
-        ["3.5g", "$25"],
-        ["7g", "$40"],
-        ["14g", "$70"],
-        ["28g", "$130"],
-        ["56g", "$210"],
-        ["70g", "$260"]
-      ]
-    },
-    {
-      "tier": "CORE",
-      "key": "core",
-      "label": "Dutch Deli Standard",
-      "tagline": "Fresh Everyday Favorites",
-      "color": "#E8E8E8",
-      "prices": [
-        ["1g", "$7"],
-        ["3.5g", "$25"],
-        ["7g", "$40"],
-        ["14g", "$60"],
-        ["28g", "$100"],
-        ["56g", "$200"],
-        ["70g", "$250"]
-      ]
-    }
-  ],
-
   "deals": [
     {
       "category": "🔥 Flower Blowout Sale",
