@@ -642,7 +642,7 @@ deliArtToggle?.addEventListener('click', () => {
         const tolerance = 10;
 
         const canMoveLeft =
-            scrollPosition > tolerance;
+            scrollPosition > 25;
 
         const canMoveRight =
             maximumScroll - scrollPosition > tolerance;
