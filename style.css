@@ -2223,13 +2223,21 @@ section { scroll-margin-top: calc(var(--nav-h) + 20px); }
 
 /* Hide carousel arrows when no further scroll is available */
 #dutch-deli .deli-arrow.is-hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
 
-  transform:
-    translateY(-50%)
-    scale(0.88);
+#dutch-deli .deli-arrow--left.is-hidden {
+    transform:
+        translateY(-50%)
+        translateX(-18px);
+}
+
+#dutch-deli .deli-arrow--right.is-hidden {
+    transform:
+        translateY(-50%)
+        translateX(18px);
 }
 
 #dutch-deli .deli-arrow {
