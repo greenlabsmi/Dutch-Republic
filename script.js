@@ -91,11 +91,120 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
+// --- DUTCH DELI PRICING BOARD RENDERER ---
+function renderDutchDeliBoard(tiers) {
+    const mount = document.getElementById('deliBoardMount');
+
+    if (!mount) {
+        console.warn('[deli-board] Missing #deliBoardMount');
+        return;
+    }
+
+    if (!Array.isArray(tiers) || tiers.length === 0) {
+        mount.innerHTML = '';
+        return;
+    }
+
+    const openByDefault =
+        window.matchMedia('(min-width: 861px)').matches;
+
+    mount.innerHTML = `
+        <details
+            class="drDeliBoard"
+            ${openByDefault ? 'open' : ''}
+        >
+            <summary class="drDeliBoard__header">
+                <div class="drDeliBoard__headerCopy">
+                    <div class="drDeliBoard__eyebrow">
+                        Fresh Flower • Weighed to Order
+                    </div>
+
+                    <h2 class="drDeliBoard__title">
+                        The Dutch Deli
+                    </h2>
+
+                    <p class="drDeliBoard__subtitle">
+                        Learn our pricing tiers, then browse today’s strains below.
+                    </p>
+                </div>
+
+                <span
+                    class="drDeliBoard__chevron"
+                    aria-hidden="true"
+                >
+                    ▾
+                </span>
+            </summary>
+
+            <div class="drDeliBoard__body">
+                <div class="drDeliBoard__grid">
+                    ${tiers.map(tier => `
+                        <section
+                            class="drDeliTier drDeliTier--${esc(
+                                String(tier.key || tier.tier)
+                                    .toLowerCase()
+                            )}"
+                        >
+                            <div class="drDeliTier__head">
+                                <h3
+                                    class="drDeliTier__name"
+                                    style="color:${esc(tier.color || '#D6A34A')}"
+                                >
+                                    ${esc(tier.tier)} TIER
+                                </h3>
+
+                                <p class="drDeliTier__label">
+                                    ${esc(tier.label)}
+                                </p>
+
+                                <p class="drDeliTier__tagline">
+                                    ${esc(tier.tagline)}
+                                </p>
+                            </div>
+
+                            <div class="drDeliTier__prices">
+                                ${(tier.prices || []).map(([weight, price]) => `
+                                    <div class="drDeliTier__priceRow">
+                                        <span class="drDeliTier__weight">
+                                            ${esc(weight)}
+                                        </span>
+
+                                        <span
+                                            class="drDeliTier__dots"
+                                            aria-hidden="true"
+                                        ></span>
+
+                                        <span class="drDeliTier__price">
+                                            ${esc(price)}
+                                        </span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </section>
+                    `).join('')}
+                </div>
+
+                <button
+                    class="drDeliBoard__browse"
+                    type="button"
+                    data-scroll="#dutch-deli"
+                >
+                    Browse Today’s Dutch Deli Strains
+                    <span aria-hidden="true">↓</span>
+                </button>
+            </div>
+        </details>
+    `;
+}
+   
     // --- 5. DEALS & HIGHLIGHTS ---
     (async function initDeals() {
         try {
             const r = await fetch(`./deals.json?v=${Date.now()}`);
             const data = await r.json();
+
+           renderDutchDeliBoard(data.deli_board);
+           
             const dealList = document.getElementById('dealList');
             const jumpWrap = document.getElementById('dealJumpWrap');
 
