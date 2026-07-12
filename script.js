@@ -248,7 +248,7 @@ const deliStrainData = {
         seedSource: 'Bodhi Seeds',
         type: 'Hybrid',
         thc: '24.39% THC',
-        budImage: 'https://dutchtouchgenetics.com/assets/img/strains/cobra-lips-bud.png',
+        budImage: 'https://dutchtouchgenetics.com/assets/img/strains/cobra-lips-bud.jpg',
         artImage: 'https://dutchtouchgenetics.com/assets/img/strains/cobra-lips-art.jpg',
         genetics: 'Chem 3 × Appalachia',
         about: 'A complex and pungent hybrid with notes of pine, wet soil, funk, fuel and tart green apple. Cobra Lips offers a long-lasting energetic buzz balanced by a relaxed physical state.'
