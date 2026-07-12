@@ -2166,27 +2166,52 @@ section { scroll-margin-top: calc(var(--nav-h) + 20px); }
 }
 
 /* =========================================================
-   DUTCH DELI — CAROUSEL EDGE PADDING FIX
+   DUTCH DELI — RELIABLE CAROUSEL EDGE SPACING
 ========================================================= */
+
+#dutch-deli {
+  --deli-edge-space: max(
+    34px,
+    calc((100vw - 1180px) / 2 + 34px)
+  );
+}
 
 #dutch-deli #deliCarousel,
 #dutch-deli .deli-carousel {
-  padding-left: max(
-    32px,
-    calc((100vw - 1180px) / 2 + 32px)
-  ) !important;
+  /*
+   * Remove horizontal padding from the scrolling element.
+   * Dedicated flex spacers below create reliable visible space.
+   */
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 
-  padding-right: max(
-    32px,
-    calc((100vw - 1180px) / 2 + 32px)
-  ) !important;
+  scroll-padding-left: var(--deli-edge-space);
+  scroll-padding-right: var(--deli-edge-space);
+}
+
+/* Dedicated space before the first card */
+#dutch-deli #deliCarousel::before,
+#dutch-deli .deli-carousel::before {
+  content: "";
+  display: block;
+  flex: 0 0 var(--deli-edge-space);
+  width: var(--deli-edge-space);
+  pointer-events: none;
+}
+
+/* Dedicated space after the final card */
+#dutch-deli #deliCarousel::after,
+#dutch-deli .deli-carousel::after {
+  content: "";
+  display: block;
+  flex: 0 0 var(--deli-edge-space);
+  width: var(--deli-edge-space);
+  pointer-events: none;
 }
 
 @media (max-width: 640px) {
-  #dutch-deli #deliCarousel,
-  #dutch-deli .deli-carousel {
-    padding-left: 22px !important;
-    padding-right: 22px !important;
+  #dutch-deli {
+    --deli-edge-space: 22px;
   }
 }
 
