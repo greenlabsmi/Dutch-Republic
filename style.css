@@ -2164,3 +2164,28 @@ section { scroll-margin-top: calc(var(--nav-h) + 20px); }
     transition-duration: 0.01ms !important;
   }
 }
+
+/* =========================================================
+   DUTCH DELI — CAROUSEL EDGE PADDING FIX
+========================================================= */
+
+#dutch-deli #deliCarousel,
+#dutch-deli .deli-carousel {
+  padding-left: max(
+    32px,
+    calc((100vw - 1180px) / 2 + 32px)
+  ) !important;
+
+  padding-right: max(
+    32px,
+    calc((100vw - 1180px) / 2 + 32px)
+  ) !important;
+}
+
+@media (max-width: 640px) {
+  #dutch-deli #deliCarousel,
+  #dutch-deli .deli-carousel {
+    padding-left: 22px !important;
+    padding-right: 22px !important;
+  }
+}
