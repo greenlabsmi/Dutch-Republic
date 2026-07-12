@@ -531,10 +531,12 @@ deliFilterButtons.forEach(button => {
         });
 
         deliCarousel?.scrollTo({
-            left: 0,
-            behavior: 'smooth'
-        });
-    });
+    left: 0,
+    behavior: 'auto'
+});
+
+requestAnimationFrame(() => {
+    updateDeliArrowVisibility();
 });
 
 /**
@@ -609,8 +611,12 @@ deliArtToggle?.addEventListener('click', () => {
 
 /**
  * Desktop carousel arrows.
- * Arrows automatically hide when no further scrolling is available.
+ * Keeps the left arrow hidden at the true starting position
+ * and the right arrow hidden at the true ending position.
  */
+
+let deliArrowFrame = null;
+
 function updateDeliArrowVisibility() {
     if (
         !deliCarousel ||
@@ -620,21 +626,35 @@ function updateDeliArrowVisibility() {
         return;
     }
 
-    const maxScrollLeft =
-        deliCarousel.scrollWidth -
-        deliCarousel.clientWidth;
+    /*
+     * Some browsers report fractional scroll values.
+     * Clamp them into a predictable positive number.
+     */
+    const currentScrollLeft = Math.max(
+        0,
+        Math.round(deliCarousel.scrollLeft)
+    );
 
-    const currentScrollLeft =
-        deliCarousel.scrollLeft;
+    const maxScrollLeft = Math.max(
+        0,
+        Math.round(
+            deliCarousel.scrollWidth -
+            deliCarousel.clientWidth
+        )
+    );
 
-    const edgeTolerance = 4;
+    /*
+     * Slight tolerance prevents sub-pixel layout differences
+     * from leaving an arrow visible at either edge.
+     */
+    const edgeTolerance = 8;
 
     const canScrollLeft =
         currentScrollLeft > edgeTolerance;
 
     const canScrollRight =
-        currentScrollLeft <
-        maxScrollLeft - edgeTolerance;
+        maxScrollLeft - currentScrollLeft >
+        edgeTolerance;
 
     deliArrowLeft.classList.toggle(
         'is-hidden',
@@ -645,6 +665,9 @@ function updateDeliArrowVisibility() {
         'is-hidden',
         !canScrollRight
     );
+
+    deliArrowLeft.disabled = !canScrollLeft;
+    deliArrowRight.disabled = !canScrollRight;
 
     deliArrowLeft.setAttribute(
         'aria-hidden',
@@ -663,9 +686,26 @@ function updateDeliArrowVisibility() {
         canScrollRight ? 0 : -1;
 }
 
+/**
+ * Prevents the scroll event from running the layout check
+ * dozens of times during one smooth movement.
+ */
+function queueDeliArrowUpdate() {
+    if (deliArrowFrame) {
+        cancelAnimationFrame(deliArrowFrame);
+    }
+
+    deliArrowFrame = requestAnimationFrame(() => {
+        updateDeliArrowVisibility();
+        deliArrowFrame = null;
+    });
+}
+
 deliArrowLeft?.addEventListener('click', event => {
     event.preventDefault();
     event.stopPropagation();
+
+    if (deliArrowLeft.disabled) return;
 
     triggerDeliHaptic();
 
@@ -679,6 +719,8 @@ deliArrowRight?.addEventListener('click', event => {
     event.preventDefault();
     event.stopPropagation();
 
+    if (deliArrowRight.disabled) return;
+
     triggerDeliHaptic();
 
     deliCarousel?.scrollBy({
@@ -689,25 +731,33 @@ deliArrowRight?.addEventListener('click', event => {
 
 deliCarousel?.addEventListener(
     'scroll',
-    updateDeliArrowVisibility,
+    queueDeliArrowUpdate,
     { passive: true }
 );
 
 window.addEventListener(
     'resize',
-    updateDeliArrowVisibility
+    queueDeliArrowUpdate
 );
 
 /*
- * Run once after layout and images settle.
+ * Force the carousel to its actual starting boundary after
+ * CSS, snapping and image layout have fully initialized.
  */
 requestAnimationFrame(() => {
+    if (deliCarousel) {
+        deliCarousel.scrollLeft = 0;
+    }
+
     updateDeliArrowVisibility();
 
-    setTimeout(
-        updateDeliArrowVisibility,
-        300
-    );
+    setTimeout(() => {
+        if (deliCarousel) {
+            deliCarousel.scrollLeft = 0;
+        }
+
+        updateDeliArrowVisibility();
+    }, 250);
 });
 
 /**
