@@ -1364,11 +1364,17 @@ section { scroll-margin-top: calc(var(--nav-h) + 20px); }
 }
 
 #dutch-deli .deli-arrow--left {
-  left: max(8px, calc((100vw - 1180px) / 2 - 12px));
+    left: max(
+        42px,
+        calc((100vw - 1180px) / 2 + 18px)
+    );
 }
 
 #dutch-deli .deli-arrow--right {
-  right: max(8px, calc((100vw - 1180px) / 2 - 12px));
+    right: max(
+        42px,
+        calc((100vw - 1180px) / 2 + 18px)
+    );
 }
 
 /* =========================================================
