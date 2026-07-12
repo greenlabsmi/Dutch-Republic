@@ -514,29 +514,29 @@ deliFilterButtons.forEach(button => {
         });
 
         deliCards.forEach(card => {
-            const categories = (
-                card.getAttribute('data-category') || ''
-            )
-                .split(/\s+/)
-                .filter(Boolean);
+    const categories = (
+        card.getAttribute('data-category') || ''
+    )
+        .split(/\s+/)
+        .filter(Boolean);
 
-            const shouldShow =
-                selectedFilter === 'all' ||
-                categories.includes(selectedFilter);
+    const shouldShow =
+        selectedFilter === 'all' ||
+        categories.includes(selectedFilter);
 
-            card.classList.toggle(
-                'is-hidden',
-                !shouldShow
-            );
-        });
+    card.classList.toggle(
+        'is-hidden',
+        !shouldShow
+    );
+});
 
-        deliCarousel?.scrollTo({
+deliCarousel?.scrollTo({
     left: 0,
     behavior: 'auto'
 });
 
 requestAnimationFrame(() => {
-    updateDeliArrowVisibility();
+    window.refreshDutchDeliArrows?.();
 });
 
 /**
@@ -611,138 +611,146 @@ deliArtToggle?.addEventListener('click', () => {
 
 /**
  * Desktop carousel arrows.
- * Keeps the left arrow hidden at the true starting position
- * and the right arrow hidden at the true ending position.
+ * Self-contained to prevent variable-name conflicts.
  */
+{
+    let arrowUpdateFrame = null;
 
-let deliArrowFrame = null;
-
-function updateDeliArrowVisibility() {
-    if (
-        !deliCarousel ||
-        !deliArrowLeft ||
-        !deliArrowRight
-    ) {
-        return;
-    }
-
-    const currentScrollLeft = Math.max(
-        0,
-        Math.round(deliCarousel.scrollLeft)
-    );
-
-    const maxScrollLeft = Math.max(
-        0,
-        Math.round(
-            deliCarousel.scrollWidth -
-            deliCarousel.clientWidth
-        )
-    );
-
-    const edgeTolerance = 8;
-
-    const canScrollLeft =
-        currentScrollLeft > edgeTolerance;
-
-    const canScrollRight =
-        maxScrollLeft - currentScrollLeft >
-        edgeTolerance;
-
-    deliArrowLeft.classList.toggle(
-        'is-hidden',
-        !canScrollLeft
-    );
-
-    deliArrowRight.classList.toggle(
-        'is-hidden',
-        !canScrollRight
-    );
-
-    deliArrowLeft.disabled = !canScrollLeft;
-    deliArrowRight.disabled = !canScrollRight;
-
-    deliArrowLeft.setAttribute(
-        'aria-hidden',
-        String(!canScrollLeft)
-    );
-
-    deliArrowRight.setAttribute(
-        'aria-hidden',
-        String(!canScrollRight)
-    );
-
-    deliArrowLeft.tabIndex =
-        canScrollLeft ? 0 : -1;
-
-    deliArrowRight.tabIndex =
-        canScrollRight ? 0 : -1;
-}
-
-function queueDeliArrowUpdate() {
-    if (deliArrowFrame) {
-        cancelAnimationFrame(deliArrowFrame);
-    }
-
-    deliArrowFrame = requestAnimationFrame(() => {
-        updateDeliArrowVisibility();
-        deliArrowFrame = null;
-    });
-}
-
-deliArrowLeft?.addEventListener('click', event => {
-    event.preventDefault();
-    event.stopPropagation();
-
-    if (deliArrowLeft.disabled) return;
-
-    triggerDeliHaptic();
-
-    deliCarousel?.scrollBy({
-        left: -285,
-        behavior: 'smooth'
-    });
-});
-
-deliArrowRight?.addEventListener('click', event => {
-    event.preventDefault();
-    event.stopPropagation();
-
-    if (deliArrowRight.disabled) return;
-
-    triggerDeliHaptic();
-
-    deliCarousel?.scrollBy({
-        left: 285,
-        behavior: 'smooth'
-    });
-});
-
-deliCarousel?.addEventListener(
-    'scroll',
-    queueDeliArrowUpdate,
-    { passive: true }
-);
-
-window.addEventListener(
-    'resize',
-    queueDeliArrowUpdate
-);
-
-requestAnimationFrame(() => {
-    if (deliCarousel) {
-        deliCarousel.scrollLeft = 0;
-    }
-
-    updateDeliArrowVisibility();
-
-    setTimeout(() => {
-        if (deliCarousel) {
-            deliCarousel.scrollLeft = 0;
+    const refreshDeliArrows = () => {
+        if (
+            !deliCarousel ||
+            !deliArrowLeft ||
+            !deliArrowRight
+        ) {
+            return;
         }
 
-        updateDeliArrowVisibility();
-    }, 250);
-});
+        const scrollPosition = Math.max(
+            0,
+            deliCarousel.scrollLeft
+        );
+
+        const maximumScroll = Math.max(
+            0,
+            deliCarousel.scrollWidth -
+            deliCarousel.clientWidth
+        );
+
+        const tolerance = 10;
+
+        const canMoveLeft =
+            scrollPosition > tolerance;
+
+        const canMoveRight =
+            maximumScroll - scrollPosition > tolerance;
+
+        deliArrowLeft.classList.toggle(
+            'is-hidden',
+            !canMoveLeft
+        );
+
+        deliArrowRight.classList.toggle(
+            'is-hidden',
+            !canMoveRight
+        );
+
+        deliArrowLeft.disabled = !canMoveLeft;
+        deliArrowRight.disabled = !canMoveRight;
+
+        deliArrowLeft.tabIndex =
+            canMoveLeft ? 0 : -1;
+
+        deliArrowRight.tabIndex =
+            canMoveRight ? 0 : -1;
+
+        deliArrowLeft.setAttribute(
+            'aria-hidden',
+            String(!canMoveLeft)
+        );
+
+        deliArrowRight.setAttribute(
+            'aria-hidden',
+            String(!canMoveRight)
+        );
+    };
+
+    const scheduleDeliArrowRefresh = () => {
+        if (arrowUpdateFrame !== null) {
+            cancelAnimationFrame(arrowUpdateFrame);
+        }
+
+        arrowUpdateFrame = requestAnimationFrame(() => {
+            refreshDeliArrows();
+            arrowUpdateFrame = null;
+        });
+    };
+
+    deliArrowLeft?.addEventListener('click', event => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (deliArrowLeft.disabled) return;
+
+        triggerDeliHaptic();
+
+        deliCarousel.scrollBy({
+            left: -285,
+            behavior: 'smooth'
+        });
+    });
+
+    deliArrowRight?.addEventListener('click', event => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (deliArrowRight.disabled) return;
+
+        triggerDeliHaptic();
+
+        deliCarousel.scrollBy({
+            left: 285,
+            behavior: 'smooth'
+        });
+    });
+
+    deliCarousel?.addEventListener(
+        'scroll',
+        scheduleDeliArrowRefresh,
+        { passive: true }
+    );
+
+    window.addEventListener(
+        'resize',
+        scheduleDeliArrowRefresh
+    );
+
+    /*
+     * Make this function available to the filter code.
+     */
+    window.refreshDutchDeliArrows =
+        refreshDeliArrows;
+
+    /*
+     * Initialize only after the browser finishes layout.
+     */
+    requestAnimationFrame(() => {
+        deliCarousel?.scrollTo({
+            left: 0,
+            behavior: 'auto'
+        });
+
+        refreshDeliArrows();
+
+        setTimeout(() => {
+            deliCarousel?.scrollTo({
+                left: 0,
+                behavior: 'auto'
+            });
+
+            refreshDeliArrows();
+        }, 350);
+    });
+}
 
 /**
  * Keyboard support for cards.
