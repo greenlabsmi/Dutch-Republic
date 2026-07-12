@@ -500,7 +500,8 @@ deliFilterButtons.forEach(button => {
             button.getAttribute('data-filter');
 
         deliFilterButtons.forEach(otherButton => {
-            const isSelected = otherButton === button;
+            const isSelected =
+                otherButton === button;
 
             otherButton.classList.toggle(
                 'is-active',
@@ -514,29 +515,31 @@ deliFilterButtons.forEach(button => {
         });
 
         deliCards.forEach(card => {
-    const categories = (
-        card.getAttribute('data-category') || ''
-    )
-        .split(/\s+/)
-        .filter(Boolean);
+            const categories = (
+                card.getAttribute('data-category') || ''
+            )
+                .split(/\s+/)
+                .filter(Boolean);
 
-    const shouldShow =
-        selectedFilter === 'all' ||
-        categories.includes(selectedFilter);
+            const shouldShow =
+                selectedFilter === 'all' ||
+                categories.includes(selectedFilter);
 
-    card.classList.toggle(
-        'is-hidden',
-        !shouldShow
-    );
-});
+            card.classList.toggle(
+                'is-hidden',
+                !shouldShow
+            );
+        });
 
-deliCarousel?.scrollTo({
-    left: 0,
-    behavior: 'auto'
-});
+        deliCarousel?.scrollTo({
+            left: 0,
+            behavior: 'auto'
+        });
 
-requestAnimationFrame(() => {
-    window.refreshDutchDeliArrows?.();
+        requestAnimationFrame(() => {
+            window.refreshDutchDeliArrows?.();
+        });
+    });
 });
 
 /**
