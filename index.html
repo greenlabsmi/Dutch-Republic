@@ -22,7 +22,7 @@
 
   <link rel="icon" href="assets/img/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@700;900&family=Bebas+Neue&family=Outfit:wght@700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=dr-3">
+  <link rel="stylesheet" href="style.css?v=dr-deli-1">
   
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -255,14 +255,20 @@
         <div class="pillar__arrow">→</div>
       </a>
 
-      <a href="#shop" class="pillar pillar--deli" data-open-shop>
+      <a href="#dutch-deli" class="pillar pillar--deli" data-scroll="#dutch-deli">
   <div class="pillar__icon" aria-hidden="true">
-    <img src="logo-dutch-republic.svg" alt="DTG Lion" class="deli-hero-img" />
+    <img
+      src="logo-dutch-republic.svg"
+      alt="Dutch Republic"
+      class="deli-hero-img"
+    />
   </div>
+
   <div class="pillar__content">
-    <h3>Premium Quality</h3>
-    <p>See the quality. Smell the freshness. Michigan's best curated lineup.</p>
+    <h3>The Dutch Deli</h3>
+    <p>Fresh Dutch Touch Genetics flower, weighed to order. Browse today’s Premium and Core selections.</p>
   </div>
+
   <div class="pillar__arrow">→</div>
 </a>
 
@@ -316,6 +322,544 @@
         <div id="leafly-embed-wrapper" style="width:100%; min-height:70vh; position: relative; z-index: 1;"></div>
       </div>
     </section>
+
+
+<!-- ======================================================
+     THE DUTCH DELI
+====================================================== -->
+<div
+  id="dutch-deli"
+  class="gl-strains-section dutch-deli-section"
+  style="padding-top: 20px;"
+>
+  <div class="container">
+
+    <!-- ===== DELI HEADER ===== -->
+    <div class="fancy-header reveal">
+      <div
+        class="dtgbadge"
+        style="
+          background: rgba(214, 163, 74, 0.15);
+          color: #D6A34A;
+          border-color: rgba(214, 163, 74, 0.3);
+        "
+      >
+        POWERED BY DUTCH TOUCH GENETICS
+      </div>
+
+      <h2
+        class="fancy-title"
+        style="
+          color: #fff;
+          text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+        "
+      >
+        The Dutch Deli
+      </h2>
+
+      <p
+        style="
+          color: rgba(255,255,255,0.6);
+          font-weight: 700;
+          margin-top: 10px;
+          font-size: 15px;
+        "
+      >
+        Fresh from the grow. Weighed right in front of you.
+      </p>
+    </div>
+
+    <!-- ===== DELI FILTERS ===== -->
+    <div
+      class="filters reveal"
+      style="
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+      "
+    >
+      <button
+        class="deli-filter is-active"
+        data-filter="all"
+        type="button"
+      >
+        All Strains
+      </button>
+
+      <button
+        class="deli-filter"
+        data-filter="premium"
+        type="button"
+      >
+        Premium
+      </button>
+
+      <button
+        class="deli-filter"
+        data-filter="core"
+        type="button"
+      >
+        Core
+      </button>
+
+      <button
+        class="deli-filter"
+        data-filter="sativa"
+        type="button"
+      >
+        Sativa
+      </button>
+
+      <button
+        class="deli-filter"
+        data-filter="hybrid"
+        type="button"
+      >
+        Hybrid
+      </button>
+
+      <button
+        class="deli-filter"
+        data-filter="indica"
+        type="button"
+      >
+        Indica
+      </button>
+
+      <button
+        id="art-mode-toggle"
+        class="deli-filter"
+        type="button"
+        style="
+          width: 100%;
+          max-width: 180px;
+          margin-top: 15px;
+        "
+      >
+        Tap for Label Art
+      </button>
+    </div>
+
+    <!-- ===== DELI CAROUSEL ===== -->
+    <div class="deli-carousel-wrap reveal">
+
+      <button
+        id="deliArrowLeft"
+        class="deli-arrow deli-arrow--left"
+        type="button"
+        aria-label="View previous strains"
+      >
+        ❮
+      </button>
+
+      <div
+        id="deliCarousel"
+        class="strain-grid deli-carousel"
+        aria-label="Current Dutch Deli strains"
+      >
+
+        <!-- ==================================================
+             PREMIUM — MR. CLEAN
+        =================================================== -->
+        <div
+          class="deli-card-wrapper"
+          data-category="premium sativa"
+          onclick="openDeliModal('mr-clean')"
+        >
+          <div class="deli-card">
+            <div
+              class="deli-card__front"
+              style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/mr-clean-bud.jpg');"
+            ></div>
+
+            <div
+              class="deli-card__back"
+              style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/mr-clean-art.jpg');"
+            ></div>
+          </div>
+
+          <div class="deli-card__label">
+            <div class="deli-card__label-copy">
+              <span class="deli-card__tier deli-card__tier--premium">
+                Premium
+              </span>
+
+              <h3>Mr. Clean</h3>
+
+              <p class="deli-card__genetics">
+                Sativa • 23.74% THC
+              </p>
+            </div>
+
+            <span class="deli-card__price">
+              From $10
+            </span>
+          </div>
+        </div>
+
+        <!-- ==================================================
+             PREMIUM — CHOCOLATE MARSHMALLOW #14
+        =================================================== -->
+        <div
+          class="deli-card-wrapper"
+          data-category="premium hybrid"
+          onclick="openDeliModal('chocolate-marshmallow-14')"
+        >
+          <div class="deli-card">
+            <div
+              class="deli-card__front"
+              style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/chocolate-marshmallow-14-bud.jpg');"
+            ></div>
+
+            <div
+              class="deli-card__back"
+              style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/chocolate-marshmallow-14-art.jpg');"
+            ></div>
+          </div>
+
+          <div class="deli-card__label">
+            <div class="deli-card__label-copy">
+              <span class="deli-card__tier deli-card__tier--premium">
+                Premium
+              </span>
+
+              <h3>Chocolate Marshmallow #14</h3>
+
+              <p class="deli-card__genetics">
+                Hybrid • 28.38% THC
+              </p>
+            </div>
+
+            <span class="deli-card__price">
+              From $10
+            </span>
+          </div>
+        </div>
+
+        <!-- ==================================================
+             PREMIUM — SPACE HIPPY #3
+        =================================================== -->
+        <div
+          class="deli-card-wrapper"
+          data-category="premium hybrid"
+          onclick="openDeliModal('space-hippy-3')"
+        >
+          <div class="deli-card">
+            <div
+              class="deli-card__front"
+              style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/space-hippy-bud.jpg');"
+            ></div>
+
+            <div
+              class="deli-card__back"
+              style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/space-hippy-art.jpg');"
+            ></div>
+          </div>
+
+          <div class="deli-card__label">
+            <div class="deli-card__label-copy">
+              <span class="deli-card__tier deli-card__tier--premium">
+                Premium
+              </span>
+
+              <h3>Space Hippy #3</h3>
+
+              <p class="deli-card__genetics">
+                Hybrid • 24.77% THC
+              </p>
+            </div>
+
+            <span class="deli-card__price">
+              From $10
+            </span>
+          </div>
+        </div>
+
+        <!-- ==================================================
+             CORE — COBRA LIPS
+        =================================================== -->
+        <div
+          class="deli-card-wrapper"
+          data-category="core hybrid"
+          onclick="openDeliModal('cobra-lips')"
+        >
+          <div class="deli-card">
+            <div
+              class="deli-card__front"
+              style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/cobra-lips-bud.png');"
+            ></div>
+
+            <div
+              class="deli-card__back"
+              style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/cobra-lips-art.jpg');"
+            ></div>
+          </div>
+
+          <div class="deli-card__label">
+            <div class="deli-card__label-copy">
+              <span class="deli-card__tier deli-card__tier--core">
+                Core
+              </span>
+
+              <h3>Cobra Lips</h3>
+
+              <p class="deli-card__genetics">
+                Hybrid • 24.39% THC
+              </p>
+            </div>
+
+            <span class="deli-card__price">
+              From $7
+            </span>
+          </div>
+        </div>
+
+        <!-- ==================================================
+             CORE — ILLUDIUM
+        =================================================== -->
+        <div
+          class="deli-card-wrapper"
+          data-category="core indica"
+          onclick="openDeliModal('illudium')"
+        >
+          <div class="deli-card">
+            <div
+              class="deli-card__front"
+              style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/illudium-bud.jpg');"
+            ></div>
+
+            <div
+              class="deli-card__back"
+              style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/illudium-art.jpg');"
+            ></div>
+          </div>
+
+          <div class="deli-card__label">
+            <div class="deli-card__label-copy">
+              <span class="deli-card__tier deli-card__tier--core">
+                Core
+              </span>
+
+              <h3>Illudium</h3>
+
+              <p class="deli-card__genetics">
+                Indica • 19.56% THC
+              </p>
+            </div>
+
+            <span class="deli-card__price">
+              From $7
+            </span>
+          </div>
+        </div>
+
+        <!-- ==================================================
+             CORE — FIELD TRIP
+        =================================================== -->
+        <div
+          class="deli-card-wrapper"
+          data-category="core hybrid"
+          onclick="openDeliModal('field-trip')"
+        >
+          <div class="deli-card">
+            <div
+              class="deli-card__front"
+              style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/field-trip-bud.jpg');"
+            ></div>
+
+            <div
+              class="deli-card__back"
+              style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/field-trip-art.jpg');"
+            ></div>
+          </div>
+
+          <div class="deli-card__label">
+            <div class="deli-card__label-copy">
+              <span class="deli-card__tier deli-card__tier--core">
+                Core
+              </span>
+
+              <h3>Field Trip</h3>
+
+              <p class="deli-card__genetics">
+                Hybrid • 25.07% THC
+              </p>
+            </div>
+
+            <span class="deli-card__price">
+              From $7
+            </span>
+          </div>
+        </div>
+
+        <!-- ==================================================
+             CORE — DEAD PREZ
+        =================================================== -->
+        <div
+          class="deli-card-wrapper"
+          data-category="core indica"
+          onclick="openDeliModal('dead-prez')"
+        >
+          <div class="deli-card">
+            <div
+              class="deli-card__front"
+              style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/dead-prez-bud.jpg');"
+            ></div>
+
+            <div
+              class="deli-card__back"
+              style="background-image: url('https://dutchtouchgenetics.com/assets/img/strains/dead-prez-art.jpg');"
+            ></div>
+          </div>
+
+          <div class="deli-card__label">
+            <div class="deli-card__label-copy">
+              <span class="deli-card__tier deli-card__tier--core">
+                Core
+              </span>
+
+              <h3>Dead Prez</h3>
+
+              <p class="deli-card__genetics">
+                Indica • 26.32% THC
+              </p>
+            </div>
+
+            <span class="deli-card__price">
+              From $7
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <button
+        id="deliArrowRight"
+        class="deli-arrow deli-arrow--right"
+        type="button"
+        aria-label="View more strains"
+      >
+        ❯
+      </button>
+    </div>
+
+    <!-- ===== DELI FOOTER ===== -->
+    <div class="deli-footer reveal">
+      <button
+        class="btn btn--gold"
+        data-open-shop
+        type="button"
+      >
+        Order for Pickup
+      </button>
+
+      <p class="deli-note">
+        Strains rotate based on availability. Current selections and potency may change.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ======================================================
+     DUTCH DELI MODAL
+====================================================== -->
+<div id="deliModal" class="deli-modal">
+
+  <div
+    class="deli-modal__overlay"
+    onclick="closeDeliModal()"
+  ></div>
+
+  <div class="deli-modal__content">
+
+    <button
+      class="deli-modal__close"
+      type="button"
+      onclick="closeDeliModal()"
+      aria-label="Close strain details"
+    >
+      ×
+    </button>
+
+    <!-- ===== MODAL IMAGE ===== -->
+    <div
+      class="deli-modal__image"
+      onclick="flipDeliModalImage()"
+    >
+      <img
+        id="deliModalImage"
+        src=""
+        alt=""
+      />
+
+      <div class="deli-modal__image-hint">
+        Tap for Label Art 🔄
+      </div>
+    </div>
+
+    <!-- ===== MODAL INFORMATION ===== -->
+    <div class="deli-modal__info">
+
+      <p class="deli-modal__brand">
+        Grown by Dutch Touch Genetics
+      </p>
+
+      <div
+        id="deliModalTier"
+        class="deli-modal__tier"
+      ></div>
+
+      <h2 id="deliModalName"></h2>
+
+      <p
+        id="deliModalType"
+        class="deli-modal__type"
+      ></p>
+
+      <div class="deli-modal__section">
+        <h4>Seed Source</h4>
+        <p id="deliModalSeedSource"></p>
+      </div>
+
+      <div class="deli-modal__section">
+        <h4>Lineage</h4>
+        <p id="deliModalGenetics"></p>
+      </div>
+
+      <div class="deli-modal__section">
+        <h4>About</h4>
+        <p id="deliModalAbout"></p>
+      </div>
+
+      <div class="deli-modal__section">
+        <h4 id="deliModalPriceTitle">
+          Pricing
+        </h4>
+
+        <div
+          id="deliModalPrice"
+          class="deli-modal__pricing"
+        ></div>
+      </div>
+
+      <button
+        class="deli-modal__shop"
+        data-open-shop
+        type="button"
+        onclick="closeDeliModal()"
+      >
+        Shop This Strain
+      </button>
+
+    </div>
+  </div>
+</div>
+
+
+    
 
         <div class="gl-strains-section" style="padding-top: 40px;">
       <div class="container">
@@ -675,7 +1219,7 @@
   }
 </script>
 
-<script src="script.js?v=335"></script>
+<script src="script.js?v=dr-deli-1"></script>
 
 <script>
 (function(){
