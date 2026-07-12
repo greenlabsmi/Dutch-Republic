@@ -609,7 +609,60 @@ deliArtToggle?.addEventListener('click', () => {
 
 /**
  * Desktop carousel arrows.
+ * Arrows automatically hide when no further scrolling is available.
  */
+function updateDeliArrowVisibility() {
+    if (
+        !deliCarousel ||
+        !deliArrowLeft ||
+        !deliArrowRight
+    ) {
+        return;
+    }
+
+    const maxScrollLeft =
+        deliCarousel.scrollWidth -
+        deliCarousel.clientWidth;
+
+    const currentScrollLeft =
+        deliCarousel.scrollLeft;
+
+    const edgeTolerance = 4;
+
+    const canScrollLeft =
+        currentScrollLeft > edgeTolerance;
+
+    const canScrollRight =
+        currentScrollLeft <
+        maxScrollLeft - edgeTolerance;
+
+    deliArrowLeft.classList.toggle(
+        'is-hidden',
+        !canScrollLeft
+    );
+
+    deliArrowRight.classList.toggle(
+        'is-hidden',
+        !canScrollRight
+    );
+
+    deliArrowLeft.setAttribute(
+        'aria-hidden',
+        String(!canScrollLeft)
+    );
+
+    deliArrowRight.setAttribute(
+        'aria-hidden',
+        String(!canScrollRight)
+    );
+
+    deliArrowLeft.tabIndex =
+        canScrollLeft ? 0 : -1;
+
+    deliArrowRight.tabIndex =
+        canScrollRight ? 0 : -1;
+}
+
 deliArrowLeft?.addEventListener('click', event => {
     event.preventDefault();
     event.stopPropagation();
@@ -632,6 +685,29 @@ deliArrowRight?.addEventListener('click', event => {
         left: 285,
         behavior: 'smooth'
     });
+});
+
+deliCarousel?.addEventListener(
+    'scroll',
+    updateDeliArrowVisibility,
+    { passive: true }
+);
+
+window.addEventListener(
+    'resize',
+    updateDeliArrowVisibility
+);
+
+/*
+ * Run once after layout and images settle.
+ */
+requestAnimationFrame(() => {
+    updateDeliArrowVisibility();
+
+    setTimeout(
+        updateDeliArrowVisibility,
+        300
+    );
 });
 
 /**
