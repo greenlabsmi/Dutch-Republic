@@ -176,7 +176,510 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch(e) { console.error('Strains failed'); }
     })();
 
-    // --- 7. SHOP & MAPS ---
+
+// --- 7. DUTCH DELI ---
+
+const deliPricing = {
+    premium: [
+        ['1g', '$10'],
+        ['3.5g', '$25'],
+        ['7g', '$40'],
+        ['14g', '$70'],
+        ['28g', '$130'],
+        ['56g', '$210'],
+        ['70g', '$260']
+    ],
+
+    core: [
+        ['1g', '$7'],
+        ['3.5g', '$25'],
+        ['7g', '$40'],
+        ['14g', '$60'],
+        ['28g', '$100'],
+        ['56g', '$200'],
+        ['70g', '$250']
+    ]
+};
+
+const deliStrainData = {
+    'mr-clean': {
+        name: 'Mr. Clean',
+        tier: 'premium',
+        tierLabel: 'Premium Tier',
+        seedSource: 'TGA Subcool Genetics',
+        type: 'Sativa',
+        thc: '23.74% THC',
+        budImage: 'https://dutchtouchgenetics.com/assets/img/strains/mr-clean-bud.jpg',
+        artImage: 'https://dutchtouchgenetics.com/assets/img/strains/mr-clean-art.jpg',
+        genetics: 'Lime Skunk × The Cube',
+        about: 'An award-winning Dutch Touch Genetics favorite with sharp lime, sour citrus, earthy skunk and pine-cleaner aromas. Mr. Clean is known for an energetic, creative and uplifting experience.'
+    },
+
+    'chocolate-marshmallow-14': {
+        name: 'Chocolate Marshmallow #14',
+        tier: 'premium',
+        tierLabel: 'Premium Tier',
+        seedSource: 'Exotic Genetix',
+        type: 'Hybrid',
+        thc: '28.38% THC',
+        budImage: 'https://dutchtouchgenetics.com/assets/img/strains/chocolate-marshmallow-14-bud.jpg',
+        artImage: 'https://dutchtouchgenetics.com/assets/img/strains/chocolate-marshmallow-14-art.jpg',
+        genetics: 'GG4 × Mint Chocolate Chip',
+        about: 'A rich dessert-forward hybrid with flavors of sweet chocolate, creamy vanilla and a punch of skunky pungency. Its dense potency delivers a deeply satisfying and balanced experience.'
+    },
+
+    'space-hippy-3': {
+        name: 'Space Hippy #3',
+        tier: 'premium',
+        tierLabel: 'Premium Tier',
+        seedSource: 'Dutch Touch Genetics',
+        type: 'Hybrid',
+        thc: '24.77% THC',
+        budImage: 'https://dutchtouchgenetics.com/assets/img/strains/space-hippy-bud.jpg',
+        artImage: 'https://dutchtouchgenetics.com/assets/img/strains/space-hippy-art.jpg',
+        genetics: 'Apollo 13 × Dread Bread',
+        about: 'A premium Dutch Touch Genetics exclusive with bright cerebral energy and a relaxing finish. Space Hippy is also a High Times Cannabis Cup award-winning genetic across multiple product categories.'
+    },
+
+    'cobra-lips': {
+        name: 'Cobra Lips',
+        tier: 'core',
+        tierLabel: 'Core Tier',
+        seedSource: 'Bodhi Seeds',
+        type: 'Hybrid',
+        thc: '24.39% THC',
+        budImage: 'https://dutchtouchgenetics.com/assets/img/strains/cobra-lips-bud.png',
+        artImage: 'https://dutchtouchgenetics.com/assets/img/strains/cobra-lips-art.jpg',
+        genetics: 'Chem 3 × Appalachia',
+        about: 'A complex and pungent hybrid with notes of pine, wet soil, funk, fuel and tart green apple. Cobra Lips offers a long-lasting energetic buzz balanced by a relaxed physical state.'
+    },
+
+    'illudium': {
+        name: 'Illudium',
+        tier: 'core',
+        tierLabel: 'Core Tier',
+        seedSource: 'Legendary Ohio Clone-Only',
+        type: 'Indica',
+        thc: '19.56% THC',
+        budImage: 'https://dutchtouchgenetics.com/assets/img/strains/illudium-bud.jpg',
+        artImage: 'https://dutchtouchgenetics.com/assets/img/strains/illudium-art.jpg',
+        genetics: 'Hawaiian Indica × Pre-98 Bubba Kush',
+        about: 'A legendary and highly sought-after Ohio clone-only strain. Illudium combines dark coffee, chocolate and sweet orange rind with a peppery, herbal and fuel-tinged aromatic base.'
+    },
+
+    'field-trip': {
+        name: 'Field Trip',
+        tier: 'core',
+        tierLabel: 'Core Tier',
+        seedSource: 'Dutch Touch Genetics',
+        type: 'Hybrid',
+        thc: '25.07% THC',
+        budImage: 'https://dutchtouchgenetics.com/assets/img/strains/field-trip-bud.jpg',
+        artImage: 'https://dutchtouchgenetics.com/assets/img/strains/field-trip-art.jpg',
+        genetics: 'GSC × Sunshine Daydream',
+        about: 'An uplifting and nostalgic balanced hybrid with classic earthy dough notes and a bright, spacey citrus kick. Field Trip is designed for an easygoing, functional experience.'
+    },
+
+    'dead-prez': {
+        name: 'Dead Prez',
+        tier: 'core',
+        tierLabel: 'Core Tier',
+        seedSource: 'Dutch Touch Genetics',
+        type: 'Indica',
+        thc: '26.32% THC',
+        budImage: 'https://dutchtouchgenetics.com/assets/img/strains/dead-prez-bud.jpg',
+        artImage: 'https://dutchtouchgenetics.com/assets/img/strains/dead-prez-art.jpg',
+        genetics: 'Death Star × Dread Bread',
+        about: 'A heavy-hitting in-house Dutch Touch Genetics cross with an aggressive sour aroma. Skunky jet fuel and diesel lead the profile, followed by earthy notes and hints of citrus and spice.'
+    }
+};
+
+const deliCarousel = document.getElementById('deliCarousel');
+const deliCards = Array.from(
+    document.querySelectorAll('#dutch-deli .deli-card-wrapper')
+);
+
+const deliFilterButtons = Array.from(
+    document.querySelectorAll('#dutch-deli .deli-filter[data-filter]')
+);
+
+const deliArtToggle = document.getElementById('art-mode-toggle');
+const deliArrowLeft = document.getElementById('deliArrowLeft');
+const deliArrowRight = document.getElementById('deliArrowRight');
+
+const deliModal = document.getElementById('deliModal');
+const deliModalImage = document.getElementById('deliModalImage');
+const deliModalName = document.getElementById('deliModalName');
+const deliModalType = document.getElementById('deliModalType');
+const deliModalTier = document.getElementById('deliModalTier');
+const deliModalSeedSource = document.getElementById('deliModalSeedSource');
+const deliModalGenetics = document.getElementById('deliModalGenetics');
+const deliModalAbout = document.getElementById('deliModalAbout');
+const deliModalPriceTitle = document.getElementById('deliModalPriceTitle');
+const deliModalPrice = document.getElementById('deliModalPrice');
+const deliModalImageHint = deliModal?.querySelector('.deli-modal__image-hint');
+
+let currentDeliStrainId = null;
+let currentDeliModalImage = 'bud';
+let deliArtModeActive = false;
+let deliLastFocusedElement = null;
+
+/**
+ * Optional mobile vibration feedback.
+ */
+function triggerDeliHaptic() {
+    if (navigator.vibrate) {
+        navigator.vibrate(25);
+    }
+}
+
+/**
+ * Builds the complete pricing table for the active tier.
+ */
+function renderDeliPricing(tier) {
+    if (!deliModalPrice) return;
+
+    const prices = deliPricing[tier] || [];
+
+    deliModalPrice.innerHTML = prices.map(([weight, price]) => `
+        <div class="deli-price-row">
+            <span class="deli-price-weight">${esc(weight)}</span>
+            <span class="deli-price-dots" aria-hidden="true"></span>
+            <span class="deli-price-value">${esc(price)}</span>
+        </div>
+    `).join('');
+}
+
+/**
+ * Updates the modal image and its helper text.
+ */
+function showDeliModalImage(side) {
+    const strain = deliStrainData[currentDeliStrainId];
+
+    if (!strain || !deliModalImage) return;
+
+    currentDeliModalImage = side;
+
+    if (side === 'art') {
+        deliModalImage.src = strain.artImage;
+        deliModalImage.alt = `${strain.name} label artwork`;
+
+        if (deliModalImageHint) {
+            deliModalImageHint.textContent = 'Tap for Bud Photo 🔄';
+        }
+    } else {
+        deliModalImage.src = strain.budImage;
+        deliModalImage.alt = `${strain.name} flower`;
+
+        if (deliModalImageHint) {
+            deliModalImageHint.textContent = 'Tap for Label Art 🔄';
+        }
+    }
+}
+
+/**
+ * Opens the deli modal.
+ * Attached to window because the HTML uses onclick="openDeliModal(...)"
+ */
+window.openDeliModal = function openDeliModal(strainId) {
+    const strain = deliStrainData[strainId];
+
+    if (!strain || !deliModal) {
+        console.warn(`[deli] Missing strain data for: ${strainId}`);
+        return;
+    }
+
+    triggerDeliHaptic();
+
+    currentDeliStrainId = strainId;
+    deliLastFocusedElement = document.activeElement;
+
+    if (deliModalName) {
+        deliModalName.textContent = strain.name;
+    }
+
+    if (deliModalType) {
+        deliModalType.textContent = `${strain.type} • ${strain.thc}`;
+    }
+
+    if (deliModalSeedSource) {
+        deliModalSeedSource.textContent = strain.seedSource;
+    }
+
+    if (deliModalGenetics) {
+        deliModalGenetics.textContent = strain.genetics;
+    }
+
+    if (deliModalAbout) {
+        deliModalAbout.textContent = strain.about;
+    }
+
+    if (deliModalTier) {
+        deliModalTier.textContent = strain.tierLabel;
+
+        deliModalTier.classList.remove(
+            'is-premium',
+            'is-core'
+        );
+
+        deliModalTier.classList.add(
+            strain.tier === 'premium'
+                ? 'is-premium'
+                : 'is-core'
+        );
+    }
+
+    if (deliModalPriceTitle) {
+        deliModalPriceTitle.textContent =
+            `${strain.tierLabel} Pricing`;
+    }
+
+    renderDeliPricing(strain.tier);
+    showDeliModalImage('bud');
+
+    deliModal.classList.add('is-open');
+    deliModal.setAttribute('aria-hidden', 'false');
+
+    document.body.style.overflow = 'hidden';
+
+    const closeButton =
+        deliModal.querySelector('.deli-modal__close');
+
+    setTimeout(() => {
+        closeButton?.focus();
+    }, 50);
+};
+
+/**
+ * Closes the deli modal.
+ * Attached to window because the HTML uses onclick="closeDeliModal()"
+ */
+window.closeDeliModal = function closeDeliModal() {
+    if (!deliModal) return;
+
+    deliModal.classList.remove('is-open');
+    deliModal.setAttribute('aria-hidden', 'true');
+
+    document.body.style.overflow = '';
+
+    currentDeliStrainId = null;
+    currentDeliModalImage = 'bud';
+
+    if (
+        deliLastFocusedElement &&
+        typeof deliLastFocusedElement.focus === 'function'
+    ) {
+        deliLastFocusedElement.focus();
+    }
+};
+
+/**
+ * Flips the large modal image.
+ * Attached to window because the HTML uses onclick="flipDeliModalImage()"
+ */
+window.flipDeliModalImage = function flipDeliModalImage() {
+    if (!currentDeliStrainId) return;
+
+    triggerDeliHaptic();
+
+    showDeliModalImage(
+        currentDeliModalImage === 'bud'
+            ? 'art'
+            : 'bud'
+    );
+};
+
+/**
+ * Premium, Core, Sativa, Hybrid and Indica filters.
+ */
+deliFilterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        triggerDeliHaptic();
+
+        const selectedFilter =
+            button.getAttribute('data-filter');
+
+        deliFilterButtons.forEach(otherButton => {
+            const isSelected = otherButton === button;
+
+            otherButton.classList.toggle(
+                'is-active',
+                isSelected
+            );
+
+            otherButton.setAttribute(
+                'aria-pressed',
+                String(isSelected)
+            );
+        });
+
+        deliCards.forEach(card => {
+            const categories = (
+                card.getAttribute('data-category') || ''
+            )
+                .split(/\s+/)
+                .filter(Boolean);
+
+            const shouldShow =
+                selectedFilter === 'all' ||
+                categories.includes(selectedFilter);
+
+            card.classList.toggle(
+                'is-hidden',
+                !shouldShow
+            );
+        });
+
+        deliCarousel?.scrollTo({
+            left: 0,
+            behavior: 'smooth'
+        });
+    });
+});
+
+/**
+ * Flips every card from bud photo to label artwork.
+ */
+deliArtToggle?.addEventListener('click', () => {
+    triggerDeliHaptic();
+
+    deliArtModeActive = !deliArtModeActive;
+
+    deliArtToggle.classList.toggle(
+        'active',
+        deliArtModeActive
+    );
+
+    deliArtToggle.setAttribute(
+        'aria-pressed',
+        String(deliArtModeActive)
+    );
+
+    deliArtToggle.textContent =
+        deliArtModeActive
+            ? 'Show Bud Photos'
+            : 'Tap for Label Art';
+
+    deliCards.forEach(cardWrapper => {
+        const card =
+            cardWrapper.querySelector('.deli-card');
+
+        const front =
+            card?.querySelector('.deli-card__front');
+
+        const back =
+            card?.querySelector('.deli-card__back');
+
+        if (!card) return;
+
+        /*
+         * Creates the staggered Green Labs-style wave.
+         * Cards further to the right flip slightly later.
+         */
+        const rect = cardWrapper.getBoundingClientRect();
+        const delay = Math.min(
+            Math.max(0, rect.left) * 0.45,
+            450
+        );
+
+        if (front) {
+            front.style.transitionDelay = `${delay}ms`;
+        }
+
+        if (back) {
+            back.style.transitionDelay = `${delay}ms`;
+        }
+
+        card.classList.toggle(
+            'is-flipped',
+            deliArtModeActive
+        );
+
+        window.setTimeout(() => {
+            if (front) {
+                front.style.transitionDelay = '0ms';
+            }
+
+            if (back) {
+                back.style.transitionDelay = '0ms';
+            }
+        }, delay + 850);
+    });
+});
+
+/**
+ * Desktop carousel arrows.
+ */
+deliArrowLeft?.addEventListener('click', event => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    triggerDeliHaptic();
+
+    deliCarousel?.scrollBy({
+        left: -285,
+        behavior: 'smooth'
+    });
+});
+
+deliArrowRight?.addEventListener('click', event => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    triggerDeliHaptic();
+
+    deliCarousel?.scrollBy({
+        left: 285,
+        behavior: 'smooth'
+    });
+});
+
+/**
+ * Keyboard support for cards.
+ */
+deliCards.forEach(card => {
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'button');
+
+    card.addEventListener('keydown', event => {
+        if (
+            event.key !== 'Enter' &&
+            event.key !== ' '
+        ) {
+            return;
+        }
+
+        event.preventDefault();
+
+        const inlineClick =
+            card.getAttribute('onclick') || '';
+
+        const strainMatch =
+            inlineClick.match(
+                /openDeliModal\(['"]([^'"]+)['"]\)/
+            );
+
+        if (strainMatch?.[1]) {
+            window.openDeliModal(strainMatch[1]);
+        }
+    });
+});
+
+/**
+ * Escape closes the modal.
+ */
+document.addEventListener('keydown', event => {
+    if (
+        event.key === 'Escape' &&
+        deliModal?.classList.contains('is-open')
+    ) {
+        window.closeDeliModal();
+    }
+});
+
+   
+
+    // --- 8. SHOP & MAPS ---
     const openShop = () => {
         document.getElementById('shop').hidden = false;
         if (!document.getElementById('leafly-embed-script')) {
