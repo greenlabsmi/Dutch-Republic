@@ -1256,5 +1256,729 @@
 })();
 </script>
 
+
+<!-- =========================================================
+     DUTCH DELI LAUNCH MODAL
+     Paste this entire block directly before </body>
+========================================================= -->
+
+<style>
+  body.dd-modal-open {
+    overflow: hidden;
+  }
+
+  .ddLaunchModal {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.84);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 280ms ease,
+      visibility 280ms ease;
+  }
+
+  .ddLaunchModal.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .ddLaunchModal__dialog {
+    position: relative;
+    width: min(620px, 100%);
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    border: 1px solid rgba(210, 157, 57, 0.5);
+    border-radius: 26px;
+    background:
+      radial-gradient(
+        circle at 50% 0%,
+        rgba(205, 151, 49, 0.18),
+        transparent 34%
+      ),
+      linear-gradient(
+        150deg,
+        rgba(31, 23, 14, 0.99),
+        rgba(7, 7, 7, 0.99) 48%
+      );
+    box-shadow:
+      0 35px 100px rgba(0, 0, 0, 0.75),
+      0 0 55px rgba(201, 143, 37, 0.13),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    color: #f6f0e6;
+    text-align: center;
+    transform: translateY(22px) scale(0.975);
+    transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .ddLaunchModal.is-open .ddLaunchModal__dialog {
+    transform: translateY(0) scale(1);
+  }
+
+  .ddLaunchModal__inner {
+    position: relative;
+    padding: 58px 54px 45px;
+    overflow: hidden;
+  }
+
+  .ddLaunchModal__inner::before {
+    content: "";
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    width: 310px;
+    height: 310px;
+    border-radius: 50%;
+    background: rgba(212, 158, 55, 0.09);
+    filter: blur(18px);
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  .ddLaunchModal__close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 5;
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.58);
+    color: #fff;
+    font: inherit;
+    font-size: 25px;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+      transform 180ms ease,
+      border-color 180ms ease,
+      background 180ms ease;
+  }
+
+  .ddLaunchModal__close:hover {
+    transform: scale(1.06);
+    border-color: rgba(220, 169, 70, 0.7);
+    background: rgba(35, 25, 13, 0.95);
+  }
+
+  .ddLaunchModal__logo {
+    position: relative;
+    z-index: 1;
+    width: 110px;
+    max-height: 120px;
+    display: block;
+    object-fit: contain;
+    margin: 0 auto 20px;
+    filter:
+      drop-shadow(0 0 16px rgba(215, 164, 64, 0.18));
+  }
+
+  .ddLaunchModal__eyebrow {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin: 0 0 16px;
+    color: #e1ae4c;
+    font-size: 0.73rem;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .ddLaunchModal__eyebrow::before,
+  .ddLaunchModal__eyebrow::after {
+    content: "";
+    width: 34px;
+    height: 1px;
+    background: rgba(221, 169, 69, 0.62);
+  }
+
+  .ddLaunchModal__title {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    color: #fffaf1;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2.45rem, 7vw, 4.7rem);
+    font-weight: 700;
+    line-height: 0.96;
+    letter-spacing: -0.045em;
+  }
+
+  .ddLaunchModal__title span {
+    display: block;
+    margin-top: 8px;
+    color: #d8a243;
+  }
+
+  .ddLaunchModal__intro {
+    position: relative;
+    z-index: 1;
+    max-width: 475px;
+    margin: 24px auto 0;
+    color: rgba(246, 240, 230, 0.78);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .ddLaunchModal__features {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 11px;
+    margin: 29px 0 0;
+  }
+
+  .ddLaunchModal__feature {
+    min-height: 116px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 15px 10px;
+    border: 1px solid rgba(211, 158, 59, 0.22);
+    border-radius: 15px;
+    background:
+      linear-gradient(
+        145deg,
+        rgba(216, 161, 60, 0.075),
+        rgba(255, 255, 255, 0.015)
+      );
+    color: rgba(255, 250, 241, 0.9);
+    font-size: 0.76rem;
+    font-weight: 800;
+    line-height: 1.35;
+  }
+
+  .ddLaunchModal__featureIcon {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(222, 170, 70, 0.44);
+    border-radius: 50%;
+    background: rgba(211, 154, 48, 0.08);
+    color: #e3b257;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 0.77rem;
+  }
+
+  .ddLaunchModal__actions {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 31px;
+  }
+
+  .ddLaunchModal__primary {
+    min-height: 53px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+    padding: 0 25px;
+    border: 1px solid #d7a448;
+    border-radius: 999px;
+    background:
+      linear-gradient(
+        135deg,
+        #805414,
+        #d9a84e 56%,
+        #946217
+      );
+    box-shadow:
+      0 13px 30px rgba(197, 139, 36, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.22);
+    color: #0b0804;
+    font-size: 0.87rem;
+    font-weight: 900;
+    letter-spacing: 0.07em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease,
+      filter 180ms ease;
+  }
+
+  .ddLaunchModal__primary:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 17px 38px rgba(197, 139, 36, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.26);
+    filter: brightness(1.05);
+  }
+
+  .ddLaunchModal__secondary {
+    min-height: 48px;
+    padding: 0 15px;
+    border: 0;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.56);
+    font: inherit;
+    font-size: 0.84rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: color 180ms ease;
+  }
+
+  .ddLaunchModal__secondary:hover {
+    color: #fff;
+  }
+
+  .ddLaunchModal__finePrint {
+    position: relative;
+    z-index: 1;
+    margin: 23px 0 0;
+    color: rgba(255, 255, 255, 0.32);
+    font-size: 0.67rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 640px) {
+    .ddLaunchModal {
+      padding: 9px;
+    }
+
+    .ddLaunchModal__dialog {
+      max-height: calc(100vh - 18px);
+      border-radius: 20px;
+    }
+
+    .ddLaunchModal__inner {
+      padding: 48px 21px 27px;
+    }
+
+    .ddLaunchModal__close {
+      top: 10px;
+      right: 10px;
+      width: 40px;
+      height: 40px;
+    }
+
+    .ddLaunchModal__logo {
+      width: 82px;
+      max-height: 92px;
+      margin-bottom: 15px;
+    }
+
+    .ddLaunchModal__eyebrow {
+      margin-bottom: 13px;
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+    }
+
+    .ddLaunchModal__eyebrow::before,
+    .ddLaunchModal__eyebrow::after {
+      width: 20px;
+    }
+
+    .ddLaunchModal__title {
+      font-size: clamp(2.25rem, 13vw, 3.4rem);
+    }
+
+    .ddLaunchModal__intro {
+      margin-top: 18px;
+      font-size: 0.9rem;
+      line-height: 1.58;
+    }
+
+    .ddLaunchModal__features {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin-top: 21px;
+    }
+
+    .ddLaunchModal__feature {
+      min-height: 0;
+      flex-direction: row;
+      justify-content: flex-start;
+      padding: 11px 14px;
+      text-align: left;
+      font-size: 0.8rem;
+    }
+
+    .ddLaunchModal__featureIcon {
+      flex: 0 0 auto;
+      width: 31px;
+      height: 31px;
+    }
+
+    .ddLaunchModal__actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 7px;
+      margin-top: 23px;
+    }
+
+    .ddLaunchModal__primary,
+    .ddLaunchModal__secondary {
+      width: 100%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ddLaunchModal,
+    .ddLaunchModal__dialog,
+    .ddLaunchModal__close,
+    .ddLaunchModal__primary {
+      transition: none;
+    }
+  }
+</style>
+
+<div
+  class="ddLaunchModal"
+  id="ddLaunchModal"
+  aria-hidden="true"
+>
+  <section
+    class="ddLaunchModal__dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="ddLaunchModalTitle"
+    aria-describedby="ddLaunchModalDescription"
+  >
+    <button
+      class="ddLaunchModal__close"
+      id="ddLaunchModalClose"
+      type="button"
+      aria-label="Close Dutch Deli announcement"
+    >
+      ×
+    </button>
+
+    <div class="ddLaunchModal__inner">
+
+      <!-- CHANGE THIS TO YOUR OFFICIAL LOGO FILE -->
+      <img
+        class="ddLaunchModal__logo"
+        href="#dutch-deli"
+        alt="Dutch Republic"
+      />
+
+      <p class="ddLaunchModal__eyebrow">
+        Now Open at Dutch Republic
+      </p>
+
+      <h2
+        class="ddLaunchModal__title"
+        id="ddLaunchModalTitle"
+      >
+        Meet
+        <span>The Dutch Deli</span>
+      </h2>
+
+      <p
+        class="ddLaunchModal__intro"
+        id="ddLaunchModalDescription"
+      >
+        Dutch Touch Genetics flower is now available deli-style,
+        presented in glass jars and hand weighed fresh to order.
+        Explore seven curated selections from Michigan’s
+        award-winning craft cannabis brand.
+      </p>
+
+      <div
+        class="ddLaunchModal__features"
+        aria-label="Dutch Deli highlights"
+      >
+        <div class="ddLaunchModal__feature">
+          <span
+            class="ddLaunchModal__featureIcon"
+            aria-hidden="true"
+          >
+            DTG
+          </span>
+
+          Exclusively Dutch Touch Genetics
+        </div>
+
+        <div class="ddLaunchModal__feature">
+          <span
+            class="ddLaunchModal__featureIcon"
+            aria-hidden="true"
+          >
+            07
+          </span>
+
+          Seven curated selections
+        </div>
+
+        <div class="ddLaunchModal__feature">
+          <span
+            class="ddLaunchModal__featureIcon"
+            aria-hidden="true"
+          >
+            OZ
+          </span>
+
+          Hand weighed fresh to order
+        </div>
+      </div>
+
+      <div class="ddLaunchModal__actions">
+
+        <!--
+          Change #dutch-deli to your real deli section,
+          menu modal trigger, or shopping destination.
+        -->
+        <a
+          class="ddLaunchModal__primary"
+          id="ddLaunchModalPrimary"
+          href="#dutch-deli"
+          <a href="#dutch-deli" data-dutch-deli-link>
+  Explore the Dutch Deli
+</a>
+        >
+          Browse the Deli
+          <span aria-hidden="true">→</span>
+        </a>
+
+        <button
+          class="ddLaunchModal__secondary"
+          id="ddLaunchModalLater"
+          type="button"
+        >
+          Continue Browsing
+        </button>
+      </div>
+
+      <p class="ddLaunchModal__finePrint">
+        For adults 21+ only. Please enjoy responsibly.
+      </p>
+    </div>
+  </section>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("ddLaunchModal");
+    const dialog = modal?.querySelector(".ddLaunchModal__dialog");
+    const closeButton = document.getElementById("ddLaunchModalClose");
+    const laterButton = document.getElementById("ddLaunchModalLater");
+    const primaryButton = document.getElementById("ddLaunchModalPrimary");
+
+    if (
+      !modal ||
+      !dialog ||
+      !closeButton ||
+      !laterButton ||
+      !primaryButton
+    ) {
+      return;
+    }
+
+    const STORAGE_KEY = "ddLaunchModalLastSeen";
+    const DELI_VISITED_KEY = "ddDeliAlreadyVisited";
+    const SEVEN_DAYS = 7 * 24 * 60 * 60 * 1000;
+
+    const isMobile = window.matchMedia("(max-width: 640px)").matches;
+    const OPEN_DELAY = isMobile ? 10000 : 7000;
+
+    let previouslyFocusedElement = null;
+    let openTimer = null;
+
+    function readStorage(key) {
+      try {
+        return localStorage.getItem(key);
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function writeStorage(key, value) {
+      try {
+        localStorage.setItem(key, value);
+      } catch (error) {
+        // The modal still works when storage is unavailable.
+      }
+    }
+
+    function shouldOpenModal() {
+      const alreadyVisitedDeli =
+        readStorage(DELI_VISITED_KEY) === "true";
+
+      if (alreadyVisitedDeli) {
+        return false;
+      }
+
+      const lastSeen = Number(readStorage(STORAGE_KEY));
+
+      if (!lastSeen) {
+        return true;
+      }
+
+      return Date.now() - lastSeen >= SEVEN_DAYS;
+    }
+
+    function markModalSeen() {
+      writeStorage(STORAGE_KEY, String(Date.now()));
+    }
+
+    function markDeliVisited() {
+      writeStorage(DELI_VISITED_KEY, "true");
+      markModalSeen();
+    }
+
+    function getFocusableElements() {
+      return Array.from(
+        dialog.querySelectorAll(
+          [
+            "a[href]",
+            "button:not([disabled])",
+            "input:not([disabled])",
+            "select:not([disabled])",
+            "textarea:not([disabled])",
+            '[tabindex]:not([tabindex="-1"])'
+          ].join(",")
+        )
+      );
+    }
+
+    function openModal() {
+      if (document.hidden || !shouldOpenModal()) {
+        return;
+      }
+
+      previouslyFocusedElement = document.activeElement;
+
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("dd-modal-open");
+
+      window.setTimeout(function () {
+        closeButton.focus();
+      }, 40);
+    }
+
+    function closeModal(options = {}) {
+      const { markSeen = true } = options;
+
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("dd-modal-open");
+
+      if (markSeen) {
+        markModalSeen();
+      }
+
+      if (
+        previouslyFocusedElement &&
+        typeof previouslyFocusedElement.focus === "function"
+      ) {
+        previouslyFocusedElement.focus();
+      }
+    }
+
+    function handleFocusTrap(event) {
+      if (
+        event.key !== "Tab" ||
+        !modal.classList.contains("is-open")
+      ) {
+        return;
+      }
+
+      const focusableElements = getFocusableElements();
+
+      if (!focusableElements.length) {
+        event.preventDefault();
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement =
+        focusableElements[focusableElements.length - 1];
+
+      if (
+        event.shiftKey &&
+        document.activeElement === firstElement
+      ) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (
+        !event.shiftKey &&
+        document.activeElement === lastElement
+      ) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    }
+
+    closeButton.addEventListener("click", function () {
+      closeModal();
+    });
+
+    laterButton.addEventListener("click", function () {
+      closeModal();
+    });
+
+    primaryButton.addEventListener("click", function () {
+      markDeliVisited();
+      closeModal({ markSeen: false });
+    });
+
+    modal.addEventListener("click", function (event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (!modal.classList.contains("is-open")) {
+        return;
+      }
+
+      if (event.key === "Escape") {
+        closeModal();
+        return;
+      }
+
+      handleFocusTrap(event);
+    });
+
+    /*
+      Add data-dutch-deli-link to any deli card, hero link,
+      nav link, or button. Clicking one prevents the popup
+      from appearing later.
+    */
+    document
+      .querySelectorAll("[data-dutch-deli-link]")
+      .forEach(function (link) {
+        link.addEventListener("click", function () {
+          markDeliVisited();
+
+          if (openTimer) {
+            window.clearTimeout(openTimer);
+          }
+        });
+      });
+
+    if (shouldOpenModal()) {
+      openTimer = window.setTimeout(openModal, OPEN_DELAY);
+    }
+  });
+</script>
+
+        
 </body>
 </html>
