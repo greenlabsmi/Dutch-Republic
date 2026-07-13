@@ -1404,18 +1404,6 @@
 
   /* Subtle interior glow */
 
-  .dutch-deli-launch__dialog::after {
-    content: "";
-    position: absolute;
-    inset: 10px;
-    z-index: 1;
-
-    border: 1px solid rgba(214, 159, 57, 0.13);
-    border-radius: 22px;
-
-    pointer-events: none;
-  }
-
   /* =========================================================
      CLOSE BUTTON
   ========================================================= */
@@ -1472,88 +1460,36 @@
   }
 
   /* =========================================================
-     DUAL BRAND HEADER
+     SINGLE BRAND HEADER
   ========================================================= */
 
-  .dutch-deli-launch__brands {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
+  .dutch-deli-launch__brandHeader {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 18px;
-
-    width: min(610px, 100%);
     margin: 0 auto 20px;
   }
 
-  .dutch-deli-launch__brand {
-    display: flex;
-    align-items: center;
-  }
-
-  .dutch-deli-launch__brand:first-child {
-    justify-content: flex-end;
-  }
-
-  .dutch-deli-launch__brand:last-child {
-    justify-content: flex-start;
-  }
-
-  .dutch-deli-launch__brand img {
+  .dutch-deli-launch__mainLogo {
     display: block;
+    width: 132px;
+    max-width: 42%;
+    max-height: 118px;
     object-fit: contain;
-
     opacity: 0;
-    filter:
-      drop-shadow(0 0 14px rgba(221, 166, 63, 0.15));
-  }
-
-  .dutch-deli-launch__dr-logo {
-    width: 122px;
-    max-height: 92px;
-
-    transform: translateX(-18px);
-  }
-
-  .dutch-deli-launch__dtg-logo {
-    width: 82px;
-    max-height: 86px;
-
-    transform: translateX(18px);
+    transform: translateY(-14px) scale(0.96);
+    filter: drop-shadow(0 0 18px rgba(221, 166, 63, 0.18));
   }
 
   .dutch-deli-launch.is-open
-    .dutch-deli-launch__brand img {
+    .dutch-deli-launch__mainLogo {
     opacity: 1;
-    transform: translateX(0);
-
+    transform: translateY(0) scale(1);
     transition:
-      opacity 600ms ease 400ms,
-      transform 800ms cubic-bezier(0.22, 1, 0.36, 1) 400ms;
-  }
-
-  .dutch-deli-launch__brandDivider {
-    width: 1px;
-    height: 48px;
-
-    background:
-      linear-gradient(
-        transparent,
-        rgba(222, 169, 67, 0.78),
-        transparent
-      );
-
-    opacity: 0;
-    transform: scaleY(0);
-  }
-
-  .dutch-deli-launch.is-open
-    .dutch-deli-launch__brandDivider {
-    opacity: 1;
-    transform: scaleY(1);
-
-    transition:
-      opacity 500ms ease 570ms,
-      transform 700ms ease 570ms;
+      opacity 650ms ease 380ms,
+      transform 850ms cubic-bezier(0.22, 1, 0.36, 1) 380ms;
   }
 
   /* =========================================================
@@ -1918,23 +1854,13 @@
       height: 40px;
     }
 
-    .dutch-deli-launch__brands {
-      gap: 12px;
-      margin-bottom: 17px;
+    .dutch-deli-launch__brandHeader {
+      margin-bottom: 15px;
     }
 
-    .dutch-deli-launch__dr-logo {
-      width: 98px;
-      max-height: 72px;
-    }
-
-    .dutch-deli-launch__dtg-logo {
-      width: 65px;
-      max-height: 68px;
-    }
-
-    .dutch-deli-launch__brandDivider {
-      height: 39px;
+    .dutch-deli-launch__mainLogo {
+      width: 108px;
+      max-height: 96px;
     }
 
     .dutch-deli-launch__eyebrow {
@@ -1997,16 +1923,12 @@
       padding-top: 43px;
     }
 
-    .dutch-deli-launch__brands {
-      margin-bottom: 11px;
+    .dutch-deli-launch__brandHeader {
+      margin-bottom: 10px;
     }
 
-    .dutch-deli-launch__dr-logo {
-      width: 86px;
-    }
-
-    .dutch-deli-launch__dtg-logo {
-      width: 57px;
+    .dutch-deli-launch__mainLogo {
+      width: 92px;
     }
 
     .dutch-deli-launch__eyebrow {
@@ -2032,8 +1954,7 @@
     .dutch-deli-launch,
     .dutch-deli-launch__dialog,
     .dutch-deli-launch__dialog::before,
-    .dutch-deli-launch__brand img,
-    .dutch-deli-launch__brandDivider,
+    .dutch-deli-launch__mainLogo,
     .dutch-deli-launch__eyebrow,
     .dutch-deli-launch__artFrame,
     .dutch-deli-launch__copy,
@@ -2074,38 +1995,18 @@
     <div class="dutch-deli-launch__inner">
 
       <!-- ===================================================
-           OFFICIAL BRAND LOGOS
+           OFFICIAL DUTCH REPUBLIC LOGO
 
-           These paths match the filenames shown in your repo.
-
-           If you later move the logos into assets/img,
-           update the src paths here.
+           If you later move the logo into assets/img,
+           update the src path here.
       ==================================================== -->
 
-      <div
-        class="dutch-deli-launch__brands"
-        aria-label="Dutch Republic and Dutch Touch Genetics"
-      >
-        <div class="dutch-deli-launch__brand">
-          <img
-            class="dutch-deli-launch__dr-logo"
-            src="logo-dutch-republic.svg"
-            alt="Dutch Republic"
-          />
-        </div>
-
-        <span
-          class="dutch-deli-launch__brandDivider"
-          aria-hidden="true"
-        ></span>
-
-        <div class="dutch-deli-launch__brand">
-          <img
-            class="dutch-deli-launch__dtg-logo"
-            src="Dutch_Touch_Lion_Logo.png"
-            alt="Dutch Touch Genetics"
-          />
-        </div>
+      <div class="dutch-deli-launch__brandHeader">
+        <img
+          class="dutch-deli-launch__mainLogo"
+          src="logo-dutch-republic.svg"
+          alt="Dutch Republic"
+        />
       </div>
 
       <p class="dutch-deli-launch__eyebrow">
