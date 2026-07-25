@@ -217,6 +217,19 @@ const deliStrainData = {
         about: 'An award-winning Dutch Touch Genetics favorite with sharp lime, sour citrus, earthy skunk and pine-cleaner aromas. Mr. Clean is known for an energetic, creative and uplifting experience.'
     },
 
+   'lilac-diesel': {
+        name: 'Lilac Diesel',
+        tier: 'premium',
+        tierLabel: 'Premium Tier',
+        seedSource: 'Ethos Genetics',
+        type: 'Sativa',
+        thc: '27.27% THC',
+        budImage: 'https://dutchtouchgenetics.com/assets/img/strains/lilac-diesel-bud.jpg',
+        artImage: 'https://dutchtouchgenetics.com/assets/img/strains/lilac-diesel-art.jpg',
+        genetics: 'CONFIRM LILAC DIESEL GENETICS',
+        about: 'An award-winning Dutch Touch Genetics cultivar with floral, citrus and fuel-forward aromas. Lilac Diesel offers an uplifting, energetic and flavorful experience with a smooth diesel finish.'
+    },
+
     'chocolate-marshmallow-14': {
         name: 'Chocolate Marshmallow #14',
         tier: 'premium',
@@ -241,6 +254,19 @@ const deliStrainData = {
         artImage: 'https://dutchtouchgenetics.com/assets/img/strains/space-hippy-art.jpg',
         genetics: 'Apollo 13 × Dread Bread',
         about: 'A premium Dutch Touch Genetics exclusive with bright cerebral energy and a relaxing finish. Space Hippy is also a High Times Cannabis Cup award-winning genetic across multiple product categories.'
+    },
+
+   'banana-split': {
+        name: 'Banana Split',
+        tier: 'core',
+        tierLabel: 'Core Tier',
+        seedSource: 'CONFIRM SEED SOURCE',
+        type: 'Sativa',
+        thc: '21.67% THC',
+        budImage: 'https://dutchtouchgenetics.com/assets/img/strains/banana-split-bud.jpg',
+        artImage: 'https://dutchtouchgenetics.com/assets/img/strains/banana-split-art.jpg',
+        genetics: 'CONFIRM BANANA SPLIT GENETICS',
+        about: 'A bright and fruity Dutch Touch Genetics cultivar with sweet banana, creamy fruit and citrus flavors. Banana Split provides an upbeat, enjoyable experience suited for daytime sessions.'
     },
 
     'cobra-lips': {
