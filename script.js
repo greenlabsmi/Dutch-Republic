@@ -235,7 +235,7 @@ const deliStrainData = {
         tier: 'premium',
         tierLabel: 'Premium Tier',
         seedSource: 'Exotic Genetix',
-        type: 'Hybrid',
+        type: 'Indica',
         thc: '28.38% THC',
         budImage: 'https://dutchtouchgenetics.com/assets/img/strains/chocolate-marshmallow-14-bud.jpg',
         artImage: 'https://dutchtouchgenetics.com/assets/img/strains/chocolate-marshmallow-14-art.jpg',
