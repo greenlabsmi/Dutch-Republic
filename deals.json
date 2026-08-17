@@ -1,62 +1,73 @@
 {
   "deals": [
     {
-      "category": "🔥 Flower Blowout Sale",
-      "promo": true,
-      "items": [
-        "1/8 - $18",
-        "1/4 - $30",
-        "1/2 - $40",
-        "1oz - $70"
-      ]
-    },
-    {
-      "category": "Highlights",
-      "promo": true,
-      "items": [
-        "$18 Eighths - Flower Blowout Sale",
-        "$70 Ounces - Flower Blowout Sale",
-        "$120 - Lemon Wookie 1oz",
-        "3/$55 or 6/$110 - Dutch Touch Genetics 1g Disposables",
-        "$25 or 2/$40 - Dutch Touch Genetics Rosin Donuts",
-        "$25 - Dutch Touch 1g Rosin",
-        "$150 - Dutch Touch 14g Big Baller Jar",
-        "$10 or 5/$45 - Dutch Touch Genetics 200mg RSO Gummy"
-      ]
-    },
-    {
       "category": "🌿 Flower",
       "promo": false,
       "items": [
-        "$25 or 3/$70 - Giving Tree 8th",
-        "$60 or 2/$100 - Light Sky Farm 1/2oz",
-        "$40 or 2/$70 - Dutch Delight OZ’s",
-        "$120 - Lemon Wookie 1oz"
+        "$20 - Dutch Daylight Shake OZ’s",
+        "$40 - Dutch Daylight Buds OZ’s",
+        "$10 - Dutch Touch Genetics 8th (Glue Bert)",
+        "$50 - Light Sky Farm 1/2oz",
+        "$30 - Strange Rootz 1/8",
+        "$90 - Strange Rootz 1/2"
+      ]
+    },
+    {
+      "category": "🍯 Concentrates",
+      "promo": false,
+      "items": [
+        "$20 - Dutch Touch Jelly 1g Batter",
+        "$20 - Dutch Touch Dutch Delight 1g",
+        "$50 or 2/$95 - Polare 90U Rosin",
+        "$100 - Polare 3g Live Hash Rosin",
+        "$40 - Polare Hashcoin 2g",
+        "$40 (BUY 2 GET 1 FREE!) - Light Sky Farms 1g Live Rosin",
+        "$45 or 2/$80 - Strange Rootz Rosin 1g"
+      ]
+    },
+    {
+      "category": "💥 Infused Pre-Rolls",
+      "promo": false,
+      "items": [
+        "$20 - Dutch Touch Genetics Rosin Donuts",
+        "$5 or 5/$20 - Fire Styxx 1g",
+        "$5 or 5/$20 - Platinum 1g",
+        "$6 - Craft Hydroponics 1g Cured Live Resin",
+        "$6 - Franklin Fields",
+        "$15 - Jeeter 1g",
+        "$30 - Light Sky Farms Bubble Hash .7g 5pk",
+        "$30 - Baby Jeeters 5pk"
+      ]
+    },
+    {
+      "category": "🪄 Non-Infused Pre-Rolls",
+      "promo": false,
+      "items": [
+        "$80 - Dutch Touch 1g 25pk",
+        "$50 - Dutch Touch Dog Walkers 25pk",
+        "$7 - Dutch Touch Genetics 1g",
+        "$5 or 5/$20 or 10/$35 - Franklin Fields 1g",
+        "$5 or 5/$20 or 10/$35 - Giving Tree 1g",
+        "$5 - Light Sky Farms 1g",
+        "$6 - Cannarillo Full Flower 1g",
+        "$8 - Strange Rootz 1g",
+        "$25 - H.O.M.I.E.Z 28pk",
+        "$25 - Franklin Fields 28pk"
       ]
     },
     {
       "category": "🍬 Edibles",
       "promo": false,
       "items": [
-        "$10 or 5/$45 - Dutch Touch Genetics RSO 200mg",
-        "$10 or 4/$30 - Dutch Touch Genetics 200mg",
-        "$5 or 10/$45 - Platinum 200mg",
-        "$5 - TreeTown Tranquil 5mg Gummies",
-        "$5 or 10/$45 - Choice Chews 200mg",
-        "$7 or 3/$20 or 10/$60 - Goody Bag 200mg",
-        "$10 or 5/$40 or 10/$75 - Smokiez 200mg",
-        "$10 - Dork Clusters 200mg",
-        "$10 or 10/$55 - Mother Pucker Live Rosin 200mg",
-        "$10 or 5/$40 or 10/$60 - VOODOO 200mg",
-        "$10 or 5/$35 - Monster 200mg",
-        "$15 - MOJO 200mg",
-        "$15 - Wyld Fruit Gummies LOW DOSE",
-        "$20 - Petra Mints 2.5mg",
-        "$20 - Wonder Gummies 200mg (Love, Recover, Focus, Laugh, Relax, Sleep)",
-        "$25 - Wana Gummies 200mg",
-        "$25 - Wyld Fruit Gummies HIGH DOSE",
-        "$25 or 2/$45 - KIVA Chocolate Bars 200mg",
-        "$25 - CAMINO 200mg"
+        "$5 - Dutch Touch Genetics RSO",
+        "$5 - Dutch Touch Genetics",
+        "$4 - Platinum",
+        "$5 - Smokiez",
+        "$8 - MOJO 200mg",
+        "$15 - Wana Gummies",
+        "$15 - Wyld Fruit Gummies",
+        "$15 - KIVA Chocolate Bars",
+        "$15 - Good Tide Live Hash Rosin"
       ]
     },
     {
@@ -66,89 +77,51 @@
         {
           "title": "Cartridges",
           "items": [
-            "$10 - Good News - Tee Time 1g",
-            "$10 or 5/$40 or 15/$110 - Platinum Vape 1g",
-            "$10 or 10/$90 - Mozey 1g Cartridge",
-            "$10 or 5/$45 or 10/$80 or 15/$110 - Crude Boys",
-            "$10 - Monster 1g Cartridge Live Resin",
-            "$12 or 2/$20 or 6/$60 - Craft 1g Live Resin",
-            "$20 - VapinApe 1g POD (With Battery)",
-            "$50 - VapinApe 1g Variety 3pk (With Battery)",
-            "$40 - VapinApe Live Hash Rosin .5g (With Battery)",
-            "$40 or 2/$70 - Cresco Live Resin 1g"
+            "$7 - Mozey 1g Cartridge",
+            "$7 - Crude Boys",
+            "$20 - VapinApe Live Hash Rosin",
+            "$20 - Cresco Live Resin 1g"
           ]
         },
         {
           "title": "Disposables",
           "items": [
-            "3/$55 or 6/$110 - Dutch Touch Genetics 1g",
-            "$25 - Jeeter AIO Liquid Diamonds 1g",
-            "$30 - Jeeter AIO Live Resin 1g",
-            "$20 or 2/$35 - Crude Boys 2G Big Ripper",
-            "$15 - Mozey 1g",
-            "$20 or 2/$35 - Platinum Vape 2g",
-            "$30 or 2/$50 - VapinApe 2g",
-            "$30 or 2/$50 - DRIP 3g",
-            "$40 - Polare 90U Hash Rosin .5g",
-            "$40 - Chief Live Hash Rosin .5g"
+            "$25 - Dutch Touch Genetics 1g",
+            "$15 - Platinum Vape 2g",
+            "$15 - Crude Boys 2G Big Ripper",
+            "$15 - Franklin Fields 2g",
+            "$20 - Franklin Fields Live Resin 1g",
+            "$20 - DRIP 3g",
+            "$15 - Chief Live Hash Rosin .5g",
+            "$25 - Hyman Live Resin 2g"
           ]
         }
       ]
     },
     {
-      "category": "🪄 Non-Infused Pre-Rolls",
+      "category": "🥤 THC Beverages",
       "promo": false,
       "items": [
-        "$100 - Dutch Touch 1g 25pk",
-        "$70 - Dutch Touch Dog Walkers 25pk",
-        "$30 - Dutch Touch Dog Walkers 5pk",
-        "$10 or 3/$25 - Dutch Touch Genetics 1g",
-        "$5 or 5/$20 or 10/$35 - Hazy Daze 1g",
-        "$5 or 5/$20 or 10/$35 - Franklin Fields 1g",
-        "$10 or 3/$25 - Giving Tree 1g",
-        "$10 or 3/$25 or 6/$45 - Light Sky Farms 1g",
-        "$12 or 2/$20 - Cannarillo Full Flower 1g (wood tip)",
-        "$12 or 2/$20 - Strange Rootz 1g",
-        "$15 - Hyman John Daly - Fairway Runtz 1g 3pk",
-        "$40 - H.O.M.I.E.Z 28pk",
-        "$45 - Franklin Fields 28pk",
-        "$45 - Hazy Daze 28pk"
+        "$5 - Highly Casual",
+        "$5 - Cold Brew",
+        "$5 - Sweet Justice",
+        "$6 - Pleasantea HIGH DOSE",
+        "$10 - Chill Syrup 200mg",
+        "$6 - Highly Casual Fruit Punch",
+        "$12 - Uncle Arnies Night Cap Syrup",
+        "$10 - Uncle Arnie’s Soda Pop",
+        "$10 - Mary Jones"
       ]
     },
     {
-      "category": "💥 Infused Pre-Rolls",
+      "category": "🌿 Topicals",
       "promo": false,
       "items": [
-        "$25 or 2/$40 - Dutch Touch Genetics Rosin Donuts",
-        "$7 or 10/$55 - Fire Styxx 1g",
-        "$5 or 5/$20 - Platinum 1g",
-        "$5 or 10/$35 - Grasshopper 1g",
-        "$10 or 3/$25 - Craft Hydroponics 1g Cured Live Resin",
-        "$10 or 5/$40 or 10/$75 - Franklin Fields",
-        "$15 or 2/$25 - Hyman Mini Eclair .7g (glass tip)",
-        "$20 - Grasshopper 5pk 1g",
-        "$25 or 2/$40 - Jeeter Rosin Diamonds 1g",
-        "$30 or 2/$55 - Hazy Daze Bubble Hash .7g 5pk",
-        "$35 or 2/$60 - Plant Nerd Infused .7g 5pk",
-        "$40 or 2/$70 - Light Sky Farms Bubble Hash .7g 5pk",
-        "$45 or 2/$80 - Baby Jeeters 5pk"
-      ]
-    },
-    {
-      "category": "🍯 Concentrates",
-      "promo": false,
-      "items": [
-        "$20 - Dutch Touch 1g Hash D Rosin",
-        "$20 - Dutch Touch Jelly 1g Batter",
-        "$25 - Dutch Touch 1g Death X Funk Rosin",
-        "$100 - Dutch Touch 3.5g Death X Funk Rosin",
-        "$150 - Dutch Touch 14g Big Baller Jar",
-        "$20 - Rooted & Zooted 1g",
-        "$50 or 2/$95 - Polare 90U Rosin",
-        "$100 - Polare 3g Live Hash Rosin",
-        "$40 - Polare Hashcoin 2g",
-        "$40 (BUY 2 GET 1 FREE!) - Light Sky Farms 1g Live Rosin",
-        "$45 or 2/$80 - Strange Rootz Rosin 1g"
+        "$25 or 2/$30 - Chill “ON THE GO” Extreme X Body Rub",
+        "$20 - Chill “ON THE GO” Vanilla Lust Body Rub",
+        "$35 - Chill Medicated CBD Outback Sandalwood",
+        "$50 or 2/$80 - Chill Subzero Roll On",
+        "$75 - Chill Medicated Rub 2000 MG THC 2000 MG CBD"
       ]
     },
     {
@@ -157,63 +130,6 @@
       "items": [
         "$20 or 2/$30 - TreeTown Tinctures",
         "$30 - Mr. Clean & Death Star RSO"
-      ]
-    },
-    {
-      "category": "🌿 Topicals",
-      "promo": false,
-      "items": [
-        "$25 or 2/$30 - Chill “ON THE GO” Extreme X Body Rub - 250THC 250 CBD",
-        "$20 - Chill “ ON THE GO” Vanilla Lust Body Rub - 75:75 THC:CBD",
-        "$35 - Chill Medicated 2000mg CBD Outback Sandalwood",
-        "$50 or 2/$80 - Chill Subzero Roll On",
-        "$110 - Chill Medicated Rub 2000 MG THC 2000 MG CBD"
-      ]
-    },
-    {
-      "category": "🥤 THC Beverages",
-      "promo": false,
-      "items": [
-        "$6 - Highly Casual 5mg",
-        "$10 - Feels 10mg",
-        "$10 - Cold Brew 10mg",
-        "$10 - Pleasantea LOW DOSE 10mg",
-        "$10 or 3/$25 - Sweet Justice 10mg",
-        "$15 - Pleasantea HIGH DOSE 30mg",
-        "$15 - Armada Sparkling Apple Cider 20mg",
-        "$15 - Chill Syrup 200mg",
-        "$15 - Highly Casual Fruit Punch 50mg",
-        "$15 - Best Dirty Lemonade 50mg",
-        "$20 - Uncle Arnies Night Cap Syrup 200mg",
-        "$20 - CQ Soothing Syrup 200mg",
-        "$20 - Uncle Arnie’s Soda Pop 100mg",
-        "$20 - Mary Jones 100mg",
-        "$35 - Highly Casual Variety 5mg 6pk"
-      ]
-    },
-    {
-      "category": "🧢 Merch & Accessories",
-      "promo": false,
-      "items": [
-        "$45 - Dutch Touch Genetics Hoodies",
-        "$30 - #KeepItDutch Beanie",
-        "$25 - Dutch Touch Genetics T-Shirt",
-        "$10 - Dutch Touch Genetics Bowl",
-        "$15 - Dutch Touch Genetics 4pc Metal Grinder",
-        "$5 - Dutch Touch Genetics Rolling Tray",
-        "$3 - Dutch Touch Genetics Ashtray",
-        "$3 - Dutch Touch Genetics Rolling Papers & Tips",
-        "$60 - Nector Collector",
-        "$20 - OOZE 1100MAH (Chrome)",
-        "$20 - OOZE Twist",
-        "$15 - OOZE 900mAh (Gold & Rainbow)",
-        "$10 - Platinum Rechargeable Grinder",
-        "$5 - The Silver Lamp Atomizer",
-        "$4 - ZIG-ZAG Cone 6pk",
-        "$4 - RAW Cone 6pk",
-        "$3 - King Palm Hemp Cones",
-        "$3 - Cyclones Natural Hemp & Clear Cones 2pk",
-        "$2 - ZIG-ZAG Hemp Wraps 2pk"
       ]
     }
   ]
