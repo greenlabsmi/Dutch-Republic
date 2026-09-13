@@ -26,7 +26,7 @@
     }
     main {
       width: min(680px, calc(100% - 40px));
-      padding: 62px 36px 58px;
+      padding: 62px 36px;
       text-align: center;
       position: relative;
     }
@@ -44,7 +44,7 @@
     .mark {
       width: 104px;
       height: 104px;
-      margin: 0 auto 29px;
+      margin: 0 auto 34px;
       display: grid;
       place-items: center;
       border: 1px solid rgba(214,163,74,.62);
@@ -53,15 +53,6 @@
       font-size: 42px;
       line-height: 1;
       box-shadow: 0 0 42px rgba(214,163,74,.12), inset 0 0 32px rgba(214,163,74,.05);
-    }
-    .eyebrow {
-      margin: 0 0 16px;
-      color: #d6a34a;
-      font-family: Arial, sans-serif;
-      font-size: .72rem;
-      font-weight: 800;
-      letter-spacing: .22em;
-      text-transform: uppercase;
     }
     h1 {
       margin: 0;
@@ -74,43 +65,25 @@
     .rule {
       width: 56px;
       height: 2px;
-      margin: 30px auto 25px;
+      margin: 31px auto 27px;
       background: #d6a34a;
     }
     p {
-      max-width: 470px;
+      max-width: 480px;
       margin: 0 auto;
-      color: rgba(245,240,230,.82);
-      font-family: Arial, sans-serif;
-      font-size: clamp(1rem, 3vw, 1.1rem);
-      line-height: 1.72;
-    }
-    .thanks {
-      margin-top: 17px;
-      color: #f5f0e6;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.1rem;
+      color: rgba(245,240,230,.86);
+      font-size: clamp(1.1rem, 3.2vw, 1.3rem);
       font-style: italic;
-    }
-    footer {
-      margin-top: 48px;
-      color: rgba(245,240,230,.42);
-      font-family: Arial, sans-serif;
-      font-size: .68rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
+      line-height: 1.55;
     }
   </style>
 </head>
 <body>
   <main>
-    <div class="mark" aria-hidden="true">✦</div>
-    <p class="eyebrow">Dutch Republic</p>
+    <div class="mark" aria-label="Dutch Republic">✦</div>
     <h1>Closed<br>Indefinitely</h1>
     <div class="rule" aria-hidden="true"></div>
-    <p>Dutch Republic is closed indefinitely.</p>
-    <p class="thanks">Thank you to everyone who supported us and was part of the journey.</p>
-    <footer>© Dutch Republic</footer>
+    <p>Thank you to everyone who supported us.</p>
   </main>
 </body>
 </html>
